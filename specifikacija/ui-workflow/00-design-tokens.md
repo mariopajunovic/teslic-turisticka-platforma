@@ -68,6 +68,7 @@ Vrijednosti koje agenti primjenjuju u Pencilu. **Ne odstupati** od ovih vrijedno
 ## Tipografija
 - **Font:** sans-serif, humanistički (npr. *Inter*, *Source Sans*, *Open Sans*) — podržava naša slova (č ć đ š ž).
 - Naslovi mogu koristiti isti font, bold; opciono jedan „karakterniji” za hero naslov.
+- **Tokeni fonta:** `font-sans` i `font-heading` (oba trenutno *Inter*); naslovi koriste `font-heading`.
 
 | Stil | Veličina / line-height | Težina |
 |------|------------------------|--------|
@@ -109,10 +110,11 @@ Mobile: H1 28–32px, H2 24px, body ostaje 16px.
 ## Dugmad — brze specifikacije
 | Tip | Pozadina | Tekst | Border | Hover |
 |-----|----------|-------|--------|-------|
-| Primary | `primary` #00529C | bijela | — | `primary-dark` |
-| Secondary | bijela | `primary` | 1px `primary` | `primary-tint` pozadina |
+| Primary | `primary` #0E8275 | bijela | — | `primary-dark` |
+| Sekundarna (lime) | `secondary` #C8D848 | tamni (`heading`) | — | `secondary-dark` |
+| Secondary/Outline | bijela | `primary` | 1px `primary` | `primary-tint` pozadina |
 | Ghost/tekst | transparent | `primary` | — | podvlačenje |
-| Akcent (rijetko) | `accent` | bijela | — | `accent-dark` |
+| Akcent (rijetko) | `accent` #E88828 | tamni (`heading`) | — | `accent-dark` |
 Visina dugmeta: 44px (desktop), min. dodirna meta 44×44 na mobilnom. Padding 12×20.
 
 ## Stanja interaktivnih elemenata (obavezno predvidjeti)

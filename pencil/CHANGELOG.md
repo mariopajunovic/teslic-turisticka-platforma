@@ -1,12 +1,19 @@
 # CHANGELOG — Pencil dizajn
 
 Hronologija izrade i odobravanja `.pen` fajlova. Svaki agent dopisuje stavku.
-Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu` / `odobreno`).
+Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu` / `odobreno` / `arhivirano` / `provjera spremnosti`).
 
 ---
 
+## 2026-06-22 — Koncepti Početne (zasebni fajlovi)
+- 1 koncept = 1 fajl: `_koncepti/01_Pocetna_KonceptA|B|C.pen` (svaki kopija Foundations → biblioteka komponenti). Logo = tekst „teslić" (nema zvaničnog loga platforme).
+- **01_Pocetna_KonceptA.pen — „Klasičan/info": Desktop + Mobile GOTOVO.** Hero = slika-panel unutar 1200 (kontrolisan, ne full-bleed), pločice kategorija odmah; svih 12 blokova, Preporučeno (primary-tint+accent badge), CTA (primary, Registruj biznis/Postani autor), stock slike, sadržaj ijekavica (Banja Vrućica/Borja/Očauš). Očišćeni zaostali boardovi iz kopije. [na pregledu]
+- **01_Pocetna_KonceptB.pen — „Vizuelni/imerzivan": Desktop + Mobile GOTOVO.** Full-bleed foto hero, foto-pločice kategorija, parallax foto-traka iznad atrakcija, mapa kao velika istaknuta sekcija, featured priča preko cijele širine, mozaik galerija; full-bleed CTA (primary). [na pregledu]
+- **01_Pocetna_KonceptC.pen — „Sadržajni/storytelling": Desktop + Mobile GOTOVO.** Split hero „priča sedmice" (tekst lijevo + topla slika desno, kicker u accent narandži), Preporučeno i Priče (Featured+grid) gurnuti visoko, mapa niža/servisna, topli narandžasti akcenti, CTA „Vaša priča pripada Tesliću". [na pregledu]
+- SVA 3 KONCEPTA gotova (svaki Desktop+Mobile, u svom fajlu). Slijedi: naručilac bira 1 → usvojeni u 01_Pocetna.pen, ostala 2 u _arhiva/.
+
 ## 2026-06-22
-- _koncepti/01_Pocetna_KonceptA.pen (+ .png) — Koncept A Početne (klasičan/pregledan), boja #00529c, generisan preko `@pencil.dev/cli`. [na pregledu]
+- _koncepti/01_Pocetna_KonceptA.pen (+ .png) — Koncept A Početne (klasičan/pregledan), boja #00529c, generisan preko `@pencil.dev/cli`. [arhivirano]
 - _koncepti/01_Pocetna_KonceptB.pen (+ .png) — Koncept B (vizuelni/imerzivan). [arhivirano]
 - _koncepti/01_Pocetna_KonceptC.pen (+ .png) — Koncept C (storytelling/urednički). [arhivirano]
 - Sva 3 koncepta arhivirana u `_arhiva/*_2026-06-22.*` — odbijena (rušeno na brzinu, bez promišljene palete/copy-ja/detalja). Restart od A v2 uz promišljen design system + live praćenje na desktopu (MCP).
@@ -25,6 +32,7 @@ Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu
 - 00_Foundations.pen — globalni layout (#6): Header/Desktop (logo + nav s dropdownima + pretraga + Prijava/Pridruži se), Header/Mobile (logo + pretraga + hamburger), Footer (4 kolone + partneri + dark-teal pravna traka). Logo iz ../logo_turisticka.png. Napomena (Pencil quirk): fit_content kontejneri trebaju EKSPLICITAN padding (inače fantom ~50px offset); izbjegavati fiksnu visinu + alignItems:center na flex traci — koristiti padding. [u izradi]
 - 00_Foundations.pen — pomoćne komponente (#7): Breadcrumb, Paginacija (prev/1·2·3·…·10/next), CTASekcija (dark-teal + lime CTA), PraznoStanje (ikona+naslov+tekst+CTA), Skeleton (loading kartica), CookieBanner. Foundations biblioteka kompletna (tokeni + sve komponente + header/footer). [na pregledu]
 - 00_Foundations.pen — VALIDACIJA: sklopljena Početna „KonceptA – Desktop" (privremeno u ovom fajlu radi reuse master-komponenti): Header, Hero (slika+overlay+slogan), kategorije (6 pločica), Lokalni proizvodi, Preporučeno (primary-tint+badge), Atrakcije, Mapa isječak, Događaji, Priče (Featured+grid), CTA, Footer — sve sa stock slikama i lokalnim sadržajem (med/rakija/Banja Vrućica/Borja). Potvrđeno: design sistem spreman. Za produkciju → prebaciti u _koncepti/01_Pocetna_Koncepti.pen (3 koncepta + Mobile). [provjera spremnosti]
+- REVIZIJA (2 nezavisna agenta: UX + dokumentacija) + popravke: doc — zamijenjen zastarjeli #00529c svuda (README ×2, Dugmad tabela) → #0E8275; dokumentovan lime `secondary` + `Dugme/Sekundarna` u 01-komponente; CHANGELOG legenda/statusi; font-heading token; TO/TOT i _arhiva pattern. Dizajn — CTA tekst bijel (AA) + copy „Registruj biznis/Postani autor"; razmak sekcija 56→64px; header nav gušći + veći logo; dodana Galerija sekcija; izrađena **Pocetna – KonceptA – Mobile (375)**; očišćen stari PDF screen (v1 token board + zastarjeli QA). [na pregledu]
 
 <!-- Primjer:
 ## 2026-06-22

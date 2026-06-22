@@ -16,7 +16,7 @@ Stanja: default, sticky (smanjen), mobilni (hamburger → drawer), otvoren dropd
 4 kolone linkova · traka logotipa partnera · donja pravna traka.
 
 ### `Dugme`
-Varijante: `Primary` · `Secondary` · `Ghost` · `Akcent`. Veličine: `md` (44px), `sm` (36px). Stanja: default/hover/focus/pressed/disabled. Opcionalno ikona lijevo/desno.
+Varijante: `Primary` (teal) · `Sekundarna` (lime CTA, npr. „Pridruži se" — `secondary` #C8D848, tamni tekst) · `Secondary/Outline` (bijela + `primary` okvir) · `Ghost` · `Akcent` (narandža `accent`, tamni tekst). Veličine: `md` (44px), `sm` (36px). Stanja: default/hover/focus/pressed/disabled. Opcionalno ikona lijevo/desno.
 
 ### `Chip / Tag`
 Pill oblik. Varijante: `filter` (klikabilan, aktivno = `primary` pozadina, bijeli tekst), `kategorija` (statična oznaka), `uklonjiv` (s ×).

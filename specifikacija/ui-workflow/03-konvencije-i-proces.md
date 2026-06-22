@@ -72,7 +72,7 @@ Pravilo: **breakpointi i stanja = zasebne stranice u istom fajlu**, ne gomilanje
 ## 3. Hronologija i verzionisanje
 
 - **CHANGELOG.md** (u `pencil/`) je obavezan dnevnik: datum, fajl, šta je promijenjeno, ko/koji agent, status (`u izradi` / `na pregledu` / `odobreno`).
-- **Verzije fajla:** kad se radi veća revizija, prethodnu verziju premjesti u `_arhiva/` sa sufiksom datuma: `01_Pocetna_2026-06-22.pen`. Aktivni fajl uvijek nosi čisto ime (`01_Pocetna.pen`).
+- **Verzije fajla:** kad se radi veća revizija, prethodnu verziju premjesti u `_arhiva/` sa sufiksom datuma: `01_Pocetna_2026-06-22.pen`. Aktivni fajl uvijek nosi čisto ime (`01_Pocetna.pen`). Varijante koncepta arhiviraju se sa sufiksom koncepta: `01_Pocetna_KonceptA_2026-06-22.pen`.
 - **Status na prvoj stranici fajla:** mali tekst-blok u uglu: `Status: na pregledu · v2 · 22.06.2026`.
 - Ovako imamo hronologiju (šta je kad rađeno i odobreno) bez da je sve u jednom fajlu.
 

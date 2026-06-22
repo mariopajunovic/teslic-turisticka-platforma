@@ -11,7 +11,7 @@ Administrativni panel i management sistema/korisnika — [spec 11](../administra
 > Napomena: forme za registraciju na „Pridruži se” crtamo (javne su). Ali **prijava (login) i korisnički dashboardi** biznisa/autora idu u admin/account sistem → izvan opsega.
 
 ## Redoslijed čitanja za agenta (OBAVEZNO prije crtanja)
-1. **[00 — Design tokens](00-design-tokens.md)** — boje (primarna `#00529c`), tipografija, razmaci, radijusi.
+1. **[00 — Design tokens](00-design-tokens.md)** — boje (primarna `#0E8275`), tipografija, razmaci, radijusi.
 2. **[01 — Biblioteka komponenti](01-komponente.md)** — sve ponovljive komponente i njihove varijante/stanja.
 3. **[02 — Globalni layout (header, footer, grid)](02-globalni-layout.md)** — okvir svake stranice.
 4. **[03 — Konvencije fajlova i proces](03-konvencije-i-proces.md)** — kako segmentirati Pencil fajlove, verzionisanje i proces odobravanja.
@@ -38,7 +38,7 @@ KORAK 9  Provjeri "Checklist" na dnu recepta. Tek tada je stranica gotova.
 
 ## Pravila konzistentnosti (za sve agente)
 - **Ne uvodi nove komponente** ako postoji odgovarajuća u [01-komponente.md](01-komponente.md). Ako stvarno fali — predloži dopunu te biblioteke, ne lokalnu varijantu.
-- **Primarna boja `#00529c`** koristi se za primarne CTA, linkove, aktivna stanja, header akcente. Ne koristi proizvoljne boje.
+- **Primarna boja `#0E8275`** koristi se za primarne CTA, linkove, aktivna stanja, header akcente. Ne koristi proizvoljne boje.
 - **Razmaci i grid** isključivo iz tokena (8px skala, 12-kolonski grid).
 - **Naziv artboarda**: `Stranica – Varijanta – Breakpoint` (npr. `Pocetna – Default – Desktop`).
 - **Naziv elementa** = ime komponente iz biblioteke (npr. `Kartica/Biznis`, `FilterTraka`, `Hero`).
@@ -60,6 +60,6 @@ KORAK 9  Provjeri "Checklist" na dnu recepta. Tek tada je stranica gotova.
 - [ ] Svi blokovi iz recepta postavljeni redom.
 - [ ] Korišćene samo komponente iz biblioteke + tokeni.
 - [ ] Sva tražena stanja nacrtana (kao zasebne stranice u fajlu).
-- [ ] Primarna boja `#00529c` dosljedno primijenjena.
+- [ ] Primarna boja `#0E8275` dosljedno primijenjena.
 - [ ] Status upisan + zapis u CHANGELOG.md.
 - [ ] Checklist recepta zadovoljen.

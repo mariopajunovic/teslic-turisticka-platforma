@@ -22,7 +22,7 @@ Svaki dokument prati istu logiku, korisnu za skiciranje:
 - [00 — Pregled, navigacija i informaciona arhitektura](00-pregled-i-navigacija.md)
 
 ### 🛠 UI Workflow za agente (Pencil) — gradnja UI-a
-> Build-dokumentacija koju koriste agenti za izradu UI-a/komponenti u Pencilu za svaku **javnu** stranicu (admin panel je izvan opsega). Primarna boja **#00529c**.
+> Build-dokumentacija koju koriste agenti za izradu UI-a/komponenti u Pencilu za svaku **javnu** stranicu (admin panel je izvan opsega). Primarna boja **#0E8275** (teal, vidi token `primary`).
 - [ui-workflow/](ui-workflow/README.md) — start (workflow, opseg, redoslijed)
 - [ui-workflow/00 — Design tokens](ui-workflow/00-design-tokens.md) · [01 — Komponente](ui-workflow/01-komponente.md) · [02 — Globalni layout](ui-workflow/02-globalni-layout.md)
 - [ui-workflow/stranice/](ui-workflow/stranice/) — recepti za stranice 01–10

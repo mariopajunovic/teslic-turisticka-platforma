@@ -21,7 +21,7 @@ Footer na **svim** stranicama mora sadržavati najmanje:
 ├──────────────────────────────────────────────────────────┤
 │ Logotipi partnera projekta (traka)                         │
 ├──────────────────────────────────────────────────────────┤
-│ © godina TOT Teslić · Politika privatnosti · Kolačići ·    │
+│ © godina TO Teslić · Politika privatnosti · Kolačići ·     │
 │ Uslovi korištenja                                          │
 └──────────────────────────────────────────────────────────┘
 ```
