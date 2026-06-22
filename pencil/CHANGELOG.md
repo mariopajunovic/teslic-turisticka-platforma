@@ -5,6 +5,11 @@ Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu
 
 ---
 
+## 2026-06-23
+- **ODLUKA: usvojen Koncept A** („Klasičan/info"). Prebačen u produkciju **`01_Pocetna.pen`**. KonceptB i KonceptC arhivirani u `_arhiva/01_Pocetna_Koncept{B,C}_2026-06-23.pen` (i KonceptA arhiviran kao izvor). Logo = tekst „teslić". Slijedi: dovršiti `01_Pocetna.pen` (stanja: Skeleton/PraznoStanje, + status-blok), zatim ostale stranice. [odobreno]
+- 01_Pocetna.pen — produkcija obrisana na zahtjev (backup ostaje u arhivi); fokus prebačen na ostale stranice.
+- **02_O-projektu.pen — Desktop + Mobile GOTOVO.** Header+Breadcrumb, Hero/split, Misija i svrha, Ciljevi (grid 6), Kome je namijenjena (3 kartice s CTA: Posjetioci/Biznisi/Autori), Nosilac i partneri (+ traka logotipa), CTASekcija (primary), Footer. Logo „teslić" naslijeđen iz Foundations. [na pregledu]
+
 ## 2026-06-22 — Koncepti Početne (zasebni fajlovi)
 - 1 koncept = 1 fajl: `_koncepti/01_Pocetna_KonceptA|B|C.pen` (svaki kopija Foundations → biblioteka komponenti). Logo = tekst „teslić" (nema zvaničnog loga platforme).
 - **01_Pocetna_KonceptA.pen — „Klasičan/info": Desktop + Mobile GOTOVO.** Hero = slika-panel unutar 1200 (kontrolisan, ne full-bleed), pločice kategorija odmah; svih 12 blokova, Preporučeno (primary-tint+accent badge), CTA (primary, Registruj biznis/Postani autor), stock slike, sadržaj ijekavica (Banja Vrućica/Borja/Očauš). Očišćeni zaostali boardovi iz kopije. [na pregledu]
