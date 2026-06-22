@@ -5,6 +5,11 @@ Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu
 
 ---
 
+## 2026-06-22
+- _koncepti/01_Pocetna_KonceptA.pen (+ .png) — Koncept A Početne (klasičan/pregledan), boja #00529c, generisan preko `@pencil.dev/cli`. [na pregledu]
+- _koncepti/01_Pocetna_KonceptB.pen (+ .png) — Koncept B (vizuelni/imerzivan). [na pregledu]
+- _koncepti/01_Pocetna_KonceptC.pen (+ .png) — Koncept C (storytelling/urednički). [na pregledu]
+
 <!-- Primjer:
 ## 2026-06-22
 - 00_Foundations.pen — tokeni (#00529c) + header/footer + kartice. [odobreno]

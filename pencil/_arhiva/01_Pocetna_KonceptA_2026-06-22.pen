@@ -1,0 +1,2896 @@
+{
+  "version": "2.13",
+  "children": [
+    {
+      "type": "frame",
+      "id": "eNJlq",
+      "x": 0,
+      "y": 0,
+      "name": "Button Primary",
+      "reusable": true,
+      "fill": "$accent",
+      "cornerRadius": "$radius-sm",
+      "padding": [
+        14,
+        32
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "G0ACM",
+          "name": "Label",
+          "fill": "$text-inverse",
+          "content": "Dugme",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "600",
+          "letterSpacing": 0.3
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "YWz4b",
+      "x": 159,
+      "y": 0,
+      "name": "Button Secondary",
+      "reusable": true,
+      "fill": "#00000000",
+      "cornerRadius": "$radius-sm",
+      "stroke": "$text-inverse",
+      "strokeWidth": 1.5,
+      "padding": [
+        14,
+        32
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "F45XI",
+          "name": "Label",
+          "fill": "$text-inverse",
+          "content": "Dugme",
+          "fontFamily": "Inter",
+          "fontSize": 15,
+          "fontWeight": "600",
+          "letterSpacing": 0.3
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "QXiGe",
+      "x": 317,
+      "y": 0,
+      "name": "Category Card",
+      "reusable": true,
+      "clip": true,
+      "width": 320,
+      "height": 280,
+      "fill": "$bg-white",
+      "cornerRadius": "$radius-md",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "miJlV",
+          "name": "Image",
+          "width": "fill_container",
+          "height": 180,
+          "fill": "$primary-light"
+        },
+        {
+          "type": "frame",
+          "id": "wK3tn",
+          "name": "Body",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 4,
+          "padding": [
+            16,
+            20
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "RnAuw",
+              "name": "Title",
+              "fill": "$text-primary",
+              "content": "Kategorija",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "wfvuh",
+              "name": "Count",
+              "fill": "$text-secondary",
+              "content": "24 sadržaja",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "wuKk0",
+      "x": 677,
+      "y": 0,
+      "name": "Product Card",
+      "reusable": true,
+      "clip": true,
+      "width": 300,
+      "fill": "$bg-white",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border-light",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "m8IZLd",
+          "name": "Image",
+          "width": "fill_container",
+          "height": 200,
+          "fill": "$primary-light"
+        },
+        {
+          "type": "frame",
+          "id": "ke8cM",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            20,
+            20,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "e1wiD",
+              "name": "Title",
+              "fill": "$text-primary",
+              "content": "Naziv proizvoda",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "gfifn",
+              "name": "Description",
+              "fill": "$text-secondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Kratak opis proizvoda ili usluge.",
+              "lineHeight": 1.5,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "P2lsal",
+              "name": "Meta",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kku2U",
+                  "name": "Price",
+                  "fill": "$primary",
+                  "content": "12,00 KM",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "FTtNn",
+                  "name": "Tag",
+                  "fill": "$primary-light",
+                  "cornerRadius": 20,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "b4Xa1F",
+                      "name": "Tag Label",
+                      "fill": "$primary",
+                      "content": "Med",
+                      "fontFamily": "Inter",
+                      "fontSize": 11,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "bE6yx",
+      "x": 1017,
+      "y": 0,
+      "name": "Testimonial Card",
+      "reusable": true,
+      "width": 400,
+      "fill": "$bg-white",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border-light",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "gap": 16,
+      "padding": 28,
+      "children": [
+        {
+          "type": "text",
+          "id": "ac7SK",
+          "name": "Quote",
+          "fill": "$text-primary",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "\"Ovo je fantastično iskustvo koje preporučujem svakome.\"",
+          "lineHeight": 1.6,
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal",
+          "fontStyle": "italic"
+        },
+        {
+          "type": "frame",
+          "id": "nXUHO",
+          "name": "Author",
+          "width": "fill_container",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "ellipse",
+              "id": "MJsyj",
+              "name": "Avatar",
+              "fill": "$primary-light",
+              "width": 40,
+              "height": 40
+            },
+            {
+              "type": "frame",
+              "id": "tglCz",
+              "name": "Info",
+              "layout": "vertical",
+              "gap": 2,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "u9aZd",
+                  "name": "Name",
+                  "fill": "$text-primary",
+                  "content": "Ime Prezime",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "l8bl5g",
+                  "name": "Role",
+                  "fill": "$text-secondary",
+                  "content": "Posjetilac",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "e5f27",
+      "x": 1457,
+      "y": 0,
+      "name": "Event Card",
+      "reusable": true,
+      "clip": true,
+      "width": 300,
+      "fill": "$bg-white",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border-light",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "lhiuo",
+          "name": "Image",
+          "width": "fill_container",
+          "height": 170,
+          "fill": "$primary-light",
+          "children": [
+            {
+              "type": "frame",
+              "id": "sEDlG",
+              "layoutPosition": "absolute",
+              "x": 16,
+              "y": 16,
+              "name": "Date Badge",
+              "fill": "$primary",
+              "cornerRadius": "$radius-sm",
+              "layout": "vertical",
+              "padding": [
+                8,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Y67vP",
+                  "name": "Day",
+                  "fill": "$text-inverse",
+                  "content": "15",
+                  "fontFamily": "Inter",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "fzdT2",
+                  "name": "Month",
+                  "fill": "$text-inverse",
+                  "content": "JUL",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "500",
+                  "letterSpacing": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zzrOu",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            16,
+            20,
+            20,
+            20
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "L6yuCP",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Naziv događaja",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "O2x3K",
+              "name": "Location",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "sBcRJ",
+                  "name": "Pin Icon",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "map-pin",
+                  "library": "lucide",
+                  "fill": "$text-secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "InS4t",
+                  "name": "Place",
+                  "fill": "$text-secondary",
+                  "content": "Centar Teslića",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "swKk9",
+      "x": 1797,
+      "y": 0,
+      "name": "Story Card",
+      "reusable": true,
+      "clip": true,
+      "width": 420,
+      "height": 220,
+      "fill": "$bg-white",
+      "cornerRadius": "$radius-md",
+      "stroke": "$border-light",
+      "strokeWidth": 1,
+      "children": [
+        {
+          "type": "frame",
+          "id": "LrPpo",
+          "name": "Image",
+          "width": 180,
+          "height": "fill_container",
+          "fill": "$primary-light"
+        },
+        {
+          "type": "frame",
+          "id": "ldLGJ",
+          "name": "Body",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "padding": 20,
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "RFyQx",
+              "name": "Tag",
+              "fill": "$primary",
+              "content": "TRADICIJA",
+              "fontFamily": "Inter",
+              "fontSize": 11,
+              "fontWeight": "600",
+              "letterSpacing": 1
+            },
+            {
+              "type": "text",
+              "id": "s5c16v",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Naslov priče",
+              "lineHeight": 1.4,
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "ibqIH",
+              "name": "Excerpt",
+              "fill": "$text-secondary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Kratki uvod u priču iz našeg kraja...",
+              "lineHeight": 1.5,
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "OhtzY",
+              "name": "Read More",
+              "fill": "$primary",
+              "content": "Pročitaj više →",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jSDny",
+      "x": 2317,
+      "y": 0,
+      "name": "Homepage",
+      "clip": true,
+      "width": 1440,
+      "fill": "$bg-white",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "QgmVX",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 72,
+          "fill": "$bg-white",
+          "padding": [
+            0,
+            60
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "dDeHo",
+              "name": "Logo",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Ly6ra",
+                  "name": "Logo Icon",
+                  "width": 28,
+                  "height": 28,
+                  "icon": "mountain-snow",
+                  "library": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "N1t4UN",
+                  "name": "Logo Text",
+                  "fill": "$primary",
+                  "content": "Teslić",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PAMmI",
+              "name": "Navigation",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "VYoco",
+                  "name": "Turizam",
+                  "fill": "$text-primary",
+                  "content": "Turizam",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "bZ1ha",
+                  "name": "Proizvodi",
+                  "fill": "$text-primary",
+                  "content": "Proizvodi",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "hD2WI",
+                  "name": "Događaji",
+                  "fill": "$text-primary",
+                  "content": "Događaji",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "aLRIW",
+                  "name": "Priče",
+                  "fill": "$text-primary",
+                  "content": "Priče",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "sErqo",
+                  "name": "Mapa",
+                  "fill": "$text-primary",
+                  "content": "Mapa",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "m5n5p",
+                  "name": "Kontakt",
+                  "fill": "$text-primary",
+                  "content": "Kontakt",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "id": "xOkyM",
+              "type": "ref",
+              "ref": "eNJlq",
+              "name": "Header CTA",
+              "padding": [
+                10,
+                20
+              ],
+              "descendants": {
+                "G0ACM": {
+                  "content": "Registruj se",
+                  "fontSize": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "T92mf",
+          "name": "Hero Section",
+          "clip": true,
+          "width": "fill_container",
+          "height": 620,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "gdJNe",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Background",
+              "metadata": {
+                "type": "unsplash",
+                "username": "iml",
+                "link": "https://unsplash.com/@iml",
+                "author": "Ilse"
+              },
+              "width": 1440,
+              "height": 620,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1629016429411-ebdf35082955?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4MTF8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "QPQqd",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Overlay",
+              "width": 1440,
+              "height": 620,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 0,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#003A6EE6",
+                    "position": 0
+                  },
+                  {
+                    "color": "#00529C80",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "N2Y1HV",
+              "layoutPosition": "absolute",
+              "x": 0,
+              "y": 0,
+              "name": "Hero Content",
+              "width": 1440,
+              "height": 620,
+              "layout": "vertical",
+              "gap": 24,
+              "padding": [
+                0,
+                120
+              ],
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "W4pg9j",
+                  "name": "Hero Subtitle",
+                  "fill": "$accent",
+                  "content": "DOBRODOŠLI U TESLIĆ",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600",
+                  "letterSpacing": 2.5
+                },
+                {
+                  "type": "text",
+                  "id": "ttak5",
+                  "name": "Hero Title",
+                  "fill": "$text-inverse",
+                  "textGrowth": "fixed-width",
+                  "width": 700,
+                  "content": "Otkrijte ljepote,\nokuse i duh Teslića",
+                  "lineHeight": 1.15,
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 56,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "VUyz0",
+                  "name": "Hero Description",
+                  "fill": "#FFFFFFCC",
+                  "textGrowth": "fixed-width",
+                  "width": 560,
+                  "content": "Vaš digitalni vodič kroz turizam, lokalne proizvode, događaje\ni autentične priče jednog od najljepših gradova Republike Srpske.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "hQCE4",
+                  "name": "Hero Buttons",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "id": "MHJc9",
+                      "type": "ref",
+                      "ref": "eNJlq",
+                      "name": "CTA Istraži",
+                      "descendants": {
+                        "G0ACM": {
+                          "content": "Istraži Teslić"
+                        }
+                      }
+                    },
+                    {
+                      "id": "Lyhp8",
+                      "type": "ref",
+                      "ref": "YWz4b",
+                      "name": "CTA Mapa",
+                      "descendants": {
+                        "F45XI": {
+                          "content": "Pogledaj mapu"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wdorI",
+          "name": "Categories Section",
+          "width": "fill_container",
+          "fill": "$bg-light",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "Bd9JR",
+              "name": "Section Header",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "L8UdPN",
+                  "name": "Label",
+                  "fill": "$primary",
+                  "content": "KATEGORIJE",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "d0EJT",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Istražite sadržaj po kategorijama",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Fl97e",
+                  "name": "Description",
+                  "fill": "$text-secondary",
+                  "content": "Sve na jednom mjestu — od smještaja i restorana do tradicije i aktivnosti.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eQJTY",
+              "name": "Categories Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "justifyContent": "center",
+              "children": [
+                {
+                  "id": "g0YiDF",
+                  "type": "ref",
+                  "ref": "QXiGe",
+                  "name": "Smještaj",
+                  "width": "fill_container",
+                  "descendants": {
+                    "miJlV": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1771775529138-a7a20ba7e032?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4MjV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RnAuw": {
+                      "content": "Smještaj"
+                    },
+                    "wfvuh": {
+                      "content": "18 objekata"
+                    }
+                  }
+                },
+                {
+                  "id": "ysrZ8",
+                  "type": "ref",
+                  "ref": "QXiGe",
+                  "name": "Gastronomija",
+                  "width": "fill_container",
+                  "descendants": {
+                    "miJlV": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1668724775562-f5bf6284ee12?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RnAuw": {
+                      "content": "Gastronomija"
+                    },
+                    "wfvuh": {
+                      "content": "32 sadržaja"
+                    }
+                  }
+                },
+                {
+                  "id": "cqX6N",
+                  "type": "ref",
+                  "ref": "QXiGe",
+                  "name": "Priroda i izleti",
+                  "width": "fill_container",
+                  "descendants": {
+                    "miJlV": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1601982510248-92e4eff98b23?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RnAuw": {
+                      "content": "Priroda i izleti"
+                    },
+                    "wfvuh": {
+                      "content": "14 lokacija"
+                    }
+                  }
+                },
+                {
+                  "id": "I3BH3",
+                  "type": "ref",
+                  "ref": "QXiGe",
+                  "name": "Tradicija i zanati",
+                  "width": "fill_container",
+                  "descendants": {
+                    "miJlV": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1589051088132-06f36a22012a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RnAuw": {
+                      "content": "Tradicija i zanati"
+                    },
+                    "wfvuh": {
+                      "content": "22 sadržaja"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "B3sVqV",
+          "name": "Products Section",
+          "width": "fill_container",
+          "fill": "$bg-white",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "y5vo5i",
+              "name": "Section Header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "F9Rq5j",
+                  "name": "Header Left",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HBbd0",
+                      "name": "Label",
+                      "fill": "$primary",
+                      "content": "LOKALNI PROIZVODI I USLUGE",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "P1Zg7k",
+                      "name": "Title",
+                      "fill": "$text-primary",
+                      "content": "Okusi i usluge našeg kraja",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 36,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "APlpR",
+                      "name": "Description",
+                      "fill": "$text-secondary",
+                      "textGrowth": "fixed-width",
+                      "width": 500,
+                      "content": "Domaći med, rakija, ručno rađeni suveniri i još mnogo toga.",
+                      "lineHeight": 1.5,
+                      "fontFamily": "Inter",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "MUosa",
+                  "name": "View All",
+                  "fill": "$primary",
+                  "content": "Pogledaj sve →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uzHQI",
+              "name": "Products Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "D53C5",
+                  "type": "ref",
+                  "ref": "wuKk0",
+                  "name": "Teslićki med",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8IZLd": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1706111584173-7a9ebc6e14a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4NjR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "e1wiD": {
+                      "content": "Teslićki med"
+                    },
+                    "gfifn": {
+                      "content": "Domaći livadski med iz porodičnog pčelinjaka."
+                    },
+                    "kku2U": {
+                      "content": "15,00 KM"
+                    },
+                    "b4Xa1F": {
+                      "content": "Med"
+                    }
+                  }
+                },
+                {
+                  "id": "zMK3U",
+                  "type": "ref",
+                  "ref": "wuKk0",
+                  "name": "Domaća rakija",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8IZLd": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1639492588648-4ea72ddcfd83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "e1wiD": {
+                      "content": "Domaća rakija"
+                    },
+                    "gfifn": {
+                      "content": "Šljivovica tradicionalne recepture, dvostruko pečena."
+                    },
+                    "kku2U": {
+                      "content": "25,00 KM"
+                    },
+                    "b4Xa1F": {
+                      "content": "Piće"
+                    }
+                  }
+                },
+                {
+                  "id": "F2oRw",
+                  "type": "ref",
+                  "ref": "wuKk0",
+                  "name": "Vuneni ćilim",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8IZLd": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1769336800394-38fa8d4fd7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4NjV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "e1wiD": {
+                      "content": "Vuneni ćilim"
+                    },
+                    "gfifn": {
+                      "content": "Ručno tkani ćilim od čiste vune, autentičan uzorak."
+                    },
+                    "kku2U": {
+                      "content": "120,00 KM"
+                    },
+                    "b4Xa1F": {
+                      "content": "Zanati"
+                    }
+                  }
+                },
+                {
+                  "id": "lXGOJ",
+                  "type": "ref",
+                  "ref": "wuKk0",
+                  "name": "Sušeno voće",
+                  "width": "fill_container",
+                  "descendants": {
+                    "m8IZLd": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1602050580420-45f0364bc792?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzQ4NjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "e1wiD": {
+                      "content": "Sušeno voće"
+                    },
+                    "gfifn": {
+                      "content": "Mješavina domaćeg sušenog voća bez aditiva."
+                    },
+                    "kku2U": {
+                      "content": "8,00 KM"
+                    },
+                    "b4Xa1F": {
+                      "content": "Hrana"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ItpLZ",
+          "name": "Testimonials Section",
+          "width": "fill_container",
+          "fill": "$primary-light",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "b5nxSI",
+              "name": "Section Header",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "oROiL",
+                  "name": "Label",
+                  "fill": "$primary",
+                  "content": "PREPORUČENO IZ PRVE RUKE",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "p0VDH",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Šta kažu naši posjetioci",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GQNgy",
+              "name": "Testimonials Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "AflEA",
+                  "type": "ref",
+                  "ref": "bE6yx",
+                  "name": "Amina Hodžić",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ac7SK": {
+                      "content": "\"Banja Vrućica je prelijepa — topla voda, čist zrak i ljubazni domaćini. Svake godine se vraćamo!\""
+                    },
+                    "u9aZd": {
+                      "content": "Amina Hodžić"
+                    },
+                    "l8bl5g": {
+                      "content": "Posjetilac iz Sarajeva"
+                    }
+                  }
+                },
+                {
+                  "id": "mtlMO",
+                  "type": "ref",
+                  "ref": "bE6yx",
+                  "name": "Marko Savić",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ac7SK": {
+                      "content": "\"Teslićki med je nešto posebno. Kupili smo ga na pijaci i od tada ga naručujemo svake sezone.\""
+                    },
+                    "u9aZd": {
+                      "content": "Marko Savić"
+                    },
+                    "l8bl5g": {
+                      "content": "Ljubitelj domaćih proizvoda"
+                    }
+                  }
+                },
+                {
+                  "id": "Mb7IY",
+                  "type": "ref",
+                  "ref": "bE6yx",
+                  "name": "Ivana Petrović",
+                  "width": "fill_container",
+                  "descendants": {
+                    "ac7SK": {
+                      "content": "\"Planinarenje na Borju je nezaboravno iskustvo. Staze su odlično označene, a pogled sa vrha je fenomenalan.\""
+                    },
+                    "u9aZd": {
+                      "content": "Ivana Petrović"
+                    },
+                    "l8bl5g": {
+                      "content": "Avanturistica"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dmS1T",
+          "name": "Attractions Section",
+          "width": "fill_container",
+          "fill": "$bg-white",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "jtd4L",
+              "name": "Section Header",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OqD4C",
+                  "name": "Label",
+                  "fill": "$primary",
+                  "content": "TURISTIČKE ATRAKCIJE",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "Ie6Ju",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Mjesta koja morate posjetiti",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ul7tN",
+              "name": "Attractions Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YlTtg",
+                  "name": "Banja Vrućica",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$bg-white",
+                  "cornerRadius": "$radius-md",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "CCgIe",
+                      "name": "Image",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "narges_pms",
+                        "link": "https://unsplash.com/@narges_pms",
+                        "author": "Narges Pms"
+                      },
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1566888158544-0076da88ba14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CXSmL",
+                      "name": "Body",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        20,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "l11CR",
+                          "name": "Title",
+                          "fill": "$text-primary",
+                          "content": "Banja Vrućica",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fvLQQ",
+                          "name": "Description",
+                          "fill": "$text-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Poznati lječilišni i wellness centar sa termalnim vodama.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "QDMwm",
+                          "name": "Learn More",
+                          "fill": "$primary",
+                          "content": "Saznaj više →",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "L8HOd",
+                  "name": "Planina Borja",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$bg-white",
+                  "cornerRadius": "$radius-md",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "I8Ewr1",
+                      "name": "Image",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "bielej",
+                        "link": "https://unsplash.com/@bielej",
+                        "author": "Michał Bielejewski"
+                      },
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1781377158260-80376f6dcf6c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IOmRX",
+                      "name": "Body",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        20,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "TuP3T",
+                          "name": "Title",
+                          "fill": "$text-primary",
+                          "content": "Planina Borja",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "AqhyT",
+                          "name": "Description",
+                          "fill": "$text-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Očaravajuća planina idealna za planinarenje i zimske sportove.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OYGEo",
+                          "name": "Learn More",
+                          "fill": "$primary",
+                          "content": "Saznaj više →",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AKX0r",
+                  "name": "Manastir Liplje",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$bg-white",
+                  "cornerRadius": "$radius-md",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "cTbKc",
+                      "name": "Image",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "tanyabarrow",
+                        "link": "https://unsplash.com/@tanyabarrow",
+                        "author": "Tanya Barrow"
+                      },
+                      "width": "fill_container",
+                      "height": 240,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1771607500496-6321fe4f4e38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNDh8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "vyrYf",
+                      "name": "Body",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": [
+                        20,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "x7zeV",
+                          "name": "Title",
+                          "fill": "$text-primary",
+                          "content": "Manastir Liplje",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "lR9Hn",
+                          "name": "Description",
+                          "fill": "$text-secondary",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Srednjovjekovni pravoslavni manastir iz 13. vijeka.",
+                          "lineHeight": 1.5,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "rwM99",
+                          "name": "Learn More",
+                          "fill": "$primary",
+                          "content": "Saznaj više →",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hA13d",
+          "name": "Map Section",
+          "width": "fill_container",
+          "fill": "$bg-light",
+          "gap": 60,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "suWIo",
+              "name": "Map Info",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "A28ovL",
+                  "name": "Label",
+                  "fill": "$primary",
+                  "content": "INTERAKTIVNA MAPA",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "AjpSn",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Pronađite sve\nna jednom mjestu",
+                  "lineHeight": 1.2,
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "S6iRk",
+                  "name": "Description",
+                  "fill": "$text-secondary",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Pretražite smještaj, restorane, izletišta, kulturne znamenitosti i lokalne proizvođače na interaktivnoj mapi Teslića.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "MSLMV",
+                  "name": "Map Stats",
+                  "gap": 32,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "gU4iG",
+                      "name": "Lokacija",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uM7Hw",
+                          "name": "Number",
+                          "fill": "$primary",
+                          "content": "86",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 32,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "V3GTfn",
+                          "name": "Label",
+                          "fill": "$text-secondary",
+                          "content": "Lokacija",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TFF47",
+                      "name": "Kategorija",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "liZPN",
+                          "name": "Number",
+                          "fill": "$primary",
+                          "content": "12",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 32,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ksSqM",
+                          "name": "Label",
+                          "fill": "$text-secondary",
+                          "content": "Kategorija",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rZZjD",
+                      "name": "Proizvođača",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "MWW4D",
+                          "name": "Number",
+                          "fill": "$primary",
+                          "content": "40+",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 32,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "FHzJv",
+                          "name": "Label",
+                          "fill": "$text-secondary",
+                          "content": "Proizvođača",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "s8Ppo",
+                  "type": "ref",
+                  "ref": "eNJlq",
+                  "name": "CTA Map",
+                  "descendants": {
+                    "G0ACM": {
+                      "content": "Otvori mapu"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "M8l9gY",
+              "name": "Map Preview",
+              "metadata": {
+                "type": "unsplash",
+                "username": "martijnbaudoin",
+                "link": "https://unsplash.com/@martijnbaudoin",
+                "author": "Martijn Baudoin"
+              },
+              "clip": true,
+              "width": 580,
+              "height": 400,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1729715210881-b221d41b0f90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzN8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              },
+              "cornerRadius": "$radius-md",
+              "stroke": "$border-light",
+              "strokeWidth": 1
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "M3gV2a",
+          "name": "Events Section",
+          "width": "fill_container",
+          "fill": "$bg-white",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "lt3a7",
+              "name": "Section Header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qBxi8",
+                  "name": "Header Left",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ah2UA",
+                      "name": "Label",
+                      "fill": "$primary",
+                      "content": "NADOLAZEĆI DOGAĐAJI",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "r2TNpr",
+                      "name": "Title",
+                      "fill": "$text-primary",
+                      "content": "Ne propustite ove događaje",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 36,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "u1V7fC",
+                  "name": "View All",
+                  "fill": "$primary",
+                  "content": "Svi događaji →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "AtkBd",
+              "name": "Events Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "E4RVmN",
+                  "type": "ref",
+                  "ref": "e5f27",
+                  "name": "Teslićko ljeto",
+                  "width": "fill_container",
+                  "descendants": {
+                    "lhiuo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1762215609231-538f04f78d75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNTN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "Y67vP": {
+                      "content": "15"
+                    },
+                    "fzdT2": {
+                      "content": "JUL"
+                    },
+                    "L6yuCP": {
+                      "content": "Teslićko ljeto"
+                    },
+                    "InS4t": {
+                      "content": "Centar grada"
+                    }
+                  }
+                },
+                {
+                  "id": "Ht6lR",
+                  "type": "ref",
+                  "ref": "e5f27",
+                  "name": "Sajam domaćih proizvoda",
+                  "width": "fill_container",
+                  "descendants": {
+                    "lhiuo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1775210460171-e695721fd7db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "Y67vP": {
+                      "content": "22"
+                    },
+                    "fzdT2": {
+                      "content": "AVG"
+                    },
+                    "L6yuCP": {
+                      "content": "Sajam domaćih proizvoda"
+                    },
+                    "InS4t": {
+                      "content": "Gradska tržnica"
+                    }
+                  }
+                },
+                {
+                  "id": "CbgvK",
+                  "type": "ref",
+                  "ref": "e5f27",
+                  "name": "Borja Trail Run",
+                  "width": "fill_container",
+                  "descendants": {
+                    "lhiuo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1700667879532-9c726333aa90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "Y67vP": {
+                      "content": "08"
+                    },
+                    "fzdT2": {
+                      "content": "SEP"
+                    },
+                    "L6yuCP": {
+                      "content": "Borja Trail Run"
+                    },
+                    "InS4t": {
+                      "content": "Planina Borja"
+                    }
+                  }
+                },
+                {
+                  "id": "aJShz",
+                  "type": "ref",
+                  "ref": "e5f27",
+                  "name": "Dani meda",
+                  "width": "fill_container",
+                  "descendants": {
+                    "lhiuo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1599836717201-16e36edd6dc1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNTV8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "Y67vP": {
+                      "content": "30"
+                    },
+                    "fzdT2": {
+                      "content": "SEP"
+                    },
+                    "L6yuCP": {
+                      "content": "Dani meda"
+                    },
+                    "InS4t": {
+                      "content": "Dom kulture"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mrIQV",
+          "name": "Stories Section",
+          "width": "fill_container",
+          "fill": "$bg-light",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "VznGe",
+              "name": "Section Header",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hbCol",
+                  "name": "Header Left",
+                  "layout": "vertical",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Chh0i",
+                      "name": "Label",
+                      "fill": "$primary",
+                      "content": "PRIČE IZ TESLIĆA",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 2
+                    },
+                    {
+                      "type": "text",
+                      "id": "I4MNxe",
+                      "name": "Title",
+                      "fill": "$text-primary",
+                      "content": "Upoznajte naš kraj kroz priče",
+                      "fontFamily": "Playfair Display",
+                      "fontSize": 36,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "YLJW5",
+                  "name": "View All",
+                  "fill": "$primary",
+                  "content": "Sve priče →",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UKeB2",
+              "name": "Stories Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "CIZcO",
+                  "type": "ref",
+                  "ref": "swKk9",
+                  "name": "Kako se nekad pravila rakija na Borji",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LrPpo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1765989431827-99068486f4d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNjF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RFyQx": {
+                      "content": "TRADICIJA"
+                    },
+                    "s5c16v": {
+                      "content": "Kako se nekad pravila rakija na Borji"
+                    },
+                    "ibqIH": {
+                      "content": "Priča o porodičnoj tradiciji pečenja šljivovice koja traje već pet generacija..."
+                    }
+                  }
+                },
+                {
+                  "id": "w2nH5",
+                  "type": "ref",
+                  "ref": "swKk9",
+                  "name": "Pčelar Rade i tajne teslićkog meda",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LrPpo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1775418448739-6e45be61d048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNjJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RFyQx": {
+                      "content": "LJUDI"
+                    },
+                    "s5c16v": {
+                      "content": "Pčelar Rade i tajne teslićkog meda"
+                    },
+                    "ibqIH": {
+                      "content": "Upoznajte čovjeka čiji med osvaja nagrade širom regije..."
+                    }
+                  }
+                },
+                {
+                  "id": "F9WXW",
+                  "type": "ref",
+                  "ref": "swKk9",
+                  "name": "Skriveni izvori i vodopadi oko Teslića",
+                  "width": "fill_container",
+                  "descendants": {
+                    "LrPpo": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1625563329225-4d4955ec7391?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNjN8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "RFyQx": {
+                      "content": "PRIRODA"
+                    },
+                    "s5c16v": {
+                      "content": "Skriveni izvori i vodopadi oko Teslića"
+                    },
+                    "ibqIH": {
+                      "content": "Otkrijte prirodne bisere koji se kriju u šumama oko grada..."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pTula",
+          "name": "Gallery Section",
+          "width": "fill_container",
+          "fill": "$bg-white",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "pLqQO",
+              "name": "Section Header",
+              "layout": "vertical",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZfV04",
+                  "name": "Label",
+                  "fill": "$primary",
+                  "content": "GALERIJA",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "600",
+                  "letterSpacing": 2
+                },
+                {
+                  "type": "text",
+                  "id": "ba1ii",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Teslić kroz objektiv",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 36,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "nam41",
+                  "name": "Description",
+                  "fill": "$text-secondary",
+                  "content": "Fotografije i video zapisi koji najbolje dočaravaju duh našeg grada.",
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qzRZm",
+              "name": "Gallery Grid",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "D6MccZ",
+                  "name": "Row 1",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "sQase",
+                      "name": "Photo 1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "happy_pixel",
+                        "link": "https://unsplash.com/@happy_pixel",
+                        "author": "Vinu T"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1765315011133-f15929a53bda?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j7S2f",
+                      "name": "Photo 2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "isaacmaffeis",
+                        "link": "https://unsplash.com/@isaacmaffeis",
+                        "author": "Isaac Maffeis"
+                      },
+                      "clip": true,
+                      "width": 380,
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1767709269110-e9a5a672f508?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUwMTR8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jCVl5",
+                      "name": "Photo 3",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "domix_629",
+                        "link": "https://unsplash.com/@domix_629",
+                        "author": "Domenico Adornato"
+                      },
+                      "clip": true,
+                      "width": 380,
+                      "height": 300,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1765182728019-4a7d24f42f56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzB8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KsLUh",
+                      "layoutPosition": "absolute",
+                      "x": 40,
+                      "y": 240,
+                      "name": "Video Badge",
+                      "fill": "#00000099",
+                      "cornerRadius": 24,
+                      "gap": 8,
+                      "padding": [
+                        10,
+                        18
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Fe46V",
+                          "name": "Play",
+                          "width": 16,
+                          "height": 16,
+                          "icon": "play",
+                          "library": "lucide",
+                          "fill": "$text-inverse"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CfXHX",
+                          "name": "Video Label",
+                          "fill": "$text-inverse",
+                          "content": "Video tura",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XAzWa",
+                  "name": "Row 2",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ziSPy",
+                      "name": "Photo 4",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "saratrixx",
+                        "link": "https://unsplash.com/@saratrixx",
+                        "author": "Sara Bertoni"
+                      },
+                      "clip": true,
+                      "width": 380,
+                      "height": 260,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1598781749678-91ee976b920d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AVYYb",
+                      "name": "Photo 5",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "lephotographelillois",
+                        "link": "https://unsplash.com/@lephotographelillois",
+                        "author": "Guillaume DHALLUIN"
+                      },
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 260,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1770399231048-1c5d09afb170?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Gjilf",
+                      "name": "Photo 6",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "panfilov_jpg",
+                        "link": "https://unsplash.com/@panfilov_jpg",
+                        "author": "Artyom Panfilov"
+                      },
+                      "clip": true,
+                      "width": 380,
+                      "height": 260,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1697095908773-89c6a8ab90c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUxNzJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "cornerRadius": "$radius-sm"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DNByi",
+          "name": "CTA Registration Section",
+          "clip": true,
+          "width": "fill_container",
+          "height": 420,
+          "layout": "none",
+          "children": [
+            {
+              "type": "frame",
+              "id": "xAK9k",
+              "x": 0,
+              "y": 0,
+              "name": "CTA Background",
+              "metadata": {
+                "type": "unsplash",
+                "username": "osmantalha",
+                "link": "https://unsplash.com/@osmantalha",
+                "author": "Osman Talha Dikyar"
+              },
+              "width": 1440,
+              "height": 420,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "https://images.unsplash.com/photo-1644566086018-b19e1a1cb9dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxMzUwMjl8&ixlib=rb-4.1.0&q=80&w=1080",
+                "mode": "fill"
+              }
+            },
+            {
+              "type": "frame",
+              "id": "b4oNTX",
+              "x": 0,
+              "y": 0,
+              "name": "CTA Overlay",
+              "width": 1440,
+              "height": 420,
+              "fill": {
+                "type": "gradient",
+                "gradientType": "linear",
+                "enabled": true,
+                "rotation": 90,
+                "size": {
+                  "height": 1
+                },
+                "colors": [
+                  {
+                    "color": "#003A6EF0",
+                    "position": 0
+                  },
+                  {
+                    "color": "#00529CD0",
+                    "position": 1
+                  }
+                ]
+              }
+            },
+            {
+              "type": "frame",
+              "id": "XaP0j",
+              "x": 0,
+              "y": 0,
+              "name": "CTA Content",
+              "width": 1440,
+              "height": 420,
+              "layout": "vertical",
+              "gap": 20,
+              "padding": [
+                0,
+                200
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LY2IM",
+                  "name": "Title",
+                  "fill": "$text-inverse",
+                  "content": "Predstavite svoj biznis ili priču",
+                  "textAlign": "center",
+                  "fontFamily": "Playfair Display",
+                  "fontSize": 38,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "VEHdC",
+                  "name": "Description",
+                  "fill": "#FFFFFFCC",
+                  "textGrowth": "fixed-width",
+                  "width": 600,
+                  "content": "Registrujte se kao lokalni proizvođač, ugostitelj, vodič ili autor i podijelite\nsvoje priče i ponudu sa posjetiocima Teslića.",
+                  "lineHeight": 1.6,
+                  "textAlign": "center",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "Rfgkm",
+                  "name": "CTA Buttons",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "id": "Xy8VG",
+                      "type": "ref",
+                      "ref": "eNJlq",
+                      "name": "CTA Register",
+                      "descendants": {
+                        "G0ACM": {
+                          "content": "Registruj biznis"
+                        }
+                      }
+                    },
+                    {
+                      "id": "t6dUmA",
+                      "type": "ref",
+                      "ref": "YWz4b",
+                      "name": "CTA Author",
+                      "descendants": {
+                        "F45XI": {
+                          "content": "Postani autor"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "n6pfB",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$bg-footer",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": [
+            60,
+            80,
+            40,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "arR3B",
+              "name": "Footer Top",
+              "width": "fill_container",
+              "gap": 60,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "w19PZM",
+                  "name": "Footer Brand",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "wYlZ8",
+                      "name": "Logo",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "ouo77",
+                          "name": "Logo Icon",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "mountain-snow",
+                          "library": "lucide",
+                          "fill": "$text-inverse"
+                        },
+                        {
+                          "type": "text",
+                          "id": "OyLP0",
+                          "name": "Logo Text",
+                          "fill": "$text-inverse",
+                          "content": "Teslić",
+                          "fontFamily": "Playfair Display",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "oXgET",
+                      "name": "Brand Description",
+                      "fill": "#FFFFFF99",
+                      "textGrowth": "fixed-width",
+                      "width": 260,
+                      "content": "Digitalna platforma za promociju turizma,\nlokalnih proizvoda i usluga grada Teslića.",
+                      "lineHeight": 1.6,
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rpoUi",
+                  "name": "Navigacija",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "HSkNT",
+                      "name": "Column Title",
+                      "fill": "$text-inverse",
+                      "content": "NAVIGACIJA",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "N0Bgcj",
+                      "name": "Turizam",
+                      "fill": "#FFFFFF99",
+                      "content": "Turizam",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "OqWRE",
+                      "name": "Lokalni proizvodi",
+                      "fill": "#FFFFFF99",
+                      "content": "Lokalni proizvodi",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Sfs4k",
+                      "name": "Događaji",
+                      "fill": "#FFFFFF99",
+                      "content": "Događaji",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "hPpHB",
+                      "name": "Priče",
+                      "fill": "#FFFFFF99",
+                      "content": "Priče",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "yrJVJ",
+                      "name": "Interaktivna mapa",
+                      "fill": "#FFFFFF99",
+                      "content": "Interaktivna mapa",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NA1Ii",
+                  "name": "Informacije",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L5Rfp",
+                      "name": "Column Title",
+                      "fill": "$text-inverse",
+                      "content": "INFORMACIJE",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "nybQq",
+                      "name": "O platformi",
+                      "fill": "#FFFFFF99",
+                      "content": "O platformi",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "N6xVjf",
+                      "name": "Kontakt",
+                      "fill": "#FFFFFF99",
+                      "content": "Kontakt",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TkIPI",
+                      "name": "Često postavljena pitanja",
+                      "fill": "#FFFFFF99",
+                      "content": "Često postavljena pitanja",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ru5Y0",
+                      "name": "Politika privatnosti",
+                      "fill": "#FFFFFF99",
+                      "content": "Politika privatnosti",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Iyhg4",
+                      "name": "Uslovi korištenja",
+                      "fill": "#FFFFFF99",
+                      "content": "Uslovi korištenja",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O13xfn",
+                  "name": "Kontakt",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tUYVS",
+                      "name": "Column Title",
+                      "fill": "$text-inverse",
+                      "content": "KONTAKT",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600",
+                      "letterSpacing": 1.5
+                    },
+                    {
+                      "type": "text",
+                      "id": "X1ykO",
+                      "name": "info@teslic-turizam.ba",
+                      "fill": "#FFFFFF99",
+                      "content": "info@teslic-turizam.ba",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QbztA",
+                      "name": "+387 53 411 000",
+                      "fill": "#FFFFFF99",
+                      "content": "+387 53 411 000",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tkh2Z",
+                      "name": "Ul. Karađorđeva 10",
+                      "fill": "#FFFFFF99",
+                      "content": "Ul. Karađorđeva 10",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "D9AC6j",
+                      "name": "74270 Teslić, BiH",
+                      "fill": "#FFFFFF99",
+                      "content": "74270 Teslić, BiH",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "oHCYR",
+              "name": "Divider",
+              "fill": "#FFFFFF15",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "hU2RW",
+              "name": "Footer Bottom",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ll2oM",
+                  "name": "Copyright",
+                  "fill": "#FFFFFF66",
+                  "content": "© 2026 Teslić Turizam. Sva prava zadržana.",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "j80Glf",
+                  "name": "Social",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "qBbTh",
+                      "name": "facebook",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "facebook",
+                      "library": "lucide",
+                      "fill": "#FFFFFF99"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "h3zEs",
+                      "name": "instagram",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "instagram",
+                      "library": "lucide",
+                      "fill": "#FFFFFF99"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "f5PlI0",
+                      "name": "youtube",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "youtube",
+                      "library": "lucide",
+                      "fill": "#FFFFFF99"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "accent": {
+      "type": "color",
+      "value": "#D4952A"
+    },
+    "accent-hover": {
+      "type": "color",
+      "value": "#B8811F"
+    },
+    "bg-dark": {
+      "type": "color",
+      "value": "#00529C"
+    },
+    "bg-footer": {
+      "type": "color",
+      "value": "#0A1628"
+    },
+    "bg-light": {
+      "type": "color",
+      "value": "#F4F7FA"
+    },
+    "bg-white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "border-light": {
+      "type": "color",
+      "value": "#D8DFE8"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-heading": {
+      "type": "string",
+      "value": "Playfair Display"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#00529C"
+    },
+    "primary-dark": {
+      "type": "color",
+      "value": "#003A6E"
+    },
+    "primary-light": {
+      "type": "color",
+      "value": "#E6EFF8"
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 10
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 6
+    },
+    "text-accent": {
+      "type": "color",
+      "value": "#D4952A"
+    },
+    "text-inverse": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#1B2A3D"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#5A6B7D"
+    }
+  }
+}
