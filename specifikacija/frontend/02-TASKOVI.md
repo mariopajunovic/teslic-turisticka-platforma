@@ -51,44 +51,52 @@
 - [x] Sve prezentovano na `/_dev` (kartice u `CardGrid`, sva stanja). Build ✓, lint ✓; popravljen header bug (mobilni skrivao desktop CTA).
 - [ ] (opc.) `LoadMore` varijanta paginacije — dodati uz listinge u F8 po potrebi.
 
-## F5 — Kompozitne komponente
-- [ ] `Hero` — `slika-pozadina` (overlay tekst) i `split` (tekst+slika); mobilni overlay.
-- [ ] `FilterBar` (desktop) + `FilterDrawer` (mobilni) + aktivni filteri kao uklonjivi chipovi + „Očisti”.
-- [ ] `useFilters` composable (sinhron s URL query).
-- [ ] `SearchInput` + globalni search overlay (iz headera).
-- [ ] `Gallery` + `Lightbox` (strelice/tastatura/swipe/zatvori) + inline `VideoPlayer` + `Carousel` varijanta.
-- [ ] `InfoPanel` (ikona+label+vrijednost, CTA; mobilni ispod sadržaja, opc. sticky CTA).
-- [ ] `MiniMap` (statički isječak + pin + link na `/mapa`).
-- [ ] `RelatedContent`, `AuthorBlock`, `CTASection`, `Stepper`, `SegmentControl`.
+## F5 — Kompozitne komponente ✅ (4 paralelna agenta)
+- [x] `Hero` — `slika-pozadina` (slika+overlay, fallback gradient, kicker lime) i `split` (tekst+slika, kicker accent-deep); slot za akcije.
+- [x] `FilterBar` (desktop traka) + `FilterDrawer` (mobilni bottom-sheet, matchMedia da se slot ne duplira) + aktivni filteri kao uklonjivi chipovi + „Očisti filtere”.
+- [x] `SearchInput` (lupa, clear ×, submit) — reusable input.
+- [x] `Gallery` (grid/carousel) + `Lightbox` (strelice/tastatura/Esc/wrap/scroll-lock) + inline `VideoPlayer` (native + placeholder).
+- [x] `InfoPanel` (ikona+label+vrijednost+href, CTA slot), `MiniMap` (faux isječak + pin + „Prikaži na mapi” → `/mapa`).
+- [x] `RelatedContent` (CardGrid slot), `AuthorBlock` (avatar+bio+link), `CTASection` (primary, slot dugmad), `Stepper` (1·2·3, vert. na mobilnom), `SegmentControl` (`v-model`).
+- [x] Sve prezentovano na `/_dev`; build ✓, lint ✓; vizuelno potvrđeno (desktop screenshot).
+- [ ] (F11) `useFilters` composable (sinhron s URL query) — uvodi se uz listinge.
+- [ ] (F3 done) globalni search overlay već u `AppHeader`; ovdje je `SearchInput` za listinge.
 
 ## F6 — Mapa (Leaflet)
-- [ ] `MapInteractive` init (OSM tiles, centar Teslić, zoom granice).
-- [ ] `MapPin` ikone po kategoriji + `MapCluster` (marker cluster).
-- [ ] `MapPopup` (slika/naziv/chip/„Detalji →”).
-- [ ] `MapFilterPanel` (checkbox slojevi + pretraga + legenda); sinhronizacija pin↔filter↔(`ResultsList`).
-- [ ] Mobilni: full-screen mapa + filteri/popup u bottom-sheet.
+## F6 — Mapa (Leaflet) ✅ (agent)
+- [x] `MapInteractive` (OSM tiles, centar Teslić, props items/activeCategories/center/zoom/height, emit `select`, cleanup).
+- [x] Pinovi po kategoriji preko `markerIcon.js` (`categoryIcon`/`categoryColor`, boja po kategoriji) + `L.markerClusterGroup` (clustering).
+- [x] `MapPopup` (CardImage + naziv + chip + „Detalji →”).
+- [x] `MapFilterPanel` (`v-model` aktivne kategorije, FormCheckbox slojevi + SearchInput + legenda u boji); `ResultsList` (sinhron s mapom, emit `select`).
+- [x] Potvrđeno na `/_dev` (tiles + pin + legenda + rezultati). Build ✓, lint ✓.
+- [ ] (F8 MapView) full-screen mobilni + filteri/popup u bottom-sheet (raspored stranice; komponente spremne).
 
-## F7 — Kalendar
-- [ ] `EventCalendar` — mjesečna mreža, tačke na danima s događajima, navigacija mjeseci.
-- [ ] Klik na dan → lista događaja; mobilni kompaktan prikaz; integracija sa `SegmentControl` na `/dogadjaji`.
+## F7 — Kalendar ✅ (agent)
+- [x] `EventCalendar` — mjesečna mreža (6×7, sedmica od ponedjeljka), ijekavski mjeseci/dani, navigacija mjeseci, tačke na danima s događajima, današnji + odabrani dan istaknuti.
+- [x] `v-model` (YYYY-MM-DD) + emit `select-day` ({date, events}); a11y (dugmad, aria). Potvrđeno na `/_dev`.
+- [ ] (F8 EventsView) integracija sa `SegmentControl` (Lista/Kalendar) + lista događaja dana.
 
-## F8 — Stranice: listinzi i statične
-- [ ] **HomeView** (PRVA, prema usvojenom Konceptu A) — svih 12 blokova + stanja sekcija.
-- [ ] **AboutView** — Hero split, misija, ciljevi grid, 3 kartice publike, partneri, CTASection.
-- [ ] **ContactView** — kontakt info + forma + MiniMap.
-- [ ] **LocalListingView** (Domaće) — FilterBar + podsekcije + grid + stanja.
-- [ ] **TourismListingView** — 4 pločice podsekcija + grid lokaliteta + stanja.
-- [ ] **EventsView** — Lista/Kalendar prebacivač + FilterBar + stanja.
-- [ ] **AdsListingView** — FilterBar + stack oglasa (+Isteklo) + stanja.
-- [ ] **StoriesListingView** — Featured + grid priča + stanja.
-- [ ] **LegalView** (privatnost/kolačići/uslovi).
+## F8 — Stranice: listinzi i statične ✅ (agent + paralelno s F9/audit)
+- [x] **HomeView** — Koncept A, svih ~11 blokova (Hero slika-pozadina, kategorije, Lokalni proizvodi, Preporučeno na primary-tint, Atrakcije, Mapa isječak, Događaji, Priče, Galerija, CTA) + loading/error stanja. Bez breadcrumba.
+- [x] **AboutView** — Hero split, Misija, Ciljevi grid, „Kome je namijenjeno” 3 kartice (users/store/pen), partneri, CTASection.
+- [x] **ContactView** — kontakt info (iz constants) + forma (atomi + validacija + BaseAlert) + MiniMap.
+- [x] **LocalListingView / TourismListingView / AdsListingView / StoriesListingView** — Breadcrumb + Hero/naslov + FilterBar (FormSelect + SearchInput + chipovi) + CardGrid + Pagination + stanja (Skeleton/EmptyState/error). Klijentsko filtriranje.
+- [x] **EventsView** — SegmentControl (Lista/Kalendar) + FilterBar; Lista = EventCard grid; Kalendar = EventCalendar + lista dana.
+- [x] **LegalView** (privatnost/kolačići/uslovi) — prop `doc`, placeholder pravni tekst.
+- [x] Svi povezani na data sloj (`useFetch`+`api`); build ✓, lint ✓; vizuelno potvrđeno (home/listing/detail/mobile).
 
-## F9 — Stranice: detalji
-- [ ] **BusinessProfileView** — Hero + Gallery + 2-kol + InfoPanel + MiniMap + RelatedContent + modal „Pošalji upit” (forma+Captcha, uspjeh/greška).
-- [ ] **LocationDetailView** — Hero + Gallery + 2-kol (O lokaciji/Kako doći/Savjeti) + InfoPanel + RelatedContent.
-- [ ] **EventDetailView** — Hero + opis + Gallery + InfoPanel (+„Dodaj u kalendar” .ics) + RelatedContent + stanje „Završeno”.
-- [ ] **AdDetailView** — opis + InfoPanel (izdavač/rok/kontakt) + RelatedContent + stanje „Isteklo”.
-- [ ] **StoryDetailView** — Hero + sadržaj + Gallery + AuthorBlock + RelatedContent.
+## F9 — Stranice: detalji ✅ (agent)
+- [x] **BusinessProfileView** — Breadcrumb + Hero + Gallery + 2-kol + InfoPanel (kontakt) + „Pošalji upit” (BaseAlert) + MiniMap + RelatedContent „Slično”.
+- [x] **LocationDetailView** — Hero + Gallery + 2-kol (O lokaciji/Kako doći/Savjeti) + InfoPanel (tip/sezona/radno vrijeme/ulaznice) + MiniMap + RelatedContent.
+- [x] **EventDetailView** — Hero (datum) + opis + Gallery + InfoPanel + „Dodaj u kalendar” (BaseAlert) + „Završeno” badge + RelatedContent.
+- [x] **AdDetailView** — naslov + Chip + opis + InfoPanel (izdavač/rok/kontakt) + „Isteklo” + RelatedContent.
+- [x] **StoryDetailView** — Hero + prozni sadržaj + Gallery + AuthorBlock + RelatedContent.
+- [x] Stanja: loading / nije pronađeno (EmptyState) / error (BaseAlert). Dvokolonski → stack na mobilnom.
+- [ ] (kasnije) „Pošalji upit” / „Dodaj u kalendar” kao pravi modal/.ics umjesto BaseAlert potvrde.
+
+### Audit (paralelni agent, read-only) — nalaz
+- ✅ Nema 🔴 prekršaja; codebase dosljedno koristi token-klase, a11y/alt uredni.
+- 🟡 sitno: `markerIcon.js` duplira HEX tokena (Leaflet divIcon — nužno; rizik drifta), par off-scale font veličina (`text-[10/11/15/17px]`), `AppFooter` placeholder partneri/social, `z-[60]` u Lightboxu. Za adresirati po želji (nije blokirajuće).
 
 ## F10 — Forme (Pridruži se)
 - [ ] **JoinHubView** — Hero split + 2 putanje (CTASection) + benefiti + Stepper.
@@ -97,11 +105,12 @@
 - [ ] **RegisterAuthorView** — polja autora + upload/link + saglasnost + Captcha.
 - [ ] Stanja: greška polja · `Pridruzi – Forma – Uspjeh` · `– Greska` (BaseAlert).
 
-## F11 — Podatkovni sloj
-- [ ] `services/api.js` — apstrakcija (zamjenjiva pravim API-jem); `useFetch` composable (loading/error/data).
-- [ ] `data/*.json` — mock: biznisi, lokaliteti, događaji, oglasi, priče, kategorije (ijekavica, lokalni primjeri).
-- [ ] Poveži sve listinge/detalje na servis; ubaci Skeleton/EmptyState/error svuda.
-- [ ] Detalj rute po `:slug` (lookup + 404 ako nema).
+## F11 — Podatkovni sloj (povučen ranije, uz F8/F9)
+- [x] `services/api.js` (`list`/`get` nad mock JSON, AbortSignal) + `useFetch` composable (data/loading/error/retry).
+- [x] `data/*.json` — mock: biznisi, lokaliteti, dogadjaji, oglasi, price (ijekavica, detaljna polja); kategorije već u `constants/categories.js`.
+- [x] Svi listinzi/detalji povezani na servis; Skeleton/EmptyState/error svuda.
+- [x] Detalj rute po `:slug` (`api.get` lookup; EmptyState „nije pronađeno” ako nema).
+- [ ] Zamjena mock-a pravim API-jem (samo izmjena u `services/api.js`) kad backend bude spreman.
 
 ## F12 — QA / polish
 - [ ] Responsive prolaz 375 / 768 / 1440 na svim stranicama.
