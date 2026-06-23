@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
-import { mainNav, secondaryNav, kontakt } from '@/constants/navigation'
+import { mainNav, kontakt } from '@/constants/navigation'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
@@ -72,17 +72,6 @@ const socials = [
             <BaseIcon name="mail" :size="14" />
             <span>{{ kontakt.email }}</span>
           </a>
-          <nav class="hidden items-center gap-4 lg:flex">
-            <RouterLink
-              v-for="item in secondaryNav"
-              :key="item.to"
-              :to="item.to"
-              class="hover:text-white"
-              active-class="text-white"
-            >
-              {{ item.label }}
-            </RouterLink>
-          </nav>
         </div>
 
         <!-- Desno: jezik + mreže + akcije -->
@@ -113,7 +102,12 @@ const socials = [
             >
               Prijava
             </RouterLink>
-            <BaseButton to="/pridruzi-se" variant="sekundarna" size="sm">Pridruži se</BaseButton>
+            <RouterLink
+              to="/pridruzi-se"
+              class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+            >
+              Pridruži se
+            </RouterLink>
           </div>
         </div>
       </AppContainer>
