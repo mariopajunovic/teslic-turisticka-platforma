@@ -1,18 +1,25 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { RouterLink } from 'vue-router'
-import { mainNav } from '@/constants/navigation'
+import { useRouter, RouterLink } from 'vue-router'
+import { mainNav, secondaryNav } from '@/constants/navigation'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const open = defineModel({ type: Boolean, default: false })
+const router = useRouter()
 const expanded = ref(null)
+const searchTerm = ref('')
 
 function toggle(label) {
   expanded.value = expanded.value === label ? null : label
 }
 function close() {
   open.value = false
+}
+function submitSearch() {
+  const q = searchTerm.value.trim()
+  close()
+  if (q) router.push({ path: '/mapa', query: { q } })
 }
 
 // Zaključaj scroll tijela dok je drawer otvoren.
@@ -27,9 +34,10 @@ watch(open, (v) => {
       <div v-if="open" class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">
         <div class="absolute inset-0 bg-overlay" @click="close" />
         <aside
-          class="absolute right-0 top-0 flex h-full w-[86%] max-w-sm flex-col bg-surface shadow-[var(--shadow-lg)]"
+          class="absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col bg-surface shadow-[var(--shadow-lg)]"
         >
-          <div class="flex h-14 items-center justify-between border-b border-border px-4">
+          <!-- Vrh -->
+          <div class="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
             <RouterLink to="/" class="text-xl font-extrabold text-primary" @click="close">
               teslić
             </RouterLink>
@@ -43,12 +51,31 @@ watch(open, (v) => {
             </button>
           </div>
 
-          <nav class="flex-1 overflow-y-auto p-2">
+          <!-- Pretraga -->
+          <div class="shrink-0 px-4 pt-4">
+            <form class="relative" @submit.prevent="submitSearch">
+              <BaseIcon
+                name="search"
+                :size="18"
+                class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
+              />
+              <input
+                v-model="searchTerm"
+                type="search"
+                placeholder="Pretraži ponudu, događaje, priče…"
+                class="h-11 w-full rounded-sm bg-surface-alt pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary"
+              />
+            </form>
+          </div>
+
+          <!-- Navigacija -->
+          <nav class="flex-1 overflow-y-auto p-2 pt-3">
             <template v-for="item in mainNav" :key="item.to">
               <div v-if="item.children">
                 <button
                   type="button"
-                  class="flex w-full items-center justify-between rounded-sm px-3 py-3 text-left text-base font-medium text-text hover:bg-surface-alt"
+                  class="flex w-full items-center justify-between rounded-sm px-3 py-3 text-left text-base font-medium hover:bg-surface-alt"
+                  :class="expanded === item.label ? 'bg-primary-tint text-primary' : 'text-text'"
                   :aria-expanded="expanded === item.label"
                   @click="toggle(item.label)"
                 >
@@ -56,8 +83,8 @@ watch(open, (v) => {
                   <BaseIcon
                     name="chevron-down"
                     :size="18"
-                    class="text-text-muted transition-transform"
-                    :class="expanded === item.label ? 'rotate-180' : ''"
+                    class="transition-transform"
+                    :class="expanded === item.label ? 'rotate-180 text-primary' : 'text-text-muted'"
                   />
                 </button>
                 <div v-show="expanded === item.label" class="mb-1 ml-3 border-l border-border pl-3">
@@ -75,20 +102,36 @@ watch(open, (v) => {
               <RouterLink
                 v-else
                 :to="item.to"
-                class="block rounded-sm px-3 py-3 text-base font-medium text-text hover:bg-surface-alt hover:text-primary"
+                class="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-text hover:bg-surface-alt hover:text-primary"
                 active-class="text-primary"
                 @click="close"
               >
                 {{ item.label }}
+                <BaseIcon name="chevron-right" :size="18" class="text-text-muted" />
               </RouterLink>
             </template>
+
+            <div class="my-2 border-t border-border" />
+
+            <RouterLink
+              v-for="item in secondaryNav"
+              :key="item.to"
+              :to="item.to"
+              class="flex items-center justify-between rounded-sm px-3 py-3 text-base font-medium text-text hover:bg-surface-alt hover:text-primary"
+              active-class="text-primary"
+              @click="close"
+            >
+              {{ item.label }}
+              <BaseIcon name="chevron-right" :size="18" class="text-text-muted" />
+            </RouterLink>
           </nav>
 
-          <div class="space-y-2 border-t border-border p-4">
+          <!-- Akcije -->
+          <div class="shrink-0 space-y-2 border-t border-border p-4">
+            <BaseButton to="/prijava" variant="secondary" block @click="close">Prijava</BaseButton>
             <BaseButton to="/pridruzi-se" variant="primary" block @click="close">
               Pridruži se
             </BaseButton>
-            <BaseButton to="/prijava" variant="ghost" block @click="close">Prijava</BaseButton>
           </div>
         </aside>
       </div>

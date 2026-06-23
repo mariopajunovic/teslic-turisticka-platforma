@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRouter, RouterLink } from 'vue-router'
-import { mainNav } from '@/constants/navigation'
+import { mainNav, secondaryNav, kontakt } from '@/constants/navigation'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
@@ -43,66 +43,133 @@ function submitSearch() {
   searchOpen.value = false
   if (q) router.push({ path: '/mapa', query: { q } })
 }
+
+const socials = [
+  { name: 'facebook', href: 'https://facebook.com', label: 'Facebook' },
+  { name: 'instagram', href: 'https://instagram.com', label: 'Instagram' },
+  { name: 'youtube', href: 'https://youtube.com', label: 'YouTube' },
+]
 </script>
 
 <template>
   <header
-    class="sticky top-0 z-40 border-b border-border bg-surface/95 backdrop-blur transition-shadow"
+    class="sticky top-0 z-40 bg-surface transition-shadow"
     :class="scrolled ? 'shadow-[var(--shadow-sm)]' : ''"
   >
-    <AppContainer
-      class="flex items-center gap-6 transition-[height] duration-200"
-      :class="scrolled ? 'h-14 lg:h-16' : 'h-14 lg:h-18'"
-    >
-      <RouterLink
-        to="/"
-        class="shrink-0 text-xl font-extrabold tracking-tight text-primary lg:text-2xl"
-      >
-        teslić
-      </RouterLink>
-
-      <!-- Desktop navigacija -->
-      <nav class="hidden flex-wrap items-center gap-x-5 gap-y-1 lg:flex">
-        <template v-for="item in mainNav" :key="item.to">
-          <NavDropdown v-if="item.children" :item="item" />
-          <RouterLink
-            v-else
-            :to="item.to"
-            class="text-sm font-medium text-text transition-colors hover:text-primary"
-            active-class="text-primary"
+    <!-- Gornja (util) traka — brend -->
+    <div class="bg-primary-darker text-primary-tint">
+      <AppContainer class="flex h-10 items-center justify-between text-[13px]">
+        <!-- Lijevo: kontakt + sekundarni linkovi -->
+        <div class="flex items-center gap-5">
+          <a :href="`tel:${kontakt.telefon}`" class="flex items-center gap-1.5 hover:text-white">
+            <BaseIcon name="phone" :size="14" />
+            <span>{{ kontakt.telefon }}</span>
+          </a>
+          <a
+            :href="`mailto:${kontakt.email}`"
+            class="hidden items-center gap-1.5 hover:text-white sm:flex"
           >
-            {{ item.label }}
-          </RouterLink>
-        </template>
-      </nav>
-
-      <div class="ml-auto flex items-center gap-2">
-        <button
-          type="button"
-          class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt"
-          aria-label="Pretraga"
-          @click="searchOpen = !searchOpen"
-        >
-          <BaseIcon name="search" :size="20" />
-        </button>
-
-        <!-- Desktop akcije (wrapper kontroliše vidljivost; BaseButton ima vlastiti inline-flex) -->
-        <div class="hidden items-center gap-2 lg:flex">
-          <BaseButton to="/prijava" variant="ghost" size="sm">Prijava</BaseButton>
-          <BaseButton to="/pridruzi-se" variant="primary" size="sm">Pridruži se</BaseButton>
+            <BaseIcon name="mail" :size="14" />
+            <span>{{ kontakt.email }}</span>
+          </a>
+          <nav class="hidden items-center gap-4 lg:flex">
+            <RouterLink
+              v-for="item in secondaryNav"
+              :key="item.to"
+              :to="item.to"
+              class="hover:text-white"
+              active-class="text-white"
+            >
+              {{ item.label }}
+            </RouterLink>
+          </nav>
         </div>
 
-        <!-- Mobilni hamburger -->
-        <button
-          type="button"
-          class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden"
-          aria-label="Otvori meni"
-          @click="drawerOpen = true"
+        <!-- Desno: jezik + mreže + akcije -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-1.5">
+            <BaseIcon name="globe" :size="14" class="text-white" />
+            <button type="button" class="font-bold text-white" aria-label="Srpski jezik">SR</button>
+            <span class="text-primary-tint-2">|</span>
+            <button type="button" class="hover:text-white" aria-label="English language">EN</button>
+          </div>
+          <div class="hidden items-center gap-3 sm:flex">
+            <a
+              v-for="s in socials"
+              :key="s.name"
+              :href="s.href"
+              target="_blank"
+              rel="noopener"
+              :aria-label="s.label"
+              class="hover:text-white"
+            >
+              <BaseIcon :name="s.name" :size="15" />
+            </a>
+          </div>
+          <div class="hidden items-center gap-3 lg:flex">
+            <RouterLink
+              to="/prijava"
+              class="font-semibold text-white hover:text-primary-tint"
+            >
+              Prijava
+            </RouterLink>
+            <BaseButton to="/pridruzi-se" variant="sekundarna" size="sm">Pridruži se</BaseButton>
+          </div>
+        </div>
+      </AppContainer>
+    </div>
+
+    <!-- Glavna traka -->
+    <div class="border-b border-border bg-surface">
+      <AppContainer
+        class="flex items-center gap-6 transition-[height] duration-200"
+        :class="scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-[72px]'"
+      >
+        <RouterLink
+          to="/"
+          class="shrink-0 text-xl font-extrabold tracking-tight text-primary lg:text-2xl"
+          aria-label="Početna — teslić"
         >
-          <BaseIcon name="menu" :size="22" />
-        </button>
-      </div>
-    </AppContainer>
+          teslić
+        </RouterLink>
+
+        <!-- Desktop navigacija (rasterećena, 6 sadržajnih stavki) -->
+        <nav class="ml-6 hidden items-center gap-x-6 lg:flex">
+          <template v-for="item in mainNav" :key="item.to">
+            <NavDropdown v-if="item.children" :item="item" />
+            <RouterLink
+              v-else
+              :to="item.to"
+              class="text-[15px] font-medium text-text transition-colors hover:text-primary"
+              active-class="text-primary"
+            >
+              {{ item.label }}
+            </RouterLink>
+          </template>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-2">
+          <button
+            type="button"
+            class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt"
+            aria-label="Pretraga"
+            @click="searchOpen = !searchOpen"
+          >
+            <BaseIcon name="search" :size="20" />
+          </button>
+
+          <!-- Mobilni hamburger -->
+          <button
+            type="button"
+            class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden"
+            aria-label="Otvori meni"
+            @click="drawerOpen = true"
+          >
+            <BaseIcon name="menu" :size="22" />
+          </button>
+        </div>
+      </AppContainer>
+    </div>
 
     <!-- Pretraga overlay (privremeno; rezultati u F5) -->
     <Transition name="search">

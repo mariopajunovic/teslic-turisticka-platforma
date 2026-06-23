@@ -1,6 +1,5 @@
 // Struktura glavne navigacije (header/footer). Dropdown sekcije imaju `children`.
 export const mainNav = [
-  { label: 'Početna', to: '/' },
   {
     label: 'Domaće je najbolje',
     to: '/domace-je-najbolje',
@@ -32,6 +31,10 @@ export const mainNav = [
       { label: 'Naša svakodnevica', to: '/price?kategorija=svakodnevica' },
     ],
   },
+]
+
+// Sekundarna navigacija — gornja (util) traka headera.
+export const secondaryNav = [
   { label: 'O projektu', to: '/o-projektu' },
   { label: 'Kontakt', to: '/kontakt' },
 ]
