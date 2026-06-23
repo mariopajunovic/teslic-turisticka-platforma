@@ -78,6 +78,7 @@ import {
   Plus,
   PenTool,
   Clock3,
+  Save,
 } from 'lucide-vue-next'
 
 export const icons = {
@@ -159,4 +160,5 @@ export const icons = {
   plus: Plus,
   'pen-tool': PenTool,
   'clock-3': Clock3,
+  save: Save,
 }

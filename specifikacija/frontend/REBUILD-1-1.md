@@ -28,7 +28,12 @@
   - `ForgotPasswordView` (kartica + uputstvo + e-mail + „Pošalji link za reset" + „Nazad na prijavu"; stanje **Uspjeh** = „Provjerite e-mail" + Alert/Uspjeh).
   - `RegisterChoiceView` („Napravi nalog" + 2 kartice Registruj biznis/Postani autor + info nota).
   - Header „Prijava" link → `/prijava` (desktop + drawer). Verifikovano screenshotom.
-- [ ] 13_Moj-profil — Biznis dashboard ×5 + Autor dashboard ×4 + Mobile + Panel stanja
+- [x] **13_Moj-profil — GOTOVO 1:1** (9 dashboard ekrana, rute `/nalog/biznis/*` i `/nalog/autor/*`)
+  - Ljuska `AccountLayout` (Topbar + Sidebar desktop / mobilni pilule) + `App.vue` meta `layout:'account'` (bez javnog header/footer).
+  - Biznis: **MojProfil** (form + avatar + upload), **MojeObjave** (PostRow lista + odbijeno s razlogom), **Oglasi** (PostRow + Isteklo), **Mediji** (Upload + grid), **Postavke** (Nalog + Obavijesti toggles).
+  - Autor: **MojePrice** (lista), **NovaPrica** (RichEditor + Galerija + „Poveži sa"), **AutorskiProfil** (form + Blok o autoru pregled), **Postavke**.
+  - Komponente: AccountSidebar, AccountTabs, PostRow (+reason), AvatarUpload, ToggleSwitch, RichEditor, UploadBox, SettingsPanel. Sve verifikovano screenshotovima; build ✓ lint ✓.
+  - Napomena: panel-stanja (Prazno „Još nemate objava" / UspjehSnimanja / NalogBlokiran) snimljena iz dizajna — mogu se dodati kao in-page stanja po potrebi.
 
 ---
 

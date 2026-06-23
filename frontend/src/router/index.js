@@ -60,6 +60,62 @@ const routes = [
   },
   { path: '/registracija', name: 'register', component: () => import('@/views/RegisterChoiceView.vue') },
 
+  // Nalog / dashboard (13_Moj-profil) — vlastita ljuska
+  {
+    path: '/nalog/biznis/profil',
+    name: 'biznis-profil',
+    component: () => import('@/views/account/BiznisProfilView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/biznis/objave',
+    name: 'biznis-objave',
+    component: () => import('@/views/account/BiznisObjaveView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/biznis/oglasi',
+    name: 'biznis-oglasi',
+    component: () => import('@/views/account/BiznisOglasiView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/biznis/mediji',
+    name: 'biznis-mediji',
+    component: () => import('@/views/account/BiznisMedijiView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/biznis/postavke',
+    name: 'biznis-postavke',
+    component: () => import('@/views/account/BiznisPostavkeView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/autor/price',
+    name: 'autor-price',
+    component: () => import('@/views/account/AutorPriceView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/autor/nova-prica',
+    name: 'autor-nova-prica',
+    component: () => import('@/views/account/AutorNovaPricaView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/autor/profil',
+    name: 'autor-profil',
+    component: () => import('@/views/account/AutorProfilView.vue'),
+    meta: { layout: 'account' },
+  },
+  {
+    path: '/nalog/autor/postavke',
+    name: 'autor-postavke',
+    component: () => import('@/views/account/AutorPostavkeView.vue'),
+    meta: { layout: 'account' },
+  },
+
   {
     path: '/politika-privatnosti',
     name: 'privacy',

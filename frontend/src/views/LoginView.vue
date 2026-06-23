@@ -1,7 +1,7 @@
 <script setup>
 // 1:1 prema 12_Prijava.pen → „Prijava – Desktop/Mobile" (+ stanja Greska, NalogNaOdobrenju).
 import { ref } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import FormField from '@/components/forms/FormField.vue'
 import FormCheckbox from '@/components/forms/FormCheckbox.vue'
@@ -9,7 +9,12 @@ import BaseButton from '@/components/base/BaseButton.vue'
 import BaseBadge from '@/components/base/BaseBadge.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
+// Privremeni demo pristup (dok ne stigne backend → services/api.js)
+const DEMO_EMAIL = 'demo@komteldoo.com'
+const DEMO_LOZINKA = 'demo'
+
 const route = useRoute()
+const router = useRouter()
 const email = ref('')
 const lozinka = ref('')
 const zapamti = ref(false)
@@ -17,7 +22,11 @@ const zapamti = ref(false)
 const stanje = ref(['greska', 'odobrenje'].includes(route.query.stanje) ? route.query.stanje : 'default')
 
 function submit() {
-  stanje.value = 'greska' // mock bez backenda
+  if (email.value.trim().toLowerCase() === DEMO_EMAIL && lozinka.value === DEMO_LOZINKA) {
+    router.push('/nalog/biznis/profil')
+  } else {
+    stanje.value = 'greska'
+  }
 }
 </script>
 
@@ -82,6 +91,10 @@ function submit() {
 
         <p v-if="stanje === 'greska'" class="text-[13px] text-text-muted">
           Previše pokušaja — pokušajte ponovo za nekoliko minuta.
+        </p>
+
+        <p class="rounded-md bg-info-tint px-3 py-2 text-[13px] text-text">
+          <span class="font-semibold">Demo pristup:</span> demo@komteldoo.com / demo
         </p>
 
         <hr class="border-border" />
