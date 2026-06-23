@@ -6525,6 +6525,3518 @@
           "width": "fill_container"
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "Bzb3j",
+      "x": 7551,
+      "y": 2821,
+      "name": "Dogadjaji – Lista – Mobile",
+      "width": 375,
+      "fill": "$surface-alt",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "QN5nW",
+          "type": "ref",
+          "ref": "BlJdt",
+          "name": "Header/Mobile",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "R7vidr",
+          "name": "Breadcrumb",
+          "width": "fill_container",
+          "fill": "$surface",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "pV82c",
+              "fill": "$text-muted",
+              "content": "Početna",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "k7nRI",
+              "fill": "$border",
+              "content": "/",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "MZFHF",
+              "fill": "$primary",
+              "content": "Događaji",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Nz4B0",
+          "name": "Naslov",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            24,
+            16,
+            8,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "H8Dox",
+              "fill": "$heading",
+              "content": "Događaji",
+              "fontFamily": "$font-heading",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "xR2i8",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Festivali, sajmovi i manifestacije u Tesliću i okolini.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-sans",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Felly",
+          "name": "Segment",
+          "width": "fill_container",
+          "padding": [
+            8,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "lB0Ib",
+              "name": "Lista",
+              "fill": "$primary",
+              "cornerRadius": "$radius-sm",
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "dvvV7",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "list",
+                  "library": "Material Symbols Rounded",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "XwnaD",
+                  "fill": "#FFFFFF",
+                  "content": "Lista",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XPLgR",
+              "name": "Kalendar",
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "U2RDd",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "calendar_month",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "MAQfN",
+                  "fill": "$text-muted",
+                  "content": "Kalendar",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "iX85F",
+          "name": "FilterDugme",
+          "width": "fill_container",
+          "gap": 8,
+          "padding": [
+            4,
+            16,
+            12,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "O6jsLm",
+              "name": "Filteri",
+              "fill": "$surface",
+              "cornerRadius": "$radius-sm",
+              "stroke": "$border",
+              "gap": 8,
+              "padding": [
+                10,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "qaB7s",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "tune",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text"
+                },
+                {
+                  "type": "text",
+                  "id": "gPcxd",
+                  "fill": "$text",
+                  "content": "Filteri",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "P0aic",
+              "fill": "$text-muted",
+              "content": "24 događaja",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WxMmU",
+          "name": "Grid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            8,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "id": "kKtai",
+              "type": "ref",
+              "ref": "R0xED",
+              "name": "Dogadjaj",
+              "width": "fill_container",
+              "descendants": {
+                "k4YY6": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1540039297186-746086ab730b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI2NDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "zaq5X": {
+                  "enabled": false
+                },
+                "Q0q06": {
+                  "content": "12"
+                },
+                "HOfyQ": {
+                  "content": "JUL"
+                },
+                "yB9V1": {
+                  "content": "Ljetni festival Teslić 2026"
+                },
+                "e28qT": {
+                  "content": "20:00 · Gradski trg"
+                },
+                "z7PzU": {
+                  "content": "Teslić"
+                }
+              }
+            },
+            {
+              "id": "vLZXC",
+              "type": "ref",
+              "ref": "R0xED",
+              "name": "Dogadjaj",
+              "width": "fill_container",
+              "descendants": {
+                "k4YY6": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1641281943234-220d40e6dbd6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI2NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "zaq5X": {
+                  "enabled": false
+                },
+                "Q0q06": {
+                  "content": "05"
+                },
+                "HOfyQ": {
+                  "content": "JUL"
+                },
+                "yB9V1": {
+                  "content": "Sajam domaćeg meda i rakije"
+                },
+                "e28qT": {
+                  "content": "09:00 · Centar"
+                },
+                "z7PzU": {
+                  "content": "Teslić"
+                }
+              }
+            },
+            {
+              "id": "kr8w8",
+              "type": "ref",
+              "ref": "R0xED",
+              "name": "Dogadjaj",
+              "width": "fill_container",
+              "descendants": {
+                "k4YY6": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1584907600887-9732fa3647ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI2NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "zaq5X": {
+                  "enabled": false
+                },
+                "Q0q06": {
+                  "content": "19"
+                },
+                "HOfyQ": {
+                  "content": "JUL"
+                },
+                "yB9V1": {
+                  "content": "Planinarski uspon na Očauš"
+                },
+                "e28qT": {
+                  "content": "07:00 · Planina Borja"
+                },
+                "z7PzU": {
+                  "content": "Borja"
+                }
+              }
+            },
+            {
+              "id": "TSx9B",
+              "type": "ref",
+              "ref": "R0xED",
+              "name": "Dogadjaj",
+              "width": "fill_container",
+              "descendants": {
+                "k4YY6": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1657363497920-8cd277faca17?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI2NDd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "zaq5X": {
+                  "enabled": false
+                },
+                "Q0q06": {
+                  "content": "26"
+                },
+                "HOfyQ": {
+                  "content": "JUL"
+                },
+                "yB9V1": {
+                  "content": "Wellness vikend u Banji Vrućici"
+                },
+                "e28qT": {
+                  "content": "Cijeli dan · Banja Vrućica"
+                },
+                "z7PzU": {
+                  "content": "Vrućica"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AI3A1",
+          "name": "UcitajJos",
+          "width": "fill_container",
+          "padding": [
+            0,
+            16,
+            24,
+            16
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "WS3qt",
+              "name": "Dugme",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": "$radius-sm",
+              "stroke": "$primary",
+              "padding": [
+                12,
+                20
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xJNdj",
+                  "fill": "$primary",
+                  "content": "Učitaj još",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "T2KCH0",
+          "type": "ref",
+          "ref": "bIZ3V",
+          "name": "Footer/Mobile",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "tyxNT",
+      "x": 7972,
+      "y": 2821,
+      "name": "Dogadjaji – Kalendar – Mobile",
+      "width": 375,
+      "fill": "$surface-alt",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "nhWa2",
+          "type": "ref",
+          "ref": "BlJdt",
+          "name": "Header/Mobile",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "D6rYG",
+          "name": "Breadcrumb",
+          "width": "fill_container",
+          "fill": "$surface",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "T1RGh",
+              "fill": "$text-muted",
+              "content": "Početna",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "s3fNg",
+              "fill": "$border",
+              "content": "/",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "g4xgN",
+              "fill": "$primary",
+              "content": "Događaji",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Ixa8d",
+          "name": "Naslov",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            24,
+            16,
+            8,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "qt3lI",
+              "fill": "$heading",
+              "content": "Događaji",
+              "fontFamily": "$font-heading",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "VEdE0",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Festivali, sajmovi i manifestacije u Tesliću i okolini.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-sans",
+              "fontSize": 15,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IJwpY",
+          "name": "Segment",
+          "width": "fill_container",
+          "padding": [
+            16,
+            16,
+            8,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "a9BcW",
+              "name": "Lista",
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "ZnJoG",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "list",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "RgFil",
+                  "fill": "$text-muted",
+                  "content": "Lista",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iD26W",
+              "name": "Kalendar",
+              "fill": "$primary",
+              "cornerRadius": "$radius-sm",
+              "gap": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "Fma2M",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "calendar_month",
+                  "library": "Material Symbols Rounded",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "yogif",
+                  "fill": "#FFFFFF",
+                  "content": "Kalendar",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "J6AebN",
+          "name": "MjesecNav",
+          "width": "fill_container",
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "fNZ6u",
+              "width": 24,
+              "height": 24,
+              "icon": "chevron_left",
+              "library": "Material Symbols Rounded",
+              "fill": "$text"
+            },
+            {
+              "type": "text",
+              "id": "v4hbeR",
+              "fill": "$heading",
+              "content": "Jul 2026",
+              "fontFamily": "$font-heading",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "icon",
+              "id": "N1Kxk",
+              "width": 24,
+              "height": 24,
+              "icon": "chevron_right",
+              "library": "Material Symbols Rounded",
+              "fill": "$text"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "WYBwo",
+          "name": "Mreza",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 6,
+          "padding": [
+            0,
+            16,
+            16,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "WLLUV",
+              "name": "Dani",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ZSGQA",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "H87IHH",
+                      "fill": "$text-muted",
+                      "content": "P",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VmId2",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wYzh4",
+                      "fill": "$text-muted",
+                      "content": "U",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "d1Y5xK",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wh7Eo",
+                      "fill": "$text-muted",
+                      "content": "S",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "r3DDd",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DpPTl",
+                      "fill": "$text-muted",
+                      "content": "Č",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lszoh",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "O748e",
+                      "fill": "$text-muted",
+                      "content": "P",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XYEb0",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FJGVq",
+                      "fill": "$text-muted",
+                      "content": "S",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y64KR9",
+                  "width": "fill_container",
+                  "height": 24,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YofPZ",
+                      "fill": "$text-muted",
+                      "content": "N",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OzUAP",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K1yqA",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                },
+                {
+                  "type": "frame",
+                  "id": "r4shjf",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                },
+                {
+                  "type": "frame",
+                  "id": "IgKJT",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "FLXq0",
+                      "fill": "$text",
+                      "content": "1",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zeMLK",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Xyvg4",
+                      "fill": "$text",
+                      "content": "2",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j4qq5",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pfVbl",
+                      "fill": "$text",
+                      "content": "3",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LfWbJ",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JLbU7",
+                      "fill": "$text",
+                      "content": "4",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jkRQZ",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fPYkh",
+                      "fill": "$primary",
+                      "content": "5",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "P5UJh5",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$accent",
+                      "cornerRadius": 999
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q7K06",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "uQoTq",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "F31VsM",
+                      "fill": "$text",
+                      "content": "6",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wCISD",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xo6sx",
+                      "fill": "$text",
+                      "content": "7",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "O8QLA3",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "XdWmA",
+                      "fill": "$text",
+                      "content": "8",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "w77wAk",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "mPZnh",
+                      "fill": "$text",
+                      "content": "9",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "I5qJBL",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v5IigB",
+                      "fill": "$text",
+                      "content": "10",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pOVvT",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vmHb1",
+                      "fill": "$text",
+                      "content": "11",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "db01t",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "SBsOn",
+                      "fill": "$primary",
+                      "content": "12",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Q2UW9H",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$accent",
+                      "cornerRadius": 999
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "eNhFy",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bksnB",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dUJH1",
+                      "fill": "$text",
+                      "content": "13",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xtJrQ",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "xyJ54",
+                      "fill": "$text",
+                      "content": "14",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YfJ3B",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kwU5p",
+                      "fill": "$text",
+                      "content": "15",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "E6w1P",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pGGdu",
+                      "fill": "$text",
+                      "content": "16",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bIdtA",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "B13naY",
+                      "fill": "$text",
+                      "content": "17",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WbLWX",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "M0N6en",
+                      "fill": "$text",
+                      "content": "18",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Rl1bM",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NCwix",
+                      "fill": "$primary",
+                      "content": "19",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MYZMi",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$accent",
+                      "cornerRadius": 999
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fA3Q2",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "U4Ip4b",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YZ7K0",
+                      "fill": "$text",
+                      "content": "20",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "G2OqN",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "AzS6q",
+                      "fill": "$text",
+                      "content": "21",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RDxTa",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LGFoD",
+                      "fill": "$text",
+                      "content": "22",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "c00EkI",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "WGpeG",
+                      "fill": "$text",
+                      "content": "23",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "uLNaj",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "c113W",
+                      "fill": "$text",
+                      "content": "24",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "B89iX3",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "G7C92o",
+                      "fill": "$text",
+                      "content": "25",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "V23KIT",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "O1hyYs",
+                      "fill": "$primary",
+                      "content": "26",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "y74CW",
+                      "width": 5,
+                      "height": 5,
+                      "fill": "$accent",
+                      "cornerRadius": 999
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "V6Aqls",
+              "width": "fill_container",
+              "gap": 6,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "GLzhI",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DJSkP",
+                      "fill": "$text",
+                      "content": "27",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QXXEp",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IN0X8",
+                      "fill": "$text",
+                      "content": "28",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wh6ta",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fMHUH",
+                      "fill": "$text",
+                      "content": "29",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "vCzan",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "quO8f",
+                      "fill": "$text",
+                      "content": "30",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "DBAf4",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wve9Z",
+                      "fill": "$text",
+                      "content": "31",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jVISI",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                },
+                {
+                  "type": "frame",
+                  "id": "PRlSI",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "jb2OD",
+          "name": "Agenda",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            8,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "uskt8",
+              "fill": "$heading",
+              "content": "Događaji u julu",
+              "fontFamily": "$font-heading",
+              "fontSize": 18,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "CgPSn",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "niF9P",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "oOoy8",
+                      "fill": "$primary",
+                      "content": "05",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "e7WWRI",
+                      "fill": "$primary",
+                      "content": "JUL",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "v5oD7W",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "jvHBX",
+                      "fill": "$heading",
+                      "content": "Sajam domaćeg meda i rakije",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ckPbI",
+                      "fill": "$text-muted",
+                      "content": "09:00 · Centar",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "v8R8vT",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "chevron_right",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "m59Mv",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wjBgl",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YpjnJ",
+                      "fill": "$primary",
+                      "content": "12",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "CQ4lo",
+                      "fill": "$primary",
+                      "content": "JUL",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lES0z",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Xdjr9",
+                      "fill": "$heading",
+                      "content": "Ljetni festival Teslić 2026",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FXshW",
+                      "fill": "$text-muted",
+                      "content": "20:00 · Gradski trg",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "q8uFD",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "chevron_right",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Lexy7",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YMOd7",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qIVU8",
+                      "fill": "$primary",
+                      "content": "19",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "z6QxP",
+                      "fill": "$primary",
+                      "content": "JUL",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "a0EWyR",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZEH8k",
+                      "fill": "$heading",
+                      "content": "Planinarski uspon na Očauš",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "dqUm1",
+                      "fill": "$text-muted",
+                      "content": "07:00 · Planina Borja",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "V4kTs",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "chevron_right",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IxOTZ",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "gap": 12,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Y6jHD",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-sm",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "E5Fe6",
+                      "fill": "$primary",
+                      "content": "26",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 18,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "C88vyz",
+                      "fill": "$primary",
+                      "content": "JUL",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nKqSW",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vKvWj",
+                      "fill": "$heading",
+                      "content": "Wellness vikend u Banji Vrućici",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Q2X7lx",
+                      "fill": "$text-muted",
+                      "content": "Cijeli dan · Vrućica",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "icon",
+                  "id": "z3Te1l",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "chevron_right",
+                  "library": "Material Symbols Rounded",
+                  "fill": "$text-muted"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "mibRv",
+          "type": "ref",
+          "ref": "bIZ3V",
+          "name": "Footer/Mobile",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "e7KbgI",
+      "x": 8395,
+      "y": 2821,
+      "name": "Dogadjaji – Detalj – Mobile",
+      "width": 375,
+      "fill": "$surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "CUnuG",
+          "type": "ref",
+          "ref": "BlJdt",
+          "name": "Header/Mobile",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "xQrVA",
+          "name": "Breadcrumb",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "gap": 6,
+          "padding": [
+            12,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "T4aKU",
+              "fill": "$text-muted",
+              "content": "Događaji",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "WTImY",
+              "fill": "$border",
+              "content": "/",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "N33Az",
+              "fill": "$primary",
+              "content": "Ljetni festival",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "V6A3uP",
+          "name": "Hero",
+          "metadata": {
+            "type": "unsplash",
+            "username": "onthesearchforpineapples",
+            "link": "https://unsplash.com/@onthesearchforpineapples",
+            "author": "Colin Lloyd"
+          },
+          "width": "fill_container",
+          "height": 240,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "https://images.unsplash.com/photo-1619229725920-ac8b63b0631a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4MDl8&ixlib=rb-4.1.0&q=80&w=1080",
+            "mode": "fill"
+          },
+          "layout": "vertical",
+          "justifyContent": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "g6yoXc",
+              "name": "Sadrzaj",
+              "width": "fill_container",
+              "height": "fill_container",
+              "fill": "#12151c73",
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 16,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "kQxje",
+                  "name": "Badge",
+                  "fill": "$accent-tint",
+                  "cornerRadius": "$radius-pill",
+                  "gap": 6,
+                  "padding": [
+                    5,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "v9vjoE",
+                      "width": 6,
+                      "height": 6,
+                      "fill": "$accent-deep",
+                      "cornerRadius": 999
+                    },
+                    {
+                      "type": "text",
+                      "id": "qOfxF",
+                      "fill": "$accent-deep",
+                      "content": "Preporučeno",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "axDEo",
+                  "fill": "#FFFFFF",
+                  "content": "Ljetni festival Teslić 2026",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 26,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "wnNvm",
+                  "name": "Meta",
+                  "width": "fill_container",
+                  "gap": 14,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "B6Fu4U",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "bvPpC",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "calendar_month",
+                          "library": "Material Symbols Rounded",
+                          "fill": "#FFFFFF"
+                        },
+                        {
+                          "type": "text",
+                          "id": "UJ78C",
+                          "fill": "#FFFFFF",
+                          "content": "12. jul, 20:00",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VRgg3",
+                      "gap": 5,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "cKDse",
+                          "width": 15,
+                          "height": 15,
+                          "icon": "location_on",
+                          "library": "Material Symbols Rounded",
+                          "fill": "#FFFFFF"
+                        },
+                        {
+                          "type": "text",
+                          "id": "g9wc4T",
+                          "fill": "#FFFFFF",
+                          "content": "Gradski trg",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "nMZSW",
+          "name": "Sadrzaj",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "T83UY",
+              "name": "Opis",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "iCWOF",
+                  "fill": "$heading",
+                  "content": "O događaju",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "BvLpj",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Tradicionalni ljetni festival okuplja Teslić i okolinu uz koncerte, štandove domaćih proizvoda i program za djecu. Tri dana muzike, meda, rakije i sira ispod planine Borja.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "C3Bho",
+              "name": "Program",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "RxKLc",
+                  "fill": "$heading",
+                  "content": "Program",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "VPjRm",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "a3Ouv",
+                      "fill": "$primary",
+                      "content": "18:00",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NKhgy",
+                      "fill": "$text",
+                      "content": "Otvaranje i sajam domaćih proizvoda",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AOxvv",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "r5bIS",
+                      "fill": "$primary",
+                      "content": "20:00",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "vdyyV",
+                      "fill": "$text",
+                      "content": "Koncert KUD-a i lokalnih bendova",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xLQLD",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    10,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ceUtT",
+                      "fill": "$primary",
+                      "content": "22:30",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Z7mgt",
+                      "fill": "$text",
+                      "content": "Vatromet iznad Gradskog trga",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rklAP",
+              "name": "Galerija",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qdhIF",
+                  "fill": "$heading",
+                  "content": "Galerija",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 20,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "f27oiu",
+                  "name": "Grid",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-sm",
+                      "id": "G3s0hE",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "kymasm",
+                        "link": "https://unsplash.com/@kymasm",
+                        "author": "Kyle Smith"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1563902341721-029085ad9347?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4NDF8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 90
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-sm",
+                      "id": "qY64X",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "rsimmons_broadcast",
+                        "link": "https://unsplash.com/@rsimmons_broadcast",
+                        "author": "Rob Simmons"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/flagged/photo-1590425113058-3a2678b4cdad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 90
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RfVlZ",
+                  "name": "Grid2",
+                  "width": "fill_container",
+                  "gap": 8,
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-sm",
+                      "id": "JKWNx",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "wx1993",
+                        "link": "https://unsplash.com/@wx1993",
+                        "author": "Raychan"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1519356062432-974ef969719e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 90
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-sm",
+                      "id": "lu8bS",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "nsnclicks",
+                        "link": "https://unsplash.com/@nsnclicks",
+                        "author": "Saravanan Narayanan"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1777732786164-1f6e359e69ca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4NDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 90
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Of8bA",
+              "name": "InfoPanel",
+              "width": "fill_container",
+              "fill": "$surface-alt",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "layout": "vertical",
+              "padding": [
+                4,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rXdM2",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "uSb0x",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "calendar_month",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "E2GfO",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "j3DF6A",
+                          "fill": "$text-muted",
+                          "content": "Datum",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vz6j3",
+                          "fill": "$heading",
+                          "content": "12.–14. jul 2026.",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gmQE2",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "XDJPU",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "schedule",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wLS8A",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "brZcp",
+                          "fill": "$text-muted",
+                          "content": "Vrijeme",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Jk6hH",
+                          "fill": "$heading",
+                          "content": "20:00",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "RRmp4",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "V2l6Z",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "location_on",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "UKOfp",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "p2TmdX",
+                          "fill": "$text-muted",
+                          "content": "Lokacija",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "vGec5",
+                          "fill": "$heading",
+                          "content": "Gradski trg, Teslić",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "dewAS",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "h4UkJj",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "sell",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sT8rv",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "eS9vs",
+                          "fill": "$text-muted",
+                          "content": "Kategorija",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "FWndL",
+                          "fill": "$heading",
+                          "content": "Festival",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F0x66",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "padding": [
+                    12,
+                    0
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "fE1yi",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "groups",
+                      "library": "Material Symbols Rounded",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PdyOG",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "DjD6F",
+                          "fill": "$text-muted",
+                          "content": "Organizator",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "JrY30",
+                          "fill": "$heading",
+                          "content": "TO općine Teslić",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "500"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SKJ1a",
+              "name": "DodajKalendar",
+              "width": "fill_container",
+              "fill": "$primary",
+              "cornerRadius": "$radius-sm",
+              "gap": 8,
+              "padding": [
+                14,
+                20
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "m0HMp",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "calendar_add_on",
+                  "library": "Material Symbols Rounded",
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "C9nOY",
+                  "fill": "#FFFFFF",
+                  "content": "Dodaj u kalendar",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 15,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "AlBwd",
+          "name": "Sekcija/Povezano",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Z4SHTV",
+              "fill": "$heading",
+              "content": "Povezano",
+              "fontFamily": "$font-heading",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "id": "QZYtV",
+              "type": "ref",
+              "ref": "rpIjS",
+              "name": "Lokalitet",
+              "width": "fill_container",
+              "descendants": {
+                "M17A7": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1725118345680-fa4d12a3226a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "BwzWs": {
+                  "enabled": false
+                },
+                "HSYky": {
+                  "enabled": false
+                },
+                "CX9zu": {
+                  "content": "Banja Vrućica"
+                },
+                "VBaqU": {
+                  "content": "Termalni izvori i spa centar u blizini."
+                },
+                "odhRh": {
+                  "content": "Vrućica"
+                }
+              }
+            },
+            {
+              "id": "MbmIQ",
+              "type": "ref",
+              "ref": "iqLKa",
+              "name": "Prica",
+              "width": "fill_container",
+              "descendants": {
+                "b41LG": {
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1663668566973-d59d0b177524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzI4Njl8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  }
+                },
+                "ABqHo": {
+                  "enabled": false
+                },
+                "zJouG/z0EoG": {
+                  "content": "Naša svakodnevica"
+                },
+                "P54qzk": {
+                  "content": "Festival kroz godine"
+                },
+                "nMuOh": {
+                  "content": "Redakcija · 01.06.2026."
+                },
+                "iiQIn": {
+                  "content": "Kako je ljetni festival postao zaštitni znak Teslića."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "Qye05",
+          "type": "ref",
+          "ref": "bIZ3V",
+          "name": "Footer/Mobile",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hcKSd",
+      "x": 8829,
+      "y": 2821,
+      "name": "Dogadjaji – Lista – Prazno",
+      "width": 1440,
+      "fill": "$surface-alt",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "h1UAXI",
+          "type": "ref",
+          "ref": "JKDc7",
+          "name": "Header/Desktop",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "MrNHQ",
+          "name": "Breadcrumb",
+          "width": "fill_container",
+          "fill": "$surface",
+          "gap": 8,
+          "padding": [
+            16,
+            120
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "TSI4w",
+              "fill": "$text-muted",
+              "content": "Početna",
+              "fontFamily": "$font-sans",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "F7KC3",
+              "fill": "$border",
+              "content": "/",
+              "fontFamily": "$font-sans",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "mCAXY",
+              "fill": "$primary",
+              "content": "Događaji",
+              "fontFamily": "$font-sans",
+              "fontSize": 14,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oUOO8",
+          "name": "Naslov",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": [
+            40,
+            120,
+            16,
+            120
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "IBotn",
+              "fill": "$heading",
+              "content": "Događaji",
+              "fontFamily": "$font-heading",
+              "fontSize": 32,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "K1gdRJ",
+              "fill": "$text-muted",
+              "content": "Festivali, sajmovi i manifestacije u Tesliću i okolini.",
+              "fontFamily": "$font-sans",
+              "fontSize": 16,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "luEcq",
+          "name": "FilterTraka",
+          "width": "fill_container",
+          "gap": 10,
+          "padding": [
+            8,
+            120,
+            24,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "vnelf",
+              "type": "ref",
+              "ref": "x2JVO",
+              "name": "Chip/Uklonjiv"
+            },
+            {
+              "id": "or68t",
+              "type": "ref",
+              "ref": "x2JVO",
+              "name": "Chip/Uklonjiv"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "kLwhB",
+          "name": "PraznoWrap",
+          "width": "fill_container",
+          "padding": [
+            80,
+            120,
+            120,
+            120
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "id": "KGuQj",
+              "type": "ref",
+              "ref": "YxwFN",
+              "name": "PraznoStanje",
+              "descendants": {
+                "i9bch": {
+                  "content": "Nema događaja za izabrane filtere"
+                },
+                "I1RwXa": {
+                  "content": "Pokušajte da uklonite neke filtere ili odaberete drugi period."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "q0uux",
+          "type": "ref",
+          "ref": "gTB1e",
+          "name": "Footer",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "bIZ3V",
+      "x": 10269,
+      "y": 2821,
+      "name": "Footer/Mobile",
+      "reusable": true,
+      "clip": true,
+      "width": 375,
+      "fill": "$surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "tVqqA",
+          "name": "Brend",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 14,
+          "padding": [
+            36,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "wsMB3",
+              "fill": "$primary",
+              "content": "teslić",
+              "fontFamily": "$font-heading",
+              "fontSize": 24,
+              "fontWeight": "800",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "text",
+              "id": "Wsq9t",
+              "fill": "$text-muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Zvanična platforma za promociju turističke ponude, lokalnih proizvoda i usluga općine Teslić.",
+              "lineHeight": 1.6,
+              "fontFamily": "$font-sans",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "RC6u5",
+              "name": "Mreže",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YUWQ8",
+                  "name": "facebook",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "$surface-alt",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "We5jR",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "facebook",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GiLL4",
+                  "name": "instagram",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "$surface-alt",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "vakPf",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "instagram",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Hb5pr",
+                  "name": "youtube",
+                  "width": 36,
+                  "height": 36,
+                  "fill": "$surface-alt",
+                  "cornerRadius": 999,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "a0EgCa",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "youtube",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "i5zqv",
+          "name": "Linkovi",
+          "width": "fill_container",
+          "gap": 16,
+          "padding": [
+            8,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "mrXiQ",
+              "name": "BRZI LINKOVI",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "pZ0N7",
+                  "fill": "$text-muted",
+                  "content": "BRZI LINKOVI",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "xOOZt",
+                  "fill": "$text",
+                  "content": "Početna",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "F0dPkU",
+                  "fill": "$text",
+                  "content": "O projektu",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "xd6wF",
+                  "fill": "$text",
+                  "content": "Događaji",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Y6NzK",
+                  "fill": "$text",
+                  "content": "Pridruži se",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "IKgtM",
+              "name": "ISTRAŽI",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "a8sKj",
+                  "fill": "$text-muted",
+                  "content": "ISTRAŽI",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1
+                },
+                {
+                  "type": "text",
+                  "id": "E7vVGm",
+                  "fill": "$text",
+                  "content": "Domaće je najbolje",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Agb8R",
+                  "fill": "$text",
+                  "content": "Turizam u Tesliću",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "D9LnXg",
+                  "fill": "$text",
+                  "content": "Mapa ponude",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "dLxzu",
+                  "fill": "$text",
+                  "content": "Priče iz Teslića",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "FeonP",
+          "name": "Kontakt",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            0,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "zmou2",
+              "fill": "$text-muted",
+              "content": "KONTAKT",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "JoFcA",
+              "width": "fill_container",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "uKusf",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "map-pin",
+                  "library": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "shkmg",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Svetog Save 15, 74270 Teslić",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "N4FG2R",
+              "width": "fill_container",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "hdE7h",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "phone",
+                  "library": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "gc6FF",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "053/430-058",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S2ufq",
+              "width": "fill_container",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "SUhgH",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "mail",
+                  "library": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "IsJ0F",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "turistorg.teslic@gmail.com",
+                  "lineHeight": 1.4,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "l7Ello",
+          "name": "Partneri",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": [
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "OL1yO",
+              "fill": "$text-muted",
+              "content": "PARTNERI PROJEKTA",
+              "fontFamily": "$font-sans",
+              "fontSize": 12,
+              "fontWeight": "700",
+              "letterSpacing": 1
+            },
+            {
+              "type": "frame",
+              "id": "bT2wd",
+              "name": "Logotipi",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n3KTg",
+                  "name": "Partner 1",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "stroke": "$border",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rODUp",
+                      "fill": "$text-muted",
+                      "content": "Partner 1",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "J1XeG",
+                  "name": "Partner 2",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "stroke": "$border",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aK9w1",
+                      "fill": "$text-muted",
+                      "content": "Partner 2",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "VRpGr",
+                  "name": "Partner 3",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "stroke": "$border",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zlTV8",
+                      "fill": "$text-muted",
+                      "content": "Partner 3",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rRJOa",
+                  "name": "Partner 4",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-sm",
+                  "stroke": "$border",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "S5VwgO",
+                      "fill": "$text-muted",
+                      "content": "Partner 4",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "v5T9Q",
+          "name": "Pravna traka",
+          "width": "fill_container",
+          "fill": "$primary-darker",
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "nrhDd",
+              "fill": "$primary-tint",
+              "content": "© 2026 TO Teslić. Sva prava zadržana.",
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "c5nqSm",
+              "fill": "$primary-tint",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Politika privatnosti · Politika kolačića · Uslovi korištenja",
+              "lineHeight": 1.5,
+              "fontFamily": "$font-sans",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
     }
   ],
   "variables": {
