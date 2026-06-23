@@ -22,8 +22,12 @@
 - [ ] 08_Price — Listing + Detalj × D/M
 - [ ] 09_Pridruzi-se — Hub + Forme × D/M
 - [ ] 10_Kontakt — Desktop + Mobile
-- [ ] 11_AuthFoundations — komponente (auth)
-- [ ] 12_Prijava — Desktop + Mobile
+- [x] **11_AuthFoundations — komponente GOTOVE** → `src/components/account/`: AccountSidebar (MOJ NALOG + Moj profil/Moje objave/Oglasi/Mediji/Postavke), AccountTabs (mobilni pill-tabovi), PostRow (RedObjave: thumb+naslov+meta+status+pencil/trash), AvatarUpload (72 krug + „Promijeni fotografiju" + hint), ToggleSwitch (44×24 teal), RichEditor (toolbar bold/italic/heading/list/link/image/quote + polje). StatusBadge varijante = pokriva BaseBadge. *(napomena: .pen fajlovi se uređuju uživo — ID-jevi se mijenjaju među pozivima)*
+- [x] **12_Prijava — GOTOVO 1:1** → rute `/prijava`, `/zaboravljena-lozinka`, `/registracija`:
+  - `LoginView` (kartica 420: Prijava + E-mail/Lozinka + Zapamti me/Zaboravljena + Prijava + „Nemaš nalog? Pridruži se") sa stanjima: **greška** (alert + crvena polja + rate-limit nota) i **NalogNaOdobrenju** (badge „Na odobrenju" + info alert clock-3) — preko `?stanje=greska|odobrenje`.
+  - `ForgotPasswordView` (kartica + uputstvo + e-mail + „Pošalji link za reset" + „Nazad na prijavu"; stanje **Uspjeh** = „Provjerite e-mail" + Alert/Uspjeh).
+  - `RegisterChoiceView` („Napravi nalog" + 2 kartice Registruj biznis/Postani autor + info nota).
+  - Header „Prijava" link → `/prijava` (desktop + drawer). Verifikovano screenshotom.
 - [ ] 13_Moj-profil — Biznis dashboard ×5 + Autor dashboard ×4 + Mobile + Panel stanja
 
 ---

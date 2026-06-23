@@ -88,7 +88,7 @@ watch(open, (v) => {
             <BaseButton to="/pridruzi-se" variant="primary" block @click="close">
               Pridruži se
             </BaseButton>
-            <BaseButton href="#" variant="ghost" block>Prijava</BaseButton>
+            <BaseButton to="/prijava" variant="ghost" block @click="close">Prijava</BaseButton>
           </div>
         </aside>
       </div>

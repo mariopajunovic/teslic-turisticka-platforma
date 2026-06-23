@@ -88,7 +88,7 @@ function submitSearch() {
 
         <!-- Desktop akcije (wrapper kontroliše vidljivost; BaseButton ima vlastiti inline-flex) -->
         <div class="hidden items-center gap-2 lg:flex">
-          <BaseButton href="#" variant="ghost" size="sm">Prijava</BaseButton>
+          <BaseButton to="/prijava" variant="ghost" size="sm">Prijava</BaseButton>
           <BaseButton to="/pridruzi-se" variant="primary" size="sm">Pridruži se</BaseButton>
         </div>
 

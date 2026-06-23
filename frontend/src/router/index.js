@@ -51,6 +51,15 @@ const routes = [
 
   { path: '/kontakt', name: 'contact', component: () => import('@/views/ContactView.vue') },
 
+  // Nalog / auth (12_Prijava)
+  { path: '/prijava', name: 'login', component: () => import('@/views/LoginView.vue') },
+  {
+    path: '/zaboravljena-lozinka',
+    name: 'forgot-password',
+    component: () => import('@/views/ForgotPasswordView.vue'),
+  },
+  { path: '/registracija', name: 'register', component: () => import('@/views/RegisterChoiceView.vue') },
+
   {
     path: '/politika-privatnosti',
     name: 'privacy',
