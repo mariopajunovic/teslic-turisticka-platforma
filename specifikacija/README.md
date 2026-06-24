@@ -41,6 +41,11 @@ Svaki dokument prati istu logiku, korisnu za skiciranje:
 | 09 | Pridruži se | Registruj biznis · Uključi se kao autor | [stranice/09-pridruzi-se.md](stranice/09-pridruzi-se.md) |
 | 10 | Kontakt | — | [stranice/10-kontakt.md](stranice/10-kontakt.md) |
 
+### 🧩 Backend / tehnička realizacija (Laravel + Filament + Inertia/Vue)
+> Tehnička razrada: monolit Laravel, Filament admin (`/admin`), Inertia+Vue front (reuse `frontend/` komponenti), potpuni CMS block-builder, role-based auth (users + admins).
+- [backend/](backend/README.md) — start (odluke, indeks)
+- [backend/00 — Arhitektura i tech stack](backend/00-arhitektura-i-tech-stack.md) · [01 — Model podataka](backend/01-model-podataka.md) · [02 — Filament admin](backend/02-filament-admin.md) · [03 — CMS modularnost](backend/03-cms-modularnost.md) · [04 — Inertia front](backend/04-inertia-frontend.md) · [05 — Auth i sigurnost](backend/05-auth-uloge-sigurnost.md) · [06 — Plan po fazama](backend/06-plan-po-fazama.md)
+
 ### Administracija
 - [11 — Administrativni panel (backend)](administracija/11-admin-panel.md)
 - [12 — Korisničke uloge i workflow odobravanja](administracija/12-korisnicke-uloge-i-workflow.md)

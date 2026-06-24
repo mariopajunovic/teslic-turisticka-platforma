@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "stari-zanati-borje",
+    "naslov": "Stari zanati Borje",
+    "opis": "Tradicionalna izrada drvenih suvenira i predmeta domaće radinosti.",
+    "kategorija": { "label": "Zanat", "icon": "zanat" },
+    "lokacija": "Borje, Teslić",
+    "slika": "",
+    "preporuceno": true,
+    "opisDug": "Porodična radionica koja već tri generacije njeguje tradicionalnu obradu drveta. Izrađujemo suvenire, posuđe i ukrasne predmete od domaćeg drveta planine Borje, po starim uzorima i ručno.",
+    "galerija": [{ "src": "", "alt": "Radionica" }, { "src": "", "alt": "Suveniri" }, { "src": "", "alt": "Detalj" }],
+    "kontakt": {
+      "telefon": "065/123-456",
+      "email": "zanati.borje@example.com",
+      "web": "www.zanati-borje.ba",
+      "radnoVrijeme": "Pon–Sub 09:00–17:00",
+      "adresa": "Borje bb, 74270 Teslić"
+    },
+    "lat": 44.652,
+    "lng": 17.8
+  },
+  {
+    "slug": "pcelarstvo-vrucica",
+    "naslov": "Pčelarstvo Vrućica",
+    "opis": "Domaći med, vosak i pčelinji proizvodi sa obronaka planine Borje.",
+    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
+    "lokacija": "Banja Vrućica",
+    "slika": "",
+    "preporuceno": true,
+    "opisDug": "Pčelinjak smješten na čistim livadama iznad Banje Vrućice. Nudimo livadski i bagremov med, propolis, polen i vosak. Moguća posjeta pčelinjaku uz najavu.",
+    "galerija": [{ "src": "", "alt": "Pčelinjak" }, { "src": "", "alt": "Med" }],
+    "kontakt": {
+      "telefon": "065/234-567",
+      "email": "med.vrucica@example.com",
+      "web": "",
+      "radnoVrijeme": "Svaki dan 08:00–19:00",
+      "adresa": "Banja Vrućica bb, 74270 Teslić"
+    },
+    "lat": 44.63,
+    "lng": 17.85
+  },
+  {
+    "slug": "rakija-ocaus",
+    "naslov": "Rakija Očauš",
+    "opis": "Šljivovica i travarica po recepturi koja se prenosi generacijama.",
+    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
+    "lokacija": "Očauš",
+    "slika": "",
+    "preporuceno": false,
+    "opisDug": "Mala destilerija domaćih rakija. Pečemo šljivovicu, krušku i travaricu od voća iz vlastitih voćnjaka, bez aditiva. Degustacija uz najavu.",
+    "galerija": [{ "src": "", "alt": "Kazan" }, { "src": "", "alt": "Boce" }],
+    "kontakt": {
+      "telefon": "065/345-678",
+      "email": "rakija.ocaus@example.com",
+      "web": "",
+      "radnoVrijeme": "Uz najavu",
+      "adresa": "Očauš bb, 74270 Teslić"
+    },
+    "lat": 44.69,
+    "lng": 17.81
+  },
+  {
+    "slug": "servis-teslic",
+    "naslov": "Servis i usluge Teslić",
+    "opis": "Pouzdane lokalne usluge i servisi za domaćinstvo i turiste.",
+    "kategorija": { "label": "Usluge i servisi", "icon": "usluge" },
+    "lokacija": "Teslić, centar",
+    "slika": "",
+    "preporuceno": false,
+    "opisDug": "Univerzalni servis za male popravke, iznajmljivanje opreme i pomoć turistima u organizaciji boravka u Tesliću i okolini.",
+    "galerija": [{ "src": "", "alt": "Radionica" }],
+    "kontakt": {
+      "telefon": "053/430-100",
+      "email": "servis.teslic@example.com",
+      "web": "www.servis-teslic.ba",
+      "radnoVrijeme": "Pon–Pet 08:00–16:00",
+      "adresa": "Svetog Save 20, 74270 Teslić"
+    },
+    "lat": 44.6078,
+    "lng": 17.8569
+  },
+  {
+    "slug": "sir-i-kajmak-blatnica",
+    "naslov": "Domaći sir i kajmak Blatnica",
+    "opis": "Svježi sir, kajmak i mliječni proizvodi sa porodičnog imanja.",
+    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
+    "lokacija": "Blatnica",
+    "slika": "",
+    "preporuceno": false,
+    "opisDug": "Porodično poljoprivredno gazdinstvo koje proizvodi tradicionalni sir, kajmak i pavlaku od mlijeka krava s vlastitih pašnjaka.",
+    "galerija": [{ "src": "", "alt": "Imanje" }, { "src": "", "alt": "Sir" }],
+    "kontakt": {
+      "telefon": "065/456-789",
+      "email": "blatnica.mlijeko@example.com",
+      "web": "",
+      "radnoVrijeme": "Svaki dan 07:00–18:00",
+      "adresa": "Blatnica bb, 74270 Teslić"
+    },
+    "lat": 44.58,
+    "lng": 17.9
+  },
+  {
+    "slug": "suvenirnica-teslic",
+    "naslov": "Suvenirnica Teslić",
+    "opis": "Rukotvorine, razglednice i pokloni s motivima Teslića i Borja.",
+    "kategorija": { "label": "Zanat", "icon": "zanat" },
+    "lokacija": "Teslić, centar",
+    "slika": "",
+    "preporuceno": false,
+    "opisDug": "Mjesto gdje na jednom mjestu možete pronaći radove lokalnih zanatlija — od drvenih suvenira do ručno rađenog nakita i tekstila.",
+    "galerija": [{ "src": "", "alt": "Izlog" }],
+    "kontakt": {
+      "telefon": "053/430-200",
+      "email": "suveniri.teslic@example.com",
+      "web": "",
+      "radnoVrijeme": "Pon–Sub 09:00–20:00",
+      "adresa": "Karađorđeva 5, 74270 Teslić"
+    },
+    "lat": 44.608,
+    "lng": 17.857
+  }
+]

@@ -1,0 +1,46 @@
+[
+  {
+    "slug": "konobar-kardial",
+    "naslov": "Traži se konobar — Banja Vrućica",
+    "vrsta": { "label": "Posao", "icon": "briefcase" },
+    "izdavac": "Hotel Kardial",
+    "lokacija": "Banja Vrućica",
+    "rok": "30.07.2026.",
+    "isteklo": false,
+    "opisDug": "Hotel Kardial traži konobara za rad u restoranu. Potrebno iskustvo na sličnim poslovima i ljubaznost prema gostima. Nudimo stalan posao i smještaj.",
+    "kontakt": { "osoba": "Kadrovska služba", "telefon": "053/200-100", "email": "posao@kardial.example.com" }
+  },
+  {
+    "slug": "najam-prostora",
+    "naslov": "Izdaje se poslovni prostor u centru",
+    "vrsta": { "label": "Nekretnine", "icon": "building-2" },
+    "izdavac": "Privatni oglašivač",
+    "lokacija": "Teslić, centar",
+    "rok": "15.08.2026.",
+    "isteklo": false,
+    "opisDug": "Poslovni prostor 45 m² u strogom centru Teslića, pogodan za kancelariju ili manju radnju. Renoviran, sa grijanjem i izlogom.",
+    "kontakt": { "osoba": "Marko", "telefon": "065/500-600", "email": "" }
+  },
+  {
+    "slug": "prodaja-pcelinjih-proizvoda",
+    "naslov": "Prodaja pčelinjih proizvoda na veliko",
+    "vrsta": { "label": "Ponuda", "icon": "tag" },
+    "izdavac": "Pčelarstvo Vrućica",
+    "lokacija": "Banja Vrućica",
+    "rok": "01.09.2026.",
+    "isteklo": false,
+    "opisDug": "Nudimo med, propolis i polen na veliko za trgovine i ugostiteljske objekte. Moguća redovna isporuka.",
+    "kontakt": { "osoba": "Pčelarstvo Vrućica", "telefon": "065/234-567", "email": "med.vrucica@example.com" }
+  },
+  {
+    "slug": "sezonski-beraci",
+    "naslov": "Sezonski berači voća",
+    "vrsta": { "label": "Posao", "icon": "briefcase" },
+    "izdavac": "OPG Borje",
+    "lokacija": "Borje",
+    "rok": "01.06.2026.",
+    "isteklo": true,
+    "opisDug": "Potrebni sezonski radnici za berbu voća tokom ljeta. Oglas je istekao.",
+    "kontakt": { "osoba": "OPG Borje", "telefon": "065/700-800", "email": "" }
+  }
+]

@@ -9682,238 +9682,198 @@
       "width": 1440,
       "fill": "$surface",
       "stroke": "$border",
-      "strokeWidth": {
-        "bottom": 1
-      },
       "strokeAlignment": "inner",
-      "padding": [
-        14,
-        120
-      ],
-      "alignItems": "center",
+      "layout": "vertical",
       "children": [
         {
-          "type": "text",
-          "id": "g3mc9u",
-          "name": "Logo",
-          "fill": "$primary",
-          "content": "teslić",
-          "fontFamily": "$font-heading",
-          "fontSize": 26,
-          "fontWeight": "800",
-          "letterSpacing": -0.5
-        },
-        {
           "type": "frame",
-          "id": "FPNCv",
-          "name": "Nav",
-          "gap": 22,
+          "id": "oeKW4",
+          "name": "TopTraka",
+          "width": "fill_container",
+          "fill": "$primary-darker",
           "padding": [
-            0,
-            0,
-            0,
-            40
+            9,
+            120
           ],
+          "justifyContent": "space_between",
           "alignItems": "center",
           "children": [
             {
               "type": "frame",
-              "id": "vMLpp",
-              "name": "Početna",
-              "gap": 3,
+              "id": "GTimP",
+              "gap": 20,
               "alignItems": "center",
               "children": [
                 {
+                  "type": "frame",
+                  "id": "KMEDZ",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "o1B0h",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "phone",
+                      "library": "lucide",
+                      "fill": "$primary-tint"
+                    },
+                    {
+                      "type": "text",
+                      "id": "kCdE5",
+                      "fill": "$primary-tint",
+                      "content": "053/430-058",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "w9SGf",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "xctzr",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "mail",
+                      "library": "lucide",
+                      "fill": "$primary-tint"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lIX7k",
+                      "fill": "$primary-tint",
+                      "content": "turistorg.teslic@gmail.com",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Gbnz4",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "QIGBy",
+                  "gap": 5,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "LZxXe",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "globe",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "G3Qnwp",
+                      "fill": "#FFFFFF",
+                      "content": "SR",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nLJf4",
+                      "fill": "$primary-tint-2",
+                      "content": "|",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "RpS9D",
+                      "fill": "$primary-tint",
+                      "content": "EN",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Qpt4T",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "gbFjh",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "facebook",
+                      "library": "lucide",
+                      "fill": "$primary-tint"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "P9UHXc",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "instagram",
+                      "library": "lucide",
+                      "fill": "$primary-tint"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "wnMuv",
+                      "width": 15,
+                      "height": 15,
+                      "icon": "youtube",
+                      "library": "lucide",
+                      "fill": "$primary-tint"
+                    }
+                  ]
+                },
+                {
                   "type": "text",
-                  "id": "D4ZHJ",
-                  "name": "T",
-                  "fill": "$primary",
-                  "content": "Početna",
+                  "id": "IahdR",
+                  "fill": "#FFFFFF",
+                  "content": "Prijava",
                   "fontFamily": "$font-sans",
-                  "fontSize": 14,
+                  "fontSize": 13,
                   "fontWeight": "600"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "VURuJ",
-              "name": "Domaće je najbolje",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "j2ZhgN",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Domaće je najbolje",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
                 },
                 {
-                  "type": "icon",
-                  "id": "PZglu",
-                  "name": "Caret",
-                  "width": 14,
-                  "height": 14,
-                  "icon": "chevron-down",
-                  "library": "lucide",
-                  "fill": "$text-muted"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "h8ban",
-              "name": "Turizam",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "FahEi",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Turizam",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                },
-                {
-                  "type": "icon",
-                  "id": "roPzc",
-                  "name": "Caret",
-                  "width": 14,
-                  "height": 14,
-                  "icon": "chevron-down",
-                  "library": "lucide",
-                  "fill": "$text-muted"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "Raof7",
-              "name": "Događaji",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "UKSqz",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Događaji",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "UnGos",
-              "name": "Oglasi",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "EaoYu",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Oglasi",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "e1h1o",
-              "name": "Mapa",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "gl6B8",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Mapa",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "S0fv2T",
-              "name": "Priče",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "JT7mX",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Priče",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                },
-                {
-                  "type": "icon",
-                  "id": "j8kt1z",
-                  "name": "Caret",
-                  "width": 14,
-                  "height": 14,
-                  "icon": "chevron-down",
-                  "library": "lucide",
-                  "fill": "$text-muted"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "uQ4Ew",
-              "name": "O projektu",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "o4ID6",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "O projektu",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
-                }
-              ]
-            },
-            {
-              "type": "frame",
-              "id": "LjmF8",
-              "name": "Kontakt",
-              "gap": 3,
-              "alignItems": "center",
-              "children": [
-                {
-                  "type": "text",
-                  "id": "wEbnP",
-                  "name": "T",
-                  "fill": "$text",
-                  "content": "Kontakt",
-                  "fontFamily": "$font-sans",
-                  "fontSize": 14,
-                  "fontWeight": "500"
+                  "type": "frame",
+                  "id": "iAoz2",
+                  "name": "Pridruzi",
+                  "fill": "$secondary",
+                  "cornerRadius": "$radius-sm",
+                  "padding": [
+                    6,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "L8vuPr",
+                      "fill": "$heading",
+                      "content": "Pridruži se",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
                 }
               ]
             }
@@ -9921,21 +9881,186 @@
         },
         {
           "type": "frame",
-          "id": "fUanJ",
-          "name": "Spacer",
+          "id": "S4qyT7",
+          "name": "GlavnaTraka",
           "width": "fill_container",
-          "height": 1
-        },
-        {
-          "type": "frame",
-          "id": "HxEqS",
-          "name": "Akcije",
-          "gap": 12,
+          "fill": "$surface",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            15,
+            120
+          ],
           "alignItems": "center",
           "children": [
             {
+              "type": "text",
+              "id": "lif28",
+              "name": "Logo",
+              "fill": "$primary",
+              "content": "teslić",
+              "fontFamily": "$font-heading",
+              "fontSize": 26,
+              "fontWeight": "800",
+              "letterSpacing": -0.5
+            },
+            {
               "type": "frame",
-              "id": "N9Qth",
+              "id": "wduys",
+              "name": "Nav",
+              "gap": 24,
+              "padding": [
+                0,
+                0,
+                0,
+                40
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "J4qzc",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "BcDgY",
+                      "fill": "$text",
+                      "content": "Domaće je najbolje",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "R6Ehn",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XHuYP",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DDici",
+                      "fill": "$text",
+                      "content": "Turizam",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "beych",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "XShNY",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "olG25",
+                      "fill": "$text",
+                      "content": "Događaji",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cdVkK",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "zl1xD",
+                      "fill": "$text",
+                      "content": "Oglasi",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "BV8GB",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JO9vJ",
+                      "fill": "$text",
+                      "content": "Mapa",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "P6lWK",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RNEgy",
+                      "fill": "$text",
+                      "content": "Priče",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "Btg7X",
+                      "width": 14,
+                      "height": 14,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "g3Jafu",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "BVogS",
               "name": "Pretraga",
               "width": 40,
               "height": 40,
@@ -9946,8 +10071,7 @@
               "children": [
                 {
                   "type": "icon",
-                  "id": "eYhlt",
-                  "name": "I",
+                  "id": "ASgzi",
                   "width": 18,
                   "height": 18,
                   "icon": "search",
@@ -9955,34 +10079,6 @@
                   "fill": "$text"
                 }
               ]
-            },
-            {
-              "id": "dCRjf",
-              "type": "ref",
-              "ref": "tJvAf",
-              "name": "Prijava",
-              "descendants": {
-                "nNpQJ": {
-                  "enabled": false
-                },
-                "Jusk0": {
-                  "content": "Prijava"
-                }
-              }
-            },
-            {
-              "id": "QgQoz",
-              "type": "ref",
-              "ref": "FeIw8",
-              "name": "Pridruži se",
-              "descendants": {
-                "nDDpQ": {
-                  "enabled": false
-                },
-                "fFROY": {
-                  "content": "Pridruži se"
-                }
-              }
             }
           ]
         }
@@ -9998,76 +10094,170 @@
       "width": 375,
       "fill": "$surface",
       "stroke": "$border",
-      "strokeWidth": {
-        "bottom": 1
-      },
       "strokeAlignment": "inner",
-      "padding": [
-        10,
-        16
-      ],
-      "justifyContent": "space_between",
-      "alignItems": "center",
+      "layout": "vertical",
       "children": [
         {
-          "type": "text",
-          "id": "L2lRLF",
-          "name": "Logo",
-          "fill": "$primary",
-          "content": "teslić",
-          "fontFamily": "$font-heading",
-          "fontSize": 22,
-          "fontWeight": "800",
-          "letterSpacing": -0.5
-        },
-        {
           "type": "frame",
-          "id": "wgc0k",
-          "name": "Akcije",
-          "gap": 4,
+          "id": "qTosO",
+          "name": "TopTraka",
+          "width": "fill_container",
+          "fill": "$primary-darker",
+          "padding": [
+            8,
+            16
+          ],
+          "justifyContent": "space_between",
           "alignItems": "center",
           "children": [
             {
               "type": "frame",
-              "id": "KDjCi",
-              "name": "Pretraga",
-              "width": 40,
-              "height": 40,
-              "cornerRadius": "$radius-sm",
-              "justifyContent": "center",
+              "id": "NqtHT",
+              "gap": 6,
               "alignItems": "center",
               "children": [
                 {
                   "type": "icon",
-                  "id": "fmXly",
-                  "name": "I",
-                  "width": 20,
-                  "height": 20,
-                  "icon": "search",
+                  "id": "lxCim",
+                  "width": 13,
+                  "height": 13,
+                  "icon": "phone",
                   "library": "lucide",
-                  "fill": "$text"
+                  "fill": "$primary-tint"
+                },
+                {
+                  "type": "text",
+                  "id": "q509XU",
+                  "fill": "$primary-tint",
+                  "content": "053/430-058",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
                 }
               ]
             },
             {
               "type": "frame",
-              "id": "GpuTU",
-              "name": "Meni",
-              "width": 40,
-              "height": 40,
-              "cornerRadius": "$radius-sm",
-              "justifyContent": "center",
+              "id": "G8gVF",
+              "gap": 5,
               "alignItems": "center",
               "children": [
                 {
                   "type": "icon",
-                  "id": "M7LsS",
-                  "name": "I",
-                  "width": 22,
-                  "height": 22,
-                  "icon": "menu",
+                  "id": "GWySG",
+                  "width": 13,
+                  "height": 13,
+                  "icon": "globe",
                   "library": "lucide",
-                  "fill": "$heading"
+                  "fill": "#FFFFFF"
+                },
+                {
+                  "type": "text",
+                  "id": "ldzXK",
+                  "fill": "#FFFFFF",
+                  "content": "SR",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "CIBk0",
+                  "fill": "$primary-tint-2",
+                  "content": "|",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "e0qw8",
+                  "fill": "$primary-tint",
+                  "content": "EN",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wl27J",
+          "name": "GlavnaTraka",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            12,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "FYxP1",
+              "name": "Logo",
+              "fill": "$primary",
+              "content": "teslić",
+              "fontFamily": "$font-heading",
+              "fontSize": 22,
+              "fontWeight": "800",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "frame",
+              "id": "YKx2e",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "hI3Gf",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$surface-alt",
+                  "cornerRadius": "$radius-sm",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "tKbwx",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "search",
+                      "library": "lucide",
+                      "fill": "$text"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Z3eQ9j",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$surface-alt",
+                  "cornerRadius": "$radius-sm",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "xeGXo",
+                      "width": 20,
+                      "height": 20,
+                      "icon": "menu",
+                      "library": "lucide",
+                      "fill": "$text"
+                    }
+                  ]
                 }
               ]
             }
@@ -12164,7 +12354,8 @@
               "fill": "$text-muted",
               "content": "Pregled",
               "fontFamily": "$font-sans",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             }
           ]
         },
@@ -12211,7 +12402,8 @@
               "fill": "$text-muted",
               "content": "Odobrenje",
               "fontFamily": "$font-sans",
-              "fontSize": 14
+              "fontSize": 14,
+              "fontWeight": "normal"
             }
           ]
         }
@@ -12631,6 +12823,546 @@
               "type": "ref",
               "ref": "MrH78",
               "name": "BlokOAutoru instanca"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "A4vKu0",
+      "x": 13200,
+      "y": 3000,
+      "name": "Header/Mobile — v2 — Meni otvoren",
+      "width": 375,
+      "height": 778,
+      "fill": "$surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "wyO4B",
+          "name": "Vrh",
+          "width": "fill_container",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            14,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "E6NwI",
+              "fill": "$primary",
+              "content": "teslić",
+              "fontFamily": "$font-heading",
+              "fontSize": 22,
+              "fontWeight": "800",
+              "letterSpacing": -0.5
+            },
+            {
+              "type": "frame",
+              "id": "M0xs6o",
+              "width": 40,
+              "height": 40,
+              "fill": "$surface-alt",
+              "cornerRadius": "$radius-sm",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "V2iqi",
+                  "width": 20,
+                  "height": 20,
+                  "icon": "x",
+                  "library": "lucide",
+                  "fill": "$text"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DNoRu",
+          "name": "Sadrzaj",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            16,
+            16,
+            20,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Xgp6C",
+              "name": "Pretraga",
+              "width": "fill_container",
+              "height": 46,
+              "fill": "$surface-alt",
+              "cornerRadius": "$radius-sm",
+              "gap": 10,
+              "padding": [
+                0,
+                14
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "gVrIn",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "XicoC",
+                  "fill": "$text-muted",
+                  "content": "Pretraži ponudu, događaje, priče…",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "R4s9Bn",
+              "name": "Nav",
+              "width": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                12,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "y3RlW3",
+                  "name": "Domaće",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "q6kngM",
+                      "width": "fill_container",
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-sm",
+                      "padding": 12,
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "F2LnC",
+                          "fill": "$primary",
+                          "content": "Domaće je najbolje",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "vDzqS",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "chevron-up",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MYw8X",
+                      "name": "Pod",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "padding": [
+                        4,
+                        12,
+                        8,
+                        24
+                      ],
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "vQi19",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "p7M2M",
+                              "fill": "$text-muted",
+                              "content": "Zanatstvo",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "BM3DY",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "WDd8s",
+                              "fill": "$text-muted",
+                              "content": "Hrana i piće",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Q7uJwi",
+                          "width": "fill_container",
+                          "padding": [
+                            10,
+                            8
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "JH1Em",
+                              "fill": "$text-muted",
+                              "content": "Usluge",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iaOCS",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "u2MqAk",
+                      "fill": "$text",
+                      "content": "Turizam",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "Jilb6",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xL8SS",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YhAD1",
+                      "fill": "$text",
+                      "content": "Događaji",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "ONL9z",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PdmyN",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "p6hjt2",
+                      "fill": "$text",
+                      "content": "Oglasi",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "k562B",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "o0l9h",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "LoFy1",
+                      "fill": "$text",
+                      "content": "Mapa",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "tsuy9",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "d2Ji5",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gIVqd",
+                      "fill": "$text",
+                      "content": "Priče",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "kADmV",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-down",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Zs2nP",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qINQs",
+                      "fill": "$text",
+                      "content": "O projektu",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "KqTpy",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ftp9p",
+                  "width": "fill_container",
+                  "stroke": "$border",
+                  "strokeWidth": {
+                    "bottom": 1
+                  },
+                  "strokeAlignment": "inner",
+                  "padding": [
+                    14,
+                    12
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "NdCzM",
+                      "fill": "$text",
+                      "content": "Kontakt",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "Ia1QS",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ENDjH",
+              "name": "Dugmad",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 10,
+              "padding": [
+                20,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "id": "f5GBz",
+                  "type": "ref",
+                  "ref": "Tvbj2",
+                  "name": "Prijava",
+                  "width": "fill_container",
+                  "descendants": {
+                    "G7dL6T": {
+                      "enabled": false
+                    },
+                    "iXsvx": {
+                      "content": "Prijava"
+                    }
+                  }
+                },
+                {
+                  "id": "l6tPS",
+                  "type": "ref",
+                  "ref": "FeIw8",
+                  "name": "Pridruzi",
+                  "width": "fill_container",
+                  "descendants": {
+                    "nDDpQ": {
+                      "enabled": false
+                    },
+                    "fFROY": {
+                      "content": "Pridruži se"
+                    }
+                  }
+                }
+              ]
             }
           ]
         }
