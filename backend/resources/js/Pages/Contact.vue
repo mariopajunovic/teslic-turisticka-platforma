@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { kontakt } from '@/constants/navigation'
+import { useSite } from '@/composables/useSite'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
@@ -22,10 +22,12 @@ const captcha = ref(false)
 const poslano = ref(false)
 const greska = ref(false)
 
+const { kontakt } = useSite()
+
 const kontaktInfo = computed(() => [
-  { icon: 'map-pin', label: 'Adresa', value: kontakt.adresa },
-  { icon: 'phone', label: 'Telefon', value: kontakt.telefon, href: `tel:${kontakt.telefon}` },
-  { icon: 'mail', label: 'E-mail', value: kontakt.email, href: `mailto:${kontakt.email}` },
+  { icon: 'map-pin', label: 'Adresa', value: kontakt.value.adresa },
+  { icon: 'phone', label: 'Telefon', value: kontakt.value.telefon, href: `tel:${kontakt.value.telefon}` },
+  { icon: 'mail', label: 'E-mail', value: kontakt.value.email, href: `mailto:${kontakt.value.email}` },
   { icon: 'clock', label: 'Radno vrijeme', value: 'Pon–Pet 08:00–16:00' },
 ])
 

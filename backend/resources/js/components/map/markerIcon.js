@@ -1,8 +1,3 @@
-// Leaflet divIcon za marker po kategoriji — kapljica (pin) s bojom kategorije
-// i bijelom (ili tamnom) tačkom u sredini. Anchor je donji centar (šiljak).
-import L from 'leaflet'
-
-// Boje pina po kategoriji (HEX iz dizajn-tokena).
 const categoryColors = {
   zanat: '#E88828',
   hrana: '#0E8275',
@@ -22,8 +17,7 @@ export function categoryColor(categoryKey) {
   return categoryColors[categoryKey] || DEFAULT_COLOR
 }
 
-// Vraća L.divIcon — kapljica visine ~40px (tijelo 32px + šiljak), sa sjenkom.
-export function categoryIcon(categoryKey) {
+export function categoryIcon(L, categoryKey) {
   const color = categoryColor(categoryKey)
   const dot = darkSymbol.has(categoryKey) ? '#12151C' : '#FFFFFF'
 

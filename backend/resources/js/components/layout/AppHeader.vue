@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { Link, router as inertiaRouter } from '@inertiajs/vue3'
-import { mainNav, kontakt } from '@/constants/navigation'
+import { useSite } from '@/composables/useSite'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
@@ -36,18 +36,13 @@ watch(searchOpen, async (v) => {
   }
 })
 
-// Globalna pretraga (privremeno) — pravi overlay s rezultatima u F5.
 function submitSearch() {
   const q = searchTerm.value.trim()
   searchOpen.value = false
   if (q) inertiaRouter.visit(`/mapa?q=${encodeURIComponent(q)}`)
 }
 
-const socials = [
-  { name: 'facebook', href: 'https://facebook.com', label: 'Facebook' },
-  { name: 'instagram', href: 'https://instagram.com', label: 'Instagram' },
-  { name: 'youtube', href: 'https://youtube.com', label: 'YouTube' },
-]
+const { mainNav, kontakt, postavke } = useSite()
 </script>
 
 <template>
@@ -83,7 +78,7 @@ const socials = [
           </div>
           <div class="hidden items-center gap-3 sm:flex">
             <a
-              v-for="s in socials"
+              v-for="s in postavke.social || []"
               :key="s.name"
               :href="s.href"
               target="_blank"
@@ -121,9 +116,9 @@ const socials = [
         <Link
           href="/"
           class="shrink-0 text-xl font-extrabold tracking-tight text-primary lg:text-2xl"
-          aria-label="Početna — teslić"
+          :aria-label="`Početna — ${postavke.brandLogoTekst}`"
         >
-          teslić
+          {{ postavke.brandLogoTekst }}
         </Link>
 
         <!-- Desktop navigacija (rasterećena, 6 sadržajnih stavki) -->

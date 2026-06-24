@@ -1,9 +1,11 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { Link, router as inertiaRouter } from '@inertiajs/vue3'
-import { mainNav, secondaryNav } from '@/constants/navigation'
+import { useSite } from '@/composables/useSite'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
+
+const { mainNav, secondaryNav } = useSite()
 
 const open = defineModel({ type: Boolean, default: false })
 const expanded = ref(null)

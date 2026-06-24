@@ -1,13 +1,9 @@
 <script setup>
-import 'leaflet/dist/leaflet.css'
-import 'leaflet.markercluster/dist/MarkerCluster.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import L from 'leaflet'
-import 'leaflet.markercluster'
-
 import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
 import { categoryByKey } from '@/constants/categories'
 import { categoryIcon } from './markerIcon'
+
+let L = null
 
 const props = defineProps({
   items: { type: Array, default: () => [] },
@@ -48,13 +44,13 @@ function popupHtml(item) {
 }
 
 function drawMarkers() {
-  if (!clusterGroup) return
+  if (!clusterGroup || !L) return
   clusterGroup.clearLayers()
 
   props.items.filter(isVisible).forEach((item) => {
     if (item.lat == null || item.lng == null) return
     const marker = L.marker([item.lat, item.lng], {
-      icon: categoryIcon(item.kategorija),
+      icon: categoryIcon(L, item.kategorija),
       title: item.naslov,
     })
     marker.bindPopup(popupHtml(item))
@@ -63,7 +59,13 @@ function drawMarkers() {
   })
 }
 
-onMounted(() => {
+onMounted(async () => {
+  L = (await import('leaflet')).default
+  await import('leaflet.markercluster')
+  await import('leaflet/dist/leaflet.css')
+  await import('leaflet.markercluster/dist/MarkerCluster.css')
+  await import('leaflet.markercluster/dist/MarkerCluster.Default.css')
+
   map = L.map(mapEl.value, {
     center: props.center,
     zoom: props.zoom,

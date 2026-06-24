@@ -41,7 +41,15 @@ class AdminPanelTest extends TestCase
             'stories' => ['stories'],
             'news' => ['news'],
             'categories' => ['categories'],
+            'menus' => ['menus'],
         ];
+    }
+
+    public function test_admin_can_open_site_settings(): void
+    {
+        $this->actingAs($this->admin(), 'admin')
+            ->get('/admin/manage-site-settings')
+            ->assertOk();
     }
 
     #[DataProvider('resources')]

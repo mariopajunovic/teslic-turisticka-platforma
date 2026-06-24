@@ -4,6 +4,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,3 +25,5 @@ Route::get('/oglasi/{slug}', [AdController::class, 'show'])->name('oglasi.show')
 
 Route::get('/price', [StoryController::class, 'index'])->name('price.index');
 Route::get('/price/{slug}', [StoryController::class, 'show'])->name('price.show');
+
+Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');

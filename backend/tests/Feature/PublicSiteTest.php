@@ -31,6 +31,7 @@ class PublicSiteTest extends TestCase
             'oglas detalj' => ['/oglasi/konobar-kardial'],
             'price' => ['/price'],
             'prica detalj' => ['/price/ljudi-duh-teslica'],
+            'mapa' => ['/mapa'],
         ];
     }
 

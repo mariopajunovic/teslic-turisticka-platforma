@@ -1,15 +1,10 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
-import { footerLinks, kontakt } from '@/constants/navigation'
+import { useSite } from '@/composables/useSite'
 import AppContainer from './AppContainer.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
-const social = [
-  { name: 'facebook', href: '#', label: 'Facebook' },
-  { name: 'instagram', href: '#', label: 'Instagram' },
-  { name: 'youtube', href: '#', label: 'YouTube' },
-]
-const partneri = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4']
+const { footerLinks, kontakt, postavke } = useSite()
 </script>
 
 <template>
@@ -20,15 +15,14 @@ const partneri = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4']
         <!-- Brend -->
         <div class="max-w-sm">
           <Link href="/" class="text-2xl font-extrabold tracking-tight text-primary">
-            teslić
+            {{ postavke.brandLogoTekst }}
           </Link>
           <p class="mt-3 text-sm leading-relaxed text-text-muted">
-            Zvanična platforma za promociju turističke ponude, lokalnih proizvoda i usluga opštine
-            Teslić.
+            {{ postavke.footerOpis }}
           </p>
           <div class="mt-4 flex gap-2">
             <a
-              v-for="s in social"
+              v-for="s in postavke.social || []"
               :key="s.name"
               :href="s.href"
               :aria-label="s.label"
@@ -94,7 +88,7 @@ const partneri = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4']
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted">Partneri projekta</h3>
         <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:flex lg:flex-wrap">
           <div
-            v-for="p in partneri"
+            v-for="p in postavke.partneri || []"
             :key="p"
             class="flex h-12 items-center justify-center rounded-sm border border-border bg-surface text-xs text-text-muted lg:w-36"
           >
@@ -109,7 +103,7 @@ const partneri = ['Partner 1', 'Partner 2', 'Partner 3', 'Partner 4']
       <AppContainer
         class="flex flex-col gap-2 py-4 text-[13px] text-primary-tint sm:flex-row sm:items-center sm:justify-between"
       >
-        <p>© 2026 TO Teslić. Sva prava zadržana.</p>
+        <p>{{ postavke.copyright }}</p>
         <nav class="flex flex-wrap gap-x-4 gap-y-1">
           <Link
             v-for="l in footerLinks.pravno"
