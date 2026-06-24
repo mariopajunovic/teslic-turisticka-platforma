@@ -42,14 +42,12 @@ function promijeniLozinku() {
     <BaseAlert v-if="status" variant="uspjeh" title="Sačuvano" :text="status" />
 
     <div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7">
-      <h2 class="font-heading text-lg font-bold text-heading">Podaci naloga</h2>
-      <div class="grid gap-5 md:grid-cols-2">
-        <FormField v-model="profil.name" label="Ime / naziv" :error="profil.errors.name" />
-        <FormField v-model="profil.email" label="E-mail" type="email" :error="profil.errors.email" />
-      </div>
+      <h2 class="font-heading text-lg font-bold text-heading">E-mail adresa</h2>
+      <p class="text-[13px] text-text-muted">Ime, telefon i ostale podatke uređujete na stranici „Moj profil".</p>
+      <FormField v-model="profil.email" label="E-mail" type="email" :error="profil.errors.email" />
       <div class="flex justify-end">
         <BaseButton variant="primary" icon="check" :disabled="profil.processing" @click="sacuvajProfil">
-          Sačuvaj podatke
+          Sačuvaj e-mail
         </BaseButton>
       </div>
     </div>

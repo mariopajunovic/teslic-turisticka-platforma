@@ -24,6 +24,11 @@ class ManageSiteSettings extends SettingsPage
 
     protected static ?string $title = 'Postavke sajta';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->can('sistemske postavke') ?? false;
+    }
+
     public function form(Schema $schema): Schema
     {
         return $schema->components([

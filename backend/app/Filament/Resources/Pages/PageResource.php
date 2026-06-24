@@ -29,6 +29,11 @@ class PageResource extends Resource
 
     protected static ?string $recordTitleAttribute = 'title';
 
+    public static function canAccess(): bool
+    {
+        return auth()->user()?->can('upravljanje stranicama') ?? false;
+    }
+
     public static function form(Schema $schema): Schema
     {
         return PageForm::configure($schema);

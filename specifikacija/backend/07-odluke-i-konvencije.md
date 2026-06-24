@@ -77,7 +77,12 @@ export WWWUSER=$(id -u) WWWGROUP=$(id -g)
   - **Moje objave** = **više biznis objava** (`BiznisObjaveController`: Business CRUD — index/create/store/edit/update + brisanje medija); „Nova objava"; klik → uređivanje **te** objave; status/razlog po objavi.
   - **`BiznisObjavaForm.vue`** = puna forma (naziv, kategorija, opis, kontakt, lokacija, lat/lng) + **mediji po objavi** (naslovna + galerija upload/delete).
   - Zaseban „Mediji" tab uklonjen (mediji su sad u svakoj objavi); `BiznisMediController` obrisan. **60/60 testova**.
-- **Stanje:** B0–B7 kompletni. Platforma radi end-to-end; workflow odobravanja zatvoren s e-mail obavijestima; korisnici upravljaju vlastitim sadržajem, profilom, medijima i postavkama.
+- **Sigurnosne/arhitektonske ispravke ✅ (3 prijavljena gapa):**
+  1. **2FA za admine (TS 6) — sada postoji i obavezno je.** Filament v5 ugrađeni **MFA** (`AppAuthentication` TOTP, `recoverable`), `multiFactorAuthentication(..., isRequired: true)` → admin **mora** postaviti 2FA. `Admin` implementira `HasAppAuthentication(+Recovery)`; kolone `app_authentication_secret`/`app_authentication_recovery_codes` na **`admins`**. Pogrešne `two_factor_*` kolone **uklonjene s `users`** (i nekorištene s `admins`). (Fortify 2FA je za web guard; panel koristi Filament-native MFA.)
+  2. **Uloge/permisije se realno koriste.** `Admin` `use HasRoles` (guard `admin`). `RolePermissionSeeder`: permisije (sadržaj/korisnici/stranice/postavke/logovi) + role **administrator** (sve) i **urednik** (sadržaj+logovi); dodijeljene (`syncRoles`) — mario=super+administrator, demo `urednik@komteldoo.com`. `Gate::before` → super bypass. `canAccessPanel` = super ili ima ulogu. **`canAccess()`** na admin-only resursima (Korisnici/Stranice/Meniji/Postavke) → urednik ih ne vidi; sadržaj/logove vide oba. Test dokazuje razliku.
+  3. **Mrtvi `frontend/` uklonjen** (+ `middleware.js`/`vercel.json` koji su bili unutar njega) — kanonski front je `backend/resources/js`; provjereno bez zavisnosti; seed podaci već u `backend/database/data`.
+  - **61/61 testova** (uklj. urednik 403 na Korisnike, 200 na Sadržaj).
+- **Stanje:** B0–B7 kompletni + sigurnosne ispravke. Platforma radi end-to-end; workflow odobravanja zatvoren s e-mail obavijestima; admini s obaveznom 2FA i razdvojenim ulogama; jedan kanonski frontend.
 - **Proces:** bez subagenata i bez `git commit` (korisnikova instrukcija).
 
 ## 🔗 Veze

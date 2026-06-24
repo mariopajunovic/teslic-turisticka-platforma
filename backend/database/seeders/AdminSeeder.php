@@ -9,7 +9,7 @@ class AdminSeeder extends Seeder
 {
     public function run(): void
     {
-        Admin::updateOrCreate(
+        $mario = Admin::updateOrCreate(
             ['email' => 'mario@komteldoo.com'],
             [
                 'name' => 'Mario Pajunović',
@@ -18,5 +18,17 @@ class AdminSeeder extends Seeder
                 'email_verified_at' => now(),
             ],
         );
+        $mario->syncRoles(['administrator']);
+
+        $urednik = Admin::updateOrCreate(
+            ['email' => 'urednik@komteldoo.com'],
+            [
+                'name' => 'Demo Urednik',
+                'password' => 'mario123',
+                'is_super' => false,
+                'email_verified_at' => now(),
+            ],
+        );
+        $urednik->syncRoles(['urednik']);
     }
 }

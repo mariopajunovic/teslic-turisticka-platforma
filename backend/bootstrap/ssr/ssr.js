@@ -10508,13 +10508,7 @@ var _sfc_main$16 = {
 				text: status.value
 			}, null, _parent));
 			else _push(`<!---->`);
-			_push(`<div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">Podaci naloga</h2><div class="grid gap-5 md:grid-cols-2">`);
-			_push(ssrRenderComponent(_sfc_main$68, {
-				modelValue: unref(profil).name,
-				"onUpdate:modelValue": ($event) => unref(profil).name = $event,
-				label: "Ime / naziv",
-				error: unref(profil).errors.name
-			}, null, _parent));
+			_push(`<div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">E-mail adresa</h2><p class="text-[13px] text-text-muted">Ime, telefon i ostale podatke uređujete na stranici „Moj profil&quot;.</p>`);
 			_push(ssrRenderComponent(_sfc_main$68, {
 				modelValue: unref(profil).email,
 				"onUpdate:modelValue": ($event) => unref(profil).email = $event,
@@ -10522,7 +10516,7 @@ var _sfc_main$16 = {
 				type: "email",
 				error: unref(profil).errors.email
 			}, null, _parent));
-			_push(`</div><div class="flex justify-end">`);
+			_push(`<div class="flex justify-end">`);
 			_push(ssrRenderComponent(_sfc_main$93, {
 				variant: "primary",
 				icon: "check",
@@ -10530,8 +10524,8 @@ var _sfc_main$16 = {
 				onClick: sacuvajProfil
 			}, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(` Sačuvaj podatke `);
-					else return [createTextVNode(" Sačuvaj podatke ")];
+					if (_push) _push(` Sačuvaj e-mail `);
+					else return [createTextVNode(" Sačuvaj e-mail ")];
 				}),
 				_: 1
 			}, _parent));
