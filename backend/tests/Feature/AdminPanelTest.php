@@ -47,13 +47,32 @@ class AdminPanelTest extends TestCase
             'menus' => ['menus'],
             'pages' => ['pages'],
             'users' => ['users'],
+            'admins' => ['admins'],
+            'roles' => ['roles'],
+            'tags' => ['tags'],
+            'places' => ['places'],
+            'content-links' => ['content-links'],
         ];
+    }
+
+    public function test_admin_can_open_approval_queue(): void
+    {
+        $this->actingAs($this->admin(), 'admin')
+            ->get('/admin/approval-queue')
+            ->assertOk();
     }
 
     public function test_admin_can_open_activity_log(): void
     {
         $this->actingAs($this->admin(), 'admin')
             ->get('/admin/activities')
+            ->assertOk();
+    }
+
+    public function test_admin_can_open_media_library(): void
+    {
+        $this->actingAs($this->admin(), 'admin')
+            ->get('/admin/media')
             ->assertOk();
     }
 

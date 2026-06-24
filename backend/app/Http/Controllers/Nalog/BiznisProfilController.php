@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Nalog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BiznisProfilRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -25,14 +25,9 @@ class BiznisProfilController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(BiznisProfilRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'telefon' => ['nullable', 'string', 'max:50'],
-            'bio' => ['nullable', 'string', 'max:1000'],
-            'avatar' => ['nullable', 'image', 'max:4096'],
-        ]);
+        $data = $request->validated();
 
         $user = auth()->user();
         $user->update([

@@ -8,6 +8,7 @@ import Gallery from '@/components/common/Gallery.vue'
 import InfoPanel from '@/components/common/InfoPanel.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
+import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseBadge from '@/components/base/BaseBadge.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
@@ -16,6 +17,7 @@ import EventCard from '@/components/cards/EventCard.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
+  povezani: { type: Array, default: () => [] },
   dogadjaj: { type: Object, default: null },
   slicni: { type: Array, default: () => [] },
 })
@@ -128,6 +130,10 @@ const dodatUKalendar = ref(false)
           <MiniMap :label="dogadjaj.lokacija" />
         </div>
       </div>
+
+      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+        <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
+      </RelatedContent>
 
       <RelatedContent v-if="slicni.length" title="Drugi događaji">
         <EventCard v-for="d in slicni" :key="d.slug" :item="d" />

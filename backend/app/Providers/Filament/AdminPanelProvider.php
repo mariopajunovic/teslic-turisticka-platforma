@@ -24,18 +24,23 @@ class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
-        return $panel
+        $panel = $panel
             ->default()
             ->id('admin')
             ->path('admin')
             ->authGuard('admin')
             ->login()
-            ->multiFactorAuthentication([
-                AppAuthentication::make()->recoverable(),
-            ], isRequired: true)
             ->colors([
                 'primary' => Color::hex('#0E8275'),
-            ])
+            ]);
+
+        if ((bool) env('ADMIN_MFA_ENABLED', app()->isProduction())) {
+            $panel->multiFactorAuthentication([
+                AppAuthentication::make()->recoverable(),
+            ], isRequired: true);
+        }
+
+        return $panel
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

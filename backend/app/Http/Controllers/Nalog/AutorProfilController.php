@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Nalog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AutorProfilRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -23,13 +23,9 @@ class AutorProfilController extends Controller
         ]);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(AutorProfilRequest $request): RedirectResponse
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'bio' => ['nullable', 'string', 'max:1000'],
-            'avatar' => ['nullable', 'image', 'max:4096'],
-        ]);
+        $data = $request->validated();
 
         $user = auth()->user();
         $user->update(['name' => $data['name'], 'bio' => $data['bio'] ?? null]);

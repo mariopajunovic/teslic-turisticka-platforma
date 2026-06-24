@@ -2,13 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ContentStatus;
 use App\Models\Category;
 use App\Models\Event;
+use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class EventSeeder extends Seeder
 {
+    use VariesStatus;
+
     public function run(): void
     {
         $path = database_path('data/dogadjaji.json');
@@ -20,7 +22,7 @@ class EventSeeder extends Seeder
         $category = Category::where('key', 'dogadjaj')->first();
         $items = json_decode(file_get_contents($path), true) ?? [];
 
-        foreach ($items as $item) {
+        foreach ($items as $i => $item) {
             Event::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
@@ -35,8 +37,7 @@ class EventSeeder extends Seeder
                     'zavrseno' => $item['zavrseno'] ?? false,
                     'lat' => $item['lat'] ?? null,
                     'lng' => $item['lng'] ?? null,
-                    'status' => ContentStatus::Objavljeno,
-                    'published_at' => now(),
+                    ...$this->statusFields($i),
                 ],
             );
         }

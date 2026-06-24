@@ -2,13 +2,23 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ContentStatus;
 use App\Models\Category;
 use App\Models\Location;
+use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class LocationSeeder extends Seeder
 {
+    use VariesStatus;
+
+    protected const LABEL_TO_KEY = [
+        'Prirodne atrakcije' => 'priroda',
+        'Kultura' => 'kultura',
+        'Kulturne manifestacije' => 'kultura',
+        'Planine, šume i sela' => 'planine',
+        'Gdje odsjesti' => 'smjestaj',
+    ];
+
     public function run(): void
     {
         $path = database_path('data/lokaliteti.json');
@@ -19,9 +29,10 @@ class LocationSeeder extends Seeder
 
         $items = json_decode(file_get_contents($path), true) ?? [];
 
-        foreach ($items as $item) {
-            $icon = $item['kategorija']['icon'] ?? null;
-            $category = $icon ? Category::where('key', $icon)->first() : null;
+        foreach ($items as $i => $item) {
+            $label = $item['kategorija']['label'] ?? null;
+            $key = self::LABEL_TO_KEY[$label] ?? null;
+            $category = $key ? Category::where('key', $key)->first() : null;
 
             Location::updateOrCreate(
                 ['slug' => $item['slug']],
@@ -40,8 +51,7 @@ class LocationSeeder extends Seeder
                     'ulaznice' => $item['ulaznice'] ?? null,
                     'lat' => $item['lat'] ?? null,
                     'lng' => $item['lng'] ?? null,
-                    'status' => ContentStatus::Objavljeno,
-                    'published_at' => now(),
+                    ...$this->statusFields($i),
                 ],
             );
         }

@@ -3,11 +3,13 @@
 namespace App\Filament\Resources\Locations\Tables;
 
 use App\Enums\ContentStatus;
-use Filament\Actions\Action;
+use App\Filament\Actions\ApproveAction;
+use App\Filament\Actions\ArchiveAction;
+use App\Filament\Actions\RejectAction;
+use App\Filament\Actions\ReturnAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -46,34 +48,10 @@ class LocationsTable
                     ->relationship('category', 'label'),
             ])
             ->recordActions([
-                Action::make('odobri')
-                    ->label('Odobri i objavi')
-                    ->icon('heroicon-o-check-circle')
-                    ->color('success')
-                    ->visible(fn ($record) => $record->status !== ContentStatus::Objavljeno)
-                    ->requiresConfirmation()
-                    ->action(function ($record): void {
-                        $record->update([
-                            'status' => ContentStatus::Objavljeno,
-                            'published_at' => now(),
-                        ]);
-                    }),
-                Action::make('vrati')
-                    ->label('Vrati / odbij')
-                    ->icon('heroicon-o-x-circle')
-                    ->color('danger')
-                    ->visible(fn ($record) => $record->status === ContentStatus::Poslano)
-                    ->schema([
-                        Textarea::make('razlog')
-                            ->label('Razlog (ide vlasniku)')
-                            ->required(),
-                    ])
-                    ->action(function (array $data, $record): void {
-                        $record->update([
-                            'status' => ContentStatus::Odbijeno,
-                            'rejection_reason' => $data['razlog'],
-                        ]);
-                    }),
+                ApproveAction::make(),
+                ReturnAction::make(),
+                RejectAction::make(),
+                ArchiveAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

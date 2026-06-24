@@ -5,6 +5,7 @@ import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import InfoPanel from '@/components/common/InfoPanel.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
+import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseChip from '@/components/base/BaseChip.vue'
 import BaseBadge from '@/components/base/BaseBadge.vue'
@@ -14,6 +15,7 @@ import AdCard from '@/components/cards/AdCard.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
+  povezani: { type: Array, default: () => [] },
   oglas: { type: Object, default: null },
   slicni: { type: Array, default: () => [] },
 })
@@ -113,6 +115,10 @@ const infoItems = computed(() => {
           </div>
         </div>
       </div>
+
+      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+        <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
+      </RelatedContent>
 
       <RelatedContent v-if="slicni.length" title="Slični oglasi">
         <AdCard v-for="o in slicni" :key="o.slug" :item="o" />

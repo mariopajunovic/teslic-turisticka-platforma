@@ -2,8 +2,10 @@
 // Bogata kartica za odabrani marker — koristi se kad parent uhvati `select`
 // (npr. plutajuća kartica ili bottom-sheet na mobilnom).
 import { computed } from 'vue'
-import { categoryByKey } from '@/constants/categories'
+import { useCategories } from '@/composables/useCategories'
 import BaseChip from '@/components/base/BaseChip.vue'
+
+const { categoryByKey } = useCategories()
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import CardImage from '@/components/cards/CardImage.vue'

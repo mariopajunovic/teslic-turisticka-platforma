@@ -141,6 +141,22 @@ class AccountTest extends TestCase
         Notification::assertSentTo($autor, ContentStatusChanged::class);
     }
 
+    public function test_upit_biznisu_se_salje(): void
+    {
+        $business = Business::create([
+            'naslov' => 'Test Biznis',
+            'slug' => 'test-biznis',
+            'status' => ContentStatus::Objavljeno,
+            'published_at' => now(),
+        ]);
+
+        $this->post("/domace-je-najbolje/{$business->slug}/upit", [
+            'ime' => 'Marko',
+            'email' => 'marko@primjer.ba',
+            'poruka' => 'Zanima me ponuda.',
+        ])->assertRedirect();
+    }
+
     public function test_kontakt_forma_prima_poruku(): void
     {
         $this->post('/kontakt', [

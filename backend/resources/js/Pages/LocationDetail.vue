@@ -8,6 +8,7 @@ import Gallery from '@/components/common/Gallery.vue'
 import InfoPanel from '@/components/common/InfoPanel.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
+import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
@@ -15,6 +16,7 @@ import LocationCard from '@/components/cards/LocationCard.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
+  povezani: { type: Array, default: () => [] },
   lokalitet: { type: Object, default: null },
   slicni: { type: Array, default: () => [] },
 })
@@ -116,6 +118,10 @@ const infoItems = computed(() => {
           <MiniMap :label="lokalitet.lokacija" />
         </div>
       </div>
+
+      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+        <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
+      </RelatedContent>
 
       <RelatedContent v-if="slicni.length" title="Slični lokaliteti">
         <LocationCard v-for="l in slicni" :key="l.slug" :item="l" />

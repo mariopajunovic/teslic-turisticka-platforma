@@ -7,6 +7,7 @@ use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -36,6 +37,11 @@ class UsersTable
                         default => 'gray',
                     }),
                 TextColumn::make('created_at')->label('Registrovan')->dateTime('d.m.Y.')->sortable(),
+                TextColumn::make('last_login_at')
+                    ->label('Zadnja prijava')
+                    ->dateTime('d.m.Y. H:i')
+                    ->placeholder('—')
+                    ->sortable(),
             ])
             ->filters([
                 SelectFilter::make('role')->options(UserRole::class),
@@ -46,6 +52,15 @@ class UsersTable
                 ]),
             ])
             ->recordActions([
+                Action::make('reset_lozinke')
+                    ->label('Resetuj lozinku')
+                    ->form([
+                        TextInput::make('password')
+                            ->label('Nova lozinka')
+                            ->password()
+                            ->required(),
+                    ])
+                    ->action(fn ($record, array $data) => $record->update(['password' => $data['password']])),
                 Action::make('odobri')
                     ->label('Odobri nalog')
                     ->icon('heroicon-o-check-circle')

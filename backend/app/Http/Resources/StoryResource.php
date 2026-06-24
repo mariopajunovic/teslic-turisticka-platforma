@@ -13,6 +13,7 @@ class StoryResource extends JsonResource
             'slug' => $this->slug,
             'naslov' => $this->naslov,
             'kategorija' => $this->category ? [
+                'key' => $this->category->key,
                 'label' => $this->category->label,
                 'icon' => $this->category->icon,
             ] : null,

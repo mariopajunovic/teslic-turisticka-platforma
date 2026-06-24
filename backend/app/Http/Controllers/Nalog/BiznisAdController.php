@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Nalog;
 
 use App\Enums\ContentStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdRequest;
 use App\Models\Ad;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -56,7 +56,7 @@ class BiznisAdController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(AdRequest $request): RedirectResponse
     {
         $ad = new Ad(['user_id' => auth()->id()]);
         $this->fill($ad, $request);
@@ -64,7 +64,7 @@ class BiznisAdController extends Controller
         return $this->done($ad);
     }
 
-    public function update(Request $request, Ad $ad): RedirectResponse
+    public function update(AdRequest $request, Ad $ad): RedirectResponse
     {
         $this->authorizeOwner($ad);
         $this->fill($ad, $request);
@@ -72,17 +72,9 @@ class BiznisAdController extends Controller
         return $this->done($ad);
     }
 
-    protected function fill(Ad $ad, Request $request): void
+    protected function fill(Ad $ad, AdRequest $request): void
     {
-        $data = $request->validate([
-            'naslov' => ['required', 'string', 'max:255'],
-            'category_id' => ['nullable', 'exists:categories,id'],
-            'izdavac' => ['nullable', 'string', 'max:255'],
-            'lokacija' => ['nullable', 'string', 'max:255'],
-            'rok' => ['nullable', 'date'],
-            'opis_dug' => ['nullable', 'string'],
-            'action' => ['required', 'in:nacrt,posalji'],
-        ]);
+        $data = $request->validated();
 
         $ad->fill([
             'naslov' => $data['naslov'],

@@ -8,7 +8,7 @@ const { footerLinks, kontakt, postavke } = useSite()
 </script>
 
 <template>
-  <footer class="mt-16 border-t border-border bg-surface md:mt-24">
+  <footer class="border-t border-border bg-surface">
     <!-- Kolone: 1 (mobile) → 2 (linkovi) → 4 (desktop) -->
     <AppContainer class="py-10 md:py-12">
       <div class="grid gap-8 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">

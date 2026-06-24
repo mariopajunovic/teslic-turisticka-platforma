@@ -2,16 +2,24 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ContentStatus;
 use App\Models\Category;
 use App\Models\Story;
 use App\Models\User;
 use Carbon\Carbon;
+use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class StorySeeder extends Seeder
 {
+    use VariesStatus;
+
+    protected const LABEL_TO_KEY = [
+        'Izdvojeno' => 'izdvojeno',
+        'Domaćini pričaju' => 'domacini',
+        'Ljudi i biznisi' => 'ljudi',
+        'Naša svakodnevica' => 'svakodnevica',
+    ];
+
     public function run(): void
     {
         $path = database_path('data/price.json');
@@ -23,34 +31,18 @@ class StorySeeder extends Seeder
         $owner = User::where('email', 'autor@komteldoo.com')->first();
         $items = json_decode(file_get_contents($path), true) ?? [];
 
-        foreach ($items as $item) {
-            $kategorija = $item['kategorija'] ?? [];
-            $key = $kategorija['icon'] ?? Str::slug($kategorija['label'] ?? '');
+        foreach ($items as $i => $item) {
+            $label = $item['kategorija']['label'] ?? null;
+            $key = self::LABEL_TO_KEY[$label] ?? 'izdvojeno';
+            $category = Category::where('key', $key)->first();
 
-            $category = Category::firstOrCreate(
-                ['key' => $key],
-                [
-                    'label' => $kategorija['label'] ?? $key,
-                    'icon' => $kategorija['icon'] ?? null,
-                    'type' => 'price',
-                ],
-            );
-
-            $datumRaw = $item['datum'] ?? null;
-            $datum = null;
-            if ($datumRaw) {
-                try {
-                    $datum = Carbon::createFromFormat('d.m.Y.', rtrim($datumRaw, ' '));
-                } catch (\Exception) {
-                    $datum = null;
-                }
-            }
+            $datum = $this->parseDate($item['datum'] ?? null);
 
             Story::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => $owner?->id,
-                    'category_id' => $category->id,
+                    'category_id' => $category?->id,
                     'naslov' => $item['naslov'],
                     'izvod' => $item['izvod'] ?? null,
                     'sadrzaj' => $item['sadrzaj'] ?? null,
@@ -58,10 +50,22 @@ class StorySeeder extends Seeder
                     'autor_bio' => $item['autorBio'] ?? null,
                     'datum' => $datum,
                     'featured' => $item['featured'] ?? false,
-                    'status' => ContentStatus::Objavljeno,
-                    'published_at' => now(),
+                    ...$this->statusFields($i),
                 ],
             );
+        }
+    }
+
+    protected function parseDate(?string $raw): ?Carbon
+    {
+        if (! $raw) {
+            return null;
+        }
+
+        try {
+            return Carbon::createFromFormat('d.m.Y.', rtrim($raw, ' '));
+        } catch (\Throwable) {
+            return null;
         }
     }
 }

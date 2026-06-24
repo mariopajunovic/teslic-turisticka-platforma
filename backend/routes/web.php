@@ -17,9 +17,12 @@ use Inertia\Inertia;
 Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::get('/domace-je-najbolje', [BusinessController::class, 'index'])->name('biznisi.index');
+Route::get('/domace-je-najbolje/kategorija/{kategorija}', [BusinessController::class, 'kategorija'])->name('biznisi.kategorija');
 Route::get('/domace-je-najbolje/{slug}', [BusinessController::class, 'show'])->name('biznisi.show');
+Route::post('/domace-je-najbolje/{slug}/upit', [\App\Http\Controllers\BusinessInquiryController::class, 'send'])->middleware('throttle:5,1')->name('biznisi.upit');
 
 Route::get('/turizam', [LocationController::class, 'index'])->name('lokaliteti.index');
+Route::get('/turizam/kategorija/{kategorija}', [LocationController::class, 'kategorija'])->name('lokaliteti.kategorija');
 Route::get('/turizam/{slug}', [LocationController::class, 'show'])->name('lokaliteti.show');
 
 Route::get('/dogadjaji', [EventController::class, 'index'])->name('dogadjaji.index');
@@ -29,20 +32,24 @@ Route::get('/oglasi', [AdController::class, 'index'])->name('oglasi.index');
 Route::get('/oglasi/{slug}', [AdController::class, 'show'])->name('oglasi.show');
 
 Route::get('/price', [StoryController::class, 'index'])->name('price.index');
+Route::get('/price/kategorija/{kategorija}', [StoryController::class, 'kategorija'])->name('price.kategorija');
 Route::get('/price/{slug}', [StoryController::class, 'show'])->name('price.show');
 
 Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');
 
-Route::get('/kontakt', fn () => Inertia::render('Contact'))->name('kontakt');
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
+Route::get('/robots.txt', [\App\Http\Controllers\SitemapController::class, 'robots']);
+
+Route::get('/kontakt', fn () => Inertia::render('Contact', ['seo' => \App\Support\Seo::make('Kontakt', 'Stupite u kontakt s nama — tu smo za sva pitanja i prijedloge.', url('/kontakt'))]))->name('kontakt');
 Route::post('/kontakt', [\App\Http\Controllers\ContactController::class, 'send'])
     ->middleware('throttle:5,1')
     ->name('kontakt.send');
-Route::get('/pridruzi-se', fn () => Inertia::render('JoinHub'))->name('pridruzi-se');
-Route::get('/pridruzi-se/biznis', fn () => Inertia::render('RegisterBusiness'))->name('pridruzi-se.biznis');
-Route::get('/pridruzi-se/autor', fn () => Inertia::render('RegisterAuthor'))->name('pridruzi-se.autor');
-Route::get('/prijava', fn () => Inertia::render('Login'))->name('prijava');
-Route::get('/registracija', fn () => Inertia::render('RegisterChoice'))->name('registracija');
-Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword'))->name('zaboravljena-lozinka');
+Route::get('/pridruzi-se', fn () => app(PageController::class)->show('pridruzi-se'))->name('pridruzi-se');
+Route::get('/pridruzi-se/biznis', fn () => Inertia::render('RegisterBusiness', ['seo' => \App\Support\Seo::make('Registruj biznis', 'Registrujte vaš lokalni biznis i budite vidljivi na teslićkom portalu.', url('/pridruzi-se/biznis'))]))->name('pridruzi-se.biznis');
+Route::get('/pridruzi-se/autor', fn () => Inertia::render('RegisterAuthor', ['seo' => \App\Support\Seo::make('Uključi se kao autor', 'Pridružite se kao autor i dijelite priče s Teslića s cijelim svijetom.', url('/pridruzi-se/autor'))]))->name('pridruzi-se.autor');
+Route::get('/prijava', fn () => Inertia::render('Login', ['seo' => \App\Support\Seo::make('Prijava', 'Prijavite se na svoj nalog na teslićkom portalu.', url('/prijava'))]))->name('prijava');
+Route::get('/registracija', fn () => Inertia::render('RegisterChoice', ['seo' => \App\Support\Seo::make('Registracija', 'Kreirajte nalog i priključite se teslićkoj online zajednici.', url('/registracija'))]))->name('registracija');
+Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make('Zaboravljena lozinka', 'Resetujte svoju lozinku i povratite pristup nalogu.', url('/zaboravljena-lozinka'))]))->name('zaboravljena-lozinka');
 
 Route::middleware('auth')->prefix('nalog')->group(function () {
     Route::middleware('role:autor')->group(function () {

@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
+import { router } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -16,18 +17,16 @@ import EventCard from '@/components/cards/EventCard.vue'
 import EventCalendar from '@/components/calendar/EventCalendar.vue'
 
 const props = defineProps({
-  dogadjaji: { type: Array, default: () => [] },
+  q: { type: String, default: '' },
+  period: { type: String, default: '' },
+  dogadjaji: { type: Object, default: () => ({ data: [], meta: { current_page: 1, last_page: 1 } }) },
 })
 
-const data = computed(() => props.dogadjaji)
-const loading = false
 const error = null
 
-const PO_STRANICI = 8
 const prikaz = ref('lista')
-const upit = ref('')
-const period = ref('')
-const stranica = ref(1)
+const upit = ref(props.q || '')
+const period = ref(props.period || '')
 const odabraniDan = ref('')
 const danDogadjaji = ref([])
 
@@ -40,51 +39,55 @@ const periodOpcije = [
   { value: 'protekli', label: 'Protekli' },
 ]
 
-const filtrirano = computed(() => {
-  let lista = data.value || []
-  if (period.value === 'nadolazeci') lista = lista.filter((d) => !d.zavrseno)
-  if (period.value === 'protekli') lista = lista.filter((d) => d.zavrseno)
-  if (upit.value.trim()) {
-    const q = upit.value.trim().toLowerCase()
-    lista = lista.filter(
-      (d) => d.naslov?.toLowerCase().includes(q) || d.lokacija?.toLowerCase().includes(q),
-    )
-  }
-  return lista
+let debounceTimer = null
+
+function reload(params) {
+  router.get(
+    window.location.pathname,
+    params,
+    { preserveState: true, preserveScroll: true, replace: true },
+  )
+}
+
+watch(period, (val) => {
+  reload({ period: val || undefined, q: upit.value || undefined, page: 1 })
 })
 
-const ukupnoStranica = computed(() => Math.max(1, Math.ceil(filtrirano.value.length / PO_STRANICI)))
-const vidljivi = computed(() =>
-  filtrirano.value.slice((stranica.value - 1) * PO_STRANICI, stranica.value * PO_STRANICI),
-)
+watch(upit, (val) => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    reload({ period: period.value || undefined, q: val || undefined, page: 1 })
+  }, 350)
+})
 
-// Kalendar očekuje { date: 'YYYY-MM-DD' } → mapiramo iz polja `datum`.
+function goPage(page) {
+  reload({ period: period.value || undefined, q: upit.value || undefined, page })
+}
+
 const kalendarEvents = computed(() =>
-  (data.value || []).map((d) => ({ ...d, date: d.datum })),
+  (props.dogadjaji.data || []).map((d) => ({ ...d, date: d.datum })),
 )
 
-const aktivniChipovi = computed(() => {
+const aktivniChipovi = () => {
   const chips = []
   if (period.value) {
     const p = periodOpcije.find((o) => o.value === period.value)
     chips.push({ key: 'period', label: p ? p.label : period.value })
   }
-  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}”` })
+  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
   return chips
-})
-
-watch([period, upit], () => {
-  stranica.value = 1
-})
+}
 
 function ocisti() {
   period.value = ''
   upit.value = ''
+  reload({})
 }
 
 function ukloni(key) {
   if (key === 'period') period.value = ''
   if (key === 'upit') upit.value = ''
+  reload({ period: period.value || undefined, q: upit.value || undefined, page: 1 })
 }
 
 function onSelectDay({ events }) {
@@ -113,7 +116,7 @@ function onSelectDay({ events }) {
     </AppContainer>
 
     <AppContainer class="mt-6">
-      <FilterBar :chips="aktivniChipovi" @clear="ocisti" @remove="ukloni">
+      <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
         <FormSelect v-model="period" :options="periodOpcije" placeholder="Svi periodi" />
         <SearchInput v-model="upit" placeholder="Pretraži događaje…" />
       </FilterBar>
@@ -129,12 +132,12 @@ function onSelectDay({ events }) {
 
       <!-- Prikaz: Lista -->
       <template v-else-if="prikaz === 'lista'">
-        <CardGrid v-if="loading">
+        <CardGrid v-if="!dogadjaji.data">
           <Skeleton :count="8" />
         </CardGrid>
 
         <EmptyState
-          v-else-if="!vidljivi.length"
+          v-else-if="!dogadjaji.data.length"
           title="Nema događaja"
           text="Za odabrane filtere trenutno nema događaja. Pokušajte promijeniti period ili pretragu."
         >
@@ -143,22 +146,21 @@ function onSelectDay({ events }) {
 
         <template v-else>
           <CardGrid>
-            <EventCard v-for="d in vidljivi" :key="d.slug" :item="d" />
+            <EventCard v-for="d in dogadjaji.data" :key="d.slug" :item="d" />
           </CardGrid>
-          <div v-if="ukupnoStranica > 1" class="mt-10 flex justify-center">
-            <Pagination v-model="stranica" :total="ukupnoStranica" />
+          <div v-if="dogadjaji.meta.last_page > 1" class="mt-10 flex justify-center">
+            <Pagination
+              :model-value="dogadjaji.meta.current_page"
+              :total="dogadjaji.meta.last_page"
+              @update:model-value="goPage"
+            />
           </div>
         </template>
       </template>
 
       <!-- Prikaz: Kalendar -->
       <template v-else>
-        <div v-if="loading" class="grid gap-6 lg:grid-cols-[1fr_340px]">
-          <div class="h-[420px] animate-pulse rounded-md bg-neutral-tint" />
-          <div class="h-[420px] animate-pulse rounded-md bg-neutral-tint" />
-        </div>
-
-        <div v-else class="grid gap-6 lg:grid-cols-[1fr_340px]">
+        <div class="grid gap-6 lg:grid-cols-[1fr_340px]">
           <EventCalendar
             v-model="odabraniDan"
             :events="kalendarEvents"

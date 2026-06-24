@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ContentStatus;
+use App\Models\Concerns\HasTags;
 use App\Models\Concerns\TracksStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Story extends Model implements HasMedia
 {
-    use HasSlug, InteractsWithMedia, TracksStatus;
+    use HasSlug, InteractsWithMedia, TracksStatus, HasTags;
 
     protected $fillable = [
         'user_id',

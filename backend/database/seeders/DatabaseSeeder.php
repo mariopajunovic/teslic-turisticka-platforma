@@ -18,12 +18,14 @@ class DatabaseSeeder extends Seeder
             MenuSeeder::class,
             PageSeeder::class,
             CategorySeeder::class,
+            TagSeeder::class,
             BusinessSeeder::class,
             LocationSeeder::class,
             EventSeeder::class,
             AdSeeder::class,
             StorySeeder::class,
             NewsSeeder::class,
+            ContentLinkSeeder::class,
         ]);
     }
 }

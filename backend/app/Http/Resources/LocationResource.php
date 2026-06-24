@@ -17,6 +17,7 @@ class LocationResource extends JsonResource
             'lokacija' => $this->lokacija,
             'preporuceno' => (bool) $this->preporuceno,
             'kategorija' => $this->category ? [
+                'key' => $this->category->key,
                 'label' => $this->category->label,
                 'icon' => $this->category->icon,
             ] : null,

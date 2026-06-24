@@ -82,7 +82,38 @@ export WWWUSER=$(id -u) WWWGROUP=$(id -g)
   2. **Uloge/permisije se realno koriste.** `Admin` `use HasRoles` (guard `admin`). `RolePermissionSeeder`: permisije (sadržaj/korisnici/stranice/postavke/logovi) + role **administrator** (sve) i **urednik** (sadržaj+logovi); dodijeljene (`syncRoles`) — mario=super+administrator, demo `urednik@komteldoo.com`. `Gate::before` → super bypass. `canAccessPanel` = super ili ima ulogu. **`canAccess()`** na admin-only resursima (Korisnici/Stranice/Meniji/Postavke) → urednik ih ne vidi; sadržaj/logove vide oba. Test dokazuje razliku.
   3. **Mrtvi `frontend/` uklonjen** (+ `middleware.js`/`vercel.json` koji su bili unutar njega) — kanonski front je `backend/resources/js`; provjereno bez zavisnosti; seed podaci već u `backend/database/data`.
   - **61/61 testova** (uklj. urednik 403 na Korisnike, 200 na Sadržaj).
-- **Stanje:** B0–B7 kompletni + sigurnosne ispravke. Platforma radi end-to-end; workflow odobravanja zatvoren s e-mail obavijestima; admini s obaveznom 2FA i razdvojenim ulogama; jedan kanonski frontend.
+- **Workflow/taksonomija/log ispravke ✅ (4 od 8 prijavljenih gapova):**
+  1. **Workflow (item 1, jezgro):** zajednički `App\Services\ContentWorkflow` (submit/approve/returnForRevision/reject/archive — **6 statusa**) + reusable Filament akcije `ApproveAction`/`ReturnAction`/`RejectAction`/`ArchiveAction` (razdvojeno „Vrati na doradu" vs „Odbij"); inline logika **uklonjena iz svih 6 tabela**. Dashboard widget `ApprovalStatsWidget` (na odobrenju / novi nalozi / aktivni oglasi / nadolazeći događaji). *(Dedicated agregirana „Red odobravanja" stranica — opciono; pokriveno widgetom + per-resurs status filterom.)*
+  2. **Activity log (item 2):** `CauserResolver::resolveUsing` (admin pa web guard) → log sada bilježi **koji** admin je odobrio/odbio (potvrđeno). `TracksStatus` dodan na **Event/Location/News** (sada svih 6 sadržajnih modela + prijave/odjave).
+  4. **Status raznolikost (item 4):** `VariesStatus` trait — seed sada ima nacrt/poslano/odbijeno/objavljeno (panela/red-odobravanja demonstrabilni), uz dovoljno objavljenih da javne kategorije ostanu popunjene.
+  5. **Taksonomija (item 5):** `CategorySeeder` pun set s ispravnim ključevima + `planine`; Story/Location/Ad seederi mapiraju **label→key**; resursi izlažu `kategorija.key`; listinzi (Local/Tourism/Stories) filtriraju po **key** i čitaju `?kategorija=` iz URL-a (kontroleri prosljeđuju). Menu linkovi sada nalaze sadržaj (potvrđeno SSR-om).
+  - **61/61 testova.**
+- **Items 3/6/7/8 ✅ (5 paralelnih agenata, integrisano):**
+  - **Item 8 (tags/links):** tabele `tags`/`taggables`/`content_links`; `Tag` model + `HasTags` trait na svih 6 sadržajnih modela; Filament `TagResource` + polje „Oznake" (Select multiple) na svim sadržajnim formama; `TagSeeder`.
+  - **Item 3 (upit biznisu):** `BusinessInquiryController` + ruta `POST /domace-je-najbolje/{slug}/upit` (CAPTCHA + `throttle:5,1`) + `BusinessInquiry` notifikacija vlasniku; forma „Pošalji upit" na profilu (renderuje se).
+  - **Item 7 (FormRequest + paginacija):** 6 `FormRequest` klasa (validacija izvučena iz kontrolera); **server-side paginacija + filtriranje** (`paginate(12)`, kategorija/pretraga kao query) na svih 5 listinga (kontroleri + Vue stranice).
+  - **Item 6 (resursi):** `AdminResource` (uloge + **reset 2FA** + reset lozinke), `RoleResource` (permisije), `PlaceResource` (mapa tačke), `MediaResource` (medijska biblioteka, read-only), `UserResource` + **reset lozinke** + kolona **zadnja prijava** (`last_login_at` migracija + Login listener).
+  - **71/71 testova** (uklj. nove resurse + upit); 0 SSR grešaka.
+- **Preostala dva (minorna) ✅ završena:**
+  - **Red odobravanja (TS 8):** Filament stranica `ApprovalQueue` (grupa Sadržaj) — agregira sav sadržaj u statusu `Poslano` kroz svih 6 tipova, s linkom „Otvori" na resurs gdje se odobrava/vraća/odbija. canAccess 'upravljanje sadržajem'.
+  - **Povezani sadržaj (content_links):** `ContentLink` model + `RelatedLinks::for()` helper (dvosmjerno, samo objavljeno) + Filament `ContentLinkResource` (MorphToSelect izvor↔cilj za admin povezivanje) + `LinkCard.vue`; 5 detalj-kontrolera prosljeđuju `povezani`, 5 detalj-stranica prikazuju sekciju „Povezani sadržaj"; seed primjera. Potvrđeno SSR-om.
+  - **74/74 testova.**
+- **2FA admina — uslovno (dev OFF, prod ON):** `AdminPanelProvider` registruje MFA samo kad je uključen: `env('ADMIN_MFA_ENABLED', app()->isProduction())`. Dev (`APP_ENV=local`, `.env: ADMIN_MFA_ENABLED=false`) → **bez 2FA**; produkcija → obavezno (default true ili `ADMIN_MFA_ENABLED=true` u `.env.example`). MFA kolone/logika ostaju spremne.
+- **Dekentralizacija hardkodovanog sadržaja ✅ (3 agenta — backend + 2 frontend):**
+  - **(A) Tekstovi statičnih stranica uredljivi iz admina:** `StraniceSettings` (spatie, grupa `strane`) + Filament stranica **„Tekstovi stranica"** (`ManagePageTexts`, grupa Postavke, gate `sistemske postavke`); `SiteData` dijeli `texts`; `useTexts()` composable; 7 javnih stranica (Kontakt/Pridruži se/Reg. biznis/Reg. autor/Prijava/Registracija/Zaboravljena lozinka) čitaju naslove/uvode iz `texts` (s fallbackom na postojeći tekst).
+  - **(B) Početna:** potvrđeno da `pocetna` postoji kao **Page** (početna je CMS-driven, nije „zaključana" u kodu); `Home.vue` ostaje samo kao defanzivni fallback.
+  - **(C) Uklonjen leftover mock iz SPA migracije:** obrisani `constants/categories.js`, `constants/navigation.js`, `services/api.js`, `composables/useFetch.js`, `data/*.json` (mrtav lanac/duplikati). Potrošači prevezani na DB: `useSite` bez fallbacka (sve iz shared `site`), nove `useCategories()` čita shared `kategorije` (iz DB Category) → 4 map-komponente. Nema više „drift" rizika; 0 slomljenih importa.
+  - Ispravka: `MapFilterPanel` `defineProps` default je referencirao lokalnu varijablu (build error) → prebačeno na `categories` iz `useCategories()`.
+  - **74/74 testova**, build čist (klijent + SSR).
+- **SEO ✅ (6 prioritetnih cjelina):**
+  - **(1) Per-stranica meta na SVE:** `Seo.vue` (renderuje Inertia `<Head>`: title, description≤160, canonical, OG title/description/type/url/image, twitter:card, JSON-LD) montiran u `PublicLayout`; svi kontroleri + statične rute prosljeđuju `seo` prop preko helpera `App\Support\Seo::make()`. `app.blade.php` ima default description/OG/theme-color/lang.
+  - **(2) Path-based kategorija landinzi:** rute `/{listing}/kategorija/{kategorija}` za biznise/turizam/priče (`kategorija()` metode renderuju iste listinge filtrirane po `Category.key`, `firstOrFail` → 404), s vlastitim canonical-om; registrovane PRIJE `{slug}` detalj-ruta.
+  - **(3) Canonical na filtrirane/paginirane → bazni listing** (query se ne uključuje u canonical) radi dedupa.
+  - **(4) JSON-LD:** `Seo::localBusiness/event/article/breadcrumbs` — LocalBusiness (biznis), Event (događaj), Article (priča), BreadcrumbList na svim detaljima i landinzima. Potvrđeno SSR/curl-om.
+  - **(5) Dinamički `sitemap.xml` + `robots.txt`:** `SitemapController` (sav objavljeni sadržaj + CMS stranice + statične rute; `robots()` referencira sitemap). Obrisan default `public/robots.txt` (statički fajl je imao prioritet nad rutom).
+  - **74/74 testova**; `seo` prop i JSON-LD potvrđeni na home/CMS/listing/kategorija/detalj rutama.
+- **Stanje:** Svih 8 prijavljenih stavki riješeno + sadržaj statičnih stranica/kategorija/navigacije decentralizovan u DB/admin + SEO kompletan; B0–B7 + sve naknadne ispravke kompletne.
+- **Stanje:** B0–B7 + sigurnosne i workflow/taksonomija ispravke. Platforma radi end-to-end.
 - **Proces:** bez subagenata i bez `git commit` (korisnikova instrukcija).
 
 ## 🔗 Veze

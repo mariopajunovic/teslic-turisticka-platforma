@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, watch } from 'vue'
+import { router } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -15,17 +16,12 @@ import BaseButton from '@/components/base/BaseButton.vue'
 import BusinessCard from '@/components/cards/BusinessCard.vue'
 
 const props = defineProps({
-  biznisi: { type: Array, default: () => [] },
+  kategorija: { type: String, default: '' },
+  q: { type: String, default: '' },
+  biznisi: { type: Object, default: () => ({ data: [], meta: { current_page: 1, last_page: 1 } }) },
 })
 
-const data = computed(() => props.biznisi)
-const loading = false
 const error = null
-
-const PO_STRANICI = 8
-const upit = ref('')
-const kategorija = ref('')
-const stranica = ref(1)
 
 const kategorijeOpcije = [
   { value: 'zanat', label: 'Zanatski proizvodi' },
@@ -33,48 +29,55 @@ const kategorijeOpcije = [
   { value: 'usluge', label: 'Usluge i servisi' },
 ]
 
-const filtrirano = computed(() => {
-  let lista = data.value || []
-  if (kategorija.value) lista = lista.filter((b) => b.kategorija?.icon === kategorija.value)
-  if (upit.value.trim()) {
-    const q = upit.value.trim().toLowerCase()
-    lista = lista.filter(
-      (b) =>
-        b.naslov?.toLowerCase().includes(q) ||
-        b.opis?.toLowerCase().includes(q) ||
-        b.lokacija?.toLowerCase().includes(q),
-    )
-  }
-  return lista
+const kategorija = ref(props.kategorija || '')
+const upit = ref(props.q || '')
+const stranica = ref(props.biznisi.meta?.current_page ?? 1)
+
+let debounceTimer = null
+
+function reload(params) {
+  router.get(
+    window.location.pathname,
+    params,
+    { preserveState: true, preserveScroll: true, replace: true },
+  )
+}
+
+watch(kategorija, (val) => {
+  reload({ kategorija: val || undefined, q: upit.value || undefined, page: 1 })
 })
 
-const ukupnoStranica = computed(() => Math.max(1, Math.ceil(filtrirano.value.length / PO_STRANICI)))
-const vidljivi = computed(() =>
-  filtrirano.value.slice((stranica.value - 1) * PO_STRANICI, stranica.value * PO_STRANICI),
-)
+watch(upit, (val) => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    reload({ kategorija: kategorija.value || undefined, q: val || undefined, page: 1 })
+  }, 350)
+})
 
-const aktivniChipovi = computed(() => {
+function goPage(page) {
+  reload({ kategorija: kategorija.value || undefined, q: upit.value || undefined, page })
+}
+
+const aktivniChipovi = () => {
   const chips = []
   if (kategorija.value) {
     const k = kategorijeOpcije.find((o) => o.value === kategorija.value)
     chips.push({ key: 'kategorija', label: k ? k.label : kategorija.value })
   }
-  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}”` })
+  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
   return chips
-})
-
-watch([kategorija, upit], () => {
-  stranica.value = 1
-})
+}
 
 function ocisti() {
   kategorija.value = ''
   upit.value = ''
+  reload({})
 }
 
 function ukloni(key) {
   if (key === 'kategorija') kategorija.value = ''
   if (key === 'upit') upit.value = ''
+  reload({ kategorija: kategorija.value || undefined, q: upit.value || undefined, page: 1 })
 }
 </script>
 
@@ -92,7 +95,7 @@ function ukloni(key) {
     </AppContainer>
 
     <AppContainer class="mt-6">
-      <FilterBar :chips="aktivniChipovi" @clear="ocisti" @remove="ukloni">
+      <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
         <FormSelect v-model="kategorija" :options="kategorijeOpcije" placeholder="Sve kategorije" />
         <SearchInput v-model="upit" placeholder="Pretraži ponudu…" />
       </FilterBar>
@@ -106,12 +109,12 @@ function ukloni(key) {
         text="Trenutno nije moguće učitati ponudu. Pokušajte ponovo kasnije."
       />
 
-      <CardGrid v-else-if="loading">
+      <CardGrid v-else-if="!biznisi.data">
         <Skeleton :count="8" />
       </CardGrid>
 
       <EmptyState
-        v-else-if="!vidljivi.length"
+        v-else-if="!biznisi.data.length"
         title="Nema rezultata"
         text="Za odabrane filtere nema ponude. Pokušajte promijeniti kategoriju ili pretragu."
       >
@@ -120,10 +123,14 @@ function ukloni(key) {
 
       <template v-else>
         <CardGrid>
-          <BusinessCard v-for="b in vidljivi" :key="b.slug" :item="b" />
+          <BusinessCard v-for="b in biznisi.data" :key="b.slug" :item="b" />
         </CardGrid>
-        <div v-if="ukupnoStranica > 1" class="mt-10 flex justify-center">
-          <Pagination v-model="stranica" :total="ukupnoStranica" />
+        <div v-if="biznisi.meta.last_page > 1" class="mt-10 flex justify-center">
+          <Pagination
+            :model-value="biznisi.meta.current_page"
+            :total="biznisi.meta.last_page"
+            @update:model-value="goPage"
+          />
         </div>
       </template>
     </AppContainer>

@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
+import { useForm, usePage } from '@inertiajs/vue3'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -8,13 +9,17 @@ import Gallery from '@/components/common/Gallery.vue'
 import InfoPanel from '@/components/common/InfoPanel.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
+import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import BusinessCard from '@/components/cards/BusinessCard.vue'
+import FormField from '@/components/forms/FormField.vue'
+import FormTextarea from '@/components/forms/FormTextarea.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
+  povezani: { type: Array, default: () => [] },
   biznis: { type: Object, default: null },
   slicni: { type: Array, default: () => [] },
 })
@@ -51,6 +56,19 @@ const infoItems = computed(() => {
 })
 
 const upitPoslan = ref(false)
+
+const page = usePage()
+
+const upitForm = useForm({ ime: '', email: '', poruka: '' })
+
+function posaljiUpit() {
+  upitForm.post(`/domace-je-najbolje/${props.slug || biznis.value?.slug}/upit`, {
+    preserveScroll: true,
+    onSuccess: () => {
+      upitForm.reset()
+    },
+  })
+}
 </script>
 
 <template>
@@ -116,20 +134,58 @@ const upitPoslan = ref(false)
         </div>
 
         <div class="space-y-6">
-          <InfoPanel title="Kontakt" :items="infoItems">
-            <BaseButton variant="primary" icon="send" block @click="upitPoslan = true">
-              Pošalji upit
-            </BaseButton>
-            <BaseAlert
-              v-if="upitPoslan"
-              variant="info"
-              class="mt-4"
-              text="Kontaktirajte ponuđača direktno putem navedenih podataka."
-            />
-          </InfoPanel>
+          <InfoPanel title="Kontakt" :items="infoItems" />
           <MiniMap :label="biznis.lokacija" />
         </div>
       </div>
+
+      <div class="mt-10 rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)]">
+        <h2 class="font-heading text-xl font-semibold text-heading">Pošalji upit biznisu</h2>
+        <form class="mt-5 space-y-4" @submit.prevent="posaljiUpit">
+          <BaseAlert
+            v-if="page.props.flash?.status"
+            variant="uspjeh"
+            title="Upit poslan"
+            :text="page.props.flash.status"
+          />
+          <BaseAlert
+            v-if="upitForm.hasErrors"
+            variant="greska"
+            title="Provjerite polja"
+            text="Molimo ispravite greške u formi."
+          />
+          <FormField
+            v-model="upitForm.ime"
+            label="Ime i prezime"
+            placeholder="npr. Marko Marković"
+            required
+            :error="upitForm.errors.ime"
+          />
+          <FormField
+            v-model="upitForm.email"
+            label="E-mail"
+            type="email"
+            placeholder="vasa@adresa.com"
+            required
+            :error="upitForm.errors.email"
+          />
+          <FormTextarea
+            v-model="upitForm.poruka"
+            label="Poruka"
+            :maxlength="5000"
+            placeholder="Vaša poruka…"
+            required
+            :error="upitForm.errors.poruka"
+          />
+          <BaseButton type="submit" variant="primary" icon="send" :loading="upitForm.processing">
+            Pošalji upit
+          </BaseButton>
+        </form>
+      </div>
+
+      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+        <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
+      </RelatedContent>
 
       <RelatedContent v-if="slicni.length" title="Slično">
         <BusinessCard v-for="b in slicni" :key="b.slug" :item="b" />

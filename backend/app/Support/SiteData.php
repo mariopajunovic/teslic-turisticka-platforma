@@ -2,9 +2,11 @@
 
 namespace App\Support;
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Settings\SiteSettings;
+use App\Settings\StraniceSettings;
 
 class SiteData
 {
@@ -18,6 +20,8 @@ class SiteData
         ])->get()->keyBy('key');
 
         $settings = app(SiteSettings::class);
+
+        $straniceSettings = app(StraniceSettings::class);
 
         return [
             'mainNav' => self::tree($menus->get('main')),
@@ -40,6 +44,8 @@ class SiteData
                 'social' => $settings->social,
                 'partneri' => $settings->partneri,
             ],
+            'texts' => $straniceSettings->toArray(),
+            'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon])->all(),
         ];
     }
 

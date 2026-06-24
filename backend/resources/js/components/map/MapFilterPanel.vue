@@ -1,17 +1,15 @@
 <script setup>
 // Panel slojeva/filtera za mapu. v-model = niz aktivnih key-eva kategorija.
 import { ref } from 'vue'
-import { categories as defaultCategories } from '@/constants/categories'
+import { useCategories } from '@/composables/useCategories'
 import { categoryColor } from './markerIcon'
 import SearchInput from '@/components/common/SearchInput.vue'
 import FormCheckbox from '@/components/forms/FormCheckbox.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
-const model = defineModel({ type: Array, default: () => [] })
+const { categories } = useCategories()
 
-defineProps({
-  categories: { type: Array, default: () => defaultCategories },
-})
+const model = defineModel({ type: Array, default: () => [] })
 
 const emit = defineEmits(['search'])
 

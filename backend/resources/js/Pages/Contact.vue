@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
+import { useTexts } from '@/composables/useTexts'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
@@ -23,6 +24,7 @@ const captcha = ref(false)
 const poslano = ref(false)
 const greska = ref(false)
 
+const t = useTexts()
 const { kontakt } = useSite()
 
 const kontaktInfo = computed(() => [
@@ -68,10 +70,9 @@ function posalji() {
     </AppContainer>
 
     <AppContainer class="mt-6">
-      <h1 class="font-heading text-3xl font-bold text-heading md:text-4xl">Kontakt</h1>
+      <h1 class="font-heading text-3xl font-bold text-heading md:text-4xl">{{ t('kontakt_naslov', 'Kontakt') }}</h1>
       <p class="mt-2 max-w-2xl text-text-muted">
-        Imate pitanje, prijedlog ili želite saradnju? Pošaljite nam poruku ili nas kontaktirajte
-        direktno.
+        {{ t('kontakt_uvod', 'Imate pitanje, prijedlog ili želite saradnju? Pošaljite nam poruku ili nas kontaktirajte direktno.') }}
       </p>
     </AppContainer>
 

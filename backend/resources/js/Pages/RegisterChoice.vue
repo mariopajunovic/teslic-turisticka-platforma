@@ -3,6 +3,9 @@
 import AppContainer from '@/components/layout/AppContainer.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
+import { useTexts } from '@/composables/useTexts'
+
+const t = useTexts()
 
 const opcije = [
   {
@@ -26,8 +29,8 @@ const opcije = [
   <section class="bg-surface-alt">
     <AppContainer class="flex min-h-[600px] flex-col items-center justify-center gap-8 py-16">
       <div class="max-w-[680px] space-y-2.5 text-center">
-        <h1 class="font-heading text-3xl font-bold text-heading md:text-[32px]">Napravi nalog</h1>
-        <p class="text-base text-text-muted">Odaberite tip naloga koji želite kreirati na platformi.</p>
+        <h1 class="font-heading text-3xl font-bold text-heading md:text-[32px]">{{ t('registracija_naslov', 'Napravi nalog') }}</h1>
+        <p class="text-base text-text-muted">{{ t('registracija_uvod', 'Odaberite tip naloga koji želite kreirati na platformi.') }}</p>
       </div>
 
       <div class="flex flex-col gap-6 sm:flex-row">

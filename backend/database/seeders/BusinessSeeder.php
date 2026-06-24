@@ -2,14 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Enums\ContentStatus;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\User;
+use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class BusinessSeeder extends Seeder
 {
+    use VariesStatus;
+
     public function run(): void
     {
         $path = database_path('data/biznisi.json');
@@ -21,7 +23,7 @@ class BusinessSeeder extends Seeder
         $owner = User::where('email', 'biznis@komteldoo.com')->first();
         $items = json_decode(file_get_contents($path), true) ?? [];
 
-        foreach ($items as $item) {
+        foreach ($items as $i => $item) {
             $icon = $item['kategorija']['icon'] ?? null;
             $category = $icon ? Category::where('key', $icon)->first() : null;
 
@@ -38,8 +40,7 @@ class BusinessSeeder extends Seeder
                     'kontakt' => $item['kontakt'] ?? null,
                     'lat' => $item['lat'] ?? null,
                     'lng' => $item['lng'] ?? null,
-                    'status' => ContentStatus::Objavljeno,
-                    'published_at' => now(),
+                    ...$this->statusFields($i),
                 ],
             );
         }

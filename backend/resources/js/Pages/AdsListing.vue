@@ -1,5 +1,6 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
+import { router } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -15,73 +16,80 @@ import BaseButton from '@/components/base/BaseButton.vue'
 import AdCard from '@/components/cards/AdCard.vue'
 
 const props = defineProps({
-  oglasi: { type: Array, default: () => [] },
+  oglasi: { type: Object, default: () => ({ data: [], meta: { current_page: 1, last_page: 1 } }) },
+  kategorija: { type: String, default: '' },
+  q: { type: String, default: '' },
+  status: { type: String, default: 'aktivni' },
 })
 
-const data = computed(() => props.oglasi)
-const loading = false
 const error = null
-
-const PO_STRANICI = 8
-const upit = ref('')
-const vrsta = ref('')
-const status = ref('aktivni')
-const stranica = ref(1)
 
 const statusOpcije = [
   { value: 'aktivni', label: 'Aktivni' },
   { value: 'arhiva', label: 'Arhiva' },
 ]
 
-// Vrste oglasa — izvedene iz labela u podacima.
 const vrsteOpcije = computed(() => {
   const map = new Map()
-  for (const o of data.value || []) {
-    if (o.vrsta?.label) map.set(o.vrsta.label, o.vrsta.label)
+  for (const o of props.oglasi.data || []) {
+    if (o.vrsta?.key && o.vrsta?.label) map.set(o.vrsta.key, o.vrsta.label)
   }
-  return [...map.values()].map((label) => ({ value: label, label }))
+  return [...map.entries()].map(([key, label]) => ({ value: key, label }))
 })
 
-const filtrirano = computed(() => {
-  let lista = data.value || []
-  lista = lista.filter((o) => (status.value === 'arhiva' ? o.isteklo : !o.isteklo))
-  if (vrsta.value) lista = lista.filter((o) => o.vrsta?.label === vrsta.value)
-  if (upit.value.trim()) {
-    const q = upit.value.trim().toLowerCase()
-    lista = lista.filter(
-      (o) =>
-        o.naslov?.toLowerCase().includes(q) ||
-        o.izdavac?.toLowerCase().includes(q) ||
-        o.lokacija?.toLowerCase().includes(q),
-    )
-  }
-  return lista
+const vrsta = ref(props.kategorija || '')
+const upit = ref(props.q || '')
+const status = ref(props.status || 'aktivni')
+
+let debounceTimer = null
+
+function reload(params) {
+  router.get(
+    window.location.pathname,
+    params,
+    { preserveState: true, preserveScroll: true, replace: true },
+  )
+}
+
+watch(vrsta, (val) => {
+  reload({ kategorija: val || undefined, q: upit.value || undefined, status: status.value, page: 1 })
 })
 
-const ukupnoStranica = computed(() => Math.max(1, Math.ceil(filtrirano.value.length / PO_STRANICI)))
-const vidljivi = computed(() =>
-  filtrirano.value.slice((stranica.value - 1) * PO_STRANICI, stranica.value * PO_STRANICI),
-)
+watch(status, (val) => {
+  reload({ kategorija: vrsta.value || undefined, q: upit.value || undefined, status: val, page: 1 })
+})
 
-const aktivniChipovi = computed(() => {
+watch(upit, (val) => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    reload({ kategorija: vrsta.value || undefined, q: val || undefined, status: status.value, page: 1 })
+  }, 350)
+})
+
+function goPage(page) {
+  reload({ kategorija: vrsta.value || undefined, q: upit.value || undefined, status: status.value, page })
+}
+
+const aktivniChipovi = () => {
   const chips = []
-  if (vrsta.value) chips.push({ key: 'vrsta', label: vrsta.value })
-  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}”` })
+  if (vrsta.value) {
+    const found = vrsteOpcije.value.find((o) => o.value === vrsta.value)
+    chips.push({ key: 'vrsta', label: found ? found.label : vrsta.value })
+  }
+  if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
   return chips
-})
-
-watch([vrsta, upit, status], () => {
-  stranica.value = 1
-})
+}
 
 function ocisti() {
   vrsta.value = ''
   upit.value = ''
+  reload({ status: status.value })
 }
 
 function ukloni(key) {
   if (key === 'vrsta') vrsta.value = ''
   if (key === 'upit') upit.value = ''
+  reload({ kategorija: vrsta.value || undefined, q: upit.value || undefined, status: status.value, page: 1 })
 }
 </script>
 
@@ -106,7 +114,7 @@ function ukloni(key) {
     </AppContainer>
 
     <AppContainer class="mt-6">
-      <FilterBar :chips="aktivniChipovi" @clear="ocisti" @remove="ukloni">
+      <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
         <FormSelect v-model="vrsta" :options="vrsteOpcije" placeholder="Sve vrste" />
         <SearchInput v-model="upit" placeholder="Pretraži oglase…" />
       </FilterBar>
@@ -120,12 +128,12 @@ function ukloni(key) {
         text="Trenutno nije moguće učitati oglase. Pokušajte ponovo kasnije."
       />
 
-      <CardGrid v-else-if="loading" :cols="3">
+      <CardGrid v-else-if="!oglasi.data" :cols="3">
         <Skeleton :count="8" />
       </CardGrid>
 
       <EmptyState
-        v-else-if="!vidljivi.length"
+        v-else-if="!oglasi.data.length"
         :title="status === 'arhiva' ? 'Nema arhiviranih oglasa' : 'Nema aktivnih oglasa'"
         text="Za odabrane filtere trenutno nema oglasa. Pokušajte promijeniti pretragu ili pogledajte arhivu."
       >
@@ -144,10 +152,14 @@ function ukloni(key) {
 
       <template v-else>
         <CardGrid :cols="3">
-          <AdCard v-for="o in vidljivi" :key="o.slug" :item="o" />
+          <AdCard v-for="o in oglasi.data" :key="o.slug" :item="o" />
         </CardGrid>
-        <div v-if="ukupnoStranica > 1" class="mt-10 flex justify-center">
-          <Pagination v-model="stranica" :total="ukupnoStranica" />
+        <div v-if="oglasi.meta.last_page > 1" class="mt-10 flex justify-center">
+          <Pagination
+            :model-value="oglasi.meta.current_page"
+            :total="oglasi.meta.last_page"
+            @update:model-value="goPage"
+          />
         </div>
       </template>
     </AppContainer>

@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0E8275">
+    <meta property="og:site_name" content="{{ config('app.name', 'TO Teslić') }}">
+    <meta property="og:locale" content="sr_RS">
     <title inertia>{{ config('app.name', 'TO Teslić') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @inertiaHead

@@ -7,6 +7,7 @@ import Hero from '@/components/common/Hero.vue'
 import Gallery from '@/components/common/Gallery.vue'
 import AuthorBlock from '@/components/common/AuthorBlock.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
+import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
@@ -14,6 +15,7 @@ import StoryCard from '@/components/cards/StoryCard.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
+  povezani: { type: Array, default: () => [] },
   prica: { type: Object, default: null },
   slicne: { type: Array, default: () => [] },
 })
@@ -97,6 +99,10 @@ const autor = computed(() => ({
       <div class="mx-auto mt-10 max-w-2xl">
         <AuthorBlock :author="autor" to="/price" />
       </div>
+
+      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+        <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
+      </RelatedContent>
 
       <RelatedContent v-if="slicne.length" title="Druge priče">
         <StoryCard v-for="p in slicne" :key="p.slug" :item="p" />

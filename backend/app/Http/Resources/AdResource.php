@@ -13,6 +13,7 @@ class AdResource extends JsonResource
             'slug' => $this->slug,
             'naslov' => $this->naslov,
             'vrsta' => $this->category ? [
+                'key' => $this->category->key,
                 'label' => $this->category->label,
                 'icon' => $this->category->icon,
             ] : null,

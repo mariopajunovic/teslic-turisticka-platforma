@@ -1,7 +1,9 @@
 <script setup>
 // Kompaktna lista rezultata uz mapu — klik na red emituje `select`.
-import { categoryByKey } from '@/constants/categories'
+import { useCategories } from '@/composables/useCategories'
 import { categoryColor } from './markerIcon'
+
+const { categoryByKey } = useCategories()
 import BaseChip from '@/components/base/BaseChip.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 

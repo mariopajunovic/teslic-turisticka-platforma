@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Nalog;
 
 use App\Enums\ContentStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoryRequest;
 use App\Models\Category;
 use App\Models\Story;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -54,7 +54,7 @@ class AutorStoryController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StoryRequest $request): RedirectResponse
     {
         $story = new Story(['user_id' => auth()->id(), 'autor' => auth()->user()->name]);
         $this->fill($story, $request);
@@ -62,7 +62,7 @@ class AutorStoryController extends Controller
         return redirect('/nalog/autor/price')->with('status', $this->message($story));
     }
 
-    public function update(Request $request, Story $story): RedirectResponse
+    public function update(StoryRequest $request, Story $story): RedirectResponse
     {
         $this->authorizeOwner($story);
         $this->fill($story, $request);
@@ -70,15 +70,9 @@ class AutorStoryController extends Controller
         return redirect('/nalog/autor/price')->with('status', $this->message($story));
     }
 
-    protected function fill(Story $story, Request $request): void
+    protected function fill(Story $story, StoryRequest $request): void
     {
-        $data = $request->validate([
-            'naslov' => ['required', 'string', 'max:255'],
-            'category_id' => ['nullable', 'exists:categories,id'],
-            'izvod' => ['nullable', 'string'],
-            'sadrzaj' => ['nullable', 'string'],
-            'action' => ['required', 'in:nacrt,posalji'],
-        ]);
+        $data = $request->validated();
 
         $story->fill([
             'naslov' => $data['naslov'],

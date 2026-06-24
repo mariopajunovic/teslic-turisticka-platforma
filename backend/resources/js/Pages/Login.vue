@@ -1,12 +1,14 @@
 <script setup>
 import { computed } from 'vue'
 import { Link, useForm, usePage } from '@inertiajs/vue3'
+import { useTexts } from '@/composables/useTexts'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import FormField from '@/components/forms/FormField.vue'
 import FormCheckbox from '@/components/forms/FormCheckbox.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
+const t = useTexts()
 const page = usePage()
 const status = computed(() => page.props.flash?.status)
 
@@ -27,7 +29,7 @@ function submit() {
   <section class="bg-surface-alt">
     <AppContainer class="flex min-h-[600px] items-center justify-center py-16">
       <div class="w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8">
-        <h1 class="font-heading text-2xl font-bold text-heading">Prijava</h1>
+        <h1 class="font-heading text-2xl font-bold text-heading">{{ t('prijava_naslov', 'Prijava') }}</h1>
 
         <div
           v-if="status"

@@ -1,5 +1,5 @@
 <script setup>
-import { Head } from '@inertiajs/vue3'
+import BlockShell from '@/components/blocks/BlockShell.vue'
 import BlockHero from '@/components/blocks/BlockHero.vue'
 import BlockSectionHeader from '@/components/blocks/BlockSectionHeader.vue'
 import BlockRichText from '@/components/blocks/BlockRichText.vue'
@@ -10,6 +10,13 @@ import BlockGallery from '@/components/blocks/BlockGallery.vue'
 import BlockVideo from '@/components/blocks/BlockVideo.vue'
 import BlockMap from '@/components/blocks/BlockMap.vue'
 import BlockSpacer from '@/components/blocks/BlockSpacer.vue'
+import BlockStepper from '@/components/blocks/BlockStepper.vue'
+import BlockInfoPanel from '@/components/blocks/BlockInfoPanel.vue'
+import BlockFaq from '@/components/blocks/BlockFaq.vue'
+import BlockStats from '@/components/blocks/BlockStats.vue'
+import BlockPartners from '@/components/blocks/BlockPartners.vue'
+import BlockFeaturedStory from '@/components/blocks/BlockFeaturedStory.vue'
+import BlockAuthor from '@/components/blocks/BlockAuthor.vue'
 
 const props = defineProps({
   page: { type: Object, default: () => ({}) },
@@ -27,21 +34,27 @@ const registry = {
   video: BlockVideo,
   map: BlockMap,
   spacer: BlockSpacer,
+  stepper: BlockStepper,
+  info_panel: BlockInfoPanel,
+  faq: BlockFaq,
+  stats: BlockStats,
+  partners: BlockPartners,
+  featured_story: BlockFeaturedStory,
+  author: BlockAuthor,
 }
+
+const isVisible = (block) => block.data?.settings?.visible ?? block.data?.visible ?? true
 </script>
 
 <template>
   <div class="pb-16">
-    <Head :title="page.meta_title || page.title">
-      <meta v-if="page.meta_description" name="description" :content="page.meta_description" />
-    </Head>
-
     <template v-for="(block, i) in blocks" :key="i">
-      <component
-        :is="registry[block.type]"
-        v-if="registry[block.type] && (block.data?.visible ?? true)"
-        :data="block.data"
-      />
+      <BlockShell
+        v-if="registry[block.type] && isVisible(block)"
+        :settings="block.data?.settings || {}"
+      >
+        <component :is="registry[block.type]" :data="block.data" />
+      </BlockShell>
     </template>
   </div>
 </template>

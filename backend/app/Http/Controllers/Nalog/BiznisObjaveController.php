@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Nalog;
 
 use App\Enums\ContentStatus;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BusinessObjavaRequest;
 use App\Models\Business;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -66,7 +66,7 @@ class BiznisObjaveController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(BusinessObjavaRequest $request): RedirectResponse
     {
         $business = new Business(['user_id' => auth()->id()]);
         $this->fill($business, $request);
@@ -75,7 +75,7 @@ class BiznisObjaveController extends Controller
             ->with('status', $this->message($business));
     }
 
-    public function update(Request $request, Business $business): RedirectResponse
+    public function update(BusinessObjavaRequest $request, Business $business): RedirectResponse
     {
         $this->authorizeOwner($business);
         $this->fill($business, $request);
@@ -97,22 +97,9 @@ class BiznisObjaveController extends Controller
         return back()->with('status', 'Fotografija je uklonjena.');
     }
 
-    protected function fill(Business $business, Request $request): void
+    protected function fill(Business $business, BusinessObjavaRequest $request): void
     {
-        $data = $request->validate([
-            'naslov' => ['required', 'string', 'max:255'],
-            'category_id' => ['nullable', 'exists:categories,id'],
-            'opis' => ['nullable', 'string', 'max:500'],
-            'opis_dug' => ['nullable', 'string'],
-            'lokacija' => ['nullable', 'string', 'max:255'],
-            'kontakt' => ['nullable', 'array'],
-            'lat' => ['nullable', 'numeric'],
-            'lng' => ['nullable', 'numeric'],
-            'action' => ['required', 'in:nacrt,posalji'],
-            'naslovna' => ['nullable', 'image', 'max:4096'],
-            'galerija' => ['nullable', 'array'],
-            'galerija.*' => ['image', 'max:4096'],
-        ]);
+        $data = $request->validated();
 
         $business->fill([
             'naslov' => $data['naslov'],

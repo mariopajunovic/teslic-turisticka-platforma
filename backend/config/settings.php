@@ -8,6 +8,7 @@ return [
      */
     'settings' => [
         \App\Settings\SiteSettings::class,
+        \App\Settings\StraniceSettings::class,
     ],
 
     /*

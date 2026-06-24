@@ -1,7 +1,9 @@
 <script setup>
 import { onMounted, onUnmounted, ref, watch, nextTick } from 'vue'
-import { categoryByKey } from '@/constants/categories'
+import { useCategories } from '@/composables/useCategories'
 import { categoryIcon } from './markerIcon'
+
+const { categoryByKey } = useCategories()
 
 let L = null
 

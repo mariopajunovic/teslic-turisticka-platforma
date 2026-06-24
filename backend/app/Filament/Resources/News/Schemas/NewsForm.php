@@ -56,6 +56,14 @@ class NewsForm
                     ->required(),
                 DateTimePicker::make('published_at')
                     ->label('Objavljeno'),
+                Select::make('tags')
+                    ->label('Oznake')
+                    ->relationship('tags', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->createOptionForm([
+                        TextInput::make('name')->required(),
+                    ]),
             ]);
     }
 }

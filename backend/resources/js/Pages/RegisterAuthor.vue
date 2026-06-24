@@ -1,11 +1,14 @@
 <script setup>
 import { Link, useForm } from '@inertiajs/vue3'
+import { useTexts } from '@/composables/useTexts'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import FormField from '@/components/forms/FormField.vue'
 import FormCheckbox from '@/components/forms/FormCheckbox.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
+
+const t = useTexts()
 
 const form = useForm({
   role: 'autor',
@@ -35,10 +38,9 @@ function submit() {
 
       <div class="mx-auto mt-6 w-full max-w-[560px] space-y-5 rounded-2xl border border-border bg-surface p-8">
         <div>
-          <h1 class="font-heading text-2xl font-bold text-heading">Uključi se kao autor</h1>
+          <h1 class="font-heading text-2xl font-bold text-heading">{{ t('reg_autor_naslov', 'Uključi se kao autor') }}</h1>
           <p class="mt-2 text-sm text-text-muted">
-            Nakon registracije nalog ide na pregled administratora. Priče kreiraš i šalješ na
-            odobrenje nakon prijave.
+            {{ t('reg_autor_uvod', 'Nakon registracije nalog ide na pregled administratora. Priče kreiraš i šalješ na odobrenje nakon prijave.') }}
           </p>
         </div>
 

@@ -5,7 +5,9 @@ import AppContainer from '@/components/layout/AppContainer.vue'
 import FormField from '@/components/forms/FormField.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
+import { useTexts } from '@/composables/useTexts'
 
+const t = useTexts()
 const email = ref('')
 const poslano = ref(false)
 </script>
@@ -15,9 +17,9 @@ const poslano = ref(false)
     <AppContainer class="flex min-h-[600px] items-center justify-center py-16">
       <div class="w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8">
         <template v-if="!poslano">
-          <h1 class="font-heading text-2xl font-bold text-heading">Zaboravljena lozinka</h1>
+          <h1 class="font-heading text-2xl font-bold text-heading">{{ t('zaboravljena_naslov', 'Zaboravljena lozinka') }}</h1>
           <p class="text-sm leading-relaxed text-text-muted">
-            Unesite e-mail adresu vašeg naloga i poslaćemo vam link za postavljanje nove lozinke.
+            {{ t('zaboravljena_uvod', 'Unesite e-mail adresu vašeg naloga i poslaćemo vam link za postavljanje nove lozinke.') }}
           </p>
           <FormField v-model="email" label="E-mail" type="email" placeholder="marko@primjer.ba" />
           <BaseButton variant="primary" block @click="poslano = true">
