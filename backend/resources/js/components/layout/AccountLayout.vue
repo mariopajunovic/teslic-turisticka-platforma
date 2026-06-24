@@ -1,17 +1,33 @@
 <script setup>
 // Ljuska naloga (1:1 13_Moj-profil): Topbar + (Sidebar | mobilni tabovi) + sadržaj.
 // Ne koristi javni Header/Footer.
-import { Link, usePage } from '@inertiajs/vue3'
+import { computed } from 'vue'
+import { Link, router, usePage } from '@inertiajs/vue3'
 import AccountSidebar from '@/components/account/AccountSidebar.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const page = usePage()
 
-defineProps({
+const props = defineProps({
   items: { type: Array, required: true },
   heading: { type: String, default: 'MOJ NALOG' },
-  initials: { type: String, default: 'PĐ' },
+  initials: { type: String, default: '' },
 })
+
+const userInitials = computed(() => {
+  if (props.initials) return props.initials
+  const name = page.props.auth?.user?.name || ''
+  return name
+    .split(' ')
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
+})
+
+function logout() {
+  router.post('/logout')
+}
 </script>
 
 <template>
@@ -24,9 +40,9 @@ defineProps({
         <span
           class="flex size-9 items-center justify-center rounded-full bg-primary-tint text-[13px] font-bold text-primary"
         >
-          {{ initials }}
+          {{ userInitials }}
         </span>
-        <BaseButton href="#" variant="ghost" size="sm" icon="log-out">Odjava</BaseButton>
+        <BaseButton variant="ghost" size="sm" icon="log-out" @click="logout">Odjava</BaseButton>
       </div>
     </header>
 

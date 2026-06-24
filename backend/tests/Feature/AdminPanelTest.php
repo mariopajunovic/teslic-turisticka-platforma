@@ -42,7 +42,16 @@ class AdminPanelTest extends TestCase
             'news' => ['news'],
             'categories' => ['categories'],
             'menus' => ['menus'],
+            'pages' => ['pages'],
+            'users' => ['users'],
         ];
+    }
+
+    public function test_admin_can_open_activity_log(): void
+    {
+        $this->actingAs($this->admin(), 'admin')
+            ->get('/admin/activities')
+            ->assertOk();
     }
 
     public function test_admin_can_open_site_settings(): void

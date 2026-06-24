@@ -2,8 +2,8 @@
 export const biznisNav = [
   { label: 'Moj profil', icon: 'user', to: '/nalog/biznis/profil' },
   { label: 'Moje objave', icon: 'file-text', to: '/nalog/biznis/objave' },
+  { label: 'Nova objava', icon: 'plus', to: '/nalog/biznis/objave/nova' },
   { label: 'Oglasi', icon: 'megaphone', to: '/nalog/biznis/oglasi' },
-  { label: 'Mediji', icon: 'image', to: '/nalog/biznis/mediji' },
   { label: 'Postavke', icon: 'settings', to: '/nalog/biznis/postavke' },
 ]
 

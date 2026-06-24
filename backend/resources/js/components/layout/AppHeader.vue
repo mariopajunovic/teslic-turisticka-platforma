@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { Link, router as inertiaRouter } from '@inertiajs/vue3'
+import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
+import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
@@ -43,6 +43,16 @@ function submitSearch() {
 }
 
 const { mainNav, kontakt, postavke } = useSite()
+
+const page = usePage()
+const authUser = computed(() => page.props.auth?.user)
+const nalogLink = computed(() =>
+  authUser.value?.role === 'autor' ? '/nalog/autor/price' : '/nalog/biznis/profil',
+)
+
+function logout() {
+  inertiaRouter.post('/logout')
+}
 </script>
 
 <template>
@@ -90,18 +100,29 @@ const { mainNav, kontakt, postavke } = useSite()
             </a>
           </div>
           <div class="hidden items-center gap-3 lg:flex">
-            <Link
-              href="/prijava"
-              class="font-semibold text-white hover:text-primary-tint"
-            >
-              Prijava
-            </Link>
-            <Link
-              href="/pridruzi-se"
-              class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
-            >
-              Pridruži se
-            </Link>
+            <template v-if="authUser">
+              <Link :href="nalogLink" class="font-semibold text-white hover:text-primary-tint">
+                {{ authUser.name }}
+              </Link>
+              <button
+                type="button"
+                class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+                @click="logout"
+              >
+                Odjava
+              </button>
+            </template>
+            <template v-else>
+              <Link href="/prijava" class="font-semibold text-white hover:text-primary-tint">
+                Prijava
+              </Link>
+              <Link
+                href="/pridruzi-se"
+                class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+              >
+                Pridruži se
+              </Link>
+            </template>
           </div>
         </div>
       </AppContainer>

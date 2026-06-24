@@ -1,7 +1,7 @@
 import { Fragment, computed, createBlock, createCommentVNode, createSSRApp, createTextVNode, createVNode, h, mergeModels, mergeProps, nextTick, onBeforeUnmount, onMounted, onUnmounted, openBlock, ref, renderList, renderSlot, resolveDynamicComponent, toDisplayString, unref, useId, useModel, useSSRContext, vModelText, watch, withCtx, withDirectives, withModifiers } from "vue";
 import { ssrIncludeBooleanAttr, ssrInterpolate, ssrLooseContain, ssrLooseEqual, ssrRenderAttr, ssrRenderAttrs, ssrRenderClass, ssrRenderComponent, ssrRenderDynamicModel, ssrRenderList, ssrRenderSlot, ssrRenderStyle, ssrRenderTeleport, ssrRenderVNode } from "vue/server-renderer";
 import { ArrowLeft, ArrowRight, AtSign, BedDouble, Bell, Bold, BookOpen, Briefcase, Building2, Calendar, CalendarPlus, Camera, Check, ChevronDown, ChevronLeft, ChevronRight, CircleAlert, CircleCheck, Clock, Clock3, Compass, ExternalLink, Eye, EyeOff, Facebook, FileText, Globe, Hammer, Heading, Heart, Hourglass, Image, Inbox, Info, Instagram, Italic, Landmark, Leaf, Link2, List, Lock, LogIn, LogOut, Mail, Map as Map$1, MapPin, Maximize2, Megaphone, Menu, PenLine, PenTool, Pencil, Phone, Play, Plus, Quote, Save, Search, Send, Settings, Share2, SlidersHorizontal, Sparkles, Star, Store, Tag, Target, Ticket, Trash2, Trees, Upload, User, Users, UtensilsCrossed, Wrench, X, Youtube } from "lucide-vue-next";
-import { Link, createInertiaApp, router, usePage } from "@inertiajs/vue3";
+import { Head, Link, createInertiaApp, router, useForm, usePage } from "@inertiajs/vue3";
 import createServer from "@inertiajs/vue3/server";
 import { renderToString } from "@vue/server-renderer";
 import { createPinia, defineStore } from "pinia";
@@ -18,7 +18,7 @@ var __exportAll = (all, no_symbols) => {
 };
 //#endregion
 //#region resources/js/components/layout/AppContainer.vue
-var _sfc_main$90 = {
+var _sfc_main$98 = {
 	__name: "AppContainer",
 	__ssrInlineRender: true,
 	props: { as: {
@@ -37,11 +37,11 @@ var _sfc_main$90 = {
 		};
 	}
 };
-var _sfc_setup$90 = _sfc_main$90.setup;
-_sfc_main$90.setup = (props, ctx) => {
+var _sfc_setup$98 = _sfc_main$98.setup;
+_sfc_main$98.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/layout/AppContainer.vue");
-	return _sfc_setup$90 ? _sfc_setup$90(props, ctx) : void 0;
+	return _sfc_setup$98 ? _sfc_setup$98(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/constants/icons.js
@@ -127,7 +127,7 @@ var icons = {
 };
 //#endregion
 //#region resources/js/components/base/BaseIcon.vue
-var _sfc_main$89 = {
+var _sfc_main$97 = {
 	__name: "BaseIcon",
 	__ssrInlineRender: true,
 	props: {
@@ -155,15 +155,15 @@ var _sfc_main$89 = {
 		};
 	}
 };
-var _sfc_setup$89 = _sfc_main$89.setup;
-_sfc_main$89.setup = (props, ctx) => {
+var _sfc_setup$97 = _sfc_main$97.setup;
+_sfc_main$97.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/base/BaseIcon.vue");
-	return _sfc_setup$89 ? _sfc_setup$89(props, ctx) : void 0;
+	return _sfc_setup$97 ? _sfc_setup$97(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Hero.vue
-var _sfc_main$88 = {
+var _sfc_main$96 = {
 	__name: "Hero",
 	__ssrInlineRender: true,
 	props: {
@@ -196,7 +196,7 @@ var _sfc_main$88 = {
 				if (__props.image) _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="absolute inset-0 size-full object-cover">`);
 				else _push(`<!---->`);
 				_push(`<div class="absolute inset-0 bg-overlay"></div>`);
-				_push(ssrRenderComponent(_sfc_main$90, { class: "relative py-16 md:py-20" }, {
+				_push(ssrRenderComponent(_sfc_main$98, { class: "relative py-16 md:py-20" }, {
 					default: withCtx((_, _push, _parent, _scopeId) => {
 						if (_push) {
 							_push(`<div class="max-w-2xl"${_scopeId}>`);
@@ -232,7 +232,7 @@ var _sfc_main$88 = {
 				_push(`</section>`);
 			} else {
 				_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
-				_push(ssrRenderComponent(_sfc_main$90, null, {
+				_push(ssrRenderComponent(_sfc_main$98, null, {
 					default: withCtx((_, _push, _parent, _scopeId) => {
 						if (_push) {
 							_push(`<div class="grid items-center gap-8 py-12 md:grid-cols-2 md:gap-12 md:py-16"${_scopeId}><div${_scopeId}>`);
@@ -250,7 +250,7 @@ var _sfc_main$88 = {
 							if (__props.image) _push(`<img${ssrRenderAttr("src", __props.image)}${ssrRenderAttr("alt", __props.title)} class="absolute inset-0 size-full object-cover"${_scopeId}>`);
 							else {
 								_push(`<span class="absolute inset-0 flex items-center justify-center text-primary"${_scopeId}>`);
-								_push(ssrRenderComponent(_sfc_main$89, {
+								_push(ssrRenderComponent(_sfc_main$97, {
 									name: "image",
 									size: 48
 								}, null, _parent, _scopeId));
@@ -279,7 +279,7 @@ var _sfc_main$88 = {
 						}, null, 8, ["src", "alt"])) : (openBlock(), createBlock("span", {
 							key: 1,
 							class: "absolute inset-0 flex items-center justify-center text-primary"
-						}, [createVNode(_sfc_main$89, {
+						}, [createVNode(_sfc_main$97, {
 							name: "image",
 							size: 48
 						})]))])])];
@@ -291,15 +291,15 @@ var _sfc_main$88 = {
 		};
 	}
 };
-var _sfc_setup$88 = _sfc_main$88.setup;
-_sfc_main$88.setup = (props, ctx) => {
+var _sfc_setup$96 = _sfc_main$96.setup;
+_sfc_main$96.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Hero.vue");
-	return _sfc_setup$88 ? _sfc_setup$88(props, ctx) : void 0;
+	return _sfc_setup$96 ? _sfc_setup$96(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Breadcrumb.vue
-var _sfc_main$87 = {
+var _sfc_main$95 = {
 	__name: "Breadcrumb",
 	__ssrInlineRender: true,
 	props: { items: {
@@ -333,15 +333,15 @@ var _sfc_main$87 = {
 		};
 	}
 };
-var _sfc_setup$87 = _sfc_main$87.setup;
-_sfc_main$87.setup = (props, ctx) => {
+var _sfc_setup$95 = _sfc_main$95.setup;
+_sfc_main$95.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Breadcrumb.vue");
-	return _sfc_setup$87 ? _sfc_setup$87(props, ctx) : void 0;
+	return _sfc_setup$95 ? _sfc_setup$95(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/CTASection.vue
-var _sfc_main$86 = {
+var _sfc_main$94 = {
 	__name: "CTASection",
 	__ssrInlineRender: true,
 	props: {
@@ -368,15 +368,15 @@ var _sfc_main$86 = {
 		};
 	}
 };
-var _sfc_setup$86 = _sfc_main$86.setup;
-_sfc_main$86.setup = (props, ctx) => {
+var _sfc_setup$94 = _sfc_main$94.setup;
+_sfc_main$94.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/CTASection.vue");
-	return _sfc_setup$86 ? _sfc_setup$86(props, ctx) : void 0;
+	return _sfc_setup$94 ? _sfc_setup$94(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/base/BaseButton.vue
-var _sfc_main$85 = {
+var _sfc_main$93 = {
 	__name: "BaseButton",
 	__ssrInlineRender: true,
 	props: {
@@ -461,7 +461,7 @@ var _sfc_main$85 = {
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						if (__props.icon && __props.iconPosition === "left") _push(ssrRenderComponent(_sfc_main$89, {
+						if (__props.icon && __props.iconPosition === "left") _push(ssrRenderComponent(_sfc_main$97, {
 							name: __props.icon,
 							size: iconSize.value
 						}, null, _parent, _scopeId));
@@ -469,19 +469,19 @@ var _sfc_main$85 = {
 						_push(`<span${_scopeId}>`);
 						ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent, _scopeId);
 						_push(`</span>`);
-						if (__props.icon && __props.iconPosition === "right") _push(ssrRenderComponent(_sfc_main$89, {
+						if (__props.icon && __props.iconPosition === "right") _push(ssrRenderComponent(_sfc_main$97, {
 							name: __props.icon,
 							size: iconSize.value
 						}, null, _parent, _scopeId));
 						else _push(`<!---->`);
 					} else return [
-						__props.icon && __props.iconPosition === "left" ? (openBlock(), createBlock(_sfc_main$89, {
+						__props.icon && __props.iconPosition === "left" ? (openBlock(), createBlock(_sfc_main$97, {
 							key: 0,
 							name: __props.icon,
 							size: iconSize.value
 						}, null, 8, ["name", "size"])) : createCommentVNode("", true),
 						createVNode("span", null, [renderSlot(_ctx.$slots, "default")]),
-						__props.icon && __props.iconPosition === "right" ? (openBlock(), createBlock(_sfc_main$89, {
+						__props.icon && __props.iconPosition === "right" ? (openBlock(), createBlock(_sfc_main$97, {
 							key: 1,
 							name: __props.icon,
 							size: iconSize.value
@@ -493,16 +493,16 @@ var _sfc_main$85 = {
 		};
 	}
 };
-var _sfc_setup$85 = _sfc_main$85.setup;
-_sfc_main$85.setup = (props, ctx) => {
+var _sfc_setup$93 = _sfc_main$93.setup;
+_sfc_main$93.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/base/BaseButton.vue");
-	return _sfc_setup$85 ? _sfc_setup$85(props, ctx) : void 0;
+	return _sfc_setup$93 ? _sfc_setup$93(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/About.vue
-var About_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$84 });
-var _sfc_main$84 = {
+var About_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$92 });
+var _sfc_main$92 = {
 	__name: "About",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -569,19 +569,19 @@ var _sfc_main$84 = {
 		];
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$88, {
+			_push(ssrRenderComponent(_sfc_main$96, {
 				variant: "split",
 				kicker: "O projektu",
 				title: "Platforma turističke ponude Teslića",
 				subtitle: "Jedinstveno mjesto koje povezuje posjetioce, lokalne biznise i autore — i predstavlja sve što Teslić nudi."
 			}, null, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "O projektu" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "O projektu" }] })];
@@ -589,7 +589,7 @@ var _sfc_main$84 = {
 				_: 1
 			}, _parent));
 			_push(`<section class="py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(`<div class="max-w-3xl"${_scopeId}><h2 class="font-heading text-2xl font-bold text-heading md:text-3xl"${_scopeId}>Misija i svrha</h2><p class="mt-4 text-lg text-text-muted"${_scopeId}> Cilj platforme je da na modernom i preglednom mjestu objedini turističku i privrednu ponudu Teslića. Želimo da posjetioci lako pronađu prirodu, smještaj, događaje i domaće proizvode, a da lokalni domaćini i biznisi dobiju vidljivost koju zaslužuju. </p><p class="mt-4 text-lg text-text-muted"${_scopeId}> Posebnu pažnju posvećujemo autentičnim pričama kraja — ljudima, zanatima i tradiciji koji čine Teslić prepoznatljivim. </p></div>`);
 					else return [createVNode("div", { class: "max-w-3xl" }, [
@@ -601,13 +601,13 @@ var _sfc_main$84 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface-alt py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="font-heading text-2xl font-bold text-heading md:text-3xl"${_scopeId}>Ciljevi projekta</h2><div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"${_scopeId}><!--[-->`);
 						ssrRenderList(ciljevi, (cilj) => {
 							_push(`<div class="rounded-md border border-border bg-surface p-6 shadow-[var(--shadow-sm)]"${_scopeId}><span class="flex size-12 items-center justify-center rounded-md bg-primary-tint text-primary"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: cilj.icon,
 								size: 24
 							}, null, _parent, _scopeId));
@@ -619,7 +619,7 @@ var _sfc_main$84 = {
 							key: cilj.title,
 							class: "rounded-md border border-border bg-surface p-6 shadow-[var(--shadow-sm)]"
 						}, [
-							createVNode("span", { class: "flex size-12 items-center justify-center rounded-md bg-primary-tint text-primary" }, [createVNode(_sfc_main$89, {
+							createVNode("span", { class: "flex size-12 items-center justify-center rounded-md bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
 								name: cilj.icon,
 								size: 24
 							}, null, 8, ["name"])]),
@@ -631,18 +631,18 @@ var _sfc_main$84 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="font-heading text-2xl font-bold text-heading md:text-3xl"${_scopeId}> Kome je namijenjena </h2><div class="mt-8 grid gap-6 md:grid-cols-3"${_scopeId}><!--[-->`);
 						ssrRenderList(publika, (grupa) => {
 							_push(`<div class="flex flex-col rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)]"${_scopeId}><span class="flex size-14 items-center justify-center rounded-full bg-primary text-white"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: grupa.icon,
 								size: 26
 							}, null, _parent, _scopeId));
 							_push(`</span><h3 class="mt-4 text-xl font-semibold text-heading"${_scopeId}>${ssrInterpolate(grupa.title)}</h3><p class="mt-2 flex-1 text-text-muted"${_scopeId}>${ssrInterpolate(grupa.text)}</p>`);
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								icon: "arrow-right",
@@ -664,13 +664,13 @@ var _sfc_main$84 = {
 							key: grupa.title,
 							class: "flex flex-col rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)]"
 						}, [
-							createVNode("span", { class: "flex size-14 items-center justify-center rounded-full bg-primary text-white" }, [createVNode(_sfc_main$89, {
+							createVNode("span", { class: "flex size-14 items-center justify-center rounded-full bg-primary text-white" }, [createVNode(_sfc_main$97, {
 								name: grupa.icon,
 								size: 26
 							}, null, 8, ["name"])]),
 							createVNode("h3", { class: "mt-4 text-xl font-semibold text-heading" }, toDisplayString(grupa.title), 1),
 							createVNode("p", { class: "mt-2 flex-1 text-text-muted" }, toDisplayString(grupa.text), 1),
-							createVNode(_sfc_main$85, {
+							createVNode(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								icon: "arrow-right",
@@ -687,7 +687,7 @@ var _sfc_main$84 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface-alt py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="font-heading text-2xl font-bold text-heading md:text-3xl"${_scopeId}>Nosilac i partneri</h2><p class="mt-4 max-w-3xl text-text-muted"${_scopeId}> Platformu vodi Turistička organizacija Teslić u saradnji s lokalnom zajednicom, proizvođačima i institucijama koje podržavaju razvoj turizma kraja. </p><div class="mt-8 flex flex-wrap gap-4"${_scopeId}><!--[-->`);
@@ -709,14 +709,14 @@ var _sfc_main$84 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$86, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$94, {
 						title: "Pridružite se platformi",
 						text: "Predstavite svoj biznis ili podijelite priču iz Teslića."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "sekundarna",
 								to: "/pridruzi-se"
 							}, {
@@ -726,7 +726,7 @@ var _sfc_main$84 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "sekundarna",
 								to: "/pridruzi-se"
 							}, {
@@ -736,11 +736,11 @@ var _sfc_main$84 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$86, {
+					else return [createVNode(_sfc_main$94, {
 						title: "Pridružite se platformi",
 						text: "Predstavite svoj biznis ili podijelite priču iz Teslića."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "sekundarna",
 							to: "/pridruzi-se"
 						}, {
@@ -756,15 +756,15 @@ var _sfc_main$84 = {
 		};
 	}
 };
-var _sfc_setup$84 = _sfc_main$84.setup;
-_sfc_main$84.setup = (props, ctx) => {
+var _sfc_setup$92 = _sfc_main$92.setup;
+_sfc_main$92.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/About.vue");
-	return _sfc_setup$84 ? _sfc_setup$84(props, ctx) : void 0;
+	return _sfc_setup$92 ? _sfc_setup$92(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/InfoPanel.vue
-var _sfc_main$83 = {
+var _sfc_main$91 = {
 	__name: "InfoPanel",
 	__ssrInlineRender: true,
 	props: {
@@ -786,7 +786,7 @@ var _sfc_main$83 = {
 			_push(`<ul class="flex flex-col gap-4"><!--[-->`);
 			ssrRenderList(__props.items, (item, i) => {
 				_push(`<li class="flex items-start gap-3"><span class="mt-0.5 shrink-0 text-primary">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: item.icon,
 					size: 20
 				}, null, _parent));
@@ -815,15 +815,15 @@ var _sfc_main$83 = {
 		};
 	}
 };
-var _sfc_setup$83 = _sfc_main$83.setup;
-_sfc_main$83.setup = (props, ctx) => {
+var _sfc_setup$91 = _sfc_main$91.setup;
+_sfc_main$91.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/InfoPanel.vue");
-	return _sfc_setup$83 ? _sfc_setup$83(props, ctx) : void 0;
+	return _sfc_setup$91 ? _sfc_setup$91(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/layout/CardGrid.vue
-var _sfc_main$82 = {
+var _sfc_main$90 = {
 	__name: "CardGrid",
 	__ssrInlineRender: true,
 	props: { cols: {
@@ -838,15 +838,15 @@ var _sfc_main$82 = {
 		};
 	}
 };
-var _sfc_setup$82 = _sfc_main$82.setup;
-_sfc_main$82.setup = (props, ctx) => {
+var _sfc_setup$90 = _sfc_main$90.setup;
+_sfc_main$90.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/layout/CardGrid.vue");
-	return _sfc_setup$82 ? _sfc_setup$82(props, ctx) : void 0;
+	return _sfc_setup$90 ? _sfc_setup$90(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/RelatedContent.vue
-var _sfc_main$81 = {
+var _sfc_main$89 = {
 	__name: "RelatedContent",
 	__ssrInlineRender: true,
 	props: {
@@ -862,7 +862,7 @@ var _sfc_main$81 = {
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<section${ssrRenderAttrs(mergeProps({ class: "mt-12" }, _attrs))}><h2 class="mb-6 font-heading text-2xl font-bold text-heading">${ssrInterpolate(__props.title)}</h2>`);
-			_push(ssrRenderComponent(_sfc_main$82, { cols: __props.cols }, {
+			_push(ssrRenderComponent(_sfc_main$90, { cols: __props.cols }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent, _scopeId);
 					else return [renderSlot(_ctx.$slots, "default")];
@@ -873,16 +873,16 @@ var _sfc_main$81 = {
 		};
 	}
 };
-var _sfc_setup$81 = _sfc_main$81.setup;
-_sfc_main$81.setup = (props, ctx) => {
+var _sfc_setup$89 = _sfc_main$89.setup;
+_sfc_main$89.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/RelatedContent.vue");
-	return _sfc_setup$81 ? _sfc_setup$81(props, ctx) : void 0;
+	return _sfc_setup$89 ? _sfc_setup$89(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/base/BaseChip.vue
 var base = "inline-flex items-center gap-1.5 rounded-pill font-medium transition-colors";
-var _sfc_main$80 = {
+var _sfc_main$88 = {
 	__name: "BaseChip",
 	__ssrInlineRender: true,
 	props: {
@@ -929,7 +929,7 @@ var _sfc_main$80 = {
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						if (__props.icon) _push(ssrRenderComponent(_sfc_main$89, {
+						if (__props.icon) _push(ssrRenderComponent(_sfc_main$97, {
 							name: __props.icon,
 							size: 14
 						}, null, _parent, _scopeId));
@@ -937,14 +937,14 @@ var _sfc_main$80 = {
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.label)}</span>`);
 						if (__props.variant === "uklonjiv") {
 							_push(`<button type="button" class="-mr-1 ml-0.5 inline-flex cursor-pointer rounded-full p-0.5 hover:bg-primary-tint-2"${ssrRenderAttr("aria-label", `Ukloni ${__props.label}`)}${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: "x",
 								size: 14
 							}, null, _parent, _scopeId));
 							_push(`</button>`);
 						} else _push(`<!---->`);
 					} else return [
-						__props.icon ? (openBlock(), createBlock(_sfc_main$89, {
+						__props.icon ? (openBlock(), createBlock(_sfc_main$97, {
 							key: 0,
 							name: __props.icon,
 							size: 14
@@ -956,7 +956,7 @@ var _sfc_main$80 = {
 							class: "-mr-1 ml-0.5 inline-flex cursor-pointer rounded-full p-0.5 hover:bg-primary-tint-2",
 							"aria-label": `Ukloni ${__props.label}`,
 							onClick: ($event) => _ctx.$emit("remove")
-						}, [createVNode(_sfc_main$89, {
+						}, [createVNode(_sfc_main$97, {
 							name: "x",
 							size: 14
 						})], 8, ["aria-label", "onClick"])) : createCommentVNode("", true)
@@ -967,15 +967,15 @@ var _sfc_main$80 = {
 		};
 	}
 };
-var _sfc_setup$80 = _sfc_main$80.setup;
-_sfc_main$80.setup = (props, ctx) => {
+var _sfc_setup$88 = _sfc_main$88.setup;
+_sfc_main$88.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/base/BaseChip.vue");
-	return _sfc_setup$80 ? _sfc_setup$80(props, ctx) : void 0;
+	return _sfc_setup$88 ? _sfc_setup$88(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/base/BaseBadge.vue
-var _sfc_main$79 = {
+var _sfc_main$87 = {
 	__name: "BaseBadge",
 	__ssrInlineRender: true,
 	props: {
@@ -1050,15 +1050,15 @@ var _sfc_main$79 = {
 		};
 	}
 };
-var _sfc_setup$79 = _sfc_main$79.setup;
-_sfc_main$79.setup = (props, ctx) => {
+var _sfc_setup$87 = _sfc_main$87.setup;
+_sfc_main$87.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/base/BaseBadge.vue");
-	return _sfc_setup$79 ? _sfc_setup$79(props, ctx) : void 0;
+	return _sfc_setup$87 ? _sfc_setup$87(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/base/BaseAlert.vue
-var _sfc_main$78 = {
+var _sfc_main$86 = {
 	__name: "BaseAlert",
 	__ssrInlineRender: true,
 	props: {
@@ -1105,7 +1105,7 @@ var _sfc_main$78 = {
 				class: ["flex gap-3 rounded-md p-4", style.value.bg],
 				role: "alert"
 			}, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: style.value.icon,
 				size: 20,
 				class: [style.value.text, "mt-0.5 shrink-0"]
@@ -1124,15 +1124,15 @@ var _sfc_main$78 = {
 		};
 	}
 };
-var _sfc_setup$78 = _sfc_main$78.setup;
-_sfc_main$78.setup = (props, ctx) => {
+var _sfc_setup$86 = _sfc_main$86.setup;
+_sfc_main$86.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/base/BaseAlert.vue");
-	return _sfc_setup$78 ? _sfc_setup$78(props, ctx) : void 0;
+	return _sfc_setup$86 ? _sfc_setup$86(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/EmptyState.vue
-var _sfc_main$77 = {
+var _sfc_main$85 = {
 	__name: "EmptyState",
 	__ssrInlineRender: true,
 	props: {
@@ -1152,7 +1152,7 @@ var _sfc_main$77 = {
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "flex flex-col items-center gap-3 rounded-md border border-border bg-surface px-6 py-12 text-center" }, _attrs))}><span class="flex size-16 items-center justify-center rounded-full bg-primary-tint text-primary">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: __props.icon,
 				size: 28
 			}, null, _parent));
@@ -1168,15 +1168,15 @@ var _sfc_main$77 = {
 		};
 	}
 };
-var _sfc_setup$77 = _sfc_main$77.setup;
-_sfc_main$77.setup = (props, ctx) => {
+var _sfc_setup$85 = _sfc_main$85.setup;
+_sfc_main$85.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/EmptyState.vue");
-	return _sfc_setup$77 ? _sfc_setup$77(props, ctx) : void 0;
+	return _sfc_setup$85 ? _sfc_setup$85(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/AdCard.vue
-var _sfc_main$76 = {
+var _sfc_main$84 = {
 	__name: "AdCard",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -1192,49 +1192,49 @@ var _sfc_main$76 = {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="flex items-center justify-between gap-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.vrsta.label,
 							icon: __props.item.vrsta.icon
 						}, null, _parent, _scopeId));
-						if (__props.item.isteklo) _push(ssrRenderComponent(_sfc_main$79, { variant: "isteklo" }, null, _parent, _scopeId));
+						if (__props.item.isteklo) _push(ssrRenderComponent(_sfc_main$87, { variant: "isteklo" }, null, _parent, _scopeId));
 						else _push(`<!---->`);
 						_push(`</div><h3 class="line-clamp-2 text-[17px] font-semibold leading-snug text-heading"${_scopeId}>${ssrInterpolate(__props.item.naslov)}</h3><div class="flex flex-col gap-1.5 text-[13px] text-text-muted"${_scopeId}><div class="flex items-center gap-1.5"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "building-2",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.item.izdavac)}</span></div><div class="flex items-center gap-1.5"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "map-pin",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.item.lokacija)}</span></div><div class="flex items-center gap-1.5"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "calendar",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>Rok: ${ssrInterpolate(__props.item.rok)}</span></div></div>`);
 					} else return [
-						createVNode("div", { class: "flex items-center justify-between gap-2" }, [createVNode(_sfc_main$80, {
+						createVNode("div", { class: "flex items-center justify-between gap-2" }, [createVNode(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.vrsta.label,
 							icon: __props.item.vrsta.icon
-						}, null, 8, ["label", "icon"]), __props.item.isteklo ? (openBlock(), createBlock(_sfc_main$79, {
+						}, null, 8, ["label", "icon"]), __props.item.isteklo ? (openBlock(), createBlock(_sfc_main$87, {
 							key: 0,
 							variant: "isteklo"
 						})) : createCommentVNode("", true)]),
 						createVNode("h3", { class: "line-clamp-2 text-[17px] font-semibold leading-snug text-heading" }, toDisplayString(__props.item.naslov), 1),
 						createVNode("div", { class: "flex flex-col gap-1.5 text-[13px] text-text-muted" }, [
-							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$89, {
+							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$97, {
 								name: "building-2",
 								size: 15
 							}), createVNode("span", null, toDisplayString(__props.item.izdavac), 1)]),
-							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$89, {
+							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$97, {
 								name: "map-pin",
 								size: 15
 							}), createVNode("span", null, toDisplayString(__props.item.lokacija), 1)]),
-							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$89, {
+							createVNode("div", { class: "flex items-center gap-1.5" }, [createVNode(_sfc_main$97, {
 								name: "calendar",
 								size: 15
 							}), createVNode("span", null, "Rok: " + toDisplayString(__props.item.rok), 1)])
@@ -1246,16 +1246,16 @@ var _sfc_main$76 = {
 		};
 	}
 };
-var _sfc_setup$76 = _sfc_main$76.setup;
-_sfc_main$76.setup = (props, ctx) => {
+var _sfc_setup$84 = _sfc_main$84.setup;
+_sfc_main$84.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/AdCard.vue");
-	return _sfc_setup$76 ? _sfc_setup$76(props, ctx) : void 0;
+	return _sfc_setup$84 ? _sfc_setup$84(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/AdDetail.vue
-var AdDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$75 });
-var _sfc_main$75 = {
+var AdDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$83 });
+var _sfc_main$83 = {
 	__name: "AdDetail",
 	__ssrInlineRender: true,
 	props: {
@@ -1316,17 +1316,17 @@ var _sfc_main$75 = {
 			return items;
 		});
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-8"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!oglas.value) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!oglas.value) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Oglas nije pronađen",
 						text: "Traženi oglas ne postoji ili je uklonjen."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/oglasi"
@@ -1337,7 +1337,7 @@ var _sfc_main$75 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/oglasi"
@@ -1350,7 +1350,7 @@ var _sfc_main$75 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -1362,33 +1362,33 @@ var _sfc_main$75 = {
 							{ label: oglas.value.naslov }
 						] }, null, _parent, _scopeId));
 						_push(`<div class="${ssrRenderClass(oglas.value.isteklo ? "opacity-70" : "")}"${_scopeId}><header class="mt-6"${_scopeId}><div class="flex flex-wrap items-center gap-3"${_scopeId}>`);
-						if (oglas.value.vrsta) _push(ssrRenderComponent(_sfc_main$80, {
+						if (oglas.value.vrsta) _push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: oglas.value.vrsta.label,
 							icon: oglas.value.vrsta.icon
 						}, null, _parent, _scopeId));
 						else _push(`<!---->`);
-						if (oglas.value.isteklo) _push(ssrRenderComponent(_sfc_main$79, { variant: "isteklo" }, null, _parent, _scopeId));
+						if (oglas.value.isteklo) _push(ssrRenderComponent(_sfc_main$87, { variant: "isteklo" }, null, _parent, _scopeId));
 						else _push(`<!---->`);
 						_push(`</div><h1 class="mt-3 font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}>${ssrInterpolate(oglas.value.naslov)}</h1></header><div class="mt-8 grid gap-8 lg:grid-cols-3"${_scopeId}><div class="lg:col-span-2"${_scopeId}><h2 class="mb-3 font-heading text-2xl font-bold text-heading"${_scopeId}>Opis oglasa</h2><p class="whitespace-pre-line leading-relaxed text-text"${_scopeId}>${ssrInterpolate(oglas.value.opisDug)}</p></div><div${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$83, {
+						_push(ssrRenderComponent(_sfc_main$91, {
 							title: "Detalji",
 							items: infoItems.value
 						}, null, _parent, _scopeId));
 						_push(`</div></div></div>`);
-						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$81, { title: "Slični oglasi" }, {
+						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$89, { title: "Slični oglasi" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(slicni.value, (o) => {
-										_push(ssrRenderComponent(_sfc_main$76, {
+										_push(ssrRenderComponent(_sfc_main$84, {
 											key: o.slug,
 											item: o
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (o) => {
-									return openBlock(), createBlock(_sfc_main$76, {
+									return openBlock(), createBlock(_sfc_main$84, {
 										key: o.slug,
 										item: o
 									}, null, 8, ["item"]);
@@ -1399,12 +1399,12 @@ var _sfc_main$75 = {
 						else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!oglas.value ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!oglas.value ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Oglas nije pronađen",
 						text: "Traženi oglas ne postoji ili je uklonjen."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							icon: "arrow-left",
 							to: "/oglasi"
@@ -1414,7 +1414,7 @@ var _sfc_main$75 = {
 						})]),
 						_: 1
 					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [
-						createVNode(_sfc_main$87, { items: [
+						createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -1425,24 +1425,24 @@ var _sfc_main$75 = {
 							},
 							{ label: oglas.value.naslov }
 						] }, null, 8, ["items"]),
-						createVNode("div", { class: oglas.value.isteklo ? "opacity-70" : "" }, [createVNode("header", { class: "mt-6" }, [createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [oglas.value.vrsta ? (openBlock(), createBlock(_sfc_main$80, {
+						createVNode("div", { class: oglas.value.isteklo ? "opacity-70" : "" }, [createVNode("header", { class: "mt-6" }, [createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [oglas.value.vrsta ? (openBlock(), createBlock(_sfc_main$88, {
 							key: 0,
 							variant: "kategorija",
 							label: oglas.value.vrsta.label,
 							icon: oglas.value.vrsta.icon
-						}, null, 8, ["label", "icon"])) : createCommentVNode("", true), oglas.value.isteklo ? (openBlock(), createBlock(_sfc_main$79, {
+						}, null, 8, ["label", "icon"])) : createCommentVNode("", true), oglas.value.isteklo ? (openBlock(), createBlock(_sfc_main$87, {
 							key: 1,
 							variant: "isteklo"
-						})) : createCommentVNode("", true)]), createVNode("h1", { class: "mt-3 font-heading text-3xl font-bold text-heading md:text-4xl" }, toDisplayString(oglas.value.naslov), 1)]), createVNode("div", { class: "mt-8 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "lg:col-span-2" }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "Opis oglasa"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(oglas.value.opisDug), 1)]), createVNode("div", null, [createVNode(_sfc_main$83, {
+						})) : createCommentVNode("", true)]), createVNode("h1", { class: "mt-3 font-heading text-3xl font-bold text-heading md:text-4xl" }, toDisplayString(oglas.value.naslov), 1)]), createVNode("div", { class: "mt-8 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "lg:col-span-2" }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "Opis oglasa"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(oglas.value.opisDug), 1)]), createVNode("div", null, [createVNode(_sfc_main$91, {
 							title: "Detalji",
 							items: infoItems.value
 						}, null, 8, ["items"])])])], 2),
-						slicni.value.length ? (openBlock(), createBlock(_sfc_main$81, {
+						slicni.value.length ? (openBlock(), createBlock(_sfc_main$89, {
 							key: 0,
 							title: "Slični oglasi"
 						}, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (o) => {
-								return openBlock(), createBlock(_sfc_main$76, {
+								return openBlock(), createBlock(_sfc_main$84, {
 									key: o.slug,
 									item: o
 								}, null, 8, ["item"]);
@@ -1456,15 +1456,15 @@ var _sfc_main$75 = {
 		};
 	}
 };
-var _sfc_setup$75 = _sfc_main$75.setup;
-_sfc_main$75.setup = (props, ctx) => {
+var _sfc_setup$83 = _sfc_main$83.setup;
+_sfc_main$83.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/AdDetail.vue");
-	return _sfc_setup$75 ? _sfc_setup$75(props, ctx) : void 0;
+	return _sfc_setup$83 ? _sfc_setup$83(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/SegmentControl.vue
-var _sfc_main$74 = {
+var _sfc_main$82 = {
 	__name: "SegmentControl",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({ options: {
@@ -1484,7 +1484,7 @@ var _sfc_main$74 = {
 			}, _attrs))}><!--[-->`);
 			ssrRenderList(__props.options, (opt) => {
 				_push(`<button type="button" role="tab"${ssrRenderAttr("aria-selected", model.value === opt.value)} class="${ssrRenderClass([model.value === opt.value ? "bg-primary text-white shadow-[var(--shadow-sm)]" : "text-text hover:text-primary", "inline-flex h-9 items-center justify-center gap-1.5 rounded-sm px-4 text-sm font-semibold transition-colors"])}">`);
-				if (opt.icon) _push(ssrRenderComponent(_sfc_main$89, {
+				if (opt.icon) _push(ssrRenderComponent(_sfc_main$97, {
 					name: opt.icon,
 					size: 16
 				}, null, _parent));
@@ -1495,11 +1495,11 @@ var _sfc_main$74 = {
 		};
 	}
 };
-var _sfc_setup$74 = _sfc_main$74.setup;
-_sfc_main$74.setup = (props, ctx) => {
+var _sfc_setup$82 = _sfc_main$82.setup;
+_sfc_main$82.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/SegmentControl.vue");
-	return _sfc_setup$74 ? _sfc_setup$74(props, ctx) : void 0;
+	return _sfc_setup$82 ? _sfc_setup$82(props, ctx) : void 0;
 };
 //#endregion
 //#region \0plugin-vue:export-helper
@@ -1510,7 +1510,7 @@ var _plugin_vue_export_helper_default = (sfc, props) => {
 };
 //#endregion
 //#region resources/js/components/common/FilterDrawer.vue
-var _sfc_main$73 = {
+var _sfc_main$81 = {
 	__name: "FilterDrawer",
 	__ssrInlineRender: true,
 	props: {
@@ -1533,14 +1533,14 @@ var _sfc_main$73 = {
 			ssrRenderTeleport(_push, (_push) => {
 				if (open.value) {
 					_push(`<div class="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" data-v-ddf15c08><div class="absolute inset-0 bg-overlay" data-v-ddf15c08></div><section class="absolute inset-x-0 bottom-0 flex max-h-[85%] flex-col rounded-t-lg bg-surface shadow-[var(--shadow-lg)]" data-v-ddf15c08><div class="flex h-14 shrink-0 items-center justify-between border-b border-border px-4" data-v-ddf15c08><h2 class="text-lg font-semibold text-heading" data-v-ddf15c08>Filteri</h2><button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt" aria-label="Zatvori filtere" data-v-ddf15c08>`);
-					_push(ssrRenderComponent(_sfc_main$89, {
+					_push(ssrRenderComponent(_sfc_main$97, {
 						name: "x",
 						size: 22
 					}, null, _parent));
 					_push(`</button></div><div class="flex-1 space-y-4 overflow-y-auto p-4" data-v-ddf15c08>`);
 					ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
 					_push(`</div><div class="shrink-0 border-t border-border p-4" data-v-ddf15c08>`);
-					_push(ssrRenderComponent(_sfc_main$85, {
+					_push(ssrRenderComponent(_sfc_main$93, {
 						variant: "primary",
 						block: "",
 						onClick: close
@@ -1557,16 +1557,16 @@ var _sfc_main$73 = {
 		};
 	}
 };
-var _sfc_setup$73 = _sfc_main$73.setup;
-_sfc_main$73.setup = (props, ctx) => {
+var _sfc_setup$81 = _sfc_main$81.setup;
+_sfc_main$81.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/FilterDrawer.vue");
-	return _sfc_setup$73 ? _sfc_setup$73(props, ctx) : void 0;
+	return _sfc_setup$81 ? _sfc_setup$81(props, ctx) : void 0;
 };
-var FilterDrawer_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$73, [["__scopeId", "data-v-ddf15c08"]]);
+var FilterDrawer_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$81, [["__scopeId", "data-v-ddf15c08"]]);
 //#endregion
 //#region resources/js/components/common/FilterBar.vue
-var _sfc_main$72 = {
+var _sfc_main$80 = {
 	__name: "FilterBar",
 	__ssrInlineRender: true,
 	props: { chips: {
@@ -1596,7 +1596,7 @@ var _sfc_main$72 = {
 				_push(`<div class="flex items-end gap-3"><div class="flex flex-1 flex-wrap items-end gap-3">`);
 				ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
 				_push(`</div>`);
-				_push(ssrRenderComponent(_sfc_main$85, {
+				_push(ssrRenderComponent(_sfc_main$93, {
 					variant: "ghost",
 					size: "sm",
 					onClick: ($event) => emit("clear")
@@ -1610,7 +1610,7 @@ var _sfc_main$72 = {
 				_push(`</div>`);
 			} else {
 				_push(`<div>`);
-				_push(ssrRenderComponent(_sfc_main$85, {
+				_push(ssrRenderComponent(_sfc_main$93, {
 					variant: "secondary",
 					icon: "filter",
 					block: "",
@@ -1637,7 +1637,7 @@ var _sfc_main$72 = {
 			if (__props.chips.length) {
 				_push(`<div class="flex flex-wrap items-center gap-2"><!--[-->`);
 				ssrRenderList(__props.chips, (chip) => {
-					_push(ssrRenderComponent(_sfc_main$80, {
+					_push(ssrRenderComponent(_sfc_main$88, {
 						key: chip.key,
 						variant: "uklonjiv",
 						label: chip.label,
@@ -1650,15 +1650,15 @@ var _sfc_main$72 = {
 		};
 	}
 };
-var _sfc_setup$72 = _sfc_main$72.setup;
-_sfc_main$72.setup = (props, ctx) => {
+var _sfc_setup$80 = _sfc_main$80.setup;
+_sfc_main$80.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/FilterBar.vue");
-	return _sfc_setup$72 ? _sfc_setup$72(props, ctx) : void 0;
+	return _sfc_setup$80 ? _sfc_setup$80(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/SearchInput.vue
-var _sfc_main$71 = {
+var _sfc_main$79 = {
 	__name: "SearchInput",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({ placeholder: {
@@ -1679,7 +1679,7 @@ var _sfc_main$71 = {
 				role: "search",
 				class: "relative"
 			}, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "search",
 				size: 18,
 				class: "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
@@ -1687,7 +1687,7 @@ var _sfc_main$71 = {
 			_push(`<input${ssrRenderAttr("value", model.value)} type="search"${ssrRenderAttr("placeholder", __props.placeholder)} class="h-11 w-full rounded-sm border border-border bg-surface pl-10 pr-10 text-text outline-none transition-colors placeholder:text-text-muted focus:border-primary">`);
 			if (model.value) {
 				_push(`<button type="button" class="absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-full text-text-muted transition-colors hover:bg-surface-alt hover:text-heading" aria-label="Očisti pretragu">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "x",
 					size: 16
 				}, null, _parent));
@@ -1697,15 +1697,15 @@ var _sfc_main$71 = {
 		};
 	}
 };
-var _sfc_setup$71 = _sfc_main$71.setup;
-_sfc_main$71.setup = (props, ctx) => {
+var _sfc_setup$79 = _sfc_main$79.setup;
+_sfc_main$79.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/SearchInput.vue");
-	return _sfc_setup$71 ? _sfc_setup$71(props, ctx) : void 0;
+	return _sfc_setup$79 ? _sfc_setup$79(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/forms/FormSelect.vue
-var _sfc_main$70 = {
+var _sfc_main$78 = {
 	__name: "FormSelect",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -1765,7 +1765,7 @@ var _sfc_main$70 = {
 				_push(`<option${ssrRenderAttr("value", normalize(o).value)}${ssrIncludeBooleanAttr(Array.isArray(model.value) ? ssrLooseContain(model.value, normalize(o).value) : ssrLooseEqual(model.value, normalize(o).value)) ? " selected" : ""}>${ssrInterpolate(normalize(o).label)}</option>`);
 			});
 			_push(`<!--]--></select>`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "chevron-down",
 				size: 18,
 				class: "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-text-muted"
@@ -1778,15 +1778,15 @@ var _sfc_main$70 = {
 		};
 	}
 };
-var _sfc_setup$70 = _sfc_main$70.setup;
-_sfc_main$70.setup = (props, ctx) => {
+var _sfc_setup$78 = _sfc_main$78.setup;
+_sfc_main$78.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/forms/FormSelect.vue");
-	return _sfc_setup$70 ? _sfc_setup$70(props, ctx) : void 0;
+	return _sfc_setup$78 ? _sfc_setup$78(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Pagination.vue
-var _sfc_main$69 = {
+var _sfc_main$77 = {
 	__name: "Pagination",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({ total: {
@@ -1821,7 +1821,7 @@ var _sfc_main$69 = {
 				class: "flex items-center gap-2",
 				"aria-label": "Stranice"
 			}, _attrs))}><button type="button" class="grid size-10 place-items-center rounded-sm border border-border text-text transition-colors hover:bg-surface-alt disabled:opacity-40"${ssrIncludeBooleanAttr(current.value <= 1) ? " disabled" : ""} aria-label="Prethodna stranica">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "chevron-left",
 				size: 18
 			}, null, _parent));
@@ -1833,7 +1833,7 @@ var _sfc_main$69 = {
 				_push(`<!--]-->`);
 			});
 			_push(`<!--]--><button type="button" class="grid size-10 place-items-center rounded-sm border border-border text-text transition-colors hover:bg-surface-alt disabled:opacity-40"${ssrIncludeBooleanAttr(current.value >= __props.total) ? " disabled" : ""} aria-label="Sljedeća stranica">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "chevron-right",
 				size: 18
 			}, null, _parent));
@@ -1841,15 +1841,15 @@ var _sfc_main$69 = {
 		};
 	}
 };
-var _sfc_setup$69 = _sfc_main$69.setup;
-_sfc_main$69.setup = (props, ctx) => {
+var _sfc_setup$77 = _sfc_main$77.setup;
+_sfc_main$77.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Pagination.vue");
-	return _sfc_setup$69 ? _sfc_setup$69(props, ctx) : void 0;
+	return _sfc_setup$77 ? _sfc_setup$77(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Skeleton.vue
-var _sfc_main$68 = {
+var _sfc_main$76 = {
 	__name: "Skeleton",
 	__ssrInlineRender: true,
 	props: { count: {
@@ -1866,17 +1866,17 @@ var _sfc_main$68 = {
 		};
 	}
 };
-var _sfc_setup$68 = _sfc_main$68.setup;
-_sfc_main$68.setup = (props, ctx) => {
+var _sfc_setup$76 = _sfc_main$76.setup;
+_sfc_main$76.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Skeleton.vue");
-	return _sfc_setup$68 ? _sfc_setup$68(props, ctx) : void 0;
+	return _sfc_setup$76 ? _sfc_setup$76(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/AdsListing.vue
-var AdsListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$67 });
+var AdsListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$75 });
 var PO_STRANICI$4 = 8;
-var _sfc_main$67 = {
+var _sfc_main$75 = {
 	__name: "AdsListing",
 	__ssrInlineRender: true,
 	props: { oglasi: {
@@ -1946,30 +1946,30 @@ var _sfc_main$67 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Oglasi" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Oglasi" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="flex flex-wrap items-start justify-between gap-4"${_scopeId}><div${_scopeId}><h1 class="font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}> Poslovne prilike i oglasi </h1><p class="mt-2 max-w-2xl text-text-muted"${_scopeId}> Zapošljavanje, saradnja, usluge i konkursi iz Teslića i okoline. </p></div>`);
-						_push(ssrRenderComponent(_sfc_main$74, {
+						_push(ssrRenderComponent(_sfc_main$82, {
 							modelValue: status.value,
 							"onUpdate:modelValue": ($event) => status.value = $event,
 							options: statusOpcije
 						}, null, _parent, _scopeId));
 						_push(`</div>`);
-					} else return [createVNode("div", { class: "flex flex-wrap items-start justify-between gap-4" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, " Poslovne prilike i oglasi "), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Zapošljavanje, saradnja, usluge i konkursi iz Teslića i okoline. ")]), createVNode(_sfc_main$74, {
+					} else return [createVNode("div", { class: "flex flex-wrap items-start justify-between gap-4" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, " Poslovne prilike i oglasi "), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Zapošljavanje, saradnja, usluge i konkursi iz Teslića i okoline. ")]), createVNode(_sfc_main$82, {
 						modelValue: status.value,
 						"onUpdate:modelValue": ($event) => status.value = $event,
 						options: statusOpcije
@@ -1977,27 +1977,27 @@ var _sfc_main$67 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$72, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: vrsta.value,
 									"onUpdate:modelValue": ($event) => vrsta.value = $event,
 									options: vrsteOpcije.value,
 									placeholder: "Sve vrste"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$71, {
+								_push(ssrRenderComponent(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži oglase…"
 								}, null, _parent, _scopeId));
-							} else return [createVNode(_sfc_main$70, {
+							} else return [createVNode(_sfc_main$78, {
 								modelValue: vrsta.value,
 								"onUpdate:modelValue": ($event) => vrsta.value = $event,
 								options: vrsteOpcije.value,
@@ -2006,7 +2006,7 @@ var _sfc_main$67 = {
 								"modelValue",
 								"onUpdate:modelValue",
 								"options"
-							]), createVNode(_sfc_main$71, {
+							]), createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži oglase…"
@@ -2014,12 +2014,12 @@ var _sfc_main$67 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$72, {
+					else return [createVNode(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$70, {
+						default: withCtx(() => [createVNode(_sfc_main$78, {
 							modelValue: vrsta.value,
 							"onUpdate:modelValue": ($event) => vrsta.value = $event,
 							options: vrsteOpcije.value,
@@ -2028,7 +2028,7 @@ var _sfc_main$67 = {
 							"modelValue",
 							"onUpdate:modelValue",
 							"options"
-						]), createVNode(_sfc_main$71, {
+						]), createVNode(_sfc_main$79, {
 							modelValue: upit.value,
 							"onUpdate:modelValue": ($event) => upit.value = $event,
 							placeholder: "Pretraži oglase…"
@@ -2038,14 +2038,14 @@ var _sfc_main$67 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 						title: status.value === "arhiva" ? "Nema arhiviranih oglasa" : "Nema aktivnih oglasa",
 						text: "Za odabrane filtere trenutno nema oglasa. Pokušajte promijeniti pretragu ili pogledajte arhivu."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) if (status.value === "aktivni") _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) if (status.value === "aktivni") _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ($event) => status.value = "arhiva"
@@ -2056,7 +2056,7 @@ var _sfc_main$67 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else _push(ssrRenderComponent(_sfc_main$85, {
+							else _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ($event) => status.value = "aktivni"
@@ -2067,7 +2067,7 @@ var _sfc_main$67 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [status.value === "aktivni" ? (openBlock(), createBlock(_sfc_main$85, {
+							else return [status.value === "aktivni" ? (openBlock(), createBlock(_sfc_main$93, {
 								key: 0,
 								variant: "secondary",
 								size: "sm",
@@ -2075,7 +2075,7 @@ var _sfc_main$67 = {
 							}, {
 								default: withCtx(() => [createTextVNode(" Pogledaj arhivu ")]),
 								_: 1
-							}, 8, ["onClick"])) : (openBlock(), createBlock(_sfc_main$85, {
+							}, 8, ["onClick"])) : (openBlock(), createBlock(_sfc_main$93, {
 								key: 1,
 								variant: "secondary",
 								size: "sm",
@@ -2089,19 +2089,19 @@ var _sfc_main$67 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(vidljivi.value, (o) => {
-										_push(ssrRenderComponent(_sfc_main$76, {
+										_push(ssrRenderComponent(_sfc_main$84, {
 											key: o.slug,
 											item: o
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (o) => {
-									return openBlock(), createBlock(_sfc_main$76, {
+									return openBlock(), createBlock(_sfc_main$84, {
 										key: o.slug,
 										item: o
 									}, null, 8, ["item"]);
@@ -2111,7 +2111,7 @@ var _sfc_main$67 = {
 						}, _parent, _scopeId));
 						if (ukupnoStranica.value > 1) {
 							_push(`<div class="mt-10 flex justify-center"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$69, {
+							_push(ssrRenderComponent(_sfc_main$77, {
 								modelValue: stranica.value,
 								"onUpdate:modelValue": ($event) => stranica.value = $event,
 								total: ukupnoStranica.value
@@ -2120,12 +2120,12 @@ var _sfc_main$67 = {
 						} else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: status.value === "arhiva" ? "Nema arhiviranih oglasa" : "Nema aktivnih oglasa",
 						text: "Za odabrane filtere trenutno nema oglasa. Pokušajte promijeniti pretragu ili pogledajte arhivu."
 					}, {
-						default: withCtx(() => [status.value === "aktivni" ? (openBlock(), createBlock(_sfc_main$85, {
+						default: withCtx(() => [status.value === "aktivni" ? (openBlock(), createBlock(_sfc_main$93, {
 							key: 0,
 							variant: "secondary",
 							size: "sm",
@@ -2133,7 +2133,7 @@ var _sfc_main$67 = {
 						}, {
 							default: withCtx(() => [createTextVNode(" Pogledaj arhivu ")]),
 							_: 1
-						}, 8, ["onClick"])) : (openBlock(), createBlock(_sfc_main$85, {
+						}, 8, ["onClick"])) : (openBlock(), createBlock(_sfc_main$93, {
 							key: 1,
 							variant: "secondary",
 							size: "sm",
@@ -2143,9 +2143,9 @@ var _sfc_main$67 = {
 							_: 1
 						}, 8, ["onClick"]))]),
 						_: 1
-					}, 8, ["title"])) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$82, { cols: 3 }, {
+					}, 8, ["title"])) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$90, { cols: 3 }, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (o) => {
-							return openBlock(), createBlock(_sfc_main$76, {
+							return openBlock(), createBlock(_sfc_main$84, {
 								key: o.slug,
 								item: o
 							}, null, 8, ["item"]);
@@ -2154,7 +2154,7 @@ var _sfc_main$67 = {
 					}), ukupnoStranica.value > 1 ? (openBlock(), createBlock("div", {
 						key: 0,
 						class: "mt-10 flex justify-center"
-					}, [createVNode(_sfc_main$69, {
+					}, [createVNode(_sfc_main$77, {
 						modelValue: stranica.value,
 						"onUpdate:modelValue": ($event) => stranica.value = $event,
 						total: ukupnoStranica.value
@@ -2170,15 +2170,15 @@ var _sfc_main$67 = {
 		};
 	}
 };
-var _sfc_setup$67 = _sfc_main$67.setup;
-_sfc_main$67.setup = (props, ctx) => {
+var _sfc_setup$75 = _sfc_main$75.setup;
+_sfc_main$75.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/AdsListing.vue");
-	return _sfc_setup$67 ? _sfc_setup$67(props, ctx) : void 0;
+	return _sfc_setup$75 ? _sfc_setup$75(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Lightbox.vue
-var _sfc_main$66 = {
+var _sfc_main$74 = {
 	__name: "Lightbox",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -2237,14 +2237,14 @@ var _sfc_main$66 = {
 			ssrRenderTeleport(_push, (_push) => {
 				if (open.value) {
 					_push(`<div class="fixed inset-0 z-[60] flex items-center justify-center bg-overlay" role="dialog" aria-modal="true" data-v-84b4797a><button type="button" class="absolute right-4 top-4 inline-flex size-11 items-center justify-center rounded-sm text-white hover:bg-white/10" aria-label="Zatvori" data-v-84b4797a>`);
-					_push(ssrRenderComponent(_sfc_main$89, {
+					_push(ssrRenderComponent(_sfc_main$97, {
 						name: "x",
 						size: 26
 					}, null, _parent));
 					_push(`</button>`);
 					if (total.value > 1) {
 						_push(`<button type="button" class="absolute left-2 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-sm text-white hover:bg-white/10 sm:left-4" aria-label="Prethodno" data-v-84b4797a>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "chevron-left",
 							size: 32
 						}, null, _parent));
@@ -2257,7 +2257,7 @@ var _sfc_main$66 = {
 					_push(`</div>`);
 					if (total.value > 1) {
 						_push(`<button type="button" class="absolute right-2 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-sm text-white hover:bg-white/10 sm:right-4" aria-label="Sljedeće" data-v-84b4797a>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "chevron-right",
 							size: 32
 						}, null, _parent));
@@ -2271,16 +2271,16 @@ var _sfc_main$66 = {
 		};
 	}
 };
-var _sfc_setup$66 = _sfc_main$66.setup;
-_sfc_main$66.setup = (props, ctx) => {
+var _sfc_setup$74 = _sfc_main$74.setup;
+_sfc_main$74.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Lightbox.vue");
-	return _sfc_setup$66 ? _sfc_setup$66(props, ctx) : void 0;
+	return _sfc_setup$74 ? _sfc_setup$74(props, ctx) : void 0;
 };
-var Lightbox_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$66, [["__scopeId", "data-v-84b4797a"]]);
+var Lightbox_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$74, [["__scopeId", "data-v-84b4797a"]]);
 //#endregion
 //#region resources/js/components/common/Gallery.vue
-var _sfc_main$65 = {
+var _sfc_main$73 = {
 	__name: "Gallery",
 	__ssrInlineRender: true,
 	props: {
@@ -2305,7 +2305,7 @@ var _sfc_main$65 = {
 					_push(`<button type="button" class="group relative aspect-square overflow-hidden rounded-md bg-primary-tint"${ssrRenderAttr("aria-label", item.alt || "Otvori stavku galerije")}><img${ssrRenderAttr("src", item.src)}${ssrRenderAttr("alt", item.alt || "")} loading="lazy" class="size-full object-cover transition-transform duration-300 group-hover:scale-105">`);
 					if (item.type === "video") {
 						_push(`<span class="absolute inset-0 flex items-center justify-center bg-black/30 text-white">`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "play",
 							size: 36
 						}, null, _parent));
@@ -2320,7 +2320,7 @@ var _sfc_main$65 = {
 					_push(`<button type="button" class="group relative aspect-square w-40 shrink-0 snap-start overflow-hidden rounded-md bg-primary-tint sm:w-48"${ssrRenderAttr("aria-label", item.alt || "Otvori stavku galerije")}><img${ssrRenderAttr("src", item.src)}${ssrRenderAttr("alt", item.alt || "")} loading="lazy" class="size-full object-cover transition-transform duration-300 group-hover:scale-105">`);
 					if (item.type === "video") {
 						_push(`<span class="absolute inset-0 flex items-center justify-center bg-black/30 text-white">`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "play",
 							size: 36
 						}, null, _parent));
@@ -2340,15 +2340,15 @@ var _sfc_main$65 = {
 		};
 	}
 };
-var _sfc_setup$65 = _sfc_main$65.setup;
-_sfc_main$65.setup = (props, ctx) => {
+var _sfc_setup$73 = _sfc_main$73.setup;
+_sfc_main$73.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Gallery.vue");
-	return _sfc_setup$65 ? _sfc_setup$65(props, ctx) : void 0;
+	return _sfc_setup$73 ? _sfc_setup$73(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/MiniMap.vue
-var _sfc_main$64 = {
+var _sfc_main$72 = {
 	__name: "MiniMap",
 	__ssrInlineRender: true,
 	props: {
@@ -2367,20 +2367,20 @@ var _sfc_main$64 = {
 				"background-image": "linear-gradient(var(--color-primary-tint-2) 1px, transparent 1px),\n            linear-gradient(90deg, var(--color-primary-tint-2) 1px, transparent 1px)",
 				"background-size": "28px 28px"
 			})}" aria-hidden="true"></span><span class="relative text-primary">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "map-pin",
 				size: 48
 			}, null, _parent));
 			_push(`</span></div><div class="flex flex-col gap-3 p-4">`);
 			if (__props.label) {
 				_push(`<div class="flex items-center gap-2 text-text"><span class="shrink-0 text-primary">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "map-pin",
 					size: 18
 				}, null, _parent));
 				_push(`</span><span class="font-medium">${ssrInterpolate(__props.label)}</span></div>`);
 			} else _push(`<!---->`);
-			_push(ssrRenderComponent(_sfc_main$85, {
+			_push(ssrRenderComponent(_sfc_main$93, {
 				variant: "secondary",
 				size: "sm",
 				icon: "map",
@@ -2397,15 +2397,15 @@ var _sfc_main$64 = {
 		};
 	}
 };
-var _sfc_setup$64 = _sfc_main$64.setup;
-_sfc_main$64.setup = (props, ctx) => {
+var _sfc_setup$72 = _sfc_main$72.setup;
+_sfc_main$72.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/MiniMap.vue");
-	return _sfc_setup$64 ? _sfc_setup$64(props, ctx) : void 0;
+	return _sfc_setup$72 ? _sfc_setup$72(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/CardImage.vue
-var _sfc_main$63 = {
+var _sfc_main$71 = {
 	__name: "CardImage",
 	__ssrInlineRender: true,
 	props: {
@@ -2431,7 +2431,7 @@ var _sfc_main$63 = {
 			if (__props.src) _push(`<img${ssrRenderAttr("src", __props.src)}${ssrRenderAttr("alt", __props.alt)} loading="lazy" class="size-full object-cover transition-transform duration-300 group-hover:scale-105">`);
 			else {
 				_push(`<div class="flex size-full items-center justify-center text-primary-tint-2">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "image",
 					size: 36
 				}, null, _parent));
@@ -2442,15 +2442,15 @@ var _sfc_main$63 = {
 		};
 	}
 };
-var _sfc_setup$63 = _sfc_main$63.setup;
-_sfc_main$63.setup = (props, ctx) => {
+var _sfc_setup$71 = _sfc_main$71.setup;
+_sfc_main$71.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/CardImage.vue");
-	return _sfc_setup$63 ? _sfc_setup$63(props, ctx) : void 0;
+	return _sfc_setup$71 ? _sfc_setup$71(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/BusinessCard.vue
-var _sfc_main$62 = {
+var _sfc_main$70 = {
 	__name: "BusinessCard",
 	__ssrInlineRender: true,
 	props: {
@@ -2471,17 +2471,17 @@ var _sfc_main$62 = {
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$63, {
+						_push(ssrRenderComponent(_sfc_main$71, {
 							src: __props.item.slika,
 							alt: __props.item.naslov
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) if (__props.item.preporuceno) _push(ssrRenderComponent(_sfc_main$79, {
+								if (_push) if (__props.item.preporuceno) _push(ssrRenderComponent(_sfc_main$87, {
 									variant: "preporuceno",
 									class: "absolute left-3 top-3 shadow-[var(--shadow-sm)]"
 								}, null, _parent, _scopeId));
 								else _push(`<!---->`);
-								else return [__props.item.preporuceno ? (openBlock(), createBlock(_sfc_main$79, {
+								else return [__props.item.preporuceno ? (openBlock(), createBlock(_sfc_main$87, {
 									key: 0,
 									variant: "preporuceno",
 									class: "absolute left-3 top-3 shadow-[var(--shadow-sm)]"
@@ -2490,36 +2490,36 @@ var _sfc_main$62 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`<div class="flex flex-col gap-2 p-4"${_scopeId}><div${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, _parent, _scopeId));
 						_push(`</div><h3 class="line-clamp-2 text-lg font-semibold leading-snug text-heading"${_scopeId}>${ssrInterpolate(__props.item.naslov)}</h3><p class="line-clamp-2 text-sm text-text-muted"${_scopeId}>${ssrInterpolate(__props.item.opis)}</p><div class="mt-auto flex items-center gap-1.5 pt-1 text-[13px] text-text-muted"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "map-pin",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.item.lokacija)}</span></div></div>`);
-					} else return [createVNode(_sfc_main$63, {
+					} else return [createVNode(_sfc_main$71, {
 						src: __props.item.slika,
 						alt: __props.item.naslov
 					}, {
-						default: withCtx(() => [__props.item.preporuceno ? (openBlock(), createBlock(_sfc_main$79, {
+						default: withCtx(() => [__props.item.preporuceno ? (openBlock(), createBlock(_sfc_main$87, {
 							key: 0,
 							variant: "preporuceno",
 							class: "absolute left-3 top-3 shadow-[var(--shadow-sm)]"
 						})) : createCommentVNode("", true)]),
 						_: 1
 					}, 8, ["src", "alt"]), createVNode("div", { class: "flex flex-col gap-2 p-4" }, [
-						createVNode("div", null, [createVNode(_sfc_main$80, {
+						createVNode("div", null, [createVNode(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, 8, ["label", "icon"])]),
 						createVNode("h3", { class: "line-clamp-2 text-lg font-semibold leading-snug text-heading" }, toDisplayString(__props.item.naslov), 1),
 						createVNode("p", { class: "line-clamp-2 text-sm text-text-muted" }, toDisplayString(__props.item.opis), 1),
-						createVNode("div", { class: "mt-auto flex items-center gap-1.5 pt-1 text-[13px] text-text-muted" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "mt-auto flex items-center gap-1.5 pt-1 text-[13px] text-text-muted" }, [createVNode(_sfc_main$97, {
 							name: "map-pin",
 							size: 15
 						}), createVNode("span", null, toDisplayString(__props.item.lokacija), 1)])
@@ -2530,16 +2530,16 @@ var _sfc_main$62 = {
 		};
 	}
 };
-var _sfc_setup$62 = _sfc_main$62.setup;
-_sfc_main$62.setup = (props, ctx) => {
+var _sfc_setup$70 = _sfc_main$70.setup;
+_sfc_main$70.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/BusinessCard.vue");
-	return _sfc_setup$62 ? _sfc_setup$62(props, ctx) : void 0;
+	return _sfc_setup$70 ? _sfc_setup$70(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/BusinessProfile.vue
-var BusinessProfile_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$61 });
-var _sfc_main$61 = {
+var BusinessProfile_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$69 });
+var _sfc_main$69 = {
 	__name: "BusinessProfile",
 	__ssrInlineRender: true,
 	props: {
@@ -2596,17 +2596,17 @@ var _sfc_main$61 = {
 		});
 		const upitPoslan = ref(false);
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-8"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!biznis.value) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!biznis.value) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Biznis nije pronađen",
 						text: "Traženi biznis ne postoji ili je uklonjen."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/domace-je-najbolje"
@@ -2617,7 +2617,7 @@ var _sfc_main$61 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/domace-je-najbolje"
@@ -2630,7 +2630,7 @@ var _sfc_main$61 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -2642,7 +2642,7 @@ var _sfc_main$61 = {
 							{ label: biznis.value.naslov }
 						] }, null, _parent, _scopeId));
 						_push(`<div class="mt-6 overflow-hidden rounded-lg"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: biznis.value.kategorija?.label,
 							title: biznis.value.naslov,
@@ -2652,17 +2652,17 @@ var _sfc_main$61 = {
 						_push(`</div>`);
 						if (biznis.value.galerija?.length) {
 							_push(`<section class="mt-10"${_scopeId}><h2 class="mb-4 font-heading text-2xl font-bold text-heading"${_scopeId}>Galerija</h2>`);
-							_push(ssrRenderComponent(_sfc_main$65, { items: biznis.value.galerija }, null, _parent, _scopeId));
+							_push(ssrRenderComponent(_sfc_main$73, { items: biznis.value.galerija }, null, _parent, _scopeId));
 							_push(`</section>`);
 						} else _push(`<!---->`);
 						_push(`<div class="mt-10 grid gap-8 lg:grid-cols-3"${_scopeId}><div class="lg:col-span-2"${_scopeId}><h2 class="mb-4 font-heading text-2xl font-bold text-heading"${_scopeId}>O ponudi</h2><p class="whitespace-pre-line leading-relaxed text-text"${_scopeId}>${ssrInterpolate(biznis.value.opisDug)}</p></div><div class="space-y-6"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$83, {
+						_push(ssrRenderComponent(_sfc_main$91, {
 							title: "Kontakt",
 							items: infoItems.value
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
-									_push(ssrRenderComponent(_sfc_main$85, {
+									_push(ssrRenderComponent(_sfc_main$93, {
 										variant: "primary",
 										icon: "send",
 										block: "",
@@ -2674,13 +2674,13 @@ var _sfc_main$61 = {
 										}),
 										_: 1
 									}, _parent, _scopeId));
-									if (upitPoslan.value) _push(ssrRenderComponent(_sfc_main$78, {
+									if (upitPoslan.value) _push(ssrRenderComponent(_sfc_main$86, {
 										variant: "info",
 										class: "mt-4",
 										text: "Kontaktirajte ponuđača direktno putem navedenih podataka."
 									}, null, _parent, _scopeId));
 									else _push(`<!---->`);
-								} else return [createVNode(_sfc_main$85, {
+								} else return [createVNode(_sfc_main$93, {
 									variant: "primary",
 									icon: "send",
 									block: "",
@@ -2688,7 +2688,7 @@ var _sfc_main$61 = {
 								}, {
 									default: withCtx(() => [createTextVNode(" Pošalji upit ")]),
 									_: 1
-								}, 8, ["onClick"]), upitPoslan.value ? (openBlock(), createBlock(_sfc_main$78, {
+								}, 8, ["onClick"]), upitPoslan.value ? (openBlock(), createBlock(_sfc_main$86, {
 									key: 0,
 									variant: "info",
 									class: "mt-4",
@@ -2697,21 +2697,21 @@ var _sfc_main$61 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$64, { label: biznis.value.lokacija }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$72, { label: biznis.value.lokacija }, null, _parent, _scopeId));
 						_push(`</div></div>`);
-						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$81, { title: "Slično" }, {
+						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$89, { title: "Slično" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(slicni.value, (b) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: b.slug,
 											item: b
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (b) => {
-									return openBlock(), createBlock(_sfc_main$62, {
+									return openBlock(), createBlock(_sfc_main$70, {
 										key: b.slug,
 										item: b
 									}, null, 8, ["item"]);
@@ -2722,12 +2722,12 @@ var _sfc_main$61 = {
 						else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!biznis.value ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!biznis.value ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Biznis nije pronađen",
 						text: "Traženi biznis ne postoji ili je uklonjen."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							icon: "arrow-left",
 							to: "/domace-je-najbolje"
@@ -2737,7 +2737,7 @@ var _sfc_main$61 = {
 						})]),
 						_: 1
 					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [
-						createVNode(_sfc_main$87, { items: [
+						createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -2748,7 +2748,7 @@ var _sfc_main$61 = {
 							},
 							{ label: biznis.value.naslov }
 						] }, null, 8, ["items"]),
-						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$88, {
+						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: biznis.value.kategorija?.label,
 							title: biznis.value.naslov,
@@ -2763,12 +2763,12 @@ var _sfc_main$61 = {
 						biznis.value.galerija?.length ? (openBlock(), createBlock("section", {
 							key: 0,
 							class: "mt-10"
-						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$65, { items: biznis.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
-						createVNode("div", { class: "mt-10 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "lg:col-span-2" }, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "O ponudi"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(biznis.value.opisDug), 1)]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$83, {
+						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$73, { items: biznis.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
+						createVNode("div", { class: "mt-10 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "lg:col-span-2" }, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "O ponudi"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(biznis.value.opisDug), 1)]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$91, {
 							title: "Kontakt",
 							items: infoItems.value
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$85, {
+							default: withCtx(() => [createVNode(_sfc_main$93, {
 								variant: "primary",
 								icon: "send",
 								block: "",
@@ -2776,20 +2776,20 @@ var _sfc_main$61 = {
 							}, {
 								default: withCtx(() => [createTextVNode(" Pošalji upit ")]),
 								_: 1
-							}, 8, ["onClick"]), upitPoslan.value ? (openBlock(), createBlock(_sfc_main$78, {
+							}, 8, ["onClick"]), upitPoslan.value ? (openBlock(), createBlock(_sfc_main$86, {
 								key: 0,
 								variant: "info",
 								class: "mt-4",
 								text: "Kontaktirajte ponuđača direktno putem navedenih podataka."
 							})) : createCommentVNode("", true)]),
 							_: 1
-						}, 8, ["items"]), createVNode(_sfc_main$64, { label: biznis.value.lokacija }, null, 8, ["label"])])]),
-						slicni.value.length ? (openBlock(), createBlock(_sfc_main$81, {
+						}, 8, ["items"]), createVNode(_sfc_main$72, { label: biznis.value.lokacija }, null, 8, ["label"])])]),
+						slicni.value.length ? (openBlock(), createBlock(_sfc_main$89, {
 							key: 1,
 							title: "Slično"
 						}, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (b) => {
-								return openBlock(), createBlock(_sfc_main$62, {
+								return openBlock(), createBlock(_sfc_main$70, {
 									key: b.slug,
 									item: b
 								}, null, 8, ["item"]);
@@ -2803,11 +2803,11 @@ var _sfc_main$61 = {
 		};
 	}
 };
-var _sfc_setup$61 = _sfc_main$61.setup;
-_sfc_main$61.setup = (props, ctx) => {
+var _sfc_setup$69 = _sfc_main$69.setup;
+_sfc_main$69.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/BusinessProfile.vue");
-	return _sfc_setup$61 ? _sfc_setup$61(props, ctx) : void 0;
+	return _sfc_setup$69 ? _sfc_setup$69(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/constants/navigation.js
@@ -2962,7 +2962,7 @@ function useSite() {
 }
 //#endregion
 //#region resources/js/components/forms/FormField.vue
-var _sfc_main$60 = {
+var _sfc_main$68 = {
 	__name: "FormField",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -3021,15 +3021,15 @@ var _sfc_main$60 = {
 		};
 	}
 };
-var _sfc_setup$60 = _sfc_main$60.setup;
-_sfc_main$60.setup = (props, ctx) => {
+var _sfc_setup$68 = _sfc_main$68.setup;
+_sfc_main$68.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/forms/FormField.vue");
-	return _sfc_setup$60 ? _sfc_setup$60(props, ctx) : void 0;
+	return _sfc_setup$68 ? _sfc_setup$68(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/forms/FormTextarea.vue
-var _sfc_main$59 = {
+var _sfc_main$67 = {
 	__name: "FormTextarea",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -3096,15 +3096,15 @@ var _sfc_main$59 = {
 		};
 	}
 };
-var _sfc_setup$59 = _sfc_main$59.setup;
-_sfc_main$59.setup = (props, ctx) => {
+var _sfc_setup$67 = _sfc_main$67.setup;
+_sfc_main$67.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/forms/FormTextarea.vue");
-	return _sfc_setup$59 ? _sfc_setup$59(props, ctx) : void 0;
+	return _sfc_setup$67 ? _sfc_setup$67(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/forms/FormCheckbox.vue
-var _sfc_main$58 = {
+var _sfc_main$66 = {
 	__name: "FormCheckbox",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -3136,7 +3136,7 @@ var _sfc_main$58 = {
 				for: unref(id),
 				class: ["inline-flex cursor-pointer items-start gap-2.5 text-text", __props.disabled ? "cursor-not-allowed opacity-60" : ""]
 			}, _attrs))}><span class="relative mt-0.5 inline-flex"><input${ssrRenderAttr("id", unref(id))}${ssrIncludeBooleanAttr(Array.isArray(model.value) ? ssrLooseContain(model.value, null) : model.value) ? " checked" : ""} type="checkbox"${ssrIncludeBooleanAttr(__props.disabled) ? " disabled" : ""} class="peer size-5 shrink-0 appearance-none rounded-sm border border-border bg-surface outline-none transition-colors checked:border-primary checked:bg-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "check",
 				size: 14,
 				class: "pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 text-white peer-checked:block"
@@ -3151,15 +3151,15 @@ var _sfc_main$58 = {
 		};
 	}
 };
-var _sfc_setup$58 = _sfc_main$58.setup;
-_sfc_main$58.setup = (props, ctx) => {
+var _sfc_setup$66 = _sfc_main$66.setup;
+_sfc_main$66.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/forms/FormCheckbox.vue");
-	return _sfc_setup$58 ? _sfc_setup$58(props, ctx) : void 0;
+	return _sfc_setup$66 ? _sfc_setup$66(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/forms/FormCaptcha.vue
-var _sfc_main$57 = {
+var _sfc_main$65 = {
 	__name: "FormCaptcha",
 	__ssrInlineRender: true,
 	props: {
@@ -3174,7 +3174,7 @@ var _sfc_main$57 = {
 		const model = useModel(__props, "modelValue");
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "flex h-[74px] w-[300px] items-center justify-between gap-3 rounded-sm border border-border bg-surface px-4" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$58, {
+			_push(ssrRenderComponent(_sfc_main$66, {
 				modelValue: model.value,
 				"onUpdate:modelValue": ($event) => model.value = $event,
 				label: "Nisam robot"
@@ -3183,16 +3183,16 @@ var _sfc_main$57 = {
 		};
 	}
 };
-var _sfc_setup$57 = _sfc_main$57.setup;
-_sfc_main$57.setup = (props, ctx) => {
+var _sfc_setup$65 = _sfc_main$65.setup;
+_sfc_main$65.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/forms/FormCaptcha.vue");
-	return _sfc_setup$57 ? _sfc_setup$57(props, ctx) : void 0;
+	return _sfc_setup$65 ? _sfc_setup$65(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Contact.vue
-var Contact_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$56 });
-var _sfc_main$56 = {
+var Contact_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$64 });
+var _sfc_main$64 = {
 	__name: "Contact",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -3236,60 +3236,73 @@ var _sfc_main$56 = {
 				greska.value = true;
 				return;
 			}
-			poslano.value = true;
-			ime.value = "";
-			email.value = "";
-			tema.value = "";
-			poruka.value = "";
-			saglasnost.value = false;
-			captcha.value = false;
+			router.post("/kontakt", {
+				ime: ime.value,
+				email: email.value,
+				tema: tema.value,
+				poruka: poruka.value
+			}, {
+				preserveScroll: true,
+				onSuccess: () => {
+					poslano.value = true;
+					ime.value = "";
+					email.value = "";
+					tema.value = "";
+					poruka.value = "";
+					saglasnost.value = false;
+					captcha.value = false;
+				},
+				onError: () => {
+					greska.value = true;
+				}
+			});
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Kontakt" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Kontakt" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(`<h1 class="font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}>Kontakt</h1><p class="mt-2 max-w-2xl text-text-muted"${_scopeId}> Imate pitanje, prijedlog ili želite saradnju? Pošaljite nam poruku ili nas kontaktirajte direktno. </p>`);
 					else return [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, "Kontakt"), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Imate pitanje, prijedlog ili želite saradnju? Pošaljite nam poruku ili nas kontaktirajte direktno. ")];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="grid gap-8 lg:grid-cols-2"${_scopeId}><div${_scopeId}><h2 class="font-heading text-xl font-semibold text-heading"${_scopeId}>Pošaljite poruku</h2><form class="mt-5 space-y-4"${_scopeId}>`);
-						if (poslano.value) _push(ssrRenderComponent(_sfc_main$78, {
+						if (poslano.value) _push(ssrRenderComponent(_sfc_main$86, {
 							variant: "uspjeh",
 							title: "Poruka je poslana",
 							text: "Hvala na poruci! Javit ćemo vam se u najkraćem mogućem roku."
 						}, null, _parent, _scopeId));
 						else _push(`<!---->`);
-						if (greska.value) _push(ssrRenderComponent(_sfc_main$78, {
+						if (greska.value) _push(ssrRenderComponent(_sfc_main$86, {
 							variant: "greska",
 							title: "Provjerite obavezna polja",
 							text: "Molimo popunite ime, e-mail i poruku te potvrdite saglasnost i captchu."
 						}, null, _parent, _scopeId));
 						else _push(`<!---->`);
-						_push(ssrRenderComponent(_sfc_main$60, {
+						_push(ssrRenderComponent(_sfc_main$68, {
 							modelValue: ime.value,
 							"onUpdate:modelValue": ($event) => ime.value = $event,
 							label: "Ime i prezime",
 							placeholder: "npr. Marko Marković",
 							required: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
+						_push(ssrRenderComponent(_sfc_main$68, {
 							modelValue: email.value,
 							"onUpdate:modelValue": ($event) => email.value = $event,
 							label: "E-mail",
@@ -3297,13 +3310,13 @@ var _sfc_main$56 = {
 							placeholder: "vasa@adresa.com",
 							required: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
+						_push(ssrRenderComponent(_sfc_main$68, {
 							modelValue: tema.value,
 							"onUpdate:modelValue": ($event) => tema.value = $event,
 							label: "Tema / predmet",
 							placeholder: "O čemu se radi?"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$59, {
+						_push(ssrRenderComponent(_sfc_main$67, {
 							modelValue: poruka.value,
 							"onUpdate:modelValue": ($event) => poruka.value = $event,
 							label: "Poruka",
@@ -3311,7 +3324,7 @@ var _sfc_main$56 = {
 							placeholder: "Vaša poruka…",
 							required: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$58, {
+						_push(ssrRenderComponent(_sfc_main$66, {
 							modelValue: saglasnost.value,
 							"onUpdate:modelValue": ($event) => saglasnost.value = $event,
 							required: ""
@@ -3322,11 +3335,11 @@ var _sfc_main$56 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$57, {
+						_push(ssrRenderComponent(_sfc_main$65, {
 							modelValue: captcha.value,
 							"onUpdate:modelValue": ($event) => captcha.value = $event
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							type: "submit",
 							variant: "primary",
 							icon: "send"
@@ -3340,7 +3353,7 @@ var _sfc_main$56 = {
 						_push(`</form></div><div class="space-y-6"${_scopeId}><div class="rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)]"${_scopeId}><h2 class="font-heading text-xl font-semibold text-heading"${_scopeId}> Turistička organizacija Teslić </h2><ul class="mt-5 space-y-4"${_scopeId}><!--[-->`);
 						ssrRenderList(kontaktInfo.value, (info) => {
 							_push(`<li class="flex items-start gap-3"${_scopeId}><span class="mt-0.5 shrink-0 text-primary"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: info.icon,
 								size: 20
 							}, null, _parent, _scopeId));
@@ -3350,7 +3363,7 @@ var _sfc_main$56 = {
 							_push(`</div></li>`);
 						});
 						_push(`<!--]--></ul></div>`);
-						_push(ssrRenderComponent(_sfc_main$64, {
+						_push(ssrRenderComponent(_sfc_main$72, {
 							label: "Svetog Save 15, Teslić",
 							to: "/mapa"
 						}, null, _parent, _scopeId));
@@ -3359,26 +3372,26 @@ var _sfc_main$56 = {
 						class: "mt-5 space-y-4",
 						onSubmit: withModifiers(posalji, ["prevent"])
 					}, [
-						poslano.value ? (openBlock(), createBlock(_sfc_main$78, {
+						poslano.value ? (openBlock(), createBlock(_sfc_main$86, {
 							key: 0,
 							variant: "uspjeh",
 							title: "Poruka je poslana",
 							text: "Hvala na poruci! Javit ćemo vam se u najkraćem mogućem roku."
 						})) : createCommentVNode("", true),
-						greska.value ? (openBlock(), createBlock(_sfc_main$78, {
+						greska.value ? (openBlock(), createBlock(_sfc_main$86, {
 							key: 1,
 							variant: "greska",
 							title: "Provjerite obavezna polja",
 							text: "Molimo popunite ime, e-mail i poruku te potvrdite saglasnost i captchu."
 						})) : createCommentVNode("", true),
-						createVNode(_sfc_main$60, {
+						createVNode(_sfc_main$68, {
 							modelValue: ime.value,
 							"onUpdate:modelValue": ($event) => ime.value = $event,
 							label: "Ime i prezime",
 							placeholder: "npr. Marko Marković",
 							required: ""
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$60, {
+						createVNode(_sfc_main$68, {
 							modelValue: email.value,
 							"onUpdate:modelValue": ($event) => email.value = $event,
 							label: "E-mail",
@@ -3386,13 +3399,13 @@ var _sfc_main$56 = {
 							placeholder: "vasa@adresa.com",
 							required: ""
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$60, {
+						createVNode(_sfc_main$68, {
 							modelValue: tema.value,
 							"onUpdate:modelValue": ($event) => tema.value = $event,
 							label: "Tema / predmet",
 							placeholder: "O čemu se radi?"
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$59, {
+						createVNode(_sfc_main$67, {
 							modelValue: poruka.value,
 							"onUpdate:modelValue": ($event) => poruka.value = $event,
 							label: "Poruka",
@@ -3400,7 +3413,7 @@ var _sfc_main$56 = {
 							placeholder: "Vaša poruka…",
 							required: ""
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$58, {
+						createVNode(_sfc_main$66, {
 							modelValue: saglasnost.value,
 							"onUpdate:modelValue": ($event) => saglasnost.value = $event,
 							required: ""
@@ -3408,11 +3421,11 @@ var _sfc_main$56 = {
 							default: withCtx(() => [createTextVNode(" Saglasan/na sam s obradom mojih podataka radi odgovora na upit. ")]),
 							_: 1
 						}, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$57, {
+						createVNode(_sfc_main$65, {
 							modelValue: captcha.value,
 							"onUpdate:modelValue": ($event) => captcha.value = $event
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$85, {
+						createVNode(_sfc_main$93, {
 							type: "submit",
 							variant: "primary",
 							icon: "send"
@@ -3424,7 +3437,7 @@ var _sfc_main$56 = {
 						return openBlock(), createBlock("li", {
 							key: info.label,
 							class: "flex items-start gap-3"
-						}, [createVNode("span", { class: "mt-0.5 shrink-0 text-primary" }, [createVNode(_sfc_main$89, {
+						}, [createVNode("span", { class: "mt-0.5 shrink-0 text-primary" }, [createVNode(_sfc_main$97, {
 							name: info.icon,
 							size: 20
 						}, null, 8, ["name"])]), createVNode("div", null, [createVNode("p", { class: "text-sm font-semibold text-heading" }, toDisplayString(info.label), 1), info.href ? (openBlock(), createBlock("a", {
@@ -3435,7 +3448,7 @@ var _sfc_main$56 = {
 							key: 1,
 							class: "text-text-muted"
 						}, toDisplayString(info.value), 1))])]);
-					}), 128))])]), createVNode(_sfc_main$64, {
+					}), 128))])]), createVNode(_sfc_main$72, {
 						label: "Svetog Save 15, Teslić",
 						to: "/mapa"
 					})])])];
@@ -3446,15 +3459,15 @@ var _sfc_main$56 = {
 		};
 	}
 };
-var _sfc_setup$56 = _sfc_main$56.setup;
-_sfc_main$56.setup = (props, ctx) => {
+var _sfc_setup$64 = _sfc_main$64.setup;
+_sfc_main$64.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Contact.vue");
-	return _sfc_setup$56 ? _sfc_setup$56(props, ctx) : void 0;
+	return _sfc_setup$64 ? _sfc_setup$64(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/LocationCard.vue
-var _sfc_main$55 = {
+var _sfc_main$63 = {
 	__name: "LocationCard",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -3463,22 +3476,22 @@ var _sfc_main$55 = {
 	} },
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$62, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$70, mergeProps({
 				item: __props.item,
 				to: `/turizam/${__props.item.slug}`
 			}, _attrs), null, _parent));
 		};
 	}
 };
-var _sfc_setup$55 = _sfc_main$55.setup;
-_sfc_main$55.setup = (props, ctx) => {
+var _sfc_setup$63 = _sfc_main$63.setup;
+_sfc_main$63.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/LocationCard.vue");
-	return _sfc_setup$55 ? _sfc_setup$55(props, ctx) : void 0;
+	return _sfc_setup$63 ? _sfc_setup$63(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/EventCard.vue
-var _sfc_main$54 = {
+var _sfc_main$62 = {
 	__name: "EventCard",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -3493,19 +3506,19 @@ var _sfc_main$54 = {
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$63, {
+						_push(ssrRenderComponent(_sfc_main$71, {
 							src: __props.item.slika,
 							alt: __props.item.naslov
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<div class="absolute left-3 top-3 flex flex-col items-center rounded-sm bg-surface px-2.5 py-1.5 shadow-[var(--shadow-md)]"${_scopeId}><span class="text-xl font-bold leading-none text-primary"${_scopeId}>${ssrInterpolate(__props.item.dan)}</span><span class="mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted"${_scopeId}>${ssrInterpolate(__props.item.mjesec)}</span></div>`);
-									if (__props.item.zavrseno) _push(ssrRenderComponent(_sfc_main$79, {
+									if (__props.item.zavrseno) _push(ssrRenderComponent(_sfc_main$87, {
 										variant: "zavrseno",
 										class: "absolute right-3 top-3"
 									}, null, _parent, _scopeId));
 									else _push(`<!---->`);
-								} else return [createVNode("div", { class: "absolute left-3 top-3 flex flex-col items-center rounded-sm bg-surface px-2.5 py-1.5 shadow-[var(--shadow-md)]" }, [createVNode("span", { class: "text-xl font-bold leading-none text-primary" }, toDisplayString(__props.item.dan), 1), createVNode("span", { class: "mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted" }, toDisplayString(__props.item.mjesec), 1)]), __props.item.zavrseno ? (openBlock(), createBlock(_sfc_main$79, {
+								} else return [createVNode("div", { class: "absolute left-3 top-3 flex flex-col items-center rounded-sm bg-surface px-2.5 py-1.5 shadow-[var(--shadow-md)]" }, [createVNode("span", { class: "text-xl font-bold leading-none text-primary" }, toDisplayString(__props.item.dan), 1), createVNode("span", { class: "mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted" }, toDisplayString(__props.item.mjesec), 1)]), __props.item.zavrseno ? (openBlock(), createBlock(_sfc_main$87, {
 									key: 0,
 									variant: "zavrseno",
 									class: "absolute right-3 top-3"
@@ -3514,21 +3527,21 @@ var _sfc_main$54 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`<div class="flex flex-col gap-2 p-4"${_scopeId}><h3 class="line-clamp-2 text-lg font-semibold leading-snug text-heading"${_scopeId}>${ssrInterpolate(__props.item.naslov)}</h3><div class="flex items-center gap-1.5 text-[13px] text-text-muted"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "clock",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.item.vrijeme)}</span></div><div class="flex items-center gap-1.5 text-[13px] text-text-muted"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "map-pin",
 							size: 15
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(__props.item.lokacija)}</span></div></div>`);
-					} else return [createVNode(_sfc_main$63, {
+					} else return [createVNode(_sfc_main$71, {
 						src: __props.item.slika,
 						alt: __props.item.naslov
 					}, {
-						default: withCtx(() => [createVNode("div", { class: "absolute left-3 top-3 flex flex-col items-center rounded-sm bg-surface px-2.5 py-1.5 shadow-[var(--shadow-md)]" }, [createVNode("span", { class: "text-xl font-bold leading-none text-primary" }, toDisplayString(__props.item.dan), 1), createVNode("span", { class: "mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted" }, toDisplayString(__props.item.mjesec), 1)]), __props.item.zavrseno ? (openBlock(), createBlock(_sfc_main$79, {
+						default: withCtx(() => [createVNode("div", { class: "absolute left-3 top-3 flex flex-col items-center rounded-sm bg-surface px-2.5 py-1.5 shadow-[var(--shadow-md)]" }, [createVNode("span", { class: "text-xl font-bold leading-none text-primary" }, toDisplayString(__props.item.dan), 1), createVNode("span", { class: "mt-0.5 text-[11px] font-semibold uppercase tracking-wide text-text-muted" }, toDisplayString(__props.item.mjesec), 1)]), __props.item.zavrseno ? (openBlock(), createBlock(_sfc_main$87, {
 							key: 0,
 							variant: "zavrseno",
 							class: "absolute right-3 top-3"
@@ -3536,11 +3549,11 @@ var _sfc_main$54 = {
 						_: 1
 					}, 8, ["src", "alt"]), createVNode("div", { class: "flex flex-col gap-2 p-4" }, [
 						createVNode("h3", { class: "line-clamp-2 text-lg font-semibold leading-snug text-heading" }, toDisplayString(__props.item.naslov), 1),
-						createVNode("div", { class: "flex items-center gap-1.5 text-[13px] text-text-muted" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "flex items-center gap-1.5 text-[13px] text-text-muted" }, [createVNode(_sfc_main$97, {
 							name: "clock",
 							size: 15
 						}), createVNode("span", null, toDisplayString(__props.item.vrijeme), 1)]),
-						createVNode("div", { class: "flex items-center gap-1.5 text-[13px] text-text-muted" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "flex items-center gap-1.5 text-[13px] text-text-muted" }, [createVNode(_sfc_main$97, {
 							name: "map-pin",
 							size: 15
 						}), createVNode("span", null, toDisplayString(__props.item.lokacija), 1)])
@@ -3551,15 +3564,15 @@ var _sfc_main$54 = {
 		};
 	}
 };
-var _sfc_setup$54 = _sfc_main$54.setup;
-_sfc_main$54.setup = (props, ctx) => {
+var _sfc_setup$62 = _sfc_main$62.setup;
+_sfc_main$62.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/EventCard.vue");
-	return _sfc_setup$54 ? _sfc_setup$54(props, ctx) : void 0;
+	return _sfc_setup$62 ? _sfc_setup$62(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/StoryCard.vue
-var _sfc_main$53 = {
+var _sfc_main$61 = {
 	__name: "StoryCard",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -3574,33 +3587,33 @@ var _sfc_main$53 = {
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$63, {
+						_push(ssrRenderComponent(_sfc_main$71, {
 							src: __props.item.slika,
 							alt: __props.item.naslov
 						}, null, _parent, _scopeId));
 						_push(`<div class="flex flex-col gap-2 p-4"${_scopeId}><div${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, _parent, _scopeId));
 						_push(`</div><h3 class="line-clamp-2 text-lg font-semibold leading-snug text-heading"${_scopeId}>${ssrInterpolate(__props.item.naslov)}</h3><div class="flex items-center gap-2"${_scopeId}><span class="flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "user",
 							size: 14
 						}, null, _parent, _scopeId));
 						_push(`</span><span class="text-[13px] text-text-muted"${_scopeId}>${ssrInterpolate(__props.item.autor)} · ${ssrInterpolate(__props.item.datum)}</span></div><p class="line-clamp-2 text-sm text-text-muted"${_scopeId}>${ssrInterpolate(__props.item.izvod)}</p></div>`);
-					} else return [createVNode(_sfc_main$63, {
+					} else return [createVNode(_sfc_main$71, {
 						src: __props.item.slika,
 						alt: __props.item.naslov
 					}, null, 8, ["src", "alt"]), createVNode("div", { class: "flex flex-col gap-2 p-4" }, [
-						createVNode("div", null, [createVNode(_sfc_main$80, {
+						createVNode("div", null, [createVNode(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, 8, ["label", "icon"])]),
 						createVNode("h3", { class: "line-clamp-2 text-lg font-semibold leading-snug text-heading" }, toDisplayString(__props.item.naslov), 1),
-						createVNode("div", { class: "flex items-center gap-2" }, [createVNode("span", { class: "flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "flex items-center gap-2" }, [createVNode("span", { class: "flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary" }, [createVNode(_sfc_main$97, {
 							name: "user",
 							size: 14
 						})]), createVNode("span", { class: "text-[13px] text-text-muted" }, toDisplayString(__props.item.autor) + " · " + toDisplayString(__props.item.datum), 1)]),
@@ -3612,15 +3625,15 @@ var _sfc_main$53 = {
 		};
 	}
 };
-var _sfc_setup$53 = _sfc_main$53.setup;
-_sfc_main$53.setup = (props, ctx) => {
+var _sfc_setup$61 = _sfc_main$61.setup;
+_sfc_main$61.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/StoryCard.vue");
-	return _sfc_setup$53 ? _sfc_setup$53(props, ctx) : void 0;
+	return _sfc_setup$61 ? _sfc_setup$61(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/cards/StoryFeaturedCard.vue
-var _sfc_main$52 = {
+var _sfc_main$60 = {
 	__name: "StoryFeaturedCard",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -3639,20 +3652,20 @@ var _sfc_main$52 = {
 						if (__props.item.slika) _push(`<img${ssrRenderAttr("src", __props.item.slika)}${ssrRenderAttr("alt", __props.item.naslov)} loading="lazy" class="size-full object-cover transition-transform duration-300 group-hover:scale-105"${_scopeId}>`);
 						else {
 							_push(`<div class="flex size-full items-center justify-center text-primary-tint-2"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: "image",
 								size: 44
 							}, null, _parent, _scopeId));
 							_push(`</div>`);
 						}
 						_push(`</div><div class="flex flex-col justify-center gap-3 p-6"${_scopeId}><div${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, _parent, _scopeId));
 						_push(`</div><h3 class="text-2xl font-bold leading-tight text-heading"${_scopeId}>${ssrInterpolate(__props.item.naslov)}</h3><div class="flex items-center gap-2"${_scopeId}><span class="flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "user",
 							size: 14
 						}, null, _parent, _scopeId));
@@ -3666,17 +3679,17 @@ var _sfc_main$52 = {
 					}, null, 8, ["src", "alt"])) : (openBlock(), createBlock("div", {
 						key: 1,
 						class: "flex size-full items-center justify-center text-primary-tint-2"
-					}, [createVNode(_sfc_main$89, {
+					}, [createVNode(_sfc_main$97, {
 						name: "image",
 						size: 44
 					})]))]), createVNode("div", { class: "flex flex-col justify-center gap-3 p-6" }, [
-						createVNode("div", null, [createVNode(_sfc_main$80, {
+						createVNode("div", null, [createVNode(_sfc_main$88, {
 							variant: "kategorija",
 							label: __props.item.kategorija.label,
 							icon: __props.item.kategorija.icon
 						}, null, 8, ["label", "icon"])]),
 						createVNode("h3", { class: "text-2xl font-bold leading-tight text-heading" }, toDisplayString(__props.item.naslov), 1),
-						createVNode("div", { class: "flex items-center gap-2" }, [createVNode("span", { class: "flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "flex items-center gap-2" }, [createVNode("span", { class: "flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary" }, [createVNode(_sfc_main$97, {
 							name: "user",
 							size: 14
 						})]), createVNode("span", { class: "text-[13px] text-text-muted" }, toDisplayString(__props.item.autor) + " · " + toDisplayString(__props.item.datum), 1)]),
@@ -3688,15 +3701,15 @@ var _sfc_main$52 = {
 		};
 	}
 };
-var _sfc_setup$52 = _sfc_main$52.setup;
-_sfc_main$52.setup = (props, ctx) => {
+var _sfc_setup$60 = _sfc_main$60.setup;
+_sfc_main$60.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/cards/StoryFeaturedCard.vue");
-	return _sfc_setup$52 ? _sfc_setup$52(props, ctx) : void 0;
+	return _sfc_setup$60 ? _sfc_setup$60(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/Stepper.vue
-var _sfc_main$51 = {
+var _sfc_main$59 = {
 	__name: "Stepper",
 	__ssrInlineRender: true,
 	props: { steps: {
@@ -3719,15 +3732,15 @@ var _sfc_main$51 = {
 		};
 	}
 };
-var _sfc_setup$51 = _sfc_main$51.setup;
-_sfc_main$51.setup = (props, ctx) => {
+var _sfc_setup$59 = _sfc_main$59.setup;
+_sfc_main$59.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/Stepper.vue");
-	return _sfc_setup$51 ? _sfc_setup$51(props, ctx) : void 0;
+	return _sfc_setup$59 ? _sfc_setup$59(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/VideoPlayer.vue
-var _sfc_main$50 = {
+var _sfc_main$58 = {
 	__name: "VideoPlayer",
 	__ssrInlineRender: true,
 	props: {
@@ -3746,7 +3759,7 @@ var _sfc_main$50 = {
 			if (__props.src) _push(`<video${ssrRenderAttr("src", __props.src)}${ssrRenderAttr("poster", __props.poster || void 0)} controls preload="metadata" class="aspect-video size-full bg-black object-contain"></video>`);
 			else {
 				_push(`<div class="flex aspect-video flex-col items-center justify-center gap-2 text-primary-tint-2">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "play",
 					size: 40
 				}, null, _parent));
@@ -3756,15 +3769,15 @@ var _sfc_main$50 = {
 		};
 	}
 };
-var _sfc_setup$50 = _sfc_main$50.setup;
-_sfc_main$50.setup = (props, ctx) => {
+var _sfc_setup$58 = _sfc_main$58.setup;
+_sfc_main$58.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/VideoPlayer.vue");
-	return _sfc_setup$50 ? _sfc_setup$50(props, ctx) : void 0;
+	return _sfc_setup$58 ? _sfc_setup$58(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/AuthorBlock.vue
-var _sfc_main$49 = {
+var _sfc_main$57 = {
 	__name: "AuthorBlock",
 	__ssrInlineRender: true,
 	props: {
@@ -3783,7 +3796,7 @@ var _sfc_main$49 = {
 			if (__props.author.avatar) _push(`<img${ssrRenderAttr("src", __props.author.avatar)}${ssrRenderAttr("alt", __props.author.ime)} class="size-14 shrink-0 rounded-full object-cover">`);
 			else {
 				_push(`<span class="flex size-14 shrink-0 items-center justify-center rounded-full bg-primary-tint-2 text-primary" aria-hidden="true">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "user",
 					size: 28
 				}, null, _parent));
@@ -3792,7 +3805,7 @@ var _sfc_main$49 = {
 			_push(`<div class="min-w-0"><p class="font-heading font-semibold text-heading">${ssrInterpolate(__props.author.ime)}</p>`);
 			if (__props.author.bio) _push(`<p class="mt-1 text-sm text-text-muted">${ssrInterpolate(__props.author.bio)}</p>`);
 			else _push(`<!---->`);
-			if (__props.to) _push(ssrRenderComponent(_sfc_main$85, {
+			if (__props.to) _push(ssrRenderComponent(_sfc_main$93, {
 				variant: "ghost",
 				size: "sm",
 				icon: "arrow-right",
@@ -3811,11 +3824,11 @@ var _sfc_main$49 = {
 		};
 	}
 };
-var _sfc_setup$49 = _sfc_main$49.setup;
-_sfc_main$49.setup = (props, ctx) => {
+var _sfc_setup$57 = _sfc_main$57.setup;
+_sfc_main$57.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/AuthorBlock.vue");
-	return _sfc_setup$49 ? _sfc_setup$49(props, ctx) : void 0;
+	return _sfc_setup$57 ? _sfc_setup$57(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/constants/categories.js
@@ -3893,7 +3906,7 @@ function categoryIcon(L, categoryKey) {
 }
 //#endregion
 //#region resources/js/components/map/MapInteractive.vue
-var _sfc_main$48 = {
+var _sfc_main$56 = {
 	__name: "MapInteractive",
 	__ssrInlineRender: true,
 	props: {
@@ -4003,16 +4016,16 @@ var _sfc_main$48 = {
 		};
 	}
 };
-var _sfc_setup$48 = _sfc_main$48.setup;
-_sfc_main$48.setup = (props, ctx) => {
+var _sfc_setup$56 = _sfc_main$56.setup;
+_sfc_main$56.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/map/MapInteractive.vue");
-	return _sfc_setup$48 ? _sfc_setup$48(props, ctx) : void 0;
+	return _sfc_setup$56 ? _sfc_setup$56(props, ctx) : void 0;
 };
-var MapInteractive_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$48, [["__scopeId", "data-v-94014609"]]);
+var MapInteractive_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$56, [["__scopeId", "data-v-94014609"]]);
 //#endregion
 //#region resources/js/components/map/MapFilterPanel.vue
-var _sfc_main$47 = {
+var _sfc_main$55 = {
 	__name: "MapFilterPanel",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({ categories: {
@@ -4043,7 +4056,7 @@ var _sfc_main$47 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "space-y-5 rounded-md border border-border bg-surface p-4" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$71, {
+			_push(ssrRenderComponent(_sfc_main$79, {
 				modelValue: query.value,
 				"onUpdate:modelValue": ($event) => query.value = $event,
 				placeholder: "Pretraži ponudu…",
@@ -4052,7 +4065,7 @@ var _sfc_main$47 = {
 			_push(`<div class="space-y-3"><h3 class="text-sm font-semibold text-heading">Slojevi</h3><ul class="space-y-2.5"><!--[-->`);
 			ssrRenderList(__props.categories, (cat) => {
 				_push(`<li>`);
-				_push(ssrRenderComponent(_sfc_main$58, {
+				_push(ssrRenderComponent(_sfc_main$66, {
 					"model-value": isChecked(cat.key),
 					label: cat.label,
 					"onUpdate:modelValue": (v) => toggle(cat.key, v)
@@ -4062,7 +4075,7 @@ var _sfc_main$47 = {
 			_push(`<!--]--></ul></div><div class="space-y-2.5 border-t border-border pt-4"><h3 class="text-sm font-semibold text-heading">Legenda</h3><ul class="grid grid-cols-2 gap-x-3 gap-y-2"><!--[-->`);
 			ssrRenderList(__props.categories, (cat) => {
 				_push(`<li class="flex items-center gap-2 text-sm text-text"><span class="${ssrRenderClass([cat.key === "dogadjaj" ? "text-heading" : "text-white", "inline-flex size-6 shrink-0 items-center justify-center rounded-full"])}" style="${ssrRenderStyle({ backgroundColor: unref(categoryColor)(cat.key) })}">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: cat.icon,
 					size: 14
 				}, null, _parent));
@@ -4072,15 +4085,15 @@ var _sfc_main$47 = {
 		};
 	}
 };
-var _sfc_setup$47 = _sfc_main$47.setup;
-_sfc_main$47.setup = (props, ctx) => {
+var _sfc_setup$55 = _sfc_main$55.setup;
+_sfc_main$55.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/map/MapFilterPanel.vue");
-	return _sfc_setup$47 ? _sfc_setup$47(props, ctx) : void 0;
+	return _sfc_setup$55 ? _sfc_setup$55(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/map/ResultsList.vue
-var _sfc_main$46 = {
+var _sfc_main$54 = {
 	__name: "ResultsList",
 	__ssrInlineRender: true,
 	props: { items: {
@@ -4099,7 +4112,7 @@ var _sfc_main$46 = {
 				if (item.slika) _push(`<img${ssrRenderAttr("src", item.slika)}${ssrRenderAttr("alt", item.naslov)} loading="lazy" class="size-full object-cover">`);
 				else {
 					_push(`<span class="${ssrRenderClass([item.kategorija === "dogadjaj" ? "text-heading" : "text-white", "flex size-full items-center justify-center"])}" style="${ssrRenderStyle({ backgroundColor: unref(categoryColor)(item.kategorija) })}">`);
-					if (category(item)) _push(ssrRenderComponent(_sfc_main$89, {
+					if (category(item)) _push(ssrRenderComponent(_sfc_main$97, {
 						name: category(item).icon,
 						size: 20
 					}, null, _parent));
@@ -4107,7 +4120,7 @@ var _sfc_main$46 = {
 					_push(`</span>`);
 				}
 				_push(`</span><span class="min-w-0 flex-1 space-y-1"><span class="block truncate font-semibold text-heading">${ssrInterpolate(item.naslov)}</span><span class="flex flex-wrap items-center gap-2">`);
-				if (category(item)) _push(ssrRenderComponent(_sfc_main$80, {
+				if (category(item)) _push(ssrRenderComponent(_sfc_main$88, {
 					variant: "kategorija",
 					label: category(item).label,
 					icon: category(item).icon
@@ -4116,7 +4129,7 @@ var _sfc_main$46 = {
 				_push(`</span>`);
 				if (item.lokacija) {
 					_push(`<span class="flex items-center gap-1 text-sm text-text-muted">`);
-					_push(ssrRenderComponent(_sfc_main$89, {
+					_push(ssrRenderComponent(_sfc_main$97, {
 						name: "map-pin",
 						size: 14
 					}, null, _parent));
@@ -4131,15 +4144,15 @@ var _sfc_main$46 = {
 		};
 	}
 };
-var _sfc_setup$46 = _sfc_main$46.setup;
-_sfc_main$46.setup = (props, ctx) => {
+var _sfc_setup$54 = _sfc_main$54.setup;
+_sfc_main$54.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/map/ResultsList.vue");
-	return _sfc_setup$46 ? _sfc_setup$46(props, ctx) : void 0;
+	return _sfc_setup$54 ? _sfc_setup$54(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/map/MapPopup.vue
-var _sfc_main$45 = {
+var _sfc_main$53 = {
 	__name: "MapPopup",
 	__ssrInlineRender: true,
 	props: { item: {
@@ -4152,17 +4165,17 @@ var _sfc_main$45 = {
 		const category = computed(() => categoryByKey[props.item.kategorija] || null);
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "relative w-[280px] overflow-hidden rounded-md bg-surface shadow-[var(--shadow-lg)]" }, _attrs))}><button type="button" class="absolute right-2 top-2 z-10 inline-flex size-8 items-center justify-center rounded-full bg-surface/90 text-heading shadow-[var(--shadow-sm)] transition-colors hover:bg-surface-alt" aria-label="Zatvori">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "x",
 				size: 18
 			}, null, _parent));
 			_push(`</button>`);
-			_push(ssrRenderComponent(_sfc_main$63, {
+			_push(ssrRenderComponent(_sfc_main$71, {
 				src: __props.item.slika,
 				alt: __props.item.naslov
 			}, null, _parent));
 			_push(`<div class="space-y-2.5 p-4"><h3 class="font-semibold text-heading">${ssrInterpolate(__props.item.naslov)}</h3>`);
-			if (category.value) _push(ssrRenderComponent(_sfc_main$80, {
+			if (category.value) _push(ssrRenderComponent(_sfc_main$88, {
 				variant: "kategorija",
 				label: category.value.label,
 				icon: category.value.icon
@@ -4170,13 +4183,13 @@ var _sfc_main$45 = {
 			else _push(`<!---->`);
 			if (__props.item.lokacija) {
 				_push(`<p class="flex items-center gap-1.5 text-sm text-text-muted">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "map-pin",
 					size: 16
 				}, null, _parent));
 				_push(`<span>${ssrInterpolate(__props.item.lokacija)}</span></p>`);
 			} else _push(`<!---->`);
-			if (__props.item.to) _push(ssrRenderComponent(_sfc_main$85, {
+			if (__props.item.to) _push(ssrRenderComponent(_sfc_main$93, {
 				variant: "ghost",
 				size: "sm",
 				icon: "arrow-right",
@@ -4194,15 +4207,15 @@ var _sfc_main$45 = {
 		};
 	}
 };
-var _sfc_setup$45 = _sfc_main$45.setup;
-_sfc_main$45.setup = (props, ctx) => {
+var _sfc_setup$53 = _sfc_main$53.setup;
+_sfc_main$53.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/map/MapPopup.vue");
-	return _sfc_setup$45 ? _sfc_setup$45(props, ctx) : void 0;
+	return _sfc_setup$53 ? _sfc_setup$53(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/calendar/EventCalendar.vue
-var _sfc_main$44 = {
+var _sfc_main$52 = {
 	__name: "EventCalendar",
 	__ssrInlineRender: true,
 	props: /*@__PURE__*/ mergeModels({
@@ -4310,17 +4323,17 @@ var _sfc_main$44 = {
 		});
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "rounded-md border border-border bg-surface p-4 shadow-[var(--shadow-sm)] sm:p-5" }, _attrs))}><div class="mb-4 flex items-center justify-between"><button type="button" class="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-text-muted transition-colors hover:bg-surface-alt" aria-label="Prethodni mjesec">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "chevron-left",
 				size: 20
 			}, null, _parent));
 			_push(`</button><h3 class="flex items-center gap-2 font-heading text-lg font-semibold text-heading">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "calendar",
 				size: 18
 			}, null, _parent));
 			_push(` ${ssrInterpolate(naslov.value)}</h3><button type="button" class="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-text-muted transition-colors hover:bg-surface-alt" aria-label="Sljedeći mjesec">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "chevron-right",
 				size: 20
 			}, null, _parent));
@@ -4347,16 +4360,16 @@ var _sfc_main$44 = {
 		};
 	}
 };
-var _sfc_setup$44 = _sfc_main$44.setup;
-_sfc_main$44.setup = (props, ctx) => {
+var _sfc_setup$52 = _sfc_main$52.setup;
+_sfc_main$52.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/calendar/EventCalendar.vue");
-	return _sfc_setup$44 ? _sfc_setup$44(props, ctx) : void 0;
+	return _sfc_setup$52 ? _sfc_setup$52(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Dev.vue
-var Dev_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$43 });
-var _sfc_main$43 = {
+var Dev_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$51 });
+var _sfc_main$51 = {
 	__name: "Dev",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -4751,7 +4764,7 @@ var _sfc_main$43 = {
 			danEvents.value = events;
 		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "space-y-14 py-12"
 			}, _attrs), {
@@ -4759,7 +4772,7 @@ var _sfc_main$43 = {
 					if (_push) {
 						_push(`<header${_scopeId}><h1 class="text-3xl font-bold text-heading"${_scopeId}>Komponente — showcase</h1><p class="mt-1 text-text-muted"${_scopeId}> Privremena dev ruta <code${_scopeId}>/_dev</code> za vizuelnu provjeru komponenti (F2 atomi + F4 kartice/stanja). </p></header><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Dugmad</h2><div class="flex flex-wrap items-center gap-3"${_scopeId}><!--[-->`);
 						ssrRenderList(buttons, (v) => {
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								key: v,
 								variant: v,
 								icon: "arrow-right",
@@ -4774,7 +4787,7 @@ var _sfc_main$43 = {
 						});
 						_push(`<!--]--></div><div class="flex flex-wrap items-center gap-3"${_scopeId}><!--[-->`);
 						ssrRenderList(buttons, (v) => {
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								key: v,
 								variant: v,
 								size: "sm"
@@ -4787,7 +4800,7 @@ var _sfc_main$43 = {
 							}, _parent, _scopeId));
 						});
 						_push(`<!--]-->`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "primary",
 							disabled: ""
 						}, {
@@ -4799,7 +4812,7 @@ var _sfc_main$43 = {
 						}, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Chip / Tag</h2><div class="flex flex-wrap items-center gap-3"${_scopeId}><!--[-->`);
 						ssrRenderList(filteri, (f) => {
-							_push(ssrRenderComponent(_sfc_main$80, {
+							_push(ssrRenderComponent(_sfc_main$88, {
 								key: f,
 								variant: "filter",
 								label: f,
@@ -4808,51 +4821,51 @@ var _sfc_main$43 = {
 							}, null, _parent, _scopeId));
 						});
 						_push(`<!--]-->`);
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "kategorija",
 							label: "Zanat",
 							icon: "tag"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$80, {
+						_push(ssrRenderComponent(_sfc_main$88, {
 							variant: "uklonjiv",
 							label: "Borje"
 						}, null, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Badge / Status</h2><div class="flex flex-wrap items-center gap-3"${_scopeId}><!--[-->`);
 						ssrRenderList(badges, (b) => {
-							_push(ssrRenderComponent(_sfc_main$79, {
+							_push(ssrRenderComponent(_sfc_main$87, {
 								key: b,
 								variant: b
 							}, null, _parent, _scopeId));
 						});
 						_push(`<!--]--></div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Alert / Poruka stanja</h2><div class="grid max-w-xl gap-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$78, {
+						_push(ssrRenderComponent(_sfc_main$86, {
 							variant: "uspjeh",
 							title: "Prijava primljena",
 							text: "Vaša prijava ide na pregled administratora."
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$78, {
+						_push(ssrRenderComponent(_sfc_main$86, {
 							variant: "greska",
 							title: "Greška",
 							text: "Molimo provjerite obavezna polja."
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$78, {
+						_push(ssrRenderComponent(_sfc_main$86, {
 							variant: "info",
 							text: "Polja označena zvjezdicom su obavezna."
 						}, null, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Forme</h2><div class="grid max-w-xl gap-4"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$60, {
+						_push(ssrRenderComponent(_sfc_main$68, {
 							modelValue: ime.value,
 							"onUpdate:modelValue": ($event) => ime.value = $event,
 							label: "Ime i prezime",
 							placeholder: "npr. Marko Marković",
 							required: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
+						_push(ssrRenderComponent(_sfc_main$68, {
 							label: "E-mail",
 							type: "email",
 							error: "Unesite ispravnu e-mail adresu."
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$70, {
+						_push(ssrRenderComponent(_sfc_main$78, {
 							modelValue: kat.value,
 							"onUpdate:modelValue": ($event) => kat.value = $event,
 							label: "Kategorija",
@@ -4863,14 +4876,14 @@ var _sfc_main$43 = {
 							],
 							required: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$59, {
+						_push(ssrRenderComponent(_sfc_main$67, {
 							modelValue: poruka.value,
 							"onUpdate:modelValue": ($event) => poruka.value = $event,
 							label: "Poruka",
 							maxlength: 500,
 							placeholder: "Vaša poruka…"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$58, {
+						_push(ssrRenderComponent(_sfc_main$66, {
 							modelValue: saglasnost.value,
 							"onUpdate:modelValue": ($event) => saglasnost.value = $event,
 							required: ""
@@ -4881,24 +4894,24 @@ var _sfc_main$43 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$57, {
+						_push(ssrRenderComponent(_sfc_main$65, {
 							modelValue: captcha.value,
 							"onUpdate:modelValue": ($event) => captcha.value = $event
 						}, null, _parent, _scopeId));
 						_push(`</div></section><hr class="border-border"${_scopeId}><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Kartica/Biznis</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(biznisi, (b) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: b.slug,
 											item: b
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(biznisi, (b) => {
-									return createVNode(_sfc_main$62, {
+									return createVNode(_sfc_main$70, {
 										key: b.slug,
 										item: b
 									}, null, 8, ["item"]);
@@ -4907,19 +4920,19 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Kartica/Lokalitet</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(lokaliteti, (l) => {
-										_push(ssrRenderComponent(_sfc_main$55, {
+										_push(ssrRenderComponent(_sfc_main$63, {
 											key: l.slug,
 											item: l
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(lokaliteti, (l) => {
-									return createVNode(_sfc_main$55, {
+									return createVNode(_sfc_main$63, {
 										key: l.slug,
 										item: l
 									}, null, 8, ["item"]);
@@ -4928,19 +4941,19 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Kartica/Događaj</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(dogadjaji, (d) => {
-										_push(ssrRenderComponent(_sfc_main$54, {
+										_push(ssrRenderComponent(_sfc_main$62, {
 											key: d.slug,
 											item: d
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(dogadjaji, (d) => {
-									return createVNode(_sfc_main$54, {
+									return createVNode(_sfc_main$62, {
 										key: d.slug,
 										item: d
 									}, null, 8, ["item"]);
@@ -4949,19 +4962,19 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Kartica/Oglas</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(oglasi, (o) => {
-										_push(ssrRenderComponent(_sfc_main$76, {
+										_push(ssrRenderComponent(_sfc_main$84, {
 											key: o.slug,
 											item: o
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(oglasi, (o) => {
-									return createVNode(_sfc_main$76, {
+									return createVNode(_sfc_main$84, {
 										key: o.slug,
 										item: o
 									}, null, 8, ["item"]);
@@ -4970,21 +4983,21 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Kartica/Priča — Featured</h2>`);
-						_push(ssrRenderComponent(_sfc_main$52, { item: featured }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$60, { item: featured }, null, _parent, _scopeId));
 						_push(`<h2 class="pt-4 text-xl font-bold text-heading"${_scopeId}>Kartica/Priča</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(price, (p) => {
-										_push(ssrRenderComponent(_sfc_main$53, {
+										_push(ssrRenderComponent(_sfc_main$61, {
 											key: p.slug,
 											item: p
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(price, (p) => {
-									return createVNode(_sfc_main$53, {
+									return createVNode(_sfc_main$61, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -4993,20 +5006,20 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><hr class="border-border"${_scopeId}><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Skeleton (učitavanje)</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(ssrRenderComponent(_sfc_main$68, { count: 4 }, null, _parent, _scopeId));
-								else return [createVNode(_sfc_main$68, { count: 4 })];
+								if (_push) _push(ssrRenderComponent(_sfc_main$76, { count: 4 }, null, _parent, _scopeId));
+								else return [createVNode(_sfc_main$76, { count: 4 })];
 							}),
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Prazno stanje</h2>`);
-						_push(ssrRenderComponent(_sfc_main$77, {
+						_push(ssrRenderComponent(_sfc_main$85, {
 							title: "Nema rezultata",
 							text: "Trenutno nema sadržaja za odabrane filtere. Pokušajte promijeniti pretragu."
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+								if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 									variant: "secondary",
 									size: "sm"
 								}, {
@@ -5016,7 +5029,7 @@ var _sfc_main$43 = {
 									}),
 									_: 1
 								}, _parent, _scopeId));
-								else return [createVNode(_sfc_main$85, {
+								else return [createVNode(_sfc_main$93, {
 									variant: "secondary",
 									size: "sm"
 								}, {
@@ -5027,7 +5040,7 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Breadcrumb</h2>`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -5039,13 +5052,13 @@ var _sfc_main$43 = {
 							{ label: "Planina Borja" }
 						] }, null, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Paginacija (stranica ${ssrInterpolate(stranica.value)})</h2>`);
-						_push(ssrRenderComponent(_sfc_main$69, {
+						_push(ssrRenderComponent(_sfc_main$77, {
 							modelValue: stranica.value,
 							"onUpdate:modelValue": ($event) => stranica.value = $event,
 							total: 10
 						}, null, _parent, _scopeId));
 						_push(`</section><hr class="border-border"${_scopeId}><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Hero — slika-pozadina</h2>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: "Dobrodošli u Teslić",
 							title: "Domaće, autentično, blizu",
@@ -5053,7 +5066,7 @@ var _sfc_main$43 = {
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
-									_push(ssrRenderComponent(_sfc_main$85, {
+									_push(ssrRenderComponent(_sfc_main$93, {
 										variant: "primary",
 										icon: "arrow-right",
 										"icon-position": "right"
@@ -5064,21 +5077,21 @@ var _sfc_main$43 = {
 										}),
 										_: 1
 									}, _parent, _scopeId));
-									_push(ssrRenderComponent(_sfc_main$85, { variant: "sekundarna" }, {
+									_push(ssrRenderComponent(_sfc_main$93, { variant: "sekundarna" }, {
 										default: withCtx((_, _push, _parent, _scopeId) => {
 											if (_push) _push(`Pridruži se`);
 											else return [createTextVNode("Pridruži se")];
 										}),
 										_: 1
 									}, _parent, _scopeId));
-								} else return [createVNode(_sfc_main$85, {
+								} else return [createVNode(_sfc_main$93, {
 									variant: "primary",
 									icon: "arrow-right",
 									"icon-position": "right"
 								}, {
 									default: withCtx(() => [createTextVNode("Istraži ponudu")]),
 									_: 1
-								}), createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+								}), createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 									default: withCtx(() => [createTextVNode("Pridruži se")]),
 									_: 1
 								})];
@@ -5086,21 +5099,21 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`<h2 class="pt-4 text-xl font-bold text-heading"${_scopeId}>Hero — split</h2>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "split",
 							kicker: "Priča sedmice",
 							title: "Ljudi koji čuvaju duh Teslića",
 							subtitle: "Domaćini, zanatlije i autori koji svojim radom oblikuju turističku ponudu kraja."
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(ssrRenderComponent(_sfc_main$85, { variant: "primary" }, {
+								if (_push) _push(ssrRenderComponent(_sfc_main$93, { variant: "primary" }, {
 									default: withCtx((_, _push, _parent, _scopeId) => {
 										if (_push) _push(`Pročitaj priču`);
 										else return [createTextVNode("Pročitaj priču")];
 									}),
 									_: 1
 								}, _parent, _scopeId));
-								else return [createVNode(_sfc_main$85, { variant: "primary" }, {
+								else return [createVNode(_sfc_main$93, { variant: "primary" }, {
 									default: withCtx(() => [createTextVNode("Pročitaj priču")]),
 									_: 1
 								})];
@@ -5108,26 +5121,26 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>SegmentControl + SearchInput</h2><div class="flex flex-wrap items-center gap-4"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$74, {
+						_push(ssrRenderComponent(_sfc_main$82, {
 							modelValue: prikaz.value,
 							"onUpdate:modelValue": ($event) => prikaz.value = $event,
 							options: prikazOpcije
 						}, null, _parent, _scopeId));
 						_push(`<span class="text-sm text-text-muted"${_scopeId}>Aktivno: ${ssrInterpolate(prikaz.value)}</span></div><div class="max-w-md"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$71, {
+						_push(ssrRenderComponent(_sfc_main$79, {
 							modelValue: upit.value,
 							"onUpdate:modelValue": ($event) => upit.value = $event,
 							placeholder: "Pretraži lokalitete…"
 						}, null, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>FilterBar</h2>`);
-						_push(ssrRenderComponent(_sfc_main$72, {
+						_push(ssrRenderComponent(_sfc_main$80, {
 							chips: aktivniFilteri.value,
 							onClear: ($event) => aktivniFilteri.value = [],
 							onRemove: ukloniFilter
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
-									_push(ssrRenderComponent(_sfc_main$70, {
+									_push(ssrRenderComponent(_sfc_main$78, {
 										modelValue: filterKat.value,
 										"onUpdate:modelValue": ($event) => filterKat.value = $event,
 										options: [
@@ -5137,12 +5150,12 @@ var _sfc_main$43 = {
 										],
 										placeholder: "Kategorija"
 									}, null, _parent, _scopeId));
-									_push(ssrRenderComponent(_sfc_main$71, {
+									_push(ssrRenderComponent(_sfc_main$79, {
 										modelValue: upit.value,
 										"onUpdate:modelValue": ($event) => upit.value = $event,
 										placeholder: "Pretraga…"
 									}, null, _parent, _scopeId));
-								} else return [createVNode(_sfc_main$70, {
+								} else return [createVNode(_sfc_main$78, {
 									modelValue: filterKat.value,
 									"onUpdate:modelValue": ($event) => filterKat.value = $event,
 									options: [
@@ -5151,7 +5164,7 @@ var _sfc_main$43 = {
 										"Usluge"
 									],
 									placeholder: "Kategorija"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+								}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraga…"
@@ -5160,16 +5173,16 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Galerija + Lightbox</h2>`);
-						_push(ssrRenderComponent(_sfc_main$65, { items: galerija }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$73, { items: galerija }, null, _parent, _scopeId));
 						_push(`<h2 class="pt-4 text-xl font-bold text-heading"${_scopeId}>VideoPlayer</h2><div class="max-w-xl"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$50, null, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$58, null, null, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>InfoPanel + MiniMap (dvokolonski)</h2><div class="grid gap-6 sm:grid-cols-2 lg:max-w-2xl"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$83, {
+						_push(ssrRenderComponent(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+								if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 									variant: "primary",
 									icon: "send",
 									block: ""
@@ -5180,7 +5193,7 @@ var _sfc_main$43 = {
 									}),
 									_: 1
 								}, _parent, _scopeId));
-								else return [createVNode(_sfc_main$85, {
+								else return [createVNode(_sfc_main$93, {
 									variant: "primary",
 									icon: "send",
 									block: ""
@@ -5191,28 +5204,28 @@ var _sfc_main$43 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$64, { label: "Planina Borja" }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$72, { label: "Planina Borja" }, null, _parent, _scopeId));
 						_push(`</div></section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Stepper</h2>`);
-						_push(ssrRenderComponent(_sfc_main$51, { steps: koraci }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$59, { steps: koraci }, null, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>AuthorBlock</h2>`);
-						_push(ssrRenderComponent(_sfc_main$49, {
+						_push(ssrRenderComponent(_sfc_main$57, {
 							author: autor,
 							to: "/price"
 						}, null, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$81, { title: "Povezani sadržaj" }, {
+						_push(ssrRenderComponent(_sfc_main$89, { title: "Povezani sadržaj" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(biznisi.slice(0, 3), (b) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: b.slug,
 											item: b
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(biznisi.slice(0, 3), (b) => {
-									return openBlock(), createBlock(_sfc_main$62, {
+									return openBlock(), createBlock(_sfc_main$70, {
 										key: b.slug,
 										item: b
 									}, null, 8, ["item"]);
@@ -5221,30 +5234,30 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>CTASection</h2>`);
-						_push(ssrRenderComponent(_sfc_main$86, {
+						_push(ssrRenderComponent(_sfc_main$94, {
 							title: "Imate biznis ili priču iz Teslića?",
 							text: "Pridružite se platformi i predstavite svoju ponudu posjetiocima Teslića."
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
-									_push(ssrRenderComponent(_sfc_main$85, { variant: "sekundarna" }, {
+									_push(ssrRenderComponent(_sfc_main$93, { variant: "sekundarna" }, {
 										default: withCtx((_, _push, _parent, _scopeId) => {
 											if (_push) _push(`Registruj biznis`);
 											else return [createTextVNode("Registruj biznis")];
 										}),
 										_: 1
 									}, _parent, _scopeId));
-									_push(ssrRenderComponent(_sfc_main$85, { variant: "secondary" }, {
+									_push(ssrRenderComponent(_sfc_main$93, { variant: "secondary" }, {
 										default: withCtx((_, _push, _parent, _scopeId) => {
 											if (_push) _push(`Postani autor`);
 											else return [createTextVNode("Postani autor")];
 										}),
 										_: 1
 									}, _parent, _scopeId));
-								} else return [createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+								} else return [createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 									default: withCtx(() => [createTextVNode("Registruj biznis")]),
 									_: 1
-								}), createVNode(_sfc_main$85, { variant: "secondary" }, {
+								}), createVNode(_sfc_main$93, { variant: "secondary" }, {
 									default: withCtx(() => [createTextVNode("Postani autor")]),
 									_: 1
 								})];
@@ -5252,11 +5265,11 @@ var _sfc_main$43 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</section><hr class="border-border"${_scopeId}><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>Mapa (Leaflet) — FilterPanel + Mapa + Rezultati</h2><div class="grid gap-4 lg:grid-cols-[300px_1fr]"${_scopeId}><div class="space-y-4"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$47, {
+						_push(ssrRenderComponent(_sfc_main$55, {
 							modelValue: aktivneKat.value,
 							"onUpdate:modelValue": ($event) => aktivneKat.value = $event
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$46, {
+						_push(ssrRenderComponent(_sfc_main$54, {
 							items: vidljiviPinovi.value,
 							onSelect: ($event) => odabranPin.value = $event
 						}, null, _parent, _scopeId));
@@ -5270,14 +5283,14 @@ var _sfc_main$43 = {
 						_push(`</div>`);
 						if (odabranPin.value) {
 							_push(`<div class="max-w-xs"${_scopeId}><p class="mb-2 text-sm text-text-muted"${_scopeId}>Odabran pin → MapPopup:</p>`);
-							_push(ssrRenderComponent(_sfc_main$45, {
+							_push(ssrRenderComponent(_sfc_main$53, {
 								item: odabranPin.value,
 								onClose: ($event) => odabranPin.value = null
 							}, null, _parent, _scopeId));
 							_push(`</div>`);
 						} else _push(`<!---->`);
 						_push(`</section><hr class="border-border"${_scopeId}><section class="space-y-4"${_scopeId}><h2 class="text-xl font-bold text-heading"${_scopeId}>EventCalendar</h2><div class="grid gap-6 lg:grid-cols-[1fr_320px]"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$44, {
+						_push(ssrRenderComponent(_sfc_main$52, {
 							modelValue: odabraniDan.value,
 							"onUpdate:modelValue": ($event) => odabraniDan.value = $event,
 							events: kalEvents,
@@ -5302,7 +5315,7 @@ var _sfc_main$43 = {
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "Dugmad"),
 							createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [(openBlock(), createBlock(Fragment, null, renderList(buttons, (v) => {
-								return createVNode(_sfc_main$85, {
+								return createVNode(_sfc_main$93, {
 									key: v,
 									variant: v,
 									icon: "arrow-right",
@@ -5313,7 +5326,7 @@ var _sfc_main$43 = {
 								}, 1032, ["variant"]);
 							}), 64))]),
 							createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [(openBlock(), createBlock(Fragment, null, renderList(buttons, (v) => {
-								return createVNode(_sfc_main$85, {
+								return createVNode(_sfc_main$93, {
 									key: v,
 									variant: v,
 									size: "sm"
@@ -5321,7 +5334,7 @@ var _sfc_main$43 = {
 									default: withCtx(() => [createTextVNode(toDisplayString(v) + " sm", 1)]),
 									_: 2
 								}, 1032, ["variant"]);
-							}), 64)), createVNode(_sfc_main$85, {
+							}), 64)), createVNode(_sfc_main$93, {
 								variant: "primary",
 								disabled: ""
 							}, {
@@ -5331,7 +5344,7 @@ var _sfc_main$43 = {
 						]),
 						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Chip / Tag"), createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [
 							(openBlock(), createBlock(Fragment, null, renderList(filteri, (f) => {
-								return createVNode(_sfc_main$80, {
+								return createVNode(_sfc_main$88, {
 									key: f,
 									variant: "filter",
 									label: f,
@@ -5343,52 +5356,52 @@ var _sfc_main$43 = {
 									"onClick"
 								]);
 							}), 64)),
-							createVNode(_sfc_main$80, {
+							createVNode(_sfc_main$88, {
 								variant: "kategorija",
 								label: "Zanat",
 								icon: "tag"
 							}),
-							createVNode(_sfc_main$80, {
+							createVNode(_sfc_main$88, {
 								variant: "uklonjiv",
 								label: "Borje"
 							})
 						])]),
 						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Badge / Status"), createVNode("div", { class: "flex flex-wrap items-center gap-3" }, [(openBlock(), createBlock(Fragment, null, renderList(badges, (b) => {
-							return createVNode(_sfc_main$79, {
+							return createVNode(_sfc_main$87, {
 								key: b,
 								variant: b
 							}, null, 8, ["variant"]);
 						}), 64))])]),
 						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Alert / Poruka stanja"), createVNode("div", { class: "grid max-w-xl gap-3" }, [
-							createVNode(_sfc_main$78, {
+							createVNode(_sfc_main$86, {
 								variant: "uspjeh",
 								title: "Prijava primljena",
 								text: "Vaša prijava ide na pregled administratora."
 							}),
-							createVNode(_sfc_main$78, {
+							createVNode(_sfc_main$86, {
 								variant: "greska",
 								title: "Greška",
 								text: "Molimo provjerite obavezna polja."
 							}),
-							createVNode(_sfc_main$78, {
+							createVNode(_sfc_main$86, {
 								variant: "info",
 								text: "Polja označena zvjezdicom su obavezna."
 							})
 						])]),
 						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Forme"), createVNode("div", { class: "grid max-w-xl gap-4" }, [
-							createVNode(_sfc_main$60, {
+							createVNode(_sfc_main$68, {
 								modelValue: ime.value,
 								"onUpdate:modelValue": ($event) => ime.value = $event,
 								label: "Ime i prezime",
 								placeholder: "npr. Marko Marković",
 								required: ""
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$60, {
+							createVNode(_sfc_main$68, {
 								label: "E-mail",
 								type: "email",
 								error: "Unesite ispravnu e-mail adresu."
 							}),
-							createVNode(_sfc_main$70, {
+							createVNode(_sfc_main$78, {
 								modelValue: kat.value,
 								"onUpdate:modelValue": ($event) => kat.value = $event,
 								label: "Kategorija",
@@ -5399,14 +5412,14 @@ var _sfc_main$43 = {
 								],
 								required: ""
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$59, {
+							createVNode(_sfc_main$67, {
 								modelValue: poruka.value,
 								"onUpdate:modelValue": ($event) => poruka.value = $event,
 								label: "Poruka",
 								maxlength: 500,
 								placeholder: "Vaša poruka…"
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$58, {
+							createVNode(_sfc_main$66, {
 								modelValue: saglasnost.value,
 								"onUpdate:modelValue": ($event) => saglasnost.value = $event,
 								required: ""
@@ -5414,42 +5427,42 @@ var _sfc_main$43 = {
 								default: withCtx(() => [createTextVNode(" Prihvatam uslove korištenja i obradu podataka ")]),
 								_: 1
 							}, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$57, {
+							createVNode(_sfc_main$65, {
 								modelValue: captcha.value,
 								"onUpdate:modelValue": ($event) => captcha.value = $event
 							}, null, 8, ["modelValue", "onUpdate:modelValue"])
 						])]),
 						createVNode("hr", { class: "border-border" }),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Biznis"), createVNode(_sfc_main$82, null, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Biznis"), createVNode(_sfc_main$90, null, {
 							default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(biznisi, (b) => {
-								return createVNode(_sfc_main$62, {
+								return createVNode(_sfc_main$70, {
 									key: b.slug,
 									item: b
 								}, null, 8, ["item"]);
 							}), 64))]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Lokalitet"), createVNode(_sfc_main$82, { cols: 3 }, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Lokalitet"), createVNode(_sfc_main$90, { cols: 3 }, {
 							default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(lokaliteti, (l) => {
-								return createVNode(_sfc_main$55, {
+								return createVNode(_sfc_main$63, {
 									key: l.slug,
 									item: l
 								}, null, 8, ["item"]);
 							}), 64))]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Događaj"), createVNode(_sfc_main$82, { cols: 3 }, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Događaj"), createVNode(_sfc_main$90, { cols: 3 }, {
 							default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(dogadjaji, (d) => {
-								return createVNode(_sfc_main$54, {
+								return createVNode(_sfc_main$62, {
 									key: d.slug,
 									item: d
 								}, null, 8, ["item"]);
 							}), 64))]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Oglas"), createVNode(_sfc_main$82, { cols: 3 }, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Oglas"), createVNode(_sfc_main$90, { cols: 3 }, {
 							default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(oglasi, (o) => {
-								return createVNode(_sfc_main$76, {
+								return createVNode(_sfc_main$84, {
 									key: o.slug,
 									item: o
 								}, null, 8, ["item"]);
@@ -5458,11 +5471,11 @@ var _sfc_main$43 = {
 						})]),
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "Kartica/Priča — Featured"),
-							createVNode(_sfc_main$52, { item: featured }),
+							createVNode(_sfc_main$60, { item: featured }),
 							createVNode("h2", { class: "pt-4 text-xl font-bold text-heading" }, "Kartica/Priča"),
-							createVNode(_sfc_main$82, { cols: 3 }, {
+							createVNode(_sfc_main$90, { cols: 3 }, {
 								default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(price, (p) => {
-									return createVNode(_sfc_main$53, {
+									return createVNode(_sfc_main$61, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -5471,15 +5484,15 @@ var _sfc_main$43 = {
 							})
 						]),
 						createVNode("hr", { class: "border-border" }),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Skeleton (učitavanje)"), createVNode(_sfc_main$82, null, {
-							default: withCtx(() => [createVNode(_sfc_main$68, { count: 4 })]),
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Skeleton (učitavanje)"), createVNode(_sfc_main$90, null, {
+							default: withCtx(() => [createVNode(_sfc_main$76, { count: 4 })]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Prazno stanje"), createVNode(_sfc_main$77, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Prazno stanje"), createVNode(_sfc_main$85, {
 							title: "Nema rezultata",
 							text: "Trenutno nema sadržaja za odabrane filtere. Pokušajte promijeniti pretragu."
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$85, {
+							default: withCtx(() => [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm"
 							}, {
@@ -5488,7 +5501,7 @@ var _sfc_main$43 = {
 							})]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Breadcrumb"), createVNode(_sfc_main$87, { items: [
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Breadcrumb"), createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -5499,7 +5512,7 @@ var _sfc_main$43 = {
 							},
 							{ label: "Planina Borja" }
 						] })]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Paginacija (stranica " + toDisplayString(stranica.value) + ")", 1), createVNode(_sfc_main$69, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Paginacija (stranica " + toDisplayString(stranica.value) + ")", 1), createVNode(_sfc_main$77, {
 							modelValue: stranica.value,
 							"onUpdate:modelValue": ($event) => stranica.value = $event,
 							total: 10
@@ -5507,33 +5520,33 @@ var _sfc_main$43 = {
 						createVNode("hr", { class: "border-border" }),
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "Hero — slika-pozadina"),
-							createVNode(_sfc_main$88, {
+							createVNode(_sfc_main$96, {
 								variant: "slika-pozadina",
 								kicker: "Dobrodošli u Teslić",
 								title: "Domaće, autentično, blizu",
 								subtitle: "Otkrijte prirodu, lokalne proizvode i priče kraja oko planine Borje i Banje Vrućice."
 							}, {
-								default: withCtx(() => [createVNode(_sfc_main$85, {
+								default: withCtx(() => [createVNode(_sfc_main$93, {
 									variant: "primary",
 									icon: "arrow-right",
 									"icon-position": "right"
 								}, {
 									default: withCtx(() => [createTextVNode("Istraži ponudu")]),
 									_: 1
-								}), createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+								}), createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 									default: withCtx(() => [createTextVNode("Pridruži se")]),
 									_: 1
 								})]),
 								_: 1
 							}),
 							createVNode("h2", { class: "pt-4 text-xl font-bold text-heading" }, "Hero — split"),
-							createVNode(_sfc_main$88, {
+							createVNode(_sfc_main$96, {
 								variant: "split",
 								kicker: "Priča sedmice",
 								title: "Ljudi koji čuvaju duh Teslića",
 								subtitle: "Domaćini, zanatlije i autori koji svojim radom oblikuju turističku ponudu kraja."
 							}, {
-								default: withCtx(() => [createVNode(_sfc_main$85, { variant: "primary" }, {
+								default: withCtx(() => [createVNode(_sfc_main$93, { variant: "primary" }, {
 									default: withCtx(() => [createTextVNode("Pročitaj priču")]),
 									_: 1
 								})]),
@@ -5542,23 +5555,23 @@ var _sfc_main$43 = {
 						]),
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "SegmentControl + SearchInput"),
-							createVNode("div", { class: "flex flex-wrap items-center gap-4" }, [createVNode(_sfc_main$74, {
+							createVNode("div", { class: "flex flex-wrap items-center gap-4" }, [createVNode(_sfc_main$82, {
 								modelValue: prikaz.value,
 								"onUpdate:modelValue": ($event) => prikaz.value = $event,
 								options: prikazOpcije
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode("span", { class: "text-sm text-text-muted" }, "Aktivno: " + toDisplayString(prikaz.value), 1)]),
-							createVNode("div", { class: "max-w-md" }, [createVNode(_sfc_main$71, {
+							createVNode("div", { class: "max-w-md" }, [createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži lokalitete…"
 							}, null, 8, ["modelValue", "onUpdate:modelValue"])])
 						]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "FilterBar"), createVNode(_sfc_main$72, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "FilterBar"), createVNode(_sfc_main$80, {
 							chips: aktivniFilteri.value,
 							onClear: ($event) => aktivniFilteri.value = [],
 							onRemove: ukloniFilter
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$70, {
+							default: withCtx(() => [createVNode(_sfc_main$78, {
 								modelValue: filterKat.value,
 								"onUpdate:modelValue": ($event) => filterKat.value = $event,
 								options: [
@@ -5567,7 +5580,7 @@ var _sfc_main$43 = {
 									"Usluge"
 								],
 								placeholder: "Kategorija"
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraga…"
@@ -5576,15 +5589,15 @@ var _sfc_main$43 = {
 						}, 8, ["chips", "onClear"])]),
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "Galerija + Lightbox"),
-							createVNode(_sfc_main$65, { items: galerija }),
+							createVNode(_sfc_main$73, { items: galerija }),
 							createVNode("h2", { class: "pt-4 text-xl font-bold text-heading" }, "VideoPlayer"),
-							createVNode("div", { class: "max-w-xl" }, [createVNode(_sfc_main$50)])
+							createVNode("div", { class: "max-w-xl" }, [createVNode(_sfc_main$58)])
 						]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "InfoPanel + MiniMap (dvokolonski)"), createVNode("div", { class: "grid gap-6 sm:grid-cols-2 lg:max-w-2xl" }, [createVNode(_sfc_main$83, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "InfoPanel + MiniMap (dvokolonski)"), createVNode("div", { class: "grid gap-6 sm:grid-cols-2 lg:max-w-2xl" }, [createVNode(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$85, {
+							default: withCtx(() => [createVNode(_sfc_main$93, {
 								variant: "primary",
 								icon: "send",
 								block: ""
@@ -5593,29 +5606,29 @@ var _sfc_main$43 = {
 								_: 1
 							})]),
 							_: 1
-						}), createVNode(_sfc_main$64, { label: "Planina Borja" })])]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Stepper"), createVNode(_sfc_main$51, { steps: koraci })]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "AuthorBlock"), createVNode(_sfc_main$49, {
+						}), createVNode(_sfc_main$72, { label: "Planina Borja" })])]),
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "Stepper"), createVNode(_sfc_main$59, { steps: koraci })]),
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "AuthorBlock"), createVNode(_sfc_main$57, {
 							author: autor,
 							to: "/price"
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode(_sfc_main$81, { title: "Povezani sadržaj" }, {
+						createVNode("section", { class: "space-y-4" }, [createVNode(_sfc_main$89, { title: "Povezani sadržaj" }, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(biznisi.slice(0, 3), (b) => {
-								return openBlock(), createBlock(_sfc_main$62, {
+								return openBlock(), createBlock(_sfc_main$70, {
 									key: b.slug,
 									item: b
 								}, null, 8, ["item"]);
 							}), 128))]),
 							_: 1
 						})]),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "CTASection"), createVNode(_sfc_main$86, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "CTASection"), createVNode(_sfc_main$94, {
 							title: "Imate biznis ili priču iz Teslića?",
 							text: "Pridružite se platformi i predstavite svoju ponudu posjetiocima Teslića."
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+							default: withCtx(() => [createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 								default: withCtx(() => [createTextVNode("Registruj biznis")]),
 								_: 1
-							}), createVNode(_sfc_main$85, { variant: "secondary" }, {
+							}), createVNode(_sfc_main$93, { variant: "secondary" }, {
 								default: withCtx(() => [createTextVNode("Postani autor")]),
 								_: 1
 							})]),
@@ -5624,10 +5637,10 @@ var _sfc_main$43 = {
 						createVNode("hr", { class: "border-border" }),
 						createVNode("section", { class: "space-y-4" }, [
 							createVNode("h2", { class: "text-xl font-bold text-heading" }, "Mapa (Leaflet) — FilterPanel + Mapa + Rezultati"),
-							createVNode("div", { class: "grid gap-4 lg:grid-cols-[300px_1fr]" }, [createVNode("div", { class: "space-y-4" }, [createVNode(_sfc_main$47, {
+							createVNode("div", { class: "grid gap-4 lg:grid-cols-[300px_1fr]" }, [createVNode("div", { class: "space-y-4" }, [createVNode(_sfc_main$55, {
 								modelValue: aktivneKat.value,
 								"onUpdate:modelValue": ($event) => aktivneKat.value = $event
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$46, {
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$54, {
 								items: vidljiviPinovi.value,
 								onSelect: ($event) => odabranPin.value = $event
 							}, null, 8, ["items", "onSelect"])]), createVNode(MapInteractive_default, {
@@ -5643,13 +5656,13 @@ var _sfc_main$43 = {
 							odabranPin.value ? (openBlock(), createBlock("div", {
 								key: 0,
 								class: "max-w-xs"
-							}, [createVNode("p", { class: "mb-2 text-sm text-text-muted" }, "Odabran pin → MapPopup:"), createVNode(_sfc_main$45, {
+							}, [createVNode("p", { class: "mb-2 text-sm text-text-muted" }, "Odabran pin → MapPopup:"), createVNode(_sfc_main$53, {
 								item: odabranPin.value,
 								onClose: ($event) => odabranPin.value = null
 							}, null, 8, ["item", "onClose"])])) : createCommentVNode("", true)
 						]),
 						createVNode("hr", { class: "border-border" }),
-						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "EventCalendar"), createVNode("div", { class: "grid gap-6 lg:grid-cols-[1fr_320px]" }, [createVNode(_sfc_main$44, {
+						createVNode("section", { class: "space-y-4" }, [createVNode("h2", { class: "text-xl font-bold text-heading" }, "EventCalendar"), createVNode("div", { class: "grid gap-6 lg:grid-cols-[1fr_320px]" }, [createVNode(_sfc_main$52, {
 							modelValue: odabraniDan.value,
 							"onUpdate:modelValue": ($event) => odabraniDan.value = $event,
 							events: kalEvents,
@@ -5673,16 +5686,16 @@ var _sfc_main$43 = {
 		};
 	}
 };
-var _sfc_setup$43 = _sfc_main$43.setup;
-_sfc_main$43.setup = (props, ctx) => {
+var _sfc_setup$51 = _sfc_main$51.setup;
+_sfc_main$51.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Dev.vue");
-	return _sfc_setup$43 ? _sfc_setup$43(props, ctx) : void 0;
+	return _sfc_setup$51 ? _sfc_setup$51(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/EventDetail.vue
-var EventDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$42 });
-var _sfc_main$42 = {
+var EventDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$50 });
+var _sfc_main$50 = {
 	__name: "EventDetail",
 	__ssrInlineRender: true,
 	props: {
@@ -5731,17 +5744,17 @@ var _sfc_main$42 = {
 		});
 		const dodatUKalendar = ref(false);
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-8"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!dogadjaj.value) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!dogadjaj.value) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Događaj nije pronađen",
 						text: "Traženi događaj ne postoji ili je uklonjen."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/dogadjaji"
@@ -5752,7 +5765,7 @@ var _sfc_main$42 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/dogadjaji"
@@ -5765,7 +5778,7 @@ var _sfc_main$42 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -5777,7 +5790,7 @@ var _sfc_main$42 = {
 							{ label: dogadjaj.value.naslov }
 						] }, null, _parent, _scopeId));
 						_push(`<div class="mt-6 overflow-hidden rounded-lg"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: dogadjaj.value.datum,
 							title: dogadjaj.value.naslov,
@@ -5787,7 +5800,7 @@ var _sfc_main$42 = {
 						_push(`</div>`);
 						if (dogadjaj.value.zavrseno) {
 							_push(`<div class="mt-6"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$79, { variant: "zavrseno" }, null, _parent, _scopeId));
+							_push(ssrRenderComponent(_sfc_main$87, { variant: "zavrseno" }, null, _parent, _scopeId));
 							_push(`</div>`);
 						} else _push(`<!---->`);
 						_push(`<div class="mt-10 grid gap-8 lg:grid-cols-3"${_scopeId}><div class="space-y-8 lg:col-span-2"${_scopeId}>`);
@@ -5795,17 +5808,17 @@ var _sfc_main$42 = {
 						else _push(`<!---->`);
 						if (dogadjaj.value.galerija?.length) {
 							_push(`<section${_scopeId}><h2 class="mb-4 font-heading text-2xl font-bold text-heading"${_scopeId}>Galerija</h2>`);
-							_push(ssrRenderComponent(_sfc_main$65, { items: dogadjaj.value.galerija }, null, _parent, _scopeId));
+							_push(ssrRenderComponent(_sfc_main$73, { items: dogadjaj.value.galerija }, null, _parent, _scopeId));
 							_push(`</section>`);
 						} else _push(`<!---->`);
 						_push(`</div><div class="space-y-6"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$83, {
+						_push(ssrRenderComponent(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems.value
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
-									_push(ssrRenderComponent(_sfc_main$85, {
+									_push(ssrRenderComponent(_sfc_main$93, {
 										variant: "primary",
 										icon: "calendar-plus",
 										block: "",
@@ -5818,13 +5831,13 @@ var _sfc_main$42 = {
 										}),
 										_: 1
 									}, _parent, _scopeId));
-									if (dodatUKalendar.value) _push(ssrRenderComponent(_sfc_main$78, {
+									if (dodatUKalendar.value) _push(ssrRenderComponent(_sfc_main$86, {
 										variant: "uspjeh",
 										class: "mt-4",
 										text: "Termin događaja je zabilježen."
 									}, null, _parent, _scopeId));
 									else _push(`<!---->`);
-								} else return [createVNode(_sfc_main$85, {
+								} else return [createVNode(_sfc_main$93, {
 									variant: "primary",
 									icon: "calendar-plus",
 									block: "",
@@ -5833,7 +5846,7 @@ var _sfc_main$42 = {
 								}, {
 									default: withCtx(() => [createTextVNode(" Dodaj u kalendar ")]),
 									_: 1
-								}, 8, ["disabled", "onClick"]), dodatUKalendar.value ? (openBlock(), createBlock(_sfc_main$78, {
+								}, 8, ["disabled", "onClick"]), dodatUKalendar.value ? (openBlock(), createBlock(_sfc_main$86, {
 									key: 0,
 									variant: "uspjeh",
 									class: "mt-4",
@@ -5842,21 +5855,21 @@ var _sfc_main$42 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$64, { label: dogadjaj.value.lokacija }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$72, { label: dogadjaj.value.lokacija }, null, _parent, _scopeId));
 						_push(`</div></div>`);
-						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$81, { title: "Drugi događaji" }, {
+						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$89, { title: "Drugi događaji" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(slicni.value, (d) => {
-										_push(ssrRenderComponent(_sfc_main$54, {
+										_push(ssrRenderComponent(_sfc_main$62, {
 											key: d.slug,
 											item: d
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (d) => {
-									return openBlock(), createBlock(_sfc_main$54, {
+									return openBlock(), createBlock(_sfc_main$62, {
 										key: d.slug,
 										item: d
 									}, null, 8, ["item"]);
@@ -5867,12 +5880,12 @@ var _sfc_main$42 = {
 						else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!dogadjaj.value ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!dogadjaj.value ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Događaj nije pronađen",
 						text: "Traženi događaj ne postoji ili je uklonjen."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							icon: "arrow-left",
 							to: "/dogadjaji"
@@ -5882,7 +5895,7 @@ var _sfc_main$42 = {
 						})]),
 						_: 1
 					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [
-						createVNode(_sfc_main$87, { items: [
+						createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -5893,7 +5906,7 @@ var _sfc_main$42 = {
 							},
 							{ label: dogadjaj.value.naslov }
 						] }, null, 8, ["items"]),
-						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$88, {
+						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: dogadjaj.value.datum,
 							title: dogadjaj.value.naslov,
@@ -5908,12 +5921,12 @@ var _sfc_main$42 = {
 						dogadjaj.value.zavrseno ? (openBlock(), createBlock("div", {
 							key: 0,
 							class: "mt-6"
-						}, [createVNode(_sfc_main$79, { variant: "zavrseno" })])) : createCommentVNode("", true),
-						createVNode("div", { class: "mt-10 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "space-y-8 lg:col-span-2" }, [dogadjaj.value.opisDug ? (openBlock(), createBlock("section", { key: 0 }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "O događaju"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(dogadjaj.value.opisDug), 1)])) : createCommentVNode("", true), dogadjaj.value.galerija?.length ? (openBlock(), createBlock("section", { key: 1 }, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$65, { items: dogadjaj.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true)]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$83, {
+						}, [createVNode(_sfc_main$87, { variant: "zavrseno" })])) : createCommentVNode("", true),
+						createVNode("div", { class: "mt-10 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "space-y-8 lg:col-span-2" }, [dogadjaj.value.opisDug ? (openBlock(), createBlock("section", { key: 0 }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "O događaju"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(dogadjaj.value.opisDug), 1)])) : createCommentVNode("", true), dogadjaj.value.galerija?.length ? (openBlock(), createBlock("section", { key: 1 }, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$73, { items: dogadjaj.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true)]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems.value
 						}, {
-							default: withCtx(() => [createVNode(_sfc_main$85, {
+							default: withCtx(() => [createVNode(_sfc_main$93, {
 								variant: "primary",
 								icon: "calendar-plus",
 								block: "",
@@ -5922,20 +5935,20 @@ var _sfc_main$42 = {
 							}, {
 								default: withCtx(() => [createTextVNode(" Dodaj u kalendar ")]),
 								_: 1
-							}, 8, ["disabled", "onClick"]), dodatUKalendar.value ? (openBlock(), createBlock(_sfc_main$78, {
+							}, 8, ["disabled", "onClick"]), dodatUKalendar.value ? (openBlock(), createBlock(_sfc_main$86, {
 								key: 0,
 								variant: "uspjeh",
 								class: "mt-4",
 								text: "Termin događaja je zabilježen."
 							})) : createCommentVNode("", true)]),
 							_: 1
-						}, 8, ["items"]), createVNode(_sfc_main$64, { label: dogadjaj.value.lokacija }, null, 8, ["label"])])]),
-						slicni.value.length ? (openBlock(), createBlock(_sfc_main$81, {
+						}, 8, ["items"]), createVNode(_sfc_main$72, { label: dogadjaj.value.lokacija }, null, 8, ["label"])])]),
+						slicni.value.length ? (openBlock(), createBlock(_sfc_main$89, {
 							key: 1,
 							title: "Drugi događaji"
 						}, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (d) => {
-								return openBlock(), createBlock(_sfc_main$54, {
+								return openBlock(), createBlock(_sfc_main$62, {
 									key: d.slug,
 									item: d
 								}, null, 8, ["item"]);
@@ -5949,17 +5962,17 @@ var _sfc_main$42 = {
 		};
 	}
 };
-var _sfc_setup$42 = _sfc_main$42.setup;
-_sfc_main$42.setup = (props, ctx) => {
+var _sfc_setup$50 = _sfc_main$50.setup;
+_sfc_main$50.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/EventDetail.vue");
-	return _sfc_setup$42 ? _sfc_setup$42(props, ctx) : void 0;
+	return _sfc_setup$50 ? _sfc_setup$50(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Events.vue
-var Events_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$41 });
+var Events_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$49 });
 var PO_STRANICI$3 = 8;
-var _sfc_main$41 = {
+var _sfc_main$49 = {
 	__name: "Events",
 	__ssrInlineRender: true,
 	props: { dogadjaji: {
@@ -6038,30 +6051,30 @@ var _sfc_main$41 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Događaji" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Događaji" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="flex flex-wrap items-start justify-between gap-4"${_scopeId}><div${_scopeId}><h1 class="font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}> Događaji i dešavanja </h1><p class="mt-2 max-w-2xl text-text-muted"${_scopeId}> Festivali, sajmovi, koncerti i manifestacije u Tesliću i okolini. </p></div>`);
-						_push(ssrRenderComponent(_sfc_main$74, {
+						_push(ssrRenderComponent(_sfc_main$82, {
 							modelValue: prikaz.value,
 							"onUpdate:modelValue": ($event) => prikaz.value = $event,
 							options: prikazOpcije
 						}, null, _parent, _scopeId));
 						_push(`</div>`);
-					} else return [createVNode("div", { class: "flex flex-wrap items-start justify-between gap-4" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, " Događaji i dešavanja "), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Festivali, sajmovi, koncerti i manifestacije u Tesliću i okolini. ")]), createVNode(_sfc_main$74, {
+					} else return [createVNode("div", { class: "flex flex-wrap items-start justify-between gap-4" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, " Događaji i dešavanja "), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Festivali, sajmovi, koncerti i manifestacije u Tesliću i okolini. ")]), createVNode(_sfc_main$82, {
 						modelValue: prikaz.value,
 						"onUpdate:modelValue": ($event) => prikaz.value = $event,
 						options: prikazOpcije
@@ -6069,32 +6082,32 @@ var _sfc_main$41 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$72, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: period.value,
 									"onUpdate:modelValue": ($event) => period.value = $event,
 									options: periodOpcije,
 									placeholder: "Svi periodi"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$71, {
+								_push(ssrRenderComponent(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži događaje…"
 								}, null, _parent, _scopeId));
-							} else return [createVNode(_sfc_main$70, {
+							} else return [createVNode(_sfc_main$78, {
 								modelValue: period.value,
 								"onUpdate:modelValue": ($event) => period.value = $event,
 								options: periodOpcije,
 								placeholder: "Svi periodi"
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži događaje…"
@@ -6102,17 +6115,17 @@ var _sfc_main$41 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$72, {
+					else return [createVNode(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$70, {
+						default: withCtx(() => [createVNode(_sfc_main$78, {
 							modelValue: period.value,
 							"onUpdate:modelValue": ($event) => period.value = $event,
 							options: periodOpcije,
 							placeholder: "Svi periodi"
-						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 							modelValue: upit.value,
 							"onUpdate:modelValue": ($event) => upit.value = $event,
 							placeholder: "Pretraži događaje…"
@@ -6122,16 +6135,16 @@ var _sfc_main$41 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) if (prikaz.value === "lista") {
 						_push(`<!--[-->`);
-						if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+						if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 							title: "Nema događaja",
 							text: "Za odabrane filtere trenutno nema događaja. Pokušajte promijeniti period ili pretragu."
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+								if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 									variant: "secondary",
 									size: "sm",
 									onClick: ocisti
@@ -6142,7 +6155,7 @@ var _sfc_main$41 = {
 									}),
 									_: 1
 								}, _parent, _scopeId));
-								else return [createVNode(_sfc_main$85, {
+								else return [createVNode(_sfc_main$93, {
 									variant: "secondary",
 									size: "sm",
 									onClick: ocisti
@@ -6155,19 +6168,19 @@ var _sfc_main$41 = {
 						}, _parent, _scopeId));
 						else {
 							_push(`<!--[-->`);
-							_push(ssrRenderComponent(_sfc_main$82, null, {
+							_push(ssrRenderComponent(_sfc_main$90, null, {
 								default: withCtx((_, _push, _parent, _scopeId) => {
 									if (_push) {
 										_push(`<!--[-->`);
 										ssrRenderList(vidljivi.value, (d) => {
-											_push(ssrRenderComponent(_sfc_main$54, {
+											_push(ssrRenderComponent(_sfc_main$62, {
 												key: d.slug,
 												item: d
 											}, null, _parent, _scopeId));
 										});
 										_push(`<!--]-->`);
 									} else return [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (d) => {
-										return openBlock(), createBlock(_sfc_main$54, {
+										return openBlock(), createBlock(_sfc_main$62, {
 											key: d.slug,
 											item: d
 										}, null, 8, ["item"]);
@@ -6177,7 +6190,7 @@ var _sfc_main$41 = {
 							}, _parent, _scopeId));
 							if (ukupnoStranica.value > 1) {
 								_push(`<div class="mt-10 flex justify-center"${_scopeId}>`);
-								_push(ssrRenderComponent(_sfc_main$69, {
+								_push(ssrRenderComponent(_sfc_main$77, {
 									modelValue: stranica.value,
 									"onUpdate:modelValue": ($event) => stranica.value = $event,
 									total: ukupnoStranica.value
@@ -6190,7 +6203,7 @@ var _sfc_main$41 = {
 					} else {
 						_push(`<!--[-->`);
 						_push(`<div class="grid gap-6 lg:grid-cols-[1fr_340px]"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$44, {
+						_push(ssrRenderComponent(_sfc_main$52, {
 							modelValue: odabraniDan.value,
 							"onUpdate:modelValue": ($event) => odabraniDan.value = $event,
 							events: kalendarEvents.value,
@@ -6198,7 +6211,7 @@ var _sfc_main$41 = {
 						}, null, _parent, _scopeId));
 						_push(`<div class="space-y-3"${_scopeId}><h2 class="font-heading text-lg font-semibold text-heading"${_scopeId}> Događaji ${ssrInterpolate(odabraniDan.value ? `(${odabraniDan.value})` : "")}</h2>`);
 						if (!odabraniDan.value) _push(`<p class="text-sm text-text-muted"${_scopeId}> Odaberite dan u kalendaru da vidite događaje. </p>`);
-						else if (!danDogadjaji.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+						else if (!danDogadjaji.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 							icon: "calendar",
 							title: "Nema događaja",
 							text: "Na odabrani dan nema zakazanih događaja."
@@ -6206,7 +6219,7 @@ var _sfc_main$41 = {
 						else {
 							_push(`<div class="space-y-4"${_scopeId}><!--[-->`);
 							ssrRenderList(danDogadjaji.value, (d) => {
-								_push(ssrRenderComponent(_sfc_main$54, {
+								_push(ssrRenderComponent(_sfc_main$62, {
 									key: d.slug,
 									item: d
 								}, null, _parent, _scopeId));
@@ -6216,12 +6229,12 @@ var _sfc_main$41 = {
 						_push(`</div></div>`);
 						_push(`<!--]-->`);
 					}
-					else return [prikaz.value === "lista" ? (openBlock(), createBlock(Fragment, { key: 1 }, [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [prikaz.value === "lista" ? (openBlock(), createBlock(Fragment, { key: 1 }, [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 1,
 						title: "Nema događaja",
 						text: "Za odabrane filtere trenutno nema događaja. Pokušajte promijeniti period ili pretragu."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							size: "sm",
 							onClick: ocisti
@@ -6230,9 +6243,9 @@ var _sfc_main$41 = {
 							_: 1
 						})]),
 						_: 1
-					})) : (openBlock(), createBlock(Fragment, { key: 2 }, [createVNode(_sfc_main$82, null, {
+					})) : (openBlock(), createBlock(Fragment, { key: 2 }, [createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (d) => {
-							return openBlock(), createBlock(_sfc_main$54, {
+							return openBlock(), createBlock(_sfc_main$62, {
 								key: d.slug,
 								item: d
 							}, null, 8, ["item"]);
@@ -6241,7 +6254,7 @@ var _sfc_main$41 = {
 					}), ukupnoStranica.value > 1 ? (openBlock(), createBlock("div", {
 						key: 0,
 						class: "mt-10 flex justify-center"
-					}, [createVNode(_sfc_main$69, {
+					}, [createVNode(_sfc_main$77, {
 						modelValue: stranica.value,
 						"onUpdate:modelValue": ($event) => stranica.value = $event,
 						total: ukupnoStranica.value
@@ -6252,7 +6265,7 @@ var _sfc_main$41 = {
 					])])) : createCommentVNode("", true)], 64))], 64)) : (openBlock(), createBlock(Fragment, { key: 2 }, [(openBlock(), createBlock("div", {
 						key: 1,
 						class: "grid gap-6 lg:grid-cols-[1fr_340px]"
-					}, [createVNode(_sfc_main$44, {
+					}, [createVNode(_sfc_main$52, {
 						modelValue: odabraniDan.value,
 						"onUpdate:modelValue": ($event) => odabraniDan.value = $event,
 						events: kalendarEvents.value,
@@ -6264,7 +6277,7 @@ var _sfc_main$41 = {
 					]), createVNode("div", { class: "space-y-3" }, [createVNode("h2", { class: "font-heading text-lg font-semibold text-heading" }, " Događaji " + toDisplayString(odabraniDan.value ? `(${odabraniDan.value})` : ""), 1), !odabraniDan.value ? (openBlock(), createBlock("p", {
 						key: 0,
 						class: "text-sm text-text-muted"
-					}, " Odaberite dan u kalendaru da vidite događaje. ")) : !danDogadjaji.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					}, " Odaberite dan u kalendaru da vidite događaje. ")) : !danDogadjaji.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 1,
 						icon: "calendar",
 						title: "Nema događaja",
@@ -6273,7 +6286,7 @@ var _sfc_main$41 = {
 						key: 2,
 						class: "space-y-4"
 					}, [(openBlock(true), createBlock(Fragment, null, renderList(danDogadjaji.value, (d) => {
-						return openBlock(), createBlock(_sfc_main$54, {
+						return openBlock(), createBlock(_sfc_main$62, {
 							key: d.slug,
 							item: d
 						}, null, 8, ["item"]);
@@ -6285,16 +6298,16 @@ var _sfc_main$41 = {
 		};
 	}
 };
-var _sfc_setup$41 = _sfc_main$41.setup;
-_sfc_main$41.setup = (props, ctx) => {
+var _sfc_setup$49 = _sfc_main$49.setup;
+_sfc_main$49.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Events.vue");
-	return _sfc_setup$41 ? _sfc_setup$41(props, ctx) : void 0;
+	return _sfc_setup$49 ? _sfc_setup$49(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/ForgotPassword.vue
-var ForgotPassword_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$40 });
-var _sfc_main$40 = {
+var ForgotPassword_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$48 });
+var _sfc_main$48 = {
 	__name: "ForgotPassword",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -6302,20 +6315,20 @@ var _sfc_main$40 = {
 		const poslano = ref(false);
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "flex min-h-[600px] items-center justify-center py-16" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "flex min-h-[600px] items-center justify-center py-16" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8"${_scopeId}>`);
 						if (!poslano.value) {
 							_push(`<!--[--><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Zaboravljena lozinka</h1><p class="text-sm leading-relaxed text-text-muted"${_scopeId}> Unesite e-mail adresu vašeg naloga i poslaćemo vam link za postavljanje nove lozinke. </p>`);
-							_push(ssrRenderComponent(_sfc_main$60, {
+							_push(ssrRenderComponent(_sfc_main$68, {
 								modelValue: email.value,
 								"onUpdate:modelValue": ($event) => email.value = $event,
 								label: "E-mail",
 								type: "email",
 								placeholder: "marko@primjer.ba"
 							}, null, _parent, _scopeId));
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								variant: "primary",
 								block: "",
 								onClick: ($event) => poslano.value = true
@@ -6326,7 +6339,7 @@ var _sfc_main$40 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								to: "/prijava",
 								variant: "ghost",
 								block: "",
@@ -6341,13 +6354,13 @@ var _sfc_main$40 = {
 							_push(`<!--]-->`);
 						} else {
 							_push(`<!--[--><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Provjerite e-mail</h1>`);
-							_push(ssrRenderComponent(_sfc_main$78, {
+							_push(ssrRenderComponent(_sfc_main$86, {
 								variant: "uspjeh",
 								title: "Link je poslan",
 								text: "Link za resetovanje lozinke je poslan na vašu e-mail adresu."
 							}, null, _parent, _scopeId));
 							_push(`<p class="text-[13px] leading-relaxed text-text-muted"${_scopeId}> Niste primili e-mail? Provjerite spam folder ili pokušajte ponovo za nekoliko minuta. </p>`);
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								to: "/prijava",
 								variant: "ghost",
 								block: "",
@@ -6365,14 +6378,14 @@ var _sfc_main$40 = {
 					} else return [createVNode("div", { class: "w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8" }, [!poslano.value ? (openBlock(), createBlock(Fragment, { key: 0 }, [
 						createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Zaboravljena lozinka"),
 						createVNode("p", { class: "text-sm leading-relaxed text-text-muted" }, " Unesite e-mail adresu vašeg naloga i poslaćemo vam link za postavljanje nove lozinke. "),
-						createVNode(_sfc_main$60, {
+						createVNode(_sfc_main$68, {
 							modelValue: email.value,
 							"onUpdate:modelValue": ($event) => email.value = $event,
 							label: "E-mail",
 							type: "email",
 							placeholder: "marko@primjer.ba"
 						}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-						createVNode(_sfc_main$85, {
+						createVNode(_sfc_main$93, {
 							variant: "primary",
 							block: "",
 							onClick: ($event) => poslano.value = true
@@ -6380,7 +6393,7 @@ var _sfc_main$40 = {
 							default: withCtx(() => [createTextVNode(" Pošalji link za reset ")]),
 							_: 1
 						}, 8, ["onClick"]),
-						createVNode(_sfc_main$85, {
+						createVNode(_sfc_main$93, {
 							to: "/prijava",
 							variant: "ghost",
 							block: "",
@@ -6391,13 +6404,13 @@ var _sfc_main$40 = {
 						})
 					], 64)) : (openBlock(), createBlock(Fragment, { key: 1 }, [
 						createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Provjerite e-mail"),
-						createVNode(_sfc_main$78, {
+						createVNode(_sfc_main$86, {
 							variant: "uspjeh",
 							title: "Link je poslan",
 							text: "Link za resetovanje lozinke je poslan na vašu e-mail adresu."
 						}),
 						createVNode("p", { class: "text-[13px] leading-relaxed text-text-muted" }, " Niste primili e-mail? Provjerite spam folder ili pokušajte ponovo za nekoliko minuta. "),
-						createVNode(_sfc_main$85, {
+						createVNode(_sfc_main$93, {
 							to: "/prijava",
 							variant: "ghost",
 							block: "",
@@ -6414,15 +6427,15 @@ var _sfc_main$40 = {
 		};
 	}
 };
-var _sfc_setup$40 = _sfc_main$40.setup;
-_sfc_main$40.setup = (props, ctx) => {
+var _sfc_setup$48 = _sfc_main$48.setup;
+_sfc_main$48.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/ForgotPassword.vue");
-	return _sfc_setup$40 ? _sfc_setup$40(props, ctx) : void 0;
+	return _sfc_setup$48 ? _sfc_setup$48(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/SectionHeader.vue
-var _sfc_main$39 = {
+var _sfc_main$47 = {
 	__name: "SectionHeader",
 	__ssrInlineRender: true,
 	props: {
@@ -6449,11 +6462,11 @@ var _sfc_main$39 = {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`${ssrInterpolate(__props.linkText)} `);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "chevron-right",
 							size: 16
 						}, null, _parent, _scopeId));
-					} else return [createTextVNode(toDisplayString(__props.linkText) + " ", 1), createVNode(_sfc_main$89, {
+					} else return [createTextVNode(toDisplayString(__props.linkText) + " ", 1), createVNode(_sfc_main$97, {
 						name: "chevron-right",
 						size: 16
 					})];
@@ -6465,16 +6478,16 @@ var _sfc_main$39 = {
 		};
 	}
 };
-var _sfc_setup$39 = _sfc_main$39.setup;
-_sfc_main$39.setup = (props, ctx) => {
+var _sfc_setup$47 = _sfc_main$47.setup;
+_sfc_main$47.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/SectionHeader.vue");
-	return _sfc_setup$39 ? _sfc_setup$39(props, ctx) : void 0;
+	return _sfc_setup$47 ? _sfc_setup$47(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Home.vue
-var Home_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$38 });
-var _sfc_main$38 = {
+var Home_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$46 });
+var _sfc_main$46 = {
 	__name: "Home",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -6726,11 +6739,11 @@ var _sfc_main$38 = {
 		];
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<!--[--><section class="bg-surface py-8 md:py-12">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="relative min-h-[420px] overflow-hidden rounded-2xl bg-primary-darker"${_scopeId}><img${ssrRenderAttr("src", unref(heroImg))} alt="" class="absolute inset-0 size-full object-cover"${_scopeId}><div class="absolute inset-0" style="${ssrRenderStyle({ "background-color": "#0a2c27cc" })}"${_scopeId}></div><div class="relative max-w-[620px] px-8 py-16 md:px-14 md:py-24"${_scopeId}><p class="text-sm font-semibold uppercase tracking-[0.1em] text-secondary"${_scopeId}> Dobrodošli u Teslić </p><h1 class="mt-4 font-heading text-[32px] font-bold leading-[1.12] text-white md:text-[46px]"${_scopeId}> Teslić — domaće, autentično, blizu </h1><p class="mt-4 max-w-[560px] text-base text-primary-tint md:text-lg"${_scopeId}> Termalna Banja Vrućica, planine Borja i Očauš, domaći proizvodi i ljudi koji ih prave — sve na jednom mjestu. </p><div class="mt-6 flex flex-wrap gap-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "sekundarna",
 							icon: "sparkles"
 						}, {
@@ -6765,7 +6778,7 @@ var _sfc_main$38 = {
 							createVNode("p", { class: "text-sm font-semibold uppercase tracking-[0.1em] text-secondary" }, " Dobrodošli u Teslić "),
 							createVNode("h1", { class: "mt-4 font-heading text-[32px] font-bold leading-[1.12] text-white md:text-[46px]" }, " Teslić — domaće, autentično, blizu "),
 							createVNode("p", { class: "mt-4 max-w-[560px] text-base text-primary-tint md:text-lg" }, " Termalna Banja Vrućica, planine Borja i Očauš, domaći proizvodi i ljudi koji ih prave — sve na jednom mjestu. "),
-							createVNode("div", { class: "mt-6 flex flex-wrap gap-3" }, [createVNode(_sfc_main$85, {
+							createVNode("div", { class: "mt-6 flex flex-wrap gap-3" }, [createVNode(_sfc_main$93, {
 								variant: "sekundarna",
 								icon: "sparkles"
 							}, {
@@ -6784,7 +6797,7 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface-alt py-10">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-5" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-5" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="font-heading text-[22px] font-bold text-heading md:text-[28px]"${_scopeId}> Istražite po kategoriji </h2><div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"${_scopeId}><!--[-->`);
@@ -6797,12 +6810,12 @@ var _sfc_main$38 = {
 								default: withCtx((_, _push, _parent, _scopeId) => {
 									if (_push) {
 										_push(`<span class="flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary"${_scopeId}>`);
-										_push(ssrRenderComponent(_sfc_main$89, {
+										_push(ssrRenderComponent(_sfc_main$97, {
 											name: k.icon,
 											size: 22
 										}, null, _parent, _scopeId));
 										_push(`</span><span class="text-sm font-semibold leading-tight text-heading"${_scopeId}>${ssrInterpolate(k.label)}</span>`);
-									} else return [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$89, {
+									} else return [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
 										name: k.icon,
 										size: 22
 									}, null, 8, ["name"])]), createVNode("span", { class: "text-sm font-semibold leading-tight text-heading" }, toDisplayString(k.label), 1)];
@@ -6817,7 +6830,7 @@ var _sfc_main$38 = {
 							href: k.href,
 							class: "flex flex-col items-center gap-3 rounded-md border border-border bg-surface px-3 py-5 text-center transition-shadow hover:shadow-[var(--shadow-md)]"
 						}, {
-							default: withCtx(() => [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$89, {
+							default: withCtx(() => [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
 								name: k.icon,
 								size: 22
 							}, null, 8, ["name"])]), createVNode("span", { class: "text-sm font-semibold leading-tight text-heading" }, toDisplayString(k.label), 1)]),
@@ -6828,27 +6841,27 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Lokalni proizvodi i usluge",
 							"link-text": "Vidi sve",
 							to: "/domace-je-najbolje"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(proizvodi, (p) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: p.slug,
 											item: p
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(proizvodi, (p) => {
-									return createVNode(_sfc_main$62, {
+									return createVNode(_sfc_main$70, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -6856,13 +6869,13 @@ var _sfc_main$38 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Lokalni proizvodi i usluge",
 						"link-text": "Vidi sve",
 						to: "/domace-je-najbolje"
-					}), createVNode(_sfc_main$82, null, {
+					}), createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(proizvodi, (p) => {
-							return createVNode(_sfc_main$62, {
+							return createVNode(_sfc_main$70, {
 								key: p.slug,
 								item: p
 							}, null, 8, ["item"]);
@@ -6873,27 +6886,27 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-primary-tint py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Preporučeno iz prve ruke",
 							"link-text": "Vidi sve",
 							to: "/domace-je-najbolje"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(preporuceno, (p) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: p.slug,
 											item: p
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(preporuceno, (p) => {
-									return createVNode(_sfc_main$62, {
+									return createVNode(_sfc_main$70, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -6901,13 +6914,13 @@ var _sfc_main$38 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Preporučeno iz prve ruke",
 						"link-text": "Vidi sve",
 						to: "/domace-je-najbolje"
-					}), createVNode(_sfc_main$82, { cols: 3 }, {
+					}), createVNode(_sfc_main$90, { cols: 3 }, {
 						default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(preporuceno, (p) => {
-							return createVNode(_sfc_main$62, {
+							return createVNode(_sfc_main$70, {
 								key: p.slug,
 								item: p
 							}, null, 8, ["item"]);
@@ -6918,20 +6931,20 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Turističke atrakcije",
 							"link-text": "Vidi sve",
 							to: "/turizam"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(atrakcije, (a) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: a.slug,
 											item: a,
 											to: `/turizam/${a.slug}`
@@ -6939,7 +6952,7 @@ var _sfc_main$38 = {
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(atrakcije, (a) => {
-									return createVNode(_sfc_main$62, {
+									return createVNode(_sfc_main$70, {
 										key: a.slug,
 										item: a,
 										to: `/turizam/${a.slug}`
@@ -6948,13 +6961,13 @@ var _sfc_main$38 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Turističke atrakcije",
 						"link-text": "Vidi sve",
 						to: "/turizam"
-					}), createVNode(_sfc_main$82, null, {
+					}), createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(atrakcije, (a) => {
-							return createVNode(_sfc_main$62, {
+							return createVNode(_sfc_main$70, {
 								key: a.slug,
 								item: a,
 								to: `/turizam/${a.slug}`
@@ -6966,21 +6979,21 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface-alt py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Istraži na mapi",
 							"link-text": "Otvori mapu",
 							to: "/mapa"
 						}, null, _parent, _scopeId));
 						_push(`<div class="flex h-[340px] flex-col items-center justify-center gap-4 rounded-2xl bg-primary-tint px-4 text-center"${_scopeId}><span class="flex size-16 items-center justify-center rounded-full bg-surface text-primary"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "map-pin",
 							size: 30
 						}, null, _parent, _scopeId));
 						_push(`</span><p class="text-xl font-semibold text-heading"${_scopeId}>Interaktivna mapa turističke ponude</p>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							to: "/mapa",
 							variant: "primary",
 							icon: "map"
@@ -6992,17 +7005,17 @@ var _sfc_main$38 = {
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</div>`);
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Istraži na mapi",
 						"link-text": "Otvori mapu",
 						to: "/mapa"
 					}), createVNode("div", { class: "flex h-[340px] flex-col items-center justify-center gap-4 rounded-2xl bg-primary-tint px-4 text-center" }, [
-						createVNode("span", { class: "flex size-16 items-center justify-center rounded-full bg-surface text-primary" }, [createVNode(_sfc_main$89, {
+						createVNode("span", { class: "flex size-16 items-center justify-center rounded-full bg-surface text-primary" }, [createVNode(_sfc_main$97, {
 							name: "map-pin",
 							size: 30
 						})]),
 						createVNode("p", { class: "text-xl font-semibold text-heading" }, "Interaktivna mapa turističke ponude"),
-						createVNode(_sfc_main$85, {
+						createVNode(_sfc_main$93, {
 							to: "/mapa",
 							variant: "primary",
 							icon: "map"
@@ -7015,27 +7028,27 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Nadolazeći događaji",
 							"link-text": "Kalendar",
 							to: "/dogadjaji"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(dogadjaji, (d) => {
-										_push(ssrRenderComponent(_sfc_main$54, {
+										_push(ssrRenderComponent(_sfc_main$62, {
 											key: d.slug,
 											item: d
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(dogadjaji, (d) => {
-									return createVNode(_sfc_main$54, {
+									return createVNode(_sfc_main$62, {
 										key: d.slug,
 										item: d
 									}, null, 8, ["item"]);
@@ -7043,13 +7056,13 @@ var _sfc_main$38 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Nadolazeći događaji",
 						"link-text": "Kalendar",
 						to: "/dogadjaji"
-					}), createVNode(_sfc_main$82, null, {
+					}), createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(dogadjaji, (d) => {
-							return createVNode(_sfc_main$54, {
+							return createVNode(_sfc_main$62, {
 								key: d.slug,
 								item: d
 							}, null, 8, ["item"]);
@@ -7060,27 +7073,27 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface-alt py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Priče iz Teslića",
 							"link-text": "Sve priče",
 							to: "/price"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(price, (s) => {
-										_push(ssrRenderComponent(_sfc_main$53, {
+										_push(ssrRenderComponent(_sfc_main$61, {
 											key: s.slug,
 											item: s
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(), createBlock(Fragment, null, renderList(price, (s) => {
-									return createVNode(_sfc_main$53, {
+									return createVNode(_sfc_main$61, {
 										key: s.slug,
 										item: s
 									}, null, 8, ["item"]);
@@ -7088,13 +7101,13 @@ var _sfc_main$38 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Priče iz Teslića",
 						"link-text": "Sve priče",
 						to: "/price"
-					}), createVNode(_sfc_main$82, { cols: 3 }, {
+					}), createVNode(_sfc_main$90, { cols: 3 }, {
 						default: withCtx(() => [(openBlock(), createBlock(Fragment, null, renderList(price, (s) => {
-							return createVNode(_sfc_main$53, {
+							return createVNode(_sfc_main$61, {
 								key: s.slug,
 								item: s
 							}, null, 8, ["item"]);
@@ -7105,10 +7118,10 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$39, {
+						_push(ssrRenderComponent(_sfc_main$47, {
 							title: "Galerija",
 							"link-text": "Vidi sve",
 							to: "/price"
@@ -7118,7 +7131,7 @@ var _sfc_main$38 = {
 							_push(`<img${ssrRenderAttr("src", g)} alt="" loading="lazy" class="h-[220px] w-full rounded-md object-cover"${_scopeId}>`);
 						});
 						_push(`<!--]--></div>`);
-					} else return [createVNode(_sfc_main$39, {
+					} else return [createVNode(_sfc_main$47, {
 						title: "Galerija",
 						"link-text": "Vidi sve",
 						to: "/price"
@@ -7135,46 +7148,46 @@ var _sfc_main$38 = {
 				_: 1
 			}, _parent));
 			_push(`</section><section class="bg-surface py-12 md:py-16">`);
-			_push(ssrRenderComponent(_sfc_main$90, null, {
+			_push(ssrRenderComponent(_sfc_main$98, null, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$86, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$94, {
 						title: "Pridružite se platformi Teslić",
 						text: "Predstavite svoj biznis hiljadama posjetilaca ili podijelite svoju priču o teslićkom kraju."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$85, { variant: "sekundarna" }, {
+								_push(ssrRenderComponent(_sfc_main$93, { variant: "sekundarna" }, {
 									default: withCtx((_, _push, _parent, _scopeId) => {
 										if (_push) _push(`Registruj biznis`);
 										else return [createTextVNode("Registruj biznis")];
 									}),
 									_: 1
 								}, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$85, { variant: "secondary" }, {
+								_push(ssrRenderComponent(_sfc_main$93, { variant: "secondary" }, {
 									default: withCtx((_, _push, _parent, _scopeId) => {
 										if (_push) _push(`Postani autor`);
 										else return [createTextVNode("Postani autor")];
 									}),
 									_: 1
 								}, _parent, _scopeId));
-							} else return [createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+							} else return [createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 								default: withCtx(() => [createTextVNode("Registruj biznis")]),
 								_: 1
-							}), createVNode(_sfc_main$85, { variant: "secondary" }, {
+							}), createVNode(_sfc_main$93, { variant: "secondary" }, {
 								default: withCtx(() => [createTextVNode("Postani autor")]),
 								_: 1
 							})];
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$86, {
+					else return [createVNode(_sfc_main$94, {
 						title: "Pridružite se platformi Teslić",
 						text: "Predstavite svoj biznis hiljadama posjetilaca ili podijelite svoju priču o teslićkom kraju."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, { variant: "sekundarna" }, {
+						default: withCtx(() => [createVNode(_sfc_main$93, { variant: "sekundarna" }, {
 							default: withCtx(() => [createTextVNode("Registruj biznis")]),
 							_: 1
-						}), createVNode(_sfc_main$85, { variant: "secondary" }, {
+						}), createVNode(_sfc_main$93, { variant: "secondary" }, {
 							default: withCtx(() => [createTextVNode("Postani autor")]),
 							_: 1
 						})]),
@@ -7187,15 +7200,15 @@ var _sfc_main$38 = {
 		};
 	}
 };
-var _sfc_setup$38 = _sfc_main$38.setup;
-_sfc_main$38.setup = (props, ctx) => {
+var _sfc_setup$46 = _sfc_main$46.setup;
+_sfc_main$46.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Home.vue");
-	return _sfc_setup$38 ? _sfc_setup$38(props, ctx) : void 0;
+	return _sfc_setup$46 ? _sfc_setup$46(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/common/PagePlaceholder.vue
-var _sfc_main$37 = {
+var _sfc_main$45 = {
 	__name: "PagePlaceholder",
 	__ssrInlineRender: true,
 	props: {
@@ -7210,7 +7223,7 @@ var _sfc_main$37 = {
 	},
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-12 md:py-16"
 			}, _attrs), {
@@ -7239,37 +7252,37 @@ var _sfc_main$37 = {
 		};
 	}
 };
-var _sfc_setup$37 = _sfc_main$37.setup;
-_sfc_main$37.setup = (props, ctx) => {
+var _sfc_setup$45 = _sfc_main$45.setup;
+_sfc_main$45.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/common/PagePlaceholder.vue");
-	return _sfc_setup$37 ? _sfc_setup$37(props, ctx) : void 0;
+	return _sfc_setup$45 ? _sfc_setup$45(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/JoinHub.vue
-var JoinHub_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$36 });
-var _sfc_main$36 = {
+var JoinHub_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$44 });
+var _sfc_main$44 = {
 	__name: "JoinHub",
 	__ssrInlineRender: true,
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$37, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$45, mergeProps({
 				title: "Pridruži se",
 				phase: "Faza F10"
 			}, _attrs), null, _parent));
 		};
 	}
 };
-var _sfc_setup$36 = _sfc_main$36.setup;
-_sfc_main$36.setup = (props, ctx) => {
+var _sfc_setup$44 = _sfc_main$44.setup;
+_sfc_main$44.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/JoinHub.vue");
-	return _sfc_setup$36 ? _sfc_setup$36(props, ctx) : void 0;
+	return _sfc_setup$44 ? _sfc_setup$44(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Legal.vue
-var Legal_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$35 });
-var _sfc_main$35 = {
+var Legal_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$43 });
+var _sfc_main$43 = {
 	__name: "Legal",
 	__ssrInlineRender: true,
 	props: { doc: {
@@ -7345,20 +7358,20 @@ var _sfc_main$35 = {
 		const dok = computed(() => dokumenti[props.doc] || dokumenti.privatnost);
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: dok.value.naslov }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: dok.value.naslov }] }, null, 8, ["items"])];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<article class="max-w-3xl"${_scopeId}><h1 class="font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}>${ssrInterpolate(dok.value.naslov)}</h1><p class="mt-4 text-lg text-text-muted"${_scopeId}>${ssrInterpolate(dok.value.uvod)}</p><!--[-->`);
@@ -7384,17 +7397,17 @@ var _sfc_main$35 = {
 		};
 	}
 };
-var _sfc_setup$35 = _sfc_main$35.setup;
-_sfc_main$35.setup = (props, ctx) => {
+var _sfc_setup$43 = _sfc_main$43.setup;
+_sfc_main$43.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Legal.vue");
-	return _sfc_setup$35 ? _sfc_setup$35(props, ctx) : void 0;
+	return _sfc_setup$43 ? _sfc_setup$43(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/LocalListing.vue
-var LocalListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$34 });
+var LocalListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$42 });
 var PO_STRANICI$2 = 8;
-var _sfc_main$34 = {
+var _sfc_main$42 = {
 	__name: "LocalListing",
 	__ssrInlineRender: true,
 	props: { biznisi: {
@@ -7460,51 +7473,51 @@ var _sfc_main$34 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$88, {
+			_push(ssrRenderComponent(_sfc_main$96, {
 				variant: "split",
 				kicker: "Domaće je najbolje",
 				title: "Lokalni proizvodi i usluge",
 				subtitle: "Otkrijte zanate, domaću hranu i piće te pouzdane usluge iz Teslića i okoline."
 			}, null, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Domaće je najbolje" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Domaće je najbolje" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$72, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: kategorija.value,
 									"onUpdate:modelValue": ($event) => kategorija.value = $event,
 									options: kategorijeOpcije,
 									placeholder: "Sve kategorije"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$71, {
+								_push(ssrRenderComponent(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži ponudu…"
 								}, null, _parent, _scopeId));
-							} else return [createVNode(_sfc_main$70, {
+							} else return [createVNode(_sfc_main$78, {
 								modelValue: kategorija.value,
 								"onUpdate:modelValue": ($event) => kategorija.value = $event,
 								options: kategorijeOpcije,
 								placeholder: "Sve kategorije"
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži ponudu…"
@@ -7512,17 +7525,17 @@ var _sfc_main$34 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$72, {
+					else return [createVNode(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$70, {
+						default: withCtx(() => [createVNode(_sfc_main$78, {
 							modelValue: kategorija.value,
 							"onUpdate:modelValue": ($event) => kategorija.value = $event,
 							options: kategorijeOpcije,
 							placeholder: "Sve kategorije"
-						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 							modelValue: upit.value,
 							"onUpdate:modelValue": ($event) => upit.value = $event,
 							placeholder: "Pretraži ponudu…"
@@ -7532,14 +7545,14 @@ var _sfc_main$34 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Nema rezultata",
 						text: "Za odabrane filtere nema ponude. Pokušajte promijeniti kategoriju ili pretragu."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -7550,7 +7563,7 @@ var _sfc_main$34 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -7563,19 +7576,19 @@ var _sfc_main$34 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(vidljivi.value, (b) => {
-										_push(ssrRenderComponent(_sfc_main$62, {
+										_push(ssrRenderComponent(_sfc_main$70, {
 											key: b.slug,
 											item: b
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (b) => {
-									return openBlock(), createBlock(_sfc_main$62, {
+									return openBlock(), createBlock(_sfc_main$70, {
 										key: b.slug,
 										item: b
 									}, null, 8, ["item"]);
@@ -7585,7 +7598,7 @@ var _sfc_main$34 = {
 						}, _parent, _scopeId));
 						if (ukupnoStranica.value > 1) {
 							_push(`<div class="mt-10 flex justify-center"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$69, {
+							_push(ssrRenderComponent(_sfc_main$77, {
 								modelValue: stranica.value,
 								"onUpdate:modelValue": ($event) => stranica.value = $event,
 								total: ukupnoStranica.value
@@ -7594,12 +7607,12 @@ var _sfc_main$34 = {
 						} else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Nema rezultata",
 						text: "Za odabrane filtere nema ponude. Pokušajte promijeniti kategoriju ili pretragu."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							size: "sm",
 							onClick: ocisti
@@ -7608,9 +7621,9 @@ var _sfc_main$34 = {
 							_: 1
 						})]),
 						_: 1
-					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$82, null, {
+					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (b) => {
-							return openBlock(), createBlock(_sfc_main$62, {
+							return openBlock(), createBlock(_sfc_main$70, {
 								key: b.slug,
 								item: b
 							}, null, 8, ["item"]);
@@ -7619,7 +7632,7 @@ var _sfc_main$34 = {
 					}), ukupnoStranica.value > 1 ? (openBlock(), createBlock("div", {
 						key: 0,
 						class: "mt-10 flex justify-center"
-					}, [createVNode(_sfc_main$69, {
+					}, [createVNode(_sfc_main$77, {
 						modelValue: stranica.value,
 						"onUpdate:modelValue": ($event) => stranica.value = $event,
 						total: ukupnoStranica.value
@@ -7635,16 +7648,16 @@ var _sfc_main$34 = {
 		};
 	}
 };
-var _sfc_setup$34 = _sfc_main$34.setup;
-_sfc_main$34.setup = (props, ctx) => {
+var _sfc_setup$42 = _sfc_main$42.setup;
+_sfc_main$42.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/LocalListing.vue");
-	return _sfc_setup$34 ? _sfc_setup$34(props, ctx) : void 0;
+	return _sfc_setup$42 ? _sfc_setup$42(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/LocationDetail.vue
-var LocationDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$33 });
-var _sfc_main$33 = {
+var LocationDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$41 });
+var _sfc_main$41 = {
 	__name: "LocationDetail",
 	__ssrInlineRender: true,
 	props: {
@@ -7697,17 +7710,17 @@ var _sfc_main$33 = {
 			return items;
 		});
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-8"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!lokalitet.value) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!lokalitet.value) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Lokalitet nije pronađen",
 						text: "Traženi lokalitet ne postoji ili je uklonjen."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/turizam"
@@ -7718,7 +7731,7 @@ var _sfc_main$33 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/turizam"
@@ -7731,7 +7744,7 @@ var _sfc_main$33 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -7743,7 +7756,7 @@ var _sfc_main$33 = {
 							{ label: lokalitet.value.naslov }
 						] }, null, _parent, _scopeId));
 						_push(`<div class="mt-6 overflow-hidden rounded-lg"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: lokalitet.value.kategorija?.label,
 							title: lokalitet.value.naslov,
@@ -7753,7 +7766,7 @@ var _sfc_main$33 = {
 						_push(`</div>`);
 						if (lokalitet.value.galerija?.length) {
 							_push(`<section class="mt-10"${_scopeId}><h2 class="mb-4 font-heading text-2xl font-bold text-heading"${_scopeId}>Galerija</h2>`);
-							_push(ssrRenderComponent(_sfc_main$65, { items: lokalitet.value.galerija }, null, _parent, _scopeId));
+							_push(ssrRenderComponent(_sfc_main$73, { items: lokalitet.value.galerija }, null, _parent, _scopeId));
 							_push(`</section>`);
 						} else _push(`<!---->`);
 						_push(`<div class="mt-10 grid gap-8 lg:grid-cols-3"${_scopeId}><div class="space-y-8 lg:col-span-2"${_scopeId}>`);
@@ -7764,25 +7777,25 @@ var _sfc_main$33 = {
 						if (lokalitet.value.savjeti) _push(`<section${_scopeId}><h2 class="mb-3 font-heading text-2xl font-bold text-heading"${_scopeId}>Savjeti</h2><p class="whitespace-pre-line leading-relaxed text-text"${_scopeId}>${ssrInterpolate(lokalitet.value.savjeti)}</p></section>`);
 						else _push(`<!---->`);
 						_push(`</div><div class="space-y-6"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$83, {
+						_push(ssrRenderComponent(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems.value
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$64, { label: lokalitet.value.lokacija }, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$72, { label: lokalitet.value.lokacija }, null, _parent, _scopeId));
 						_push(`</div></div>`);
-						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$81, { title: "Slični lokaliteti" }, {
+						if (slicni.value.length) _push(ssrRenderComponent(_sfc_main$89, { title: "Slični lokaliteti" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(slicni.value, (l) => {
-										_push(ssrRenderComponent(_sfc_main$55, {
+										_push(ssrRenderComponent(_sfc_main$63, {
 											key: l.slug,
 											item: l
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (l) => {
-									return openBlock(), createBlock(_sfc_main$55, {
+									return openBlock(), createBlock(_sfc_main$63, {
 										key: l.slug,
 										item: l
 									}, null, 8, ["item"]);
@@ -7793,12 +7806,12 @@ var _sfc_main$33 = {
 						else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!lokalitet.value ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!lokalitet.value ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Lokalitet nije pronađen",
 						text: "Traženi lokalitet ne postoji ili je uklonjen."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							icon: "arrow-left",
 							to: "/turizam"
@@ -7808,7 +7821,7 @@ var _sfc_main$33 = {
 						})]),
 						_: 1
 					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [
-						createVNode(_sfc_main$87, { items: [
+						createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -7819,7 +7832,7 @@ var _sfc_main$33 = {
 							},
 							{ label: lokalitet.value.naslov }
 						] }, null, 8, ["items"]),
-						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$88, {
+						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: lokalitet.value.kategorija?.label,
 							title: lokalitet.value.naslov,
@@ -7834,21 +7847,21 @@ var _sfc_main$33 = {
 						lokalitet.value.galerija?.length ? (openBlock(), createBlock("section", {
 							key: 0,
 							class: "mt-10"
-						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$65, { items: lokalitet.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
+						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$73, { items: lokalitet.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
 						createVNode("div", { class: "mt-10 grid gap-8 lg:grid-cols-3" }, [createVNode("div", { class: "space-y-8 lg:col-span-2" }, [
 							lokalitet.value.opisDug ? (openBlock(), createBlock("section", { key: 0 }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "O lokaciji"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(lokalitet.value.opisDug), 1)])) : createCommentVNode("", true),
 							lokalitet.value.kakoDoci ? (openBlock(), createBlock("section", { key: 1 }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "Kako doći"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(lokalitet.value.kakoDoci), 1)])) : createCommentVNode("", true),
 							lokalitet.value.savjeti ? (openBlock(), createBlock("section", { key: 2 }, [createVNode("h2", { class: "mb-3 font-heading text-2xl font-bold text-heading" }, "Savjeti"), createVNode("p", { class: "whitespace-pre-line leading-relaxed text-text" }, toDisplayString(lokalitet.value.savjeti), 1)])) : createCommentVNode("", true)
-						]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$83, {
+						]), createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$91, {
 							title: "Informacije",
 							items: infoItems.value
-						}, null, 8, ["items"]), createVNode(_sfc_main$64, { label: lokalitet.value.lokacija }, null, 8, ["label"])])]),
-						slicni.value.length ? (openBlock(), createBlock(_sfc_main$81, {
+						}, null, 8, ["items"]), createVNode(_sfc_main$72, { label: lokalitet.value.lokacija }, null, 8, ["label"])])]),
+						slicni.value.length ? (openBlock(), createBlock(_sfc_main$89, {
 							key: 1,
 							title: "Slični lokaliteti"
 						}, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(slicni.value, (l) => {
-								return openBlock(), createBlock(_sfc_main$55, {
+								return openBlock(), createBlock(_sfc_main$63, {
 									key: l.slug,
 									item: l
 								}, null, 8, ["item"]);
@@ -7862,112 +7875,98 @@ var _sfc_main$33 = {
 		};
 	}
 };
-var _sfc_setup$33 = _sfc_main$33.setup;
-_sfc_main$33.setup = (props, ctx) => {
+var _sfc_setup$41 = _sfc_main$41.setup;
+_sfc_main$41.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/LocationDetail.vue");
-	return _sfc_setup$33 ? _sfc_setup$33(props, ctx) : void 0;
+	return _sfc_setup$41 ? _sfc_setup$41(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Login.vue
-var Login_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$32 });
-var DEMO_EMAIL = "demo@komteldoo.com";
-var DEMO_LOZINKA = "demo";
-var _sfc_main$32 = {
+var Login_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$40 });
+var _sfc_main$40 = {
 	__name: "Login",
 	__ssrInlineRender: true,
-	props: { stanje: {
-		type: String,
-		default: "default"
-	} },
 	setup(__props) {
-		const props = __props;
-		const email = ref("");
-		const lozinka = ref("");
-		const zapamti = ref(false);
-		const stanjeLocal = ref(["greska", "odobrenje"].includes(props.stanje) ? props.stanje : "default");
+		const page = usePage();
+		const status = computed(() => page.props.flash?.status);
+		const form = useForm({
+			email: "",
+			password: "",
+			remember: false
+		});
 		function submit() {
-			if (email.value.trim().toLowerCase() === DEMO_EMAIL && lozinka.value === DEMO_LOZINKA) router.visit("/nalog/biznis/profil");
-			else stanjeLocal.value = "greska";
+			form.post("/login", { onFinish: () => form.reset("password") });
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "flex min-h-[600px] items-center justify-center py-16" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "flex min-h-[600px] items-center justify-center py-16" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8"${_scopeId}>`);
-						if (stanjeLocal.value === "odobrenje") {
-							_push(`<div class="flex items-center justify-between gap-3"${_scopeId}><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Prijava</h1>`);
-							_push(ssrRenderComponent(_sfc_main$79, { variant: "na-odobrenju" }, null, _parent, _scopeId));
-							_push(`</div>`);
-						} else _push(`<h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Prijava</h1>`);
-						if (stanjeLocal.value === "greska") {
+						_push(`<div class="w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8"${_scopeId}><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Prijava</h1>`);
+						if (status.value) {
+							_push(`<div class="flex gap-3 rounded-md bg-info-tint p-4 text-sm text-info" role="status"${_scopeId}>`);
+							_push(ssrRenderComponent(_sfc_main$97, {
+								name: "clock-3",
+								size: 20,
+								class: "mt-0.5 shrink-0"
+							}, null, _parent, _scopeId));
+							_push(`<span${_scopeId}>${ssrInterpolate(status.value)}</span></div>`);
+						} else _push(`<!---->`);
+						if (unref(form).errors.email) {
 							_push(`<div class="flex gap-2.5 rounded-md bg-error-tint p-3.5 text-sm text-error" role="alert"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: "circle-alert",
 								size: 20,
 								class: "mt-0.5 shrink-0"
 							}, null, _parent, _scopeId));
-							_push(`<span${_scopeId}>Pogrešan e-mail ili lozinka. Provjerite podatke i pokušajte ponovo.</span></div>`);
+							_push(`<span${_scopeId}>${ssrInterpolate(unref(form).errors.email)}</span></div>`);
 						} else _push(`<!---->`);
-						if (stanjeLocal.value === "odobrenje") {
-							_push(`<div class="flex gap-3 rounded-md bg-info-tint p-4"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
-								name: "clock-3",
-								size: 20,
-								class: "mt-0.5 shrink-0 text-info"
-							}, null, _parent, _scopeId));
-							_push(`<div class="space-y-1"${_scopeId}><p class="text-sm font-semibold text-info"${_scopeId}>Nalog je na pregledu</p><p class="text-sm text-text"${_scopeId}> Vaš nalog je još na pregledu administratora i biće aktivan nakon odobrenja. </p></div></div>`);
-						} else _push(`<!---->`);
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: email.value,
-							"onUpdate:modelValue": ($event) => email.value = $event,
+						_push(`<form class="space-y-5"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).email,
+							"onUpdate:modelValue": ($event) => unref(form).email = $event,
 							label: "E-mail",
 							type: "email",
-							placeholder: "marko@primjer.ba",
-							error: stanjeLocal.value === "greska" ? "Provjerite unesenu adresu" : ""
+							placeholder: "marko@primjer.ba"
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: lozinka.value,
-							"onUpdate:modelValue": ($event) => lozinka.value = $event,
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).password,
+							"onUpdate:modelValue": ($event) => unref(form).password = $event,
 							label: "Lozinka",
 							type: "password",
-							placeholder: "••••••••",
-							error: stanjeLocal.value === "greska" ? "Pogrešan e-mail ili lozinka" : ""
+							placeholder: "••••••••"
 						}, null, _parent, _scopeId));
-						if (stanjeLocal.value !== "odobrenje") {
-							_push(`<div class="flex items-center justify-between"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$58, {
-								modelValue: zapamti.value,
-								"onUpdate:modelValue": ($event) => zapamti.value = $event,
-								label: "Zapamti me"
-							}, null, _parent, _scopeId));
-							_push(ssrRenderComponent(unref(Link), {
-								href: "/zaboravljena-lozinka",
-								class: "text-sm font-medium text-primary hover:underline"
-							}, {
-								default: withCtx((_, _push, _parent, _scopeId) => {
-									if (_push) _push(` Zaboravljena lozinka? `);
-									else return [createTextVNode(" Zaboravljena lozinka? ")];
-								}),
-								_: 1
-							}, _parent, _scopeId));
-							_push(`</div>`);
-						} else _push(`<!---->`);
-						_push(ssrRenderComponent(_sfc_main$85, {
-							variant: "primary",
-							block: "",
-							onClick: submit
+						_push(`<div class="flex items-center justify-between"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$66, {
+							modelValue: unref(form).remember,
+							"onUpdate:modelValue": ($event) => unref(form).remember = $event,
+							label: "Zapamti me"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(unref(Link), {
+							href: "/zaboravljena-lozinka",
+							class: "text-sm font-medium text-primary hover:underline"
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Prijava`);
-								else return [createTextVNode("Prijava")];
+								if (_push) _push(` Zaboravljena lozinka? `);
+								else return [createTextVNode(" Zaboravljena lozinka? ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						if (stanjeLocal.value === "greska") _push(`<p class="text-[13px] text-text-muted"${_scopeId}> Previše pokušaja — pokušajte ponovo za nekoliko minuta. </p>`);
-						else _push(`<!---->`);
-						_push(`<p class="rounded-md bg-info-tint px-3 py-2 text-[13px] text-text"${_scopeId}><span class="font-semibold"${_scopeId}>Demo pristup:</span> demo@komteldoo.com / demo </p><hr class="border-border"${_scopeId}><p class="text-center text-sm text-text-muted"${_scopeId}> Nemaš nalog? `);
+						_push(`</div>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
+							type: "submit",
+							variant: "primary",
+							block: "",
+							disabled: unref(form).processing
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Prijava `);
+								else return [createTextVNode(" Prijava ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</form><hr class="border-border"${_scopeId}><p class="text-center text-sm text-text-muted"${_scopeId}> Nemaš nalog? `);
 						_push(ssrRenderComponent(unref(Link), {
 							href: "/registracija",
 							class: "font-semibold text-primary hover:underline"
@@ -7980,81 +7979,64 @@ var _sfc_main$32 = {
 						}, _parent, _scopeId));
 						_push(`</p></div>`);
 					} else return [createVNode("div", { class: "w-full max-w-[420px] space-y-5 rounded-2xl border border-border bg-surface p-8" }, [
-						stanjeLocal.value === "odobrenje" ? (openBlock(), createBlock("div", {
+						createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Prijava"),
+						status.value ? (openBlock(), createBlock("div", {
 							key: 0,
-							class: "flex items-center justify-between gap-3"
-						}, [createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Prijava"), createVNode(_sfc_main$79, { variant: "na-odobrenju" })])) : (openBlock(), createBlock("h1", {
+							class: "flex gap-3 rounded-md bg-info-tint p-4 text-sm text-info",
+							role: "status"
+						}, [createVNode(_sfc_main$97, {
+							name: "clock-3",
+							size: 20,
+							class: "mt-0.5 shrink-0"
+						}), createVNode("span", null, toDisplayString(status.value), 1)])) : createCommentVNode("", true),
+						unref(form).errors.email ? (openBlock(), createBlock("div", {
 							key: 1,
-							class: "font-heading text-2xl font-bold text-heading"
-						}, "Prijava")),
-						stanjeLocal.value === "greska" ? (openBlock(), createBlock("div", {
-							key: 2,
 							class: "flex gap-2.5 rounded-md bg-error-tint p-3.5 text-sm text-error",
 							role: "alert"
-						}, [createVNode(_sfc_main$89, {
+						}, [createVNode(_sfc_main$97, {
 							name: "circle-alert",
 							size: 20,
 							class: "mt-0.5 shrink-0"
-						}), createVNode("span", null, "Pogrešan e-mail ili lozinka. Provjerite podatke i pokušajte ponovo.")])) : createCommentVNode("", true),
-						stanjeLocal.value === "odobrenje" ? (openBlock(), createBlock("div", {
-							key: 3,
-							class: "flex gap-3 rounded-md bg-info-tint p-4"
-						}, [createVNode(_sfc_main$89, {
-							name: "clock-3",
-							size: 20,
-							class: "mt-0.5 shrink-0 text-info"
-						}), createVNode("div", { class: "space-y-1" }, [createVNode("p", { class: "text-sm font-semibold text-info" }, "Nalog je na pregledu"), createVNode("p", { class: "text-sm text-text" }, " Vaš nalog je još na pregledu administratora i biće aktivan nakon odobrenja. ")])])) : createCommentVNode("", true),
-						createVNode(_sfc_main$60, {
-							modelValue: email.value,
-							"onUpdate:modelValue": ($event) => email.value = $event,
-							label: "E-mail",
-							type: "email",
-							placeholder: "marko@primjer.ba",
-							error: stanjeLocal.value === "greska" ? "Provjerite unesenu adresu" : ""
-						}, null, 8, [
-							"modelValue",
-							"onUpdate:modelValue",
-							"error"
-						]),
-						createVNode(_sfc_main$60, {
-							modelValue: lozinka.value,
-							"onUpdate:modelValue": ($event) => lozinka.value = $event,
-							label: "Lozinka",
-							type: "password",
-							placeholder: "••••••••",
-							error: stanjeLocal.value === "greska" ? "Pogrešan e-mail ili lozinka" : ""
-						}, null, 8, [
-							"modelValue",
-							"onUpdate:modelValue",
-							"error"
-						]),
-						stanjeLocal.value !== "odobrenje" ? (openBlock(), createBlock("div", {
-							key: 4,
-							class: "flex items-center justify-between"
-						}, [createVNode(_sfc_main$58, {
-							modelValue: zapamti.value,
-							"onUpdate:modelValue": ($event) => zapamti.value = $event,
-							label: "Zapamti me"
-						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(unref(Link), {
-							href: "/zaboravljena-lozinka",
-							class: "text-sm font-medium text-primary hover:underline"
-						}, {
-							default: withCtx(() => [createTextVNode(" Zaboravljena lozinka? ")]),
-							_: 1
-						})])) : createCommentVNode("", true),
-						createVNode(_sfc_main$85, {
-							variant: "primary",
-							block: "",
-							onClick: submit
-						}, {
-							default: withCtx(() => [createTextVNode("Prijava")]),
-							_: 1
-						}),
-						stanjeLocal.value === "greska" ? (openBlock(), createBlock("p", {
-							key: 5,
-							class: "text-[13px] text-text-muted"
-						}, " Previše pokušaja — pokušajte ponovo za nekoliko minuta. ")) : createCommentVNode("", true),
-						createVNode("p", { class: "rounded-md bg-info-tint px-3 py-2 text-[13px] text-text" }, [createVNode("span", { class: "font-semibold" }, "Demo pristup:"), createTextVNode(" demo@komteldoo.com / demo ")]),
+						}), createVNode("span", null, toDisplayString(unref(form).errors.email), 1)])) : createCommentVNode("", true),
+						createVNode("form", {
+							class: "space-y-5",
+							onSubmit: withModifiers(submit, ["prevent"])
+						}, [
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).email,
+								"onUpdate:modelValue": ($event) => unref(form).email = $event,
+								label: "E-mail",
+								type: "email",
+								placeholder: "marko@primjer.ba"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).password,
+								"onUpdate:modelValue": ($event) => unref(form).password = $event,
+								label: "Lozinka",
+								type: "password",
+								placeholder: "••••••••"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode("div", { class: "flex items-center justify-between" }, [createVNode(_sfc_main$66, {
+								modelValue: unref(form).remember,
+								"onUpdate:modelValue": ($event) => unref(form).remember = $event,
+								label: "Zapamti me"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(unref(Link), {
+								href: "/zaboravljena-lozinka",
+								class: "text-sm font-medium text-primary hover:underline"
+							}, {
+								default: withCtx(() => [createTextVNode(" Zaboravljena lozinka? ")]),
+								_: 1
+							})]),
+							createVNode(_sfc_main$93, {
+								type: "submit",
+								variant: "primary",
+								block: "",
+								disabled: unref(form).processing
+							}, {
+								default: withCtx(() => [createTextVNode(" Prijava ")]),
+								_: 1
+							}, 8, ["disabled"])
+						], 32),
 						createVNode("hr", { class: "border-border" }),
 						createVNode("p", { class: "text-center text-sm text-text-muted" }, [createTextVNode(" Nemaš nalog? "), createVNode(unref(Link), {
 							href: "/registracija",
@@ -8071,16 +8053,16 @@ var _sfc_main$32 = {
 		};
 	}
 };
-var _sfc_setup$32 = _sfc_main$32.setup;
-_sfc_main$32.setup = (props, ctx) => {
+var _sfc_setup$40 = _sfc_main$40.setup;
+_sfc_main$40.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Login.vue");
-	return _sfc_setup$32 ? _sfc_setup$32(props, ctx) : void 0;
+	return _sfc_setup$40 ? _sfc_setup$40(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Map.vue
-var Map_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$31 });
-var _sfc_main$31 = {
+var Map_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$39 });
+var _sfc_main$39 = {
 	__name: "Map",
 	__ssrInlineRender: true,
 	props: { tacke: {
@@ -8106,20 +8088,20 @@ var _sfc_main$31 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "space-y-6 pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "space-y-6 pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(ssrRenderComponent(_sfc_main$87, { items: [{
+						_push(ssrRenderComponent(_sfc_main$95, { items: [{
 							label: "Početna",
 							to: "/"
 						}, { label: "Mapa ponude" }] }, null, _parent, _scopeId));
 						_push(`<header${_scopeId}><h1 class="text-2xl font-semibold text-heading md:text-3xl"${_scopeId}>Mapa ponude</h1><p class="mt-2 max-w-2xl text-text-muted"${_scopeId}> Istražite biznise, turističke lokalitete i događaje Teslića na interaktivnoj mapi. </p></header><div class="grid gap-6 lg:grid-cols-[320px_1fr]"${_scopeId}><div class="space-y-6"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$47, {
+						_push(ssrRenderComponent(_sfc_main$55, {
 							modelValue: aktivne.value,
 							"onUpdate:modelValue": ($event) => aktivne.value = $event,
 							onSearch: (v) => upit.value = v
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$46, {
+						_push(ssrRenderComponent(_sfc_main$54, {
 							items: filtrirano.value,
 							onSelect: odaberi
 						}, null, _parent, _scopeId));
@@ -8132,7 +8114,7 @@ var _sfc_main$31 = {
 						}, null, _parent, _scopeId));
 						if (odabrana.value) {
 							_push(`<div class="absolute right-4 top-4 z-[1000]"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$45, {
+							_push(ssrRenderComponent(_sfc_main$53, {
 								item: odabrana.value,
 								onClose: ($event) => odabrana.value = null
 							}, null, _parent, _scopeId));
@@ -8140,12 +8122,12 @@ var _sfc_main$31 = {
 						} else _push(`<!---->`);
 						_push(`</div></div>`);
 					} else return [
-						createVNode(_sfc_main$87, { items: [{
+						createVNode(_sfc_main$95, { items: [{
 							label: "Početna",
 							to: "/"
 						}, { label: "Mapa ponude" }] }),
 						createVNode("header", null, [createVNode("h1", { class: "text-2xl font-semibold text-heading md:text-3xl" }, "Mapa ponude"), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Istražite biznise, turističke lokalitete i događaje Teslića na interaktivnoj mapi. ")]),
-						createVNode("div", { class: "grid gap-6 lg:grid-cols-[320px_1fr]" }, [createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$47, {
+						createVNode("div", { class: "grid gap-6 lg:grid-cols-[320px_1fr]" }, [createVNode("div", { class: "space-y-6" }, [createVNode(_sfc_main$55, {
 							modelValue: aktivne.value,
 							"onUpdate:modelValue": ($event) => aktivne.value = $event,
 							onSearch: (v) => upit.value = v
@@ -8153,7 +8135,7 @@ var _sfc_main$31 = {
 							"modelValue",
 							"onUpdate:modelValue",
 							"onSearch"
-						]), createVNode(_sfc_main$46, {
+						]), createVNode(_sfc_main$54, {
 							items: filtrirano.value,
 							onSelect: odaberi
 						}, null, 8, ["items"])]), createVNode("div", { class: "relative" }, [createVNode(MapInteractive_default, {
@@ -8164,7 +8146,7 @@ var _sfc_main$31 = {
 						}, null, 8, ["items", "active-categories"]), odabrana.value ? (openBlock(), createBlock("div", {
 							key: 0,
 							class: "absolute right-4 top-4 z-[1000]"
-						}, [createVNode(_sfc_main$45, {
+						}, [createVNode(_sfc_main$53, {
 							item: odabrana.value,
 							onClose: ($event) => odabrana.value = null
 						}, null, 8, ["item", "onClose"])])) : createCommentVNode("", true)])])
@@ -8176,28 +8158,28 @@ var _sfc_main$31 = {
 		};
 	}
 };
-var _sfc_setup$31 = _sfc_main$31.setup;
-_sfc_main$31.setup = (props, ctx) => {
+var _sfc_setup$39 = _sfc_main$39.setup;
+_sfc_main$39.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Map.vue");
-	return _sfc_setup$31 ? _sfc_setup$31(props, ctx) : void 0;
+	return _sfc_setup$39 ? _sfc_setup$39(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/NotFound.vue
-var NotFound_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$30 });
-var _sfc_main$30 = {
+var NotFound_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$38 });
+var _sfc_main$38 = {
 	__name: "NotFound",
 	__ssrInlineRender: true,
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-20 text-center"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<p class="text-6xl font-bold text-primary"${_scopeId}>404</p><h1 class="mt-4 text-3xl font-bold text-heading"${_scopeId}>Stranica nije pronađena</h1><p class="mx-auto mt-3 max-w-md text-text-muted"${_scopeId}> Tražena stranica ne postoji ili je premještena. Vratite se na početnu i nastavite istraživati ponudu Teslića. </p><div class="mt-8 flex justify-center"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							to: "/",
 							variant: "primary",
 							icon: "arrow-right",
@@ -8214,7 +8196,7 @@ var _sfc_main$30 = {
 						createVNode("p", { class: "text-6xl font-bold text-primary" }, "404"),
 						createVNode("h1", { class: "mt-4 text-3xl font-bold text-heading" }, "Stranica nije pronađena"),
 						createVNode("p", { class: "mx-auto mt-3 max-w-md text-text-muted" }, " Tražena stranica ne postoji ili je premještena. Vratite se na početnu i nastavite istraživati ponudu Teslića. "),
-						createVNode("div", { class: "mt-8 flex justify-center" }, [createVNode(_sfc_main$85, {
+						createVNode("div", { class: "mt-8 flex justify-center" }, [createVNode(_sfc_main$93, {
 							to: "/",
 							variant: "primary",
 							icon: "arrow-right",
@@ -8230,58 +8212,988 @@ var _sfc_main$30 = {
 		};
 	}
 };
+var _sfc_setup$38 = _sfc_main$38.setup;
+_sfc_main$38.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NotFound.vue");
+	return _sfc_setup$38 ? _sfc_setup$38(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockHero.vue
+var _sfc_main$37 = {
+	__name: "BlockHero",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$96, mergeProps({
+				variant: __props.data.variant || "split",
+				kicker: __props.data.kicker || "",
+				title: __props.data.title || "",
+				subtitle: __props.data.subtitle || "",
+				image: __props.data.image || ""
+			}, _attrs), null, _parent));
+		};
+	}
+};
+var _sfc_setup$37 = _sfc_main$37.setup;
+_sfc_main$37.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockHero.vue");
+	return _sfc_setup$37 ? _sfc_setup$37(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockSectionHeader.vue
+var _sfc_main$36 = {
+	__name: "BlockSectionHeader",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-12" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) _push(ssrRenderComponent(_sfc_main$47, {
+						title: __props.data.title || "",
+						"link-text": __props.data.linkText || "",
+						to: __props.data.to || null
+					}, null, _parent, _scopeId));
+					else return [createVNode(_sfc_main$47, {
+						title: __props.data.title || "",
+						"link-text": __props.data.linkText || "",
+						to: __props.data.to || null
+					}, null, 8, [
+						"title",
+						"link-text",
+						"to"
+					])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$36 = _sfc_main$36.setup;
+_sfc_main$36.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockSectionHeader.vue");
+	return _sfc_setup$36 ? _sfc_setup$36(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockRichText.vue
+var _sfc_main$35 = {
+	__name: "BlockRichText",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-8" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) _push(`<div class="prose prose-slate max-w-3xl text-text"${_scopeId}>${(__props.data.sadrzaj || "") ?? ""}</div>`);
+					else return [createVNode("div", {
+						class: "prose prose-slate max-w-3xl text-text",
+						innerHTML: __props.data.sadrzaj || ""
+					}, null, 8, ["innerHTML"])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$35 = _sfc_main$35.setup;
+_sfc_main$35.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockRichText.vue");
+	return _sfc_setup$35 ? _sfc_setup$35(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockCTA.vue
+var _sfc_main$34 = {
+	__name: "BlockCTA",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "my-14" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) _push(ssrRenderComponent(_sfc_main$94, {
+						title: __props.data.title || "",
+						text: __props.data.text || ""
+					}, {
+						default: withCtx((_, _push, _parent, _scopeId) => {
+							if (_push) {
+								_push(`<!--[-->`);
+								ssrRenderList(__props.data.buttons || [], (b, i) => {
+									_push(ssrRenderComponent(_sfc_main$93, {
+										key: i,
+										to: b.url || "#",
+										variant: b.variant || "sekundarna"
+									}, {
+										default: withCtx((_, _push, _parent, _scopeId) => {
+											if (_push) _push(`${ssrInterpolate(b.label)}`);
+											else return [createTextVNode(toDisplayString(b.label), 1)];
+										}),
+										_: 2
+									}, _parent, _scopeId));
+								});
+								_push(`<!--]-->`);
+							} else return [(openBlock(true), createBlock(Fragment, null, renderList(__props.data.buttons || [], (b, i) => {
+								return openBlock(), createBlock(_sfc_main$93, {
+									key: i,
+									to: b.url || "#",
+									variant: b.variant || "sekundarna"
+								}, {
+									default: withCtx(() => [createTextVNode(toDisplayString(b.label), 1)]),
+									_: 2
+								}, 1032, ["to", "variant"]);
+							}), 128))];
+						}),
+						_: 1
+					}, _parent, _scopeId));
+					else return [createVNode(_sfc_main$94, {
+						title: __props.data.title || "",
+						text: __props.data.text || ""
+					}, {
+						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(__props.data.buttons || [], (b, i) => {
+							return openBlock(), createBlock(_sfc_main$93, {
+								key: i,
+								to: b.url || "#",
+								variant: b.variant || "sekundarna"
+							}, {
+								default: withCtx(() => [createTextVNode(toDisplayString(b.label), 1)]),
+								_: 2
+							}, 1032, ["to", "variant"]);
+						}), 128))]),
+						_: 1
+					}, 8, ["title", "text"])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$34 = _sfc_main$34.setup;
+_sfc_main$34.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockCTA.vue");
+	return _sfc_setup$34 ? _sfc_setup$34(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockCardGrid.vue
+var _sfc_main$33 = {
+	__name: "BlockCardGrid",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		const props = __props;
+		const cardByResource = {
+			business: _sfc_main$70,
+			location: _sfc_main$63,
+			event: _sfc_main$62,
+			ad: _sfc_main$84,
+			story: _sfc_main$61
+		};
+		const card = computed(() => cardByResource[props.data.resource] || _sfc_main$70);
+		const items = computed(() => props.data.items || []);
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-12 space-y-6" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						if (__props.data.naslov) _push(ssrRenderComponent(_sfc_main$47, {
+							title: __props.data.naslov,
+							"link-text": __props.data.linkText || "",
+							to: __props.data.to || null
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						if (items.value.length) _push(ssrRenderComponent(_sfc_main$90, { cols: __props.data.cols || 4 }, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) {
+									_push(`<!--[-->`);
+									ssrRenderList(items.value, (item) => {
+										ssrRenderVNode(_push, createVNode(resolveDynamicComponent(card.value), {
+											key: item.slug,
+											item
+										}, null), _parent, _scopeId);
+									});
+									_push(`<!--]-->`);
+								} else return [(openBlock(true), createBlock(Fragment, null, renderList(items.value, (item) => {
+									return openBlock(), createBlock(resolveDynamicComponent(card.value), {
+										key: item.slug,
+										item
+									}, null, 8, ["item"]);
+								}), 128))];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						else _push(ssrRenderComponent(_sfc_main$85, {
+							title: "Nema sadržaja",
+							text: "Trenutno nema stavki za prikaz."
+						}, null, _parent, _scopeId));
+					} else return [__props.data.naslov ? (openBlock(), createBlock(_sfc_main$47, {
+						key: 0,
+						title: __props.data.naslov,
+						"link-text": __props.data.linkText || "",
+						to: __props.data.to || null
+					}, null, 8, [
+						"title",
+						"link-text",
+						"to"
+					])) : createCommentVNode("", true), items.value.length ? (openBlock(), createBlock(_sfc_main$90, {
+						key: 1,
+						cols: __props.data.cols || 4
+					}, {
+						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(items.value, (item) => {
+							return openBlock(), createBlock(resolveDynamicComponent(card.value), {
+								key: item.slug,
+								item
+							}, null, 8, ["item"]);
+						}), 128))]),
+						_: 1
+					}, 8, ["cols"])) : (openBlock(), createBlock(_sfc_main$85, {
+						key: 2,
+						title: "Nema sadržaja",
+						text: "Trenutno nema stavki za prikaz."
+					}))];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$33 = _sfc_main$33.setup;
+_sfc_main$33.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockCardGrid.vue");
+	return _sfc_setup$33 ? _sfc_setup$33(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockCategoryNav.vue
+var _sfc_main$32 = {
+	__name: "BlockCategoryNav",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-10" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(`<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6"${_scopeId}><!--[-->`);
+						ssrRenderList(__props.data.items || [], (k) => {
+							_push(ssrRenderComponent(unref(Link), {
+								key: k.label,
+								href: k.to || "#",
+								class: "flex flex-col items-center gap-3 rounded-md border border-border bg-surface px-3 py-5 text-center transition-shadow hover:shadow-[var(--shadow-md)]"
+							}, {
+								default: withCtx((_, _push, _parent, _scopeId) => {
+									if (_push) {
+										_push(`<span class="flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary"${_scopeId}>`);
+										_push(ssrRenderComponent(_sfc_main$97, {
+											name: k.icon || "tag",
+											size: 22
+										}, null, _parent, _scopeId));
+										_push(`</span><span class="text-sm font-semibold leading-tight text-heading"${_scopeId}>${ssrInterpolate(k.label)}</span>`);
+									} else return [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
+										name: k.icon || "tag",
+										size: 22
+									}, null, 8, ["name"])]), createVNode("span", { class: "text-sm font-semibold leading-tight text-heading" }, toDisplayString(k.label), 1)];
+								}),
+								_: 2
+							}, _parent, _scopeId));
+						});
+						_push(`<!--]--></div>`);
+					} else return [createVNode("div", { class: "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6" }, [(openBlock(true), createBlock(Fragment, null, renderList(__props.data.items || [], (k) => {
+						return openBlock(), createBlock(unref(Link), {
+							key: k.label,
+							href: k.to || "#",
+							class: "flex flex-col items-center gap-3 rounded-md border border-border bg-surface px-3 py-5 text-center transition-shadow hover:shadow-[var(--shadow-md)]"
+						}, {
+							default: withCtx(() => [createVNode("span", { class: "flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
+								name: k.icon || "tag",
+								size: 22
+							}, null, 8, ["name"])]), createVNode("span", { class: "text-sm font-semibold leading-tight text-heading" }, toDisplayString(k.label), 1)]),
+							_: 2
+						}, 1032, ["href"]);
+					}), 128))])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$32 = _sfc_main$32.setup;
+_sfc_main$32.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockCategoryNav.vue");
+	return _sfc_setup$32 ? _sfc_setup$32(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockGallery.vue
+var _sfc_main$31 = {
+	__name: "BlockGallery",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-12 space-y-6" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						if (__props.data.naslov) _push(ssrRenderComponent(_sfc_main$47, { title: __props.data.naslov }, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(ssrRenderComponent(_sfc_main$73, {
+							items: __props.data.items || [],
+							variant: __props.data.variant || "grid"
+						}, null, _parent, _scopeId));
+					} else return [__props.data.naslov ? (openBlock(), createBlock(_sfc_main$47, {
+						key: 0,
+						title: __props.data.naslov
+					}, null, 8, ["title"])) : createCommentVNode("", true), createVNode(_sfc_main$73, {
+						items: __props.data.items || [],
+						variant: __props.data.variant || "grid"
+					}, null, 8, ["items", "variant"])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$31 = _sfc_main$31.setup;
+_sfc_main$31.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockGallery.vue");
+	return _sfc_setup$31 ? _sfc_setup$31(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/components/blocks/BlockVideo.vue
+var _sfc_main$30 = {
+	__name: "BlockVideo",
+	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
+	setup(__props) {
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-12 space-y-6" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						if (__props.data.naslov) _push(ssrRenderComponent(_sfc_main$47, { title: __props.data.naslov }, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(ssrRenderComponent(_sfc_main$58, {
+							src: __props.data.src || "",
+							poster: __props.data.poster || ""
+						}, null, _parent, _scopeId));
+					} else return [__props.data.naslov ? (openBlock(), createBlock(_sfc_main$47, {
+						key: 0,
+						title: __props.data.naslov
+					}, null, 8, ["title"])) : createCommentVNode("", true), createVNode(_sfc_main$58, {
+						src: __props.data.src || "",
+						poster: __props.data.poster || ""
+					}, null, 8, ["src", "poster"])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
 var _sfc_setup$30 = _sfc_main$30.setup;
 _sfc_main$30.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/NotFound.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockVideo.vue");
 	return _sfc_setup$30 ? _sfc_setup$30(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/Pages/RegisterAuthor.vue
-var RegisterAuthor_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$29 });
+//#region resources/js/components/blocks/BlockMap.vue
 var _sfc_main$29 = {
-	__name: "RegisterAuthor",
+	__name: "BlockMap",
 	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$37, mergeProps({
-				title: "Uključi se kao autor",
-				phase: "Faza F10"
-			}, _attrs), null, _parent));
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({ class: "mt-12 space-y-6" }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(ssrRenderComponent(_sfc_main$47, {
+							title: __props.data.naslov || "Mapa ponude",
+							"link-text": __props.data.linkText || "Otvori mapu",
+							to: __props.data.to || "/mapa"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(MapInteractive_default, {
+							items: __props.data.items || [],
+							height: __props.data.height || "480px"
+						}, null, _parent, _scopeId));
+					} else return [createVNode(_sfc_main$47, {
+						title: __props.data.naslov || "Mapa ponude",
+						"link-text": __props.data.linkText || "Otvori mapu",
+						to: __props.data.to || "/mapa"
+					}, null, 8, [
+						"title",
+						"link-text",
+						"to"
+					]), createVNode(MapInteractive_default, {
+						items: __props.data.items || [],
+						height: __props.data.height || "480px"
+					}, null, 8, ["items", "height"])];
+				}),
+				_: 1
+			}, _parent));
 		};
 	}
 };
 var _sfc_setup$29 = _sfc_main$29.setup;
 _sfc_main$29.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/RegisterAuthor.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockMap.vue");
 	return _sfc_setup$29 ? _sfc_setup$29(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/Pages/RegisterBusiness.vue
-var RegisterBusiness_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$28 });
+//#region resources/js/components/blocks/BlockSpacer.vue
 var _sfc_main$28 = {
-	__name: "RegisterBusiness",
+	__name: "BlockSpacer",
 	__ssrInlineRender: true,
+	props: { data: {
+		type: Object,
+		default: () => ({})
+	} },
 	setup(__props) {
+		const props = __props;
+		const heightClass = computed(() => {
+			return {
+				sm: "h-6",
+				md: "h-12",
+				lg: "h-20"
+			}[props.data.size || "md"];
+		});
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$37, mergeProps({
-				title: "Registruj biznis",
-				phase: "Faza F10"
-			}, _attrs), null, _parent));
+			_push(ssrRenderComponent(_sfc_main$98, _attrs, {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(`<div class="${ssrRenderClass([heightClass.value, "flex items-center"])}"${_scopeId}>`);
+						if (__props.data.divider) _push(`<hr class="w-full border-border"${_scopeId}>`);
+						else _push(`<!---->`);
+						_push(`</div>`);
+					} else return [createVNode("div", { class: [heightClass.value, "flex items-center"] }, [__props.data.divider ? (openBlock(), createBlock("hr", {
+						key: 0,
+						class: "w-full border-border"
+					})) : createCommentVNode("", true)], 2)];
+				}),
+				_: 1
+			}, _parent));
 		};
 	}
 };
 var _sfc_setup$28 = _sfc_main$28.setup;
 _sfc_main$28.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/RegisterBusiness.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/blocks/BlockSpacer.vue");
 	return _sfc_setup$28 ? _sfc_setup$28(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/Pages/RegisterChoice.vue
-var RegisterChoice_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$27 });
+//#region resources/js/Pages/PageRenderer.vue
+var PageRenderer_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$27 });
 var _sfc_main$27 = {
+	__name: "PageRenderer",
+	__ssrInlineRender: true,
+	props: {
+		page: {
+			type: Object,
+			default: () => ({})
+		},
+		blocks: {
+			type: Array,
+			default: () => []
+		}
+	},
+	setup(__props) {
+		const registry = {
+			hero: _sfc_main$37,
+			section_header: _sfc_main$36,
+			rich_text: _sfc_main$35,
+			cta: _sfc_main$34,
+			card_grid: _sfc_main$33,
+			category_nav: _sfc_main$32,
+			gallery: _sfc_main$31,
+			video: _sfc_main$30,
+			map: _sfc_main$29,
+			spacer: _sfc_main$28
+		};
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(`<div${ssrRenderAttrs(mergeProps({ class: "pb-16" }, _attrs))}>`);
+			_push(ssrRenderComponent(unref(Head), { title: __props.page.meta_title || __props.page.title }, {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) if (__props.page.meta_description) _push(`<meta name="description"${ssrRenderAttr("content", __props.page.meta_description)}${_scopeId}>`);
+					else _push(`<!---->`);
+					else return [__props.page.meta_description ? (openBlock(), createBlock("meta", {
+						key: 0,
+						name: "description",
+						content: __props.page.meta_description
+					}, null, 8, ["content"])) : createCommentVNode("", true)];
+				}),
+				_: 1
+			}, _parent));
+			_push(`<!--[-->`);
+			ssrRenderList(__props.blocks, (block, i) => {
+				_push(`<!--[-->`);
+				if (registry[block.type] && (block.data?.visible ?? true)) ssrRenderVNode(_push, createVNode(resolveDynamicComponent(registry[block.type]), { data: block.data }, null), _parent);
+				else _push(`<!---->`);
+				_push(`<!--]-->`);
+			});
+			_push(`<!--]--></div>`);
+		};
+	}
+};
+var _sfc_setup$27 = _sfc_main$27.setup;
+_sfc_main$27.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/PageRenderer.vue");
+	return _sfc_setup$27 ? _sfc_setup$27(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/Pages/RegisterAuthor.vue
+var RegisterAuthor_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$26 });
+var _sfc_main$26 = {
+	__name: "RegisterAuthor",
+	__ssrInlineRender: true,
+	setup(__props) {
+		const form = useForm({
+			role: "autor",
+			name: "",
+			email: "",
+			telefon: "",
+			password: "",
+			password_confirmation: "",
+			saglasnost: false
+		});
+		function submit() {
+			form.post("/register");
+		}
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
+			_push(ssrRenderComponent(_sfc_main$98, { class: "py-12" }, {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
+							{
+								label: "Početna",
+								to: "/"
+							},
+							{
+								label: "Pridruži se",
+								to: "/pridruzi-se"
+							},
+							{ label: "Uključi se kao autor" }
+						] }, null, _parent, _scopeId));
+						_push(`<div class="mx-auto mt-6 w-full max-w-[560px] space-y-5 rounded-2xl border border-border bg-surface p-8"${_scopeId}><div${_scopeId}><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Uključi se kao autor</h1><p class="mt-2 text-sm text-text-muted"${_scopeId}> Nakon registracije nalog ide na pregled administratora. Priče kreiraš i šalješ na odobrenje nakon prijave. </p></div>`);
+						if (Object.keys(unref(form).errors).length) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Neka polja nisu ispravno popunjena."
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`<form class="space-y-5"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).name,
+							"onUpdate:modelValue": ($event) => unref(form).name = $event,
+							label: "Ime i prezime",
+							error: unref(form).errors.name
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).email,
+							"onUpdate:modelValue": ($event) => unref(form).email = $event,
+							label: "E-mail",
+							type: "email",
+							error: unref(form).errors.email
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).telefon,
+							"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
+							label: "Telefon",
+							error: unref(form).errors.telefon
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).password,
+							"onUpdate:modelValue": ($event) => unref(form).password = $event,
+							label: "Lozinka",
+							type: "password",
+							error: unref(form).errors.password
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).password_confirmation,
+							"onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
+							label: "Potvrda lozinke",
+							type: "password"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$66, {
+							modelValue: unref(form).saglasnost,
+							"onUpdate:modelValue": ($event) => unref(form).saglasnost = $event,
+							label: "Saglasan/na sam s uslovima korištenja i obradom podataka."
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$93, {
+							type: "submit",
+							variant: "primary",
+							block: "",
+							disabled: unref(form).processing || !unref(form).saglasnost
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Registruj se `);
+								else return [createTextVNode(" Registruj se ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</form><p class="text-center text-sm text-text-muted"${_scopeId}> Već imaš nalog? `);
+						_push(ssrRenderComponent(unref(Link), {
+							href: "/prijava",
+							class: "font-semibold text-primary hover:underline"
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(`Prijavi se`);
+								else return [createTextVNode("Prijavi se")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</p></div>`);
+					} else return [createVNode(_sfc_main$95, { items: [
+						{
+							label: "Početna",
+							to: "/"
+						},
+						{
+							label: "Pridruži se",
+							to: "/pridruzi-se"
+						},
+						{ label: "Uključi se kao autor" }
+					] }), createVNode("div", { class: "mx-auto mt-6 w-full max-w-[560px] space-y-5 rounded-2xl border border-border bg-surface p-8" }, [
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Uključi se kao autor"), createVNode("p", { class: "mt-2 text-sm text-text-muted" }, " Nakon registracije nalog ide na pregled administratora. Priče kreiraš i šalješ na odobrenje nakon prijave. ")]),
+						Object.keys(unref(form).errors).length ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Neka polja nisu ispravno popunjena."
+						})) : createCommentVNode("", true),
+						createVNode("form", {
+							class: "space-y-5",
+							onSubmit: withModifiers(submit, ["prevent"])
+						}, [
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).name,
+								"onUpdate:modelValue": ($event) => unref(form).name = $event,
+								label: "Ime i prezime",
+								error: unref(form).errors.name
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).email,
+								"onUpdate:modelValue": ($event) => unref(form).email = $event,
+								label: "E-mail",
+								type: "email",
+								error: unref(form).errors.email
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).telefon,
+								"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
+								label: "Telefon",
+								error: unref(form).errors.telefon
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).password,
+								"onUpdate:modelValue": ($event) => unref(form).password = $event,
+								label: "Lozinka",
+								type: "password",
+								error: unref(form).errors.password
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).password_confirmation,
+								"onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
+								label: "Potvrda lozinke",
+								type: "password"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$66, {
+								modelValue: unref(form).saglasnost,
+								"onUpdate:modelValue": ($event) => unref(form).saglasnost = $event,
+								label: "Saglasan/na sam s uslovima korištenja i obradom podataka."
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$93, {
+								type: "submit",
+								variant: "primary",
+								block: "",
+								disabled: unref(form).processing || !unref(form).saglasnost
+							}, {
+								default: withCtx(() => [createTextVNode(" Registruj se ")]),
+								_: 1
+							}, 8, ["disabled"])
+						], 32),
+						createVNode("p", { class: "text-center text-sm text-text-muted" }, [createTextVNode(" Već imaš nalog? "), createVNode(unref(Link), {
+							href: "/prijava",
+							class: "font-semibold text-primary hover:underline"
+						}, {
+							default: withCtx(() => [createTextVNode("Prijavi se")]),
+							_: 1
+						})])
+					])];
+				}),
+				_: 1
+			}, _parent));
+			_push(`</section>`);
+		};
+	}
+};
+var _sfc_setup$26 = _sfc_main$26.setup;
+_sfc_main$26.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/RegisterAuthor.vue");
+	return _sfc_setup$26 ? _sfc_setup$26(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/Pages/RegisterBusiness.vue
+var RegisterBusiness_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$25 });
+var _sfc_main$25 = {
+	__name: "RegisterBusiness",
+	__ssrInlineRender: true,
+	setup(__props) {
+		const form = useForm({
+			role: "biznis",
+			name: "",
+			email: "",
+			telefon: "",
+			password: "",
+			password_confirmation: "",
+			saglasnost: false
+		});
+		function submit() {
+			form.post("/register");
+		}
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
+			_push(ssrRenderComponent(_sfc_main$98, { class: "py-12" }, {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
+							{
+								label: "Početna",
+								to: "/"
+							},
+							{
+								label: "Pridruži se",
+								to: "/pridruzi-se"
+							},
+							{ label: "Registruj biznis" }
+						] }, null, _parent, _scopeId));
+						_push(`<div class="mx-auto mt-6 w-full max-w-[560px] space-y-5 rounded-2xl border border-border bg-surface p-8"${_scopeId}><div${_scopeId}><h1 class="font-heading text-2xl font-bold text-heading"${_scopeId}>Registruj biznis</h1><p class="mt-2 text-sm text-text-muted"${_scopeId}> Nakon registracije nalog ide na pregled administratora. Profil i objave uređuješ nakon odobrenja. </p></div>`);
+						if (Object.keys(unref(form).errors).length) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Neka polja nisu ispravno popunjena."
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`<form class="space-y-5"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).name,
+							"onUpdate:modelValue": ($event) => unref(form).name = $event,
+							label: "Naziv biznisa",
+							error: unref(form).errors.name
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).email,
+							"onUpdate:modelValue": ($event) => unref(form).email = $event,
+							label: "E-mail",
+							type: "email",
+							error: unref(form).errors.email
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).telefon,
+							"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
+							label: "Telefon",
+							error: unref(form).errors.telefon
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).password,
+							"onUpdate:modelValue": ($event) => unref(form).password = $event,
+							label: "Lozinka",
+							type: "password",
+							error: unref(form).errors.password
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).password_confirmation,
+							"onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
+							label: "Potvrda lozinke",
+							type: "password"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$66, {
+							modelValue: unref(form).saglasnost,
+							"onUpdate:modelValue": ($event) => unref(form).saglasnost = $event,
+							label: "Saglasan/na sam s uslovima korištenja i obradom podataka."
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$93, {
+							type: "submit",
+							variant: "primary",
+							block: "",
+							disabled: unref(form).processing || !unref(form).saglasnost
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Registruj se `);
+								else return [createTextVNode(" Registruj se ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</form><p class="text-center text-sm text-text-muted"${_scopeId}> Već imaš nalog? `);
+						_push(ssrRenderComponent(unref(Link), {
+							href: "/prijava",
+							class: "font-semibold text-primary hover:underline"
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(`Prijavi se`);
+								else return [createTextVNode("Prijavi se")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</p></div>`);
+					} else return [createVNode(_sfc_main$95, { items: [
+						{
+							label: "Početna",
+							to: "/"
+						},
+						{
+							label: "Pridruži se",
+							to: "/pridruzi-se"
+						},
+						{ label: "Registruj biznis" }
+					] }), createVNode("div", { class: "mx-auto mt-6 w-full max-w-[560px] space-y-5 rounded-2xl border border-border bg-surface p-8" }, [
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-2xl font-bold text-heading" }, "Registruj biznis"), createVNode("p", { class: "mt-2 text-sm text-text-muted" }, " Nakon registracije nalog ide na pregled administratora. Profil i objave uređuješ nakon odobrenja. ")]),
+						Object.keys(unref(form).errors).length ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Neka polja nisu ispravno popunjena."
+						})) : createCommentVNode("", true),
+						createVNode("form", {
+							class: "space-y-5",
+							onSubmit: withModifiers(submit, ["prevent"])
+						}, [
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).name,
+								"onUpdate:modelValue": ($event) => unref(form).name = $event,
+								label: "Naziv biznisa",
+								error: unref(form).errors.name
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).email,
+								"onUpdate:modelValue": ($event) => unref(form).email = $event,
+								label: "E-mail",
+								type: "email",
+								error: unref(form).errors.email
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).telefon,
+								"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
+								label: "Telefon",
+								error: unref(form).errors.telefon
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).password,
+								"onUpdate:modelValue": ($event) => unref(form).password = $event,
+								label: "Lozinka",
+								type: "password",
+								error: unref(form).errors.password
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).password_confirmation,
+								"onUpdate:modelValue": ($event) => unref(form).password_confirmation = $event,
+								label: "Potvrda lozinke",
+								type: "password"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$66, {
+								modelValue: unref(form).saglasnost,
+								"onUpdate:modelValue": ($event) => unref(form).saglasnost = $event,
+								label: "Saglasan/na sam s uslovima korištenja i obradom podataka."
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$93, {
+								type: "submit",
+								variant: "primary",
+								block: "",
+								disabled: unref(form).processing || !unref(form).saglasnost
+							}, {
+								default: withCtx(() => [createTextVNode(" Registruj se ")]),
+								_: 1
+							}, 8, ["disabled"])
+						], 32),
+						createVNode("p", { class: "text-center text-sm text-text-muted" }, [createTextVNode(" Već imaš nalog? "), createVNode(unref(Link), {
+							href: "/prijava",
+							class: "font-semibold text-primary hover:underline"
+						}, {
+							default: withCtx(() => [createTextVNode("Prijavi se")]),
+							_: 1
+						})])
+					])];
+				}),
+				_: 1
+			}, _parent));
+			_push(`</section>`);
+		};
+	}
+};
+var _sfc_setup$25 = _sfc_main$25.setup;
+_sfc_main$25.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/RegisterBusiness.vue");
+	return _sfc_setup$25 ? _sfc_setup$25(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/Pages/RegisterChoice.vue
+var RegisterChoice_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$24 });
+var _sfc_main$24 = {
 	__name: "RegisterChoice",
 	__ssrInlineRender: true,
 	setup(__props) {
@@ -8300,18 +9212,18 @@ var _sfc_main$27 = {
 		}];
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<section${ssrRenderAttrs(mergeProps({ class: "bg-surface-alt" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "flex min-h-[600px] flex-col items-center justify-center gap-8 py-16" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "flex min-h-[600px] flex-col items-center justify-center gap-8 py-16" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="max-w-[680px] space-y-2.5 text-center"${_scopeId}><h1 class="font-heading text-3xl font-bold text-heading md:text-[32px]"${_scopeId}>Napravi nalog</h1><p class="text-base text-text-muted"${_scopeId}>Odaberite tip naloga koji želite kreirati na platformi.</p></div><div class="flex flex-col gap-6 sm:flex-row"${_scopeId}><!--[-->`);
 						ssrRenderList(opcije, (o) => {
 							_push(`<div class="flex w-full flex-col gap-4 rounded-2xl border border-border bg-surface p-7 sm:w-80"${_scopeId}><span class="flex size-14 items-center justify-center rounded-md bg-primary-tint text-primary"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: o.icon,
 								size: 26
 							}, null, _parent, _scopeId));
 							_push(`</span><h2 class="font-heading text-xl font-bold text-heading"${_scopeId}>${ssrInterpolate(o.naslov)}</h2><p class="text-sm leading-relaxed text-text-muted"${_scopeId}>${ssrInterpolate(o.opis)}</p>`);
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(ssrRenderComponent(_sfc_main$93, {
 								to: o.to,
 								variant: "primary",
 								block: ""
@@ -8325,7 +9237,7 @@ var _sfc_main$27 = {
 							_push(`</div>`);
 						});
 						_push(`<!--]--></div><div class="flex items-center gap-2 rounded-md bg-info-tint px-4 py-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "info",
 							size: 18,
 							class: "text-info"
@@ -8338,13 +9250,13 @@ var _sfc_main$27 = {
 								key: o.naslov,
 								class: "flex w-full flex-col gap-4 rounded-2xl border border-border bg-surface p-7 sm:w-80"
 							}, [
-								createVNode("span", { class: "flex size-14 items-center justify-center rounded-md bg-primary-tint text-primary" }, [createVNode(_sfc_main$89, {
+								createVNode("span", { class: "flex size-14 items-center justify-center rounded-md bg-primary-tint text-primary" }, [createVNode(_sfc_main$97, {
 									name: o.icon,
 									size: 26
 								}, null, 8, ["name"])]),
 								createVNode("h2", { class: "font-heading text-xl font-bold text-heading" }, toDisplayString(o.naslov), 1),
 								createVNode("p", { class: "text-sm leading-relaxed text-text-muted" }, toDisplayString(o.opis), 1),
-								createVNode(_sfc_main$85, {
+								createVNode(_sfc_main$93, {
 									to: o.to,
 									variant: "primary",
 									block: ""
@@ -8354,7 +9266,7 @@ var _sfc_main$27 = {
 								}, 1032, ["to"])
 							]);
 						}), 64))]),
-						createVNode("div", { class: "flex items-center gap-2 rounded-md bg-info-tint px-4 py-3" }, [createVNode(_sfc_main$89, {
+						createVNode("div", { class: "flex items-center gap-2 rounded-md bg-info-tint px-4 py-3" }, [createVNode(_sfc_main$97, {
 							name: "info",
 							size: 18,
 							class: "text-info"
@@ -8367,17 +9279,17 @@ var _sfc_main$27 = {
 		};
 	}
 };
-var _sfc_setup$27 = _sfc_main$27.setup;
-_sfc_main$27.setup = (props, ctx) => {
+var _sfc_setup$24 = _sfc_main$24.setup;
+_sfc_main$24.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/RegisterChoice.vue");
-	return _sfc_setup$27 ? _sfc_setup$27(props, ctx) : void 0;
+	return _sfc_setup$24 ? _sfc_setup$24(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/StoriesListing.vue
-var StoriesListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$26 });
+var StoriesListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$23 });
 var PO_STRANICI$1 = 9;
-var _sfc_main$26 = {
+var _sfc_main$23 = {
 	__name: "StoriesListing",
 	__ssrInlineRender: true,
 	props: { price: {
@@ -8463,68 +9375,68 @@ var _sfc_main$26 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Priče iz Teslića" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Priče iz Teslića" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(`<h1 class="font-heading text-3xl font-bold text-heading md:text-4xl"${_scopeId}>Priče iz Teslića</h1><p class="mt-2 max-w-2xl text-text-muted"${_scopeId}> Domaćini, zanatlije i autori pričaju o ljudima, biznisima i svakodnevici kraja. </p>`);
 					else return [createVNode("h1", { class: "font-heading text-3xl font-bold text-heading md:text-4xl" }, "Priče iz Teslića"), createVNode("p", { class: "mt-2 max-w-2xl text-text-muted" }, " Domaćini, zanatlije i autori pričaju o ljudima, biznisima i svakodnevici kraja. ")];
 				}),
 				_: 1
 			}, _parent));
-			if (istaknuta.value && !imaFiltera.value) _push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			if (istaknuta.value && !imaFiltera.value) _push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$52, { item: istaknuta.value }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$52, { item: istaknuta.value }, null, 8, ["item"])];
+					if (_push) _push(ssrRenderComponent(_sfc_main$60, { item: istaknuta.value }, null, _parent, _scopeId));
+					else return [createVNode(_sfc_main$60, { item: istaknuta.value }, null, 8, ["item"])];
 				}),
 				_: 1
 			}, _parent));
 			else _push(`<!---->`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$72, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: kategorija.value,
 									"onUpdate:modelValue": ($event) => kategorija.value = $event,
 									options: kategorijeOpcije,
 									placeholder: "Sve kategorije"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: autor.value,
 									"onUpdate:modelValue": ($event) => autor.value = $event,
 									options: autoriOpcije.value,
 									placeholder: "Svi autori"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$71, {
+								_push(ssrRenderComponent(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži priče…"
 								}, null, _parent, _scopeId));
 							} else return [
-								createVNode(_sfc_main$70, {
+								createVNode(_sfc_main$78, {
 									modelValue: kategorija.value,
 									"onUpdate:modelValue": ($event) => kategorija.value = $event,
 									options: kategorijeOpcije,
 									placeholder: "Sve kategorije"
 								}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-								createVNode(_sfc_main$70, {
+								createVNode(_sfc_main$78, {
 									modelValue: autor.value,
 									"onUpdate:modelValue": ($event) => autor.value = $event,
 									options: autoriOpcije.value,
@@ -8534,7 +9446,7 @@ var _sfc_main$26 = {
 									"onUpdate:modelValue",
 									"options"
 								]),
-								createVNode(_sfc_main$71, {
+								createVNode(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži priče…"
@@ -8543,19 +9455,19 @@ var _sfc_main$26 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$72, {
+					else return [createVNode(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx(() => [
-							createVNode(_sfc_main$70, {
+							createVNode(_sfc_main$78, {
 								modelValue: kategorija.value,
 								"onUpdate:modelValue": ($event) => kategorija.value = $event,
 								options: kategorijeOpcije,
 								placeholder: "Sve kategorije"
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$70, {
+							createVNode(_sfc_main$78, {
 								modelValue: autor.value,
 								"onUpdate:modelValue": ($event) => autor.value = $event,
 								options: autoriOpcije.value,
@@ -8565,7 +9477,7 @@ var _sfc_main$26 = {
 								"onUpdate:modelValue",
 								"options"
 							]),
-							createVNode(_sfc_main$71, {
+							createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži priče…"
@@ -8576,14 +9488,14 @@ var _sfc_main$26 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Nema priča",
 						text: "Za odabrane filtere nema priča. Pokušajte promijeniti kategoriju, autora ili pretragu."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -8594,7 +9506,7 @@ var _sfc_main$26 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -8607,19 +9519,19 @@ var _sfc_main$26 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(vidljivi.value, (p) => {
-										_push(ssrRenderComponent(_sfc_main$53, {
+										_push(ssrRenderComponent(_sfc_main$61, {
 											key: p.slug,
 											item: p
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (p) => {
-									return openBlock(), createBlock(_sfc_main$53, {
+									return openBlock(), createBlock(_sfc_main$61, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -8629,7 +9541,7 @@ var _sfc_main$26 = {
 						}, _parent, _scopeId));
 						if (ukupnoStranica.value > 1) {
 							_push(`<div class="mt-10 flex justify-center"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$69, {
+							_push(ssrRenderComponent(_sfc_main$77, {
 								modelValue: stranica.value,
 								"onUpdate:modelValue": ($event) => stranica.value = $event,
 								total: ukupnoStranica.value
@@ -8638,12 +9550,12 @@ var _sfc_main$26 = {
 						} else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Nema priča",
 						text: "Za odabrane filtere nema priča. Pokušajte promijeniti kategoriju, autora ili pretragu."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							size: "sm",
 							onClick: ocisti
@@ -8652,9 +9564,9 @@ var _sfc_main$26 = {
 							_: 1
 						})]),
 						_: 1
-					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$82, { cols: 3 }, {
+					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$90, { cols: 3 }, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (p) => {
-							return openBlock(), createBlock(_sfc_main$53, {
+							return openBlock(), createBlock(_sfc_main$61, {
 								key: p.slug,
 								item: p
 							}, null, 8, ["item"]);
@@ -8663,7 +9575,7 @@ var _sfc_main$26 = {
 					}), ukupnoStranica.value > 1 ? (openBlock(), createBlock("div", {
 						key: 0,
 						class: "mt-10 flex justify-center"
-					}, [createVNode(_sfc_main$69, {
+					}, [createVNode(_sfc_main$77, {
 						modelValue: stranica.value,
 						"onUpdate:modelValue": ($event) => stranica.value = $event,
 						total: ukupnoStranica.value
@@ -8679,16 +9591,16 @@ var _sfc_main$26 = {
 		};
 	}
 };
-var _sfc_setup$26 = _sfc_main$26.setup;
-_sfc_main$26.setup = (props, ctx) => {
+var _sfc_setup$23 = _sfc_main$23.setup;
+_sfc_main$23.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/StoriesListing.vue");
-	return _sfc_setup$26 ? _sfc_setup$26(props, ctx) : void 0;
+	return _sfc_setup$23 ? _sfc_setup$23(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/StoryDetail.vue
-var StoryDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$25 });
-var _sfc_main$25 = {
+var StoryDetail_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$22 });
+var _sfc_main$22 = {
 	__name: "StoryDetail",
 	__ssrInlineRender: true,
 	props: {
@@ -8714,17 +9626,17 @@ var _sfc_main$25 = {
 			bio: prica.value?.autorBio
 		}));
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$90, mergeProps({
+			_push(ssrRenderComponent(_sfc_main$98, mergeProps({
 				as: "main",
 				class: "py-8"
 			}, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!prica.value) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!prica.value) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Priča nije pronađena",
 						text: "Tražena priča ne postoji ili je uklonjena."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/price"
@@ -8735,7 +9647,7 @@ var _sfc_main$25 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								icon: "arrow-left",
 								to: "/price"
@@ -8748,7 +9660,7 @@ var _sfc_main$25 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$87, { items: [
+						_push(ssrRenderComponent(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -8760,7 +9672,7 @@ var _sfc_main$25 = {
 							{ label: prica.value.naslov }
 						] }, null, _parent, _scopeId));
 						_push(`<div class="mt-6 overflow-hidden rounded-lg"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$88, {
+						_push(ssrRenderComponent(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: prica.value.kategorija?.label,
 							title: prica.value.naslov,
@@ -8773,28 +9685,28 @@ var _sfc_main$25 = {
 						_push(`<div class="space-y-4 whitespace-pre-line text-lg leading-relaxed text-text"${_scopeId}>${ssrInterpolate(prica.value.sadrzaj)}</div></article>`);
 						if (prica.value.galerija?.length) {
 							_push(`<section class="mx-auto mt-10 max-w-2xl"${_scopeId}><h2 class="mb-4 font-heading text-2xl font-bold text-heading"${_scopeId}>Galerija</h2>`);
-							_push(ssrRenderComponent(_sfc_main$65, { items: prica.value.galerija }, null, _parent, _scopeId));
+							_push(ssrRenderComponent(_sfc_main$73, { items: prica.value.galerija }, null, _parent, _scopeId));
 							_push(`</section>`);
 						} else _push(`<!---->`);
 						_push(`<div class="mx-auto mt-10 max-w-2xl"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$49, {
+						_push(ssrRenderComponent(_sfc_main$57, {
 							author: autor.value,
 							to: "/price"
 						}, null, _parent, _scopeId));
 						_push(`</div>`);
-						if (slicne.value.length) _push(ssrRenderComponent(_sfc_main$81, { title: "Druge priče" }, {
+						if (slicne.value.length) _push(ssrRenderComponent(_sfc_main$89, { title: "Druge priče" }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(slicne.value, (p) => {
-										_push(ssrRenderComponent(_sfc_main$53, {
+										_push(ssrRenderComponent(_sfc_main$61, {
 											key: p.slug,
 											item: p
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(slicne.value, (p) => {
-									return openBlock(), createBlock(_sfc_main$53, {
+									return openBlock(), createBlock(_sfc_main$61, {
 										key: p.slug,
 										item: p
 									}, null, 8, ["item"]);
@@ -8805,12 +9717,12 @@ var _sfc_main$25 = {
 						else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!prica.value ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!prica.value ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Priča nije pronađena",
 						text: "Tražena priča ne postoji ili je uklonjena."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							icon: "arrow-left",
 							to: "/price"
@@ -8820,7 +9732,7 @@ var _sfc_main$25 = {
 						})]),
 						_: 1
 					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [
-						createVNode(_sfc_main$87, { items: [
+						createVNode(_sfc_main$95, { items: [
 							{
 								label: "Početna",
 								to: "/"
@@ -8831,7 +9743,7 @@ var _sfc_main$25 = {
 							},
 							{ label: prica.value.naslov }
 						] }, null, 8, ["items"]),
-						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$88, {
+						createVNode("div", { class: "mt-6 overflow-hidden rounded-lg" }, [createVNode(_sfc_main$96, {
 							variant: "slika-pozadina",
 							kicker: prica.value.kategorija?.label,
 							title: prica.value.naslov,
@@ -8850,17 +9762,17 @@ var _sfc_main$25 = {
 						prica.value.galerija?.length ? (openBlock(), createBlock("section", {
 							key: 0,
 							class: "mx-auto mt-10 max-w-2xl"
-						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$65, { items: prica.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
-						createVNode("div", { class: "mx-auto mt-10 max-w-2xl" }, [createVNode(_sfc_main$49, {
+						}, [createVNode("h2", { class: "mb-4 font-heading text-2xl font-bold text-heading" }, "Galerija"), createVNode(_sfc_main$73, { items: prica.value.galerija }, null, 8, ["items"])])) : createCommentVNode("", true),
+						createVNode("div", { class: "mx-auto mt-10 max-w-2xl" }, [createVNode(_sfc_main$57, {
 							author: autor.value,
 							to: "/price"
 						}, null, 8, ["author"])]),
-						slicne.value.length ? (openBlock(), createBlock(_sfc_main$81, {
+						slicne.value.length ? (openBlock(), createBlock(_sfc_main$89, {
 							key: 1,
 							title: "Druge priče"
 						}, {
 							default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(slicne.value, (p) => {
-								return openBlock(), createBlock(_sfc_main$53, {
+								return openBlock(), createBlock(_sfc_main$61, {
 									key: p.slug,
 									item: p
 								}, null, 8, ["item"]);
@@ -8874,17 +9786,17 @@ var _sfc_main$25 = {
 		};
 	}
 };
-var _sfc_setup$25 = _sfc_main$25.setup;
-_sfc_main$25.setup = (props, ctx) => {
+var _sfc_setup$22 = _sfc_main$22.setup;
+_sfc_main$22.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/StoryDetail.vue");
-	return _sfc_setup$25 ? _sfc_setup$25(props, ctx) : void 0;
+	return _sfc_setup$22 ? _sfc_setup$22(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/TourismListing.vue
-var TourismListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$24 });
+var TourismListing_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$21 });
 var PO_STRANICI = 8;
-var _sfc_main$24 = {
+var _sfc_main$21 = {
 	__name: "TourismListing",
 	__ssrInlineRender: true,
 	props: { lokaliteti: {
@@ -8951,51 +9863,51 @@ var _sfc_main$24 = {
 		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<main${ssrRenderAttrs(mergeProps({ class: "pb-12 md:pb-16" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$88, {
+			_push(ssrRenderComponent(_sfc_main$96, {
 				variant: "slika-pozadina",
 				kicker: "Turizam u Tesliću",
 				title: "Priroda, kultura i mjesta za odmor",
 				subtitle: "Planina Borja, Banja Vrućica, vrh Očauš i druge atrakcije kraja na jednom mjestu."
 			}, null, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "pt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "pt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$87, { items: [{
+					if (_push) _push(ssrRenderComponent(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Turizam u Tesliću" }] }, null, _parent, _scopeId));
-					else return [createVNode(_sfc_main$87, { items: [{
+					else return [createVNode(_sfc_main$95, { items: [{
 						label: "Početna",
 						to: "/"
 					}, { label: "Turizam u Tesliću" }] })];
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-6" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-6" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(ssrRenderComponent(_sfc_main$72, {
+					if (_push) _push(ssrRenderComponent(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
 							if (_push) {
-								_push(ssrRenderComponent(_sfc_main$70, {
+								_push(ssrRenderComponent(_sfc_main$78, {
 									modelValue: kategorija.value,
 									"onUpdate:modelValue": ($event) => kategorija.value = $event,
 									options: kategorijeOpcije,
 									placeholder: "Sve kategorije"
 								}, null, _parent, _scopeId));
-								_push(ssrRenderComponent(_sfc_main$71, {
+								_push(ssrRenderComponent(_sfc_main$79, {
 									modelValue: upit.value,
 									"onUpdate:modelValue": ($event) => upit.value = $event,
 									placeholder: "Pretraži atrakcije…"
 								}, null, _parent, _scopeId));
-							} else return [createVNode(_sfc_main$70, {
+							} else return [createVNode(_sfc_main$78, {
 								modelValue: kategorija.value,
 								"onUpdate:modelValue": ($event) => kategorija.value = $event,
 								options: kategorijeOpcije,
 								placeholder: "Sve kategorije"
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 								modelValue: upit.value,
 								"onUpdate:modelValue": ($event) => upit.value = $event,
 								placeholder: "Pretraži atrakcije…"
@@ -9003,17 +9915,17 @@ var _sfc_main$24 = {
 						}),
 						_: 1
 					}, _parent, _scopeId));
-					else return [createVNode(_sfc_main$72, {
+					else return [createVNode(_sfc_main$80, {
 						chips: aktivniChipovi.value,
 						onClear: ocisti,
 						onRemove: ukloni
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$70, {
+						default: withCtx(() => [createVNode(_sfc_main$78, {
 							modelValue: kategorija.value,
 							"onUpdate:modelValue": ($event) => kategorija.value = $event,
 							options: kategorijeOpcije,
 							placeholder: "Sve kategorije"
-						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$71, {
+						}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$79, {
 							modelValue: upit.value,
 							"onUpdate:modelValue": ($event) => upit.value = $event,
 							placeholder: "Pretraži atrakcije…"
@@ -9023,14 +9935,14 @@ var _sfc_main$24 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-8" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-8" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$77, {
+					if (_push) if (!vidljivi.value.length) _push(ssrRenderComponent(_sfc_main$85, {
 						title: "Nema rezultata",
 						text: "Za odabrane filtere nema atrakcija. Pokušajte promijeniti kategoriju ili pretragu."
 					}, {
 						default: withCtx((_, _push, _parent, _scopeId) => {
-							if (_push) _push(ssrRenderComponent(_sfc_main$85, {
+							if (_push) _push(ssrRenderComponent(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -9041,7 +9953,7 @@ var _sfc_main$24 = {
 								}),
 								_: 1
 							}, _parent, _scopeId));
-							else return [createVNode(_sfc_main$85, {
+							else return [createVNode(_sfc_main$93, {
 								variant: "secondary",
 								size: "sm",
 								onClick: ocisti
@@ -9054,19 +9966,19 @@ var _sfc_main$24 = {
 					}, _parent, _scopeId));
 					else {
 						_push(`<!--[-->`);
-						_push(ssrRenderComponent(_sfc_main$82, null, {
+						_push(ssrRenderComponent(_sfc_main$90, null, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(vidljivi.value, (l) => {
-										_push(ssrRenderComponent(_sfc_main$55, {
+										_push(ssrRenderComponent(_sfc_main$63, {
 											key: l.slug,
 											item: l
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (l) => {
-									return openBlock(), createBlock(_sfc_main$55, {
+									return openBlock(), createBlock(_sfc_main$63, {
 										key: l.slug,
 										item: l
 									}, null, 8, ["item"]);
@@ -9076,7 +9988,7 @@ var _sfc_main$24 = {
 						}, _parent, _scopeId));
 						if (ukupnoStranica.value > 1) {
 							_push(`<div class="mt-10 flex justify-center"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$69, {
+							_push(ssrRenderComponent(_sfc_main$77, {
 								modelValue: stranica.value,
 								"onUpdate:modelValue": ($event) => stranica.value = $event,
 								total: ukupnoStranica.value
@@ -9085,12 +9997,12 @@ var _sfc_main$24 = {
 						} else _push(`<!---->`);
 						_push(`<!--]-->`);
 					}
-					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$77, {
+					else return [!vidljivi.value.length ? (openBlock(), createBlock(_sfc_main$85, {
 						key: 2,
 						title: "Nema rezultata",
 						text: "Za odabrane filtere nema atrakcija. Pokušajte promijeniti kategoriju ili pretragu."
 					}, {
-						default: withCtx(() => [createVNode(_sfc_main$85, {
+						default: withCtx(() => [createVNode(_sfc_main$93, {
 							variant: "secondary",
 							size: "sm",
 							onClick: ocisti
@@ -9099,9 +10011,9 @@ var _sfc_main$24 = {
 							_: 1
 						})]),
 						_: 1
-					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$82, null, {
+					})) : (openBlock(), createBlock(Fragment, { key: 3 }, [createVNode(_sfc_main$90, null, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(vidljivi.value, (l) => {
-							return openBlock(), createBlock(_sfc_main$55, {
+							return openBlock(), createBlock(_sfc_main$63, {
 								key: l.slug,
 								item: l
 							}, null, 8, ["item"]);
@@ -9110,7 +10022,7 @@ var _sfc_main$24 = {
 					}), ukupnoStranica.value > 1 ? (openBlock(), createBlock("div", {
 						key: 0,
 						class: "mt-10 flex justify-center"
-					}, [createVNode(_sfc_main$69, {
+					}, [createVNode(_sfc_main$77, {
 						modelValue: stranica.value,
 						"onUpdate:modelValue": ($event) => stranica.value = $event,
 						total: ukupnoStranica.value
@@ -9122,39 +10034,39 @@ var _sfc_main$24 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(ssrRenderComponent(_sfc_main$90, { class: "mt-12" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "mt-12" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="mb-6 font-heading text-2xl font-bold text-heading"${_scopeId}>Ponuda na mapi</h2><div class="max-w-md"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$64, {
+						_push(ssrRenderComponent(_sfc_main$72, {
 							label: "Teslić i okolina",
 							to: "/mapa"
 						}, null, _parent, _scopeId));
 						_push(`</div>`);
-					} else return [createVNode("h2", { class: "mb-6 font-heading text-2xl font-bold text-heading" }, "Ponuda na mapi"), createVNode("div", { class: "max-w-md" }, [createVNode(_sfc_main$64, {
+					} else return [createVNode("h2", { class: "mb-6 font-heading text-2xl font-bold text-heading" }, "Ponuda na mapi"), createVNode("div", { class: "max-w-md" }, [createVNode(_sfc_main$72, {
 						label: "Teslić i okolina",
 						to: "/mapa"
 					})])];
 				}),
 				_: 1
 			}, _parent));
-			if (preporuceni.value.length) _push(ssrRenderComponent(_sfc_main$90, { class: "mt-12" }, {
+			if (preporuceni.value.length) _push(ssrRenderComponent(_sfc_main$98, { class: "mt-12" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h2 class="mb-6 font-heading text-2xl font-bold text-heading"${_scopeId}>Preporučene lokacije</h2>`);
-						_push(ssrRenderComponent(_sfc_main$82, { cols: 3 }, {
+						_push(ssrRenderComponent(_sfc_main$90, { cols: 3 }, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`<!--[-->`);
 									ssrRenderList(preporuceni.value, (l) => {
-										_push(ssrRenderComponent(_sfc_main$55, {
+										_push(ssrRenderComponent(_sfc_main$63, {
 											key: l.slug,
 											item: l
 										}, null, _parent, _scopeId));
 									});
 									_push(`<!--]-->`);
 								} else return [(openBlock(true), createBlock(Fragment, null, renderList(preporuceni.value, (l) => {
-									return openBlock(), createBlock(_sfc_main$55, {
+									return openBlock(), createBlock(_sfc_main$63, {
 										key: l.slug,
 										item: l
 									}, null, 8, ["item"]);
@@ -9162,9 +10074,9 @@ var _sfc_main$24 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-					} else return [createVNode("h2", { class: "mb-6 font-heading text-2xl font-bold text-heading" }, "Preporučene lokacije"), createVNode(_sfc_main$82, { cols: 3 }, {
+					} else return [createVNode("h2", { class: "mb-6 font-heading text-2xl font-bold text-heading" }, "Preporučene lokacije"), createVNode(_sfc_main$90, { cols: 3 }, {
 						default: withCtx(() => [(openBlock(true), createBlock(Fragment, null, renderList(preporuceni.value, (l) => {
-							return openBlock(), createBlock(_sfc_main$55, {
+							return openBlock(), createBlock(_sfc_main$63, {
 								key: l.slug,
 								item: l
 							}, null, 8, ["item"]);
@@ -9179,16 +10091,16 @@ var _sfc_main$24 = {
 		};
 	}
 };
-var _sfc_setup$24 = _sfc_main$24.setup;
-_sfc_main$24.setup = (props, ctx) => {
+var _sfc_setup$21 = _sfc_main$21.setup;
+_sfc_main$21.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/TourismListing.vue");
-	return _sfc_setup$24 ? _sfc_setup$24(props, ctx) : void 0;
+	return _sfc_setup$21 ? _sfc_setup$21(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/Pages/Welcome.vue
-var Welcome_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$23 });
-var _sfc_main$23 = {
+var Welcome_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$20 });
+var _sfc_main$20 = {
 	__name: "Welcome",
 	__ssrInlineRender: true,
 	props: {
@@ -9201,15 +10113,15 @@ var _sfc_main$23 = {
 		};
 	}
 };
-var _sfc_setup$23 = _sfc_main$23.setup;
-_sfc_main$23.setup = (props, ctx) => {
+var _sfc_setup$20 = _sfc_main$20.setup;
+_sfc_main$20.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/Welcome.vue");
-	return _sfc_setup$23 ? _sfc_setup$23(props, ctx) : void 0;
+	return _sfc_setup$20 ? _sfc_setup$20(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/account/AccountSidebar.vue
-var _sfc_main$22 = {
+var _sfc_main$19 = {
 	__name: "AccountSidebar",
 	__ssrInlineRender: true,
 	props: {
@@ -9234,13 +10146,13 @@ var _sfc_main$22 = {
 				}, {
 					default: withCtx((_, _push, _parent, _scopeId) => {
 						if (_push) {
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: it.icon,
 								size: 18,
 								class: unref(page).url === it.to ? "text-primary" : "text-text-muted"
 							}, null, _parent, _scopeId));
 							_push(` ${ssrInterpolate(it.label)}`);
-						} else return [createVNode(_sfc_main$89, {
+						} else return [createVNode(_sfc_main$97, {
 							name: it.icon,
 							size: 18,
 							class: unref(page).url === it.to ? "text-primary" : "text-text-muted"
@@ -9253,15 +10165,15 @@ var _sfc_main$22 = {
 		};
 	}
 };
-var _sfc_setup$22 = _sfc_main$22.setup;
-_sfc_main$22.setup = (props, ctx) => {
+var _sfc_setup$19 = _sfc_main$19.setup;
+_sfc_main$19.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/account/AccountSidebar.vue");
-	return _sfc_setup$22 ? _sfc_setup$22(props, ctx) : void 0;
+	return _sfc_setup$19 ? _sfc_setup$19(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/components/layout/AccountLayout.vue
-var _sfc_main$21 = {
+var _sfc_main$18 = {
 	__name: "AccountLayout",
 	__ssrInlineRender: true,
 	props: {
@@ -9275,11 +10187,19 @@ var _sfc_main$21 = {
 		},
 		initials: {
 			type: String,
-			default: "PĐ"
+			default: ""
 		}
 	},
 	setup(__props) {
 		const page = usePage();
+		const props = __props;
+		const userInitials = computed(() => {
+			if (props.initials) return props.initials;
+			return (page.props.auth?.user?.name || "").split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase();
+		});
+		function logout() {
+			router.post("/logout");
+		}
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<div${ssrRenderAttrs(mergeProps({ class: "flex min-h-screen flex-col bg-surface-alt" }, _attrs))}><header class="flex items-center gap-4 border-b border-border bg-surface px-4 py-3.5 md:px-8">`);
 			_push(ssrRenderComponent(unref(Link), {
@@ -9292,12 +10212,12 @@ var _sfc_main$21 = {
 				}),
 				_: 1
 			}, _parent));
-			_push(`<span class="hidden text-[15px] font-medium text-text-muted sm:inline">Moj nalog</span><div class="ml-auto flex items-center gap-3"><span class="flex size-9 items-center justify-center rounded-full bg-primary-tint text-[13px] font-bold text-primary">${ssrInterpolate(__props.initials)}</span>`);
-			_push(ssrRenderComponent(_sfc_main$85, {
-				href: "#",
+			_push(`<span class="hidden text-[15px] font-medium text-text-muted sm:inline">Moj nalog</span><div class="ml-auto flex items-center gap-3"><span class="flex size-9 items-center justify-center rounded-full bg-primary-tint text-[13px] font-bold text-primary">${ssrInterpolate(userInitials.value)}</span>`);
+			_push(ssrRenderComponent(_sfc_main$93, {
 				variant: "ghost",
 				size: "sm",
-				icon: "log-out"
+				icon: "log-out",
+				onClick: logout
 			}, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(`Odjava`);
@@ -9320,7 +10240,7 @@ var _sfc_main$21 = {
 				}, _parent));
 			});
 			_push(`<!--]--></nav><div class="flex flex-1 gap-8 px-4 py-6 md:px-8 md:py-8"><div class="hidden lg:block">`);
-			_push(ssrRenderComponent(_sfc_main$22, {
+			_push(ssrRenderComponent(_sfc_main$19, {
 				items: __props.items,
 				heading: __props.heading
 			}, null, _parent));
@@ -9330,11 +10250,11 @@ var _sfc_main$21 = {
 		};
 	}
 };
-var _sfc_setup$21 = _sfc_main$21.setup;
-_sfc_main$21.setup = (props, ctx) => {
+var _sfc_setup$18 = _sfc_main$18.setup;
+_sfc_main$18.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/layout/AccountLayout.vue");
-	return _sfc_setup$21 ? _sfc_setup$21(props, ctx) : void 0;
+	return _sfc_setup$18 ? _sfc_setup$18(props, ctx) : void 0;
 };
 //#endregion
 //#region resources/js/constants/account.js
@@ -9350,14 +10270,14 @@ var biznisNav = [
 		to: "/nalog/biznis/objave"
 	},
 	{
+		label: "Nova objava",
+		icon: "plus",
+		to: "/nalog/biznis/objave/nova"
+	},
+	{
 		label: "Oglasi",
 		icon: "megaphone",
 		to: "/nalog/biznis/oglasi"
-	},
-	{
-		label: "Mediji",
-		icon: "image",
-		to: "/nalog/biznis/mediji"
 	},
 	{
 		label: "Postavke",
@@ -9388,236 +10308,158 @@ var autorNav = [
 	}
 ];
 //#endregion
-//#region resources/js/components/account/RichEditor.vue
-var _sfc_main$20 = {
-	__name: "RichEditor",
-	__ssrInlineRender: true,
-	props: {
-		title: {
-			type: String,
-			default: "Naslov priče"
-		},
-		placeholder: {
-			type: String,
-			default: "Počnite pisati svoju priču ovdje… Dodajte podnaslove, slike, citate i povežite je s biznisom, lokacijom ili događajem iz Teslića."
-		}
-	},
-	setup(__props) {
-		const alati = [
-			"bold",
-			"italic",
-			"heading",
-			"list",
-			"link",
-			"image",
-			"quote"
-		];
-		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<div${ssrRenderAttrs(mergeProps({ class: "overflow-hidden rounded-md border border-border bg-surface" }, _attrs))}><div class="flex gap-0.5 border-b border-border bg-surface-alt px-3 py-2"><!--[-->`);
-			ssrRenderList(alati, (a) => {
-				_push(`<button type="button" class="grid size-8 place-items-center rounded-md text-text-muted hover:bg-surface hover:text-heading"${ssrRenderAttr("aria-label", a)}>`);
-				_push(ssrRenderComponent(_sfc_main$89, {
-					name: a,
-					size: 17
-				}, null, _parent));
-				_push(`</button>`);
-			});
-			_push(`<!--]--></div><div class="flex flex-col gap-2.5 px-4 pb-10 pt-4"><p class="text-[22px] font-bold text-heading">${ssrInterpolate(__props.title)}</p><p class="leading-relaxed text-text-muted">${ssrInterpolate(__props.placeholder)}</p></div></div>`);
-		};
-	}
-};
-var _sfc_setup$20 = _sfc_main$20.setup;
-_sfc_main$20.setup = (props, ctx) => {
-	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/account/RichEditor.vue");
-	return _sfc_setup$20 ? _sfc_setup$20(props, ctx) : void 0;
-};
-//#endregion
-//#region resources/js/components/account/UploadBox.vue
-var _sfc_main$19 = {
-	__name: "UploadBox",
-	__ssrInlineRender: true,
-	props: {
-		title: {
-			type: String,
-			default: "Prevucite fotografije ili kliknite za odabir"
-		},
-		hint: {
-			type: String,
-			default: "JPG ili PNG, do 5 MB po fotografiji"
-		},
-		icon: {
-			type: String,
-			default: "image"
-		}
-	},
-	setup(__props) {
-		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<div${ssrRenderAttrs(mergeProps({ class: "flex flex-col items-center justify-center gap-2.5 rounded-md border border-dashed border-border bg-surface p-7 text-center" }, _attrs))}><span class="flex size-12 items-center justify-center rounded-full bg-primary-tint text-primary">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
-				name: __props.icon,
-				size: 22
-			}, null, _parent));
-			_push(`</span><p class="text-[15px] font-semibold text-heading">${ssrInterpolate(__props.title)}</p><p class="text-[13px] text-text-muted">${ssrInterpolate(__props.hint)}</p></div>`);
-		};
-	}
-};
-var _sfc_setup$19 = _sfc_main$19.setup;
-_sfc_main$19.setup = (props, ctx) => {
-	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/account/UploadBox.vue");
-	return _sfc_setup$19 ? _sfc_setup$19(props, ctx) : void 0;
-};
-//#endregion
 //#region resources/js/Pages/account/AutorNovaPrica.vue
-var AutorNovaPrica_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$18 });
-var _sfc_main$18 = {
+var AutorNovaPrica_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$17 });
+var _sfc_main$17 = {
 	__name: "AutorNovaPrica",
 	__ssrInlineRender: true,
+	props: {
+		story: {
+			type: Object,
+			default: null
+		},
+		kategorije: {
+			type: Array,
+			default: () => []
+		}
+	},
 	setup(__props) {
-		const naslov = ref("");
-		const kategorija = ref("Priče iz kraja");
-		const biznis = ref("Pčelarstvo Đukić — Borje");
-		const lokacija = ref("Borje");
-		const dogadjaj = ref("");
+		const props = __props;
+		const form = useForm({
+			naslov: props.story?.naslov ?? "",
+			category_id: props.story?.category_id ?? null,
+			izvod: props.story?.izvod ?? "",
+			sadrzaj: props.story?.sadrzaj ?? "",
+			action: "nacrt"
+		});
+		function submit(action) {
+			form.action = action;
+			if (props.story) form.put(`/nalog/autor/price/${props.story.id}`);
+			else form.post("/nalog/autor/price");
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(autorNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(autorNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Nova priča</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}> Napišite priču i pošaljite je na odobrenje administratoru. </p></div><div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: naslov.value,
-							"onUpdate:modelValue": ($event) => naslov.value = $event,
+						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>${ssrInterpolate(__props.story ? "Uredi priču" : "Nova priča")}</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}> Napišite priču i pošaljite je na odobrenje administratoru. </p></div>`);
+						if (Object.keys(unref(form).errors).length) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Naslov je obavezan."
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`<div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).naslov,
+							"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
 							label: "Naslov",
-							placeholder: "npr. Borje — gdje med ima ukus planine"
+							error: unref(form).errors.naslov
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$70, {
-							modelValue: kategorija.value,
-							"onUpdate:modelValue": ($event) => kategorija.value = $event,
+						_push(ssrRenderComponent(_sfc_main$78, {
+							modelValue: unref(form).category_id,
+							"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
 							label: "Kategorija",
-							options: [
-								"Priče iz kraja",
-								"Domaćini pričaju",
-								"Ljudi i biznisi",
-								"Naša svakodnevica"
-							]
+							placeholder: "Odaberite kategoriju",
+							options: __props.kategorije
 						}, null, _parent, _scopeId));
-						_push(`</div><div class="space-y-1.5"${_scopeId}><p class="text-sm font-semibold text-heading"${_scopeId}>Sadržaj priče</p>`);
-						_push(ssrRenderComponent(_sfc_main$20, null, null, _parent, _scopeId));
-						_push(`</div><div class="space-y-1.5"${_scopeId}><p class="text-sm font-semibold text-heading"${_scopeId}>Galerija fotografija</p>`);
-						_push(ssrRenderComponent(_sfc_main$19, {
-							title: "Dodajte fotografije za priču",
-							hint: "JPG ili PNG, do 5 MB po fotografiji"
+						_push(`</div>`);
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).izvod,
+							"onUpdate:modelValue": ($event) => unref(form).izvod = $event,
+							label: "Kratak izvod",
+							rows: 2
 						}, null, _parent, _scopeId));
-						_push(`</div><div class="space-y-3 border-t border-border pt-6"${_scopeId}><div${_scopeId}><h2 class="font-heading text-lg font-bold text-heading"${_scopeId}>Poveži sa</h2><p class="text-sm text-text-muted"${_scopeId}> Povežite priču sa biznisom, lokacijom ili događajem iz Teslića. </p></div><div class="grid gap-5 md:grid-cols-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$70, {
-							modelValue: biznis.value,
-							"onUpdate:modelValue": ($event) => biznis.value = $event,
-							label: "Biznis",
-							options: ["Pčelarstvo Đukić — Borje", "Sirana Vrućica"]
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).sadrzaj,
+							"onUpdate:modelValue": ($event) => unref(form).sadrzaj = $event,
+							label: "Sadržaj priče",
+							rows: 10
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$70, {
-							modelValue: lokacija.value,
-							"onUpdate:modelValue": ($event) => lokacija.value = $event,
-							label: "Lokacija",
-							options: [
-								"Borje",
-								"Banja Vrućica",
-								"Očauš"
-							]
-						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$70, {
-							modelValue: dogadjaj.value,
-							"onUpdate:modelValue": ($event) => dogadjaj.value = $event,
-							label: "Događaj",
-							placeholder: "Odaberite događaj",
-							options: ["Ljetni festival Teslić 2026", "Sajam domaćih proizvoda"]
-						}, null, _parent, _scopeId));
-						_push(`</div></div></div><div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(`</div><div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "secondary",
-							icon: "save"
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Sačuvaj nacrt`);
-								else return [createTextVNode("Sačuvaj nacrt")];
+								if (_push) _push(` Sačuvaj nacrt `);
+								else return [createTextVNode(" Sačuvaj nacrt ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "primary",
-							icon: "send"
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Pošalji na odobrenje`);
-								else return [createTextVNode("Pošalji na odobrenje")];
+								if (_push) _push(` Pošalji na odobrenje `);
+								else return [createTextVNode(" Pošalji na odobrenje ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
 						_push(`</div></div>`);
 					} else return [createVNode("div", { class: "space-y-6" }, [
-						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Nova priča"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, " Napišite priču i pošaljite je na odobrenje administratoru. ")]),
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, toDisplayString(__props.story ? "Uredi priču" : "Nova priča"), 1), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, " Napišite priču i pošaljite je na odobrenje administratoru. ")]),
+						Object.keys(unref(form).errors).length ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Naslov je obavezan."
+						})) : createCommentVNode("", true),
 						createVNode("div", { class: "space-y-6 rounded-md border border-border bg-surface p-6 md:p-7" }, [
-							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$60, {
-								modelValue: naslov.value,
-								"onUpdate:modelValue": ($event) => naslov.value = $event,
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).naslov,
+								"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
 								label: "Naslov",
-								placeholder: "npr. Borje — gdje med ima ukus planine"
-							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$70, {
-								modelValue: kategorija.value,
-								"onUpdate:modelValue": ($event) => kategorija.value = $event,
+								error: unref(form).errors.naslov
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]), createVNode(_sfc_main$78, {
+								modelValue: unref(form).category_id,
+								"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
 								label: "Kategorija",
-								options: [
-									"Priče iz kraja",
-									"Domaćini pričaju",
-									"Ljudi i biznisi",
-									"Naša svakodnevica"
-								]
-							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
-							createVNode("div", { class: "space-y-1.5" }, [createVNode("p", { class: "text-sm font-semibold text-heading" }, "Sadržaj priče"), createVNode(_sfc_main$20)]),
-							createVNode("div", { class: "space-y-1.5" }, [createVNode("p", { class: "text-sm font-semibold text-heading" }, "Galerija fotografija"), createVNode(_sfc_main$19, {
-								title: "Dodajte fotografije za priču",
-								hint: "JPG ili PNG, do 5 MB po fotografiji"
-							})]),
-							createVNode("div", { class: "space-y-3 border-t border-border pt-6" }, [createVNode("div", null, [createVNode("h2", { class: "font-heading text-lg font-bold text-heading" }, "Poveži sa"), createVNode("p", { class: "text-sm text-text-muted" }, " Povežite priču sa biznisom, lokacijom ili događajem iz Teslića. ")]), createVNode("div", { class: "grid gap-5 md:grid-cols-3" }, [
-								createVNode(_sfc_main$70, {
-									modelValue: biznis.value,
-									"onUpdate:modelValue": ($event) => biznis.value = $event,
-									label: "Biznis",
-									options: ["Pčelarstvo Đukić — Borje", "Sirana Vrućica"]
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-								createVNode(_sfc_main$70, {
-									modelValue: lokacija.value,
-									"onUpdate:modelValue": ($event) => lokacija.value = $event,
-									label: "Lokacija",
-									options: [
-										"Borje",
-										"Banja Vrućica",
-										"Očauš"
-									]
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-								createVNode(_sfc_main$70, {
-									modelValue: dogadjaj.value,
-									"onUpdate:modelValue": ($event) => dogadjaj.value = $event,
-									label: "Događaj",
-									placeholder: "Odaberite događaj",
-									options: ["Ljetni festival Teslić 2026", "Sajam domaćih proizvoda"]
-								}, null, 8, ["modelValue", "onUpdate:modelValue"])
-							])])
+								placeholder: "Odaberite kategoriju",
+								options: __props.kategorije
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"options"
+							])]),
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).izvod,
+								"onUpdate:modelValue": ($event) => unref(form).izvod = $event,
+								label: "Kratak izvod",
+								rows: 2
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).sadrzaj,
+								"onUpdate:modelValue": ($event) => unref(form).sadrzaj = $event,
+								label: "Sadržaj priče",
+								rows: 10
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])
 						]),
-						createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$85, {
+						createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$93, {
 							variant: "secondary",
-							icon: "save"
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
 						}, {
-							default: withCtx(() => [createTextVNode("Sačuvaj nacrt")]),
+							default: withCtx(() => [createTextVNode(" Sačuvaj nacrt ")]),
 							_: 1
-						}), createVNode(_sfc_main$85, {
+						}, 8, ["disabled", "onClick"]), createVNode(_sfc_main$93, {
 							variant: "primary",
-							icon: "send"
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
 						}, {
-							default: withCtx(() => [createTextVNode("Pošalji na odobrenje")]),
+							default: withCtx(() => [createTextVNode(" Pošalji na odobrenje ")]),
 							_: 1
-						})])
+						}, 8, ["disabled", "onClick"])])
 					])];
 				}),
 				_: 1
@@ -9625,45 +10467,10 @@ var _sfc_main$18 = {
 		};
 	}
 };
-var _sfc_setup$18 = _sfc_main$18.setup;
-_sfc_main$18.setup = (props, ctx) => {
-	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/AutorNovaPrica.vue");
-	return _sfc_setup$18 ? _sfc_setup$18(props, ctx) : void 0;
-};
-//#endregion
-//#region resources/js/components/account/ToggleSwitch.vue
-var _sfc_main$17 = {
-	__name: "ToggleSwitch",
-	__ssrInlineRender: true,
-	props: /*@__PURE__*/ mergeModels({ label: {
-		type: String,
-		default: ""
-	} }, {
-		"modelValue": {
-			type: Boolean,
-			default: false
-		},
-		"modelModifiers": {}
-	}),
-	emits: ["update:modelValue"],
-	setup(__props) {
-		const model = useModel(__props, "modelValue");
-		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<button${ssrRenderAttrs(mergeProps({
-				type: "button",
-				role: "switch",
-				"aria-checked": model.value,
-				"aria-label": __props.label || void 0,
-				class: ["relative h-6 w-11 shrink-0 rounded-full transition-colors", model.value ? "bg-primary" : "bg-border"]
-			}, _attrs))}><span class="${ssrRenderClass([model.value ? "left-[23px]" : "left-0.5", "absolute top-0.5 size-[18px] rounded-full bg-white shadow-[var(--shadow-sm)] transition-all"])}"></span></button>`);
-		};
-	}
-};
 var _sfc_setup$17 = _sfc_main$17.setup;
 _sfc_main$17.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/account/ToggleSwitch.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/AutorNovaPrica.vue");
 	return _sfc_setup$17 ? _sfc_setup$17(props, ctx) : void 0;
 };
 //#endregion
@@ -9672,59 +10479,99 @@ var _sfc_main$16 = {
 	__name: "SettingsPanel",
 	__ssrInlineRender: true,
 	setup(__props) {
-		const email = ref("info@pcelarstvo-djukic.ba");
-		const nova = ref("");
-		const potvrda = ref("");
-		const statusObavijesti = ref(true);
-		const newsletter = ref(false);
+		const page = usePage();
+		const status = computed(() => page.props.flash?.status);
+		const user = computed(() => page.props.auth?.user || {});
+		const profil = useForm({
+			name: user.value.name ?? "",
+			email: user.value.email ?? ""
+		});
+		const lozinka = useForm({
+			current_password: "",
+			password: "",
+			password_confirmation: ""
+		});
+		function sacuvajProfil() {
+			profil.put("/user/profile-information", { preserveScroll: true });
+		}
+		function promijeniLozinku() {
+			lozinka.put("/user/password", {
+				preserveScroll: true,
+				onSuccess: () => lozinka.reset()
+			});
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<div${ssrRenderAttrs(mergeProps({ class: "space-y-6" }, _attrs))}><div><h1 class="font-heading text-[28px] font-bold text-heading">Postavke</h1><p class="mt-1 text-[15px] text-text-muted">Upravljajte nalogom i obavijestima.</p></div><div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">Nalog</h2>`);
-			_push(ssrRenderComponent(_sfc_main$60, {
-				modelValue: email.value,
-				"onUpdate:modelValue": ($event) => email.value = $event,
+			_push(`<div${ssrRenderAttrs(mergeProps({ class: "space-y-6" }, _attrs))}><div><h1 class="font-heading text-[28px] font-bold text-heading">Postavke</h1><p class="mt-1 text-[15px] text-text-muted">Upravljajte podacima naloga i lozinkom.</p></div>`);
+			if (status.value) _push(ssrRenderComponent(_sfc_main$86, {
+				variant: "uspjeh",
+				title: "Sačuvano",
+				text: status.value
+			}, null, _parent));
+			else _push(`<!---->`);
+			_push(`<div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">Podaci naloga</h2><div class="grid gap-5 md:grid-cols-2">`);
+			_push(ssrRenderComponent(_sfc_main$68, {
+				modelValue: unref(profil).name,
+				"onUpdate:modelValue": ($event) => unref(profil).name = $event,
+				label: "Ime / naziv",
+				error: unref(profil).errors.name
+			}, null, _parent));
+			_push(ssrRenderComponent(_sfc_main$68, {
+				modelValue: unref(profil).email,
+				"onUpdate:modelValue": ($event) => unref(profil).email = $event,
 				label: "E-mail",
-				type: "email"
+				type: "email",
+				error: unref(profil).errors.email
 			}, null, _parent));
-			_push(`<div class="grid gap-5 md:grid-cols-2">`);
-			_push(ssrRenderComponent(_sfc_main$60, {
-				modelValue: nova.value,
-				"onUpdate:modelValue": ($event) => nova.value = $event,
-				label: "Nova lozinka",
-				type: "password",
-				placeholder: "••••••••"
-			}, null, _parent));
-			_push(ssrRenderComponent(_sfc_main$60, {
-				modelValue: potvrda.value,
-				"onUpdate:modelValue": ($event) => potvrda.value = $event,
-				label: "Potvrdi novu lozinku",
-				type: "password",
-				placeholder: "••••••••",
-				helper: "Najmanje 8 znakova"
-			}, null, _parent));
-			_push(`</div></div><div class="rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">Obavijesti</h2><div class="mt-2 flex items-center gap-4 border-t border-border py-4"><div class="flex-1"><p class="text-[15px] font-semibold text-heading">E-mail obavijesti o statusu objava</p><p class="text-[13px] text-text-muted">Primajte e-mail kada se status vaše objave promijeni.</p></div>`);
-			_push(ssrRenderComponent(_sfc_main$17, {
-				modelValue: statusObavijesti.value,
-				"onUpdate:modelValue": ($event) => statusObavijesti.value = $event,
-				label: "E-mail obavijesti"
-			}, null, _parent));
-			_push(`</div><div class="flex items-center gap-4 border-t border-border py-4"><div class="flex-1"><p class="text-[15px] font-semibold text-heading">Newsletter</p><p class="text-[13px] text-text-muted">Novosti, savjeti i obavijesti o platformi.</p></div>`);
-			_push(ssrRenderComponent(_sfc_main$17, {
-				modelValue: newsletter.value,
-				"onUpdate:modelValue": ($event) => newsletter.value = $event,
-				label: "Newsletter"
-			}, null, _parent));
-			_push(`</div></div><div class="flex justify-end">`);
-			_push(ssrRenderComponent(_sfc_main$85, {
+			_push(`</div><div class="flex justify-end">`);
+			_push(ssrRenderComponent(_sfc_main$93, {
 				variant: "primary",
-				icon: "check"
+				icon: "check",
+				disabled: unref(profil).processing,
+				onClick: sacuvajProfil
 			}, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(`Sačuvaj izmjene`);
-					else return [createTextVNode("Sačuvaj izmjene")];
+					if (_push) _push(` Sačuvaj podatke `);
+					else return [createTextVNode(" Sačuvaj podatke ")];
 				}),
 				_: 1
 			}, _parent));
-			_push(`</div></div>`);
+			_push(`</div></div><div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"><h2 class="font-heading text-lg font-bold text-heading">Promjena lozinke</h2>`);
+			_push(ssrRenderComponent(_sfc_main$68, {
+				modelValue: unref(lozinka).current_password,
+				"onUpdate:modelValue": ($event) => unref(lozinka).current_password = $event,
+				label: "Trenutna lozinka",
+				type: "password",
+				error: unref(lozinka).errors.current_password
+			}, null, _parent));
+			_push(`<div class="grid gap-5 md:grid-cols-2">`);
+			_push(ssrRenderComponent(_sfc_main$68, {
+				modelValue: unref(lozinka).password,
+				"onUpdate:modelValue": ($event) => unref(lozinka).password = $event,
+				label: "Nova lozinka",
+				type: "password",
+				error: unref(lozinka).errors.password
+			}, null, _parent));
+			_push(ssrRenderComponent(_sfc_main$68, {
+				modelValue: unref(lozinka).password_confirmation,
+				"onUpdate:modelValue": ($event) => unref(lozinka).password_confirmation = $event,
+				label: "Potvrdi novu lozinku",
+				type: "password",
+				helper: "Najmanje 8 znakova"
+			}, null, _parent));
+			_push(`</div><div class="flex justify-end">`);
+			_push(ssrRenderComponent(_sfc_main$93, {
+				variant: "secondary",
+				icon: "key",
+				disabled: unref(lozinka).processing,
+				onClick: promijeniLozinku
+			}, {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) _push(` Promijeni lozinku `);
+					else return [createTextVNode(" Promijeni lozinku ")];
+				}),
+				_: 1
+			}, _parent));
+			_push(`</div></div></div>`);
 		};
 	}
 };
@@ -9742,7 +10589,7 @@ var _sfc_main$15 = {
 	__ssrInlineRender: true,
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(autorNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(autorNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(ssrRenderComponent(_sfc_main$16, null, null, _parent, _scopeId));
 					else return [createVNode(_sfc_main$16)];
@@ -9774,22 +10621,22 @@ var _sfc_main$14 = {
 			if (__props.item.thumb) _push(`<img${ssrRenderAttr("src", __props.item.thumb)} alt="" class="size-full object-cover">`);
 			else _push(`<!---->`);
 			_push(`</div><div class="min-w-0 flex-1"><p class="truncate font-semibold text-heading">${ssrInterpolate(__props.item.naslov)}</p><p class="text-[13px] text-text-muted">${ssrInterpolate(__props.item.meta)}</p></div>`);
-			if (__props.item.status) _push(ssrRenderComponent(_sfc_main$79, { variant: __props.item.status }, null, _parent));
+			if (__props.item.status) _push(ssrRenderComponent(_sfc_main$87, { variant: __props.item.status }, null, _parent));
 			else _push(`<!---->`);
 			_push(`<div class="flex gap-2"><button type="button" class="grid size-9 place-items-center rounded-md bg-surface-alt text-text-muted hover:text-primary" aria-label="Uredi">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "pencil",
 				size: 16
 			}, null, _parent));
 			_push(`</button><button type="button" class="grid size-9 place-items-center rounded-md bg-surface-alt text-text-muted hover:text-error" aria-label="Obriši">`);
-			_push(ssrRenderComponent(_sfc_main$89, {
+			_push(ssrRenderComponent(_sfc_main$97, {
 				name: "trash-2",
 				size: 16
 			}, null, _parent));
 			_push(`</button></div></div>`);
 			if (__props.item.reason) {
 				_push(`<div class="flex items-start gap-2 border-t border-border bg-error-tint px-4 py-2.5 text-[13px] text-error">`);
-				_push(ssrRenderComponent(_sfc_main$89, {
+				_push(ssrRenderComponent(_sfc_main$97, {
 					name: "info",
 					size: 16,
 					class: "mt-0.5 shrink-0"
@@ -9812,30 +10659,17 @@ var AutorPrice_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$
 var _sfc_main$13 = {
 	__name: "AutorPrice",
 	__ssrInlineRender: true,
+	props: { price: {
+		type: Array,
+		default: () => []
+	} },
 	setup(__props) {
-		const price = [
-			{
-				naslov: "Borje — gdje med ima ukus planine",
-				meta: "Objavljeno 19.06.2026. · Priča",
-				status: "objavljeno"
-			},
-			{
-				naslov: "Pet mjesta za posjetiti u okolini Teslića",
-				meta: "Poslano 21.06.2026. · Priča",
-				status: "na-odobrenju"
-			},
-			{
-				naslov: "Stare zanate Teslića čuvaju mladi",
-				meta: "Sačuvano 16.06.2026. · Nacrt",
-				status: "nacrt"
-			}
-		];
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(autorNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(autorNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="space-y-6"${_scopeId}><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Moje priče</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaše objavljene i sačuvane priče.</p></div>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							to: "/nalog/autor/nova-prica",
 							variant: "primary",
 							icon: "plus"
@@ -9846,27 +10680,52 @@ var _sfc_main$13 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`</div><div class="space-y-3"${_scopeId}><!--[-->`);
-						ssrRenderList(price, (p, i) => {
-							_push(ssrRenderComponent(_sfc_main$14, {
-								key: i,
-								item: p
-							}, null, _parent, _scopeId));
-						});
-						_push(`<!--]--></div></div>`);
-					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moje priče"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaše objavljene i sačuvane priče.")]), createVNode(_sfc_main$85, {
+						_push(`</div>`);
+						if (__props.price.length) {
+							_push(`<div class="space-y-3"${_scopeId}><!--[-->`);
+							ssrRenderList(__props.price, (p) => {
+								_push(ssrRenderComponent(unref(Link), {
+									key: p.id,
+									href: p.editUrl,
+									class: "block"
+								}, {
+									default: withCtx((_, _push, _parent, _scopeId) => {
+										if (_push) _push(ssrRenderComponent(_sfc_main$14, { item: p }, null, _parent, _scopeId));
+										else return [createVNode(_sfc_main$14, { item: p }, null, 8, ["item"])];
+									}),
+									_: 2
+								}, _parent, _scopeId));
+							});
+							_push(`<!--]--></div>`);
+						} else _push(ssrRenderComponent(_sfc_main$85, {
+							title: "Još nema priča",
+							text: "Kreirajte prvu priču i pošaljite je na odobrenje."
+						}, null, _parent, _scopeId));
+						_push(`</div>`);
+					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moje priče"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaše objavljene i sačuvane priče.")]), createVNode(_sfc_main$93, {
 						to: "/nalog/autor/nova-prica",
 						variant: "primary",
 						icon: "plus"
 					}, {
 						default: withCtx(() => [createTextVNode("Nova priča")]),
 						_: 1
-					})]), createVNode("div", { class: "space-y-3" }, [(openBlock(), createBlock(Fragment, null, renderList(price, (p, i) => {
-						return createVNode(_sfc_main$14, {
-							key: i,
-							item: p
-						}, null, 8, ["item"]);
-					}), 64))])])];
+					})]), __props.price.length ? (openBlock(), createBlock("div", {
+						key: 0,
+						class: "space-y-3"
+					}, [(openBlock(true), createBlock(Fragment, null, renderList(__props.price, (p) => {
+						return openBlock(), createBlock(unref(Link), {
+							key: p.id,
+							href: p.editUrl,
+							class: "block"
+						}, {
+							default: withCtx(() => [createVNode(_sfc_main$14, { item: p }, null, 8, ["item"])]),
+							_: 2
+						}, 1032, ["href"]);
+					}), 128))])) : (openBlock(), createBlock(_sfc_main$85, {
+						key: 1,
+						title: "Još nema priča",
+						text: "Kreirajte prvu priču i pošaljite je na odobrenje."
+					}))])];
 				}),
 				_: 1
 			}, _parent));
@@ -9880,132 +10739,480 @@ _sfc_main$13.setup = (props, ctx) => {
 	return _sfc_setup$13 ? _sfc_setup$13(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/components/account/AvatarUpload.vue
+//#region resources/js/Pages/account/AutorProfil.vue
+var AutorProfil_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$12 });
 var _sfc_main$12 = {
-	__name: "AvatarUpload",
+	__name: "AutorProfil",
 	__ssrInlineRender: true,
-	props: {
-		src: {
-			type: String,
-			default: ""
-		},
-		hint: {
-			type: String,
-			default: "JPG ili PNG, do 2 MB"
-		}
-	},
+	props: { profil: {
+		type: Object,
+		default: () => ({})
+	} },
 	setup(__props) {
+		const props = __props;
+		const form = useForm({
+			name: props.profil.name ?? "",
+			bio: props.profil.bio ?? "",
+			avatar: null
+		});
+		const preview = computed(() => {
+			if (form.avatar) return URL.createObjectURL(form.avatar);
+			return props.profil.avatar || "";
+		});
+		const initials = computed(() => (form.name || "").split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase());
+		function onAvatar(e) {
+			form.avatar = e.target.files[0] ?? null;
+		}
+		function submit() {
+			form.post("/nalog/autor/profil", { preserveScroll: true });
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<div${ssrRenderAttrs(mergeProps({ class: "flex items-center gap-4" }, _attrs))}><div class="flex size-18 items-center justify-center overflow-hidden rounded-full bg-primary-tint text-primary">`);
-			if (__props.src) _push(`<img${ssrRenderAttr("src", __props.src)} alt="" class="size-full object-cover">`);
-			else _push(ssrRenderComponent(_sfc_main$89, {
-				name: "user",
-				size: 30
-			}, null, _parent));
-			_push(`</div><div class="flex flex-col gap-1.5">`);
-			_push(ssrRenderComponent(_sfc_main$85, {
-				variant: "secondary",
-				size: "sm",
-				icon: "upload"
-			}, {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(autorNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) _push(`Promijeni fotografiju`);
-					else return [createTextVNode("Promijeni fotografiju")];
+					if (_push) {
+						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Autorski profil</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaše javne informacije kao autora priča.</p></div>`);
+						if (_ctx.$page.props.flash?.status) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`<div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="flex items-center gap-5"${_scopeId}><span class="size-18 shrink-0 overflow-hidden rounded-full bg-primary-tint"${_scopeId}>`);
+						if (preview.value) _push(`<img${ssrRenderAttr("src", preview.value)} alt="" class="size-full object-cover"${_scopeId}>`);
+						else _push(`<span class="flex size-full items-center justify-center text-2xl font-bold text-primary"${_scopeId}>${ssrInterpolate(initials.value)}</span>`);
+						_push(`</span><label class="cursor-pointer"${_scopeId}><span class="inline-flex items-center rounded-sm border border-border px-3 py-2 text-sm font-semibold text-heading hover:bg-surface-alt"${_scopeId}> Promijeni fotografiju </span><input type="file" accept="image/*" class="hidden"${_scopeId}></label></div>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).name,
+							"onUpdate:modelValue": ($event) => unref(form).name = $event,
+							label: "Ime i prezime",
+							error: unref(form).errors.name
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).bio,
+							"onUpdate:modelValue": ($event) => unref(form).bio = $event,
+							label: "Biografija",
+							rows: 4,
+							maxlength: 1e3
+						}, null, _parent, _scopeId));
+						_push(`<div class="flex justify-end"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
+							variant: "primary",
+							icon: "check",
+							disabled: unref(form).processing,
+							onClick: submit
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Sačuvaj profil `);
+								else return [createTextVNode(" Sačuvaj profil ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</div></div></div>`);
+					} else return [createVNode("div", { class: "space-y-6" }, [
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Autorski profil"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaše javne informacije kao autora priča.")]),
+						_ctx.$page.props.flash?.status ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
+						}, null, 8, ["text"])) : createCommentVNode("", true),
+						createVNode("div", { class: "space-y-6 rounded-md border border-border bg-surface p-6 md:p-7" }, [
+							createVNode("div", { class: "flex items-center gap-5" }, [createVNode("span", { class: "size-18 shrink-0 overflow-hidden rounded-full bg-primary-tint" }, [preview.value ? (openBlock(), createBlock("img", {
+								key: 0,
+								src: preview.value,
+								alt: "",
+								class: "size-full object-cover"
+							}, null, 8, ["src"])) : (openBlock(), createBlock("span", {
+								key: 1,
+								class: "flex size-full items-center justify-center text-2xl font-bold text-primary"
+							}, toDisplayString(initials.value), 1))]), createVNode("label", { class: "cursor-pointer" }, [createVNode("span", { class: "inline-flex items-center rounded-sm border border-border px-3 py-2 text-sm font-semibold text-heading hover:bg-surface-alt" }, " Promijeni fotografiju "), createVNode("input", {
+								type: "file",
+								accept: "image/*",
+								class: "hidden",
+								onChange: onAvatar
+							}, null, 32)])]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).name,
+								"onUpdate:modelValue": ($event) => unref(form).name = $event,
+								label: "Ime i prezime",
+								error: unref(form).errors.name
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]),
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).bio,
+								"onUpdate:modelValue": ($event) => unref(form).bio = $event,
+								label: "Biografija",
+								rows: 4,
+								maxlength: 1e3
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode("div", { class: "flex justify-end" }, [createVNode(_sfc_main$93, {
+								variant: "primary",
+								icon: "check",
+								disabled: unref(form).processing,
+								onClick: submit
+							}, {
+								default: withCtx(() => [createTextVNode(" Sačuvaj profil ")]),
+								_: 1
+							}, 8, ["disabled"])])
+						])
+					])];
 				}),
 				_: 1
 			}, _parent));
-			_push(`<p class="text-[13px] text-text-muted">${ssrInterpolate(__props.hint)}</p></div></div>`);
 		};
 	}
 };
 var _sfc_setup$12 = _sfc_main$12.setup;
 _sfc_main$12.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/account/AvatarUpload.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/AutorProfil.vue");
 	return _sfc_setup$12 ? _sfc_setup$12(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/Pages/account/AutorProfil.vue
-var AutorProfil_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$11 });
+//#region resources/js/Pages/account/BiznisObjavaForm.vue
+var BiznisObjavaForm_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$11 });
 var _sfc_main$11 = {
-	__name: "AutorProfil",
+	__name: "BiznisObjavaForm",
 	__ssrInlineRender: true,
+	props: {
+		objava: {
+			type: Object,
+			default: null
+		},
+		kategorije: {
+			type: Array,
+			default: () => []
+		}
+	},
 	setup(__props) {
-		const ime = ref("Marko Đukić");
-		const bio = ref("Rođen u Tesliću, pišem o ljudima, zanatima i mjestima rodnog kraja. Pratim domaće proizvođače i priče koje se prenose s koljena na koljeno.");
+		const props = __props;
+		const form = useForm({
+			naslov: props.objava?.naslov ?? "",
+			category_id: props.objava?.category_id ?? null,
+			opis: props.objava?.opis ?? "",
+			opis_dug: props.objava?.opis_dug ?? "",
+			lokacija: props.objava?.lokacija ?? "",
+			kontakt: {
+				telefon: props.objava?.kontakt?.telefon ?? "",
+				email: props.objava?.kontakt?.email ?? "",
+				web: props.objava?.kontakt?.web ?? "",
+				radnoVrijeme: props.objava?.kontakt?.radnoVrijeme ?? "",
+				adresa: props.objava?.kontakt?.adresa ?? ""
+			},
+			lat: props.objava?.lat ?? "",
+			lng: props.objava?.lng ?? "",
+			naslovna: null,
+			galerija: [],
+			action: "nacrt"
+		});
+		function onNaslovna(e) {
+			form.naslovna = e.target.files[0] ?? null;
+		}
+		function onGalerija(e) {
+			form.galerija = Array.from(e.target.files);
+		}
+		function submit(action) {
+			form.action = action;
+			const url = props.objava ? `/nalog/biznis/objave/${props.objava.id}` : "/nalog/biznis/objave";
+			form.post(url, { preserveScroll: true });
+		}
+		function ukloniMedij(id) {
+			router.delete(`/nalog/biznis/objave/medij/${id}`, { preserveScroll: true });
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(autorNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Autorski profil</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaše javne informacije kao autora priča.</p></div><div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$12, null, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: ime.value,
-							"onUpdate:modelValue": ($event) => ime.value = $event,
-							label: "Ime i prezime"
+						_push(`<div class="space-y-6"${_scopeId}><div class="flex items-center gap-3"${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>${ssrInterpolate(__props.objava ? "Uredi objavu" : "Nova objava")}</h1>`);
+						if (__props.objava) _push(ssrRenderComponent(_sfc_main$87, { variant: __props.objava.status }, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`</div>`);
+						if (_ctx.$page.props.flash?.status) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$59, {
-							modelValue: bio.value,
-							"onUpdate:modelValue": ($event) => bio.value = $event,
-							label: "Biografija",
-							maxlength: 500
+						else _push(`<!---->`);
+						if (unref(form).errors.naslov) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "greska",
+							title: "Provjerite podatke",
+							text: "Naziv je obavezan."
 						}, null, _parent, _scopeId));
-						_push(`<div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						else _push(`<!---->`);
+						_push(`<div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).naslov,
+							"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
+							label: "Naziv",
+							error: unref(form).errors.naslov
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$78, {
+							modelValue: unref(form).category_id,
+							"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
+							label: "Kategorija",
+							placeholder: "Odaberite kategoriju",
+							options: __props.kategorije
+						}, null, _parent, _scopeId));
+						_push(`</div>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).opis,
+							"onUpdate:modelValue": ($event) => unref(form).opis = $event,
+							label: "Kratak opis"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).opis_dug,
+							"onUpdate:modelValue": ($event) => unref(form).opis_dug = $event,
+							label: "Detaljan opis",
+							rows: 5
+						}, null, _parent, _scopeId));
+						_push(`<div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).lokacija,
+							"onUpdate:modelValue": ($event) => unref(form).lokacija = $event,
+							label: "Lokacija (tekst)"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).kontakt.adresa,
+							"onUpdate:modelValue": ($event) => unref(form).kontakt.adresa = $event,
+							label: "Adresa"
+						}, null, _parent, _scopeId));
+						_push(`</div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).kontakt.telefon,
+							"onUpdate:modelValue": ($event) => unref(form).kontakt.telefon = $event,
+							label: "Telefon",
+							type: "tel"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).kontakt.email,
+							"onUpdate:modelValue": ($event) => unref(form).kontakt.email = $event,
+							label: "E-mail",
+							type: "email"
+						}, null, _parent, _scopeId));
+						_push(`</div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).kontakt.web,
+							"onUpdate:modelValue": ($event) => unref(form).kontakt.web = $event,
+							label: "Web"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).kontakt.radnoVrijeme,
+							"onUpdate:modelValue": ($event) => unref(form).kontakt.radnoVrijeme = $event,
+							label: "Radno vrijeme"
+						}, null, _parent, _scopeId));
+						_push(`</div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).lat,
+							"onUpdate:modelValue": ($event) => unref(form).lat = $event,
+							label: "Geo. širina (lat)"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).lng,
+							"onUpdate:modelValue": ($event) => unref(form).lng = $event,
+							label: "Geo. dužina (lng)"
+						}, null, _parent, _scopeId));
+						_push(`</div></div><div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><h2 class="font-heading text-lg font-bold text-heading"${_scopeId}>Fotografije</h2><div class="grid gap-5 md:grid-cols-2"${_scopeId}><div class="space-y-2"${_scopeId}><p class="text-sm font-semibold text-heading"${_scopeId}>Naslovna</p><div class="mb-2 flex h-32 items-center justify-center overflow-hidden rounded-md bg-primary-tint"${_scopeId}>`);
+						if (__props.objava?.naslovna) _push(`<img${ssrRenderAttr("src", __props.objava.naslovna)} alt="" class="size-full object-cover"${_scopeId}>`);
+						else _push(ssrRenderComponent(_sfc_main$97, {
+							name: "image",
+							size: 28,
+							class: "text-primary-tint-2"
+						}, null, _parent, _scopeId));
+						_push(`</div><input type="file" accept="image/*"${_scopeId}></div><div class="space-y-2"${_scopeId}><p class="text-sm font-semibold text-heading"${_scopeId}>Dodaj u galeriju</p><input type="file" accept="image/*" multiple${_scopeId}></div></div>`);
+						if (__props.objava?.galerija?.length) {
+							_push(`<div class="grid grid-cols-3 gap-3 sm:grid-cols-4"${_scopeId}><!--[-->`);
+							ssrRenderList(__props.objava.galerija, (m) => {
+								_push(`<div class="relative h-28 overflow-hidden rounded-md bg-primary-tint"${_scopeId}><img${ssrRenderAttr("src", m.src)} alt="" class="size-full object-cover"${_scopeId}><button type="button" class="absolute right-1.5 top-1.5 inline-flex size-7 items-center justify-center rounded-full bg-surface/90 text-error" aria-label="Ukloni"${_scopeId}>`);
+								_push(ssrRenderComponent(_sfc_main$97, {
+									name: "trash-2",
+									size: 14
+								}, null, _parent, _scopeId));
+								_push(`</button></div>`);
+							});
+							_push(`<!--]--></div>`);
+						} else _push(`<!---->`);
+						_push(`</div><div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "secondary",
-							icon: "save"
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Sačuvaj nacrt`);
-								else return [createTextVNode("Sačuvaj nacrt")];
+								if (_push) _push(` Sačuvaj nacrt `);
+								else return [createTextVNode(" Sačuvaj nacrt ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "primary",
-							icon: "send"
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Pošalji na odobrenje`);
-								else return [createTextVNode("Pošalji na odobrenje")];
+								if (_push) _push(` Pošalji na odobrenje `);
+								else return [createTextVNode(" Pošalji na odobrenje ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`</div></div><div class="space-y-3"${_scopeId}><p class="text-[13px] font-semibold uppercase tracking-wide text-text-muted"${_scopeId}> Pregled — Blok o autoru </p><div class="flex gap-5 rounded-md border border-border bg-surface p-6"${_scopeId}><span class="flex size-18 shrink-0 items-center justify-center rounded-full bg-primary-tint text-2xl font-bold text-primary"${_scopeId}> MĐ </span><div class="space-y-1.5"${_scopeId}><p class="text-xs font-bold uppercase tracking-wider text-text-muted"${_scopeId}>O autoru</p><p class="font-heading text-xl font-bold text-heading"${_scopeId}>${ssrInterpolate(ime.value)}</p><p class="leading-relaxed text-text"${_scopeId}>${ssrInterpolate(bio.value)}</p></div></div></div></div>`);
+						_push(`</div></div>`);
 					} else return [createVNode("div", { class: "space-y-6" }, [
-						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Autorski profil"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaše javne informacije kao autora priča.")]),
+						createVNode("div", { class: "flex items-center gap-3" }, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, toDisplayString(__props.objava ? "Uredi objavu" : "Nova objava"), 1), __props.objava ? (openBlock(), createBlock(_sfc_main$87, {
+							key: 0,
+							variant: __props.objava.status
+						}, null, 8, ["variant"])) : createCommentVNode("", true)]),
+						_ctx.$page.props.flash?.status ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
+						}, null, 8, ["text"])) : createCommentVNode("", true),
+						unref(form).errors.naslov ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 1,
+							variant: "greska",
+							title: "Provjerite podatke",
+							text: "Naziv je obavezan."
+						})) : createCommentVNode("", true),
 						createVNode("div", { class: "space-y-6 rounded-md border border-border bg-surface p-6 md:p-7" }, [
-							createVNode(_sfc_main$12),
-							createVNode(_sfc_main$60, {
-								modelValue: ime.value,
-								"onUpdate:modelValue": ($event) => ime.value = $event,
-								label: "Ime i prezime"
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).naslov,
+								"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
+								label: "Naziv",
+								error: unref(form).errors.naslov
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]), createVNode(_sfc_main$78, {
+								modelValue: unref(form).category_id,
+								"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
+								label: "Kategorija",
+								placeholder: "Odaberite kategoriju",
+								options: __props.kategorije
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"options"
+							])]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).opis,
+								"onUpdate:modelValue": ($event) => unref(form).opis = $event,
+								label: "Kratak opis"
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode(_sfc_main$59, {
-								modelValue: bio.value,
-								"onUpdate:modelValue": ($event) => bio.value = $event,
-								label: "Biografija",
-								maxlength: 500
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).opis_dug,
+								"onUpdate:modelValue": ($event) => unref(form).opis_dug = $event,
+								label: "Detaljan opis",
+								rows: 5
 							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-							createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$85, {
-								variant: "secondary",
-								icon: "save"
-							}, {
-								default: withCtx(() => [createTextVNode("Sačuvaj nacrt")]),
-								_: 1
-							}), createVNode(_sfc_main$85, {
-								variant: "primary",
-								icon: "send"
-							}, {
-								default: withCtx(() => [createTextVNode("Pošalji na odobrenje")]),
-								_: 1
-							})])
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).lokacija,
+								"onUpdate:modelValue": ($event) => unref(form).lokacija = $event,
+								label: "Lokacija (tekst)"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).kontakt.adresa,
+								"onUpdate:modelValue": ($event) => unref(form).kontakt.adresa = $event,
+								label: "Adresa"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).kontakt.telefon,
+								"onUpdate:modelValue": ($event) => unref(form).kontakt.telefon = $event,
+								label: "Telefon",
+								type: "tel"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).kontakt.email,
+								"onUpdate:modelValue": ($event) => unref(form).kontakt.email = $event,
+								label: "E-mail",
+								type: "email"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).kontakt.web,
+								"onUpdate:modelValue": ($event) => unref(form).kontakt.web = $event,
+								label: "Web"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).kontakt.radnoVrijeme,
+								"onUpdate:modelValue": ($event) => unref(form).kontakt.radnoVrijeme = $event,
+								label: "Radno vrijeme"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).lat,
+								"onUpdate:modelValue": ($event) => unref(form).lat = $event,
+								label: "Geo. širina (lat)"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).lng,
+								"onUpdate:modelValue": ($event) => unref(form).lng = $event,
+								label: "Geo. dužina (lng)"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])])
 						]),
-						createVNode("div", { class: "space-y-3" }, [createVNode("p", { class: "text-[13px] font-semibold uppercase tracking-wide text-text-muted" }, " Pregled — Blok o autoru "), createVNode("div", { class: "flex gap-5 rounded-md border border-border bg-surface p-6" }, [createVNode("span", { class: "flex size-18 shrink-0 items-center justify-center rounded-full bg-primary-tint text-2xl font-bold text-primary" }, " MĐ "), createVNode("div", { class: "space-y-1.5" }, [
-							createVNode("p", { class: "text-xs font-bold uppercase tracking-wider text-text-muted" }, "O autoru"),
-							createVNode("p", { class: "font-heading text-xl font-bold text-heading" }, toDisplayString(ime.value), 1),
-							createVNode("p", { class: "leading-relaxed text-text" }, toDisplayString(bio.value), 1)
-						])])])
+						createVNode("div", { class: "space-y-5 rounded-md border border-border bg-surface p-6 md:p-7" }, [
+							createVNode("h2", { class: "font-heading text-lg font-bold text-heading" }, "Fotografije"),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode("div", { class: "space-y-2" }, [
+								createVNode("p", { class: "text-sm font-semibold text-heading" }, "Naslovna"),
+								createVNode("div", { class: "mb-2 flex h-32 items-center justify-center overflow-hidden rounded-md bg-primary-tint" }, [__props.objava?.naslovna ? (openBlock(), createBlock("img", {
+									key: 0,
+									src: __props.objava.naslovna,
+									alt: "",
+									class: "size-full object-cover"
+								}, null, 8, ["src"])) : (openBlock(), createBlock(_sfc_main$97, {
+									key: 1,
+									name: "image",
+									size: 28,
+									class: "text-primary-tint-2"
+								}))]),
+								createVNode("input", {
+									type: "file",
+									accept: "image/*",
+									onChange: onNaslovna
+								}, null, 32)
+							]), createVNode("div", { class: "space-y-2" }, [createVNode("p", { class: "text-sm font-semibold text-heading" }, "Dodaj u galeriju"), createVNode("input", {
+								type: "file",
+								accept: "image/*",
+								multiple: "",
+								onChange: onGalerija
+							}, null, 32)])]),
+							__props.objava?.galerija?.length ? (openBlock(), createBlock("div", {
+								key: 0,
+								class: "grid grid-cols-3 gap-3 sm:grid-cols-4"
+							}, [(openBlock(true), createBlock(Fragment, null, renderList(__props.objava.galerija, (m) => {
+								return openBlock(), createBlock("div", {
+									key: m.id,
+									class: "relative h-28 overflow-hidden rounded-md bg-primary-tint"
+								}, [createVNode("img", {
+									src: m.src,
+									alt: "",
+									class: "size-full object-cover"
+								}, null, 8, ["src"]), createVNode("button", {
+									type: "button",
+									class: "absolute right-1.5 top-1.5 inline-flex size-7 items-center justify-center rounded-full bg-surface/90 text-error",
+									"aria-label": "Ukloni",
+									onClick: ($event) => ukloniMedij(m.id)
+								}, [createVNode(_sfc_main$97, {
+									name: "trash-2",
+									size: 14
+								})], 8, ["onClick"])]);
+							}), 128))])) : createCommentVNode("", true)
+						]),
+						createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$93, {
+							variant: "secondary",
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
+						}, {
+							default: withCtx(() => [createTextVNode(" Sačuvaj nacrt ")]),
+							_: 1
+						}, 8, ["disabled", "onClick"]), createVNode(_sfc_main$93, {
+							variant: "primary",
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
+						}, {
+							default: withCtx(() => [createTextVNode(" Pošalji na odobrenje ")]),
+							_: 1
+						}, 8, ["disabled", "onClick"])])
 					])];
 				}),
 				_: 1
@@ -10016,120 +11223,27 @@ var _sfc_main$11 = {
 var _sfc_setup$11 = _sfc_main$11.setup;
 _sfc_main$11.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/AutorProfil.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/BiznisObjavaForm.vue");
 	return _sfc_setup$11 ? _sfc_setup$11(props, ctx) : void 0;
 };
 //#endregion
-//#region resources/js/Pages/account/BiznisMediji.vue
-var BiznisMediji_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$10 });
-var _sfc_main$10 = {
-	__name: "BiznisMediji",
-	__ssrInlineRender: true,
-	setup(__props) {
-		const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=600&q=80`;
-		const mediji = [
-			img("1679941060882-f21c7a51330c"),
-			img("1586779161220-ec6e587ceadc"),
-			img("1591519592341-035d29b05cd1"),
-			"",
-			img("1718884168768-c5d6e2dca0f9"),
-			"",
-			"",
-			""
-		];
-		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(biznisNav) }, _attrs), {
-				default: withCtx((_, _push, _parent, _scopeId) => {
-					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Mediji</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}> Galerija fotografija i video zapisa vašeg subjekta. </p></div>`);
-						_push(ssrRenderComponent(_sfc_main$19, {
-							title: "Prevucite fotografije ili kliknite za odabir",
-							hint: "JPG, PNG ili MP4 — do 5 MB po datoteci"
-						}, null, _parent, _scopeId));
-						_push(`<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"${_scopeId}><!--[-->`);
-						ssrRenderList(mediji, (m, i) => {
-							_push(`<div class="flex h-40 items-center justify-center overflow-hidden rounded-md bg-primary-tint"${_scopeId}>`);
-							if (m) _push(`<img${ssrRenderAttr("src", m)} alt="" loading="lazy" class="size-full object-cover"${_scopeId}>`);
-							else _push(ssrRenderComponent(_sfc_main$89, {
-								name: "image",
-								size: 28,
-								class: "text-primary-tint-2"
-							}, null, _parent, _scopeId));
-							_push(`</div>`);
-						});
-						_push(`<!--]--></div></div>`);
-					} else return [createVNode("div", { class: "space-y-6" }, [
-						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Mediji"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, " Galerija fotografija i video zapisa vašeg subjekta. ")]),
-						createVNode(_sfc_main$19, {
-							title: "Prevucite fotografije ili kliknite za odabir",
-							hint: "JPG, PNG ili MP4 — do 5 MB po datoteci"
-						}),
-						createVNode("div", { class: "grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4" }, [(openBlock(), createBlock(Fragment, null, renderList(mediji, (m, i) => {
-							return createVNode("div", {
-								key: i,
-								class: "flex h-40 items-center justify-center overflow-hidden rounded-md bg-primary-tint"
-							}, [m ? (openBlock(), createBlock("img", {
-								key: 0,
-								src: m,
-								alt: "",
-								loading: "lazy",
-								class: "size-full object-cover"
-							}, null, 8, ["src"])) : (openBlock(), createBlock(_sfc_main$89, {
-								key: 1,
-								name: "image",
-								size: 28,
-								class: "text-primary-tint-2"
-							}))]);
-						}), 64))])
-					])];
-				}),
-				_: 1
-			}, _parent));
-		};
-	}
-};
-var _sfc_setup$10 = _sfc_main$10.setup;
-_sfc_main$10.setup = (props, ctx) => {
-	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/BiznisMediji.vue");
-	return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
-};
-//#endregion
 //#region resources/js/Pages/account/BiznisObjave.vue
-var BiznisObjave_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$9 });
-var _sfc_main$9 = {
+var BiznisObjave_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$10 });
+var _sfc_main$10 = {
 	__name: "BiznisObjave",
 	__ssrInlineRender: true,
+	props: { objave: {
+		type: Array,
+		default: () => []
+	} },
 	setup(__props) {
-		const objave = [
-			{
-				naslov: "Pčelarstvo Đukić — domaći med sa Borja",
-				meta: "Ažurirano 20.06.2026. · Biznis profil",
-				status: "objavljeno"
-			},
-			{
-				naslov: "Akcija — bagremov med 1kg",
-				meta: "Poslano 21.06.2026. · Oglas",
-				status: "na-odobrenju"
-			},
-			{
-				naslov: "Posjetite našu pčelinju farmu na Borju",
-				meta: "Ažurirano 18.06.2026. · Priča",
-				status: "odbijeno",
-				reason: "Razlog odbijanja: Fotografije su niske rezolucije. Dodajte oštrije slike i pošaljite ponovo."
-			},
-			{
-				naslov: "Zimski med — najava nove sezone",
-				meta: "Sačuvano 17.06.2026. · Nacrt",
-				status: "nacrt"
-			}
-		];
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(biznisNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Moje objave</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Pregled i upravljanje vašim objavama.</p></div>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(`<div class="space-y-6"${_scopeId}><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Moje objave</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaše biznis objave i njihov status.</p></div>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
+							to: "/nalog/biznis/objave/nova",
 							variant: "primary",
 							icon: "plus"
 						}, {
@@ -10139,26 +11253,240 @@ var _sfc_main$9 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`</div><div class="space-y-3"${_scopeId}><!--[-->`);
-						ssrRenderList(objave, (o, i) => {
-							_push(ssrRenderComponent(_sfc_main$14, {
-								key: i,
-								item: o
-							}, null, _parent, _scopeId));
-						});
-						_push(`<!--]--></div></div>`);
-					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moje objave"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Pregled i upravljanje vašim objavama.")]), createVNode(_sfc_main$85, {
+						_push(`</div>`);
+						if (__props.objave.length) {
+							_push(`<div class="space-y-3"${_scopeId}><!--[-->`);
+							ssrRenderList(__props.objave, (o) => {
+								_push(ssrRenderComponent(unref(Link), {
+									key: o.id,
+									href: o.editUrl,
+									class: "block"
+								}, {
+									default: withCtx((_, _push, _parent, _scopeId) => {
+										if (_push) _push(ssrRenderComponent(_sfc_main$14, { item: o }, null, _parent, _scopeId));
+										else return [createVNode(_sfc_main$14, { item: o }, null, 8, ["item"])];
+									}),
+									_: 2
+								}, _parent, _scopeId));
+							});
+							_push(`<!--]--></div>`);
+						} else _push(ssrRenderComponent(_sfc_main$85, {
+							title: "Još nema objava",
+							text: "Kreirajte prvu objavu i pošaljite je na odobrenje."
+						}, null, _parent, _scopeId));
+						_push(`</div>`);
+					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moje objave"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaše biznis objave i njihov status.")]), createVNode(_sfc_main$93, {
+						to: "/nalog/biznis/objave/nova",
 						variant: "primary",
 						icon: "plus"
 					}, {
 						default: withCtx(() => [createTextVNode("Nova objava")]),
 						_: 1
-					})]), createVNode("div", { class: "space-y-3" }, [(openBlock(), createBlock(Fragment, null, renderList(objave, (o, i) => {
-						return createVNode(_sfc_main$14, {
-							key: i,
-							item: o
-						}, null, 8, ["item"]);
-					}), 64))])])];
+					})]), __props.objave.length ? (openBlock(), createBlock("div", {
+						key: 0,
+						class: "space-y-3"
+					}, [(openBlock(true), createBlock(Fragment, null, renderList(__props.objave, (o) => {
+						return openBlock(), createBlock(unref(Link), {
+							key: o.id,
+							href: o.editUrl,
+							class: "block"
+						}, {
+							default: withCtx(() => [createVNode(_sfc_main$14, { item: o }, null, 8, ["item"])]),
+							_: 2
+						}, 1032, ["href"]);
+					}), 128))])) : (openBlock(), createBlock(_sfc_main$85, {
+						key: 1,
+						title: "Još nema objava",
+						text: "Kreirajte prvu objavu i pošaljite je na odobrenje."
+					}))])];
+				}),
+				_: 1
+			}, _parent));
+		};
+	}
+};
+var _sfc_setup$10 = _sfc_main$10.setup;
+_sfc_main$10.setup = (props, ctx) => {
+	const ssrContext = useSSRContext();
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/BiznisObjave.vue");
+	return _sfc_setup$10 ? _sfc_setup$10(props, ctx) : void 0;
+};
+//#endregion
+//#region resources/js/Pages/account/BiznisOglasForm.vue
+var BiznisOglasForm_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_main$9 });
+var _sfc_main$9 = {
+	__name: "BiznisOglasForm",
+	__ssrInlineRender: true,
+	props: {
+		oglas: {
+			type: Object,
+			default: null
+		},
+		vrste: {
+			type: Array,
+			default: () => []
+		}
+	},
+	setup(__props) {
+		const props = __props;
+		const form = useForm({
+			naslov: props.oglas?.naslov ?? "",
+			category_id: props.oglas?.category_id ?? null,
+			izdavac: props.oglas?.izdavac ?? "",
+			lokacija: props.oglas?.lokacija ?? "",
+			rok: props.oglas?.rok ?? "",
+			opis_dug: props.oglas?.opis_dug ?? "",
+			action: "nacrt"
+		});
+		function submit(action) {
+			form.action = action;
+			if (props.oglas) form.put(`/nalog/biznis/oglasi/${props.oglas.id}`);
+			else form.post("/nalog/biznis/oglasi");
+		}
+		return (_ctx, _push, _parent, _attrs) => {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
+				default: withCtx((_, _push, _parent, _scopeId) => {
+					if (_push) {
+						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>${ssrInterpolate(__props.oglas ? "Uredi oglas" : "Novi oglas")}</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Popunite oglas i pošaljite ga na odobrenje.</p></div>`);
+						if (unref(form).errors.naslov) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Naslov je obavezan."
+						}, null, _parent, _scopeId));
+						else _push(`<!---->`);
+						_push(`<div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).naslov,
+							"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
+							label: "Naslov",
+							error: unref(form).errors.naslov
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$78, {
+							modelValue: unref(form).category_id,
+							"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
+							label: "Vrsta",
+							placeholder: "Odaberite vrstu",
+							options: __props.vrste
+						}, null, _parent, _scopeId));
+						_push(`</div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).izdavac,
+							"onUpdate:modelValue": ($event) => unref(form).izdavac = $event,
+							label: "Izdavač"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).lokacija,
+							"onUpdate:modelValue": ($event) => unref(form).lokacija = $event,
+							label: "Lokacija"
+						}, null, _parent, _scopeId));
+						_push(`</div>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).rok,
+							"onUpdate:modelValue": ($event) => unref(form).rok = $event,
+							label: "Rok važenja",
+							type: "date"
+						}, null, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).opis_dug,
+							"onUpdate:modelValue": ($event) => unref(form).opis_dug = $event,
+							label: "Opis",
+							rows: 6
+						}, null, _parent, _scopeId));
+						_push(`</div><div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
+							variant: "secondary",
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Sačuvaj nacrt `);
+								else return [createTextVNode(" Sačuvaj nacrt ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(ssrRenderComponent(_sfc_main$93, {
+							variant: "primary",
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
+						}, {
+							default: withCtx((_, _push, _parent, _scopeId) => {
+								if (_push) _push(` Pošalji na odobrenje `);
+								else return [createTextVNode(" Pošalji na odobrenje ")];
+							}),
+							_: 1
+						}, _parent, _scopeId));
+						_push(`</div></div>`);
+					} else return [createVNode("div", { class: "space-y-6" }, [
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, toDisplayString(__props.oglas ? "Uredi oglas" : "Novi oglas"), 1), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Popunite oglas i pošaljite ga na odobrenje.")]),
+						unref(form).errors.naslov ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "greska",
+							title: "Provjerite unesene podatke",
+							text: "Naslov je obavezan."
+						})) : createCommentVNode("", true),
+						createVNode("div", { class: "space-y-6 rounded-md border border-border bg-surface p-6 md:p-7" }, [
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).naslov,
+								"onUpdate:modelValue": ($event) => unref(form).naslov = $event,
+								label: "Naslov",
+								error: unref(form).errors.naslov
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]), createVNode(_sfc_main$78, {
+								modelValue: unref(form).category_id,
+								"onUpdate:modelValue": ($event) => unref(form).category_id = $event,
+								label: "Vrsta",
+								placeholder: "Odaberite vrstu",
+								options: __props.vrste
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"options"
+							])]),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).izdavac,
+								"onUpdate:modelValue": ($event) => unref(form).izdavac = $event,
+								label: "Izdavač"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).lokacija,
+								"onUpdate:modelValue": ($event) => unref(form).lokacija = $event,
+								label: "Lokacija"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
+							createVNode(_sfc_main$68, {
+								modelValue: unref(form).rok,
+								"onUpdate:modelValue": ($event) => unref(form).rok = $event,
+								label: "Rok važenja",
+								type: "date"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).opis_dug,
+								"onUpdate:modelValue": ($event) => unref(form).opis_dug = $event,
+								label: "Opis",
+								rows: 6
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])
+						]),
+						createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$93, {
+							variant: "secondary",
+							icon: "save",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("nacrt")
+						}, {
+							default: withCtx(() => [createTextVNode(" Sačuvaj nacrt ")]),
+							_: 1
+						}, 8, ["disabled", "onClick"]), createVNode(_sfc_main$93, {
+							variant: "primary",
+							icon: "send",
+							disabled: unref(form).processing,
+							onClick: ($event) => submit("posalji")
+						}, {
+							default: withCtx(() => [createTextVNode(" Pošalji na odobrenje ")]),
+							_: 1
+						}, 8, ["disabled", "onClick"])])
+					])];
 				}),
 				_: 1
 			}, _parent));
@@ -10168,7 +11496,7 @@ var _sfc_main$9 = {
 var _sfc_setup$9 = _sfc_main$9.setup;
 _sfc_main$9.setup = (props, ctx) => {
 	const ssrContext = useSSRContext();
-	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/BiznisObjave.vue");
+	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/Pages/account/BiznisOglasForm.vue");
 	return _sfc_setup$9 ? _sfc_setup$9(props, ctx) : void 0;
 };
 //#endregion
@@ -10177,35 +11505,18 @@ var BiznisOglasi_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_mai
 var _sfc_main$8 = {
 	__name: "BiznisOglasi",
 	__ssrInlineRender: true,
+	props: { oglasi: {
+		type: Array,
+		default: () => []
+	} },
 	setup(__props) {
-		const oglasi = [
-			{
-				naslov: "Bagremov med 1kg — 18 KM",
-				meta: "Rok važenja: 15.07.2026.",
-				status: "objavljeno"
-			},
-			{
-				naslov: "Prodaja pčelinjih društava",
-				meta: "Rok važenja: 01.07.2026.",
-				status: "na-odobrenju"
-			},
-			{
-				naslov: "Vosak za svijeće — veleprodaja",
-				meta: "Isteklo: 10.06.2026.",
-				status: "isteklo"
-			},
-			{
-				naslov: "Cvjetni med — sezonska akcija",
-				meta: "Sačuvano kao nacrt",
-				status: "nacrt"
-			}
-		];
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(biznisNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Oglasi</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaši oglasi i njihov rok važenja.</p></div>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(`<div class="space-y-6"${_scopeId}><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Oglasi</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Vaši oglasi i njihov status.</p></div>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
+							to: "/nalog/biznis/oglasi/novi",
 							variant: "primary",
 							icon: "plus"
 						}, {
@@ -10215,26 +11526,52 @@ var _sfc_main$8 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`</div><div class="space-y-3"${_scopeId}><!--[-->`);
-						ssrRenderList(oglasi, (o, i) => {
-							_push(ssrRenderComponent(_sfc_main$14, {
-								key: i,
-								item: o
-							}, null, _parent, _scopeId));
-						});
-						_push(`<!--]--></div></div>`);
-					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Oglasi"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaši oglasi i njihov rok važenja.")]), createVNode(_sfc_main$85, {
+						_push(`</div>`);
+						if (__props.oglasi.length) {
+							_push(`<div class="space-y-3"${_scopeId}><!--[-->`);
+							ssrRenderList(__props.oglasi, (o) => {
+								_push(ssrRenderComponent(unref(Link), {
+									key: o.id,
+									href: o.editUrl,
+									class: "block"
+								}, {
+									default: withCtx((_, _push, _parent, _scopeId) => {
+										if (_push) _push(ssrRenderComponent(_sfc_main$14, { item: o }, null, _parent, _scopeId));
+										else return [createVNode(_sfc_main$14, { item: o }, null, 8, ["item"])];
+									}),
+									_: 2
+								}, _parent, _scopeId));
+							});
+							_push(`<!--]--></div>`);
+						} else _push(ssrRenderComponent(_sfc_main$85, {
+							title: "Još nema oglasa",
+							text: "Kreirajte prvi oglas i pošaljite ga na odobrenje."
+						}, null, _parent, _scopeId));
+						_push(`</div>`);
+					} else return [createVNode("div", { class: "space-y-6" }, [createVNode("div", { class: "flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" }, [createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Oglasi"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Vaši oglasi i njihov status.")]), createVNode(_sfc_main$93, {
+						to: "/nalog/biznis/oglasi/novi",
 						variant: "primary",
 						icon: "plus"
 					}, {
 						default: withCtx(() => [createTextVNode("Novi oglas")]),
 						_: 1
-					})]), createVNode("div", { class: "space-y-3" }, [(openBlock(), createBlock(Fragment, null, renderList(oglasi, (o, i) => {
-						return createVNode(_sfc_main$14, {
-							key: i,
-							item: o
-						}, null, 8, ["item"]);
-					}), 64))])])];
+					})]), __props.oglasi.length ? (openBlock(), createBlock("div", {
+						key: 0,
+						class: "space-y-3"
+					}, [(openBlock(true), createBlock(Fragment, null, renderList(__props.oglasi, (o) => {
+						return openBlock(), createBlock(unref(Link), {
+							key: o.id,
+							href: o.editUrl,
+							class: "block"
+						}, {
+							default: withCtx(() => [createVNode(_sfc_main$14, { item: o }, null, 8, ["item"])]),
+							_: 2
+						}, 1032, ["href"]);
+					}), 128))])) : (openBlock(), createBlock(_sfc_main$85, {
+						key: 1,
+						title: "Još nema oglasa",
+						text: "Kreirajte prvi oglas i pošaljite ga na odobrenje."
+					}))])];
 				}),
 				_: 1
 			}, _parent));
@@ -10255,7 +11592,7 @@ var _sfc_main$7 = {
 	__ssrInlineRender: true,
 	setup(__props) {
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(biznisNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) _push(ssrRenderComponent(_sfc_main$16, null, null, _parent, _scopeId));
 					else return [createVNode(_sfc_main$16)];
@@ -10277,158 +11614,145 @@ var BiznisProfil_exports = /* @__PURE__ */ __exportAll({ default: () => _sfc_mai
 var _sfc_main$6 = {
 	__name: "BiznisProfil",
 	__ssrInlineRender: true,
+	props: { profil: {
+		type: Object,
+		default: () => ({})
+	} },
 	setup(__props) {
-		const naziv = ref("Pčelarstvo Đukić — Borje");
-		const kategorija = ref("Domaća radinost");
-		const opis = ref("Porodično pčelarstvo sa Borja kod Teslića. Proizvodimo livadski, cvjetni i bagremov med, te pčelinje proizvode po tradicionalnoj recepturi.");
-		const adresa = ref("Borje bb, 74270 Teslić");
-		const telefon = ref("+387 65 123 456");
-		const email = ref("info@pcelarstvo-djukic.ba");
-		const radnoVrijeme = ref("Pon–Sub: 08–17h");
+		const props = __props;
+		const form = useForm({
+			name: props.profil.name ?? "",
+			telefon: props.profil.telefon ?? "",
+			bio: props.profil.bio ?? "",
+			avatar: null
+		});
+		const preview = computed(() => {
+			if (form.avatar) return URL.createObjectURL(form.avatar);
+			return props.profil.avatar || "";
+		});
+		const initials = computed(() => (form.name || "").split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase());
+		function onAvatar(e) {
+			form.avatar = e.target.files[0] ?? null;
+		}
+		function submit() {
+			form.post("/nalog/biznis/profil", { preserveScroll: true });
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(ssrRenderComponent(_sfc_main$21, mergeProps({ items: unref(biznisNav) }, _attrs), {
+			_push(ssrRenderComponent(_sfc_main$18, mergeProps({ items: unref(biznisNav) }, _attrs), {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><div class="flex items-center gap-3"${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Moj profil</h1>`);
-						_push(ssrRenderComponent(_sfc_main$79, { variant: "nacrt" }, null, _parent, _scopeId));
-						_push(`</div><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Uredite javne informacije o vašem subjektu.</p></div><div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$12, null, null, _parent, _scopeId));
-						_push(`<div class="space-y-5"${_scopeId}><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: naziv.value,
-							"onUpdate:modelValue": ($event) => naziv.value = $event,
-							label: "Naziv subjekta"
+						_push(`<div class="space-y-6"${_scopeId}><div${_scopeId}><h1 class="font-heading text-[28px] font-bold text-heading"${_scopeId}>Moj profil</h1><p class="mt-1 text-[15px] text-text-muted"${_scopeId}>Podaci o vašem nalogu. E-mail i lozinku mijenjate u Postavkama.</p></div>`);
+						if (_ctx.$page.props.flash?.status) _push(ssrRenderComponent(_sfc_main$86, {
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$70, {
-							modelValue: kategorija.value,
-							"onUpdate:modelValue": ($event) => kategorija.value = $event,
-							label: "Kategorija",
-							options: [
-								"Domaća radinost",
-								"Zanat",
-								"Hrana i piće",
-								"Usluge",
-								"Smještaj"
-							]
+						else _push(`<!---->`);
+						_push(`<div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7"${_scopeId}><div class="flex items-center gap-5"${_scopeId}><span class="size-18 shrink-0 overflow-hidden rounded-full bg-primary-tint"${_scopeId}>`);
+						if (preview.value) _push(`<img${ssrRenderAttr("src", preview.value)} alt="" class="size-full object-cover"${_scopeId}>`);
+						else _push(`<span class="flex size-full items-center justify-center text-2xl font-bold text-primary"${_scopeId}>${ssrInterpolate(initials.value)}</span>`);
+						_push(`</span><label class="cursor-pointer"${_scopeId}><span class="inline-flex items-center rounded-sm border border-border px-3 py-2 text-sm font-semibold text-heading hover:bg-surface-alt"${_scopeId}> Promijeni fotografiju </span><input type="file" accept="image/*" class="hidden"${_scopeId}></label></div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).name,
+							"onUpdate:modelValue": ($event) => unref(form).name = $event,
+							label: "Ime i prezime / kontakt osoba",
+							error: unref(form).errors.name
 						}, null, _parent, _scopeId));
-						_push(`</div>`);
-						_push(ssrRenderComponent(_sfc_main$59, {
-							modelValue: opis.value,
-							"onUpdate:modelValue": ($event) => opis.value = $event,
-							label: "Opis",
-							maxlength: 500
-						}, null, _parent, _scopeId));
-						_push(`<div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: adresa.value,
-							"onUpdate:modelValue": ($event) => adresa.value = $event,
-							label: "Adresa"
-						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: telefon.value,
-							"onUpdate:modelValue": ($event) => telefon.value = $event,
+						_push(ssrRenderComponent(_sfc_main$68, {
+							modelValue: unref(form).telefon,
+							"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
 							label: "Telefon",
 							type: "tel"
 						}, null, _parent, _scopeId));
-						_push(`</div><div class="grid gap-5 md:grid-cols-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: email.value,
-							"onUpdate:modelValue": ($event) => email.value = $event,
+						_push(`</div>`);
+						_push(ssrRenderComponent(_sfc_main$68, {
+							"model-value": __props.profil.email,
 							label: "E-mail",
-							type: "email"
+							type: "email",
+							disabled: ""
 						}, null, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$60, {
-							modelValue: radnoVrijeme.value,
-							"onUpdate:modelValue": ($event) => radnoVrijeme.value = $event,
-							label: "Radno vrijeme"
+						_push(ssrRenderComponent(_sfc_main$67, {
+							modelValue: unref(form).bio,
+							"onUpdate:modelValue": ($event) => unref(form).bio = $event,
+							label: "Kratka biografija / o nama",
+							rows: 4,
+							maxlength: 1e3
 						}, null, _parent, _scopeId));
-						_push(`</div></div><div class="space-y-2.5"${_scopeId}><p class="text-sm font-semibold text-heading"${_scopeId}>Fotografije subjekta</p>`);
-						_push(ssrRenderComponent(_sfc_main$19, null, null, _parent, _scopeId));
-						_push(`</div></div><div class="flex flex-wrap justify-end gap-3"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$85, {
-							variant: "secondary",
-							icon: "save"
-						}, {
-							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Sačuvaj nacrt`);
-								else return [createTextVNode("Sačuvaj nacrt")];
-							}),
-							_: 1
-						}, _parent, _scopeId));
-						_push(ssrRenderComponent(_sfc_main$85, {
+						_push(`<div class="flex justify-end"${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$93, {
 							variant: "primary",
-							icon: "send"
+							icon: "check",
+							disabled: unref(form).processing,
+							onClick: submit
 						}, {
 							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(`Pošalji na odobrenje`);
-								else return [createTextVNode("Pošalji na odobrenje")];
+								if (_push) _push(` Sačuvaj profil `);
+								else return [createTextVNode(" Sačuvaj profil ")];
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`</div></div>`);
+						_push(`</div></div></div>`);
 					} else return [createVNode("div", { class: "space-y-6" }, [
-						createVNode("div", null, [createVNode("div", { class: "flex items-center gap-3" }, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moj profil"), createVNode(_sfc_main$79, { variant: "nacrt" })]), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Uredite javne informacije o vašem subjektu.")]),
+						createVNode("div", null, [createVNode("h1", { class: "font-heading text-[28px] font-bold text-heading" }, "Moj profil"), createVNode("p", { class: "mt-1 text-[15px] text-text-muted" }, "Podaci o vašem nalogu. E-mail i lozinku mijenjate u Postavkama.")]),
+						_ctx.$page.props.flash?.status ? (openBlock(), createBlock(_sfc_main$86, {
+							key: 0,
+							variant: "uspjeh",
+							title: "Sačuvano",
+							text: _ctx.$page.props.flash.status
+						}, null, 8, ["text"])) : createCommentVNode("", true),
 						createVNode("div", { class: "space-y-6 rounded-md border border-border bg-surface p-6 md:p-7" }, [
-							createVNode(_sfc_main$12),
-							createVNode("div", { class: "space-y-5" }, [
-								createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$60, {
-									modelValue: naziv.value,
-									"onUpdate:modelValue": ($event) => naziv.value = $event,
-									label: "Naziv subjekta"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$70, {
-									modelValue: kategorija.value,
-									"onUpdate:modelValue": ($event) => kategorija.value = $event,
-									label: "Kategorija",
-									options: [
-										"Domaća radinost",
-										"Zanat",
-										"Hrana i piće",
-										"Usluge",
-										"Smještaj"
-									]
-								}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
-								createVNode(_sfc_main$59, {
-									modelValue: opis.value,
-									"onUpdate:modelValue": ($event) => opis.value = $event,
-									label: "Opis",
-									maxlength: 500
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]),
-								createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$60, {
-									modelValue: adresa.value,
-									"onUpdate:modelValue": ($event) => adresa.value = $event,
-									label: "Adresa"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$60, {
-									modelValue: telefon.value,
-									"onUpdate:modelValue": ($event) => telefon.value = $event,
-									label: "Telefon",
-									type: "tel"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
-								createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$60, {
-									modelValue: email.value,
-									"onUpdate:modelValue": ($event) => email.value = $event,
-									label: "E-mail",
-									type: "email"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"]), createVNode(_sfc_main$60, {
-									modelValue: radnoVrijeme.value,
-									"onUpdate:modelValue": ($event) => radnoVrijeme.value = $event,
-									label: "Radno vrijeme"
-								}, null, 8, ["modelValue", "onUpdate:modelValue"])])
-							]),
-							createVNode("div", { class: "space-y-2.5" }, [createVNode("p", { class: "text-sm font-semibold text-heading" }, "Fotografije subjekta"), createVNode(_sfc_main$19)])
-						]),
-						createVNode("div", { class: "flex flex-wrap justify-end gap-3" }, [createVNode(_sfc_main$85, {
-							variant: "secondary",
-							icon: "save"
-						}, {
-							default: withCtx(() => [createTextVNode("Sačuvaj nacrt")]),
-							_: 1
-						}), createVNode(_sfc_main$85, {
-							variant: "primary",
-							icon: "send"
-						}, {
-							default: withCtx(() => [createTextVNode("Pošalji na odobrenje")]),
-							_: 1
-						})])
+							createVNode("div", { class: "flex items-center gap-5" }, [createVNode("span", { class: "size-18 shrink-0 overflow-hidden rounded-full bg-primary-tint" }, [preview.value ? (openBlock(), createBlock("img", {
+								key: 0,
+								src: preview.value,
+								alt: "",
+								class: "size-full object-cover"
+							}, null, 8, ["src"])) : (openBlock(), createBlock("span", {
+								key: 1,
+								class: "flex size-full items-center justify-center text-2xl font-bold text-primary"
+							}, toDisplayString(initials.value), 1))]), createVNode("label", { class: "cursor-pointer" }, [createVNode("span", { class: "inline-flex items-center rounded-sm border border-border px-3 py-2 text-sm font-semibold text-heading hover:bg-surface-alt" }, " Promijeni fotografiju "), createVNode("input", {
+								type: "file",
+								accept: "image/*",
+								class: "hidden",
+								onChange: onAvatar
+							}, null, 32)])]),
+							createVNode("div", { class: "grid gap-5 md:grid-cols-2" }, [createVNode(_sfc_main$68, {
+								modelValue: unref(form).name,
+								"onUpdate:modelValue": ($event) => unref(form).name = $event,
+								label: "Ime i prezime / kontakt osoba",
+								error: unref(form).errors.name
+							}, null, 8, [
+								"modelValue",
+								"onUpdate:modelValue",
+								"error"
+							]), createVNode(_sfc_main$68, {
+								modelValue: unref(form).telefon,
+								"onUpdate:modelValue": ($event) => unref(form).telefon = $event,
+								label: "Telefon",
+								type: "tel"
+							}, null, 8, ["modelValue", "onUpdate:modelValue"])]),
+							createVNode(_sfc_main$68, {
+								"model-value": __props.profil.email,
+								label: "E-mail",
+								type: "email",
+								disabled: ""
+							}, null, 8, ["model-value"]),
+							createVNode(_sfc_main$67, {
+								modelValue: unref(form).bio,
+								"onUpdate:modelValue": ($event) => unref(form).bio = $event,
+								label: "Kratka biografija / o nama",
+								rows: 4,
+								maxlength: 1e3
+							}, null, 8, ["modelValue", "onUpdate:modelValue"]),
+							createVNode("div", { class: "flex justify-end" }, [createVNode(_sfc_main$93, {
+								variant: "primary",
+								icon: "check",
+								disabled: unref(form).processing,
+								onClick: submit
+							}, {
+								default: withCtx(() => [createTextVNode(" Sačuvaj profil ")]),
+								_: 1
+							}, 8, ["disabled"])])
+						])
 					])];
 				}),
 				_: 1
@@ -10469,12 +11793,12 @@ var _sfc_main$5 = {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`${ssrInterpolate(__props.item.label)} `);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "chevron-down",
 							size: 14,
 							class: "text-text-muted"
 						}, null, _parent, _scopeId));
-					} else return [createTextVNode(toDisplayString(__props.item.label) + " ", 1), createVNode(_sfc_main$89, {
+					} else return [createTextVNode(toDisplayString(__props.item.label) + " ", 1), createVNode(_sfc_main$97, {
 						name: "chevron-down",
 						size: 14,
 						class: "text-text-muted"
@@ -10550,12 +11874,12 @@ var _sfc_main$4 = {
 						_: 1
 					}, _parent));
 					_push(`<button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt" aria-label="Zatvori meni" data-v-03556072>`);
-					_push(ssrRenderComponent(_sfc_main$89, {
+					_push(ssrRenderComponent(_sfc_main$97, {
 						name: "x",
 						size: 22
 					}, null, _parent));
 					_push(`</button></div><div class="shrink-0 px-4 pt-4" data-v-03556072><form class="relative" data-v-03556072>`);
-					_push(ssrRenderComponent(_sfc_main$89, {
+					_push(ssrRenderComponent(_sfc_main$97, {
 						name: "search",
 						size: 18,
 						class: "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
@@ -10565,7 +11889,7 @@ var _sfc_main$4 = {
 						_push(`<!--[-->`);
 						if (item.children) {
 							_push(`<div data-v-03556072><button type="button" class="${ssrRenderClass([expanded.value === item.label ? "bg-primary-tint text-primary" : "text-text", "flex w-full items-center justify-between rounded-sm px-3 py-3 text-left text-base font-medium hover:bg-surface-alt"])}"${ssrRenderAttr("aria-expanded", expanded.value === item.label)} data-v-03556072>${ssrInterpolate(item.label)} `);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: "chevron-down",
 								size: 18,
 								class: ["transition-transform", expanded.value === item.label ? "rotate-180 text-primary" : "text-text-muted"]
@@ -10594,12 +11918,12 @@ var _sfc_main$4 = {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`${ssrInterpolate(item.label)} `);
-									_push(ssrRenderComponent(_sfc_main$89, {
+									_push(ssrRenderComponent(_sfc_main$97, {
 										name: "chevron-right",
 										size: 18,
 										class: "text-text-muted"
 									}, null, _parent, _scopeId));
-								} else return [createTextVNode(toDisplayString(item.label) + " ", 1), createVNode(_sfc_main$89, {
+								} else return [createTextVNode(toDisplayString(item.label) + " ", 1), createVNode(_sfc_main$97, {
 									name: "chevron-right",
 									size: 18,
 									class: "text-text-muted"
@@ -10620,12 +11944,12 @@ var _sfc_main$4 = {
 							default: withCtx((_, _push, _parent, _scopeId) => {
 								if (_push) {
 									_push(`${ssrInterpolate(item.label)} `);
-									_push(ssrRenderComponent(_sfc_main$89, {
+									_push(ssrRenderComponent(_sfc_main$97, {
 										name: "chevron-right",
 										size: 18,
 										class: "text-text-muted"
 									}, null, _parent, _scopeId));
-								} else return [createTextVNode(toDisplayString(item.label) + " ", 1), createVNode(_sfc_main$89, {
+								} else return [createTextVNode(toDisplayString(item.label) + " ", 1), createVNode(_sfc_main$97, {
 									name: "chevron-right",
 									size: 18,
 									class: "text-text-muted"
@@ -10635,7 +11959,7 @@ var _sfc_main$4 = {
 						}, _parent));
 					});
 					_push(`<!--]--></nav><div class="shrink-0 space-y-2 border-t border-border p-4" data-v-03556072>`);
-					_push(ssrRenderComponent(_sfc_main$85, {
+					_push(ssrRenderComponent(_sfc_main$93, {
 						to: "/prijava",
 						variant: "secondary",
 						block: "",
@@ -10647,7 +11971,7 @@ var _sfc_main$4 = {
 						}),
 						_: 1
 					}, _parent));
-					_push(ssrRenderComponent(_sfc_main$85, {
+					_push(ssrRenderComponent(_sfc_main$93, {
 						to: "/pridruzi-se",
 						variant: "primary",
 						block: "",
@@ -10708,73 +12032,96 @@ var _sfc_main$3 = {
 			if (q) router.visit(`/mapa?q=${encodeURIComponent(q)}`);
 		}
 		const { mainNav, kontakt, postavke } = useSite();
+		const page = usePage();
+		const authUser = computed(() => page.props.auth?.user);
+		const nalogLink = computed(() => authUser.value?.role === "autor" ? "/nalog/autor/price" : "/nalog/biznis/profil");
+		function logout() {
+			router.post("/logout");
+		}
 		return (_ctx, _push, _parent, _attrs) => {
-			_push(`<header${ssrRenderAttrs(mergeProps({ class: ["sticky top-0 z-40 bg-surface transition-shadow", scrolled.value ? "shadow-[var(--shadow-sm)]" : ""] }, _attrs))} data-v-684933d4><div class="bg-primary-darker text-primary-tint" data-v-684933d4>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "flex h-10 items-center justify-between text-[13px]" }, {
+			_push(`<header${ssrRenderAttrs(mergeProps({ class: ["sticky top-0 z-40 bg-surface transition-shadow", scrolled.value ? "shadow-[var(--shadow-sm)]" : ""] }, _attrs))} data-v-a885ea73><div class="bg-primary-darker text-primary-tint" data-v-a885ea73>`);
+			_push(ssrRenderComponent(_sfc_main$98, { class: "flex h-10 items-center justify-between text-[13px]" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
-						_push(`<div class="flex items-center gap-5" data-v-684933d4${_scopeId}><a${ssrRenderAttr("href", `tel:${unref(kontakt).telefon}`)} class="flex items-center gap-1.5 hover:text-white" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(`<div class="flex items-center gap-5" data-v-a885ea73${_scopeId}><a${ssrRenderAttr("href", `tel:${unref(kontakt).telefon}`)} class="flex items-center gap-1.5 hover:text-white" data-v-a885ea73${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "phone",
 							size: 14
 						}, null, _parent, _scopeId));
-						_push(`<span data-v-684933d4${_scopeId}>${ssrInterpolate(unref(kontakt).telefon)}</span></a><a${ssrRenderAttr("href", `mailto:${unref(kontakt).email}`)} class="hidden items-center gap-1.5 hover:text-white sm:flex" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(`<span data-v-a885ea73${_scopeId}>${ssrInterpolate(unref(kontakt).telefon)}</span></a><a${ssrRenderAttr("href", `mailto:${unref(kontakt).email}`)} class="hidden items-center gap-1.5 hover:text-white sm:flex" data-v-a885ea73${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "mail",
 							size: 14
 						}, null, _parent, _scopeId));
-						_push(`<span data-v-684933d4${_scopeId}>${ssrInterpolate(unref(kontakt).email)}</span></a></div><div class="flex items-center gap-4" data-v-684933d4${_scopeId}><div class="flex items-center gap-1.5" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(`<span data-v-a885ea73${_scopeId}>${ssrInterpolate(unref(kontakt).email)}</span></a></div><div class="flex items-center gap-4" data-v-a885ea73${_scopeId}><div class="flex items-center gap-1.5" data-v-a885ea73${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "globe",
 							size: 14,
 							class: "text-white"
 						}, null, _parent, _scopeId));
-						_push(`<button type="button" class="font-bold text-white" aria-label="Srpski jezik" data-v-684933d4${_scopeId}>SR</button><span class="text-primary-tint-2" data-v-684933d4${_scopeId}>|</span><button type="button" class="hover:text-white" aria-label="English language" data-v-684933d4${_scopeId}>EN</button></div><div class="hidden items-center gap-3 sm:flex" data-v-684933d4${_scopeId}><!--[-->`);
+						_push(`<button type="button" class="font-bold text-white" aria-label="Srpski jezik" data-v-a885ea73${_scopeId}>SR</button><span class="text-primary-tint-2" data-v-a885ea73${_scopeId}>|</span><button type="button" class="hover:text-white" aria-label="English language" data-v-a885ea73${_scopeId}>EN</button></div><div class="hidden items-center gap-3 sm:flex" data-v-a885ea73${_scopeId}><!--[-->`);
 						ssrRenderList(unref(postavke).social || [], (s) => {
-							_push(`<a${ssrRenderAttr("href", s.href)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", s.label)} class="hover:text-white" data-v-684933d4${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(`<a${ssrRenderAttr("href", s.href)} target="_blank" rel="noopener"${ssrRenderAttr("aria-label", s.label)} class="hover:text-white" data-v-a885ea73${_scopeId}>`);
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: s.name,
 								size: 15
 							}, null, _parent, _scopeId));
 							_push(`</a>`);
 						});
-						_push(`<!--]--></div><div class="hidden items-center gap-3 lg:flex" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(unref(Link), {
-							href: "/prijava",
-							class: "font-semibold text-white hover:text-primary-tint"
-						}, {
-							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(` Prijava `);
-								else return [createTextVNode(" Prijava ")];
-							}),
-							_: 1
-						}, _parent, _scopeId));
-						_push(ssrRenderComponent(unref(Link), {
-							href: "/pridruzi-se",
-							class: "inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
-						}, {
-							default: withCtx((_, _push, _parent, _scopeId) => {
-								if (_push) _push(` Pridruži se `);
-								else return [createTextVNode(" Pridruži se ")];
-							}),
-							_: 1
-						}, _parent, _scopeId));
+						_push(`<!--]--></div><div class="hidden items-center gap-3 lg:flex" data-v-a885ea73${_scopeId}>`);
+						if (authUser.value) {
+							_push(`<!--[-->`);
+							_push(ssrRenderComponent(unref(Link), {
+								href: nalogLink.value,
+								class: "font-semibold text-white hover:text-primary-tint"
+							}, {
+								default: withCtx((_, _push, _parent, _scopeId) => {
+									if (_push) _push(`${ssrInterpolate(authUser.value.name)}`);
+									else return [createTextVNode(toDisplayString(authUser.value.name), 1)];
+								}),
+								_: 1
+							}, _parent, _scopeId));
+							_push(`<button type="button" class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark" data-v-a885ea73${_scopeId}> Odjava </button><!--]-->`);
+						} else {
+							_push(`<!--[-->`);
+							_push(ssrRenderComponent(unref(Link), {
+								href: "/prijava",
+								class: "font-semibold text-white hover:text-primary-tint"
+							}, {
+								default: withCtx((_, _push, _parent, _scopeId) => {
+									if (_push) _push(` Prijava `);
+									else return [createTextVNode(" Prijava ")];
+								}),
+								_: 1
+							}, _parent, _scopeId));
+							_push(ssrRenderComponent(unref(Link), {
+								href: "/pridruzi-se",
+								class: "inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+							}, {
+								default: withCtx((_, _push, _parent, _scopeId) => {
+									if (_push) _push(` Pridruži se `);
+									else return [createTextVNode(" Pridruži se ")];
+								}),
+								_: 1
+							}, _parent, _scopeId));
+							_push(`<!--]-->`);
+						}
 						_push(`</div></div>`);
 					} else return [createVNode("div", { class: "flex items-center gap-5" }, [createVNode("a", {
 						href: `tel:${unref(kontakt).telefon}`,
 						class: "flex items-center gap-1.5 hover:text-white"
-					}, [createVNode(_sfc_main$89, {
+					}, [createVNode(_sfc_main$97, {
 						name: "phone",
 						size: 14
 					}), createVNode("span", null, toDisplayString(unref(kontakt).telefon), 1)], 8, ["href"]), createVNode("a", {
 						href: `mailto:${unref(kontakt).email}`,
 						class: "hidden items-center gap-1.5 hover:text-white sm:flex"
-					}, [createVNode(_sfc_main$89, {
+					}, [createVNode(_sfc_main$97, {
 						name: "mail",
 						size: 14
 					}), createVNode("span", null, toDisplayString(unref(kontakt).email), 1)], 8, ["href"])]), createVNode("div", { class: "flex items-center gap-4" }, [
 						createVNode("div", { class: "flex items-center gap-1.5" }, [
-							createVNode(_sfc_main$89, {
+							createVNode(_sfc_main$97, {
 								name: "globe",
 								size: 14,
 								class: "text-white"
@@ -10799,12 +12146,22 @@ var _sfc_main$3 = {
 								rel: "noopener",
 								"aria-label": s.label,
 								class: "hover:text-white"
-							}, [createVNode(_sfc_main$89, {
+							}, [createVNode(_sfc_main$97, {
 								name: s.name,
 								size: 15
 							}, null, 8, ["name"])], 8, ["href", "aria-label"]);
 						}), 128))]),
-						createVNode("div", { class: "hidden items-center gap-3 lg:flex" }, [createVNode(unref(Link), {
+						createVNode("div", { class: "hidden items-center gap-3 lg:flex" }, [authUser.value ? (openBlock(), createBlock(Fragment, { key: 0 }, [createVNode(unref(Link), {
+							href: nalogLink.value,
+							class: "font-semibold text-white hover:text-primary-tint"
+						}, {
+							default: withCtx(() => [createTextVNode(toDisplayString(authUser.value.name), 1)]),
+							_: 1
+						}, 8, ["href"]), createVNode("button", {
+							type: "button",
+							class: "inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark",
+							onClick: logout
+						}, " Odjava ")], 64)) : (openBlock(), createBlock(Fragment, { key: 1 }, [createVNode(unref(Link), {
 							href: "/prijava",
 							class: "font-semibold text-white hover:text-primary-tint"
 						}, {
@@ -10816,13 +12173,13 @@ var _sfc_main$3 = {
 						}, {
 							default: withCtx(() => [createTextVNode(" Pridruži se ")]),
 							_: 1
-						})])
+						})], 64))])
 					])];
 				}),
 				_: 1
 			}, _parent));
-			_push(`</div><div class="border-b border-border bg-surface" data-v-684933d4>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: ["flex items-center gap-6 transition-[height] duration-200", scrolled.value ? "h-14 lg:h-16" : "h-16 lg:h-[72px]"] }, {
+			_push(`</div><div class="border-b border-border bg-surface" data-v-a885ea73>`);
+			_push(ssrRenderComponent(_sfc_main$98, { class: ["flex items-center gap-6 transition-[height] duration-200", scrolled.value ? "h-14 lg:h-16" : "h-16 lg:h-[72px]"] }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(ssrRenderComponent(unref(Link), {
@@ -10836,7 +12193,7 @@ var _sfc_main$3 = {
 							}),
 							_: 1
 						}, _parent, _scopeId));
-						_push(`<nav class="ml-6 hidden items-center gap-x-6 lg:flex" data-v-684933d4${_scopeId}><!--[-->`);
+						_push(`<nav class="ml-6 hidden items-center gap-x-6 lg:flex" data-v-a885ea73${_scopeId}><!--[-->`);
 						ssrRenderList(unref(mainNav), (item) => {
 							_push(`<!--[-->`);
 							if (item.children) _push(ssrRenderComponent(NavDropdown_default, { item }, null, _parent, _scopeId));
@@ -10852,13 +12209,13 @@ var _sfc_main$3 = {
 							}, _parent, _scopeId));
 							_push(`<!--]-->`);
 						});
-						_push(`<!--]--></nav><div class="ml-auto flex items-center gap-2" data-v-684933d4${_scopeId}><button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt" aria-label="Pretraga" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(`<!--]--></nav><div class="ml-auto flex items-center gap-2" data-v-a885ea73${_scopeId}><button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt" aria-label="Pretraga" data-v-a885ea73${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "search",
 							size: 20
 						}, null, _parent, _scopeId));
-						_push(`</button><button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden" aria-label="Otvori meni" data-v-684933d4${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(`</button><button type="button" class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden" aria-label="Otvori meni" data-v-a885ea73${_scopeId}>`);
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "menu",
 							size: 22
 						}, null, _parent, _scopeId));
@@ -10890,7 +12247,7 @@ var _sfc_main$3 = {
 							class: "inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt",
 							"aria-label": "Pretraga",
 							onClick: ($event) => searchOpen.value = !searchOpen.value
-						}, [createVNode(_sfc_main$89, {
+						}, [createVNode(_sfc_main$97, {
 							name: "search",
 							size: 20
 						})], 8, ["onClick"]), createVNode("button", {
@@ -10898,7 +12255,7 @@ var _sfc_main$3 = {
 							class: "inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden",
 							"aria-label": "Otvori meni",
 							onClick: ($event) => drawerOpen.value = true
-						}, [createVNode(_sfc_main$89, {
+						}, [createVNode(_sfc_main$97, {
 							name: "menu",
 							size: 22
 						})], 8, ["onClick"])])
@@ -10908,18 +12265,18 @@ var _sfc_main$3 = {
 			}, _parent));
 			_push(`</div>`);
 			if (searchOpen.value) {
-				_push(`<div class="border-t border-border bg-surface" data-v-684933d4>`);
-				_push(ssrRenderComponent(_sfc_main$90, { class: "py-3" }, {
+				_push(`<div class="border-t border-border bg-surface" data-v-a885ea73>`);
+				_push(ssrRenderComponent(_sfc_main$98, { class: "py-3" }, {
 					default: withCtx((_, _push, _parent, _scopeId) => {
 						if (_push) {
-							_push(`<form class="flex items-center gap-2" data-v-684933d4${_scopeId}><div class="relative flex-1" data-v-684933d4${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(`<form class="flex items-center gap-2" data-v-a885ea73${_scopeId}><div class="relative flex-1" data-v-a885ea73${_scopeId}>`);
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: "search",
 								size: 18,
 								class: "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
 							}, null, _parent, _scopeId));
-							_push(`<input${ssrRenderAttr("value", searchTerm.value)} type="search" placeholder="Pretraži ponudu, lokalitete, događaje…" class="h-11 w-full rounded-sm border border-border bg-surface pl-10 pr-4 outline-none focus:border-primary" data-v-684933d4${_scopeId}></div>`);
-							_push(ssrRenderComponent(_sfc_main$85, {
+							_push(`<input${ssrRenderAttr("value", searchTerm.value)} type="search" placeholder="Pretraži ponudu, lokalitete, događaje…" class="h-11 w-full rounded-sm border border-border bg-surface pl-10 pr-4 outline-none focus:border-primary" data-v-a885ea73${_scopeId}></div>`);
+							_push(ssrRenderComponent(_sfc_main$93, {
 								type: "submit",
 								variant: "primary"
 							}, {
@@ -10933,7 +12290,7 @@ var _sfc_main$3 = {
 						} else return [createVNode("form", {
 							class: "flex items-center gap-2",
 							onSubmit: withModifiers(submitSearch, ["prevent"])
-						}, [createVNode("div", { class: "relative flex-1" }, [createVNode(_sfc_main$89, {
+						}, [createVNode("div", { class: "relative flex-1" }, [createVNode(_sfc_main$97, {
 							name: "search",
 							size: 18,
 							class: "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
@@ -10944,7 +12301,7 @@ var _sfc_main$3 = {
 							type: "search",
 							placeholder: "Pretraži ponudu, lokalitete, događaje…",
 							class: "h-11 w-full rounded-sm border border-border bg-surface pl-10 pr-4 outline-none focus:border-primary"
-						}, null, 8, ["onUpdate:modelValue"]), [[vModelText, searchTerm.value]])]), createVNode(_sfc_main$85, {
+						}, null, 8, ["onUpdate:modelValue"]), [[vModelText, searchTerm.value]])]), createVNode(_sfc_main$93, {
 							type: "submit",
 							variant: "primary"
 						}, {
@@ -10970,7 +12327,7 @@ _sfc_main$3.setup = (props, ctx) => {
 	(ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("resources/js/components/layout/AppHeader.vue");
 	return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-var AppHeader_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$3, [["__scopeId", "data-v-684933d4"]]);
+var AppHeader_default = /*#__PURE__*/ _plugin_vue_export_helper_default(_sfc_main$3, [["__scopeId", "data-v-a885ea73"]]);
 //#endregion
 //#region resources/js/components/layout/AppFooter.vue
 var _sfc_main$2 = {
@@ -10980,7 +12337,7 @@ var _sfc_main$2 = {
 		const { footerLinks, kontakt, postavke } = useSite();
 		return (_ctx, _push, _parent, _attrs) => {
 			_push(`<footer${ssrRenderAttrs(mergeProps({ class: "mt-16 border-t border-border bg-surface md:mt-24" }, _attrs))}>`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "py-10 md:py-12" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "py-10 md:py-12" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<div class="grid gap-8 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]"${_scopeId}><div class="max-w-sm"${_scopeId}>`);
@@ -10997,7 +12354,7 @@ var _sfc_main$2 = {
 						_push(`<p class="mt-3 text-sm leading-relaxed text-text-muted"${_scopeId}>${ssrInterpolate(unref(postavke).footerOpis)}</p><div class="mt-4 flex gap-2"${_scopeId}><!--[-->`);
 						ssrRenderList(unref(postavke).social || [], (s) => {
 							_push(`<a${ssrRenderAttr("href", s.href)}${ssrRenderAttr("aria-label", s.label)} class="inline-flex size-9 items-center justify-center rounded-full bg-surface-alt text-primary transition-colors hover:bg-primary-tint"${_scopeId}>`);
-							_push(ssrRenderComponent(_sfc_main$89, {
+							_push(ssrRenderComponent(_sfc_main$97, {
 								name: s.name,
 								size: 18
 							}, null, _parent, _scopeId));
@@ -11034,19 +12391,19 @@ var _sfc_main$2 = {
 							_push(`</li>`);
 						});
 						_push(`<!--]--></ul></div></div><div${_scopeId}><h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted"${_scopeId}>Kontakt</h3><ul class="mt-3 space-y-3 text-sm text-text"${_scopeId}><li class="flex items-start gap-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "map-pin",
 							size: 16,
 							class: "mt-0.5 shrink-0 text-primary"
 						}, null, _parent, _scopeId));
 						_push(`<span${_scopeId}>${ssrInterpolate(unref(kontakt).adresa)}</span></li><li class="flex items-start gap-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "phone",
 							size: 16,
 							class: "mt-0.5 shrink-0 text-primary"
 						}, null, _parent, _scopeId));
 						_push(`<a${ssrRenderAttr("href", `tel:${unref(kontakt).telefon}`)} class="hover:text-primary"${_scopeId}>${ssrInterpolate(unref(kontakt).telefon)}</a></li><li class="flex items-start gap-2"${_scopeId}>`);
-						_push(ssrRenderComponent(_sfc_main$89, {
+						_push(ssrRenderComponent(_sfc_main$97, {
 							name: "mail",
 							size: 16,
 							class: "mt-0.5 shrink-0 text-primary"
@@ -11068,7 +12425,7 @@ var _sfc_main$2 = {
 									href: s.href,
 									"aria-label": s.label,
 									class: "inline-flex size-9 items-center justify-center rounded-full bg-surface-alt text-primary transition-colors hover:bg-primary-tint"
-								}, [createVNode(_sfc_main$89, {
+								}, [createVNode(_sfc_main$97, {
 									name: s.name,
 									size: 18
 								}, null, 8, ["name"])], 8, ["href", "aria-label"]);
@@ -11092,12 +12449,12 @@ var _sfc_main$2 = {
 							}, 1032, ["href"])]);
 						}), 128))])])]),
 						createVNode("div", null, [createVNode("h3", { class: "text-[13px] font-bold uppercase tracking-wider text-text-muted" }, "Kontakt"), createVNode("ul", { class: "mt-3 space-y-3 text-sm text-text" }, [
-							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$89, {
+							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$97, {
 								name: "map-pin",
 								size: 16,
 								class: "mt-0.5 shrink-0 text-primary"
 							}), createVNode("span", null, toDisplayString(unref(kontakt).adresa), 1)]),
-							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$89, {
+							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$97, {
 								name: "phone",
 								size: 16,
 								class: "mt-0.5 shrink-0 text-primary"
@@ -11105,7 +12462,7 @@ var _sfc_main$2 = {
 								href: `tel:${unref(kontakt).telefon}`,
 								class: "hover:text-primary"
 							}, toDisplayString(unref(kontakt).telefon), 9, ["href"])]),
-							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$89, {
+							createVNode("li", { class: "flex items-start gap-2" }, [createVNode(_sfc_main$97, {
 								name: "mail",
 								size: 16,
 								class: "mt-0.5 shrink-0 text-primary"
@@ -11119,7 +12476,7 @@ var _sfc_main$2 = {
 				_: 1
 			}, _parent));
 			_push(`<div class="bg-surface-alt">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "py-7" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "py-7" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<h3 class="text-xs font-bold uppercase tracking-wider text-text-muted"${_scopeId}>Partneri projekta</h3><div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:flex lg:flex-wrap"${_scopeId}><!--[-->`);
@@ -11137,7 +12494,7 @@ var _sfc_main$2 = {
 				_: 1
 			}, _parent));
 			_push(`</div><div class="bg-primary-darker">`);
-			_push(ssrRenderComponent(_sfc_main$90, { class: "flex flex-col gap-2 py-4 text-[13px] text-primary-tint sm:flex-row sm:items-center sm:justify-between" }, {
+			_push(ssrRenderComponent(_sfc_main$98, { class: "flex flex-col gap-2 py-4 text-[13px] text-primary-tint sm:flex-row sm:items-center sm:justify-between" }, {
 				default: withCtx((_, _push, _parent, _scopeId) => {
 					if (_push) {
 						_push(`<p${_scopeId}>${ssrInterpolate(unref(postavke).copyright)}</p><nav class="flex flex-wrap gap-x-4 gap-y-1"${_scopeId}><!--[-->`);
@@ -11217,7 +12574,7 @@ var _sfc_main$1 = {
 					}),
 					_: 1
 				}, _parent));
-				_push(ssrRenderComponent(_sfc_main$85, {
+				_push(ssrRenderComponent(_sfc_main$93, {
 					variant: "primary",
 					size: "sm",
 					onClick: unref(consent).accept
@@ -11290,6 +12647,7 @@ createServer((page) => createInertiaApp({
 			"./Pages/Login.vue": Login_exports,
 			"./Pages/Map.vue": Map_exports,
 			"./Pages/NotFound.vue": NotFound_exports,
+			"./Pages/PageRenderer.vue": PageRenderer_exports,
 			"./Pages/RegisterAuthor.vue": RegisterAuthor_exports,
 			"./Pages/RegisterBusiness.vue": RegisterBusiness_exports,
 			"./Pages/RegisterChoice.vue": RegisterChoice_exports,
@@ -11301,8 +12659,9 @@ createServer((page) => createInertiaApp({
 			"./Pages/account/AutorPostavke.vue": AutorPostavke_exports,
 			"./Pages/account/AutorPrice.vue": AutorPrice_exports,
 			"./Pages/account/AutorProfil.vue": AutorProfil_exports,
-			"./Pages/account/BiznisMediji.vue": BiznisMediji_exports,
+			"./Pages/account/BiznisObjavaForm.vue": BiznisObjavaForm_exports,
 			"./Pages/account/BiznisObjave.vue": BiznisObjave_exports,
+			"./Pages/account/BiznisOglasForm.vue": BiznisOglasForm_exports,
 			"./Pages/account/BiznisOglasi.vue": BiznisOglasi_exports,
 			"./Pages/account/BiznisPostavke.vue": BiznisPostavke_exports,
 			"./Pages/account/BiznisProfil.vue": BiznisProfil_exports

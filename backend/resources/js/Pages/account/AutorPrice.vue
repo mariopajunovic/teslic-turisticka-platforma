@@ -1,15 +1,14 @@
 <script setup>
-// 1:1 → „Autor – MojePrice".
+import { Link } from '@inertiajs/vue3'
 import AccountLayout from '@/components/layout/AccountLayout.vue'
 import { autorNav } from '@/constants/account'
 import BaseButton from '@/components/base/BaseButton.vue'
 import PostRow from '@/components/account/PostRow.vue'
+import EmptyState from '@/components/common/EmptyState.vue'
 
-const price = [
-  { naslov: 'Borje — gdje med ima ukus planine', meta: 'Objavljeno 19.06.2026. · Priča', status: 'objavljeno' },
-  { naslov: 'Pet mjesta za posjetiti u okolini Teslića', meta: 'Poslano 21.06.2026. · Priča', status: 'na-odobrenju' },
-  { naslov: 'Stare zanate Teslića čuvaju mladi', meta: 'Sačuvano 16.06.2026. · Nacrt', status: 'nacrt' },
-]
+defineProps({
+  price: { type: Array, default: () => [] },
+})
 </script>
 
 <template>
@@ -22,9 +21,18 @@ const price = [
         </div>
         <BaseButton to="/nalog/autor/nova-prica" variant="primary" icon="plus">Nova priča</BaseButton>
       </div>
-      <div class="space-y-3">
-        <PostRow v-for="(p, i) in price" :key="i" :item="p" />
+
+      <div v-if="price.length" class="space-y-3">
+        <Link v-for="p in price" :key="p.id" :href="p.editUrl" class="block">
+          <PostRow :item="p" />
+        </Link>
       </div>
+
+      <EmptyState
+        v-else
+        title="Još nema priča"
+        text="Kreirajte prvu priču i pošaljite je na odobrenje."
+      />
     </div>
   </AccountLayout>
 </template>

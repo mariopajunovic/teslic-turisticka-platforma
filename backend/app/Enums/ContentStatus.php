@@ -26,6 +26,17 @@ enum ContentStatus: string implements HasLabel, HasColor
         };
     }
 
+    public function badge(): string
+    {
+        return match ($this) {
+            self::Nacrt => 'nacrt',
+            self::Poslano, self::Odobreno => 'na-odobrenju',
+            self::Objavljeno => 'objavljeno',
+            self::Odbijeno => 'odbijeno',
+            self::Arhivirano => 'isteklo',
+        };
+    }
+
     public function getColor(): string|array|null
     {
         return match ($this) {

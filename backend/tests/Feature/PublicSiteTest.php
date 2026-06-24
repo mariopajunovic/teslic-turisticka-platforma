@@ -32,6 +32,10 @@ class PublicSiteTest extends TestCase
             'price' => ['/price'],
             'prica detalj' => ['/price/ljudi-duh-teslica'],
             'mapa' => ['/mapa'],
+            'cms o-projektu' => ['/o-projektu'],
+            'cms pravna' => ['/politika-privatnosti'],
+            'kontakt' => ['/kontakt'],
+            'pridruzi-se' => ['/pridruzi-se'],
         ];
     }
 

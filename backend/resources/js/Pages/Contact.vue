@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { router } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -38,14 +39,25 @@ function posalji() {
     greska.value = true
     return
   }
-  // Slanje je placeholder — pravi API poziv dolazi kasnije.
-  poslano.value = true
-  ime.value = ''
-  email.value = ''
-  tema.value = ''
-  poruka.value = ''
-  saglasnost.value = false
-  captcha.value = false
+  router.post(
+    '/kontakt',
+    { ime: ime.value, email: email.value, tema: tema.value, poruka: poruka.value },
+    {
+      preserveScroll: true,
+      onSuccess: () => {
+        poslano.value = true
+        ime.value = ''
+        email.value = ''
+        tema.value = ''
+        poruka.value = ''
+        saglasnost.value = false
+        captcha.value = false
+      },
+      onError: () => {
+        greska.value = true
+      },
+    },
+  )
 }
 </script>
 
