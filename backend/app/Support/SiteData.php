@@ -45,7 +45,7 @@ class SiteData
                 'partneri' => $settings->partneri,
             ],
             'texts' => $straniceSettings->toArray(),
-            'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon])->all(),
+            'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon, 'color' => $c->color])->all(),
         ];
     }
 

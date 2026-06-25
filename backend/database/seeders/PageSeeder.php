@@ -30,6 +30,7 @@ class PageSeeder extends Seeder
             ['type' => 'map', 'data' => ['naslov' => 'Istraži na mapi', 'linkText' => 'Otvori mapu', 'to' => '/mapa', 'height' => '480px']],
             ['type' => 'card_grid', 'data' => ['naslov' => 'Nadolazeći događaji', 'resource' => 'event', 'limit' => 4, 'cols' => 4, 'linkText' => 'Kalendar', 'to' => '/dogadjaji']],
             ['type' => 'card_grid', 'data' => ['naslov' => 'Priče iz Teslića', 'resource' => 'story', 'limit' => 3, 'cols' => 3, 'linkText' => 'Sve priče', 'to' => '/price']],
+            ['type' => 'featured_story', 'data' => ['naslov' => 'Izdvojena priča']],
             ['type' => 'stats', 'data' => [
                 'settings' => ['background' => 'primary-tint', 'padding' => 'lg'],
                 'naslov' => 'Teslić u brojkama',
@@ -102,6 +103,15 @@ class PageSeeder extends Seeder
                     ['q' => 'Da li je registracija besplatna?', 'a' => 'Da, osnovni profil i objavljivanje sadržaja su besplatni za lokalne ponuđače i autore.'],
                     ['q' => 'Ko odobrava sadržaj?', 'a' => 'Sav sadržaj prije objave pregleda tim Turističke organizacije Teslić radi osiguranja kvaliteta.'],
                     ['q' => 'Mogu li uređivati objavu nakon objavljivanja?', 'a' => 'Da, izmjene su moguće kroz vaš nalog, a veće promjene ponovo prolaze kratak pregled.'],
+                ],
+            ]],
+            ['type' => 'partners', 'data' => [
+                'naslov' => 'Partneri i podrška',
+                'items' => [
+                    ['name' => 'Opština Teslić', 'logo' => '', 'url' => ''],
+                    ['name' => 'TO Republike Srpske', 'logo' => '', 'url' => ''],
+                    ['name' => 'Banja Vrućica', 'logo' => '', 'url' => ''],
+                    ['name' => 'Privredna komora', 'logo' => '', 'url' => ''],
                 ],
             ]],
             ['type' => 'cta', 'data' => [

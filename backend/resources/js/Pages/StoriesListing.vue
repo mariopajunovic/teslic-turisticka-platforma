@@ -35,12 +35,14 @@ const autor = ref('')
 
 let debounceTimer = null
 
-function reload(params) {
-  router.get(
-    window.location.pathname,
-    params,
-    { preserveState: true, preserveScroll: true, replace: true },
-  )
+const BASE = '/price'
+
+function reload({ kategorija: kat, q, page } = {}) {
+  const path = kat ? `${BASE}/kategorija/${kat}` : BASE
+  const query = {}
+  if (q) query.q = q
+  if (page && page > 1) query.page = page
+  router.get(path, query, { preserveState: true, preserveScroll: true, replace: true })
 }
 
 watch(kategorija, (val) => {

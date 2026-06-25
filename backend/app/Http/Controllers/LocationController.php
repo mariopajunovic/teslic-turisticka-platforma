@@ -88,16 +88,25 @@ class LocationController extends Controller
         ]);
     }
 
-    public function kategorija(string $kategorija): Response
+    public function kategorija(Request $request, string $kategorija): Response
     {
         $cat = Category::where('key', $kategorija)->firstOrFail();
+        $q = $request->query('q');
 
         $query = Location::objavljeno()
             ->with(['category', 'media'])
             ->latest('published_at')
             ->whereHas('category', fn ($c) => $c->where('key', $kategorija));
 
-        $paginator = $query->paginate(12);
+        if ($q) {
+            $query->where(function ($builder) use ($q) {
+                $builder->where('naslov', 'like', '%'.$q.'%')
+                    ->orWhere('opis', 'like', '%'.$q.'%')
+                    ->orWhere('lokacija', 'like', '%'.$q.'%');
+            });
+        }
+
+        $paginator = $query->paginate(12)->withQueryString();
 
         return Inertia::render('TourismListing', [
             'lokaliteti' => [
@@ -108,7 +117,7 @@ class LocationController extends Controller
                 ],
             ],
             'kategorija' => $kategorija,
-            'q' => null,
+            'q' => $q,
             'seo' => Seo::make(
                 $cat->label.' — Teslić',
                 'Pregledajte turističke lokalitete u kategoriji '.$cat->label.' na području Teslića.',

@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('key')->unique();
             $table->string('label');
             $table->string('icon')->nullable();
+            $table->string('color', 9)->nullable();
             $table->string('type')->nullable();
             $table->unsignedInteger('sort')->default(0);
             $table->timestamps();

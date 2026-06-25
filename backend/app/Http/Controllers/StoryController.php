@@ -88,16 +88,24 @@ class StoryController extends Controller
         ]);
     }
 
-    public function kategorija(string $kategorija): Response
+    public function kategorija(Request $request, string $kategorija): Response
     {
         $cat = Category::where('key', $kategorija)->firstOrFail();
+        $q = $request->query('q');
 
         $query = Story::objavljeno()
             ->with(['category', 'media'])
             ->latest('published_at')
             ->whereHas('category', fn ($c) => $c->where('key', $kategorija));
 
-        $paginator = $query->paginate(12);
+        if ($q) {
+            $query->where(function ($builder) use ($q) {
+                $builder->where('naslov', 'like', '%'.$q.'%')
+                    ->orWhere('izvod', 'like', '%'.$q.'%');
+            });
+        }
+
+        $paginator = $query->paginate(12)->withQueryString();
 
         return Inertia::render('StoriesListing', [
             'price' => [
@@ -108,7 +116,7 @@ class StoryController extends Controller
                 ],
             ],
             'kategorija' => $kategorija,
-            'q' => null,
+            'q' => $q,
             'seo' => Seo::make(
                 $cat->label.' — Teslić',
                 'Čitajte priče u kategoriji '.$cat->label.' s područja Teslića.',

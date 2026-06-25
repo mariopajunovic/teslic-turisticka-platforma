@@ -11,6 +11,7 @@ class Category extends Model
         'key',
         'label',
         'icon',
+        'color',
         'type',
         'sort',
     ];

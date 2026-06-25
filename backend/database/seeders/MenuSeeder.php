@@ -12,23 +12,23 @@ class MenuSeeder extends Seeder
     {
         $this->menu('main', 'Glavna navigacija', [
             ['Domaće je najbolje', '/domace-je-najbolje', [
-                ['Zanatski proizvodi', '/domace-je-najbolje?kategorija=zanat'],
-                ['Domaća hrana i piće', '/domace-je-najbolje?kategorija=hrana'],
-                ['Usluge i servisi', '/domace-je-najbolje?kategorija=usluge'],
+                ['Zanatski proizvodi', '/domace-je-najbolje/kategorija/zanat'],
+                ['Domaća hrana i piće', '/domace-je-najbolje/kategorija/hrana'],
+                ['Usluge i servisi', '/domace-je-najbolje/kategorija/usluge'],
             ]],
             ['Turizam', '/turizam', [
-                ['Prirodne atrakcije', '/turizam?kategorija=priroda'],
-                ['Kulturne manifestacije', '/turizam?kategorija=kultura'],
-                ['Planine, šume i sela', '/turizam?kategorija=planine'],
-                ['Gdje odsjesti', '/turizam?kategorija=smjestaj'],
+                ['Prirodne atrakcije', '/turizam/kategorija/priroda'],
+                ['Kulturne manifestacije', '/turizam/kategorija/kultura'],
+                ['Planine, šume i sela', '/turizam/kategorija/planine'],
+                ['Gdje odsjesti', '/turizam/kategorija/smjestaj'],
             ]],
             ['Događaji', '/dogadjaji'],
             ['Oglasi', '/oglasi'],
             ['Mapa', '/mapa'],
             ['Priče', '/price', [
-                ['Domaćini pričaju', '/price?kategorija=domacini'],
-                ['Ljudi i biznisi', '/price?kategorija=ljudi'],
-                ['Naša svakodnevica', '/price?kategorija=svakodnevica'],
+                ['Domaćini pričaju', '/price/kategorija/domacini'],
+                ['Ljudi i biznisi', '/price/kategorija/ljudi'],
+                ['Naša svakodnevica', '/price/kategorija/svakodnevica'],
             ]],
         ]);
 
@@ -61,6 +61,7 @@ class MenuSeeder extends Seeder
     protected function menu(string $key, string $name, array $items): void
     {
         $menu = Menu::updateOrCreate(['key' => $key], ['name' => $name]);
+        $menu->items()->whereNotNull('parent_id')->delete();
         $menu->items()->delete();
 
         foreach ($items as $i => $item) {

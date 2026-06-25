@@ -1,16 +1,15 @@
 <script setup>
-// Panel slojeva/filtera za mapu. v-model = niz aktivnih key-eva kategorija.
+// Legenda = filter: jedna lista kategorija (klik = uključi/isključi sloj).
+// Boja i ikona se povlače iz baze (Category.color / Category.icon).
 import { ref } from 'vue'
 import { useCategories } from '@/composables/useCategories'
-import { categoryColor } from './markerIcon'
+import { categoryColor, isLightColor } from './markerIcon'
 import SearchInput from '@/components/common/SearchInput.vue'
-import FormCheckbox from '@/components/forms/FormCheckbox.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
 const { categories } = useCategories()
 
 const model = defineModel({ type: Array, default: () => [] })
-
 const emit = defineEmits(['search'])
 
 const query = ref('')
@@ -19,58 +18,71 @@ function onSearch(value) {
   emit('search', value)
 }
 
-function isChecked(key) {
+function isActive(key) {
   return model.value.includes(key)
 }
 
-function toggle(key, checked) {
-  if (checked) {
-    if (!model.value.includes(key)) model.value = [...model.value, key]
-  } else {
-    model.value = model.value.filter((k) => k !== key)
-  }
+function toggle(key) {
+  model.value = isActive(key) ? model.value.filter((k) => k !== key) : [...model.value, key]
 }
+
+function reset() {
+  model.value = []
+}
+
+const colorOf = (cat) => cat.color || categoryColor(cat.key)
+const swatchText = (cat) => (isLightColor(colorOf(cat)) ? 'text-heading' : 'text-white')
 </script>
 
 <template>
-  <div class="space-y-5 rounded-md border border-border bg-surface p-4">
-    <SearchInput
-      v-model="query"
-      placeholder="Pretraži ponudu…"
-      @submit="onSearch"
-    />
+  <div class="space-y-4 rounded-md border border-border bg-surface p-4">
+    <SearchInput v-model="query" placeholder="Pretraži ponudu…" @submit="onSearch" />
 
-    <div class="space-y-3">
-      <h3 class="text-sm font-semibold text-heading">Slojevi</h3>
-      <ul class="space-y-2.5">
-        <li v-for="cat in categories" :key="cat.key">
-          <FormCheckbox
-            :model-value="isChecked(cat.key)"
-            :label="cat.label"
-            @update:model-value="(v) => toggle(cat.key, v)"
-          />
-        </li>
-      </ul>
+    <div class="flex items-center justify-between">
+      <h3 class="text-sm font-semibold text-heading">Kategorije</h3>
+      <button
+        v-if="model.length"
+        type="button"
+        class="text-xs font-medium text-primary hover:underline"
+        @click="reset"
+      >
+        Poništi ({{ model.length }})
+      </button>
     </div>
 
-    <div class="space-y-2.5 border-t border-border pt-4">
-      <h3 class="text-sm font-semibold text-heading">Legenda</h3>
-      <ul class="grid grid-cols-2 gap-x-3 gap-y-2">
-        <li
-          v-for="cat in categories"
-          :key="cat.key"
-          class="flex items-center gap-2 text-sm text-text"
+    <ul class="space-y-1.5">
+      <li v-for="cat in categories" :key="cat.key">
+        <button
+          type="button"
+          class="flex w-full items-center gap-2.5 rounded-sm border px-2.5 py-2 text-left text-sm transition-colors"
+          :class="
+            isActive(cat.key)
+              ? 'border-primary bg-primary-tint text-heading'
+              : 'border-border text-text hover:bg-surface-alt'
+          "
+          :aria-pressed="isActive(cat.key)"
+          @click="toggle(cat.key)"
         >
           <span
             class="inline-flex size-6 shrink-0 items-center justify-center rounded-full"
-            :class="cat.key === 'dogadjaj' ? 'text-heading' : 'text-white'"
-            :style="{ backgroundColor: categoryColor(cat.key) }"
+            :class="swatchText(cat)"
+            :style="{ backgroundColor: colorOf(cat) }"
           >
             <BaseIcon :name="cat.icon" :size="14" />
           </span>
-          <span class="truncate">{{ cat.label }}</span>
-        </li>
-      </ul>
-    </div>
+          <span class="flex-1 truncate">{{ cat.label }}</span>
+          <BaseIcon
+            v-if="isActive(cat.key)"
+            name="check"
+            :size="16"
+            class="shrink-0 text-primary"
+          />
+        </button>
+      </li>
+    </ul>
+
+    <p class="text-xs text-text-muted">
+      Klik na kategoriju filtrira mapu. Bez odabira — prikazane su sve.
+    </p>
   </div>
 </template>

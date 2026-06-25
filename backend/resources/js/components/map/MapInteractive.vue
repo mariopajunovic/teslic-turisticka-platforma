@@ -13,6 +13,12 @@ const props = defineProps({
   center: { type: Array, default: () => [44.6078, 17.8569] },
   zoom: { type: Number, default: 13 },
   height: { type: String, default: '520px' },
+  boundaryUrl: { type: String, default: '/geo/teslic.geojson' },
+  fitToBoundary: { type: Boolean, default: true },
+  maskOutside: { type: Boolean, default: true },
+  maskColor: { type: String, default: '#06443D' },
+  maskOpacity: { type: Number, default: 0.2 },
+  lockToBoundary: { type: Boolean, default: true },
 })
 
 const emit = defineEmits(['select'])
@@ -51,8 +57,9 @@ function drawMarkers() {
 
   props.items.filter(isVisible).forEach((item) => {
     if (item.lat == null || item.lng == null) return
+    const cat = categoryByKey[item.kategorija] || {}
     const marker = L.marker([item.lat, item.lng], {
-      icon: categoryIcon(L, item.kategorija),
+      icon: categoryIcon(L, { color: cat.color, icon: cat.icon || item.kategorija }),
       title: item.naslov,
     })
     marker.bindPopup(popupHtml(item))
@@ -78,6 +85,63 @@ onMounted(async () => {
     attribution: '&copy; OpenStreetMap',
     maxZoom: 19,
   }).addTo(map)
+
+  // Granica općine Teslić: maska van granice (vidljiv samo Teslić) + obris + zaključavanje
+  try {
+    const res = await fetch(props.boundaryUrl)
+    if (res.ok) {
+      const geo = await res.json()
+      const onlyPoly = (f) =>
+        f.geometry && (f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon')
+
+      // Parsiraj granicu i skupi prstenove (lat/lng) — bez dodavanja na mapu.
+      const parsed = L.geoJSON(geo, { filter: onlyPoly })
+      const rings = []
+      const collect = (ll) => {
+        if (!Array.isArray(ll)) return
+        if (ll.length && ll[0] && typeof ll[0].lat === 'number') rings.push(ll)
+        else ll.forEach(collect)
+      }
+      parsed.eachLayer((l) => collect(l.getLatLngs()))
+
+      if (rings.length) {
+        // Maska: cijeli svijet kao vanjski prsten, granica kao "rupe" → sve van Teslića prekriveno.
+        if (props.maskOutside) {
+          const world = [
+            L.latLng(-89.9, -179.9),
+            L.latLng(89.9, -179.9),
+            L.latLng(89.9, 179.9),
+            L.latLng(-89.9, 179.9),
+          ]
+          L.polygon([world, ...rings], {
+            stroke: false,
+            fillColor: props.maskColor,
+            fillOpacity: props.maskOpacity,
+            interactive: false,
+          }).addTo(map)
+        }
+
+        // Obris granice (na vrhu maske).
+        L.geoJSON(geo, {
+          filter: onlyPoly,
+          style: { color: '#0E8275', weight: 2.5, fill: false },
+          interactive: false,
+        }).addTo(map)
+
+        const b = parsed.getBounds()
+        if (b.isValid()) {
+          if (props.fitToBoundary) map.fitBounds(b, { padding: [20, 20] })
+          if (props.lockToBoundary) {
+            map.setMaxBounds(b.pad(0.4))
+            map.options.maxBoundsViscosity = 0.8
+            map.setMinZoom(Math.max(0, Math.floor(map.getBoundsZoom(b)) - 1))
+          }
+        }
+      }
+    }
+  } catch {
+    // granica nije kritična — tiho preskoči
+  }
 
   clusterGroup = L.markerClusterGroup({ showCoverageOnHover: false })
   map.addLayer(clusterGroup)
