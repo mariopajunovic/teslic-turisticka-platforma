@@ -25,6 +25,10 @@ class StoriesTable
                     ->label('Naslov')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->badge()
+                    ->sortable(),
                 TextColumn::make('autor')
                     ->label('Autor')
                     ->searchable(),
@@ -35,9 +39,6 @@ class StoriesTable
                 IconColumn::make('featured')
                     ->label('Izdvojeno')
                     ->boolean(),
-                TextColumn::make('status')
-                    ->badge()
-                    ->sortable(),
                 TextColumn::make('published_at')
                     ->label('Objavljeno')
                     ->dateTime('d.m.Y.')

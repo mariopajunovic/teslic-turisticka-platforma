@@ -25,11 +25,12 @@ class LocationsTable
                     ->label('Naziv')
                     ->searchable()
                     ->sortable(),
-                TextColumn::make('category.label')
-                    ->label('Kategorija')
+                TextColumn::make('status')
+                    ->label('Status')
                     ->badge()
                     ->sortable(),
-                TextColumn::make('status')
+                TextColumn::make('category.label')
+                    ->label('Kategorija')
                     ->badge()
                     ->sortable(),
                 IconColumn::make('preporuceno')

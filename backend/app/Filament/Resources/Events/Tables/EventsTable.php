@@ -24,15 +24,16 @@ class EventsTable
                     ->label('Naziv')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->badge()
+                    ->sortable(),
                 TextColumn::make('datum')
                     ->label('Datum')
                     ->date('d.m.Y.')
                     ->sortable(),
                 TextColumn::make('category.label')
                     ->label('Kategorija')
-                    ->badge()
-                    ->sortable(),
-                TextColumn::make('status')
                     ->badge()
                     ->sortable(),
                 TextColumn::make('published_at')

@@ -25,6 +25,10 @@ class BusinessesTable
                     ->label('Naziv')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('status')
+                    ->label('Status')
+                    ->badge()
+                    ->sortable(),
                 TextColumn::make('category.label')
                     ->label('Kategorija')
                     ->badge()
@@ -35,9 +39,6 @@ class BusinessesTable
                 IconColumn::make('preporuceno')
                     ->label('Izdvojeno')
                     ->boolean(),
-                TextColumn::make('status')
-                    ->badge()
-                    ->sortable(),
                 TextColumn::make('published_at')
                     ->label('Objavljeno')
                     ->dateTime('d.m.Y.')

@@ -9,7 +9,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
-use Filament\Schemas\Components\Fieldset;
+use Filament\Schemas\Components\Group;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
 class LocationForm
@@ -17,78 +18,125 @@ class LocationForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
+            ->columns(3)
             ->components([
-                TextInput::make('naslov')
-                    ->label('Naziv')
-                    ->required()
-                    ->maxLength(255)
-                    ->columnSpanFull(),
-                TextInput::make('slug')
-                    ->helperText('Ostaviti prazno za automatsko generisanje.')
-                    ->unique(ignoreRecord: true)
-                    ->maxLength(255),
-                Select::make('category_id')
-                    ->label('Kategorija')
-                    ->relationship('category', 'label')
-                    ->searchable()
-                    ->preload(),
-                Select::make('user_id')
-                    ->label('Vlasnik')
-                    ->relationship('user', 'name')
-                    ->searchable()
-                    ->preload(),
-                TextInput::make('lokacija'),
-                Textarea::make('opis')
-                    ->label('Kratak opis')
-                    ->rows(2)
-                    ->columnSpanFull(),
-                Textarea::make('opis_dug')
-                    ->label('Detaljan opis')
-                    ->rows(5)
-                    ->columnSpanFull(),
-                Textarea::make('kako_doci')
-                    ->label('Kako doći')
-                    ->rows(2)
-                    ->columnSpanFull(),
-                Textarea::make('savjeti')
-                    ->label('Savjeti za posjetioce')
-                    ->rows(2)
-                    ->columnSpanFull(),
-                TextInput::make('sezona')
-                    ->label('Sezona'),
-                TextInput::make('radno_vrijeme')
-                    ->label('Radno vrijeme'),
-                TextInput::make('ulaznice')
-                    ->label('Ulaznice / cijene'),
-                Fieldset::make('Lokacija na mapi')
+                // ── Glavni stub ──────────────────────────────────────────
+                Group::make()
+                    ->columnSpan(2)
                     ->schema([
-                        TextInput::make('lat')->numeric(),
-                        TextInput::make('lng')->numeric(),
+                        Section::make('Osnovno')
+                            ->description('Naziv, lokacija i opis lokacije.')
+                            ->schema([
+                                TextInput::make('naslov')
+                                    ->label('Naziv')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpanFull(),
+                                TextInput::make('slug')
+                                    ->helperText('Ostaviti prazno za automatsko generisanje.')
+                                    ->unique(ignoreRecord: true)
+                                    ->maxLength(255),
+                                TextInput::make('lokacija')
+                                    ->label('Lokacija'),
+                                Textarea::make('opis')
+                                    ->label('Kratak opis')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                Textarea::make('opis_dug')
+                                    ->label('Detaljan opis')
+                                    ->rows(5)
+                                    ->columnSpanFull(),
+                            ])
+                            ->columns(2),
+
+                        Section::make('Informacije za posjetu')
+                            ->schema([
+                                Textarea::make('kako_doci')
+                                    ->label('Kako doći')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                Textarea::make('savjeti')
+                                    ->label('Savjeti za posjetioce')
+                                    ->rows(2)
+                                    ->columnSpanFull(),
+                                TextInput::make('sezona')
+                                    ->label('Sezona'),
+                                TextInput::make('radno_vrijeme')
+                                    ->label('Radno vrijeme'),
+                                TextInput::make('ulaznice')
+                                    ->label('Ulaznice / cijene'),
+                            ])
+                            ->columns(2)
+                            ->collapsible(),
+
+                        Section::make('Lokacija na mapi')
+                            ->schema([
+                                TextInput::make('lat')->numeric(),
+                                TextInput::make('lng')->numeric(),
+                            ])
+                            ->columns(2)
+                            ->collapsible(),
+
+                        Section::make('Galerija')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('galerija')
+                                    ->hiddenLabel()
+                                    ->collection('galerija')
+                                    ->image()
+                                    ->multiple()
+                                    ->reorderable()
+                                    ->columnSpanFull(),
+                            ])
+                            ->collapsible(),
                     ]),
-                SpatieMediaLibraryFileUpload::make('naslovna')
-                    ->label('Naslovna slika')
-                    ->collection('naslovna')
-                    ->image(),
-                SpatieMediaLibraryFileUpload::make('galerija')
-                    ->collection('galerija')
-                    ->image()
-                    ->multiple()
-                    ->reorderable(),
-                Toggle::make('preporuceno')
-                    ->label('Izdvojeno / preporučeno'),
-                Select::make('status')
-                    ->options(ContentStatus::class)
-                    ->default('nacrt')
-                    ->required(),
-                DateTimePicker::make('published_at')
-                    ->label('Objavljeno'),
-                Select::make('tags')
-                    ->label('Oznake')
-                    ->relationship('tags', 'name')
-                    ->multiple()
-                    ->preload()
-                    ->createOptionForm([
-                        TextInput::make('name')->required(),
+
+                // ── Bočni panel ──────────────────────────────────────────
+                Group::make()
+                    ->columnSpan(1)
+                    ->schema([
+                        Section::make('Objavljivanje')
+                            ->schema([
+                                Select::make('status')
+                                    ->label('Status')
+                                    ->options(ContentStatus::class)
+                                    ->default('nacrt')
+                                    ->required(),
+                                DateTimePicker::make('published_at')
+                                    ->label('Objavljeno'),
+                                Toggle::make('preporuceno')
+                                    ->label('Izdvojeno / preporučeno'),
+                            ]),
+
+                        Section::make('Klasifikacija')
+                            ->schema([
+                                Select::make('category_id')
+                                    ->label('Kategorija')
+                                    ->relationship('category', 'label')
+                                    ->searchable()
+                                    ->preload(),
+                                Select::make('user_id')
+                                    ->label('Vlasnik')
+                                    ->relationship('user', 'name')
+                                    ->searchable()
+                                    ->preload(),
+                                Select::make('tags')
+                                    ->label('Oznake')
+                                    ->relationship('tags', 'name')
+                                    ->multiple()
+                                    ->preload()
+                                    ->createOptionForm([
+                                        TextInput::make('name')->required(),
+                                    ]),
+                            ]),
+
+                        Section::make('Naslovna slika')
+                            ->schema([
+                                SpatieMediaLibraryFileUpload::make('naslovna')
+                                    ->hiddenLabel()
+                                    ->collection('naslovna')
+                                    ->image()
+                                    ->columnSpanFull(),
+                            ]),
                     ]),
             ]);
     }
