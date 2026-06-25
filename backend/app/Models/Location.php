@@ -53,7 +53,8 @@ class Location extends Model implements HasMedia
     {
         return SlugOptions::create()
             ->generateSlugsFrom('naslov')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     public function category(): BelongsTo

@@ -43,7 +43,7 @@ const registry = {
   author: BlockAuthor,
 }
 
-const isVisible = (block) => block.data?.settings?.visible ?? block.data?.visible ?? true
+const isVisible = (block) => !(block.data?.settings?.hidden)
 </script>
 
 <template>

@@ -16,4 +16,9 @@ class EditLocation extends EditRecord
             DeleteAction::make(),
         ];
     }
+
+    protected function getFormActions(): array
+    {
+        return [];
+    }
 }

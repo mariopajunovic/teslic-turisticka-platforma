@@ -13,7 +13,7 @@ const props = defineProps({
   center: { type: Array, default: () => [44.6078, 17.8569] },
   zoom: { type: Number, default: 13 },
   height: { type: String, default: '520px' },
-  boundaryUrl: { type: String, default: '/geo/teslic.geojson' },
+  boundaryUrl: { type: String, default: '/geo/teslic_naselja.geojson' },
   fitToBoundary: { type: Boolean, default: true },
   maskOutside: { type: Boolean, default: true },
   maskColor: { type: String, default: '#06443D' },
@@ -86,16 +86,16 @@ onMounted(async () => {
     maxZoom: 19,
   }).addTo(map)
 
-  // Granica općine Teslić: maska van granice (vidljiv samo Teslić) + obris + zaključavanje
+  // Granica općine + naselja: maska van granice + obris + nazivi (sve iz naselja GeoJSON-a).
   try {
     const res = await fetch(props.boundaryUrl)
     if (res.ok) {
       const geo = await res.json()
-      const onlyPoly = (f) =>
-        f.geometry && (f.geometry.type === 'Polygon' || f.geometry.type === 'MultiPolygon')
+      const isOpstina = (f) => f.properties?.layer === 'Granica_opstine'
+      const isUnutarnji = (f) => f.properties?.layer === 'Granica_naselj_mjesta'
 
-      // Parsiraj granicu i skupi prstenove (lat/lng) — bez dodavanja na mapu.
-      const parsed = L.geoJSON(geo, { filter: onlyPoly })
+      // Vanjska granica općine: skupi prstenove (lat/lng) — bez dodavanja na mapu.
+      const parsed = L.geoJSON(geo, { filter: isOpstina })
       const rings = []
       const collect = (ll) => {
         if (!Array.isArray(ll)) return
@@ -121,12 +121,33 @@ onMounted(async () => {
           }).addTo(map)
         }
 
-        // Obris granice (na vrhu maske).
+        // Unutarnje granice naselja (ispod obrisa općine).
         L.geoJSON(geo, {
-          filter: onlyPoly,
+          filter: isUnutarnji,
+          style: { color: '#B45309', weight: 1, fill: false, opacity: 0.7 },
+          interactive: false,
+        }).addTo(map)
+
+        // Obris vanjske granice općine (na vrhu maske).
+        L.geoJSON(geo, {
+          filter: isOpstina,
           style: { color: '#0E8275', weight: 2.5, fill: false },
           interactive: false,
         }).addTo(map)
+
+        // Nazivi naselja (MTEXT točke).
+        geo.features
+          .filter((f) => f.geometry?.type === 'Point' && f.properties?.text)
+          .forEach((f) => {
+            const [lng, lat] = f.geometry.coordinates
+            L.marker([lat, lng], {
+              interactive: false,
+              icon: L.divIcon({
+                className: 'map-naselje-label',
+                html: escapeHtml(f.properties.text),
+              }),
+            }).addTo(map)
+          })
 
         const b = parsed.getBounds()
         if (b.isValid()) {
@@ -195,5 +216,17 @@ watch(() => props.activeCategories, drawMarkers, { deep: true })
 :deep(.map-popup-basic span) {
   color: var(--color-text-muted);
   font-size: 13px;
+}
+:deep(.map-naselje-label) {
+  width: auto !important;
+  height: auto !important;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  color: #92400e;
+  text-shadow:
+    0 0 2px #fff,
+    0 0 2px #fff,
+    0 0 3px #fff;
 }
 </style>

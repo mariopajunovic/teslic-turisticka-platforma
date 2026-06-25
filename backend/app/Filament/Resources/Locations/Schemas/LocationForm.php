@@ -9,6 +9,8 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
+use Filament\Actions\Action;
+use Filament\Schemas\Components\Actions;
 use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -105,6 +107,15 @@ class LocationForm
                                     ->label('Objavljeno'),
                                 Toggle::make('preporuceno')
                                     ->label('Izdvojeno / preporučeno'),
+                                Actions::make([
+                                    Action::make('sacuvaj')
+                                        ->label('Sačuvaj')
+                                        ->icon('heroicon-m-check')
+                                        ->keyBindings(['mod+s'])
+                                        ->action(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\EditRecord
+                                            ? $livewire->save()
+                                            : $livewire->create()),
+                                ])->fullWidth(),
                             ]),
 
                         Section::make('Klasifikacija')

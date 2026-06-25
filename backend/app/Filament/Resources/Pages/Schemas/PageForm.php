@@ -21,8 +21,9 @@ class PageForm
                         ->label('Naslov')
                         ->required(),
                     TextInput::make('slug')
-                        ->helperText('Ostaviti prazno za automatsko generisanje.')
-                        ->unique(ignoreRecord: true),
+                        ->helperText('Ostaviti prazno za automatsko generisanje. Sistemske stranice imaju zaključan slug.')
+                        ->unique(ignoreRecord: true)
+                        ->disabled(fn ($record) => (bool) ($record?->is_system)),
                     Toggle::make('published')
                         ->label('Objavljeno')
                         ->default(true),

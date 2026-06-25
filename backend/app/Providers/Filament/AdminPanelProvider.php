@@ -2,11 +2,11 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -28,25 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->viteTheme('resources/css/filament/admin/theme.css')
-            ->brandName('TO Teslić')
             ->authGuard('admin')
             ->login()
-            ->sidebarCollapsibleOnDesktop()
-            ->spa()
-            ->renderHook(
-                \Filament\View\PanelsRenderHook::TOPBAR_END,
-                fn () => view('filament.hooks.quick-create'),
-            )
-            ->navigationGroups([
-                'Sadržaj',
-                'Mediji',
-                'Stranice i izgled',
-                'Taksonomija',
-                'Mapa / Lokacije',
-                'Korisnici',
-                'Sistem',
-            ])
             ->colors([
                 'primary' => Color::hex('#0E8275'),
             ]);
@@ -64,7 +47,10 @@ class AdminPanelProvider extends PanelProvider
                 Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            ->widgets([])
+            ->widgets([
+                AccountWidget::class,
+                FilamentInfoWidget::class,
+            ])
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

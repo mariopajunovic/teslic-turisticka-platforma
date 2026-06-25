@@ -238,7 +238,7 @@ class PageBlocks
                         'full' => 'Puna',
                     ])
                     ->default('contain'),
-                Toggle::make('visible')->label('Vidljivo')->default(true),
+                Toggle::make('hidden')->label('Sakrij blok')->default(false),
             ])
             ->columns(2)
             ->collapsed();
