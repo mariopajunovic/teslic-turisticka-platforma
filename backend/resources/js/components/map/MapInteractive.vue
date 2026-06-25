@@ -16,8 +16,8 @@ const props = defineProps({
   boundaryUrl: { type: String, default: '/geo/teslic_naselja.geojson' },
   fitToBoundary: { type: Boolean, default: true },
   maskOutside: { type: Boolean, default: true },
-  maskColor: { type: String, default: '#06443D' },
-  maskOpacity: { type: Number, default: 0.2 },
+  maskColor: { type: String, default: '#c8d848' },
+  maskOpacity: { type: Number, default: 0.12 },
   lockToBoundary: { type: Boolean, default: true },
   selectedNaselje: { type: String, default: '' },
 })
@@ -30,16 +30,31 @@ let clusterGroup = null
 
 const naseljaLayers = {}
 let opstinaBounds = null
-let naseljeLabel = null
 
-const naseljeFaintStyle = { color: '#B45309', weight: 1, fill: false, opacity: 0.7 }
+const naseljeFaintStyle = { color: '#c8d848', weight: 1, fill: false, opacity: 0.8 }
 const naseljeActiveStyle = {
-  color: '#B45309',
+  color: '#a7b82e',
   weight: 2.5,
   fill: true,
-  fillColor: '#F59E0B',
-  fillOpacity: 0.2,
+  fillColor: '#c8d848',
+  fillOpacity: 0.25,
   opacity: 1,
+}
+
+const CYR_LAT = {
+  А: 'A', Б: 'B', В: 'V', Г: 'G', Д: 'D', Ђ: 'Đ', Е: 'E', Ж: 'Ž', З: 'Z', И: 'I',
+  Ј: 'J', К: 'K', Л: 'L', Љ: 'LJ', М: 'M', Н: 'N', Њ: 'NJ', О: 'O', П: 'P', Р: 'R',
+  С: 'S', Т: 'T', Ћ: 'Ć', У: 'U', Ф: 'F', Х: 'H', Ц: 'C', Ч: 'Č', Џ: 'DŽ', Ш: 'Š',
+  а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', ђ: 'đ', е: 'e', ж: 'ž', з: 'z', и: 'i',
+  ј: 'j', к: 'k', л: 'l', љ: 'lj', м: 'm', н: 'n', њ: 'nj', о: 'o', п: 'p', р: 'r',
+  с: 's', т: 't', ћ: 'ć', у: 'u', ф: 'f', х: 'h', ц: 'c', ч: 'č', џ: 'dž', ш: 'š',
+}
+
+function cyrToLat(value) {
+  return String(value)
+    .split('')
+    .map((c) => CYR_LAT[c] ?? c)
+    .join('')
 }
 
 function pointInRing(x, y, ring) {
@@ -57,10 +72,6 @@ function pointInRing(x, y, ring) {
 function applyNaselje(name) {
   if (!map || !L) return
   Object.values(naseljaLayers).forEach((l) => l.setStyle(naseljeFaintStyle))
-  if (naseljeLabel) {
-    map.removeLayer(naseljeLabel)
-    naseljeLabel = null
-  }
 
   const layer = name && naseljaLayers[name]
   if (!layer) {
@@ -70,12 +81,7 @@ function applyNaselje(name) {
 
   layer.setStyle(naseljeActiveStyle)
   layer.bringToFront()
-  const b = layer.getBounds()
-  map.fitBounds(b, { padding: [40, 40], maxZoom: 14 })
-  naseljeLabel = L.marker(b.getCenter(), {
-    interactive: false,
-    icon: L.divIcon({ className: 'map-naselje-label', html: escapeHtml(name) }),
-  }).addTo(map)
+  map.fitBounds(layer.getBounds(), { padding: [40, 40], maxZoom: 14 })
 }
 
 function escapeHtml(value) {
@@ -176,7 +182,7 @@ onMounted(async () => {
         const texts = geo.features
           .filter((f) => f.geometry?.type === 'Point' && f.properties?.text)
           .map((f) => ({
-            name: String(f.properties.text).replace(/\s+/g, ' ').trim(),
+            name: cyrToLat(String(f.properties.text).replace(/\s+/g, ' ').trim()),
             lng: f.geometry.coordinates[0],
             lat: f.geometry.coordinates[1],
           }))
@@ -274,17 +280,5 @@ watch(() => props.selectedNaselje, (name) => applyNaselje(name))
 :deep(.map-popup-basic span) {
   color: var(--color-text-muted);
   font-size: 13px;
-}
-:deep(.map-naselje-label) {
-  width: auto !important;
-  height: auto !important;
-  white-space: nowrap;
-  font-size: 11px;
-  font-weight: 600;
-  color: #92400e;
-  text-shadow:
-    0 0 2px #fff,
-    0 0 2px #fff,
-    0 0 3px #fff;
 }
 </style>
