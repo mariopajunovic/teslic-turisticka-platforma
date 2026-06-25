@@ -19,13 +19,64 @@ const props = defineProps({
   maskColor: { type: String, default: '#06443D' },
   maskOpacity: { type: Number, default: 0.2 },
   lockToBoundary: { type: Boolean, default: true },
+  selectedNaselje: { type: String, default: '' },
 })
 
-const emit = defineEmits(['select'])
+const emit = defineEmits(['select', 'naselja'])
 
 const mapEl = ref(null)
 let map = null
 let clusterGroup = null
+
+const naseljaLayers = {}
+let opstinaBounds = null
+let naseljeLabel = null
+
+const naseljeFaintStyle = { color: '#B45309', weight: 1, fill: false, opacity: 0.7 }
+const naseljeActiveStyle = {
+  color: '#B45309',
+  weight: 2.5,
+  fill: true,
+  fillColor: '#F59E0B',
+  fillOpacity: 0.2,
+  opacity: 1,
+}
+
+function pointInRing(x, y, ring) {
+  let inside = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const xi = ring[i][0]
+    const yi = ring[i][1]
+    const xj = ring[j][0]
+    const yj = ring[j][1]
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) inside = !inside
+  }
+  return inside
+}
+
+function applyNaselje(name) {
+  if (!map || !L) return
+  Object.values(naseljaLayers).forEach((l) => l.setStyle(naseljeFaintStyle))
+  if (naseljeLabel) {
+    map.removeLayer(naseljeLabel)
+    naseljeLabel = null
+  }
+
+  const layer = name && naseljaLayers[name]
+  if (!layer) {
+    if (opstinaBounds && opstinaBounds.isValid()) map.fitBounds(opstinaBounds, { padding: [20, 20] })
+    return
+  }
+
+  layer.setStyle(naseljeActiveStyle)
+  layer.bringToFront()
+  const b = layer.getBounds()
+  map.fitBounds(b, { padding: [40, 40], maxZoom: 14 })
+  naseljeLabel = L.marker(b.getCenter(), {
+    interactive: false,
+    icon: L.divIcon({ className: 'map-naselje-label', html: escapeHtml(name) }),
+  }).addTo(map)
+}
 
 function escapeHtml(value) {
   return String(value ?? '').replace(
@@ -121,12 +172,29 @@ onMounted(async () => {
           }).addTo(map)
         }
 
-        // Unutarnje granice naselja (ispod obrisa općine).
+        // Nazivi naselja (MTEXT točke) — koriste se za uparivanje poligona i imena.
+        const texts = geo.features
+          .filter((f) => f.geometry?.type === 'Point' && f.properties?.text)
+          .map((f) => ({
+            name: String(f.properties.text).replace(/\s+/g, ' ').trim(),
+            lng: f.geometry.coordinates[0],
+            lat: f.geometry.coordinates[1],
+          }))
+
+        // Granice naselja: blagi obris + naziv (preko point-in-polygon) za filter.
         L.geoJSON(geo, {
           filter: isUnutarnji,
-          style: { color: '#B45309', weight: 1, fill: false, opacity: 0.7 },
+          style: naseljeFaintStyle,
           interactive: false,
+          onEachFeature: (feature, layer) => {
+            const ring = feature.geometry?.coordinates?.[0]
+            if (!ring) return
+            const t = texts.find((tp) => pointInRing(tp.lng, tp.lat, ring))
+            if (t && !naseljaLayers[t.name]) naseljaLayers[t.name] = layer
+          },
         }).addTo(map)
+
+        emit('naselja', Object.keys(naseljaLayers).sort((a, b) => a.localeCompare(b)))
 
         // Obris vanjske granice općine (na vrhu maske).
         L.geoJSON(geo, {
@@ -135,22 +203,9 @@ onMounted(async () => {
           interactive: false,
         }).addTo(map)
 
-        // Nazivi naselja (MTEXT točke).
-        geo.features
-          .filter((f) => f.geometry?.type === 'Point' && f.properties?.text)
-          .forEach((f) => {
-            const [lng, lat] = f.geometry.coordinates
-            L.marker([lat, lng], {
-              interactive: false,
-              icon: L.divIcon({
-                className: 'map-naselje-label',
-                html: escapeHtml(f.properties.text),
-              }),
-            }).addTo(map)
-          })
-
         const b = parsed.getBounds()
         if (b.isValid()) {
+          opstinaBounds = b
           if (props.fitToBoundary) map.fitBounds(b, { padding: [20, 20] })
           if (props.lockToBoundary) {
             map.setMaxBounds(b.pad(0.4))
@@ -158,6 +213,8 @@ onMounted(async () => {
             map.setMinZoom(Math.max(0, Math.floor(map.getBoundsZoom(b)) - 1))
           }
         }
+
+        if (props.selectedNaselje) applyNaselje(props.selectedNaselje)
       }
     }
   } catch {
@@ -183,6 +240,7 @@ onUnmounted(() => {
 
 watch(() => props.items, drawMarkers, { deep: true })
 watch(() => props.activeCategories, drawMarkers, { deep: true })
+watch(() => props.selectedNaselje, (name) => applyNaselje(name))
 </script>
 
 <template>

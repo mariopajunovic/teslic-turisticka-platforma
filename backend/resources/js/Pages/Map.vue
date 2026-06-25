@@ -14,6 +14,8 @@ const props = defineProps({
 const aktivne = ref([])
 const upit = ref('')
 const odabrana = ref(null)
+const naseljaList = ref([])
+const odabranoNaselje = ref('')
 
 const filtrirano = computed(() => {
   let lista = props.tacke
@@ -47,7 +49,12 @@ function odaberi(item) {
 
       <div class="grid gap-6 lg:grid-cols-[320px_1fr]">
         <div class="space-y-6">
-          <MapFilterPanel v-model="aktivne" @search="(v) => (upit = v)" />
+          <MapFilterPanel
+            v-model="aktivne"
+            v-model:naselje="odabranoNaselje"
+            :naselja="naseljaList"
+            @search="(v) => (upit = v)"
+          />
           <ResultsList :items="filtrirano" @select="odaberi" />
         </div>
 
@@ -55,8 +62,10 @@ function odaberi(item) {
           <MapInteractive
             :items="filtrirano"
             :active-categories="aktivne"
+            :selected-naselje="odabranoNaselje"
             height="640px"
             @select="odaberi"
+            @naselja="naseljaList = $event"
           />
           <div v-if="odabrana" class="absolute right-4 top-4 z-[1000]">
             <MapPopup :item="odabrana" @close="odabrana = null" />
