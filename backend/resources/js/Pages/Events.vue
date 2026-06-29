@@ -3,6 +3,7 @@ import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
+import Hero from '@/components/common/Hero.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import SegmentControl from '@/components/common/SegmentControl.vue'
 import FilterBar from '@/components/common/FilterBar.vue'
@@ -11,15 +12,21 @@ import FormSelect from '@/components/forms/FormSelect.vue'
 import Pagination from '@/components/common/Pagination.vue'
 import Skeleton from '@/components/common/Skeleton.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
+import RelatedContent from '@/components/common/RelatedContent.vue'
+import CTASection from '@/components/common/CTASection.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import EventCard from '@/components/cards/EventCard.vue'
+import LocationCard from '@/components/cards/LocationCard.vue'
+import BusinessCard from '@/components/cards/BusinessCard.vue'
+import StoryCard from '@/components/cards/StoryCard.vue'
 import EventCalendar from '@/components/calendar/EventCalendar.vue'
 
 const props = defineProps({
   q: { type: String, default: '' },
   period: { type: String, default: '' },
   dogadjaji: { type: Object, default: () => ({ data: [], meta: { current_page: 1, last_page: 1 } }) },
+  povezani: { type: Object, default: () => ({ lokalitet: null, biznis: null, prica: null }) },
 })
 
 const error = null
@@ -97,25 +104,25 @@ function onSelectDay({ events }) {
 
 <template>
   <main class="pb-12 md:pb-16">
-    <AppContainer class="pt-8">
+    <Hero
+      kicker="Događaji"
+      kicker-class="text-secondary"
+      title="Šta se dešava u Tesliću"
+      subtitle="Festivali, sajmovi, izleti i kulturna dešavanja — pratite kalendar događaja teslićkog kraja."
+      image="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80"
+    />
+
+    <AppContainer class="pt-6">
       <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: 'Događaji' }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
-      <div class="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <h1 class="font-heading text-3xl font-bold text-heading md:text-4xl">
-            Događaji i dešavanja
-          </h1>
-          <p class="mt-2 max-w-2xl text-text-muted">
-            Festivali, sajmovi, koncerti i manifestacije u Tesliću i okolini.
-          </p>
-        </div>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <SegmentControl v-model="prikaz" :options="prikazOpcije" />
       </div>
     </AppContainer>
 
-    <AppContainer class="mt-6">
+    <AppContainer class="mt-4">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
         <FormSelect v-model="period" :options="periodOpcije" placeholder="Svi periodi" />
         <SearchInput v-model="upit" placeholder="Pretraži događaje…" />
@@ -185,6 +192,35 @@ function onSelectDay({ events }) {
           </div>
         </div>
       </template>
+    </AppContainer>
+
+    <!-- Povezani sadržaj -->
+    <section
+      v-if="povezani.lokalitet || povezani.biznis || povezani.prica"
+      class="mt-12 bg-surface-alt py-12 md:py-14"
+    >
+      <AppContainer>
+        <RelatedContent
+          kicker="Povezano"
+          title="Gdje se događaji dešavaju"
+          class="!mt-0"
+          back-to="/"
+          back-label="← Nazad na Početnu"
+        >
+          <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
+          <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
+          <StoryCard v-if="povezani.prica" :item="povezani.prica" />
+        </RelatedContent>
+      </AppContainer>
+    </section>
+
+    <AppContainer class="mt-12">
+      <CTASection
+        title="Organizujete događaj u Tesliću?"
+        text="Prijavite svoj događaj i objavite ga u kalendaru platforme."
+      >
+        <BaseButton variant="sekundarna" to="/pridruzi-se">Prijavi događaj</BaseButton>
+      </CTASection>
     </AppContainer>
   </main>
 </template>

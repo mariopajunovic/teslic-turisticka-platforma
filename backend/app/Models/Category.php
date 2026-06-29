@@ -10,6 +10,10 @@ class Category extends Model
     protected $fillable = [
         'key',
         'label',
+        'opis',
+        'hero_image',
+        'meta_title',
+        'meta_description',
         'icon',
         'color',
         'type',

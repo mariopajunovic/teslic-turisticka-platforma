@@ -17,6 +17,7 @@ const props = defineProps({
 const emit = defineEmits(['search'])
 
 const query = ref('')
+const open = ref(false)
 
 function onSearch(value) {
   emit('search', value)
@@ -53,51 +54,91 @@ const swatchText = (cat) => (isLightColor(colorOf(cat)) ? 'text-heading' : 'text
       </select>
     </div>
 
-    <div class="flex items-center justify-between">
-      <h3 class="text-sm font-semibold text-heading">Kategorije</h3>
+    <div class="relative">
       <button
-        v-if="model.length"
         type="button"
-        class="text-xs font-medium text-primary hover:underline"
-        @click="reset"
+        class="flex w-full items-center justify-between gap-2 rounded-sm border border-border bg-surface px-3 py-2.5 text-sm transition-colors hover:bg-surface-alt"
+        :aria-expanded="open"
+        @click="open = !open"
       >
-        Poništi ({{ model.length }})
+        <span class="flex items-center gap-2">
+          <BaseIcon name="sliders-horizontal" :size="16" class="text-text-muted" />
+          <span class="font-medium text-heading">Kategorije</span>
+          <span
+            v-if="model.length"
+            class="inline-flex min-w-5 items-center justify-center rounded-full bg-primary px-1.5 text-xs font-semibold text-white"
+          >
+            {{ model.length }}
+          </span>
+        </span>
+        <BaseIcon
+          name="chevron-down"
+          :size="16"
+          class="shrink-0 text-text-muted transition-transform"
+          :class="open ? 'rotate-180' : ''"
+        />
       </button>
-    </div>
 
-    <ul class="space-y-1.5">
-      <li v-for="cat in categories" :key="cat.key">
+      <div v-if="open">
         <button
           type="button"
-          class="flex w-full items-center gap-2.5 rounded-sm border px-2.5 py-2 text-left text-sm transition-colors"
-          :class="
-            isActive(cat.key)
-              ? 'border-primary bg-primary-tint text-heading'
-              : 'border-border text-text hover:bg-surface-alt'
-          "
-          :aria-pressed="isActive(cat.key)"
-          @click="toggle(cat.key)"
+          class="fixed inset-0 z-10 cursor-default"
+          aria-hidden="true"
+          tabindex="-1"
+          @click="open = false"
+        />
+        <div
+          class="absolute inset-x-0 z-20 mt-2 rounded-md border border-border bg-surface p-2 shadow-[var(--shadow-lg)]"
         >
-          <span
-            class="inline-flex size-6 shrink-0 items-center justify-center rounded-full"
-            :class="swatchText(cat)"
-            :style="{ backgroundColor: colorOf(cat) }"
-          >
-            <BaseIcon :name="cat.icon" :size="14" />
-          </span>
-          <span class="flex-1 truncate">{{ cat.label }}</span>
-          <BaseIcon
-            v-if="isActive(cat.key)"
-            name="check"
-            :size="16"
-            class="shrink-0 text-primary"
-          />
-        </button>
-      </li>
-    </ul>
+          <div class="flex items-center justify-between px-1 pb-2">
+            <span class="text-xs font-semibold uppercase tracking-wide text-text-muted">
+              Filtriraj po kategoriji
+            </span>
+            <button
+              v-if="model.length"
+              type="button"
+              class="text-xs font-medium text-primary hover:underline"
+              @click="reset"
+            >
+              Poništi
+            </button>
+          </div>
+          <ul class="max-h-72 space-y-1 overflow-y-auto">
+            <li v-for="cat in categories" :key="cat.key">
+              <button
+                type="button"
+                class="flex w-full items-center gap-2.5 rounded-sm border px-2.5 py-2 text-left text-sm transition-colors"
+                :class="
+                  isActive(cat.key)
+                    ? 'border-primary bg-primary-tint text-heading'
+                    : 'border-border text-text hover:bg-surface-alt'
+                "
+                :aria-pressed="isActive(cat.key)"
+                @click="toggle(cat.key)"
+              >
+                <span
+                  class="inline-flex size-6 shrink-0 items-center justify-center rounded-full"
+                  :class="swatchText(cat)"
+                  :style="{ backgroundColor: colorOf(cat) }"
+                >
+                  <BaseIcon :name="cat.icon" :size="14" />
+                </span>
+                <span class="flex-1 truncate">{{ cat.label }}</span>
+                <BaseIcon
+                  v-if="isActive(cat.key)"
+                  name="check"
+                  :size="16"
+                  class="shrink-0 text-primary"
+                />
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <p class="text-xs text-text-muted">
-      Klik na kategoriju filtrira mapu. Bez odabira — prikazane su sve.
+      Odaberite kategorije za filtriranje mape. Bez odabira — prikazane su sve.
     </p>
   </div>
 </template>

@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BusinessResource;
+use App\Http\Resources\EventResource;
 use App\Http\Resources\LocationResource;
+use App\Http\Resources\StoryResource;
+use App\Models\Business;
 use App\Models\Category;
+use App\Models\Event;
 use App\Models\Location;
+use App\Models\Story;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -45,12 +51,26 @@ class LocationController extends Controller
             ],
             'kategorija' => $kategorija,
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
                 'Turizam u Tesliću',
                 'Otkrijte prirodne ljepote, kulturne znamenitosti i turističke atrakcije Teslića i okoline.',
                 url('/turizam'),
             ),
         ]);
+    }
+
+    protected function povezani(): array
+    {
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $prica = Story::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+            'dogadjaj' => $dogadjaj ? (new EventResource($dogadjaj))->resolve() : null,
+            'prica' => $prica ? (new StoryResource($prica))->resolve() : null,
+        ];
     }
 
     public function show(string $slug): Response
@@ -117,10 +137,14 @@ class LocationController extends Controller
                 ],
             ],
             'kategorija' => $kategorija,
+            'kategorijaLabel' => $cat->label,
+            'kategorijaOpis' => $cat->opis,
+            'kategorijaHero' => $this->categoryHero($cat),
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->label.' — Teslić',
-                'Pregledajte turističke lokalitete u kategoriji '.$cat->label.' na području Teslića.',
+                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_description ?: 'Pregledajte turističke lokalitete u kategoriji '.$cat->label.' na području Teslića.',
                 url('/turizam/kategorija/'.$kategorija),
             ),
         ]);

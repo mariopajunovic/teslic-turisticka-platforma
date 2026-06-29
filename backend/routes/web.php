@@ -84,6 +84,8 @@ Route::middleware('auth')->prefix('nalog')->group(function () {
     });
 });
 
+Route::get('/o-projektu', [PageController::class, 'about'])->name('o-projektu');
+
 Route::get('/{slug}', [PageController::class, 'show'])
     ->where('slug', '(?!admin$|build$|storage$)[a-z0-9\-]+')
     ->name('pages.show');

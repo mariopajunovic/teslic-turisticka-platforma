@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BusinessResource;
+use App\Http\Resources\EventResource;
+use App\Http\Resources\LocationResource;
 use App\Http\Resources\StoryResource;
+use App\Models\Business;
 use App\Models\Category;
+use App\Models\Event;
+use App\Models\Location;
 use App\Models\Story;
 use App\Support\Seo;
 use Illuminate\Http\Request;
@@ -44,12 +50,26 @@ class StoryController extends Controller
             ],
             'kategorija' => $kategorija,
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
                 'Priče iz Teslića',
                 'Čitajte zanimljive priče, reportaže i putopise s područja Teslića i Bosne.',
                 url('/price'),
             ),
         ]);
+    }
+
+    protected function povezani(): array
+    {
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+            'lokalitet' => $lokalitet ? (new LocationResource($lokalitet))->resolve() : null,
+            'dogadjaj' => $dogadjaj ? (new EventResource($dogadjaj))->resolve() : null,
+        ];
     }
 
     public function show(string $slug): Response
@@ -116,10 +136,14 @@ class StoryController extends Controller
                 ],
             ],
             'kategorija' => $kategorija,
+            'kategorijaLabel' => $cat->label,
+            'kategorijaOpis' => $cat->opis,
+            'kategorijaHero' => $this->categoryHero($cat),
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->label.' — Teslić',
-                'Čitajte priče u kategoriji '.$cat->label.' s područja Teslića.',
+                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_description ?: 'Čitajte priče u kategoriji '.$cat->label.' s područja Teslića.',
                 url('/price/kategorija/'.$kategorija),
             ),
         ]);

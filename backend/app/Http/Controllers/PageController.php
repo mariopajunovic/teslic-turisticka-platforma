@@ -38,6 +38,26 @@ class PageController extends Controller
         return $this->renderPage($page);
     }
 
+    public function about(): Response
+    {
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $prica = Story::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return Inertia::render('About', [
+            'related' => [
+                'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+                'dogadjaj' => $dogadjaj ? (new EventResource($dogadjaj))->resolve() : null,
+                'prica' => $prica ? (new StoryResource($prica))->resolve() : null,
+            ],
+            'seo' => Seo::make(
+                'O projektu',
+                'Platforma koja na jednom mjestu okuplja domaću ponudu, turizam, događaje i priče Teslića.',
+                url('/o-projektu'),
+            ),
+        ]);
+    }
+
     protected function renderPage(Page $page): Response
     {
         $blocks = collect($page->content ?? [])->map(function (array $block) {

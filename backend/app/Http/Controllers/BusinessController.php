@@ -3,8 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\BusinessResource;
+use App\Http\Resources\EventResource;
+use App\Http\Resources\LocationResource;
+use App\Http\Resources\StoryResource;
 use App\Models\Business;
 use App\Models\Category;
+use App\Models\Event;
+use App\Models\Location;
+use App\Models\Story;
 use App\Support\RelatedLinks;
 use App\Support\Seo;
 use Illuminate\Http\Request;
@@ -46,12 +52,26 @@ class BusinessController extends Controller
             ],
             'kategorija' => $kategorija,
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
                 'Domaće je najbolje — lokalni proizvodi i usluge',
                 'Otkrijte zanate, domaću hranu i piće te pouzdane usluge iz Teslića i okoline.',
                 url('/domace-je-najbolje'),
             ),
         ]);
+    }
+
+    protected function povezani(): array
+    {
+        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $prica = Story::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'lokalitet' => $lokalitet ? (new LocationResource($lokalitet))->resolve() : null,
+            'prica' => $prica ? (new StoryResource($prica))->resolve() : null,
+            'dogadjaj' => $dogadjaj ? (new EventResource($dogadjaj))->resolve() : null,
+        ];
     }
 
     public function show(string $slug): Response
@@ -120,10 +140,14 @@ class BusinessController extends Controller
                 ],
             ],
             'kategorija' => $kategorija,
+            'kategorijaLabel' => $cat->label,
+            'kategorijaOpis' => $cat->opis,
+            'kategorijaHero' => $this->categoryHero($cat),
             'q' => $q,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->label.' — Teslić',
-                'Pregledajte lokalne proizvode i usluge u kategoriji '.$cat->label.' iz Teslića i okoline.',
+                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_description ?: 'Pregledajte lokalne proizvode i usluge u kategoriji '.$cat->label.' iz Teslića i okoline.',
                 url('/domace-je-najbolje/kategorija/'.$kategorija),
             ),
         ]);

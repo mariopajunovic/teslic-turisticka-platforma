@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BusinessResource;
 use App\Http\Resources\EventResource;
+use App\Http\Resources\LocationResource;
+use App\Http\Resources\StoryResource;
+use App\Models\Business;
 use App\Models\Event;
+use App\Models\Location;
+use App\Models\Story;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -45,12 +51,26 @@ class EventController extends Controller
             ],
             'q' => $q,
             'period' => $period,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
                 'Događaji i dešavanja',
                 'Pratite kulturne, sportske i zabavne događaje u Tesliću i okolini.',
                 url('/dogadjaji'),
             ),
         ]);
+    }
+
+    protected function povezani(): array
+    {
+        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $prica = Story::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'lokalitet' => $lokalitet ? (new LocationResource($lokalitet))->resolve() : null,
+            'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+            'prica' => $prica ? (new StoryResource($prica))->resolve() : null,
+        ];
     }
 
     public function show(string $slug): Response

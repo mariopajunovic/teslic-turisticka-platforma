@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\AdResource;
+use App\Http\Resources\BusinessResource;
+use App\Http\Resources\LocationResource;
+use App\Http\Resources\StoryResource;
 use App\Models\Ad;
+use App\Models\Business;
+use App\Models\Location;
+use App\Models\Story;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -54,12 +60,26 @@ class AdController extends Controller
             'kategorija' => $kategorija,
             'q' => $q,
             'status' => $status,
+            'povezani' => $this->povezani(),
             'seo' => Seo::make(
                 'Poslovne prilike i oglasi',
                 'Pregledajte poslovne prilike, konkurse i oglase objavljene za područje Teslića.',
                 url('/oglasi'),
             ),
         ]);
+    }
+
+    protected function povezani(): array
+    {
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $prica = Story::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+            'lokalitet' => $lokalitet ? (new LocationResource($lokalitet))->resolve() : null,
+            'prica' => $prica ? (new StoryResource($prica))->resolve() : null,
+        ];
     }
 
     public function show(string $slug): Response
