@@ -5,6 +5,13 @@ Format: `fajl — šta je urađeno. [status]` (status: `u izradi` / `na pregledu
 
 ---
 
+## 2026-06-29 — XX_Pages_Final.pen: usklađivanje unutrašnjih stranica s Početnom
+- **XX_Pages_Final.pen kreiran (kopija 00_Foundations) — konsolidovani fajl gdje sve unutrašnje stranice dijele jednu priču i vezu s Početnom.** Pravila: hero-eho (kicker u boji stuba: Domaće/Posjetioci=teal, Turizam=terakota, Događaji/Pridruži=lime, Priče=terakota, Mapa/Kontakt=teal), breadcrumb od „Početna", iste Foundations komponente, **PovezaniSadrzaj** spona (kartice iz druga 2 stuba + „← Nazad na Početnu"), ista CTASekcija/Footer. Nova reusable **Hero/Unutrasnja** (slika+scrim+kicker+H1+podnaslov). Predlog: `PREDLOG_Uskladjivanje_sa_Pocetnom.md`.
+- **Glavni prikazi (Desktop+Mobile) gotovi:** 02 O projektu · 03 Domaće (listing+detalj biznisa) · 04 Turizam (listing) · 05 Događaji (lista) · 06 Oglasi (lista) · 07 Mapa (hero + mapa s panelom slojeva/pinovima/popup + filter i lista biznisa ispod) · 08 Priče (listing+featured) · 09 Pridruži se (hub) · 10 Kontakt · 12 Prijava · 13 Moj profil. Detaljne stranice 04/05/06/08 ostaju za drugi prolaz.
+- **Popravke:** MiniMapa dobila `clip:true` na masteru (dekoracije curile van okvira na svim instancama); InfoPanel dugme „Pošalji upit" preko pune putanje `instanca/UBFdZ/fFROY`; razmak hero↔mapa na 07. [na pregledu]
+
+---
+
 ## 2026-06-23 — Redizajn headera (dvoetažni + brend top traka)
 - **00_Foundations.pen — Header/Desktop (JKDc7) i Header/Mobile (BlJdt) redizajnirani u dvoetažni v2 (integrisano).** Gornja brend traka (`primary-darker`): kontakt (tel/email) lijevo · jezik SR|EN + društvene mreže + Prijava + Pridruži se (lime) desno. Glavna traka (bijela): tekst-logo „teslić" lijevo · rasterećena nav (Domaće je najbolje▾ · Turizam▾ · Događaji · Oglasi · Mapa · Priče▾) · pretraga. Mobilni: tanka top traka (tel + SR|EN) + glavna (logo + pretraga + hamburger). Dodat referentni artboard „Header/Mobile — v2 — Meni otvoren" (A4vKu0): drawer s pretragom, akordeon nav (podsekcije), Prijava/Pridruži se. Logo ostaje TEKST (ne slika). Eksploracije v3/v4 (logo-slika/kolona/ploča) obrisane. ⚠️ Stranice 01–13 imaju vlastite kopije starog headera — nisu još ažurirane (rollout zaseban). [na pregledu]
 
