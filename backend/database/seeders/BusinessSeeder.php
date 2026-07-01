@@ -5,11 +5,13 @@ namespace Database\Seeders;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\User;
+use Database\Seeders\Concerns\SeedsMedia;
 use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class BusinessSeeder extends Seeder
 {
+    use SeedsMedia;
     use VariesStatus;
 
     public function run(): void
@@ -27,7 +29,7 @@ class BusinessSeeder extends Seeder
             $icon = $item['kategorija']['icon'] ?? null;
             $category = $icon ? Category::where('key', $icon)->first() : null;
 
-            Business::updateOrCreate(
+            $model = Business::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => $owner?->id,
@@ -43,6 +45,8 @@ class BusinessSeeder extends Seeder
                     ...$this->statusFields($i),
                 ],
             );
+
+            $this->attachSlika($model, $item['slika'] ?? null);
         }
     }
 }

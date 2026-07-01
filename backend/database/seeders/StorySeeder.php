@@ -6,11 +6,13 @@ use App\Models\Category;
 use App\Models\Story;
 use App\Models\User;
 use Carbon\Carbon;
+use Database\Seeders\Concerns\SeedsMedia;
 use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class StorySeeder extends Seeder
 {
+    use SeedsMedia;
     use VariesStatus;
 
     protected const LABEL_TO_KEY = [
@@ -38,7 +40,7 @@ class StorySeeder extends Seeder
 
             $datum = $this->parseDate($item['datum'] ?? null);
 
-            Story::updateOrCreate(
+            $model = Story::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => $owner?->id,
@@ -53,6 +55,8 @@ class StorySeeder extends Seeder
                     ...$this->statusFields($i),
                 ],
             );
+
+            $this->attachSlika($model, $item['slika'] ?? null);
         }
     }
 

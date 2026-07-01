@@ -1,66 +1,502 @@
 [
-  {
-    "slug": "ljeto-na-borju",
-    "naslov": "Ljeto na Borju — festival",
-    "dan": "12",
-    "mjesec": "JUL",
-    "datum": "2026-07-12",
-    "vrijeme": "18:00 — 23:00",
-    "lokacija": "Planina Borja",
-    "slika": "",
-    "zavrseno": false,
-    "opisDug": "Tradicionalni ljetni festival na planini Borje s muzičkim programom, štandovima domaćih proizvoda i radionicama za djecu. Ulaz besplatan.",
-    "organizator": "TO Teslić",
-    "galerija": [{ "src": "", "alt": "Bina" }, { "src": "", "alt": "Štandovi" }],
-    "lat": 44.66,
-    "lng": 17.79
-  },
-  {
-    "slug": "sajam-meda",
-    "naslov": "Sajam domaćeg meda i rakije",
-    "dan": "05",
-    "mjesec": "AVG",
-    "datum": "2026-08-05",
-    "vrijeme": "10:00 — 16:00",
-    "lokacija": "Trg, Teslić",
-    "slika": "",
-    "zavrseno": false,
-    "opisDug": "Sajam okuplja lokalne pčelare i proizvođače rakije. Posjetioci mogu kupiti i degustirati domaće proizvode te razgovarati s proizvođačima.",
-    "organizator": "Udruženje pčelara Teslić",
-    "galerija": [{ "src": "", "alt": "Sajam" }],
-    "lat": 44.6078,
-    "lng": 17.8569
-  },
-  {
-    "slug": "izlozba-zanatlija",
-    "naslov": "Izložba zanatlija",
-    "dan": "21",
-    "mjesec": "JUN",
-    "datum": "2026-06-21",
-    "vrijeme": "12:00 — 18:00",
-    "lokacija": "Galerija, Teslić",
-    "slika": "",
-    "zavrseno": false,
-    "opisDug": "Izložba radova lokalnih zanatlija — drvo, tekstil, keramika i nakit. Prilika za upoznavanje s majstorima i kupovinu rukotvorina.",
-    "organizator": "TO Teslić",
-    "galerija": [{ "src": "", "alt": "Izložba" }],
-    "lat": 44.608,
-    "lng": 17.857
-  },
-  {
-    "slug": "koncert-vrucica",
-    "naslov": "Ljetni koncert u Banji Vrućici",
-    "dan": "20",
-    "mjesec": "JUN",
-    "datum": "2026-06-20",
-    "vrijeme": "20:00",
-    "lokacija": "Banja Vrućica",
-    "slika": "",
-    "zavrseno": true,
-    "opisDug": "Koncert u parku Banje Vrućice održan u sklopu ljetne kulturne sezone.",
-    "organizator": "Banja Vrućica",
-    "galerija": [{ "src": "", "alt": "Koncert" }],
-    "lat": 44.626,
-    "lng": 17.861
-  }
+    {
+        "slug": "ljetni-festival-teslic-0",
+        "naslov": "Ljetni festival Teslić 2026",
+        "dan": "01",
+        "mjesec": "JAN",
+        "datum": "2026-01-01",
+        "vrijeme": "10:00 — 16:00",
+        "lokacija": "Borje, Teslić",
+        "slika": "https://images.unsplash.com/photo-1781595452029-400aef872fb0?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Ljetni festival Teslić okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "TO Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.651999999999994,
+        "lng": 17.785999999999998
+    },
+    {
+        "slug": "sajam-domacih-proizvoda-1",
+        "naslov": "Sajam domaćih proizvoda 2026",
+        "dan": "04",
+        "mjesec": "FEB",
+        "datum": "2026-02-04",
+        "vrijeme": "18:00 — 23:00",
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1757609908147-440f77e2af25?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Sajam domaćih proizvoda okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Opština Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.686,
+        "lng": 17.74
+    },
+    {
+        "slug": "planinarski-uspon-na-borju-2",
+        "naslov": "Planinarski uspon na Borju 2026",
+        "dan": "07",
+        "mjesec": "MAR",
+        "datum": "2026-03-07",
+        "vrijeme": "08:00 — 15:00",
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Planinarski uspon na Borju okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Planinarsko društvo",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.585,
+        "lng": 17.934
+    },
+    {
+        "slug": "vece-folklora-i-tradicije-3",
+        "naslov": "Veče folklora i tradicije 2026",
+        "dan": "10",
+        "mjesec": "APR",
+        "datum": "2026-04-10",
+        "vrijeme": "19:00 — 22:00",
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1741376478037-80ae743ace47?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Veče folklora i tradicije okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Dom kulture",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.553999999999995,
+        "lng": 17.788
+    },
+    {
+        "slug": "biciklijada-kroz-usoru-4",
+        "naslov": "Biciklijada kroz Usoru 2026",
+        "dan": "13",
+        "mjesec": "MAJ",
+        "datum": "2026-05-13",
+        "vrijeme": "10:00 — 16:00",
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Biciklijada kroz Usoru okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "TO Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.508,
+        "lng": 17.875999999999998
+    },
+    {
+        "slug": "wellness-vikend-u-banji-5",
+        "naslov": "Wellness vikend u banji 2026",
+        "dan": "16",
+        "mjesec": "JUN",
+        "datum": "2026-06-16",
+        "vrijeme": "18:00 — 23:00",
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1781595452029-400aef872fb0?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Wellness vikend u banji okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Opština Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.651999999999994,
+        "lng": 17.95
+    },
+    {
+        "slug": "dani-meda-i-rakije-6",
+        "naslov": "Dani meda i rakije 2026",
+        "dan": "19",
+        "mjesec": "JUL",
+        "datum": "2026-07-19",
+        "vrijeme": "08:00 — 15:00",
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1757609908147-440f77e2af25?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Dani meda i rakije okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Planinarsko društvo",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.486000000000004,
+        "lng": 17.954
+    },
+    {
+        "slug": "smotra-starih-zanata-7",
+        "naslov": "Smotra starih zanata 2026",
+        "dan": "22",
+        "mjesec": "AVG",
+        "datum": "2026-08-22",
+        "vrijeme": "19:00 — 22:00",
+        "lokacija": "Stenjak, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Smotra starih zanata okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Dom kulture",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.64,
+        "lng": 17.874
+    },
+    {
+        "slug": "koncert-u-gradskom-parku-8",
+        "naslov": "Koncert u gradskom parku 2026",
+        "dan": "25",
+        "mjesec": "SEP",
+        "datum": "2026-09-25",
+        "vrijeme": "10:00 — 16:00",
+        "lokacija": "Slatina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1741376478037-80ae743ace47?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Koncert u gradskom parku okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "TO Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.604,
+        "lng": 17.895999999999997
+    },
+    {
+        "slug": "izlozba-zanatlija-9",
+        "naslov": "Izložba zanatlija 2026",
+        "dan": "01",
+        "mjesec": "OKT",
+        "datum": "2026-10-01",
+        "vrijeme": "18:00 — 23:00",
+        "lokacija": "Ružević, Teslić",
+        "slika": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Izložba zanatlija okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Opština Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.638000000000005,
+        "lng": 17.82
+    },
+    {
+        "slug": "trka-kroz-teslic-10",
+        "naslov": "Trka kroz Teslić 2026",
+        "dan": "04",
+        "mjesec": "NOV",
+        "datum": "2026-11-04",
+        "vrijeme": "08:00 — 15:00",
+        "lokacija": "Šnjegotina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1781595452029-400aef872fb0?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Trka kroz Teslić okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Planinarsko društvo",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.571999999999996,
+        "lng": 17.704
+    },
+    {
+        "slug": "sajam-meda-11",
+        "naslov": "Sajam meda 2026",
+        "dan": "07",
+        "mjesec": "DEC",
+        "datum": "2026-12-07",
+        "vrijeme": "19:00 — 22:00",
+        "lokacija": "Teslić, centar",
+        "slika": "https://images.unsplash.com/photo-1757609908147-440f77e2af25?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Sajam meda okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Dom kulture",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.604,
+        "lng": 17.865
+    },
+    {
+        "slug": "djecji-festival-12",
+        "naslov": "Dječji festival 2026",
+        "dan": "10",
+        "mjesec": "JAN",
+        "datum": "2026-01-10",
+        "vrijeme": "10:00 — 16:00",
+        "lokacija": "Borje, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Dječji festival okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "TO Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.66,
+        "lng": 17.785999999999998
+    },
+    {
+        "slug": "etno-vece-na-borju-13",
+        "naslov": "Etno veče na Borju 2026",
+        "dan": "13",
+        "mjesec": "FEB",
+        "datum": "2026-02-13",
+        "vrijeme": "18:00 — 23:00",
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1741376478037-80ae743ace47?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Etno veče na Borju okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Opština Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.693999999999996,
+        "lng": 17.74
+    },
+    {
+        "slug": "kulturno-ljeto-teslic-14",
+        "naslov": "Kulturno ljeto Teslić 2026",
+        "dan": "16",
+        "mjesec": "MAR",
+        "datum": "2026-03-16",
+        "vrijeme": "08:00 — 15:00",
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Kulturno ljeto Teslić okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Planinarsko društvo",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.593,
+        "lng": 17.934
+    },
+    {
+        "slug": "berba-i-jesenji-vasar-15",
+        "naslov": "Berba i jesenji vašar 2026",
+        "dan": "19",
+        "mjesec": "APR",
+        "datum": "2026-04-19",
+        "vrijeme": "19:00 — 22:00",
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1781595452029-400aef872fb0?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Berba i jesenji vašar okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Dom kulture",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.541999999999994,
+        "lng": 17.788
+    },
+    {
+        "slug": "maraton-banja-vrucica-16",
+        "naslov": "Maraton Banja Vrućica 2026",
+        "dan": "22",
+        "mjesec": "MAJ",
+        "datum": "2026-05-22",
+        "vrijeme": "10:00 — 16:00",
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1757609908147-440f77e2af25?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Maraton Banja Vrućica okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "TO Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.496,
+        "lng": 17.875999999999998
+    },
+    {
+        "slug": "zimski-sajam-17",
+        "naslov": "Zimski sajam 2026",
+        "dan": "25",
+        "mjesec": "JUN",
+        "datum": "2026-06-25",
+        "vrijeme": "18:00 — 23:00",
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": true,
+        "opisDug": "Zimski sajam okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Opština Teslić",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.66,
+        "lng": 17.95
+    },
+    {
+        "slug": "novogodisnji-koncert-18",
+        "naslov": "Novogodišnji koncert 2026",
+        "dan": "01",
+        "mjesec": "JUL",
+        "datum": "2026-07-01",
+        "vrijeme": "08:00 — 15:00",
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1741376478037-80ae743ace47?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Novogodišnji koncert okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Planinarsko društvo",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.494,
+        "lng": 17.954
+    },
+    {
+        "slug": "dani-planinara-19",
+        "naslov": "Dani planinara 2026",
+        "dan": "04",
+        "mjesec": "AVG",
+        "datum": "2026-08-04",
+        "vrijeme": "19:00 — 22:00",
+        "lokacija": "Stenjak, Teslić",
+        "slika": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1080&q=80",
+        "zavrseno": false,
+        "opisDug": "Dani planinara okuplja posjetioce iz cijelog kraja uz bogat program, štandove domaćih proizvoda i druženje. Ulaz besplatan.",
+        "organizator": "Dom kulture",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            }
+        ],
+        "lat": 44.648,
+        "lng": 17.874
+    }
 ]

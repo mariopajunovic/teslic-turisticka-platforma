@@ -5,11 +5,13 @@ namespace Database\Seeders;
 use App\Models\Ad;
 use App\Models\Category;
 use Carbon\Carbon;
+use Database\Seeders\Concerns\SeedsMedia;
 use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class AdSeeder extends Seeder
 {
+    use SeedsMedia;
     use VariesStatus;
 
     protected const LABEL_TO_KEY = [
@@ -43,7 +45,7 @@ class AdSeeder extends Seeder
                 }
             }
 
-            Ad::updateOrCreate(
+            $model = Ad::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => null,
@@ -57,6 +59,8 @@ class AdSeeder extends Seeder
                     ...$this->statusFields($i),
                 ],
             );
+
+            $this->attachSlika($model, $item['slika'] ?? null);
         }
     }
 }

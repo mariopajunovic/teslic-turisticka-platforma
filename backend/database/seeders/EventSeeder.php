@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Event;
+use Database\Seeders\Concerns\SeedsMedia;
 use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class EventSeeder extends Seeder
 {
+    use SeedsMedia;
     use VariesStatus;
 
     public function run(): void
@@ -23,7 +25,7 @@ class EventSeeder extends Seeder
         $items = json_decode(file_get_contents($path), true) ?? [];
 
         foreach ($items as $i => $item) {
-            Event::updateOrCreate(
+            $model = Event::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => null,
@@ -40,6 +42,8 @@ class EventSeeder extends Seeder
                     ...$this->statusFields($i),
                 ],
             );
+
+            $this->attachSlika($model, $item['slika'] ?? null);
         }
     }
 }

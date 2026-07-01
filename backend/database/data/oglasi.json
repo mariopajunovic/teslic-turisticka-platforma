@@ -1,46 +1,382 @@
 [
-  {
-    "slug": "konobar-kardial",
-    "naslov": "Traži se konobar — Banja Vrućica",
-    "vrsta": { "label": "Posao", "icon": "briefcase" },
-    "izdavac": "Hotel Kardial",
-    "lokacija": "Banja Vrućica",
-    "rok": "30.07.2026.",
-    "isteklo": false,
-    "opisDug": "Hotel Kardial traži konobara za rad u restoranu. Potrebno iskustvo na sličnim poslovima i ljubaznost prema gostima. Nudimo stalan posao i smještaj.",
-    "kontakt": { "osoba": "Kadrovska služba", "telefon": "053/200-100", "email": "posao@kardial.example.com" }
-  },
-  {
-    "slug": "najam-prostora",
-    "naslov": "Izdaje se poslovni prostor u centru",
-    "vrsta": { "label": "Nekretnine", "icon": "building-2" },
-    "izdavac": "Privatni oglašivač",
-    "lokacija": "Teslić, centar",
-    "rok": "15.08.2026.",
-    "isteklo": false,
-    "opisDug": "Poslovni prostor 45 m² u strogom centru Teslića, pogodan za kancelariju ili manju radnju. Renoviran, sa grijanjem i izlogom.",
-    "kontakt": { "osoba": "Marko", "telefon": "065/500-600", "email": "" }
-  },
-  {
-    "slug": "prodaja-pcelinjih-proizvoda",
-    "naslov": "Prodaja pčelinjih proizvoda na veliko",
-    "vrsta": { "label": "Ponuda", "icon": "tag" },
-    "izdavac": "Pčelarstvo Vrućica",
-    "lokacija": "Banja Vrućica",
-    "rok": "01.09.2026.",
-    "isteklo": false,
-    "opisDug": "Nudimo med, propolis i polen na veliko za trgovine i ugostiteljske objekte. Moguća redovna isporuka.",
-    "kontakt": { "osoba": "Pčelarstvo Vrućica", "telefon": "065/234-567", "email": "med.vrucica@example.com" }
-  },
-  {
-    "slug": "sezonski-beraci",
-    "naslov": "Sezonski berači voća",
-    "vrsta": { "label": "Posao", "icon": "briefcase" },
-    "izdavac": "OPG Borje",
-    "lokacija": "Borje",
-    "rok": "01.06.2026.",
-    "isteklo": true,
-    "opisDug": "Potrebni sezonski radnici za berbu voća tokom ljeta. Oglas je istekao.",
-    "kontakt": { "osoba": "OPG Borje", "telefon": "065/700-800", "email": "" }
-  }
+    {
+        "slug": "trazi-se-konobar-banja-vrucica-0",
+        "naslov": "Traži se konobar — Banja Vrućica",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Hotel Kardial",
+        "lokacija": "Teslić, centar",
+        "rok": "01.01.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Traži se konobar — Banja Vrućica. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/200-100",
+            "email": "kontakt0@example.com"
+        }
+    },
+    {
+        "slug": "kuhar-ica-hotel-kardial-1",
+        "naslov": "Kuhar/ica — hotel Kardial",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Hotel Kardial",
+        "lokacija": "Borje, Teslić",
+        "rok": "06.02.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Kuhar/ica — hotel Kardial. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/201-103",
+            "email": "kontakt1@example.com"
+        }
+    },
+    {
+        "slug": "turisticki-vodic-sezonski-2",
+        "naslov": "Turistički vodič — sezonski",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "TO Teslić",
+        "lokacija": "Očauš, Teslić",
+        "rok": "11.03.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Turistički vodič — sezonski. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/202-106",
+            "email": "kontakt2@example.com"
+        }
+    },
+    {
+        "slug": "dostavljac-pekara-3",
+        "naslov": "Dostavljač — pekara",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Pekara Domaća",
+        "lokacija": "Banja Vrućica",
+        "rok": "16.04.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Dostavljač — pekara. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/203-109",
+            "email": "kontakt3@example.com"
+        }
+    },
+    {
+        "slug": "prodavac-ica-suvenira-4",
+        "naslov": "Prodavač/ica suvenira",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Suveniri Teslić",
+        "lokacija": "Blatnica, Teslić",
+        "rok": "21.05.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Prodavač/ica suvenira. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/204-112",
+            "email": "kontakt4@example.com"
+        }
+    },
+    {
+        "slug": "recepcioner-apartmani-5",
+        "naslov": "Recepcioner — apartmani",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Apartmani Vrućica",
+        "lokacija": "Pribinić, Teslić",
+        "rok": "26.06.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Recepcioner — apartmani. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/205-115",
+            "email": "kontakt5@example.com"
+        }
+    },
+    {
+        "slug": "spremacica-etno-selo-6",
+        "naslov": "Spremačica — etno selo",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "Etno selo Teslić",
+        "lokacija": "Čečava, Teslić",
+        "rok": "04.07.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Spremačica — etno selo. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/206-118",
+            "email": "kontakt6@example.com"
+        }
+    },
+    {
+        "slug": "animator-za-djecu-7",
+        "naslov": "Animator za djecu",
+        "vrsta": {
+            "label": "Posao",
+            "icon": "briefcase"
+        },
+        "izdavac": "TO Teslić",
+        "lokacija": "Komušina, Teslić",
+        "rok": "09.08.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Animator za djecu. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/207-121",
+            "email": "kontakt7@example.com"
+        }
+    },
+    {
+        "slug": "prodaja-vikendice-borje-8",
+        "naslov": "Prodaja vikendice — Borje",
+        "vrsta": {
+            "label": "Nekretnine",
+            "icon": "building-2"
+        },
+        "izdavac": "Privatni oglas",
+        "lokacija": "Stenjak, Teslić",
+        "rok": "14.09.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Prodaja vikendice — Borje. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/208-124",
+            "email": "kontakt8@example.com"
+        }
+    },
+    {
+        "slug": "iznajmljivanje-stana-centar-9",
+        "naslov": "Iznajmljivanje stana — centar",
+        "vrsta": {
+            "label": "Nekretnine",
+            "icon": "building-2"
+        },
+        "izdavac": "Privatni oglas",
+        "lokacija": "Slatina, Teslić",
+        "rok": "19.10.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Iznajmljivanje stana — centar. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/209-127",
+            "email": "kontakt9@example.com"
+        }
+    },
+    {
+        "slug": "plac-na-prodaju-blatnica-10",
+        "naslov": "Plac na prodaju — Blatnica",
+        "vrsta": {
+            "label": "Nekretnine",
+            "icon": "building-2"
+        },
+        "izdavac": "Privatni oglas",
+        "lokacija": "Ružević, Teslić",
+        "rok": "24.11.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Plac na prodaju — Blatnica. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/210-130",
+            "email": "kontakt10@example.com"
+        }
+    },
+    {
+        "slug": "poslovni-prostor-teslic-11",
+        "naslov": "Poslovni prostor — Teslić",
+        "vrsta": {
+            "label": "Nekretnine",
+            "icon": "building-2"
+        },
+        "izdavac": "Privatni oglas",
+        "lokacija": "Šnjegotina, Teslić",
+        "rok": "02.12.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Poslovni prostor — Teslić. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/211-133",
+            "email": "kontakt11@example.com"
+        }
+    },
+    {
+        "slug": "otkup-sumskih-plodova-i-bilja-12",
+        "naslov": "Otkup šumskih plodova i bilja",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "Zadruga Borje",
+        "lokacija": "Teslić, centar",
+        "rok": "07.01.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Otkup šumskih plodova i bilja. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/212-136",
+            "email": "kontakt12@example.com"
+        }
+    },
+    {
+        "slug": "sufinansiranje-uredjenja-avlija-13",
+        "naslov": "Sufinansiranje uređenja avlija",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "Opština Teslić",
+        "lokacija": "Borje, Teslić",
+        "rok": "12.02.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Sufinansiranje uređenja avlija. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/213-139",
+            "email": "kontakt13@example.com"
+        }
+    },
+    {
+        "slug": "konkurs-za-udruzenja-14",
+        "naslov": "Konkurs za udruženja",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "Opština Teslić",
+        "lokacija": "Očauš, Teslić",
+        "rok": "17.03.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Konkurs za udruženja. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/214-142",
+            "email": "kontakt14@example.com"
+        }
+    },
+    {
+        "slug": "otkup-ljekovitog-bilja-15",
+        "naslov": "Otkup ljekovitog bilja",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "OPG Blatnica",
+        "lokacija": "Banja Vrućica",
+        "rok": "22.04.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Otkup ljekovitog bilja. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/215-145",
+            "email": "kontakt15@example.com"
+        }
+    },
+    {
+        "slug": "stipendije-za-studente-16",
+        "naslov": "Stipendije za studente",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "Opština Teslić",
+        "lokacija": "Blatnica, Teslić",
+        "rok": "27.05.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Stipendije za studente. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/216-148",
+            "email": "kontakt16@example.com"
+        }
+    },
+    {
+        "slug": "poziv-izlagacima-na-sajmu-17",
+        "naslov": "Poziv izlagačima na sajmu",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "TO Teslić",
+        "lokacija": "Pribinić, Teslić",
+        "rok": "05.06.2026.",
+        "isteklo": true,
+        "slika": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Poziv izlagačima na sajmu. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/217-151",
+            "email": "kontakt17@example.com"
+        }
+    },
+    {
+        "slug": "volonteri-za-festival-18",
+        "naslov": "Volonteri za festival",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "TO Teslić",
+        "lokacija": "Čečava, Teslić",
+        "rok": "10.07.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Volonteri za festival. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/218-154",
+            "email": "kontakt18@example.com"
+        }
+    },
+    {
+        "slug": "otkup-meda-veliko-19",
+        "naslov": "Otkup meda — veliko",
+        "vrsta": {
+            "label": "Javni poziv",
+            "icon": "megaphone"
+        },
+        "izdavac": "Pčelarstvo Đukić",
+        "lokacija": "Komušina, Teslić",
+        "rok": "15.08.2026.",
+        "isteklo": false,
+        "slika": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1080&q=80",
+        "opisDug": "Otkup meda — veliko. Više informacija o uslovima i načinu prijave možete dobiti putem navedenog kontakta. Prijave se primaju do navedenog roka.",
+        "kontakt": {
+            "osoba": "Kontakt osoba",
+            "telefon": "053/219-157",
+            "email": "kontakt19@example.com"
+        }
+    }
 ]

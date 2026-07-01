@@ -1,122 +1,722 @@
 [
-  {
-    "slug": "stari-zanati-borje",
-    "naslov": "Stari zanati Borje",
-    "opis": "Tradicionalna izrada drvenih suvenira i predmeta domaće radinosti.",
-    "kategorija": { "label": "Zanat", "icon": "zanat" },
-    "lokacija": "Borje, Teslić",
-    "slika": "",
-    "preporuceno": true,
-    "opisDug": "Porodična radionica koja već tri generacije njeguje tradicionalnu obradu drveta. Izrađujemo suvenire, posuđe i ukrasne predmete od domaćeg drveta planine Borje, po starim uzorima i ručno.",
-    "galerija": [{ "src": "", "alt": "Radionica" }, { "src": "", "alt": "Suveniri" }, { "src": "", "alt": "Detalj" }],
-    "kontakt": {
-      "telefon": "065/123-456",
-      "email": "zanati.borje@example.com",
-      "web": "www.zanati-borje.ba",
-      "radnoVrijeme": "Pon–Sub 09:00–17:00",
-      "adresa": "Borje bb, 74270 Teslić"
+    {
+        "slug": "stari-zanati-borje",
+        "naslov": "Stari zanati Borje",
+        "opis": "Drveni suveniri i predmeti domaće radinosti.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Teslić, centar",
+        "slika": "https://images.unsplash.com/photo-1773612973407-3b65988ce51a?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Drveni suveniri i predmeti domaće radinosti. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/100-200",
+            "email": "stari-zanati-borje@example.com",
+            "web": "www.stari-zanati-borje.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Teslić bb, 74270 Teslić"
+        },
+        "lat": 44.599999999999994,
+        "lng": 17.852999999999998
     },
-    "lat": 44.652,
-    "lng": 17.8
-  },
-  {
-    "slug": "pcelarstvo-vrucica",
-    "naslov": "Pčelarstvo Vrućica",
-    "opis": "Domaći med, vosak i pčelinji proizvodi sa obronaka planine Borje.",
-    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
-    "lokacija": "Banja Vrućica",
-    "slika": "",
-    "preporuceno": true,
-    "opisDug": "Pčelinjak smješten na čistim livadama iznad Banje Vrućice. Nudimo livadski i bagremov med, propolis, polen i vosak. Moguća posjeta pčelinjaku uz najavu.",
-    "galerija": [{ "src": "", "alt": "Pčelinjak" }, { "src": "", "alt": "Med" }],
-    "kontakt": {
-      "telefon": "065/234-567",
-      "email": "med.vrucica@example.com",
-      "web": "",
-      "radnoVrijeme": "Svaki dan 08:00–19:00",
-      "adresa": "Banja Vrućica bb, 74270 Teslić"
+    {
+        "slug": "grncarija-pribinic",
+        "naslov": "Grnčarija Pribinić",
+        "opis": "Ručno oblikovano posuđe i ukrasi od gline.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Borje, Teslić",
+        "slika": "https://images.unsplash.com/photo-1632945167111-57cde0a03df2?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Ručno oblikovano posuđe i ukrasi od gline. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/107-213",
+            "email": "grncarija-pribinic@example.com",
+            "web": "www.grncarija-pribinic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Borje bb, 74270 Teslić"
+        },
+        "lat": 44.656,
+        "lng": 17.79
     },
-    "lat": 44.63,
-    "lng": 17.85
-  },
-  {
-    "slug": "rakija-ocaus",
-    "naslov": "Rakija Očauš",
-    "opis": "Šljivovica i travarica po recepturi koja se prenosi generacijama.",
-    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
-    "lokacija": "Očauš",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Mala destilerija domaćih rakija. Pečemo šljivovicu, krušku i travaricu od voća iz vlastitih voćnjaka, bez aditiva. Degustacija uz najavu.",
-    "galerija": [{ "src": "", "alt": "Kazan" }, { "src": "", "alt": "Boce" }],
-    "kontakt": {
-      "telefon": "065/345-678",
-      "email": "rakija.ocaus@example.com",
-      "web": "",
-      "radnoVrijeme": "Uz najavu",
-      "adresa": "Očauš bb, 74270 Teslić"
+    {
+        "slug": "vunena-radionica-cecava",
+        "naslov": "Vunena radionica Čečava",
+        "opis": "Pleteni i tkani proizvodi od domaće vune.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1773612973407-3b65988ce51a?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Pleteni i tkani proizvodi od domaće vune. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/114-226",
+            "email": "vunena-radionica-cecava@example.com",
+            "web": "www.vunena-radionica-cecava.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Očauš bb, 74270 Teslić"
+        },
+        "lat": 44.69,
+        "lng": 17.744
     },
-    "lat": 44.69,
-    "lng": 17.81
-  },
-  {
-    "slug": "servis-teslic",
-    "naslov": "Servis i usluge Teslić",
-    "opis": "Pouzdane lokalne usluge i servisi za domaćinstvo i turiste.",
-    "kategorija": { "label": "Usluge i servisi", "icon": "usluge" },
-    "lokacija": "Teslić, centar",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Univerzalni servis za male popravke, iznajmljivanje opreme i pomoć turistima u organizaciji boravka u Tesliću i okolini.",
-    "galerija": [{ "src": "", "alt": "Radionica" }],
-    "kontakt": {
-      "telefon": "053/430-100",
-      "email": "servis.teslic@example.com",
-      "web": "www.servis-teslic.ba",
-      "radnoVrijeme": "Pon–Pet 08:00–16:00",
-      "adresa": "Svetog Save 20, 74270 Teslić"
+    {
+        "slug": "kovacnica-stenjak",
+        "naslov": "Kovačnica Stenjak",
+        "opis": "Ručno kovani alati i ukrasni predmeti.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1632945167111-57cde0a03df2?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Ručno kovani alati i ukrasni predmeti. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/121-239",
+            "email": "kovacnica-stenjak@example.com",
+            "web": "www.kovacnica-stenjak.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Banja Vrućica bb, 74270 Teslić"
+        },
+        "lat": 44.589,
+        "lng": 17.938
     },
-    "lat": 44.6078,
-    "lng": 17.8569
-  },
-  {
-    "slug": "sir-i-kajmak-blatnica",
-    "naslov": "Domaći sir i kajmak Blatnica",
-    "opis": "Svježi sir, kajmak i mliječni proizvodi sa porodičnog imanja.",
-    "kategorija": { "label": "Hrana i piće", "icon": "hrana" },
-    "lokacija": "Blatnica",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Porodično poljoprivredno gazdinstvo koje proizvodi tradicionalni sir, kajmak i pavlaku od mlijeka krava s vlastitih pašnjaka.",
-    "galerija": [{ "src": "", "alt": "Imanje" }, { "src": "", "alt": "Sir" }],
-    "kontakt": {
-      "telefon": "065/456-789",
-      "email": "blatnica.mlijeko@example.com",
-      "web": "",
-      "radnoVrijeme": "Svaki dan 07:00–18:00",
-      "adresa": "Blatnica bb, 74270 Teslić"
+    {
+        "slug": "pletara-slatina",
+        "naslov": "Pletara Slatina",
+        "opis": "Korpe i predmeti od pruća i rogoza.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1773612973407-3b65988ce51a?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Korpe i predmeti od pruća i rogoza. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/128-252",
+            "email": "pletara-slatina@example.com",
+            "web": "www.pletara-slatina.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Blatnica bb, 74270 Teslić"
+        },
+        "lat": 44.558,
+        "lng": 17.776
     },
-    "lat": 44.58,
-    "lng": 17.9
-  },
-  {
-    "slug": "suvenirnica-teslic",
-    "naslov": "Suvenirnica Teslić",
-    "opis": "Rukotvorine, razglednice i pokloni s motivima Teslića i Borja.",
-    "kategorija": { "label": "Zanat", "icon": "zanat" },
-    "lokacija": "Teslić, centar",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Mjesto gdje na jednom mjestu možete pronaći radove lokalnih zanatlija — od drvenih suvenira do ručno rađenog nakita i tekstila.",
-    "galerija": [{ "src": "", "alt": "Izlog" }],
-    "kontakt": {
-      "telefon": "053/430-200",
-      "email": "suveniri.teslic@example.com",
-      "web": "",
-      "radnoVrijeme": "Pon–Sub 09:00–20:00",
-      "adresa": "Karađorđeva 5, 74270 Teslić"
+    {
+        "slug": "suveniri-teslic",
+        "naslov": "Suveniri Teslić",
+        "opis": "Pokloni i suveniri s motivima teslićkog kraja.",
+        "kategorija": {
+            "label": "Zanat",
+            "icon": "zanat"
+        },
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1632945167111-57cde0a03df2?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Pokloni i suveniri s motivima teslićkog kraja. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/135-265",
+            "email": "suveniri-teslic@example.com",
+            "web": "www.suveniri-teslic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Pribinić bb, 74270 Teslić"
+        },
+        "lat": 44.492,
+        "lng": 17.88
     },
-    "lat": 44.608,
-    "lng": 17.857
-  }
+    {
+        "slug": "pcelarstvo-djukic",
+        "naslov": "Pčelarstvo Đukić",
+        "opis": "Domaći med i pčelinji proizvodi sa obronaka Borja.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1766388974047-a993ab02d5a9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Domaći med i pčelinji proizvodi sa obronaka Borja. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/142-278",
+            "email": "pcelarstvo-djukic@example.com",
+            "web": "www.pcelarstvo-djukic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Čečava bb, 74270 Teslić"
+        },
+        "lat": 44.656,
+        "lng": 17.954
+    },
+    {
+        "slug": "rakija-ocaus",
+        "naslov": "Rakija Očauš",
+        "opis": "Šljivovica i travarica iz domaće radinosti.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1679941279735-b3b35e8bc476?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Šljivovica i travarica iz domaće radinosti. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/149-291",
+            "email": "rakija-ocaus@example.com",
+            "web": "www.rakija-ocaus.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Komušina bb, 74270 Teslić"
+        },
+        "lat": 44.49,
+        "lng": 17.958
+    },
+    {
+        "slug": "sirana-banja-vrucica",
+        "naslov": "Sirana Banja Vrućica",
+        "opis": "Domaći sirevi i mliječni proizvodi kraja.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Stenjak, Teslić",
+        "slika": "https://images.unsplash.com/photo-1619522893151-bb5138b60292?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Domaći sirevi i mliječni proizvodi kraja. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/156-304",
+            "email": "sirana-banja-vrucica@example.com",
+            "web": "www.sirana-banja-vrucica.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Stenjak bb, 74270 Teslić"
+        },
+        "lat": 44.644,
+        "lng": 17.862
+    },
+    {
+        "slug": "pekara-domaca",
+        "naslov": "Pekara Domaća",
+        "opis": "Svjež hljeb, pite i kolači po starim receptima.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Slatina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1615932744704-683bbbab07fe?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Svjež hljeb, pite i kolači po starim receptima. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/163-317",
+            "email": "pekara-domaca@example.com",
+            "web": "www.pekara-domaca.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Slatina bb, 74270 Teslić"
+        },
+        "lat": 44.608000000000004,
+        "lng": 17.9
+    },
+    {
+        "slug": "vinarija-ukrina",
+        "naslov": "Vinarija Ukrina",
+        "opis": "Domaća vina i prirodni sokovi od voća kraja.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Ružević, Teslić",
+        "slika": "https://images.unsplash.com/photo-1766388974047-a993ab02d5a9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Domaća vina i prirodni sokovi od voća kraja. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/170-330",
+            "email": "vinarija-ukrina@example.com",
+            "web": "www.vinarija-ukrina.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Ružević bb, 74270 Teslić"
+        },
+        "lat": 44.622,
+        "lng": 17.824
+    },
+    {
+        "slug": "opg-blatnica",
+        "naslov": "OPG Blatnica",
+        "opis": "Povrće, voće i zimnica s porodičnog imanja.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Šnjegotina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1679941279735-b3b35e8bc476?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Povrće, voće i zimnica s porodičnog imanja. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/177-343",
+            "email": "opg-blatnica@example.com",
+            "web": "www.opg-blatnica.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Šnjegotina bb, 74270 Teslić"
+        },
+        "lat": 44.576,
+        "lng": 17.708
+    },
+    {
+        "slug": "cajevi-i-ljekovito-bilje",
+        "naslov": "Čajevi i ljekovito bilje",
+        "opis": "Sušeno bilje i čajevi sa planinskih livada.",
+        "kategorija": {
+            "label": "Hrana i piće",
+            "icon": "hrana"
+        },
+        "lokacija": "Teslić, centar",
+        "slika": "https://images.unsplash.com/photo-1619522893151-bb5138b60292?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Sušeno bilje i čajevi sa planinskih livada. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/184-356",
+            "email": "cajevi-i-ljekovito-bilje@example.com",
+            "web": "www.cajevi-i-ljekovito-bilje.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Teslić bb, 74270 Teslić"
+        },
+        "lat": 44.608,
+        "lng": 17.852999999999998
+    },
+    {
+        "slug": "vodic-kroz-borju",
+        "naslov": "Vodič kroz Borju",
+        "opis": "Vođene ture i planinarski izleti po planini Borji.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Borje, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Vođene ture i planinarski izleti po planini Borji. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/191-369",
+            "email": "vodic-kroz-borju@example.com",
+            "web": "www.vodic-kroz-borju.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Borje bb, 74270 Teslić"
+        },
+        "lat": 44.663999999999994,
+        "lng": 17.79
+    },
+    {
+        "slug": "servis-i-usluge-teslic",
+        "naslov": "Servis i usluge Teslić",
+        "opis": "Pouzdane lokalne usluge i servisi.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Pouzdane lokalne usluge i servisi. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/198-382",
+            "email": "servis-i-usluge-teslic@example.com",
+            "web": "www.servis-i-usluge-teslic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Očauš bb, 74270 Teslić"
+        },
+        "lat": 44.698,
+        "lng": 17.744
+    },
+    {
+        "slug": "foto-studio-teslic",
+        "naslov": "Foto studio Teslić",
+        "opis": "Fotografije za događaje, portrete i proizvode.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Fotografije za događaje, portrete i proizvode. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/205-395",
+            "email": "foto-studio-teslic@example.com",
+            "web": "www.foto-studio-teslic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Banja Vrućica bb, 74270 Teslić"
+        },
+        "lat": 44.577,
+        "lng": 17.938
+    },
+    {
+        "slug": "prevoz-i-transfer-vrucica",
+        "naslov": "Prevoz i transfer Vrućica",
+        "opis": "Prevoz putnika i turistički transferi.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Prevoz putnika i turistički transferi. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/212-408",
+            "email": "prevoz-i-transfer-vrucica@example.com",
+            "web": "www.prevoz-i-transfer-vrucica.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Blatnica bb, 74270 Teslić"
+        },
+        "lat": 44.546,
+        "lng": 17.776
+    },
+    {
+        "slug": "iznajmljivanje-opreme",
+        "naslov": "Iznajmljivanje opreme",
+        "opis": "Bicikli i oprema za izlete i avanture.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Bicikli i oprema za izlete i avanture. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/219-421",
+            "email": "iznajmljivanje-opreme@example.com",
+            "web": "www.iznajmljivanje-opreme.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Pribinić bb, 74270 Teslić"
+        },
+        "lat": 44.5,
+        "lng": 17.88
+    },
+    {
+        "slug": "domaca-kuhinja-stenjak",
+        "naslov": "Domaća kuhinja Stenjak",
+        "opis": "Catering i domaća jela za vaše proslave.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Catering i domaća jela za vaše proslave. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/226-434",
+            "email": "domaca-kuhinja-stenjak@example.com",
+            "web": "www.domaca-kuhinja-stenjak.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Čečava bb, 74270 Teslić"
+        },
+        "lat": 44.663999999999994,
+        "lng": 17.954
+    },
+    {
+        "slug": "pcelarska-oprema-teslic",
+        "naslov": "Pčelarska oprema Teslić",
+        "opis": "Oprema i potrepštine za pčelare.",
+        "kategorija": {
+            "label": "Usluge",
+            "icon": "usluge"
+        },
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1547203928-d8c7cc83e56f?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Oprema i potrepštine za pčelare. Porodična tradicija i posvećenost kvalitetu čine ovu ponudu prepoznatljivom u teslićkom kraju. Posjetite nas i uvjerite se sami.",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "kontakt": {
+            "telefon": "065/233-447",
+            "email": "pcelarska-oprema-teslic@example.com",
+            "web": "www.pcelarska-oprema-teslic.ba",
+            "radnoVrijeme": "Pon–Sub 08:00–17:00",
+            "adresa": "Komušina bb, 74270 Teslić"
+        },
+        "lat": 44.498000000000005,
+        "lng": 17.958
+    }
 ]

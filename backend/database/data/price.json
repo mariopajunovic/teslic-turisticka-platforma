@@ -1,50 +1,282 @@
 [
-  {
-    "slug": "ljudi-duh-teslica",
-    "naslov": "Ljudi koji čuvaju duh Teslića",
-    "kategorija": { "label": "Izdvojeno", "icon": "star" },
-    "autor": "Redakcija",
-    "datum": "20.06.2026.",
-    "izvod": "Priče domaćina, zanatlija i autora koji svojim radom oblikuju turističku ponudu kraja.",
-    "slika": "",
-    "featured": true,
-    "sadrzaj": "Teslić i okolina kriju mnoštvo ljudi čije priče vrijedi ispričati. Od pčelara na Borju do zanatlija u centru grada — svi oni svojim radom čuvaju duh kraja i oblikuju ono što posjetioci osjete kad dođu.",
-    "autorBio": "Redakcija platforme TO Teslić."
-  },
-  {
-    "slug": "pcelarska-prica-borja",
-    "naslov": "Kako je nastala pčelarska priča Borja",
-    "kategorija": { "label": "Domaćini pričaju", "icon": "book-open" },
-    "autor": "Marko Marković",
-    "datum": "22.06.2026.",
-    "izvod": "Od nekoliko košnica do brenda — priča porodice koja živi od planine.",
-    "slika": "",
-    "featured": false,
-    "sadrzaj": "Sve je počelo s nekoliko košnica naslijeđenih od djeda. Danas porodica vodi pčelinjak s desetinama društava i prepoznatljiv brend domaćeg meda. Priča o strpljenju, prirodi i ljubavi prema poslu.",
-    "autorBio": "Lokalni autor i pčelar sa Borja koji piše o domaćinima i tradiciji kraja."
-  },
-  {
-    "slug": "zanatlije-teslica",
-    "naslov": "Zanatlije koje čuvaju tradiciju",
-    "kategorija": { "label": "Ljudi i biznisi", "icon": "book-open" },
-    "autor": "Ana Kovač",
-    "datum": "18.06.2026.",
-    "izvod": "Drvo, vuna i glina — majstori čiji rad postaje suvenir Teslića.",
-    "slika": "",
-    "featured": false,
-    "sadrzaj": "U radionicama širom Teslića i danas se čuju zvuci tradicionalnih zanata. Upoznali smo majstore koji drvo, vunu i glinu pretvaraju u suvenire koje posjetioci nose kući kao uspomenu.",
-    "autorBio": "Novinarka koja prati lokalnu kulturu i privredu."
-  },
-  {
-    "slug": "svakodnevica-vrucica",
-    "naslov": "Jutro u Banji Vrućici",
-    "kategorija": { "label": "Naša svakodnevica", "icon": "book-open" },
-    "autor": "Redakcija",
-    "datum": "15.06.2026.",
-    "izvod": "Kako izgleda običan dan u jednom od najposjećenijih mjesta kraja.",
-    "slika": "",
-    "featured": false,
-    "sadrzaj": "Dok se park budi, gosti banje kreću na jutarnju šetnju, a osoblje priprema dan koji je pred njima. Reportaža o svakodnevici jednog od najpoznatijih odredišta Teslića.",
-    "autorBio": "Redakcija platforme TO Teslić."
-  }
+    {
+        "slug": "med-na-borju-prica-porodice-djukic",
+        "naslov": "Med na Borju — priča porodice Đukić",
+        "kategorija": {
+            "label": "Izdvojeno"
+        },
+        "autor": "Marko Đukić",
+        "datum": "01.01.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1736578147442-503d594222b4?auto=format&fit=crop&w=1080&q=80",
+        "featured": true,
+        "sadrzaj": "<p>Med na Borju — priča porodice Đukić — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Marko Đukić piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "drvo-koje-pamti-zanati-borja",
+        "naslov": "Drvo koje pamti — zanati Borja",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Jelena S.",
+        "datum": "05.02.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1774876549411-52e4eaff626e?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Drvo koje pamti — zanati Borja — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Jelena S. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "jutro-u-domacoj-pekari",
+        "naslov": "Jutro u domaćoj pekari",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Ana T.",
+        "datum": "09.03.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1706195292026-ae27145ff403?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Jutro u domaćoj pekari — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Ana T. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "staze-borja-kroz-oci-vodica",
+        "naslov": "Staze Borja kroz oči vodiča",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Nikola P.",
+        "datum": "13.04.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Staze Borja kroz oči vodiča — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Nikola P. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "rakija-koja-se-pravi-s-pricom",
+        "naslov": "Rakija koja se pravi s pričom",
+        "kategorija": {
+            "label": "Ljudi i biznisi"
+        },
+        "autor": "Mileva Đ.",
+        "datum": "17.05.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Rakija koja se pravi s pričom — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Mileva Đ. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "ljekovito-bilje-planinskih-livada",
+        "naslov": "Ljekovito bilje planinskih livada",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Stoja M.",
+        "datum": "21.06.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1736578147442-503d594222b4?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Ljekovito bilje planinskih livada — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Stoja M. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "banja-vrucica-kroz-generacije",
+        "naslov": "Banja Vrućica kroz generacije",
+        "kategorija": {
+            "label": "Ljudi i biznisi"
+        },
+        "autor": "Jelena S.",
+        "datum": "25.01.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1774876549411-52e4eaff626e?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Banja Vrućica kroz generacije — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Jelena S. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "kako-nastaje-domaci-sir",
+        "naslov": "Kako nastaje domaći sir",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Redakcija",
+        "datum": "02.02.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1706195292026-ae27145ff403?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Kako nastaje domaći sir — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Redakcija piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "ljudi-koji-cuvaju-duh-teslica",
+        "naslov": "Ljudi koji čuvaju duh Teslića",
+        "kategorija": {
+            "label": "Izdvojeno"
+        },
+        "autor": "Redakcija",
+        "datum": "06.03.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Ljudi koji čuvaju duh Teslića — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Redakcija piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "zanatlije-koje-cuvaju-tradiciju",
+        "naslov": "Zanatlije koje čuvaju tradiciju",
+        "kategorija": {
+            "label": "Ljudi i biznisi"
+        },
+        "autor": "Ana Kovač",
+        "datum": "10.04.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Zanatlije koje čuvaju tradiciju — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Ana Kovač piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "jedan-dan-na-ocausu",
+        "naslov": "Jedan dan na Očaušu",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Nikola T.",
+        "datum": "14.05.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1736578147442-503d594222b4?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Jedan dan na Očaušu — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Nikola T. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "prica-o-vunenoj-radionici",
+        "naslov": "Priča o vunenoj radionici",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Mira P.",
+        "datum": "18.06.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1774876549411-52e4eaff626e?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Priča o vunenoj radionici — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Mira P. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "pcelar-i-njegove-kosnice",
+        "naslov": "Pčelar i njegove košnice",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Marko Đukić",
+        "datum": "22.01.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1706195292026-ae27145ff403?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Pčelar i njegove košnice — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Marko Đukić piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "selo-koje-ne-odustaje",
+        "naslov": "Selo koje ne odustaje",
+        "kategorija": {
+            "label": "Ljudi i biznisi"
+        },
+        "autor": "Redakcija",
+        "datum": "26.02.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Selo koje ne odustaje — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Redakcija piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "vodicev-dnevnik-s-planine",
+        "naslov": "Vodičev dnevnik s planine",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Nikola P.",
+        "datum": "03.03.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Vodičev dnevnik s planine — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Nikola P. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "domacinstvo-na-blatnici",
+        "naslov": "Domaćinstvo na Blatnici",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Stoja M.",
+        "datum": "07.04.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1736578147442-503d594222b4?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Domaćinstvo na Blatnici — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Stoja M. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "stari-zanati-novog-doba",
+        "naslov": "Stari zanati novog doba",
+        "kategorija": {
+            "label": "Ljudi i biznisi"
+        },
+        "autor": "Jelena S.",
+        "datum": "11.05.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1774876549411-52e4eaff626e?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Stari zanati novog doba — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Jelena S. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "zene-koje-pletu-price",
+        "naslov": "Žene koje pletu priče",
+        "kategorija": {
+            "label": "Domaćini pričaju"
+        },
+        "autor": "Mira P.",
+        "datum": "15.06.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1706195292026-ae27145ff403?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Žene koje pletu priče — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Mira P. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "putopis-kroz-dolinu-usore",
+        "naslov": "Putopis kroz dolinu Usore",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Nikola T.",
+        "datum": "19.01.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Putopis kroz dolinu Usore — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Nikola T. piše o ljudima i mjestima teslićkog kraja."
+    },
+    {
+        "slug": "nasa-svakodnevica-u-kadru",
+        "naslov": "Naša svakodnevica u kadru",
+        "kategorija": {
+            "label": "Naša svakodnevica"
+        },
+        "autor": "Ana T.",
+        "datum": "23.02.2026.",
+        "izvod": "Topla priča o ljudima, mjestima i običajima teslićkog kraja koja oslikava duh zajednice.",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "featured": false,
+        "sadrzaj": "<p>Naša svakodnevica u kadru — priča iz Teslića.</p><p>Kroz svakodnevicu domaćina, zanatlija i autora otkrivamo šta čini ovaj kraj posebnim. Tradicija, rad i ljubav prema mjestu prenose se s generacije na generaciju.</p><p>Ovo je samo jedan od mnogih glasova koji oblikuju turističku i kulturnu sliku Teslića.</p>",
+        "autorBio": "Ana T. piše o ljudima i mjestima teslićkog kraja."
+    }
 ]

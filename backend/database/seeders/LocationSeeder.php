@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use App\Models\Location;
+use Database\Seeders\Concerns\SeedsMedia;
 use Database\Seeders\Concerns\VariesStatus;
 use Illuminate\Database\Seeder;
 
 class LocationSeeder extends Seeder
 {
+    use SeedsMedia;
     use VariesStatus;
 
     protected const LABEL_TO_KEY = [
@@ -34,7 +36,7 @@ class LocationSeeder extends Seeder
             $key = self::LABEL_TO_KEY[$label] ?? null;
             $category = $key ? Category::where('key', $key)->first() : null;
 
-            Location::updateOrCreate(
+            $model = Location::updateOrCreate(
                 ['slug' => $item['slug']],
                 [
                     'user_id' => null,
@@ -54,6 +56,8 @@ class LocationSeeder extends Seeder
                     ...$this->statusFields($i),
                 ],
             );
+
+            $this->attachSlika($model, $item['slika'] ?? null);
         }
     }
 }

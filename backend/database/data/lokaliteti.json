@@ -1,74 +1,662 @@
 [
-  {
-    "slug": "planina-borja",
-    "naslov": "Planina Borja",
-    "opis": "Netaknuta priroda, planinarske staze i vidikovci nadomak grada.",
-    "kategorija": { "label": "Prirodne atrakcije", "icon": "priroda" },
-    "lokacija": "Borje",
-    "slika": "",
-    "preporuceno": true,
-    "opisDug": "Planina Borja je zelena oaza iznad Teslića, idealna za planinarenje, vožnju biciklom i odmor u prirodi. Bogata je šumama, izvorima i livadama, a s vrhova se pruža pogled na cijelu dolinu.",
-    "kakoDoci": "Asfaltni put od centra Teslića do podnožja (oko 15 km), zatim makadam i planinarske staze.",
-    "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u kasno proljeće i ranu jesen.",
-    "sezona": "Cijele godine (ljeto/jesen preporučeno)",
-    "radnoVrijeme": "Otvoreno 0–24h",
-    "ulaznice": "Besplatan ulaz",
-    "galerija": [{ "src": "", "alt": "Vidikovac" }, { "src": "", "alt": "Staza" }, { "src": "", "alt": "Šuma" }, { "src": "", "alt": "Livada" }],
-    "lat": 44.66,
-    "lng": 17.79
-  },
-  {
-    "slug": "banja-vrucica",
-    "naslov": "Banja Vrućica",
-    "opis": "Termalna voda i wellness ponuda jedne od najpoznatijih banja.",
-    "kategorija": { "label": "Gdje odsjesti", "icon": "smjestaj" },
-    "lokacija": "Banja Vrućica",
-    "slika": "",
-    "preporuceno": true,
-    "opisDug": "Banja Vrućica je poznata po ljekovitoj termalnoj vodi, modernim hotelima i bogatoj wellness i medicinskoj ponudi. Okružena je parkovima i šetalištima.",
-    "kakoDoci": "Oko 6 km od centra Teslića, redovna autobuska linija i taksi.",
-    "savjeti": "Rezervišite tretmane unaprijed u sezoni. Park je idealan za jutarnje šetnje.",
-    "sezona": "Cijele godine",
-    "radnoVrijeme": "Recepcija 0–24h",
-    "ulaznice": "Po cjenovniku usluga",
-    "galerija": [{ "src": "", "alt": "Hotel" }, { "src": "", "alt": "Bazen" }, { "src": "", "alt": "Park" }],
-    "lat": 44.626,
-    "lng": 17.861
-  },
-  {
-    "slug": "vrh-ocaus",
-    "naslov": "Vrh Očauš",
-    "opis": "Najviši vrh Borja s panoramskim pogledom na cijeli kraj.",
-    "kategorija": { "label": "Planine, šume i sela", "icon": "priroda" },
-    "lokacija": "Očauš",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Očauš je najviši vrh planine Borje (1.096 m). Omiljena destinacija planinara, s planinarskim domom u blizini i prelijepim pogledom na okolne planine.",
-    "kakoDoci": "Markirane planinarske staze od podnožja Borja; pristup vozilom do parkinga, dalje pješice.",
-    "savjeti": "Provjerite vremensku prognozu; uspon traje 2–3 sata.",
-    "sezona": "Proljeće–jesen",
-    "radnoVrijeme": "Otvoreno 0–24h",
-    "ulaznice": "Besplatan ulaz",
-    "galerija": [{ "src": "", "alt": "Vrh" }, { "src": "", "alt": "Pogled" }],
-    "lat": 44.69,
-    "lng": 17.81
-  },
-  {
-    "slug": "crkva-teslic",
-    "naslov": "Gradska crkva i centar",
-    "opis": "Kulturno-istorijsko jezgro grada sa znamenitostima.",
-    "kategorija": { "label": "Kultura", "icon": "kultura" },
-    "lokacija": "Teslić, centar",
-    "slika": "",
-    "preporuceno": false,
-    "opisDug": "Centar Teslića čuva nekoliko kulturno-istorijskih objekata i prijatno je mjesto za šetnju, kafu i upoznavanje s lokalnom istorijom.",
-    "kakoDoci": "U samom centru grada, pješačka zona.",
-    "savjeti": "Spojite obilazak s posjetom lokalnim kafeima i suvenirnici.",
-    "sezona": "Cijele godine",
-    "radnoVrijeme": "Zavisno od objekta",
-    "ulaznice": "Besplatno",
-    "galerija": [{ "src": "", "alt": "Centar" }],
-    "lat": 44.6078,
-    "lng": 17.8569
-  }
+    {
+        "slug": "planina-borja",
+        "naslov": "Planina Borja",
+        "opis": "Šume, staze i vidikovci iznad teslićkih sela.",
+        "kategorija": {
+            "label": "Prirodne atrakcije"
+        },
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1611458182018-c043f4e947ec?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Šume, staze i vidikovci iznad teslićkih sela. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.681999999999995,
+        "lng": 17.735999999999997
+    },
+    {
+        "slug": "vrelo-ocaus",
+        "naslov": "Vrelo Očauš",
+        "opis": "Izvor i rijeka okružena netaknutom prirodom.",
+        "kategorija": {
+            "label": "Prirodne atrakcije"
+        },
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Izvor i rijeka okružena netaknutom prirodom. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.581,
+        "lng": 17.93
+    },
+    {
+        "slug": "kanjon-ukrine",
+        "naslov": "Kanjon Ukrine",
+        "opis": "Slikovit kanjon rijeke Ukrine.",
+        "kategorija": {
+            "label": "Prirodne atrakcije"
+        },
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1621766299596-2637f1bf6eb9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Slikovit kanjon rijeke Ukrine. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.55,
+        "lng": 17.784000000000002
+    },
+    {
+        "slug": "vodopad-blatnica",
+        "naslov": "Vodopad Blatnica",
+        "opis": "Skriveni vodopad u srcu šume.",
+        "kategorija": {
+            "label": "Prirodne atrakcije"
+        },
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1503293317069-f8ea8304b4f9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Skriveni vodopad u srcu šume. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.504,
+        "lng": 17.887999999999998
+    },
+    {
+        "slug": "jezero-liplje",
+        "naslov": "Jezero Liplje",
+        "opis": "Mirno jezero za odmor i ribolov.",
+        "kategorija": {
+            "label": "Prirodne atrakcije"
+        },
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1611458182018-c043f4e947ec?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Mirno jezero za odmor i ribolov. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.668,
+        "lng": 17.945999999999998
+    },
+    {
+        "slug": "gradska-crkva-i-centar",
+        "naslov": "Gradska crkva i centar",
+        "opis": "Kulturno-istorijsko jezgro grada Teslića.",
+        "kategorija": {
+            "label": "Kulturne manifestacije"
+        },
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Kulturno-istorijsko jezgro grada Teslića. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.482,
+        "lng": 17.95
+    },
+    {
+        "slug": "manastir-liplje",
+        "naslov": "Manastir Liplje",
+        "opis": "Sakralno nasljeđe i mjesto hodočašća.",
+        "kategorija": {
+            "label": "Kulturne manifestacije"
+        },
+        "lokacija": "Stenjak, Teslić",
+        "slika": "https://images.unsplash.com/photo-1632945167111-57cde0a03df2?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Sakralno nasljeđe i mjesto hodočašća. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.636,
+        "lng": 17.87
+    },
+    {
+        "slug": "stari-grad",
+        "naslov": "Stari grad",
+        "opis": "Ostaci utvrde s pogledom na dolinu Usore.",
+        "kategorija": {
+            "label": "Kulturne manifestacije"
+        },
+        "lokacija": "Slatina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Ostaci utvrde s pogledom na dolinu Usore. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.6,
+        "lng": 17.907999999999998
+    },
+    {
+        "slug": "etno-kuca-pribinic",
+        "naslov": "Etno kuća Pribinić",
+        "opis": "Tradicionalna kuća i život teslićkog sela.",
+        "kategorija": {
+            "label": "Kulturne manifestacije"
+        },
+        "lokacija": "Ružević, Teslić",
+        "slika": "https://images.unsplash.com/photo-1632945167111-57cde0a03df2?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Tradicionalna kuća i život teslićkog sela. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.634,
+        "lng": 17.816
+    },
+    {
+        "slug": "spomen-podrucje",
+        "naslov": "Spomen-područje",
+        "opis": "Mjesto sjećanja i kulturnog značaja.",
+        "kategorija": {
+            "label": "Kulturne manifestacije"
+        },
+        "lokacija": "Šnjegotina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1652552888460-334e60915994?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Mjesto sjećanja i kulturnog značaja. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.588,
+        "lng": 17.7
+    },
+    {
+        "slug": "vrh-ocaus",
+        "naslov": "Vrh Očauš",
+        "opis": "Najviši vrh Borja s panoramskim pogledom.",
+        "kategorija": {
+            "label": "Planine, šume i sela"
+        },
+        "lokacija": "Teslić, centar",
+        "slika": "https://images.unsplash.com/photo-1725118345125-3ceaa0599620?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Najviši vrh Borja s panoramskim pogledom. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.599999999999994,
+        "lng": 17.861
+    },
+    {
+        "slug": "selo-cecava",
+        "naslov": "Selo Čečava",
+        "opis": "Tradicionalno planinsko selo i domaćinstva.",
+        "kategorija": {
+            "label": "Planine, šume i sela"
+        },
+        "lokacija": "Borje, Teslić",
+        "slika": "https://images.unsplash.com/photo-1621766299596-2637f1bf6eb9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Tradicionalno planinsko selo i domaćinstva. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.656,
+        "lng": 17.798
+    },
+    {
+        "slug": "vidikovac-stenjak",
+        "naslov": "Vidikovac Stenjak",
+        "opis": "Pogled na cijelu dolinu i okolne planine.",
+        "kategorija": {
+            "label": "Planine, šume i sela"
+        },
+        "lokacija": "Očauš, Teslić",
+        "slika": "https://images.unsplash.com/photo-1725118345125-3ceaa0599620?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Pogled na cijelu dolinu i okolne planine. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.69,
+        "lng": 17.735999999999997
+    },
+    {
+        "slug": "planinarski-dom-borje",
+        "naslov": "Planinarski dom Borje",
+        "opis": "Polazna tačka za planinarske ture.",
+        "kategorija": {
+            "label": "Planine, šume i sela"
+        },
+        "lokacija": "Banja Vrućica",
+        "slika": "https://images.unsplash.com/photo-1621766299596-2637f1bf6eb9?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Polazna tačka za planinarske ture. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.589,
+        "lng": 17.93
+    },
+    {
+        "slug": "selo-snjegotina",
+        "naslov": "Selo Šnjegotina",
+        "opis": "Mirno selo na obroncima planine.",
+        "kategorija": {
+            "label": "Planine, šume i sela"
+        },
+        "lokacija": "Blatnica, Teslić",
+        "slika": "https://images.unsplash.com/photo-1725118345125-3ceaa0599620?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Mirno selo na obroncima planine. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.558,
+        "lng": 17.784000000000002
+    },
+    {
+        "slug": "banja-vrucica",
+        "naslov": "Banja Vrućica",
+        "opis": "Termalni izvori i jedan od najvećih spa centara u BiH.",
+        "kategorija": {
+            "label": "Gdje odsjesti"
+        },
+        "lokacija": "Pribinić, Teslić",
+        "slika": "https://images.unsplash.com/photo-1498110132731-7a56e6f8ccd7?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": true,
+        "opisDug": "Termalni izvori i jedan od najvećih spa centara u BiH. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.492,
+        "lng": 17.887999999999998
+    },
+    {
+        "slug": "etno-selo-teslic",
+        "naslov": "Etno selo Teslić",
+        "opis": "Tradicionalni smještaj u prirodi nadomak grada.",
+        "kategorija": {
+            "label": "Gdje odsjesti"
+        },
+        "lokacija": "Čečava, Teslić",
+        "slika": "https://images.unsplash.com/photo-1706048085718-622d130a3349?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Tradicionalni smještaj u prirodi nadomak grada. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.656,
+        "lng": 17.945999999999998
+    },
+    {
+        "slug": "hotel-kardial",
+        "naslov": "Hotel Kardial",
+        "opis": "Wellness i smještaj u Banji Vrućici.",
+        "kategorija": {
+            "label": "Gdje odsjesti"
+        },
+        "lokacija": "Komušina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1725118342556-6f3ff8588451?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Wellness i smještaj u Banji Vrućici. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.49,
+        "lng": 17.95
+    },
+    {
+        "slug": "planinska-koliba-borje",
+        "naslov": "Planinska koliba Borje",
+        "opis": "Smještaj za planinare i ljubitelje prirode.",
+        "kategorija": {
+            "label": "Gdje odsjesti"
+        },
+        "lokacija": "Stenjak, Teslić",
+        "slika": "https://images.unsplash.com/photo-1498110132731-7a56e6f8ccd7?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Smještaj za planinare i ljubitelje prirode. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.644,
+        "lng": 17.87
+    },
+    {
+        "slug": "apartmani-vrucica",
+        "naslov": "Apartmani Vrućica",
+        "opis": "Moderni apartmani uz banjski kompleks.",
+        "kategorija": {
+            "label": "Gdje odsjesti"
+        },
+        "lokacija": "Slatina, Teslić",
+        "slika": "https://images.unsplash.com/photo-1706048085718-622d130a3349?auto=format&fit=crop&w=1080&q=80",
+        "preporuceno": false,
+        "opisDug": "Moderni apartmani uz banjski kompleks. Jedno od mjesta koja čine Teslić prepoznatljivom destinacijom — vrijedi posjetiti u svako doba godine.",
+        "kakoDoci": "Lokalnim putem iz centra Teslića, oko 15–30 minuta vožnje. Pristup označen putokazima.",
+        "savjeti": "Ponesite udobnu obuću i vodu. Najljepše je u jutarnjim satima.",
+        "sezona": "Cijele godine",
+        "radnoVrijeme": "—",
+        "ulaznice": "Besplatno",
+        "galerija": [
+            {
+                "src": "",
+                "alt": "Galerija 1"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 2"
+            },
+            {
+                "src": "",
+                "alt": "Galerija 3"
+            }
+        ],
+        "lat": 44.608000000000004,
+        "lng": 17.907999999999998
+    }
 ]
