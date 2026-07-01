@@ -43,6 +43,7 @@ class SiteData
                 'copyright' => $settings->copyright,
                 'social' => $settings->social,
                 'partneri' => $settings->partneri,
+                'indeksiranje' => $settings->google_indeksiranje,
             ],
             'texts' => $straniceSettings->toArray(),
             'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon, 'color' => $c->color])->all(),

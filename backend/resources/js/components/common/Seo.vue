@@ -22,11 +22,16 @@ const data = computed(() => {
   }
 })
 
+const robots = computed(() =>
+  page.props.site?.postavke?.indeksiranje === false ? 'noindex, nofollow' : 'index, follow',
+)
+
 const jsonLdString = computed(() => (props.seo?.jsonLd ? JSON.stringify(props.seo.jsonLd) : ''))
 </script>
 
 <template>
   <Head :title="data.title">
+    <meta name="robots" :content="robots" head-key="robots" />
     <meta name="description" :content="data.description" head-key="description" />
     <link v-if="data.canonical" rel="canonical" :href="data.canonical" head-key="canonical" />
     <meta property="og:title" :content="data.title" head-key="og:title" />

@@ -7,6 +7,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Page;
 use App\Models\Story;
+use App\Settings\SiteSettings;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
@@ -70,6 +71,10 @@ class SitemapController extends Controller
 
     public function robots(): Response
     {
+        if (! app(SiteSettings::class)->google_indeksiranje) {
+            return response("User-agent: *\nDisallow: /\n", 200)->header('Content-Type', 'text/plain');
+        }
+
         $content = "User-agent: *\nAllow: /\nSitemap: ".url('/sitemap.xml')."\n";
 
         return response($content, 200)->header('Content-Type', 'text/plain');

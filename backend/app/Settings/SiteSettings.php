@@ -24,6 +24,16 @@ class SiteSettings extends Settings
 
     public array $partneri;
 
+    public bool $google_indeksiranje;
+
+    public bool $odrzavanje;
+
+    public string $odrzavanje_lozinka;
+
+    public int $odrzavanje_minuta;
+
+    public string $odrzavanje_poruka;
+
     public static function group(): string
     {
         return 'site';

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\Nalog\AutorStoryController;
 use App\Http\Controllers\Nalog\BiznisAdController;
@@ -85,6 +86,8 @@ Route::middleware('auth')->prefix('nalog')->group(function () {
 });
 
 Route::get('/o-projektu', [PageController::class, 'about'])->name('o-projektu');
+
+Route::post('/odrzavanje/otkljucaj', [MaintenanceController::class, 'unlock'])->name('odrzavanje.otkljucaj');
 
 Route::get('/{slug}', [PageController::class, 'show'])
     ->where('slug', '(?!admin$|build$|storage$)[a-z0-9\-]+')

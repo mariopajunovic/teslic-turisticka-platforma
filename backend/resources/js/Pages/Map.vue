@@ -27,6 +27,10 @@ const props = defineProps({
 const { categoryByKey } = useCategories()
 const catOf = (t) => categoryByKey[t.kategorija] || null
 
+const dostupneKljucevi = computed(() => [
+  ...new Set((props.tacke || []).map((t) => t.kategorija).filter(Boolean)),
+])
+
 const aktivne = ref([])
 const upit = ref('')
 const odabrana = ref(null)
@@ -70,6 +74,7 @@ function odaberi(item) {
           v-model="aktivne"
           v-model:naselje="odabranoNaselje"
           :naselja="naseljaList"
+          :available-keys="dostupneKljucevi"
           @search="(v) => (upit = v)"
         />
 

@@ -7,6 +7,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\Toggle;
 use Filament\Pages\SettingsPage;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
@@ -60,6 +61,29 @@ class ManageSiteSettings extends SettingsPage
                     TagsInput::make('partneri')
                         ->label('Partneri'),
                 ]),
+            Section::make('SEO i pristup')
+                ->description('Kontrola indeksiranja i režima održavanja — korisno za dev server.')
+                ->schema([
+                    Toggle::make('google_indeksiranje')
+                        ->label('Dozvoli Google indeksiranje')
+                        ->helperText('Isključi na dev serveru da pretraživači ne indeksiraju sajt (noindex + robots.txt).'),
+                    Toggle::make('odrzavanje')
+                        ->label('Režim održavanja')
+                        ->helperText('Kad je uključeno, posjetioci vide stranicu održavanja s poljem za lozinku.'),
+                    TextInput::make('odrzavanje_lozinka')
+                        ->label('Lozinka za pristup')
+                        ->helperText('Posjetilac unosi ovu lozinku da otključa frontend.'),
+                    TextInput::make('odrzavanje_minuta')
+                        ->label('Trajanje otključavanja (min)')
+                        ->numeric()
+                        ->minValue(1)
+                        ->default(120),
+                    Textarea::make('odrzavanje_poruka')
+                        ->label('Poruka na stranici održavanja')
+                        ->rows(2)
+                        ->columnSpanFull(),
+                ])
+                ->columns(2),
         ]);
     }
 }
