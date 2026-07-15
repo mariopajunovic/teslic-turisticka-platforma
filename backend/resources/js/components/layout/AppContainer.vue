@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <component :is="as" class="mx-auto w-full max-w-[var(--container-content)]">
+  <component :is="as" class="mx-auto w-full max-w-[var(--container-content)] px-4 md:px-6">
     <slot />
   </component>
 </template>
