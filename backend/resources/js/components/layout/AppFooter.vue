@@ -1,10 +1,12 @@
 <script setup>
 import { Link } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
 import AppContainer from './AppContainer.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
 const { footerLinks, kontakt, postavke } = useSite()
+const { t } = useI18n()
 </script>
 
 <template>
@@ -48,7 +50,7 @@ const { footerLinks, kontakt, postavke } = useSite()
             </ul>
           </div>
           <div>
-            <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">Istraži</h3>
+            <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">{{ t('footer.explore') }}</h3>
             <ul class="mt-3 space-y-3">
               <li v-for="l in footerLinks.istrazi" :key="l.to">
                 <Link :href="l.to" class="text-sm text-text transition-colors hover:text-primary">
@@ -61,7 +63,7 @@ const { footerLinks, kontakt, postavke } = useSite()
 
         <!-- Kontakt -->
         <div>
-          <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">Kontakt</h3>
+          <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">{{ t('footer.contact') }}</h3>
           <ul class="mt-3 space-y-3 text-sm text-text">
             <li class="flex items-start gap-2">
               <BaseIcon name="map-pin" :size="16" class="mt-0.5 shrink-0 text-primary" />
@@ -85,7 +87,7 @@ const { footerLinks, kontakt, postavke } = useSite()
     <!-- Partneri -->
     <div class="bg-surface-alt">
       <AppContainer class="py-7">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted">Partneri projekta</h3>
+        <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted">{{ t('footer.partners') }}</h3>
         <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:flex lg:flex-wrap">
           <div
             v-for="p in postavke.partneri || []"

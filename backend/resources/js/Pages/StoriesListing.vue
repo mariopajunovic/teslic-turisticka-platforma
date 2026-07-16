@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -31,31 +32,33 @@ const props = defineProps({
   kategorijaHero: { type: String, default: '' },
 })
 
+const { t } = useI18n()
+
 const error = null
 
 const HERO_DEFAULT =
   'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80'
 
-const heroNaslov = computed(() => props.kategorijaLabel || 'Ljudi, mjesta i običaji Teslića')
+const heroNaslov = computed(() => props.kategorijaLabel || t('stories.heroTitle'))
 
 const breadcrumb = computed(() => {
-  const items = [{ label: 'Početna', to: '/' }, { label: 'Priče iz Teslića', to: props.kategorijaLabel ? '/price' : undefined }]
+  const items = [{ label: t('common.home'), to: '/' }, { label: t('stories.breadcrumb'), to: props.kategorijaLabel ? '/price' : undefined }]
   if (props.kategorijaLabel) items.push({ label: props.kategorijaLabel })
   return items
 })
 
-const kategorijeOpcije = [
-  { value: 'domacini', label: 'Domaćini pričaju' },
-  { value: 'ljudi', label: 'Ljudi i biznisi' },
-  { value: 'svakodnevica', label: 'Naša svakodnevica' },
-]
+const kategorijeOpcije = computed(() => [
+  { value: 'domacini', label: t('stories.catDomacini') },
+  { value: 'ljudi', label: t('stories.catLjudi') },
+  { value: 'svakodnevica', label: t('stories.catSvakodnevica') },
+])
 
-const podsekcije = [
-  { value: '', label: 'Sve' },
-  { value: 'domacini', label: 'Domaćini pričaju' },
-  { value: 'ljudi', label: 'Ljudi i biznisi' },
-  { value: 'svakodnevica', label: 'Naša svakodnevica' },
-]
+const podsekcije = computed(() => [
+  { value: '', label: t('stories.all') },
+  { value: 'domacini', label: t('stories.catDomacini') },
+  { value: 'ljudi', label: t('stories.catLjudi') },
+  { value: 'svakodnevica', label: t('stories.catSvakodnevica') },
+])
 
 const kategorija = ref(props.kategorija || '')
 const upit = ref(props.q || '')
@@ -114,7 +117,7 @@ const imaFiltera = computed(() => kategorija.value || autor.value || upit.value.
 
 const aktivniChipovi = () => {
   const chips = []
-  if (kategorija.value) chips.push({ key: 'kategorija', label: kategorijeOpcije.find((o) => o.value === kategorija.value)?.label || kategorija.value })
+  if (kategorija.value) chips.push({ key: 'kategorija', label: kategorijeOpcije.value.find((o) => o.value === kategorija.value)?.label || kategorija.value })
   if (autor.value) chips.push({ key: 'autor', label: autor.value })
   if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
   return chips
@@ -138,10 +141,10 @@ function ukloni(key) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Priče iz Teslića"
+      :kicker="$t('stories.heroKicker')"
       kicker-class="text-accent"
       :title="heroNaslov"
-      subtitle="Autentične priče domaćina, zanatlija i autora koji svojim radom i životom oblikuju kraj."
+      :subtitle="$t('stories.heroSubtitle')"
       :image="kategorijaHero || HERO_DEFAULT"
     />
 
@@ -180,9 +183,9 @@ function ukloni(key) {
 
     <AppContainer class="mt-4">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
-        <FormSelect v-model="kategorija" :options="kategorijeOpcije" placeholder="Sve kategorije" />
-        <FormSelect v-model="autor" :options="autoriOpcije" placeholder="Svi autori" />
-        <SearchInput v-model="upit" placeholder="Pretraži priče…" />
+        <FormSelect v-model="kategorija" :options="kategorijeOpcije" :placeholder="$t('common.allCategories')" />
+        <FormSelect v-model="autor" :options="autoriOpcije" :placeholder="$t('stories.allAuthors')" />
+        <SearchInput v-model="upit" :placeholder="$t('stories.searchPlaceholder')" />
       </FilterBar>
     </AppContainer>
 
@@ -190,8 +193,8 @@ function ukloni(key) {
       <BaseAlert
         v-if="error"
         variant="greska"
-        title="Greška pri učitavanju"
-        text="Trenutno nije moguće učitati priče. Pokušajte ponovo kasnije."
+        :title="$t('stories.errorTitle')"
+        :text="$t('stories.errorText')"
       />
 
       <CardGrid v-else-if="!price.data" :cols="3">
@@ -200,10 +203,10 @@ function ukloni(key) {
 
       <EmptyState
         v-else-if="!vidljivi.length"
-        title="Nema priča"
-        text="Za odabrane filtere nema priča. Pokušajte promijeniti kategoriju, autora ili pretragu."
+        :title="$t('stories.emptyTitle')"
+        :text="$t('stories.emptyText')"
       >
-        <BaseButton variant="secondary" size="sm" @click="ocisti">Očisti filtere</BaseButton>
+        <BaseButton variant="secondary" size="sm" @click="ocisti">{{ $t('common.clearFilters') }}</BaseButton>
       </EmptyState>
 
       <template v-else>
@@ -227,11 +230,11 @@ function ukloni(key) {
     >
       <AppContainer>
         <RelatedContent
-          kicker="Povezano"
-          title="Iza svake priče stoji stvarno mjesto"
+          :kicker="$t('common.related')"
+          :title="$t('stories.relatedTitle')"
           class="!mt-0"
           back-to="/"
-          back-label="← Nazad na Početnu"
+          :back-label="$t('stories.backHome')"
         >
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
@@ -242,10 +245,10 @@ function ukloni(key) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Imate priču iz Teslića?"
-        text="Postanite autor i podijelite priču o ljudima, mjestima i običajima kraja."
+        :title="$t('stories.ctaTitle')"
+        :text="$t('stories.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/autor">Postani autor</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se/autor">{{ $t('stories.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

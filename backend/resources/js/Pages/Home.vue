@@ -1,5 +1,7 @@
 <script setup>
+import { computed } from 'vue'
 import { Link } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
@@ -10,18 +12,20 @@ import CTASection from '@/components/common/CTASection.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
+const { t } = useI18n()
+
 const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1080&q=80`
 
 const heroImg = img('1574410187921-bca6826880c0')
 
-const kategorije = [
-  { label: 'Domaće je najbolje', icon: 'hrana', href: '/domace-je-najbolje' },
-  { label: 'Turizam', icon: 'priroda', href: '/turizam' },
-  { label: 'Događaji', icon: 'calendar', href: '/dogadjaji' },
-  { label: 'Mapa ponude', icon: 'map-pin', href: '/mapa' },
-  { label: 'Priče', icon: 'book-open', href: '/price' },
-  { label: 'Oglasi', icon: 'briefcase', href: '/oglasi' },
-]
+const kategorije = computed(() => [
+  { label: t('home.navLocal'), icon: 'hrana', href: '/domace-je-najbolje' },
+  { label: t('home.navTourism'), icon: 'priroda', href: '/turizam' },
+  { label: t('home.navEvents'), icon: 'calendar', href: '/dogadjaji' },
+  { label: t('home.navMap'), icon: 'map-pin', href: '/mapa' },
+  { label: t('home.navStories'), icon: 'book-open', href: '/price' },
+  { label: t('home.navAds'), icon: 'briefcase', href: '/oglasi' },
+])
 
 const proizvodi = [
   { slug: 'pcelarstvo-borja', naslov: 'Pčelarstvo Borja', opis: 'Domaći bagremov i livadski med sa obronaka Borja.', kategorija: { label: 'Hrana i piće', icon: 'hrana' }, lokacija: 'Borja', slika: img('1619522893151-bb5138b60292') },
@@ -72,24 +76,23 @@ const galerija = [
         <div class="absolute inset-0" style="background-color: #0a2c27cc"></div>
         <div class="relative max-w-[620px] px-8 py-16 md:px-14 md:py-24">
           <p class="text-sm font-semibold uppercase tracking-[0.1em] text-secondary">
-            Dobrodošli u Teslić
+            {{ $t('home.welcome') }}
           </p>
           <h1
             class="mt-4 font-heading text-[32px] font-bold leading-[1.12] text-white md:text-[46px]"
           >
-            Teslić — domaće, autentično, blizu
+            {{ $t('home.heroTitle') }}
           </h1>
           <p class="mt-4 max-w-[560px] text-base text-primary-tint md:text-lg">
-            Termalna Banja Vrućica, planine Borja i Očauš, domaći proizvodi i ljudi koji ih prave —
-            sve na jednom mjestu.
+            {{ $t('home.heroSubtitle') }}
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
-            <BaseButton variant="sekundarna" icon="sparkles">Istraži ponudu</BaseButton>
+            <BaseButton variant="sekundarna" icon="sparkles">{{ $t('home.exploreOffer') }}</BaseButton>
             <Link
               href="/pridruzi-se"
               class="inline-flex h-11 items-center justify-center rounded-sm border-[1.5px] border-white px-5 font-semibold text-white transition-colors hover:bg-white/10"
             >
-              Pridruži se
+              {{ $t('action.join') }}
             </Link>
           </div>
         </div>
@@ -100,7 +103,7 @@ const galerija = [
   <section class="bg-surface-alt py-10">
     <AppContainer class="space-y-5">
       <h2 class="font-heading text-[22px] font-bold text-heading md:text-[28px]">
-        Istražite po kategoriji
+        {{ $t('home.byCategory') }}
       </h2>
       <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         <Link
@@ -123,8 +126,8 @@ const galerija = [
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
       <SectionHeader
-        title="Lokalni proizvodi i usluge"
-        link-text="Vidi sve"
+        :title="$t('home.secLocal')"
+        :link-text="$t('home.viewAll')"
         to="/domace-je-najbolje"
       />
       <CardGrid>
@@ -136,8 +139,8 @@ const galerija = [
   <section class="bg-primary-tint py-12 md:py-16">
     <AppContainer class="space-y-6">
       <SectionHeader
-        title="Preporučeno iz prve ruke"
-        link-text="Vidi sve"
+        :title="$t('home.secRecommended')"
+        :link-text="$t('home.viewAll')"
         to="/domace-je-najbolje"
       />
       <CardGrid :cols="3">
@@ -148,7 +151,7 @@ const galerija = [
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader title="Turističke atrakcije" link-text="Vidi sve" to="/turizam" />
+      <SectionHeader :title="$t('home.secAttractions')" :link-text="$t('home.viewAll')" to="/turizam" />
       <CardGrid>
         <BusinessCard v-for="a in atrakcije" :key="a.slug" :item="a" :to="`/turizam/${a.slug}`" />
       </CardGrid>
@@ -157,22 +160,22 @@ const galerija = [
 
   <section class="bg-surface-alt py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader title="Istraži na mapi" link-text="Otvori mapu" to="/mapa" />
+      <SectionHeader :title="$t('home.secMap')" :link-text="$t('home.openMap')" to="/mapa" />
       <div
         class="flex h-[340px] flex-col items-center justify-center gap-4 rounded-2xl bg-primary-tint px-4 text-center"
       >
         <span class="flex size-16 items-center justify-center rounded-full bg-surface text-primary">
           <BaseIcon name="map-pin" :size="30" />
         </span>
-        <p class="text-xl font-semibold text-heading">Interaktivna mapa turističke ponude</p>
-        <BaseButton to="/mapa" variant="primary" icon="map">Otvori mapu</BaseButton>
+        <p class="text-xl font-semibold text-heading">{{ $t('home.mapCta') }}</p>
+        <BaseButton to="/mapa" variant="primary" icon="map">{{ $t('home.openMap') }}</BaseButton>
       </div>
     </AppContainer>
   </section>
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader title="Nadolazeći događaji" link-text="Kalendar" to="/dogadjaji" />
+      <SectionHeader :title="$t('home.secEvents')" :link-text="$t('home.calendar')" to="/dogadjaji" />
       <CardGrid>
         <EventCard v-for="d in dogadjaji" :key="d.slug" :item="d" />
       </CardGrid>
@@ -181,7 +184,7 @@ const galerija = [
 
   <section class="bg-surface-alt py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader title="Priče iz Teslića" link-text="Sve priče" to="/price" />
+      <SectionHeader :title="$t('home.secStories')" :link-text="$t('home.allStories')" to="/price" />
       <CardGrid :cols="3">
         <StoryCard v-for="s in price" :key="s.slug" :item="s" />
       </CardGrid>
@@ -190,7 +193,7 @@ const galerija = [
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader title="Galerija" link-text="Vidi sve" to="/price" />
+      <SectionHeader :title="$t('home.secGallery')" :link-text="$t('home.viewAll')" to="/price" />
       <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <img
           v-for="(g, i) in galerija"
@@ -207,11 +210,11 @@ const galerija = [
   <section class="bg-surface py-12 md:py-16">
     <AppContainer>
       <CTASection
-        title="Pridružite se platformi Teslić"
-        text="Predstavite svoj biznis hiljadama posjetilaca ili podijelite svoju priču o teslićkom kraju."
+        :title="$t('home.ctaTitle')"
+        :text="$t('home.ctaText')"
       >
-        <BaseButton variant="sekundarna">Registruj biznis</BaseButton>
-        <BaseButton variant="secondary">Postani autor</BaseButton>
+        <BaseButton variant="sekundarna">{{ $t('home.ctaBusiness') }}</BaseButton>
+        <BaseButton variant="secondary">{{ $t('home.ctaAuthor') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </section>

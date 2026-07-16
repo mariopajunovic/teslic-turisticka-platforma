@@ -10,6 +10,8 @@ class EditMenu extends EditRecord
 {
     protected static string $resource = MenuResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

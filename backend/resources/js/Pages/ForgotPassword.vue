@@ -21,27 +21,27 @@ const poslano = ref(false)
           <p class="text-sm leading-relaxed text-text-muted">
             {{ t('zaboravljena_uvod', 'Unesite e-mail adresu vašeg naloga i poslaćemo vam link za postavljanje nove lozinke.') }}
           </p>
-          <FormField v-model="email" label="E-mail" type="email" placeholder="marko@primjer.ba" />
+          <FormField v-model="email" :label="$t('contact.email')" type="email" :placeholder="$t('auth.emailPlaceholder')" />
           <BaseButton variant="primary" block @click="poslano = true">
-            Pošalji link za reset
+            {{ $t('auth.sendReset') }}
           </BaseButton>
           <BaseButton to="/prijava" variant="ghost" block icon="arrow-left">
-            Nazad na prijavu
+            {{ $t('auth.backToLogin') }}
           </BaseButton>
         </template>
 
         <template v-else>
-          <h1 class="font-heading text-2xl font-bold text-heading">Provjerite e-mail</h1>
+          <h1 class="font-heading text-2xl font-bold text-heading">{{ $t('auth.checkEmail') }}</h1>
           <BaseAlert
             variant="uspjeh"
-            title="Link je poslan"
-            text="Link za resetovanje lozinke je poslan na vašu e-mail adresu."
+            :title="$t('auth.linkSent')"
+            :text="$t('auth.linkSentText')"
           />
           <p class="text-[13px] leading-relaxed text-text-muted">
-            Niste primili e-mail? Provjerite spam folder ili pokušajte ponovo za nekoliko minuta.
+            {{ $t('auth.noEmailHelp') }}
           </p>
           <BaseButton to="/prijava" variant="ghost" block icon="arrow-left">
-            Nazad na prijavu
+            {{ $t('auth.backToLogin') }}
           </BaseButton>
         </template>
       </div>

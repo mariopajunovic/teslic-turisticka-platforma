@@ -1,0 +1,3346 @@
+{
+  "version": "2.14",
+  "children": [
+    {
+      "type": "frame",
+      "id": "DyFEL",
+      "x": 0,
+      "y": 0,
+      "name": "component/Badge",
+      "reusable": true,
+      "fill": "$warning-bg",
+      "cornerRadius": 4,
+      "gap": 6,
+      "padding": [
+        3,
+        10
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "ellipse",
+          "id": "Db549",
+          "name": "Dot",
+          "fill": "$warning",
+          "width": 6,
+          "height": 6
+        },
+        {
+          "type": "text",
+          "id": "q7n7rP",
+          "name": "Label",
+          "fill": "$warning",
+          "content": "Poslano",
+          "fontFamily": "$font-body",
+          "fontSize": 12,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "BuoTN",
+      "x": 139,
+      "y": 0,
+      "name": "component/Button",
+      "reusable": true,
+      "fill": "$primary",
+      "cornerRadius": 4,
+      "gap": 8,
+      "padding": [
+        9,
+        16
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "bTTku",
+          "name": "Icon",
+          "width": 16,
+          "height": 16,
+          "icon": "plus",
+          "library": "lucide",
+          "fill": "#FFFFFF"
+        },
+        {
+          "type": "text",
+          "id": "p7exa",
+          "name": "Label",
+          "fill": "#FFFFFF",
+          "content": "Dugme",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "600"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "LLlJg",
+      "x": 300,
+      "y": 0,
+      "name": "component/NavItem",
+      "reusable": true,
+      "width": 200,
+      "height": 34,
+      "fill": "$sidebar-bg",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "rectangle",
+          "id": "TQYWB",
+          "x": 0,
+          "y": 0,
+          "name": "Accent",
+          "enabled": false,
+          "fill": "$primary",
+          "width": 3,
+          "height": 34
+        },
+        {
+          "type": "frame",
+          "id": "kQck0",
+          "name": "Inner",
+          "width": "fill_container",
+          "height": "fill_container",
+          "gap": 10,
+          "padding": [
+            0,
+            14
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "ah1U0",
+              "name": "Left",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "gGTuz",
+                  "name": "Icon",
+                  "width": 17,
+                  "height": 17,
+                  "icon": "megaphone",
+                  "library": "lucide",
+                  "fill": "$sidebar-text"
+                },
+                {
+                  "type": "text",
+                  "id": "UPe2R",
+                  "name": "Label",
+                  "fill": "$sidebar-text",
+                  "content": "Oglasi",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "P1fMb",
+              "x": 0,
+              "y": 0,
+              "name": "Count",
+              "enabled": false,
+              "fill": "$primary",
+              "cornerRadius": 9,
+              "padding": [
+                1,
+                7
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "k8kLa",
+                  "name": "CountText",
+                  "fill": "#FFFFFF",
+                  "content": "4",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "voBYf",
+      "x": 560,
+      "y": 0,
+      "name": "component/StatCard",
+      "reusable": true,
+      "width": 260,
+      "fill": "$surface",
+      "cornerRadius": 8,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "gap": 10,
+      "padding": 20,
+      "children": [
+        {
+          "type": "frame",
+          "id": "mpXaX",
+          "name": "Top",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "IPu2L",
+              "name": "Label",
+              "fill": "$text-secondary",
+              "content": "Sadržaj na odobrenju",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "y6Fix",
+              "name": "IconWrap",
+              "width": 36,
+              "height": 36,
+              "fill": "$primary-tint",
+              "cornerRadius": 18,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "LXi5s",
+                  "name": "Icon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "inbox",
+                  "library": "lucide",
+                  "fill": "$primary"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "S0v9VB",
+          "name": "Value",
+          "fill": "$text-primary",
+          "content": "5",
+          "fontFamily": "$font-heading",
+          "fontSize": 30,
+          "fontWeight": "700"
+        },
+        {
+          "type": "text",
+          "id": "mtOvo",
+          "name": "Caption",
+          "fill": "$text-muted",
+          "content": "Čeka pregled administratora",
+          "fontFamily": "$font-body",
+          "fontSize": 12,
+          "fontWeight": "normal"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "m4nWQu",
+      "x": 880,
+      "y": 0,
+      "name": "component/FormField",
+      "reusable": true,
+      "width": 320,
+      "layout": "vertical",
+      "gap": 6,
+      "children": [
+        {
+          "type": "text",
+          "id": "o45cC",
+          "name": "Label",
+          "fill": "$text-primary",
+          "content": "Naslov",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "600"
+        },
+        {
+          "type": "frame",
+          "id": "PCzeS",
+          "name": "Input",
+          "width": "fill_container",
+          "height": 40,
+          "fill": "$surface",
+          "cornerRadius": 4,
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "strokeAlignment": "inner",
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "gnPF1",
+              "name": "Placeholder",
+              "fill": "$text-muted",
+              "content": "Unesite tekst…",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Sur9Q",
+      "x": 1280,
+      "y": 0,
+      "name": "component/Sidebar",
+      "reusable": true,
+      "clip": true,
+      "width": 230,
+      "height": 1024,
+      "fill": "$sidebar-bg",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "ik6Hf",
+          "name": "Brand",
+          "width": "fill_container",
+          "height": 60,
+          "gap": 11,
+          "padding": [
+            0,
+            18
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "XJzw1",
+              "name": "Logo",
+              "width": 30,
+              "height": 30,
+              "fill": "$primary",
+              "cornerRadius": 7,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "B6hNu",
+                  "name": "LogoText",
+                  "fill": "#FFFFFF",
+                  "content": "TO",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 13,
+                  "fontWeight": "800"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "bNh3X",
+              "name": "BrandName",
+              "fill": "$sidebar-text-strong",
+              "content": "TO Teslić",
+              "fontFamily": "$font-heading",
+              "fontSize": 15,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "S86syC",
+          "name": "Nav",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 1,
+          "padding": [
+            6,
+            0,
+            20,
+            0
+          ],
+          "children": [
+            {
+              "id": "m9o9m6",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Nadzorna ploča",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "layout-dashboard"
+                },
+                "UPe2R": {
+                  "content": "Nadzorna ploča"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "IbeFu",
+              "name": "grp Sadržaj",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                6,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "J6Ilt",
+                  "name": "GLabel Sadržaj",
+                  "fill": "$sidebar-group",
+                  "content": "SADRŽAJ",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.6
+                }
+              ]
+            },
+            {
+              "id": "vx0y2",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Red odobravanja",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "inbox"
+                },
+                "UPe2R": {
+                  "content": "Red odobravanja"
+                },
+                "P1fMb": {
+                  "enabled": true
+                },
+                "k8kLa": {
+                  "content": "4"
+                }
+              }
+            },
+            {
+              "id": "y3QoTQ",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Oglasi",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "megaphone"
+                },
+                "UPe2R": {
+                  "content": "Oglasi"
+                }
+              }
+            },
+            {
+              "id": "D0pUtO",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Biznisi",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "store"
+                },
+                "UPe2R": {
+                  "content": "Biznisi"
+                }
+              }
+            },
+            {
+              "id": "DZmlM",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Događaji",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "calendar-days"
+                },
+                "UPe2R": {
+                  "content": "Događaji"
+                }
+              }
+            },
+            {
+              "id": "S8T7Q",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Lokaliteti",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "map-pin"
+                },
+                "UPe2R": {
+                  "content": "Lokaliteti"
+                }
+              }
+            },
+            {
+              "id": "c2qjT",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Vijesti",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "newspaper"
+                },
+                "UPe2R": {
+                  "content": "Vijesti"
+                }
+              }
+            },
+            {
+              "id": "G0Cc5q",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Priče",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "book-open"
+                },
+                "UPe2R": {
+                  "content": "Priče"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "CsgWc",
+              "name": "grp Taksonomija",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                6,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "dpmpC",
+                  "name": "GLabel Taksonomija",
+                  "fill": "$sidebar-group",
+                  "content": "TAKSONOMIJA",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.6
+                }
+              ]
+            },
+            {
+              "id": "A3EXTd",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Kategorije",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "tag"
+                },
+                "UPe2R": {
+                  "content": "Kategorije"
+                }
+              }
+            },
+            {
+              "id": "GtXme",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Povezani sadržaj",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "link"
+                },
+                "UPe2R": {
+                  "content": "Povezani sadržaj"
+                }
+              }
+            },
+            {
+              "id": "wodFC",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Oznake",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "tags"
+                },
+                "UPe2R": {
+                  "content": "Oznake"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "ncfFv",
+              "name": "grp Postavke",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                6,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nLSa8",
+                  "name": "GLabel Postavke",
+                  "fill": "$sidebar-group",
+                  "content": "POSTAVKE",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.6
+                }
+              ]
+            },
+            {
+              "id": "wxbHX",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Tekstovi stranica",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "file-text"
+                },
+                "UPe2R": {
+                  "content": "Tekstovi stranica"
+                }
+              }
+            },
+            {
+              "id": "MyQKp",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Postavke sajta",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "settings"
+                },
+                "UPe2R": {
+                  "content": "Postavke sajta"
+                }
+              }
+            },
+            {
+              "id": "EjDmV",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Meniji",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "menu"
+                },
+                "UPe2R": {
+                  "content": "Meniji"
+                }
+              }
+            },
+            {
+              "id": "q3KBoP",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Medijska biblioteka",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "image"
+                },
+                "UPe2R": {
+                  "content": "Medijska biblioteka"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "F7NDO",
+              "name": "grp Sistem",
+              "width": "fill_container",
+              "padding": [
+                16,
+                16,
+                6,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "DLUWp",
+                  "name": "GLabel Sistem",
+                  "fill": "$sidebar-group",
+                  "content": "SISTEM",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.6
+                }
+              ]
+            },
+            {
+              "id": "dElil",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Korisnici",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "users"
+                },
+                "UPe2R": {
+                  "content": "Korisnici"
+                }
+              }
+            },
+            {
+              "id": "uMblu",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Administratori",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "shield"
+                },
+                "UPe2R": {
+                  "content": "Administratori"
+                }
+              }
+            },
+            {
+              "id": "tZsJk",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Uloge",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "key-round"
+                },
+                "UPe2R": {
+                  "content": "Uloge"
+                }
+              }
+            },
+            {
+              "id": "bIycQ",
+              "type": "ref",
+              "ref": "LLlJg",
+              "name": "nav Logovi aktivnosti",
+              "width": "fill_container",
+              "descendants": {
+                "gGTuz": {
+                  "icon": "scroll-text"
+                },
+                "UPe2R": {
+                  "content": "Logovi aktivnosti"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CGD2o",
+      "x": 1590,
+      "y": 0,
+      "name": "component/Topbar",
+      "reusable": true,
+      "width": 1210,
+      "height": 60,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "padding": [
+        0,
+        24
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "nUUMw",
+          "name": "Left",
+          "gap": 12,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "IBEYN",
+              "name": "Title",
+              "fill": "$text-primary",
+              "content": "Nadzorna ploča",
+              "fontFamily": "$font-heading",
+              "fontSize": 19,
+              "fontWeight": "700"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pGiO8",
+          "name": "Right",
+          "gap": 14,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "CtKpR",
+              "name": "Search",
+              "width": 240,
+              "height": 36,
+              "fill": "$surface-alt",
+              "cornerRadius": 6,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 8,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "rNncy",
+                  "name": "SearchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "search",
+                  "library": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "FSRk2",
+                  "name": "SearchPh",
+                  "fill": "$text-muted",
+                  "content": "Traži…",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "D9R8R",
+              "name": "Lang",
+              "fill": "$surface-alt",
+              "cornerRadius": 6,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "gap": 2,
+              "padding": [
+                6,
+                10
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "J09bPB",
+                  "name": "LangText",
+                  "fill": "$text-secondary",
+                  "content": "SR",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "icon",
+                  "id": "UJDIc",
+                  "name": "LangChevron",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$text-muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "HhwMv",
+              "name": "Bell",
+              "width": 36,
+              "height": 36,
+              "fill": "$surface-alt",
+              "cornerRadius": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "BDExm",
+                  "name": "BellIcon",
+                  "width": 18,
+                  "height": 18,
+                  "icon": "bell",
+                  "library": "lucide",
+                  "fill": "$text-secondary"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "nXDvY",
+              "name": "Avatar",
+              "width": 34,
+              "height": 34,
+              "fill": "$primary",
+              "cornerRadius": 17,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Us5sG",
+                  "name": "AvatarText",
+                  "fill": "#FFFFFF",
+                  "content": "MP",
+                  "fontFamily": "$font-body",
+                  "fontSize": 12,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "g0YzSB",
+      "x": 1280,
+      "y": 1144,
+      "name": "Screen: Dashboard",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$content-bg",
+      "children": [
+        {
+          "id": "v0jkZ2",
+          "type": "ref",
+          "ref": "Sur9Q",
+          "name": "Sidebar",
+          "height": "fill_container",
+          "descendants": {
+            "m9o9m6/TQYWB": {
+              "enabled": true
+            },
+            "m9o9m6/kQck0": {
+              "fill": "$sidebar-bg-alt"
+            },
+            "m9o9m6/gGTuz": {
+              "fill": "$primary"
+            },
+            "m9o9m6/UPe2R": {
+              "fill": "$sidebar-text-strong",
+              "fontWeight": "600"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "NELhl",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "Nt0f5",
+              "type": "ref",
+              "ref": "CGD2o",
+              "name": "Topbar",
+              "width": "fill_container",
+              "descendants": {
+                "IBEYN": {
+                  "content": "Nadzorna ploča"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "THsit",
+              "name": "Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 22,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rHwcZ",
+                  "name": "Heading",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 3,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ktR6Z",
+                      "name": "H1",
+                      "fill": "$text-primary",
+                      "content": "Pregled",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 22,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "T4ZaMX",
+                      "name": "Sub",
+                      "fill": "$text-secondary",
+                      "content": "Dobrodošao natrag, Mario. Evo šta se dešava na portalu.",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "F65vIx",
+                  "name": "Stats",
+                  "width": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "dVjkG",
+                      "type": "ref",
+                      "ref": "voBYf",
+                      "name": "stat Sadržaj na odobrenju",
+                      "width": "fill_container",
+                      "descendants": {
+                        "IPu2L": {
+                          "content": "Sadržaj na odobrenju"
+                        },
+                        "y6Fix": {
+                          "fill": "$warning-bg"
+                        },
+                        "LXi5s": {
+                          "icon": "inbox",
+                          "fill": "$warning"
+                        },
+                        "S0v9VB": {
+                          "content": "5"
+                        },
+                        "mtOvo": {
+                          "content": "Čeka pregled administratora"
+                        }
+                      }
+                    },
+                    {
+                      "id": "d6xDqS",
+                      "type": "ref",
+                      "ref": "voBYf",
+                      "name": "stat Nalozi na odobrenju",
+                      "width": "fill_container",
+                      "descendants": {
+                        "IPu2L": {
+                          "content": "Nalozi na odobrenju"
+                        },
+                        "y6Fix": {
+                          "fill": "$info-bg"
+                        },
+                        "LXi5s": {
+                          "icon": "user-plus",
+                          "fill": "$info"
+                        },
+                        "S0v9VB": {
+                          "content": "0"
+                        },
+                        "mtOvo": {
+                          "content": "Nove registracije"
+                        }
+                      }
+                    },
+                    {
+                      "id": "lb4uW",
+                      "type": "ref",
+                      "ref": "voBYf",
+                      "name": "stat Aktivni oglasi",
+                      "width": "fill_container",
+                      "descendants": {
+                        "IPu2L": {
+                          "content": "Aktivni oglasi"
+                        },
+                        "y6Fix": {
+                          "fill": "$success-bg"
+                        },
+                        "LXi5s": {
+                          "icon": "megaphone",
+                          "fill": "$success"
+                        },
+                        "S0v9VB": {
+                          "content": "17"
+                        },
+                        "mtOvo": {
+                          "content": "Trenutno objavljeno"
+                        }
+                      }
+                    },
+                    {
+                      "id": "V8q3m",
+                      "type": "ref",
+                      "ref": "voBYf",
+                      "name": "stat Nadolazeći događaji",
+                      "width": "fill_container",
+                      "descendants": {
+                        "IPu2L": {
+                          "content": "Nadolazeći događaji"
+                        },
+                        "y6Fix": {
+                          "fill": "$primary-tint"
+                        },
+                        "LXi5s": {
+                          "icon": "calendar-days",
+                          "fill": "$primary"
+                        },
+                        "S0v9VB": {
+                          "content": "7"
+                        },
+                        "mtOvo": {
+                          "content": "U narednih 30 dana"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LavuT",
+                  "name": "Widgets",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "id": "NxLgZ",
+                      "type": "ref",
+                      "ref": "dzjgx",
+                      "name": "Card: Red odobravanja",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "descendants": {
+                        "SJsxd": {
+                          "content": "Red odobravanja"
+                        },
+                        "eNmiF": {
+                          "enabled": true
+                        },
+                        "eNmiF/p5eF6": {
+                          "content": "5"
+                        },
+                        "mG4ew": {
+                          "content": "Vidi sve →"
+                        },
+                        "T3reWw": {
+                          "type": "frame",
+                          "id": "XNPwI",
+                          "name": "Body",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "xSMOa",
+                              "type": "ref",
+                              "ref": "qTvw2",
+                              "name": "row Biznis",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Oc83B/Db549": {
+                                  "fill": "$primary"
+                                },
+                                "Oc83B/q7n7rP": {
+                                  "fill": "$primary",
+                                  "content": "Biznis"
+                                },
+                                "DBcQd": {
+                                  "content": "Grnčarija Pribinić"
+                                },
+                                "U0ocz": {
+                                  "content": "Demo Biznis · prije 2 sedmice"
+                                }
+                              }
+                            },
+                            {
+                              "id": "xo4WE",
+                              "type": "ref",
+                              "ref": "qTvw2",
+                              "name": "row Lokalitet",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Oc83B/Db549": {
+                                  "fill": "$success"
+                                },
+                                "Oc83B/q7n7rP": {
+                                  "fill": "$success",
+                                  "content": "Lokalitet"
+                                },
+                                "DBcQd": {
+                                  "content": "Vrelo Očauš"
+                                },
+                                "U0ocz": {
+                                  "content": "— · prije 2 sedmice"
+                                }
+                              }
+                            },
+                            {
+                              "id": "UgzR1",
+                              "type": "ref",
+                              "ref": "qTvw2",
+                              "name": "row Događaj",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Oc83B/Db549": {
+                                  "fill": "$warning"
+                                },
+                                "Oc83B/q7n7rP": {
+                                  "fill": "$warning",
+                                  "content": "Događaj"
+                                },
+                                "DBcQd": {
+                                  "content": "Sajam domaćih proizvoda 2026"
+                                },
+                                "U0ocz": {
+                                  "content": "— · prije 2 sedmice"
+                                }
+                              }
+                            },
+                            {
+                              "id": "XYeYx",
+                              "type": "ref",
+                              "ref": "qTvw2",
+                              "name": "row Oglas",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Oc83B/Db549": {
+                                  "fill": "$info"
+                                },
+                                "Oc83B/q7n7rP": {
+                                  "fill": "$info",
+                                  "content": "Oglas"
+                                },
+                                "DBcQd": {
+                                  "content": "Kuhar/ica — hotel Kardial"
+                                },
+                                "U0ocz": {
+                                  "content": "— · prije 2 sedmice"
+                                }
+                              }
+                            },
+                            {
+                              "id": "Xm43a",
+                              "type": "ref",
+                              "ref": "qTvw2",
+                              "name": "row Priča",
+                              "width": "fill_container",
+                              "descendants": {
+                                "Oc83B/Db549": {
+                                  "fill": "$text-secondary"
+                                },
+                                "Oc83B/q7n7rP": {
+                                  "fill": "$text-secondary",
+                                  "content": "Priča"
+                                },
+                                "DBcQd": {
+                                  "content": "Drvo koje pamti — zanati Borja"
+                                },
+                                "U0ocz": {
+                                  "content": "Demo Autor · prije 2 sedmice"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "id": "JvDHm",
+                      "type": "ref",
+                      "ref": "dzjgx",
+                      "name": "Card: Nedavna aktivnost",
+                      "width": 400,
+                      "height": "fill_container",
+                      "descendants": {
+                        "SJsxd": {
+                          "content": "Nedavna aktivnost"
+                        },
+                        "mG4ew": {
+                          "enabled": false
+                        },
+                        "T3reWw": {
+                          "type": "frame",
+                          "id": "Z60aol",
+                          "name": "Body",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "yYlSb",
+                              "type": "ref",
+                              "ref": "x7NH22",
+                              "name": "act",
+                              "width": "fill_container",
+                              "descendants": {
+                                "uCJ7Y": {
+                                  "fill": "$success-bg"
+                                },
+                                "kai3v": {
+                                  "icon": "check",
+                                  "fill": "$success"
+                                },
+                                "m3BcB": {
+                                  "content": "Mario P. odobrio i objavio „Grnčarija Pribinić“"
+                                },
+                                "MZhKi": {
+                                  "content": "prije 5 min"
+                                }
+                              }
+                            },
+                            {
+                              "id": "NiRv9",
+                              "type": "ref",
+                              "ref": "x7NH22",
+                              "name": "act",
+                              "width": "fill_container",
+                              "descendants": {
+                                "uCJ7Y": {
+                                  "fill": "$info-bg"
+                                },
+                                "kai3v": {
+                                  "icon": "send",
+                                  "fill": "$info"
+                                },
+                                "m3BcB": {
+                                  "content": "Demo Autor poslao priču na odobrenje"
+                                },
+                                "MZhKi": {
+                                  "content": "prije 1 sat"
+                                }
+                              }
+                            },
+                            {
+                              "id": "Vxs1b",
+                              "type": "ref",
+                              "ref": "x7NH22",
+                              "name": "act",
+                              "width": "fill_container",
+                              "descendants": {
+                                "uCJ7Y": {
+                                  "fill": "$primary-tint"
+                                },
+                                "kai3v": {
+                                  "icon": "user-plus",
+                                  "fill": "$primary"
+                                },
+                                "m3BcB": {
+                                  "content": "Jelena S. registrovala biznis nalog"
+                                },
+                                "MZhKi": {
+                                  "content": "prije 3 sata"
+                                }
+                              }
+                            },
+                            {
+                              "id": "hC78C",
+                              "type": "ref",
+                              "ref": "x7NH22",
+                              "name": "act",
+                              "width": "fill_container",
+                              "descendants": {
+                                "uCJ7Y": {
+                                  "fill": "$success-bg"
+                                },
+                                "kai3v": {
+                                  "icon": "globe",
+                                  "fill": "$success"
+                                },
+                                "m3BcB": {
+                                  "content": "Objavljeno: „Vrelo Očauš“"
+                                },
+                                "MZhKi": {
+                                  "content": "juče"
+                                }
+                              }
+                            },
+                            {
+                              "id": "MKCkZ",
+                              "type": "ref",
+                              "ref": "x7NH22",
+                              "name": "act",
+                              "width": "fill_container",
+                              "descendants": {
+                                "uCJ7Y": {
+                                  "fill": "$surface-alt"
+                                },
+                                "kai3v": {
+                                  "icon": "archive",
+                                  "fill": "$text-secondary"
+                                },
+                                "m3BcB": {
+                                  "content": "Sistem arhivirao 2 istekla oglasa"
+                                },
+                                "MZhKi": {
+                                  "content": "juče"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "L8tZ7a",
+      "x": 2840,
+      "y": 1144,
+      "name": "Screen: Lista (Oglasi)",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$content-bg",
+      "children": [
+        {
+          "id": "WFxat",
+          "type": "ref",
+          "ref": "Sur9Q",
+          "name": "Sidebar",
+          "height": "fill_container",
+          "descendants": {
+            "y3QoTQ/TQYWB": {
+              "enabled": true
+            },
+            "y3QoTQ/kQck0": {
+              "fill": "$sidebar-bg-alt"
+            },
+            "y3QoTQ/gGTuz": {
+              "fill": "$primary"
+            },
+            "y3QoTQ/UPe2R": {
+              "fill": "$sidebar-text-strong",
+              "fontWeight": "600"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "I8DpNb",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "b3Pi8",
+              "type": "ref",
+              "ref": "CGD2o",
+              "name": "Topbar",
+              "width": "fill_container",
+              "descendants": {
+                "IBEYN": {
+                  "content": "Oglasi"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "NiVMs",
+              "name": "Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "MW0EF",
+                  "name": "Heading",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ft3Cq",
+                      "name": "HL",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "W9eWix",
+                          "name": "H1",
+                          "fill": "$text-primary",
+                          "content": "Oglasi",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v7hKk",
+                          "name": "Sub",
+                          "fill": "$text-secondary",
+                          "content": "17 objavljenih · 4 na čekanju · 3 nacrta",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "iViCq",
+                      "type": "ref",
+                      "ref": "BuoTN",
+                      "name": "NewBtn",
+                      "descendants": {
+                        "bTTku": {
+                          "icon": "plus"
+                        },
+                        "p7exa": {
+                          "content": "Novi oglas"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "njsQm",
+                  "name": "Tabs",
+                  "width": "fill_container",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "id": "QeHv0",
+                      "type": "ref",
+                      "ref": "p3yog",
+                      "name": "tab Sve",
+                      "fill": "$primary-tint",
+                      "descendants": {
+                        "wdHRZ": {
+                          "content": "Sve",
+                          "fill": "$primary",
+                          "fontWeight": "700"
+                        }
+                      }
+                    },
+                    {
+                      "id": "SqFWF",
+                      "type": "ref",
+                      "ref": "p3yog",
+                      "name": "tab Objavljeni",
+                      "fill": "#00000000",
+                      "descendants": {
+                        "wdHRZ": {
+                          "content": "Objavljeni"
+                        }
+                      }
+                    },
+                    {
+                      "id": "Ll1TJ",
+                      "type": "ref",
+                      "ref": "p3yog",
+                      "name": "tab Na čekanju",
+                      "fill": "#00000000",
+                      "descendants": {
+                        "wdHRZ": {
+                          "content": "Na čekanju"
+                        }
+                      }
+                    },
+                    {
+                      "id": "vCT6x",
+                      "type": "ref",
+                      "ref": "p3yog",
+                      "name": "tab Nacrti",
+                      "fill": "#00000000",
+                      "descendants": {
+                        "wdHRZ": {
+                          "content": "Nacrti"
+                        }
+                      }
+                    },
+                    {
+                      "id": "dYwHO",
+                      "type": "ref",
+                      "ref": "p3yog",
+                      "name": "tab Arhiva",
+                      "fill": "#00000000",
+                      "descendants": {
+                        "wdHRZ": {
+                          "content": "Arhiva"
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "L4kfcx",
+                      "name": "spacer",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "id": "aYBzm",
+                      "type": "ref",
+                      "ref": "N716Nk",
+                      "name": "FilterKat"
+                    }
+                  ]
+                },
+                {
+                  "id": "CoH7r",
+                  "type": "ref",
+                  "ref": "MCBv4",
+                  "name": "AdsTable",
+                  "width": "fill_container",
+                  "descendants": {
+                    "U4Kcu": {
+                      "type": "frame",
+                      "id": "pAJ8f",
+                      "name": "Rows",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "id": "VgABo",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Kuhar/ica — hotel Kardial"
+                            },
+                            "wTSGU": {
+                              "content": "Posao · konkurs"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$info",
+                              "content": "Posao"
+                            },
+                            "jgGI4": {
+                              "content": "Demo Biznis"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$warning"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$warning",
+                              "content": "Na čekanju"
+                            },
+                            "X2NKt": {
+                              "content": "01.07.2026."
+                            }
+                          }
+                        },
+                        {
+                          "id": "lR6pA",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Prodaja meda i pčelinjih proizvoda"
+                            },
+                            "wTSGU": {
+                              "content": "Prodaja proizvoda"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$primary",
+                              "content": "Prodaja"
+                            },
+                            "jgGI4": {
+                              "content": "Pčelarstvo Borja"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$success"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$success",
+                              "content": "Objavljeno"
+                            },
+                            "X2NKt": {
+                              "content": "28.06.2026."
+                            }
+                          }
+                        },
+                        {
+                          "id": "X44Qs",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Iznajmljivanje aparata za sladoled"
+                            },
+                            "wTSGU": {
+                              "content": "Usluga najma"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$info",
+                              "content": "Usluge"
+                            },
+                            "jgGI4": {
+                              "content": "Demo Biznis"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$success"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$success",
+                              "content": "Objavljeno"
+                            },
+                            "X2NKt": {
+                              "content": "25.06.2026."
+                            }
+                          }
+                        },
+                        {
+                          "id": "S7Er9S",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Traži se konobar — Banja Vrućica"
+                            },
+                            "wTSGU": {
+                              "content": "Sezonski posao"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$info",
+                              "content": "Posao"
+                            },
+                            "jgGI4": {
+                              "content": "Hotel Kardial"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$text-secondary"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$text-secondary",
+                              "content": "Isteklo"
+                            },
+                            "X2NKt": {
+                              "content": "10.06.2026."
+                            }
+                          }
+                        },
+                        {
+                          "id": "GWV5F",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Otkup šumskih plodova"
+                            },
+                            "wTSGU": {
+                              "content": "Otkup sirovina"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$success",
+                              "content": "Otkup"
+                            },
+                            "jgGI4": {
+                              "content": "Zadruga Očauš"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$success"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$success",
+                              "content": "Objavljeno"
+                            },
+                            "X2NKt": {
+                              "content": "05.06.2026."
+                            }
+                          }
+                        },
+                        {
+                          "id": "XoruV",
+                          "type": "ref",
+                          "ref": "p9aRkh",
+                          "name": "row",
+                          "width": "fill_container",
+                          "descendants": {
+                            "P0Fy5": {
+                              "content": "Servis motornih pila"
+                            },
+                            "wTSGU": {
+                              "content": "Usluga servisa"
+                            },
+                            "qhMWI/q7n7rP": {
+                              "fill": "$info",
+                              "content": "Usluge"
+                            },
+                            "jgGI4": {
+                              "content": "Mehanika Teslić"
+                            },
+                            "lTpa7/Db549": {
+                              "fill": "$text-secondary"
+                            },
+                            "lTpa7/q7n7rP": {
+                              "fill": "$text-secondary",
+                              "content": "Nacrt"
+                            },
+                            "X2NKt": {
+                              "content": "02.06.2026."
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "y5tNvn",
+                  "type": "ref",
+                  "ref": "CUEI5",
+                  "name": "Pagination",
+                  "width": "fill_container"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jpYt8",
+      "x": 2860,
+      "y": 0,
+      "name": "component/IconButton",
+      "reusable": true,
+      "width": 32,
+      "height": 32,
+      "fill": "$surface-alt",
+      "cornerRadius": 6,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "ijIC3",
+          "name": "Icon",
+          "width": 16,
+          "height": 16,
+          "icon": "pencil",
+          "library": "lucide",
+          "fill": "$text-secondary"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "kXy6A",
+      "x": 2952,
+      "y": 0,
+      "name": "component/Pill",
+      "reusable": true,
+      "fill": "$warning-bg",
+      "cornerRadius": 9,
+      "padding": [
+        1,
+        7
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "p5eF6",
+          "name": "Text",
+          "fill": "$warning",
+          "content": "4",
+          "fontFamily": "$font-body",
+          "fontSize": 11,
+          "fontWeight": "700"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "p3yog",
+      "x": 3034,
+      "y": 0,
+      "name": "component/Tab",
+      "reusable": true,
+      "fill": "#00000000",
+      "cornerRadius": 6,
+      "padding": [
+        7,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "wdHRZ",
+          "name": "Label",
+          "fill": "$text-secondary",
+          "content": "Tab",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "500"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "dzjgx",
+      "x": 3145,
+      "y": 0,
+      "name": "component/Card",
+      "reusable": true,
+      "clip": true,
+      "width": 400,
+      "fill": "$surface",
+      "cornerRadius": 8,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "m2lrRc",
+          "name": "Header",
+          "width": "fill_container",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            15,
+            18
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "DITHL",
+              "name": "HL",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SJsxd",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Naslov",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 15,
+                  "fontWeight": "700"
+                },
+                {
+                  "id": "eNmiF",
+                  "type": "ref",
+                  "ref": "kXy6A",
+                  "name": "HeaderPill",
+                  "enabled": false,
+                  "descendants": {
+                    "p5eF6": {
+                      "content": "0"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "mG4ew",
+              "name": "Action",
+              "fill": "$primary",
+              "content": "Vidi sve →",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "T3reWw",
+          "name": "Body",
+          "slot": [],
+          "width": "fill_container",
+          "height": "fit_content(0)",
+          "layout": "vertical"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "qTvw2",
+      "x": 3605,
+      "y": 0,
+      "name": "component/ApprovalRow",
+      "reusable": true,
+      "width": 500,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "gap": 12,
+      "padding": [
+        12,
+        18
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "id": "Oc83B",
+          "type": "ref",
+          "ref": "DyFEL",
+          "name": "TypeBadge",
+          "descendants": {
+            "Db549": {
+              "fill": "$primary"
+            },
+            "q7n7rP": {
+              "fill": "$primary",
+              "content": "Biznis"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "L5k1m",
+          "name": "Mid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "children": [
+            {
+              "type": "text",
+              "id": "DBcQd",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Grnčarija Pribinić",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "U0ocz",
+              "name": "Meta",
+              "fill": "$text-muted",
+              "content": "Demo Biznis · prije 2 sedmice",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "F6a6Z",
+          "name": "Actions",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "MABZZ",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Approve",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "check",
+                  "fill": "$success"
+                }
+              }
+            },
+            {
+              "id": "On0T4",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Edit",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "pencil"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "x7NH22",
+      "x": 4165,
+      "y": 0,
+      "name": "component/ActivityRow",
+      "reusable": true,
+      "width": 400,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "gap": 11,
+      "padding": [
+        13,
+        18
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "uCJ7Y",
+          "name": "IconWrap",
+          "width": 32,
+          "height": 32,
+          "fill": "$success-bg",
+          "cornerRadius": 16,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "kai3v",
+              "name": "Icon",
+              "width": 16,
+              "height": 16,
+              "icon": "check",
+              "library": "lucide",
+              "fill": "$success"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TIfc5",
+          "name": "Mid",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "children": [
+            {
+              "type": "text",
+              "id": "m3BcB",
+              "name": "Text",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Mario P. odobrio i objavio „Grnčarija Pribinić“",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "MZhKi",
+              "name": "Time",
+              "fill": "$text-muted",
+              "content": "prije 5 min",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "p9aRkh",
+      "x": 4625,
+      "y": 0,
+      "name": "component/ListRow",
+      "reusable": true,
+      "width": 1100,
+      "height": 58,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "PzBJq",
+          "name": "CellCheck",
+          "width": 44,
+          "height": "fill_container",
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "rectangle",
+              "cornerRadius": 4,
+              "id": "oa3ud",
+              "name": "Checkbox",
+              "fill": "$surface",
+              "width": 16,
+              "height": 16,
+              "stroke": "$border-strong",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LQFIG",
+          "name": "CellTitle",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "padding": [
+            0,
+            12
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "P0Fy5",
+              "name": "Title",
+              "fill": "$text-primary",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Naslov oglasa",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "wTSGU",
+              "name": "Meta",
+              "fill": "$text-muted",
+              "content": "Kratki opis",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "x0ipr",
+          "name": "CellKat",
+          "width": 140,
+          "height": "fill_container",
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "qhMWI",
+              "type": "ref",
+              "ref": "DyFEL",
+              "name": "KatBadge",
+              "descendants": {
+                "Db549": {
+                  "enabled": false
+                },
+                "q7n7rP": {
+                  "fill": "$info",
+                  "content": "Kategorija"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QfqAx",
+          "name": "CellAutor",
+          "width": 160,
+          "height": "fill_container",
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "jgGI4",
+              "name": "Autor",
+              "fill": "$text-secondary",
+              "content": "Autor",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "JIa5z",
+          "name": "CellStatus",
+          "width": 150,
+          "height": "fill_container",
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "lTpa7",
+              "type": "ref",
+              "ref": "DyFEL",
+              "name": "StatusBadge",
+              "descendants": {
+                "Db549": {
+                  "fill": "$success"
+                },
+                "q7n7rP": {
+                  "fill": "$success",
+                  "content": "Objavljeno"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dqGRG",
+          "name": "CellDatum",
+          "width": 120,
+          "height": "fill_container",
+          "padding": [
+            0,
+            12
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "X2NKt",
+              "name": "Datum",
+              "fill": "$text-muted",
+              "content": "01.07.2026.",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pBRk4",
+          "name": "CellAkcije",
+          "width": 120,
+          "height": "fill_container",
+          "gap": 6,
+          "padding": [
+            0,
+            16,
+            0,
+            0
+          ],
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "v9LwwY",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Edit",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "pencil"
+                }
+              }
+            },
+            {
+              "id": "T70Cd",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Delete",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "trash-2",
+                  "fill": "$danger"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "MCBv4",
+      "x": 5785,
+      "y": 0,
+      "name": "component/ListTable",
+      "reusable": true,
+      "clip": true,
+      "width": 1100,
+      "fill": "$surface",
+      "cornerRadius": 8,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "bJcRF",
+          "name": "HeaderRow",
+          "width": "fill_container",
+          "height": 44,
+          "fill": "$surface-alt",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "J4YhK",
+              "name": "HCheck",
+              "width": 44,
+              "height": "fill_container",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "tFzfF",
+                  "name": "Checkbox",
+                  "fill": "$surface",
+                  "width": 16,
+                  "height": 16,
+                  "stroke": "$border-strong",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "g9hLS",
+              "name": "H Naslov",
+              "width": "fill_container",
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "o89QdP",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "NASLOV",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cMcxF",
+              "name": "H Kategorija",
+              "width": 140,
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "iMetB",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "KATEGORIJA",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v9DmtK",
+              "name": "H Autor",
+              "width": 160,
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YRntc",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "AUTOR",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iAOJU",
+              "name": "H Status",
+              "width": 150,
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "w22gG",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "STATUS",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iiLVT",
+              "name": "H Datum",
+              "width": 120,
+              "height": "fill_container",
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "REgtk",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "DATUM",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jUjUM",
+              "name": "H Akcije",
+              "width": 120,
+              "height": "fill_container",
+              "padding": [
+                0,
+                16,
+                0,
+                0
+              ],
+              "justifyContent": "end",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "j7L6iW",
+                  "name": "t",
+                  "fill": "$text-muted",
+                  "content": "AKCIJE",
+                  "fontFamily": "$font-body",
+                  "fontSize": 11,
+                  "fontWeight": "700",
+                  "letterSpacing": 0.4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "U4Kcu",
+          "name": "Rows",
+          "slot": [],
+          "width": "fill_container",
+          "height": "fit_content(0)",
+          "layout": "vertical"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "N716Nk",
+      "x": 6945,
+      "y": 0,
+      "name": "component/Dropdown",
+      "reusable": true,
+      "fill": "$surface",
+      "cornerRadius": 6,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "strokeAlignment": "inner",
+      "gap": 7,
+      "padding": [
+        8,
+        12
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "icon",
+          "id": "ofSlc",
+          "name": "Icon",
+          "width": 15,
+          "height": 15,
+          "icon": "list-filter",
+          "library": "lucide",
+          "fill": "$text-secondary"
+        },
+        {
+          "type": "text",
+          "id": "r6M8E",
+          "name": "Label",
+          "fill": "$text-secondary",
+          "content": "Sve kategorije",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "icon",
+          "id": "xOhWk",
+          "name": "Chevron",
+          "width": 14,
+          "height": 14,
+          "icon": "chevron-down",
+          "library": "lucide",
+          "fill": "$text-muted"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "CUEI5",
+      "x": 7160,
+      "y": 0,
+      "name": "component/Pagination",
+      "reusable": true,
+      "width": 500,
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "i3ADZK",
+          "name": "Info",
+          "fill": "$text-muted",
+          "content": "Prikazano 1–6 od 24",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "L9x0f",
+          "name": "Pages",
+          "gap": 4,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "w2e5uV",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Prev",
+              "descendants": {
+                "ijIC3": {
+                  "icon": "chevron-left"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "UbAQM",
+              "name": "page 1",
+              "width": 32,
+              "height": 32,
+              "fill": "$primary",
+              "cornerRadius": 6,
+              "stroke": "$primary",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "kyaHh",
+                  "name": "n",
+                  "fill": "#FFFFFF",
+                  "content": "1",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "UH2mG",
+              "name": "page 2",
+              "width": 32,
+              "height": 32,
+              "fill": "$surface",
+              "cornerRadius": 6,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "uUXry",
+                  "name": "n",
+                  "fill": "$text-secondary",
+                  "content": "2",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "so6GA",
+              "name": "page 3",
+              "width": 32,
+              "height": 32,
+              "fill": "$surface",
+              "cornerRadius": 6,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yrgX2",
+                  "name": "n",
+                  "fill": "$text-secondary",
+                  "content": "3",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "id": "d2utZC",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Next",
+              "descendants": {
+                "ijIC3": {
+                  "icon": "chevron-right"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "zo9oa",
+      "x": 4400,
+      "y": 1144,
+      "name": "Screen: Edit forma",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$content-bg",
+      "children": [
+        {
+          "id": "CgcaU",
+          "type": "ref",
+          "ref": "Sur9Q",
+          "name": "Sidebar",
+          "height": "fill_container",
+          "descendants": {
+            "DZmlM/TQYWB": {
+              "enabled": true
+            },
+            "DZmlM/kQck0": {
+              "fill": "$sidebar-bg-alt"
+            },
+            "DZmlM/gGTuz": {
+              "fill": "$primary"
+            },
+            "DZmlM/UPe2R": {
+              "fill": "$sidebar-text-strong",
+              "fontWeight": "600"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "NR1qi",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "i0pWLL",
+              "type": "ref",
+              "ref": "CGD2o",
+              "name": "Topbar",
+              "width": "fill_container",
+              "descendants": {
+                "IBEYN": {
+                  "content": "Uredi događaj"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "W9ovua",
+              "name": "Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Wl82m",
+                  "name": "Heading",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Id5Cy",
+                      "name": "HL",
+                      "gap": 12,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vlKTZ",
+                          "name": "H1",
+                          "fill": "$text-primary",
+                          "content": "Sajam domaćih proizvoda 2026",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "id": "TLGZq",
+                          "type": "ref",
+                          "ref": "DyFEL",
+                          "name": "Status",
+                          "descendants": {
+                            "Db549": {
+                              "fill": "$warning"
+                            },
+                            "q7n7rP": {
+                              "fill": "$warning",
+                              "content": "Na čekanju"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "tLupl",
+                      "name": "HR",
+                      "gap": 10,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "id": "j0UPo",
+                          "type": "ref",
+                          "ref": "BuoTN",
+                          "name": "Preview",
+                          "fill": "$surface",
+                          "stroke": "$border",
+                          "strokeWidth": 1,
+                          "descendants": {
+                            "bTTku": {
+                              "icon": "eye",
+                              "fill": "$text-secondary"
+                            },
+                            "p7exa": {
+                              "content": "Pregled",
+                              "fill": "$text-secondary"
+                            }
+                          }
+                        },
+                        {
+                          "id": "uVcpj",
+                          "type": "ref",
+                          "ref": "BuoTN",
+                          "name": "Save",
+                          "descendants": {
+                            "bTTku": {
+                              "icon": "save"
+                            },
+                            "p7exa": {
+                              "content": "Sačuvaj"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ezWRd",
+                  "name": "Cols",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 20,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "umN0Y",
+                      "name": "Main",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 20,
+                      "children": [
+                        {
+                          "id": "pYi2p",
+                          "type": "ref",
+                          "ref": "dzjgx",
+                          "name": "Card: Osnovni podaci",
+                          "width": "fill_container",
+                          "descendants": {
+                            "SJsxd": {
+                              "content": "Osnovni podaci"
+                            },
+                            "mG4ew": {
+                              "enabled": false
+                            },
+                            "T3reWw": {
+                              "type": "frame",
+                              "id": "QBdE4",
+                              "name": "Form",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 16,
+                              "padding": 18,
+                              "children": [
+                                {
+                                  "id": "VhY60",
+                                  "type": "ref",
+                                  "ref": "m4nWQu",
+                                  "name": "F Naslov",
+                                  "width": "fill_container",
+                                  "descendants": {
+                                    "o45cC": {
+                                      "content": "Naslov"
+                                    },
+                                    "gnPF1": {
+                                      "content": "Sajam domaćih proizvoda 2026",
+                                      "fill": "$text-primary"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "iUntz",
+                                  "type": "ref",
+                                  "ref": "m4nWQu",
+                                  "name": "F Izvod",
+                                  "width": "fill_container",
+                                  "descendants": {
+                                    "o45cC": {
+                                      "content": "Kratki opis"
+                                    },
+                                    "gnPF1": {
+                                      "content": "Tradicionalni sajam domaćih proizvoda i zanata.",
+                                      "fill": "$text-primary"
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "O8Zx4n",
+                                  "type": "ref",
+                                  "ref": "m4nWQu",
+                                  "name": "F Opis",
+                                  "width": "fill_container",
+                                  "descendants": {
+                                    "o45cC": {
+                                      "content": "Detaljan opis"
+                                    },
+                                    "PCzeS": {
+                                      "height": 110,
+                                      "alignItems": "start",
+                                      "padding": [
+                                        10,
+                                        12
+                                      ]
+                                    },
+                                    "gnPF1": {
+                                      "content": "Posjetite najveći sajam domaćih proizvoda u regiji…",
+                                      "fill": "$text-primary"
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "XF8nW",
+                                  "name": "Row1",
+                                  "width": "fill_container",
+                                  "gap": 16,
+                                  "children": [
+                                    {
+                                      "id": "Y5d89",
+                                      "type": "ref",
+                                      "ref": "m4nWQu",
+                                      "name": "F Lokacija",
+                                      "width": "fill_container",
+                                      "descendants": {
+                                        "o45cC": {
+                                          "content": "Lokacija"
+                                        },
+                                        "gnPF1": {
+                                          "content": "Banja Vrućica",
+                                          "fill": "$text-primary"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "BNuyQ",
+                                      "type": "ref",
+                                      "ref": "m4nWQu",
+                                      "name": "F Organizator",
+                                      "width": "fill_container",
+                                      "descendants": {
+                                        "o45cC": {
+                                          "content": "Organizator"
+                                        },
+                                        "gnPF1": {
+                                          "content": "TO Teslić",
+                                          "fill": "$text-primary"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "U0ShB",
+                                  "name": "Row2",
+                                  "width": "fill_container",
+                                  "gap": 16,
+                                  "children": [
+                                    {
+                                      "id": "fvNMz",
+                                      "type": "ref",
+                                      "ref": "m4nWQu",
+                                      "name": "F Datum",
+                                      "width": "fill_container",
+                                      "descendants": {
+                                        "o45cC": {
+                                          "content": "Datum"
+                                        },
+                                        "gnPF1": {
+                                          "content": "20.07.2026.",
+                                          "fill": "$text-primary"
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "id": "RKnCZ",
+                                      "type": "ref",
+                                      "ref": "m4nWQu",
+                                      "name": "F Vrijeme",
+                                      "width": "fill_container",
+                                      "descendants": {
+                                        "o45cC": {
+                                          "content": "Vrijeme"
+                                        },
+                                        "gnPF1": {
+                                          "content": "10:00",
+                                          "fill": "$text-primary"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "hPq0v",
+      "x": 7720,
+      "y": 0,
+      "name": "component/InfoRow",
+      "reusable": true,
+      "width": 300,
+      "padding": [
+        7,
+        0
+      ],
+      "justifyContent": "space_between",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "EWHxp",
+          "name": "Label",
+          "fill": "$text-secondary",
+          "content": "Status",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "q4OIa",
+          "name": "Value",
+          "fill": "$text-primary",
+          "content": "—",
+          "fontFamily": "$font-body",
+          "fontSize": 13,
+          "fontWeight": "600"
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "sidebar-bg": {
+      "type": "color",
+      "value": "#1D2327"
+    },
+    "sidebar-bg-alt": {
+      "type": "color",
+      "value": "#2C3338"
+    },
+    "sidebar-text": {
+      "type": "color",
+      "value": "#C3C4C7"
+    },
+    "sidebar-text-strong": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "sidebar-group": {
+      "type": "color",
+      "value": "#8C8F94"
+    },
+    "content-bg": {
+      "type": "color",
+      "value": "#F0F0F1"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "surface-alt": {
+      "type": "color",
+      "value": "#F6F7F7"
+    },
+    "border": {
+      "type": "color",
+      "value": "#DCDCDE"
+    },
+    "border-strong": {
+      "type": "color",
+      "value": "#C3C4C7"
+    },
+    "text-primary": {
+      "type": "color",
+      "value": "#1D2327"
+    },
+    "text-secondary": {
+      "type": "color",
+      "value": "#50575E"
+    },
+    "text-muted": {
+      "type": "color",
+      "value": "#787C82"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#0E8275"
+    },
+    "primary-hover": {
+      "type": "color",
+      "value": "#0A645A"
+    },
+    "primary-tint": {
+      "type": "color",
+      "value": "#E1F4F1"
+    },
+    "warning": {
+      "type": "color",
+      "value": "#B26A00"
+    },
+    "warning-bg": {
+      "type": "color",
+      "value": "#FCF3E3"
+    },
+    "success": {
+      "type": "color",
+      "value": "#0A7D54"
+    },
+    "success-bg": {
+      "type": "color",
+      "value": "#E6F4EC"
+    },
+    "danger": {
+      "type": "color",
+      "value": "#D63638"
+    },
+    "danger-bg": {
+      "type": "color",
+      "value": "#FCEBEB"
+    },
+    "info": {
+      "type": "color",
+      "value": "#2271B1"
+    },
+    "info-bg": {
+      "type": "color",
+      "value": "#E5F0F7"
+    },
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-heading": {
+      "type": "string",
+      "value": "Inter"
+    }
+  },
+  "fileToken": "5250b47c-8e82-4524-a1a9-bb259f92b4bb"
+}

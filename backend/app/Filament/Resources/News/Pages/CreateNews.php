@@ -9,6 +9,8 @@ class CreateNews extends CreateRecord
 {
     protected static string $resource = NewsResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];

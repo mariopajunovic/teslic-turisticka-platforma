@@ -36,7 +36,7 @@ function clear() {
       v-if="model"
       type="button"
       class="absolute right-2 top-1/2 inline-flex size-7 -translate-y-1/2 items-center justify-center rounded-full text-text-muted transition-colors hover:bg-surface-alt hover:text-heading"
-      aria-label="Očisti pretragu"
+      :aria-label="$t('ui.clearSearch')"
       @click="clear"
     >
       <BaseIcon name="x" :size="16" />

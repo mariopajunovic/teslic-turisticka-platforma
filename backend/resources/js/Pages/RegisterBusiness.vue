@@ -30,9 +30,9 @@ function submit() {
     <AppContainer class="py-12">
       <Breadcrumb
         :items="[
-          { label: 'Početna', to: '/' },
-          { label: 'Pridruži se', to: '/pridruzi-se' },
-          { label: 'Registruj biznis' },
+          { label: $t('common.home'), to: '/' },
+          { label: $t('action.join'), to: '/pridruzi-se' },
+          { label: $t('auth.bizBc') },
         ]"
       />
 
@@ -47,39 +47,39 @@ function submit() {
         <BaseAlert
           v-if="Object.keys(form.errors).length"
           variant="greska"
-          title="Provjerite unesene podatke"
-          text="Neka polja nisu ispravno popunjena."
+          :title="$t('auth.regErrorTitle')"
+          :text="$t('auth.regErrorText')"
         />
 
         <form class="space-y-5" @submit.prevent="submit">
-          <FormField v-model="form.name" label="Naziv biznisa" :error="form.errors.name" />
-          <FormField v-model="form.email" label="E-mail" type="email" :error="form.errors.email" />
-          <FormField v-model="form.telefon" label="Telefon" :error="form.errors.telefon" />
+          <FormField v-model="form.name" :label="$t('auth.bizName')" :error="form.errors.name" />
+          <FormField v-model="form.email" :label="$t('contact.email')" type="email" :error="form.errors.email" />
+          <FormField v-model="form.telefon" :label="$t('detail.phone')" :error="form.errors.telefon" />
           <FormField
             v-model="form.password"
-            label="Lozinka"
+            :label="$t('auth.password')"
             type="password"
             :error="form.errors.password"
           />
           <FormField
             v-model="form.password_confirmation"
-            label="Potvrda lozinke"
+            :label="$t('auth.passwordConfirm')"
             type="password"
           />
 
           <FormCheckbox
             v-model="form.saglasnost"
-            label="Saglasan/na sam s uslovima korištenja i obradom podataka."
+            :label="$t('auth.terms')"
           />
 
           <BaseButton type="submit" variant="primary" block :disabled="form.processing || !form.saglasnost">
-            Registruj se
+            {{ $t('auth.register') }}
           </BaseButton>
         </form>
 
         <p class="text-center text-sm text-text-muted">
-          Već imaš nalog?
-          <Link href="/prijava" class="font-semibold text-primary hover:underline">Prijavi se</Link>
+          {{ $t('auth.haveAccount') }}
+          <Link href="/prijava" class="font-semibold text-primary hover:underline">{{ $t('action.login') }}</Link>
         </p>
       </div>
     </AppContainer>

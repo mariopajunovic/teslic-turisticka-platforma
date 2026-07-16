@@ -10,6 +10,8 @@ class EditPlace extends EditRecord
 {
     protected static string $resource = PlaceResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

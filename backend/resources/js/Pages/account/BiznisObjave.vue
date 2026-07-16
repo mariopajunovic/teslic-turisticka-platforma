@@ -16,10 +16,10 @@ defineProps({
     <div class="space-y-6">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 class="font-heading text-[28px] font-bold text-heading">Moje objave</h1>
-          <p class="mt-1 text-[15px] text-text-muted">Vaše biznis objave i njihov status.</p>
+          <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.myPosts') }}</h1>
+          <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.myPostsDesc') }}</p>
         </div>
-        <BaseButton to="/nalog/biznis/objave/nova" variant="primary" icon="plus">Nova objava</BaseButton>
+        <BaseButton to="/nalog/biznis/objave/nova" variant="primary" icon="plus">{{ $t('acc.newPost') }}</BaseButton>
       </div>
 
       <div v-if="objave.length" class="space-y-3">
@@ -28,7 +28,7 @@ defineProps({
         </Link>
       </div>
 
-      <EmptyState v-else title="Još nema objava" text="Kreirajte prvu objavu i pošaljite je na odobrenje." />
+      <EmptyState v-else :title="$t('acc.noPosts')" :text="$t('acc.noPostsText')" />
     </div>
   </AccountLayout>
 </template>

@@ -37,6 +37,6 @@ const items = computed(() => props.data.items || [])
     <CardGrid v-if="items.length" :cols="data.cols || 4">
       <component :is="card" v-for="item in items" :key="item.slug" :item="item" />
     </CardGrid>
-    <EmptyState v-else title="Nema sadržaja" text="Trenutno nema stavki za prikaz." />
+    <EmptyState v-else :title="$t('misc.blockEmpty')" :text="$t('misc.blockEmptyText')" />
   </AppContainer>
 </template>

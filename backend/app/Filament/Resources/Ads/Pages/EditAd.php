@@ -10,6 +10,8 @@ class EditAd extends EditRecord
 {
     protected static string $resource = AdResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

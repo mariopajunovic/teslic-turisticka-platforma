@@ -10,6 +10,8 @@ class EditCategory extends EditRecord
 {
     protected static string $resource = CategoryResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

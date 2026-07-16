@@ -46,11 +46,11 @@ function submit() {
   <AccountLayout :items="biznisNav">
     <div class="space-y-6">
       <div>
-        <h1 class="font-heading text-[28px] font-bold text-heading">Moj profil</h1>
-        <p class="mt-1 text-[15px] text-text-muted">Podaci o vašem nalogu. E-mail i lozinku mijenjate u Postavkama.</p>
+        <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.myProfile') }}</h1>
+        <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.profileDesc') }}</p>
       </div>
 
-      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" title="Sačuvano" :text="$page.props.flash.status" />
+      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
         <div class="flex items-center gap-5">
@@ -69,11 +69,11 @@ function submit() {
         </div>
 
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.name" label="Ime i prezime / kontakt osoba" :error="form.errors.name" />
-          <FormField v-model="form.telefon" label="Telefon" type="tel" />
+          <FormField v-model="form.name" :label="$t('acc.nameContact')" :error="form.errors.name" />
+          <FormField v-model="form.telefon" :label="$t('detail.phone')" type="tel" />
         </div>
-        <FormField :model-value="profil.email" label="E-mail" type="email" disabled />
-        <FormTextarea v-model="form.bio" label="Kratka biografija / o nama" :rows="4" :maxlength="1000" />
+        <FormField :model-value="profil.email" :label="$t('contact.email')" type="email" disabled />
+        <FormTextarea v-model="form.bio" :label="$t('acc.bio')" :rows="4" :maxlength="1000" />
 
         <div class="flex justify-end">
           <BaseButton variant="primary" icon="check" :disabled="form.processing" @click="submit">

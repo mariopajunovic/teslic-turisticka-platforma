@@ -24,7 +24,7 @@ const category = computed(() => categoryByKey[props.item.kategorija] || null)
     <button
       type="button"
       class="absolute right-2 top-2 z-10 inline-flex size-8 items-center justify-center rounded-full bg-surface/90 text-heading shadow-[var(--shadow-sm)] transition-colors hover:bg-surface-alt"
-      aria-label="Zatvori"
+      :aria-label="$t('mapui.close')"
       @click="$emit('close')"
     >
       <BaseIcon name="x" :size="18" />

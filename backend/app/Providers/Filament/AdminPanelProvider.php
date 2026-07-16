@@ -32,7 +32,8 @@ class AdminPanelProvider extends PanelProvider
             ->login()
             ->colors([
                 'primary' => Color::hex('#0E8275'),
-            ]);
+            ])
+            ->viteTheme('resources/css/filament/admin/theme.css');
 
         if ((bool) env('ADMIN_MFA_ENABLED', app()->isProduction())) {
             $panel->multiFactorAuthentication([
@@ -41,6 +42,10 @@ class AdminPanelProvider extends PanelProvider
         }
 
         return $panel
+            ->renderHook(
+                \Filament\View\PanelsRenderHook::TOPBAR_END,
+                fn (): string => view('filament.locale-switcher')->render(),
+            )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([

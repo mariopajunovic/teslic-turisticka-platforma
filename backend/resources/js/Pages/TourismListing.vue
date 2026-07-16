@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -32,32 +33,34 @@ const props = defineProps({
   kategorijaHero: { type: String, default: '' },
 })
 
+const { t } = useI18n()
+
 const error = null
 
 const HERO_DEFAULT =
   'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80'
 
-const heroNaslov = computed(() => props.kategorijaLabel || 'Priroda i baština Teslića')
+const heroNaslov = computed(() => props.kategorijaLabel || t('tourism.heroTitle'))
 
 const breadcrumb = computed(() => {
-  const items = [{ label: 'Početna', to: '/' }, { label: 'Turizam u Tesliću', to: props.kategorijaLabel ? '/turizam' : undefined }]
+  const items = [{ label: t('common.home'), to: '/' }, { label: t('tourism.breadcrumb'), to: props.kategorijaLabel ? '/turizam' : undefined }]
   if (props.kategorijaLabel) items.push({ label: props.kategorijaLabel })
   return items
 })
 
-const kategorijeOpcije = [
-  { value: 'priroda', label: 'Prirodne atrakcije' },
-  { value: 'kultura', label: 'Kulturne manifestacije' },
-  { value: 'planine', label: 'Planine, šume i sela' },
-  { value: 'smjestaj', label: 'Gdje odsjesti' },
-]
+const kategorijeOpcije = computed(() => [
+  { value: 'priroda', label: t('tourism.selPriroda') },
+  { value: 'kultura', label: t('tourism.selKultura') },
+  { value: 'planine', label: t('tourism.selPlanine') },
+  { value: 'smjestaj', label: t('tourism.selSmjestaj') },
+])
 
-const podsekcije = [
-  { key: 'priroda', label: 'Priroda', icon: 'mountain', img: 'photo-1611458182018-c043f4e947ec' },
-  { key: 'kultura', label: 'Kultura i baština', icon: 'landmark', img: 'photo-1652552888460-334e60915994' },
-  { key: 'planine', label: 'Planine i sela', icon: 'tent-tree', img: 'photo-1725118345125-3ceaa0599620' },
-  { key: 'smjestaj', label: 'Gdje odsjesti', icon: 'bed', img: 'photo-1654156109213-00399ebbd802' },
-]
+const podsekcije = computed(() => [
+  { key: 'priroda', label: t('tourism.subPriroda'), icon: 'mountain', img: 'photo-1611458182018-c043f4e947ec' },
+  { key: 'kultura', label: t('tourism.subKultura'), icon: 'landmark', img: 'photo-1652552888460-334e60915994' },
+  { key: 'planine', label: t('tourism.subPlanine'), icon: 'tent-tree', img: 'photo-1725118345125-3ceaa0599620' },
+  { key: 'smjestaj', label: t('tourism.subSmjestaj'), icon: 'bed', img: 'photo-1654156109213-00399ebbd802' },
+])
 
 const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=600&q=80`
 
@@ -94,7 +97,7 @@ function goPage(page) {
 const aktivniChipovi = () => {
   const chips = []
   if (kategorija.value) {
-    const k = kategorijeOpcije.find((o) => o.value === kategorija.value)
+    const k = kategorijeOpcije.value.find((o) => o.value === kategorija.value)
     chips.push({ key: 'kategorija', label: k ? k.label : kategorija.value })
   }
   if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
@@ -117,10 +120,10 @@ function ukloni(key) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Turizam u Tesliću"
+      :kicker="$t('tourism.heroKicker')"
       kicker-class="text-accent"
       :title="heroNaslov"
-      subtitle="Planine, rijeke, banje i kulturno nasljeđe — otkrijte lokalitete koji čine Teslić destinacijom."
+      :subtitle="$t('tourism.heroSubtitle')"
       :image="kategorijaHero || HERO_DEFAULT"
     />
 
@@ -134,7 +137,7 @@ function ukloni(key) {
 
     <!-- Podsekcije -->
     <AppContainer class="mt-8">
-      <h2 class="font-heading text-2xl font-bold text-heading">Istražite po temama</h2>
+      <h2 class="font-heading text-2xl font-bold text-heading">{{ $t('tourism.byTheme') }}</h2>
       <div class="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
         <Link
           v-for="s in podsekcije"
@@ -158,8 +161,8 @@ function ukloni(key) {
 
     <AppContainer class="mt-10">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
-        <FormSelect v-model="kategorija" :options="kategorijeOpcije" placeholder="Sve teme" />
-        <SearchInput v-model="upit" placeholder="Pretraži lokalitete…" />
+        <FormSelect v-model="kategorija" :options="kategorijeOpcije" :placeholder="$t('tourism.allThemes')" />
+        <SearchInput v-model="upit" :placeholder="$t('tourism.searchPlaceholder')" />
       </FilterBar>
     </AppContainer>
 
@@ -167,8 +170,8 @@ function ukloni(key) {
       <BaseAlert
         v-if="error"
         variant="greska"
-        title="Greška pri učitavanju"
-        text="Trenutno nije moguće učitati atrakcije. Pokušajte ponovo kasnije."
+        :title="$t('tourism.errorTitle')"
+        :text="$t('tourism.errorText')"
       />
 
       <CardGrid v-else-if="!lokaliteti.data">
@@ -177,10 +180,10 @@ function ukloni(key) {
 
       <EmptyState
         v-else-if="!lokaliteti.data.length"
-        title="Nema rezultata"
-        text="Za odabrane filtere nema atrakcija. Pokušajte promijeniti temu ili pretragu."
+        :title="$t('common.noResults')"
+        :text="$t('tourism.emptyText')"
       >
-        <BaseButton variant="secondary" size="sm" @click="ocisti">Očisti filtere</BaseButton>
+        <BaseButton variant="secondary" size="sm" @click="ocisti">{{ $t('common.clearFilters') }}</BaseButton>
       </EmptyState>
 
       <template v-else>
@@ -202,19 +205,18 @@ function ukloni(key) {
       <AppContainer>
         <div class="grid items-center gap-8 md:grid-cols-2">
           <div>
-            <p class="text-sm font-bold uppercase tracking-wider text-accent-deep">Mapa ponude</p>
+            <p class="text-sm font-bold uppercase tracking-wider text-accent-deep">{{ $t('tourism.mapKicker') }}</p>
             <h2 class="mt-2 font-heading text-2xl font-bold text-heading md:text-3xl">
-              Svi lokaliteti na jednom mjestu
+              {{ $t('tourism.mapTitle') }}
             </h2>
             <p class="mt-3 max-w-md leading-relaxed text-text-muted">
-              Pregledajte atrakcije, smještaj i ponudu na interaktivnoj mapi Teslića i lako se
-              orijentišite.
+              {{ $t('tourism.mapText') }}
             </p>
             <BaseButton variant="primary" icon="arrow-right" icon-position="right" to="/mapa" class="mt-5">
-              Otvori interaktivnu mapu
+              {{ $t('tourism.mapButton') }}
             </BaseButton>
           </div>
-          <MiniMap label="Teslić i okolina" to="/mapa" />
+          <MiniMap :label="$t('tourism.mapMiniLabel')" to="/mapa" />
         </div>
       </AppContainer>
     </section>
@@ -225,10 +227,10 @@ function ukloni(key) {
       class="mt-12"
     >
       <RelatedContent
-        kicker="Povezano"
-        title="Spojite turizam s ponudom i pričama"
+        :kicker="$t('common.related')"
+        :title="$t('tourism.relatedTitle')"
         back-to="/"
-        back-label="← Nazad na Početnu"
+        :back-label="$t('tourism.backHome')"
       >
         <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
         <EventCard v-if="povezani.dogadjaj" :item="povezani.dogadjaj" />
@@ -238,10 +240,10 @@ function ukloni(key) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Nudite smještaj ili turističku uslugu?"
-        text="Predstavite svoju ponudu posjetiocima i postanite dio turističke priče Teslića."
+        :title="$t('tourism.ctaTitle')"
+        :text="$t('tourism.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">Registruj biznis</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('tourism.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

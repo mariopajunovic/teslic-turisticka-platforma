@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\ActiveLocale;
 use App\Support\SiteData;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -37,10 +38,35 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $user = $request->user();
+        $locale = app(ActiveLocale::class);
+
+        $path = '/'.ltrim($request->path(), '/');
+        $prefix = $locale->prefix();
+        $basePath = ($prefix !== '' && str_starts_with($path, '/'.$prefix))
+            ? (substr($path, strlen('/'.$prefix)) ?: '/')
+            : $path;
+
+        $query = $request->getQueryString();
+        $suffix = $query ? '?'.$query : '';
+
+        $alternates = [];
+        foreach (array_keys((array) config('locales.languages')) as $lang) {
+            $alternates[$lang] = url($locale->path($basePath, $lang)).$suffix;
+        }
 
         return [
             ...parent::share($request),
             'site' => SiteData::shared(),
+            'locale' => [
+                'language' => $locale->language(),
+                'script' => $locale->script(),
+                'isCyrillic' => $locale->isCyrillic(),
+                'prefix' => $prefix,
+                'htmlLang' => $locale->htmlLang(),
+                'basePath' => $basePath,
+                'languages' => $locale->languageOptions(),
+                'alternates' => $alternates,
+            ],
             'auth' => [
                 'user' => $user ? [
                     'name' => $user->name,

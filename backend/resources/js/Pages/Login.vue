@@ -52,35 +52,35 @@ function submit() {
         <form class="space-y-5" @submit.prevent="submit">
           <FormField
             v-model="form.email"
-            label="E-mail"
+            :label="$t('contact.email')"
             type="email"
-            placeholder="marko@primjer.ba"
+            :placeholder="$t('auth.emailPlaceholder')"
           />
           <FormField
             v-model="form.password"
-            label="Lozinka"
+            :label="$t('auth.password')"
             type="password"
             placeholder="••••••••"
           />
 
           <div class="flex items-center justify-between">
-            <FormCheckbox v-model="form.remember" label="Zapamti me" />
+            <FormCheckbox v-model="form.remember" :label="$t('auth.remember')" />
             <Link href="/zaboravljena-lozinka" class="text-sm font-medium text-primary hover:underline">
-              Zaboravljena lozinka?
+              {{ $t('auth.forgotQ') }}
             </Link>
           </div>
 
           <BaseButton type="submit" variant="primary" block :disabled="form.processing">
-            Prijava
+            {{ $t('action.login') }}
           </BaseButton>
         </form>
 
         <hr class="border-border" />
 
         <p class="text-center text-sm text-text-muted">
-          Nemaš nalog?
+          {{ $t('auth.noAccount') }}
           <Link href="/registracija" class="font-semibold text-primary hover:underline">
-            Pridruži se
+            {{ $t('action.join') }}
           </Link>
         </p>
       </div>

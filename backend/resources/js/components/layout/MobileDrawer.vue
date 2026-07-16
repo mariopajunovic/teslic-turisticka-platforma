@@ -1,11 +1,13 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { Link, router as inertiaRouter } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const { mainNav, secondaryNav } = useSite()
+const { t } = useI18n()
 
 const open = defineModel({ type: Boolean, default: false })
 const expanded = ref(null)
@@ -45,7 +47,7 @@ watch(open, (v) => {
             <button
               type="button"
               class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt"
-              aria-label="Zatvori meni"
+              :aria-label="t('a11y.closeMenu')"
               @click="close"
             >
               <BaseIcon name="x" :size="22" />
@@ -63,7 +65,7 @@ watch(open, (v) => {
               <input
                 v-model="searchTerm"
                 type="search"
-                placeholder="Pretraži ponudu, događaje, priče…"
+                :placeholder="t('search.placeholderMobile')"
                 class="h-11 w-full rounded-sm bg-surface-alt pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary"
               />
             </form>
@@ -127,7 +129,7 @@ watch(open, (v) => {
 
           <!-- Akcije -->
           <div class="shrink-0 space-y-2 border-t border-border p-4">
-            <BaseButton to="/prijava" variant="secondary" block @click="close">Prijava</BaseButton>
+            <BaseButton to="/prijava" variant="secondary" block @click="close">{{ t('action.login') }}</BaseButton>
             <BaseButton to="/pridruzi-se" variant="primary" block @click="close">
               Pridruži se
             </BaseButton>

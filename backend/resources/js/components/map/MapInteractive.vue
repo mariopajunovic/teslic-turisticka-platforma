@@ -255,7 +255,7 @@ watch(() => props.selectedNaselje, (name) => applyNaselje(name))
     class="z-0 w-full overflow-hidden rounded-md"
     :style="{ height }"
     role="application"
-    aria-label="Interaktivna mapa ponude"
+    :aria-label="$t('misc.mapInteractive')"
   />
 </template>
 

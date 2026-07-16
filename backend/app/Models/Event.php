@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ContentStatus;
+use App\Models\Concerns\HasLocalizedContent;
 use App\Models\Concerns\HasTags;
 use App\Models\Concerns\TracksStatus;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,7 +16,9 @@ use Spatie\Sluggable\SlugOptions;
 
 class Event extends Model implements HasMedia
 {
-    use HasSlug, InteractsWithMedia, TracksStatus, HasTags;
+    use HasLocalizedContent, HasSlug, InteractsWithMedia, TracksStatus, HasTags;
+
+    public array $translatable = ['naslov', 'opis', 'opis_dug', 'lokacija', 'organizator'];
 
     protected $fillable = [
         'user_id',

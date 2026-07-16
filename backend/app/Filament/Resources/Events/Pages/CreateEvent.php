@@ -9,6 +9,8 @@ class CreateEvent extends CreateRecord
 {
     protected static string $resource = EventResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];

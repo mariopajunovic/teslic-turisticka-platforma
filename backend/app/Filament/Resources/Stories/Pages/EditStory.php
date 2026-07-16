@@ -10,6 +10,8 @@ class EditStory extends EditRecord
 {
     protected static string $resource = StoryResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

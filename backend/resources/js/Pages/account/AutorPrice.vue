@@ -16,10 +16,10 @@ defineProps({
     <div class="space-y-6">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 class="font-heading text-[28px] font-bold text-heading">Moje priče</h1>
-          <p class="mt-1 text-[15px] text-text-muted">Vaše objavljene i sačuvane priče.</p>
+          <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.myStories') }}</h1>
+          <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.myStoriesDesc') }}</p>
         </div>
-        <BaseButton to="/nalog/autor/nova-prica" variant="primary" icon="plus">Nova priča</BaseButton>
+        <BaseButton to="/nalog/autor/nova-prica" variant="primary" icon="plus">{{ $t('acc.newStory') }}</BaseButton>
       </div>
 
       <div v-if="price.length" class="space-y-3">
@@ -30,8 +30,8 @@ defineProps({
 
       <EmptyState
         v-else
-        title="Još nema priča"
-        text="Kreirajte prvu priču i pošaljite je na odobrenje."
+        :title="$t('acc.noStories')"
+        :text="$t('acc.noStoriesText')"
       />
     </div>
   </AccountLayout>

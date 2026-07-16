@@ -65,7 +65,7 @@ onBeforeUnmount(() => {
         <button
           type="button"
           class="absolute right-4 top-4 inline-flex size-11 items-center justify-center rounded-sm text-white hover:bg-white/10"
-          aria-label="Zatvori"
+          :aria-label="$t('a11y.close')"
           @click="close"
         >
           <BaseIcon name="x" :size="26" />
@@ -75,7 +75,7 @@ onBeforeUnmount(() => {
           v-if="total > 1"
           type="button"
           class="absolute left-2 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-sm text-white hover:bg-white/10 sm:left-4"
-          aria-label="Prethodno"
+          :aria-label="$t('a11y.prev')"
           @click="prev"
         >
           <BaseIcon name="chevron-left" :size="32" />
@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
           v-if="total > 1"
           type="button"
           class="absolute right-2 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center rounded-sm text-white hover:bg-white/10 sm:right-4"
-          aria-label="Sljedeće"
+          :aria-label="$t('a11y.next')"
           @click="next"
         >
           <BaseIcon name="chevron-right" :size="32" />

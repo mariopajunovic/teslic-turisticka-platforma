@@ -24,11 +24,11 @@ watch(open, (v) => {
           class="absolute inset-x-0 bottom-0 flex max-h-[85%] flex-col rounded-t-lg bg-surface shadow-[var(--shadow-lg)]"
         >
           <div class="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
-            <h2 class="text-lg font-semibold text-heading">Filteri</h2>
+            <h2 class="text-lg font-semibold text-heading">{{ $t('common.filters') }}</h2>
             <button
               type="button"
               class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt"
-              aria-label="Zatvori filtere"
+              :aria-label="$t('ui.closeFilters')"
               @click="close"
             >
               <BaseIcon name="x" :size="22" />
@@ -40,7 +40,7 @@ watch(open, (v) => {
           </div>
 
           <div class="shrink-0 border-t border-border p-4">
-            <BaseButton variant="primary" block @click="close">Prikaži rezultate</BaseButton>
+            <BaseButton variant="primary" block @click="close">{{ $t('common.showResults') }}</BaseButton>
           </div>
         </section>
       </div>

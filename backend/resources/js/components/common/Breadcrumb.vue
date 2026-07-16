@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-  <nav aria-label="Putanja" class="flex flex-wrap items-center gap-2 text-sm">
+  <nav :aria-label="$t('a11y.path')" class="flex flex-wrap items-center gap-2 text-sm">
     <template v-for="(it, i) in items" :key="i">
       <Link
         v-if="it.to && i < items.length - 1"

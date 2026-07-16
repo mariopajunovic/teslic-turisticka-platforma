@@ -28,12 +28,12 @@ function go(p) {
 </script>
 
 <template>
-  <nav class="flex items-center gap-2" aria-label="Stranice">
+  <nav class="flex items-center gap-2" :aria-label="$t('a11y.pages')">
     <button
       type="button"
       class="grid size-10 place-items-center rounded-sm border border-border text-text transition-colors hover:bg-surface-alt disabled:opacity-40"
       :disabled="current <= 1"
-      aria-label="Prethodna stranica"
+      :aria-label="$t('a11y.prevPage')"
       @click="go(current - 1)"
     >
       <BaseIcon name="chevron-left" :size="18" />
@@ -61,7 +61,7 @@ function go(p) {
       type="button"
       class="grid size-10 place-items-center rounded-sm border border-border text-text transition-colors hover:bg-surface-alt disabled:opacity-40"
       :disabled="current >= total"
-      aria-label="Sljedeća stranica"
+      :aria-label="$t('a11y.nextPage')"
       @click="go(current + 1)"
     >
       <BaseIcon name="chevron-right" :size="18" />

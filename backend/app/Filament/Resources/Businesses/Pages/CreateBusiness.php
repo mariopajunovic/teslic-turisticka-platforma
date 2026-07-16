@@ -9,6 +9,8 @@ class CreateBusiness extends CreateRecord
 {
     protected static string $resource = BusinessResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];

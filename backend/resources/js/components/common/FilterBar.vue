@@ -40,12 +40,12 @@ onUnmounted(() => {
       <div class="flex flex-1 flex-wrap items-end gap-3">
         <slot />
       </div>
-      <BaseButton variant="ghost" size="sm" @click="emit('clear')">Očisti filtere</BaseButton>
+      <BaseButton variant="ghost" size="sm" @click="emit('clear')">{{ $t('common.clearFilters') }}</BaseButton>
     </div>
 
     <!-- Mobilni: dugme koje otvara drawer; kontrole žive u draweru -->
     <div v-else>
-      <BaseButton variant="secondary" icon="filter" block @click="open = true">Filteri</BaseButton>
+      <BaseButton variant="secondary" icon="filter" block @click="open = true">{{ $t('common.filters') }}</BaseButton>
       <FilterDrawer v-model="open">
         <slot />
       </FilterDrawer>

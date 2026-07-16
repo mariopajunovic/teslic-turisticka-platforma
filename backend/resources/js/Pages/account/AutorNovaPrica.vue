@@ -36,33 +36,33 @@ function submit(action) {
     <div class="space-y-6">
       <div>
         <h1 class="font-heading text-[28px] font-bold text-heading">
-          {{ story ? 'Uredi priču' : 'Nova priča' }}
+          {{ story ? $t('acc.editStory') : $t('acc.newStory') }}
         </h1>
         <p class="mt-1 text-[15px] text-text-muted">
-          Napišite priču i pošaljite je na odobrenje administratoru.
+          {{ $t('acc.storyFormDesc') }}
         </p>
       </div>
 
       <BaseAlert
         v-if="Object.keys(form.errors).length"
         variant="greska"
-        title="Provjerite unesene podatke"
-        text="Naslov je obavezan."
+        :title="$t('auth.regErrorTitle')"
+        :text="$t('acc.titleRequired')"
       />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.naslov" label="Naslov" :error="form.errors.naslov" />
+          <FormField v-model="form.naslov" :label="$t('acc.title')" :error="form.errors.naslov" />
           <FormSelect
             v-model="form.category_id"
-            label="Kategorija"
-            placeholder="Odaberite kategoriju"
+            :label="$t('acc.category')"
+            :placeholder="$t('acc.selectCategory')"
             :options="kategorije"
           />
         </div>
 
-        <FormTextarea v-model="form.izvod" label="Kratak izvod" :rows="2" />
-        <FormTextarea v-model="form.sadrzaj" label="Sadržaj priče" :rows="10" />
+        <FormTextarea v-model="form.izvod" :label="$t('acc.excerpt')" :rows="2" />
+        <FormTextarea v-model="form.sadrzaj" :label="$t('acc.storyContent')" :rows="10" />
       </div>
 
       <div class="flex flex-wrap justify-end gap-3">
@@ -72,7 +72,7 @@ function submit(action) {
           :disabled="form.processing"
           @click="submit('nacrt')"
         >
-          Sačuvaj nacrt
+          {{ $t('acc.saveDraft') }}
         </BaseButton>
         <BaseButton
           variant="primary"
@@ -80,7 +80,7 @@ function submit(action) {
           :disabled="form.processing"
           @click="submit('posalji')"
         >
-          Pošalji na odobrenje
+          {{ $t('acc.submitApproval') }}
         </BaseButton>
       </div>
     </div>

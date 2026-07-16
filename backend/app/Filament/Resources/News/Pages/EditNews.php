@@ -10,6 +10,8 @@ class EditNews extends EditRecord
 {
     protected static string $resource = NewsResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

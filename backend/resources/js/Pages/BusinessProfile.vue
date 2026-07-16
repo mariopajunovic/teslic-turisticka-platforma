@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { useForm, usePage } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -26,6 +27,8 @@ const props = defineProps({
   slicni: { type: Array, default: () => [] },
 })
 
+const { t } = useI18n()
+
 const biznis = computed(() => props.biznis)
 const slicni = computed(() => props.slicni)
 
@@ -40,22 +43,22 @@ const infoItems = computed(() => {
   if (!biznis.value) return []
   const k = biznis.value.kontakt || {}
   const items = []
-  if (k.adresa) items.push({ icon: 'map-pin', label: 'Adresa', value: k.adresa })
+  if (k.adresa) items.push({ icon: 'map-pin', label: t('contact.address'), value: k.adresa })
   if (k.telefon)
     items.push({
       icon: 'phone',
-      label: 'Telefon',
+      label: t('detail.phone'),
       value: k.telefon,
       href: `tel:${k.telefon.replace(/[^0-9+]/g, '')}`,
     })
   if (k.email)
-    items.push({ icon: 'mail', label: 'E-mail', value: k.email, href: `mailto:${k.email}` })
+    items.push({ icon: 'mail', label: t('detail.email'), value: k.email, href: `mailto:${k.email}` })
   if (k.radnoVrijeme)
-    items.push({ icon: 'clock', label: 'Radno vrijeme', value: k.radnoVrijeme })
+    items.push({ icon: 'clock', label: t('detail.hours'), value: k.radnoVrijeme })
   if (k.web)
     items.push({
       icon: 'globe',
-      label: 'Web',
+      label: t('detail.website'),
       value: k.web,
       href: k.web.startsWith('http') ? k.web : `https://${k.web}`,
     })
@@ -77,19 +80,19 @@ function posaljiUpit() {
   <AppContainer as="main" class="py-8">
     <EmptyState
       v-if="!biznis"
-      title="Biznis nije pronađen"
-      text="Traženi biznis ne postoji ili je uklonjen."
+      :title="$t('biz.notFoundTitle')"
+      :text="$t('biz.notFoundText')"
     >
       <BaseButton variant="secondary" icon="arrow-left" to="/domace-je-najbolje">
-        Nazad na ponudu
+        {{ $t('biz.backToOffer') }}
       </BaseButton>
     </EmptyState>
 
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: 'Početna', to: '/' },
-          { label: 'Domaće je najbolje', to: '/domace-je-najbolje' },
+          { label: $t('common.home'), to: '/' },
+          { label: $t('local.breadcrumb'), to: '/domace-je-najbolje' },
           { label: biznis.naslov },
         ]"
       />
@@ -151,20 +154,20 @@ function posaljiUpit() {
       <!-- Dvokolonski sadržaj -->
       <div class="mt-8 grid gap-10 lg:grid-cols-3">
         <div class="lg:col-span-2">
-          <h2 class="mb-3 font-heading text-2xl font-bold text-heading">O biznisu</h2>
+          <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('biz.about') }}</h2>
           <p class="whitespace-pre-line leading-relaxed text-text">
             {{ biznis.opisDug || biznis.opis }}
           </p>
         </div>
 
         <div class="space-y-4">
-          <InfoPanel title="Kontakt i informacije" :items="infoItems" />
+          <InfoPanel :title="$t('biz.contactInfo')" :items="infoItems" />
           <a
             href="#upit"
             class="flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-5 py-3 font-heading text-sm font-bold text-white transition-colors hover:bg-primary-dark"
           >
             <BaseIcon name="send" :size="16" />
-            Pošalji upit
+            {{ $t('biz.sendInquiry') }}
           </a>
           <MiniMap :label="biznis.lokacija" />
         </div>
@@ -175,47 +178,47 @@ function posaljiUpit() {
         id="upit"
         class="mt-12 rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)] md:p-8"
       >
-        <h2 class="font-heading text-xl font-bold text-heading">Pošalji upit biznisu</h2>
+        <h2 class="font-heading text-xl font-bold text-heading">{{ $t('biz.sendInquiryTitle') }}</h2>
         <form class="mt-5 space-y-4" @submit.prevent="posaljiUpit">
           <BaseAlert
             v-if="page.props.flash?.status"
             variant="uspjeh"
-            title="Upit poslan"
+            :title="$t('biz.inquirySent')"
             :text="page.props.flash.status"
           />
           <BaseAlert
             v-if="upitForm.hasErrors"
             variant="greska"
-            title="Provjerite polja"
-            text="Molimo ispravite greške u formi."
+            :title="$t('biz.checkFields')"
+            :text="$t('biz.fixErrors')"
           />
           <div class="grid gap-4 sm:grid-cols-2">
             <FormField
               v-model="upitForm.ime"
-              label="Ime i prezime"
-              placeholder="npr. Marko Marković"
+              :label="$t('contact.name')"
+              :placeholder="$t('contact.namePlaceholder')"
               required
               :error="upitForm.errors.ime"
             />
             <FormField
               v-model="upitForm.email"
-              label="E-mail"
+              :label="$t('contact.email')"
               type="email"
-              placeholder="vasa@adresa.com"
+              :placeholder="$t('contact.emailPlaceholder')"
               required
               :error="upitForm.errors.email"
             />
           </div>
           <FormTextarea
             v-model="upitForm.poruka"
-            label="Poruka"
+            :label="$t('contact.message')"
             :maxlength="5000"
-            placeholder="Vaša poruka…"
+            :placeholder="$t('contact.messagePlaceholder')"
             required
             :error="upitForm.errors.poruka"
           />
           <BaseButton type="submit" variant="primary" icon="send" :loading="upitForm.processing">
-            Pošalji upit
+            {{ $t('biz.sendInquiry') }}
           </BaseButton>
         </form>
       </div>
@@ -223,24 +226,24 @@ function posaljiUpit() {
       <!-- Povezani sadržaj -->
       <RelatedContent
         v-if="povezani.length"
-        kicker="Povezano"
-        title="Otkrijte više iz teslićkog kraja"
+        :kicker="$t('common.related')"
+        :title="$t('biz.relatedTitle')"
         back-to="/domace-je-najbolje"
-        back-label="← Sva domaća ponuda"
+        :back-label="$t('biz.backAll')"
       >
         <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
       </RelatedContent>
 
-      <RelatedContent v-if="slicni.length" title="Slično">
+      <RelatedContent v-if="slicni.length" :title="$t('biz.similar')">
         <BusinessCard v-for="b in slicni" :key="b.slug" :item="b" />
       </RelatedContent>
 
       <div class="mt-12">
         <CTASection
-          title="Imate domaći proizvod ili uslugu?"
-          text="Registrujte svoj biznis i predstavite ponudu posjetiocima Teslića."
+          :title="$t('local.ctaTitle')"
+          :text="$t('local.ctaText')"
         >
-          <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">Registruj biznis</BaseButton>
+          <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('local.ctaButton') }}</BaseButton>
         </CTASection>
       </div>
     </template>

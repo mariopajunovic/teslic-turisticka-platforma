@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -20,6 +21,8 @@ const props = defineProps({
   slicni: { type: Array, default: () => [] },
 })
 
+const { t } = useI18n()
+
 const oglas = computed(() => props.oglas)
 const loading = false
 const error = null
@@ -30,19 +33,19 @@ const infoItems = computed(() => {
   const o = oglas.value
   const k = o.kontakt || {}
   const items = []
-  if (o.izdavac) items.push({ icon: 'building-2', label: 'Izdavač', value: o.izdavac })
-  if (o.lokacija) items.push({ icon: 'map-pin', label: 'Lokacija', value: o.lokacija })
-  if (o.rok) items.push({ icon: 'calendar', label: 'Rok', value: o.rok })
-  if (k.osoba) items.push({ icon: 'user', label: 'Kontakt osoba', value: k.osoba })
+  if (o.izdavac) items.push({ icon: 'building-2', label: t('detail.publisher'), value: o.izdavac })
+  if (o.lokacija) items.push({ icon: 'map-pin', label: t('detail.location'), value: o.lokacija })
+  if (o.rok) items.push({ icon: 'calendar', label: t('detail.deadline'), value: o.rok })
+  if (k.osoba) items.push({ icon: 'user', label: t('adDetail.contactPerson'), value: k.osoba })
   if (k.telefon)
     items.push({
       icon: 'phone',
-      label: 'Telefon',
+      label: t('detail.phone'),
       value: k.telefon,
       href: `tel:${k.telefon.replace(/[^0-9+]/g, '')}`,
     })
   if (k.email)
-    items.push({ icon: 'mail', label: 'E-mail', value: k.email, href: `mailto:${k.email}` })
+    items.push({ icon: 'mail', label: t('detail.email'), value: k.email, href: `mailto:${k.email}` })
   return items
 })
 </script>
@@ -52,8 +55,8 @@ const infoItems = computed(() => {
     <BaseAlert
       v-if="error"
       variant="greska"
-      title="Greška pri učitavanju"
-      text="Nije moguće učitati podatke. Pokušajte ponovo kasnije."
+      :title="$t('detail.loadErrorTitle')"
+      :text="$t('detail.loadErrorText')"
     />
 
     <template v-else-if="loading">
@@ -71,19 +74,19 @@ const infoItems = computed(() => {
 
     <EmptyState
       v-else-if="!oglas"
-      title="Oglas nije pronađen"
-      text="Traženi oglas ne postoji ili je uklonjen."
+      :title="$t('adDetail.notFoundTitle')"
+      :text="$t('adDetail.notFoundText')"
     >
       <BaseButton variant="secondary" icon="arrow-left" to="/oglasi">
-        Nazad na oglase
+        {{ $t('adDetail.backToAds') }}
       </BaseButton>
     </EmptyState>
 
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: 'Početna', to: '/' },
-          { label: 'Poslovne prilike i oglasi', to: '/oglasi' },
+          { label: $t('common.home'), to: '/' },
+          { label: $t('adDetail.breadcrumb'), to: '/oglasi' },
           { label: oglas.naslov },
         ]"
       />
@@ -106,21 +109,21 @@ const infoItems = computed(() => {
 
         <div class="mt-8 grid gap-8 lg:grid-cols-3">
           <div class="lg:col-span-2">
-            <h2 class="mb-3 font-heading text-2xl font-bold text-heading">Opis oglasa</h2>
+            <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('adDetail.description') }}</h2>
             <p class="whitespace-pre-line leading-relaxed text-text">{{ oglas.opisDug }}</p>
           </div>
 
           <div>
-            <InfoPanel title="Detalji" :items="infoItems" />
+            <InfoPanel :title="$t('adDetail.details')" :items="infoItems" />
           </div>
         </div>
       </div>
 
-      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+      <RelatedContent v-if="povezani.length" :title="$t('detail.related')">
         <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
       </RelatedContent>
 
-      <RelatedContent v-if="slicni.length" title="Slični oglasi">
+      <RelatedContent v-if="slicni.length" :title="$t('adDetail.similar')">
         <AdCard v-for="o in slicni" :key="o.slug" :item="o" />
       </RelatedContent>
     </template>

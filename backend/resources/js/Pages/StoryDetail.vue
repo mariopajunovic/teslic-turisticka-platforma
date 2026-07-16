@@ -36,8 +36,8 @@ const autor = computed(() => ({
     <BaseAlert
       v-if="error"
       variant="greska"
-      title="Greška pri učitavanju"
-      text="Nije moguće učitati podatke. Pokušajte ponovo kasnije."
+      :title="$t('detail.loadErrorTitle')"
+      :text="$t('detail.loadErrorText')"
     />
 
     <template v-else-if="loading">
@@ -52,19 +52,19 @@ const autor = computed(() => ({
 
     <EmptyState
       v-else-if="!prica"
-      title="Priča nije pronađena"
-      text="Tražena priča ne postoji ili je uklonjena."
+      :title="$t('storyDetail.notFoundTitle')"
+      :text="$t('storyDetail.notFoundText')"
     >
       <BaseButton variant="secondary" icon="arrow-left" to="/price">
-        Nazad na priče
+        {{ $t('storyDetail.backToStories') }}
       </BaseButton>
     </EmptyState>
 
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: 'Početna', to: '/' },
-          { label: 'Priče iz Teslića', to: '/price' },
+          { label: $t('common.home'), to: '/' },
+          { label: $t('stories.breadcrumb'), to: '/price' },
           { label: prica.naslov },
         ]"
       />
@@ -92,7 +92,7 @@ const autor = computed(() => ({
       </article>
 
       <section v-if="prica.galerija?.length" class="mx-auto mt-10 max-w-2xl">
-        <h2 class="mb-4 font-heading text-2xl font-bold text-heading">Galerija</h2>
+        <h2 class="mb-4 font-heading text-2xl font-bold text-heading">{{ $t('detail.gallery') }}</h2>
         <Gallery :items="prica.galerija" />
       </section>
 
@@ -100,11 +100,11 @@ const autor = computed(() => ({
         <AuthorBlock :author="autor" to="/price" />
       </div>
 
-      <RelatedContent v-if="povezani.length" title="Povezani sadržaj">
+      <RelatedContent v-if="povezani.length" :title="$t('detail.related')">
         <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
       </RelatedContent>
 
-      <RelatedContent v-if="slicne.length" title="Druge priče">
+      <RelatedContent v-if="slicne.length" :title="$t('storyDetail.other')">
         <StoryCard v-for="p in slicne" :key="p.slug" :item="p" />
       </RelatedContent>
     </template>

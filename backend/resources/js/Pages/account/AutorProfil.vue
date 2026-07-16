@@ -45,11 +45,11 @@ function submit() {
   <AccountLayout :items="autorNav">
     <div class="space-y-6">
       <div>
-        <h1 class="font-heading text-[28px] font-bold text-heading">Autorski profil</h1>
-        <p class="mt-1 text-[15px] text-text-muted">Vaše javne informacije kao autora priča.</p>
+        <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.authorProfile') }}</h1>
+        <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.authorProfileDesc') }}</p>
       </div>
 
-      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" title="Sačuvano" :text="$page.props.flash.status" />
+      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
         <div class="flex items-center gap-5">
@@ -67,8 +67,8 @@ function submit() {
           </label>
         </div>
 
-        <FormField v-model="form.name" label="Ime i prezime" :error="form.errors.name" />
-        <FormTextarea v-model="form.bio" label="Biografija" :rows="4" :maxlength="1000" />
+        <FormField v-model="form.name" :label="$t('contact.name')" :error="form.errors.name" />
+        <FormTextarea v-model="form.bio" :label="$t('acc.biography')" :rows="4" :maxlength="1000" />
 
         <div class="flex justify-end">
           <BaseButton variant="primary" icon="check" :disabled="form.processing" @click="submit">

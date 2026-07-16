@@ -38,42 +38,42 @@ function submit(action) {
     <div class="space-y-6">
       <div>
         <h1 class="font-heading text-[28px] font-bold text-heading">
-          {{ oglas ? 'Uredi oglas' : 'Novi oglas' }}
+          {{ oglas ? $t('acc.editAd') : $t('acc.newAd') }}
         </h1>
-        <p class="mt-1 text-[15px] text-text-muted">Popunite oglas i pošaljite ga na odobrenje.</p>
+        <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.fillAd') }}</p>
       </div>
 
       <BaseAlert
         v-if="form.errors.naslov"
         variant="greska"
-        title="Provjerite unesene podatke"
-        text="Naslov je obavezan."
+        :title="$t('auth.regErrorTitle')"
+        :text="$t('acc.titleRequired')"
       />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.naslov" label="Naslov" :error="form.errors.naslov" />
+          <FormField v-model="form.naslov" :label="$t('acc.title')" :error="form.errors.naslov" />
           <FormSelect
             v-model="form.category_id"
-            label="Vrsta"
-            placeholder="Odaberite vrstu"
+            :label="$t('acc.type')"
+            :placeholder="$t('acc.selectType')"
             :options="vrste"
           />
         </div>
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.izdavac" label="Izdavač" />
-          <FormField v-model="form.lokacija" label="Lokacija" />
+          <FormField v-model="form.izdavac" :label="$t('detail.publisher')" />
+          <FormField v-model="form.lokacija" :label="$t('detail.location')" />
         </div>
-        <FormField v-model="form.rok" label="Rok važenja" type="date" />
-        <FormTextarea v-model="form.opis_dug" label="Opis" :rows="6" />
+        <FormField v-model="form.rok" :label="$t('acc.validUntil')" type="date" />
+        <FormTextarea v-model="form.opis_dug" :label="$t('acc.description')" :rows="6" />
       </div>
 
       <div class="flex flex-wrap justify-end gap-3">
         <BaseButton variant="secondary" icon="save" :disabled="form.processing" @click="submit('nacrt')">
-          Sačuvaj nacrt
+          {{ $t('acc.saveDraft') }}
         </BaseButton>
         <BaseButton variant="primary" icon="send" :disabled="form.processing" @click="submit('posalji')">
-          Pošalji na odobrenje
+          {{ $t('acc.submitApproval') }}
         </BaseButton>
       </div>
     </div>

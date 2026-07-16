@@ -1,5 +1,8 @@
 <script setup>
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 // Tinted status badge: svijetla pozadina + tačkica + jak tekst (AA).
 const props = defineProps({
@@ -56,7 +59,7 @@ const map = {
 }
 
 const style = computed(() => map[props.variant])
-const text = computed(() => props.label || style.value.def)
+const text = computed(() => props.label || t('badge.' + props.variant))
 </script>
 
 <template>

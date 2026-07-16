@@ -1,6 +1,9 @@
 <script setup>
 import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import BaseIcon from '@/components/base/BaseIcon.vue'
+
+const { t, tm, rt } = useI18n()
 
 const props = defineProps({
   events: { type: Array, default: () => [] },
@@ -12,21 +15,8 @@ const emit = defineEmits(['selectDay'])
 // Odabrani dan kao 'YYYY-MM-DD'
 const selected = defineModel({ type: String, default: '' })
 
-const MJESECI = [
-  'Januar',
-  'Februar',
-  'Mart',
-  'April',
-  'Maj',
-  'Jun',
-  'Jul',
-  'Avgust',
-  'Septembar',
-  'Oktobar',
-  'Novembar',
-  'Decembar',
-]
-const DANI = ['Pon', 'Uto', 'Sri', 'Čet', 'Pet', 'Sub', 'Ned']
+const MJESECI = computed(() => tm('cal.months').map(rt))
+const DANI = computed(() => tm('cal.days').map(rt))
 
 // Pomoćno: 'YYYY-MM-DD' iz lokalnih komponenti (bez vremenske zone)
 const pad = (n) => String(n).padStart(2, '0')
@@ -47,7 +37,7 @@ const cursor = ref(parseInitial(props.initialMonth))
 
 const godina = computed(() => cursor.value.getFullYear())
 const mjesec = computed(() => cursor.value.getMonth())
-const naslov = computed(() => `${MJESECI[mjesec.value]} ${godina.value}`)
+const naslov = computed(() => `${MJESECI.value[mjesec.value]} ${godina.value}`)
 
 function prethodni() {
   cursor.value = new Date(godina.value, mjesec.value - 1, 1)
@@ -102,7 +92,7 @@ const dani = computed(() => {
 
 function imeMjeseca(iso) {
   const m = Number(iso.split('-')[1]) - 1
-  return MJESECI[m]
+  return MJESECI.value[m]
 }
 
 function ariaLabel(celija) {
@@ -118,7 +108,7 @@ function ariaLabel(celija) {
 const odabranoTekst = computed(() => {
   if (!selected.value) return ''
   const [y, m, d] = selected.value.split('-')
-  return `${Number(d)}. ${MJESECI[Number(m) - 1]} ${y}`
+  return `${Number(d)}. ${MJESECI.value[Number(m) - 1]} ${y}`
 })
 
 function odaberi(celija) {
@@ -134,7 +124,7 @@ function odaberi(celija) {
       <button
         type="button"
         class="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-text-muted transition-colors hover:bg-surface-alt"
-        aria-label="Prethodni mjesec"
+        :aria-label="t('cal.prevMonth')"
         @click="prethodni"
       >
         <BaseIcon name="chevron-left" :size="20" />
@@ -148,7 +138,7 @@ function odaberi(celija) {
       <button
         type="button"
         class="flex h-10 w-10 items-center justify-center rounded-sm border border-border text-text-muted transition-colors hover:bg-surface-alt"
-        aria-label="Sljedeći mjesec"
+        :aria-label="t('cal.nextMonth')"
         @click="sljedeci"
       >
         <BaseIcon name="chevron-right" :size="20" />

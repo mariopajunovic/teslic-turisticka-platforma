@@ -35,14 +35,14 @@ function logout() {
     <!-- Topbar -->
     <header class="flex items-center gap-4 border-b border-border bg-surface px-4 py-3.5 md:px-8">
       <Link href="/" class="text-2xl font-extrabold tracking-tight text-primary">teslić</Link>
-      <span class="hidden text-[15px] font-medium text-text-muted sm:inline">Moj nalog</span>
+      <span class="hidden text-[15px] font-medium text-text-muted sm:inline">{{ $t('misc.myAccount') }}</span>
       <div class="ml-auto flex items-center gap-3">
         <span
           class="flex size-9 items-center justify-center rounded-full bg-primary-tint text-[13px] font-bold text-primary"
         >
           {{ userInitials }}
         </span>
-        <BaseButton variant="ghost" size="sm" icon="log-out" @click="logout">Odjava</BaseButton>
+        <BaseButton variant="ghost" size="sm" icon="log-out" @click="logout">{{ $t('action.logout') }}</BaseButton>
       </div>
     </header>
 

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\ContentStatus;
+use App\Models\Concerns\HasLocalizedContent;
 use App\Models\Concerns\HasTags;
 use App\Models\Concerns\TracksStatus;
 use Illuminate\Database\Eloquent\Builder;
@@ -15,7 +16,9 @@ use Spatie\Sluggable\SlugOptions;
 
 class Ad extends Model implements HasMedia
 {
-    use HasSlug, InteractsWithMedia, TracksStatus, HasTags;
+    use HasLocalizedContent, HasSlug, InteractsWithMedia, TracksStatus, HasTags;
+
+    public array $translatable = ['naslov', 'izdavac', 'lokacija', 'opis_dug'];
 
     protected $fillable = [
         'user_id',

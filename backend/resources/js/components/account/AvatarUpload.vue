@@ -15,7 +15,7 @@ defineProps({
       <BaseIcon v-else name="user" :size="30" />
     </div>
     <div class="flex flex-col gap-1.5">
-      <BaseButton variant="secondary" size="sm" icon="upload">Promijeni fotografiju</BaseButton>
+      <BaseButton variant="secondary" size="sm" icon="upload">{{ $t('ui.changePhoto') }}</BaseButton>
       <p class="text-[13px] text-text-muted">{{ hint }}</p>
     </div>
   </div>

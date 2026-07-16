@@ -10,6 +10,8 @@ class EditEvent extends EditRecord
 {
     protected static string $resource = EventResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

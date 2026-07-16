@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -29,12 +30,14 @@ const props = defineProps({
   povezani: { type: Object, default: () => ({ biznis: null, lokalitet: null, prica: null }) },
 })
 
+const { t } = useI18n()
+
 const error = null
 
-const statusOpcije = [
-  { value: 'aktivni', label: 'Aktivni' },
-  { value: 'arhiva', label: 'Arhiva' },
-]
+const statusOpcije = computed(() => [
+  { value: 'aktivni', label: t('ads.active') },
+  { value: 'arhiva', label: t('ads.archive') },
+])
 
 const vrsteOpcije = computed(() => {
   const map = new Map()
@@ -103,15 +106,15 @@ function ukloni(key) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Poslovne prilike"
+      :kicker="$t('ads.heroKicker')"
       kicker-class="text-primary-tint-2"
-      title="Oglasi i prilike u Tesliću"
-      subtitle="Poslovi, konkursi, otkup i saradnje — prilike koje povezuju ljude i biznise teslićkog kraja."
+      :title="$t('ads.heroTitle')"
+      :subtitle="$t('ads.heroSubtitle')"
       image="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80"
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: 'Oglasi' }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('ads.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -122,8 +125,8 @@ function ukloni(key) {
 
     <AppContainer class="mt-4">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
-        <FormSelect v-model="vrsta" :options="vrsteOpcije" placeholder="Sve vrste" />
-        <SearchInput v-model="upit" placeholder="Pretraži oglase…" />
+        <FormSelect v-model="vrsta" :options="vrsteOpcije" :placeholder="$t('ads.allTypes')" />
+        <SearchInput v-model="upit" :placeholder="$t('ads.searchPlaceholder')" />
       </FilterBar>
     </AppContainer>
 
@@ -131,8 +134,8 @@ function ukloni(key) {
       <BaseAlert
         v-if="error"
         variant="greska"
-        title="Greška pri učitavanju"
-        text="Trenutno nije moguće učitati oglase. Pokušajte ponovo kasnije."
+        :title="$t('ads.errorTitle')"
+        :text="$t('ads.errorText')"
       />
 
       <CardGrid v-else-if="!oglasi.data" :cols="2">
@@ -141,8 +144,8 @@ function ukloni(key) {
 
       <EmptyState
         v-else-if="!oglasi.data.length"
-        :title="status === 'arhiva' ? 'Nema arhiviranih oglasa' : 'Nema aktivnih oglasa'"
-        text="Za odabrane filtere trenutno nema oglasa. Pokušajte promijeniti pretragu ili pogledajte arhivu."
+        :title="status === 'arhiva' ? $t('ads.emptyArchive') : $t('ads.emptyActive')"
+        :text="$t('ads.emptyText')"
       >
         <BaseButton
           v-if="status === 'aktivni'"
@@ -150,10 +153,10 @@ function ukloni(key) {
           size="sm"
           @click="status = 'arhiva'"
         >
-          Pogledaj arhivu
+          {{ $t('ads.viewArchive') }}
         </BaseButton>
         <BaseButton v-else variant="secondary" size="sm" @click="status = 'aktivni'">
-          Aktivni oglasi
+          {{ $t('ads.viewActive') }}
         </BaseButton>
       </EmptyState>
 
@@ -178,11 +181,11 @@ function ukloni(key) {
     >
       <AppContainer>
         <RelatedContent
-          kicker="Povezano"
-          title="Iza oglasa stoje ljudi i biznisi"
+          :kicker="$t('common.related')"
+          :title="$t('ads.relatedTitle')"
           class="!mt-0"
           back-to="/"
-          back-label="← Nazad na Početnu"
+          :back-label="$t('ads.backHome')"
         >
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
@@ -193,10 +196,10 @@ function ukloni(key) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Imate posao ili konkurs?"
-        text="Objavite oglas i dođite do ljudi i partnera iz teslićkog kraja."
+        :title="$t('ads.ctaTitle')"
+        :text="$t('ads.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se">Objavi oglas</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se">{{ $t('ads.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

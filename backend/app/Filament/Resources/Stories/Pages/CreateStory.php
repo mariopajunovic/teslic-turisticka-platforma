@@ -9,6 +9,8 @@ class CreateStory extends CreateRecord
 {
     protected static string $resource = StoryResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];

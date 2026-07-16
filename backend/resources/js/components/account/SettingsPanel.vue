@@ -35,16 +35,16 @@ function promijeniLozinku() {
 <template>
   <div class="space-y-6">
     <div>
-      <h1 class="font-heading text-[28px] font-bold text-heading">Postavke</h1>
-      <p class="mt-1 text-[15px] text-text-muted">Upravljajte podacima naloga i lozinkom.</p>
+      <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.settings') }}</h1>
+      <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.settingsDesc') }}</p>
     </div>
 
-    <BaseAlert v-if="status" variant="uspjeh" title="Sačuvano" :text="status" />
+    <BaseAlert v-if="status" variant="uspjeh" :title="$t('acc.saved')" :text="status" />
 
     <div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7">
-      <h2 class="font-heading text-lg font-bold text-heading">E-mail adresa</h2>
-      <p class="text-[13px] text-text-muted">Ime, telefon i ostale podatke uređujete na stranici „Moj profil".</p>
-      <FormField v-model="profil.email" label="E-mail" type="email" :error="profil.errors.email" />
+      <h2 class="font-heading text-lg font-bold text-heading">{{ $t('acc.emailAddress') }}</h2>
+      <p class="text-[13px] text-text-muted">{{ $t('acc.emailNote') }}</p>
+      <FormField v-model="profil.email" :label="$t('contact.email')" type="email" :error="profil.errors.email" />
       <div class="flex justify-end">
         <BaseButton variant="primary" icon="check" :disabled="profil.processing" @click="sacuvajProfil">
           Sačuvaj e-mail
@@ -53,23 +53,23 @@ function promijeniLozinku() {
     </div>
 
     <div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7">
-      <h2 class="font-heading text-lg font-bold text-heading">Promjena lozinke</h2>
+      <h2 class="font-heading text-lg font-bold text-heading">{{ $t('acc.changePassword') }}</h2>
       <FormField
         v-model="lozinka.current_password"
-        label="Trenutna lozinka"
+        :label="$t('acc.currentPassword')"
         type="password"
         :error="lozinka.errors.current_password"
       />
       <div class="grid gap-5 md:grid-cols-2">
         <FormField
           v-model="lozinka.password"
-          label="Nova lozinka"
+          :label="$t('acc.newPassword')"
           type="password"
           :error="lozinka.errors.password"
         />
         <FormField
           v-model="lozinka.password_confirmation"
-          label="Potvrdi novu lozinku"
+          :label="$t('acc.confirmNewPassword')"
           type="password"
           helper="Najmanje 8 znakova"
         />

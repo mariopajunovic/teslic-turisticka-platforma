@@ -57,15 +57,15 @@ function odaberi(item) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Mapa ponude"
+      :kicker="$t('map.heroKicker')"
       kicker-class="text-primary-tint-2"
-      title="Cijeli Teslić na jednoj mapi"
-      subtitle="Pretražite biznise, atrakcije, smještaj i događaje i lako se orijentišite u prostoru."
+      :title="$t('map.heroTitle')"
+      :subtitle="$t('map.heroSubtitle')"
       image="https://images.unsplash.com/photo-1611458182018-c043f4e947ec?auto=format&fit=crop&w=1600&q=80"
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: 'Mapa ponude' }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('map.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-8">
@@ -97,16 +97,16 @@ function odaberi(item) {
     <!-- Ponuda na mapi -->
     <AppContainer class="mt-12">
       <div class="flex flex-wrap items-end justify-between gap-3">
-        <h2 class="font-heading text-2xl font-bold text-heading">Ponuda na mapi</h2>
-        <span class="text-text-muted">{{ filtrirano.length }} rezultata</span>
+        <h2 class="font-heading text-2xl font-bold text-heading">{{ $t('map.offerOnMap') }}</h2>
+        <span class="text-text-muted">{{ $t('map.results', { n: filtrirano.length }) }}</span>
       </div>
 
       <EmptyState
         v-if="!filtrirano.length"
         icon="map-pin"
         class="mt-6"
-        title="Nema rezultata"
-        text="Za odabrane slojeve i pretragu nema tačaka na mapi."
+        :title="$t('common.noResults')"
+        :text="$t('map.emptyText')"
       />
 
       <div v-else class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -162,11 +162,11 @@ function odaberi(item) {
     >
       <AppContainer>
         <RelatedContent
-          kicker="Povezano"
-          title="Sa mape direktno u ponudu"
+          :kicker="$t('common.related')"
+          :title="$t('map.relatedTitle')"
           class="!mt-0"
           back-to="/"
-          back-label="← Nazad na Početnu"
+          :back-label="$t('map.backHome')"
         >
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
@@ -177,10 +177,10 @@ function odaberi(item) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Želite da budete na mapi Teslića?"
-        text="Registrujte biznis i pojavite se na interaktivnoj mapi ponude."
+        :title="$t('map.ctaTitle')"
+        :text="$t('map.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">Registruj biznis</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('map.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

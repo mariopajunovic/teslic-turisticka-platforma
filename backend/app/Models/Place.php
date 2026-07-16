@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasLocalizedContent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Place extends Model
 {
+    use HasLocalizedContent;
+
     protected $fillable = [
         'naziv',
         'lat',
@@ -16,6 +19,8 @@ class Place extends Model
         'linkable_type',
         'linkable_id',
     ];
+
+    public array $translatable = ['naziv'];
 
     protected function casts(): array
     {

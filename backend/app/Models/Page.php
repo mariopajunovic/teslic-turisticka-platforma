@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasLocalizedContent;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
@@ -9,7 +10,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class Page extends Model
 {
-    use HasSlug;
+    use HasLocalizedContent, HasSlug;
 
     protected $fillable = [
         'title',
@@ -22,10 +23,11 @@ class Page extends Model
         'sort',
     ];
 
+    public array $translatable = ['title', 'content', 'meta_title', 'meta_description'];
+
     protected function casts(): array
     {
         return [
-            'content' => 'array',
             'published' => 'boolean',
             'is_system' => 'boolean',
         ];

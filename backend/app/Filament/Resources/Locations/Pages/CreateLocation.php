@@ -9,6 +9,8 @@ class CreateLocation extends CreateRecord
 {
     protected static string $resource = LocationResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];

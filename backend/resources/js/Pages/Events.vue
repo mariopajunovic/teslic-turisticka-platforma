@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -29,6 +30,8 @@ const props = defineProps({
   povezani: { type: Object, default: () => ({ lokalitet: null, biznis: null, prica: null }) },
 })
 
+const { t } = useI18n()
+
 const error = null
 
 const prikaz = ref('lista')
@@ -37,14 +40,14 @@ const period = ref(props.period || '')
 const odabraniDan = ref('')
 const danDogadjaji = ref([])
 
-const prikazOpcije = [
-  { value: 'lista', label: 'Lista', icon: 'list' },
-  { value: 'kalendar', label: 'Kalendar', icon: 'calendar' },
-]
-const periodOpcije = [
-  { value: 'nadolazeci', label: 'Nadolazeći' },
-  { value: 'protekli', label: 'Protekli' },
-]
+const prikazOpcije = computed(() => [
+  { value: 'lista', label: t('events.viewList'), icon: 'list' },
+  { value: 'kalendar', label: t('events.viewCalendar'), icon: 'calendar' },
+])
+const periodOpcije = computed(() => [
+  { value: 'nadolazeci', label: t('events.upcoming') },
+  { value: 'protekli', label: t('events.past') },
+])
 
 let debounceTimer = null
 
@@ -78,7 +81,7 @@ const kalendarEvents = computed(() =>
 const aktivniChipovi = () => {
   const chips = []
   if (period.value) {
-    const p = periodOpcije.find((o) => o.value === period.value)
+    const p = periodOpcije.value.find((o) => o.value === period.value)
     chips.push({ key: 'period', label: p ? p.label : period.value })
   }
   if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
@@ -105,15 +108,15 @@ function onSelectDay({ events }) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Događaji"
+      :kicker="$t('events.heroKicker')"
       kicker-class="text-secondary"
-      title="Šta se dešava u Tesliću"
-      subtitle="Festivali, sajmovi, izleti i kulturna dešavanja — pratite kalendar događaja teslićkog kraja."
+      :title="$t('events.heroTitle')"
+      :subtitle="$t('events.heroSubtitle')"
       image="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80"
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: 'Događaji' }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('events.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -124,8 +127,8 @@ function onSelectDay({ events }) {
 
     <AppContainer class="mt-4">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
-        <FormSelect v-model="period" :options="periodOpcije" placeholder="Svi periodi" />
-        <SearchInput v-model="upit" placeholder="Pretraži događaje…" />
+        <FormSelect v-model="period" :options="periodOpcije" :placeholder="$t('events.allPeriods')" />
+        <SearchInput v-model="upit" :placeholder="$t('events.searchPlaceholder')" />
       </FilterBar>
     </AppContainer>
 
@@ -133,8 +136,8 @@ function onSelectDay({ events }) {
       <BaseAlert
         v-if="error"
         variant="greska"
-        title="Greška pri učitavanju"
-        text="Trenutno nije moguće učitati događaje. Pokušajte ponovo kasnije."
+        :title="$t('events.errorTitle')"
+        :text="$t('events.errorText')"
       />
 
       <!-- Prikaz: Lista -->
@@ -145,10 +148,10 @@ function onSelectDay({ events }) {
 
         <EmptyState
           v-else-if="!dogadjaji.data.length"
-          title="Nema događaja"
-          text="Za odabrane filtere trenutno nema događaja. Pokušajte promijeniti period ili pretragu."
+          :title="$t('events.emptyTitle')"
+          :text="$t('events.emptyText')"
         >
-          <BaseButton variant="secondary" size="sm" @click="ocisti">Očisti filtere</BaseButton>
+          <BaseButton variant="secondary" size="sm" @click="ocisti">{{ $t('common.clearFilters') }}</BaseButton>
         </EmptyState>
 
         <template v-else>
@@ -175,16 +178,16 @@ function onSelectDay({ events }) {
           />
           <div class="space-y-3">
             <h2 class="font-heading text-lg font-semibold text-heading">
-              Događaji {{ odabraniDan ? `(${odabraniDan})` : '' }}
+              {{ $t('events.dayEvents') }} {{ odabraniDan ? `(${odabraniDan})` : '' }}
             </h2>
             <p v-if="!odabraniDan" class="text-sm text-text-muted">
-              Odaberite dan u kalendaru da vidite događaje.
+              {{ $t('events.pickDay') }}
             </p>
             <EmptyState
               v-else-if="!danDogadjaji.length"
               icon="calendar"
-              title="Nema događaja"
-              text="Na odabrani dan nema zakazanih događaja."
+              :title="$t('events.emptyTitle')"
+              :text="$t('events.emptyDay')"
             />
             <div v-else class="space-y-4">
               <EventCard v-for="d in danDogadjaji" :key="d.slug" :item="d" />
@@ -201,11 +204,11 @@ function onSelectDay({ events }) {
     >
       <AppContainer>
         <RelatedContent
-          kicker="Povezano"
-          title="Gdje se događaji dešavaju"
+          :kicker="$t('common.related')"
+          :title="$t('events.relatedTitle')"
           class="!mt-0"
           back-to="/"
-          back-label="← Nazad na Početnu"
+          :back-label="$t('events.backHome')"
         >
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
@@ -216,10 +219,10 @@ function onSelectDay({ events }) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Organizujete događaj u Tesliću?"
-        text="Prijavite svoj događaj i objavite ga u kalendaru platforme."
+        :title="$t('events.ctaTitle')"
+        :text="$t('events.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se">Prijavi događaj</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se">{{ $t('events.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

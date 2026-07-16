@@ -25,7 +25,7 @@ defineEmits(['edit', 'delete'])
         <button
           type="button"
           class="grid size-9 place-items-center rounded-md bg-surface-alt text-text-muted hover:text-primary"
-          aria-label="Uredi"
+          :aria-label="$t('ui.edit')"
           @click="$emit('edit', item)"
         >
           <BaseIcon name="pencil" :size="16" />
@@ -33,7 +33,7 @@ defineEmits(['edit', 'delete'])
         <button
           type="button"
           class="grid size-9 place-items-center rounded-md bg-surface-alt text-text-muted hover:text-error"
-          aria-label="Obriši"
+          :aria-label="$t('ui.delete')"
           @click="$emit('delete', item)"
         >
           <BaseIcon name="trash-2" :size="16" />

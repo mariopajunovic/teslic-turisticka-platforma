@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -30,31 +31,33 @@ const props = defineProps({
   kategorijaHero: { type: String, default: '' },
 })
 
+const { t } = useI18n()
+
 const error = null
 
 const HERO_DEFAULT =
   'https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1600&q=80'
 
-const heroNaslov = computed(() => props.kategorijaLabel || 'Domaća ponuda Teslića')
+const heroNaslov = computed(() => props.kategorijaLabel || t('local.heroTitle'))
 
 const breadcrumb = computed(() => {
-  const items = [{ label: 'Početna', to: '/' }, { label: 'Domaće je najbolje', to: props.kategorijaLabel ? '/domace-je-najbolje' : undefined }]
+  const items = [{ label: t('common.home'), to: '/' }, { label: t('local.breadcrumb'), to: props.kategorijaLabel ? '/domace-je-najbolje' : undefined }]
   if (props.kategorijaLabel) items.push({ label: props.kategorijaLabel })
   return items
 })
 
-const kategorijeOpcije = [
-  { value: 'zanat', label: 'Zanatski proizvodi' },
-  { value: 'hrana', label: 'Domaća hrana i piće' },
-  { value: 'usluge', label: 'Usluge i servisi' },
-]
+const kategorijeOpcije = computed(() => [
+  { value: 'zanat', label: t('local.selZanat') },
+  { value: 'hrana', label: t('local.selHrana') },
+  { value: 'usluge', label: t('local.selUsluge') },
+])
 
-const podsekcije = [
-  { value: '', label: 'Sve' },
-  { value: 'hrana', label: 'Hrana i piće' },
-  { value: 'zanat', label: 'Zanati' },
-  { value: 'usluge', label: 'Usluge' },
-]
+const podsekcije = computed(() => [
+  { value: '', label: t('local.all') },
+  { value: 'hrana', label: t('local.subHrana') },
+  { value: 'zanat', label: t('local.subZanat') },
+  { value: 'usluge', label: t('local.subUsluge') },
+])
 
 const kategorija = ref(props.kategorija || '')
 const upit = ref(props.q || '')
@@ -93,7 +96,7 @@ function odaberi(val) {
 const aktivniChipovi = () => {
   const chips = []
   if (kategorija.value) {
-    const k = kategorijeOpcije.find((o) => o.value === kategorija.value)
+    const k = kategorijeOpcije.value.find((o) => o.value === kategorija.value)
     chips.push({ key: 'kategorija', label: k ? k.label : kategorija.value })
   }
   if (upit.value.trim()) chips.push({ key: 'upit', label: `„${upit.value.trim()}"` })
@@ -116,10 +119,10 @@ function ukloni(key) {
 <template>
   <main class="pb-12 md:pb-16">
     <Hero
-      kicker="Domaće je najbolje"
+      :kicker="$t('local.heroKicker')"
       kicker-class="text-primary-tint-2"
       :title="heroNaslov"
-      subtitle="Med, rakija, sirevi, zanati i usluge — upoznajte ljude i proizvode koji čine Teslić posebnim."
+      :subtitle="$t('local.heroSubtitle')"
       :image="kategorijaHero || HERO_DEFAULT"
     />
 
@@ -133,8 +136,8 @@ function ukloni(key) {
 
     <AppContainer class="mt-6">
       <FilterBar :chips="aktivniChipovi()" @clear="ocisti" @remove="ukloni">
-        <FormSelect v-model="kategorija" :options="kategorijeOpcije" placeholder="Sve kategorije" />
-        <SearchInput v-model="upit" placeholder="Pretraži ponudu…" />
+        <FormSelect v-model="kategorija" :options="kategorijeOpcije" :placeholder="$t('common.allCategories')" />
+        <SearchInput v-model="upit" :placeholder="$t('local.searchPlaceholder')" />
       </FilterBar>
     </AppContainer>
 
@@ -161,8 +164,8 @@ function ukloni(key) {
       <BaseAlert
         v-if="error"
         variant="greska"
-        title="Greška pri učitavanju"
-        text="Trenutno nije moguće učitati ponudu. Pokušajte ponovo kasnije."
+        :title="$t('local.errorTitle')"
+        :text="$t('local.errorText')"
       />
 
       <CardGrid v-else-if="!biznisi.data">
@@ -171,10 +174,10 @@ function ukloni(key) {
 
       <EmptyState
         v-else-if="!biznisi.data.length"
-        title="Nema rezultata"
-        text="Za odabrane filtere nema ponude. Pokušajte promijeniti kategoriju ili pretragu."
+        :title="$t('common.noResults')"
+        :text="$t('local.emptyText')"
       >
-        <BaseButton variant="secondary" size="sm" @click="ocisti">Očisti filtere</BaseButton>
+        <BaseButton variant="secondary" size="sm" @click="ocisti">{{ $t('common.clearFilters') }}</BaseButton>
       </EmptyState>
 
       <template v-else>
@@ -197,11 +200,11 @@ function ukloni(key) {
     >
       <AppContainer>
         <RelatedContent
-          kicker="Povezano"
-          title="Domaća ponuda u kontekstu Teslića"
+          :kicker="$t('common.related')"
+          :title="$t('local.relatedTitle')"
           class="!mt-0"
           back-to="/"
-          back-label="← Nazad na Početnu"
+          :back-label="$t('local.backHome')"
         >
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
           <StoryCard v-if="povezani.prica" :item="povezani.prica" />
@@ -212,10 +215,10 @@ function ukloni(key) {
 
     <AppContainer class="mt-12">
       <CTASection
-        title="Imate domaći proizvod ili uslugu?"
-        text="Registrujte svoj biznis i predstavite ponudu posjetiocima Teslića."
+        :title="$t('local.ctaTitle')"
+        :text="$t('local.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">Registruj biznis</BaseButton>
+        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('local.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

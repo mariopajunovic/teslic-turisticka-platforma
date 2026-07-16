@@ -23,7 +23,7 @@ defineProps({
       class="flex aspect-video flex-col items-center justify-center gap-2 text-primary-tint-2"
     >
       <BaseIcon name="play" :size="40" />
-      <span class="text-sm font-medium">Video</span>
+      <span class="text-sm font-medium">{{ $t('a11y.video') }}</span>
     </div>
   </div>
 </template>

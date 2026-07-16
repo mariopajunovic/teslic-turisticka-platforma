@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //
+        $this->app->singleton(\App\Support\ActiveLocale::class);
     }
 
     public function boot(): void

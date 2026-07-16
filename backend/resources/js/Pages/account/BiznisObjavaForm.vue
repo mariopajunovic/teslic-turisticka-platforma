@@ -58,45 +58,45 @@ function ukloniMedij(id) {
     <div class="space-y-6">
       <div class="flex items-center gap-3">
         <h1 class="font-heading text-[28px] font-bold text-heading">
-          {{ objava ? 'Uredi objavu' : 'Nova objava' }}
+          {{ objava ? $t('acc.editPost') : $t('acc.newPost') }}
         </h1>
         <BaseBadge v-if="objava" :variant="objava.status" />
       </div>
 
-      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" title="Sačuvano" :text="$page.props.flash.status" />
-      <BaseAlert v-if="form.errors.naslov" variant="greska" title="Provjerite podatke" text="Naziv je obavezan." />
+      <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
+      <BaseAlert v-if="form.errors.naslov" variant="greska" :title="$t('acc.checkDataShort')" :text="$t('acc.nameRequired')" />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.naslov" label="Naziv" :error="form.errors.naslov" />
-          <FormSelect v-model="form.category_id" label="Kategorija" placeholder="Odaberite kategoriju" :options="kategorije" />
+          <FormField v-model="form.naslov" :label="$t('acc.name')" :error="form.errors.naslov" />
+          <FormSelect v-model="form.category_id" :label="$t('acc.category')" :placeholder="$t('acc.selectCategory')" :options="kategorije" />
         </div>
-        <FormField v-model="form.opis" label="Kratak opis" />
-        <FormTextarea v-model="form.opis_dug" label="Detaljan opis" :rows="5" />
+        <FormField v-model="form.opis" :label="$t('acc.shortDesc')" />
+        <FormTextarea v-model="form.opis_dug" :label="$t('acc.detailedDesc')" :rows="5" />
 
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.lokacija" label="Lokacija (tekst)" />
-          <FormField v-model="form.kontakt.adresa" label="Adresa" />
+          <FormField v-model="form.lokacija" :label="$t('acc.locationText')" />
+          <FormField v-model="form.kontakt.adresa" :label="$t('contact.address')" />
         </div>
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.kontakt.telefon" label="Telefon" type="tel" />
-          <FormField v-model="form.kontakt.email" label="E-mail" type="email" />
+          <FormField v-model="form.kontakt.telefon" :label="$t('detail.phone')" type="tel" />
+          <FormField v-model="form.kontakt.email" :label="$t('contact.email')" type="email" />
         </div>
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.kontakt.web" label="Web" />
-          <FormField v-model="form.kontakt.radnoVrijeme" label="Radno vrijeme" />
+          <FormField v-model="form.kontakt.web" :label="$t('detail.website')" />
+          <FormField v-model="form.kontakt.radnoVrijeme" :label="$t('detail.hours')" />
         </div>
         <div class="grid gap-5 md:grid-cols-2">
-          <FormField v-model="form.lat" label="Geo. širina (lat)" />
-          <FormField v-model="form.lng" label="Geo. dužina (lng)" />
+          <FormField v-model="form.lat" :label="$t('acc.lat')" />
+          <FormField v-model="form.lng" :label="$t('acc.lng')" />
         </div>
       </div>
 
       <div class="space-y-5 rounded-md border border-border bg-surface p-6 md:p-7">
-        <h2 class="font-heading text-lg font-bold text-heading">Fotografije</h2>
+        <h2 class="font-heading text-lg font-bold text-heading">{{ $t('acc.photos') }}</h2>
         <div class="grid gap-5 md:grid-cols-2">
           <div class="space-y-2">
-            <p class="text-sm font-semibold text-heading">Naslovna</p>
+            <p class="text-sm font-semibold text-heading">{{ $t('acc.cover') }}</p>
             <div class="mb-2 flex h-32 items-center justify-center overflow-hidden rounded-md bg-primary-tint">
               <img v-if="objava?.naslovna" :src="objava.naslovna" alt="" class="size-full object-cover" />
               <BaseIcon v-else name="image" :size="28" class="text-primary-tint-2" />
@@ -104,7 +104,7 @@ function ukloniMedij(id) {
             <input type="file" accept="image/*" @change="onNaslovna" />
           </div>
           <div class="space-y-2">
-            <p class="text-sm font-semibold text-heading">Dodaj u galeriju</p>
+            <p class="text-sm font-semibold text-heading">{{ $t('acc.addToGallery') }}</p>
             <input type="file" accept="image/*" multiple @change="onGalerija" />
           </div>
         </div>
@@ -115,7 +115,7 @@ function ukloniMedij(id) {
             <button
               type="button"
               class="absolute right-1.5 top-1.5 inline-flex size-7 items-center justify-center rounded-full bg-surface/90 text-error"
-              aria-label="Ukloni"
+              :aria-label="$t('acc.remove')"
               @click="ukloniMedij(m.id)"
             >
               <BaseIcon name="trash-2" :size="14" />
@@ -126,10 +126,10 @@ function ukloniMedij(id) {
 
       <div class="flex flex-wrap justify-end gap-3">
         <BaseButton variant="secondary" icon="save" :disabled="form.processing" @click="submit('nacrt')">
-          Sačuvaj nacrt
+          {{ $t('acc.saveDraft') }}
         </BaseButton>
         <BaseButton variant="primary" icon="send" :disabled="form.processing" @click="submit('posalji')">
-          Pošalji na odobrenje
+          {{ $t('acc.submitApproval') }}
         </BaseButton>
       </div>
     </div>

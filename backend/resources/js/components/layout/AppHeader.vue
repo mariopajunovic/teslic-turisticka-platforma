@@ -1,10 +1,12 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
+import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
+import LocaleSwitcher from './LocaleSwitcher.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
@@ -43,6 +45,7 @@ function submitSearch() {
 }
 
 const { mainNav, kontakt, postavke } = useSite()
+const { t } = useI18n()
 
 const page = usePage()
 const authUser = computed(() => page.props.auth?.user)
@@ -78,14 +81,8 @@ function logout() {
           </a>
         </div>
 
-        <!-- Desno: jezik + mreže + akcije -->
+        <!-- Desno: mreže + akcije -->
         <div class="flex items-center gap-4">
-          <div class="flex items-center gap-1.5">
-            <BaseIcon name="globe" :size="14" class="text-white" />
-            <button type="button" class="font-bold text-white" aria-label="Srpski jezik">SR</button>
-            <span class="text-primary-tint-2">|</span>
-            <button type="button" class="hover:text-white" aria-label="English language">EN</button>
-          </div>
           <div class="hidden items-center gap-3 sm:flex">
             <a
               v-for="s in postavke.social || []"
@@ -109,18 +106,18 @@ function logout() {
                 class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
                 @click="logout"
               >
-                Odjava
+                {{ t('action.logout') }}
               </button>
             </template>
             <template v-else>
               <Link href="/prijava" class="font-semibold text-white hover:text-primary-tint">
-                Prijava
+                {{ t('action.login') }}
               </Link>
               <Link
                 href="/pridruzi-se"
                 class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
               >
-                Pridruži se
+                {{ t('action.join') }}
               </Link>
             </template>
           </div>
@@ -157,10 +154,12 @@ function logout() {
         </nav>
 
         <div class="ml-auto flex items-center gap-2">
+          <LocaleSwitcher />
+
           <button
             type="button"
             class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt"
-            aria-label="Pretraga"
+            :aria-label="t('a11y.search')"
             @click="searchOpen = !searchOpen"
           >
             <BaseIcon name="search" :size="20" />
@@ -170,7 +169,7 @@ function logout() {
           <button
             type="button"
             class="inline-flex size-10 items-center justify-center rounded-sm text-heading hover:bg-surface-alt lg:hidden"
-            aria-label="Otvori meni"
+            :aria-label="t('a11y.openMenu')"
             @click="drawerOpen = true"
           >
             <BaseIcon name="menu" :size="22" />
@@ -194,11 +193,11 @@ function logout() {
                 ref="searchInput"
                 v-model="searchTerm"
                 type="search"
-                placeholder="Pretraži ponudu, lokalitete, događaje…"
+                :placeholder="t('search.placeholder')"
                 class="h-11 w-full rounded-sm border border-border bg-surface pl-10 pr-4 outline-none focus:border-primary"
               />
             </div>
-            <BaseButton type="submit" variant="primary">Traži</BaseButton>
+            <BaseButton type="submit" variant="primary">{{ t('action.search') }}</BaseButton>
           </form>
         </AppContainer>
       </div>

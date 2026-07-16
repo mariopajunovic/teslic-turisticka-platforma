@@ -7,9 +7,20 @@ use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Settings\SiteSettings;
 use App\Settings\StraniceSettings;
+use App\Support\ActiveLocale;
+use App\Support\Cyrillic;
 
 class SiteData
 {
+    protected static function tr(mixed $value): mixed
+    {
+        if (! app(ActiveLocale::class)->isCyrillic()) {
+            return $value;
+        }
+
+        return is_array($value) ? Cyrillic::deep($value) : Cyrillic::convert($value);
+    }
+
     public static function shared(): array
     {
         $visible = fn ($q) => $q->where('visible', true);
@@ -32,20 +43,20 @@ class SiteData
                 'pravno' => self::flat($menus->get('footer_pravno')),
             ],
             'kontakt' => [
-                'adresa' => $settings->kontakt_adresa,
+                'adresa' => self::tr($settings->kontakt_adresa),
                 'telefon' => $settings->kontakt_telefon,
                 'email' => $settings->kontakt_email,
             ],
             'postavke' => [
-                'brandNaziv' => $settings->brand_naziv,
-                'brandLogoTekst' => $settings->brand_logo_tekst,
-                'footerOpis' => $settings->footer_opis,
-                'copyright' => $settings->copyright,
+                'brandNaziv' => self::tr($settings->brand_naziv),
+                'brandLogoTekst' => self::tr($settings->brand_logo_tekst),
+                'footerOpis' => self::tr($settings->footer_opis),
+                'copyright' => self::tr($settings->copyright),
                 'social' => $settings->social,
                 'partneri' => $settings->partneri,
                 'indeksiranje' => $settings->google_indeksiranje,
             ],
-            'texts' => $straniceSettings->toArray(),
+            'texts' => self::tr($straniceSettings->toArray()),
             'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon, 'color' => $c->color])->all(),
         ];
     }

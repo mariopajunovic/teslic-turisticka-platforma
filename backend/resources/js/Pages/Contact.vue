@@ -28,10 +28,10 @@ const t = useTexts()
 const { kontakt } = useSite()
 
 const kontaktInfo = computed(() => [
-  { icon: 'map-pin', label: 'Adresa', value: kontakt.value.adresa },
-  { icon: 'phone', label: 'Telefon', value: kontakt.value.telefon, href: `tel:${kontakt.value.telefon}` },
-  { icon: 'mail', label: 'E-mail', value: kontakt.value.email, href: `mailto:${kontakt.value.email}` },
-  { icon: 'clock', label: 'Radno vrijeme', value: 'Pon–Pet 08:00–16:00' },
+  { icon: 'map-pin', labelKey: 'contact.address', value: kontakt.value.adresa },
+  { icon: 'phone', labelKey: 'contact.phone', value: kontakt.value.telefon, href: `tel:${kontakt.value.telefon}` },
+  { icon: 'mail', labelKey: 'contact.email', value: kontakt.value.email, href: `mailto:${kontakt.value.email}` },
+  { icon: 'clock', labelKey: 'contact.hours', valueKey: 'contact.hoursValue' },
 ])
 
 function posalji() {
@@ -66,7 +66,7 @@ function posalji() {
 <template>
   <main class="pb-12 md:pb-16">
     <AppContainer class="pt-8">
-      <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: 'Kontakt' }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('contact.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -80,42 +80,42 @@ function posalji() {
       <div class="grid gap-8 lg:grid-cols-2">
         <!-- Forma -->
         <div>
-          <h2 class="font-heading text-xl font-semibold text-heading">Pošaljite poruku</h2>
+          <h2 class="font-heading text-xl font-semibold text-heading">{{ $t('contact.sendMessage') }}</h2>
           <form class="mt-5 space-y-4" @submit.prevent="posalji">
             <BaseAlert
               v-if="poslano"
               variant="uspjeh"
-              title="Poruka je poslana"
-              text="Hvala na poruci! Javit ćemo vam se u najkraćem mogućem roku."
+              :title="$t('contact.sentTitle')"
+              :text="$t('contact.sentText')"
             />
             <BaseAlert
               v-if="greska"
               variant="greska"
-              title="Provjerite obavezna polja"
-              text="Molimo popunite ime, e-mail i poruku te potvrdite saglasnost i captchu."
+              :title="$t('contact.errorTitle')"
+              :text="$t('contact.errorText')"
             />
 
-            <FormField v-model="ime" label="Ime i prezime" placeholder="npr. Marko Marković" required />
+            <FormField v-model="ime" :label="$t('contact.name')" :placeholder="$t('contact.namePlaceholder')" required />
             <FormField
               v-model="email"
-              label="E-mail"
+              :label="$t('contact.email')"
               type="email"
-              placeholder="vasa@adresa.com"
+              :placeholder="$t('contact.emailPlaceholder')"
               required
             />
-            <FormField v-model="tema" label="Tema / predmet" placeholder="O čemu se radi?" />
+            <FormField v-model="tema" :label="$t('contact.subject')" :placeholder="$t('contact.subjectPlaceholder')" />
             <FormTextarea
               v-model="poruka"
-              label="Poruka"
+              :label="$t('contact.message')"
               :maxlength="800"
-              placeholder="Vaša poruka…"
+              :placeholder="$t('contact.messagePlaceholder')"
               required
             />
             <FormCheckbox v-model="saglasnost" required>
-              Saglasan/na sam s obradom mojih podataka radi odgovora na upit.
+              {{ $t('contact.consent') }}
             </FormCheckbox>
             <FormCaptcha v-model="captcha" />
-            <BaseButton type="submit" variant="primary" icon="send">Pošalji</BaseButton>
+            <BaseButton type="submit" variant="primary" icon="send">{{ $t('contact.send') }}</BaseButton>
           </form>
         </div>
 
@@ -123,13 +123,13 @@ function posalji() {
         <div class="space-y-6">
           <div class="rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)]">
             <h2 class="font-heading text-xl font-semibold text-heading">
-              Turistička organizacija Teslić
+              {{ $t('contact.orgName') }}
             </h2>
             <ul class="mt-5 space-y-4">
-              <li v-for="info in kontaktInfo" :key="info.label" class="flex items-start gap-3">
+              <li v-for="info in kontaktInfo" :key="info.labelKey" class="flex items-start gap-3">
                 <span class="mt-0.5 shrink-0 text-primary"><BaseIcon :name="info.icon" :size="20" /></span>
                 <div>
-                  <p class="text-sm font-semibold text-heading">{{ info.label }}</p>
+                  <p class="text-sm font-semibold text-heading">{{ $t(info.labelKey) }}</p>
                   <a
                     v-if="info.href"
                     :href="info.href"
@@ -137,7 +137,7 @@ function posalji() {
                   >
                     {{ info.value }}
                   </a>
-                  <p v-else class="text-text-muted">{{ info.value }}</p>
+                  <p v-else class="text-text-muted">{{ info.valueKey ? $t(info.valueKey) : info.value }}</p>
                 </div>
               </li>
             </ul>

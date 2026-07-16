@@ -10,6 +10,8 @@ class EditTag extends EditRecord
 {
     protected static string $resource = TagResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

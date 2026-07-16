@@ -10,6 +10,8 @@ class EditBusiness extends EditRecord
 {
     protected static string $resource = BusinessResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

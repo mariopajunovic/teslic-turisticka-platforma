@@ -46,6 +46,6 @@ const prica = computed(() => props.data.item || null)
         </p>
       </div>
     </Link>
-    <EmptyState v-else title="Nema izdvojene priče" text="Trenutno nema priče za prikaz." />
+    <EmptyState v-else :title="$t('misc.noFeatured')" :text="$t('misc.noFeaturedText')" />
   </AppContainer>
 </template>

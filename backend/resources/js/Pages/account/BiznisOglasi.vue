@@ -16,10 +16,10 @@ defineProps({
     <div class="space-y-6">
       <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 class="font-heading text-[28px] font-bold text-heading">Oglasi</h1>
-          <p class="mt-1 text-[15px] text-text-muted">Vaši oglasi i njihov status.</p>
+          <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.ads') }}</h1>
+          <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.adsDesc') }}</p>
         </div>
-        <BaseButton to="/nalog/biznis/oglasi/novi" variant="primary" icon="plus">Novi oglas</BaseButton>
+        <BaseButton to="/nalog/biznis/oglasi/novi" variant="primary" icon="plus">{{ $t('acc.newAd') }}</BaseButton>
       </div>
 
       <div v-if="oglasi.length" class="space-y-3">
@@ -28,7 +28,7 @@ defineProps({
         </Link>
       </div>
 
-      <EmptyState v-else title="Još nema oglasa" text="Kreirajte prvi oglas i pošaljite ga na odobrenje." />
+      <EmptyState v-else :title="$t('acc.noAds')" :text="$t('acc.noAdsText')" />
     </div>
   </AccountLayout>
 </template>

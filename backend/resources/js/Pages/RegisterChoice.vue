@@ -1,28 +1,31 @@
 <script setup>
 // 1:1 prema 12_Prijava.pen → „Registracija – Preusmjeravanje" (izbor tipa naloga).
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import { useTexts } from '@/composables/useTexts'
 
 const t = useTexts()
+const { t: tr } = useI18n()
 
-const opcije = [
+const opcije = computed(() => [
   {
     icon: 'store',
-    naslov: 'Registruj biznis',
-    opis: 'Predstavite svoju ponudu, proizvode ili usluge posjetiocima Teslića.',
-    cta: 'Registruj biznis',
+    naslov: tr('auth.bizTitle'),
+    opis: tr('auth.bizDesc'),
+    cta: tr('auth.bizTitle'),
     to: '/pridruzi-se/biznis',
   },
   {
     icon: 'pen-tool',
-    naslov: 'Postani autor',
-    opis: 'Pišite priče i objavljujte sadržaj o turizmu i životu u Tesliću.',
-    cta: 'Postani autor',
+    naslov: tr('auth.authorTitle'),
+    opis: tr('auth.authorDesc'),
+    cta: tr('auth.authorTitle'),
     to: '/pridruzi-se/autor',
   },
-]
+])
 </script>
 
 <template>
@@ -50,7 +53,7 @@ const opcije = [
 
       <div class="flex items-center gap-2 rounded-md bg-info-tint px-4 py-3">
         <BaseIcon name="info" :size="18" class="text-info" />
-        <span class="text-sm text-text">Nakon prijave, nalog ide na pregled administratora.</span>
+        <span class="text-sm text-text">{{ $t('auth.reviewNote') }}</span>
       </div>
     </AppContainer>
   </section>

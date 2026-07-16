@@ -47,21 +47,21 @@ const swatchText = (cat) => (isLightColor(colorOf(cat)) ? 'text-heading' : 'text
 
 <template>
   <div class="space-y-4 rounded-md border border-border bg-surface p-4">
-    <SearchInput v-model="query" placeholder="Pretraži ponudu…" @submit="onSearch" />
+    <SearchInput v-model="query" :placeholder="$t('mapui.search')" @submit="onSearch" />
 
     <div v-if="naselja.length" class="space-y-1.5">
-      <h3 class="text-sm font-semibold text-heading">Naselje</h3>
+      <h3 class="text-sm font-semibold text-heading">{{ $t('mapui.settlement') }}</h3>
       <select
         v-model="naselje"
         class="w-full rounded-sm border border-border bg-surface px-2.5 py-2 text-sm text-text"
       >
-        <option value="">Sva naselja</option>
+        <option value="">{{ $t('mapui.allSettlements') }}</option>
         <option v-for="n in naselja" :key="n" :value="n">{{ n }}</option>
       </select>
     </div>
 
     <div class="flex items-center justify-between">
-      <h3 class="text-sm font-semibold text-heading">Kategorije</h3>
+      <h3 class="text-sm font-semibold text-heading">{{ $t('mapui.categories') }}</h3>
       <button
         v-if="model.length"
         type="button"

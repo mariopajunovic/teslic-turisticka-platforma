@@ -10,6 +10,8 @@ class EditPage extends EditRecord
 {
     protected static string $resource = PageResource::class;
 
+    use \App\Filament\Concerns\TranslatableEditRecord;
+
     protected function getHeaderActions(): array
     {
         return [

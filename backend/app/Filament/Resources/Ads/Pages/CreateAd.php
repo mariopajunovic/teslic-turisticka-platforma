@@ -9,6 +9,8 @@ class CreateAd extends CreateRecord
 {
     protected static string $resource = AdResource::class;
 
+    use \App\Filament\Concerns\TranslatableCreateRecord;
+
     protected function getFormActions(): array
     {
         return [];
