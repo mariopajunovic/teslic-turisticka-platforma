@@ -15,7 +15,13 @@ use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-$public = function () {
+$reservedSegments = array_merge(
+    ['admin', 'build', 'storage', 'administracija'],
+    (array) config('locales.prefixed'),
+);
+$slugPattern = '(?!(?:'.implode('|', $reservedSegments).')$)[a-z0-9\-]+';
+
+$public = function () use ($slugPattern) {
     Route::get('/', [PageController::class, 'home'])->name('home');
 
     Route::get('/domace-je-najbolje', [BusinessController::class, 'index'])->name('biznisi.index');
@@ -86,7 +92,7 @@ $public = function () {
     Route::get('/o-projektu', [PageController::class, 'about'])->name('o-projektu');
 
     Route::get('/{slug}', [PageController::class, 'show'])
-        ->where('slug', '(?!admin$|build$|storage$|en$|de$|administracija$)[a-z0-9\-]+')
+        ->where('slug', $slugPattern)
         ->name('pages.show');
 };
 

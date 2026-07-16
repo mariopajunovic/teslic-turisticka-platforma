@@ -22,36 +22,61 @@ class TranslationsController extends Controller
         $group = (string) $request->query('group', '');
         $onlyMissing = $request->boolean('missing');
 
-        $scope = Translation::query()->when($group !== '', fn ($q) => $q->where('group', $group));
+        $target = (string) $request->query('lang', '');
+        if (! in_array($target, $codes, true)) {
+            $target = collect($codes)->first(fn ($c) => $c !== 'sr') ?? 'sr';
+        }
 
-        $missingIds = $scope->clone()->get(['id', 'values'])
-            ->filter(fn (Translation $t) => $this->rowMissing($t->values, $codes))
-            ->pluck('id')
-            ->all();
+        $groupRows = Translation::query()
+            ->when($group !== '', fn ($q) => $q->where('group', $group))
+            ->get(['id', 'values']);
 
-        $page = $scope->clone()
+        $missingByLang = array_fill_keys($codes, 0);
+        $missingTargetIds = [];
+
+        foreach ($groupRows as $r) {
+            $vals = (array) $r->values;
+            foreach ($codes as $c) {
+                if (trim((string) ($vals[$c] ?? '')) === '') {
+                    $missingByLang[$c]++;
+                    if ($c === $target) {
+                        $missingTargetIds[] = $r->id;
+                    }
+                }
+            }
+        }
+
+        $page = Translation::query()
+            ->when($group !== '', fn ($q) => $q->where('group', $group))
             ->when($search !== '', fn ($q) => $q->where(fn ($w) => $w
                 ->where('key', 'like', "%{$search}%")
                 ->orWhere('values', 'like', "%{$search}%")))
-            ->when($onlyMissing, fn ($q) => $q->whereIn('id', $missingIds))
+            ->when($onlyMissing, fn ($q) => $q->whereIn('id', $missingTargetIds))
             ->orderBy('key')
             ->paginate(10)
             ->withQueryString();
 
-        $rows = collect($page->items())->map(fn (Translation $t) => [
-            'id' => $t->id,
-            'group' => $t->group,
-            'key' => $t->key,
-            'values' => $this->normalize($t->values, $codes),
-            'missing' => $this->rowMissing($t->values, $codes),
-        ])->all();
+        $rows = collect($page->items())->map(function (Translation $t) use ($target) {
+            $values = (array) $t->values;
+
+            return [
+                'id' => $t->id,
+                'group' => $t->group,
+                'key' => $t->key,
+                'source' => (string) ($values['sr'] ?? ''),
+                'value' => (string) ($values[$target] ?? ''),
+                'missing' => trim((string) ($values[$target] ?? '')) === '',
+            ];
+        })->all();
 
         return Inertia::render('Translations', [
             'columns' => $locales->map(fn (Locale $l) => ['code' => $l->code, 'name' => $l->name])->all(),
+            'target' => $target,
             'translations' => $rows,
             'groups' => Translation::query()->distinct()->orderBy('group')->pluck('group')->all(),
-            'filters' => ['search' => $search, 'group' => $group, 'missing' => $onlyMissing],
-            'missingCount' => count($missingIds),
+            'filters' => ['search' => $search, 'group' => $group, 'missing' => $onlyMissing, 'lang' => $target],
+            'missingByLang' => $missingByLang,
+            'missingCount' => $missingByLang[$target] ?? 0,
             'pagination' => [
                 'links' => $page->linkCollection()->toArray(),
                 'meta' => ['from' => $page->firstItem(), 'to' => $page->lastItem(), 'total' => $page->total()],
@@ -94,25 +119,5 @@ class TranslationsController extends Controller
         }
 
         return back(303);
-    }
-
-    protected function normalize($values, array $codes): array
-    {
-        $values = (array) $values;
-
-        return collect($codes)->mapWithKeys(fn ($c) => [$c => (string) ($values[$c] ?? '')])->all();
-    }
-
-    protected function rowMissing($values, array $codes): bool
-    {
-        $values = (array) $values;
-
-        foreach ($codes as $c) {
-            if (trim((string) ($values[$c] ?? '')) === '') {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

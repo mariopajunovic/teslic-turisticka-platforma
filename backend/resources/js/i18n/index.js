@@ -4,9 +4,8 @@ import { deepCyrillic } from './cyr'
 // Maps the shared locale prop (language + script) to a vue-i18n locale key.
 export function resolveUiLocale(locale) {
   if (!locale) return 'sr'
-  if (locale.language === 'en') return 'en'
-  if (locale.language === 'de') return 'de'
-  return locale.script === 'cir' ? 'sr-Cyrl' : 'sr'
+  if (locale.language === 'sr') return locale.script === 'cir' ? 'sr-Cyrl' : 'sr'
+  return locale.language
 }
 
 export const i18n = createI18n({

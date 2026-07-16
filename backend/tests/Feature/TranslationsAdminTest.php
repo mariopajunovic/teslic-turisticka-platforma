@@ -50,6 +50,50 @@ class TranslationsAdminTest extends TestCase
                 ->has('translations', 2));
     }
 
+    public function test_target_language_selector_shapes_rows_and_missing_counts(): void
+    {
+        $this->seedLocales();
+        $admin = $this->admin();
+        Translation::create(['group' => 'action', 'key' => 'action.login', 'values' => ['sr' => 'Prijava', 'en' => 'Login', 'de' => '']]);
+        Translation::create(['group' => 'action', 'key' => 'action.logout', 'values' => ['sr' => 'Odjava', 'en' => '', 'de' => '']]);
+
+        $this->actingAs($admin, 'admin')
+            ->get('/administracija/prevodi')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $p) => $p
+                ->component('Translations')
+                ->where('target', 'en')
+                ->where('missingByLang.en', 1)
+                ->where('missingByLang.de', 2)
+                ->where('missingByLang.sr', 0)
+                ->where('missingCount', 1)
+                ->where('translations.0.source', 'Prijava')
+                ->where('translations.0.value', 'Login'));
+
+        $this->actingAs($admin, 'admin')
+            ->get('/administracija/prevodi?lang=de')
+            ->assertOk()
+            ->assertInertia(fn (AssertableInertia $p) => $p
+                ->where('target', 'de')
+                ->where('missingCount', 2)
+                ->where('translations.0.value', ''));
+    }
+
+    public function test_update_saves_only_target_language(): void
+    {
+        $this->seedLocales();
+        $t = Translation::create(['group' => 'action', 'key' => 'action.login', 'values' => ['sr' => 'Prijava', 'en' => 'Login', 'de' => '']]);
+
+        $this->actingAs($this->admin(), 'admin')
+            ->put("/administracija/prevodi/{$t->id}", ['values' => ['de' => 'Anmelden']])
+            ->assertRedirect();
+
+        $fresh = Translation::find($t->id);
+        $this->assertSame('Anmelden', $fresh->values['de']);
+        $this->assertSame('Prijava', $fresh->values['sr']);
+        $this->assertSame('Login', $fresh->values['en']);
+    }
+
     public function test_missing_filter_narrows_rows(): void
     {
         $this->seedLocales();

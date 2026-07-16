@@ -10,13 +10,15 @@ const appName = import.meta.env.VITE_APP_NAME || 'TO Teslić';
 // Non-localized first path segments (Fortify auth, toggles, assets, prefixes).
 const NON_LOCALIZED = new Set([
     'login', 'logout', 'register', 'forgot-password', 'reset-password', 'user',
-    'storage', 'build', 'pismo', 'admin', 'sitemap.xml', 'robots.txt',
-    'odrzavanje', 'up', 'email', 'two-factor-challenge', 'livewire', 'en', 'de',
+    'storage', 'build', 'pismo', 'admin', 'administracija', 'sitemap.xml', 'robots.txt',
+    'odrzavanje', 'up', 'email', 'two-factor-challenge', 'livewire',
 ]);
+
+let languagePrefixes = new Set(['en', 'de']);
 
 function activeLanguagePrefix() {
     const seg = window.location.pathname.split('/')[1];
-    return seg === 'en' || seg === 'de' ? seg : '';
+    return languagePrefixes.has(seg) ? seg : '';
 }
 
 // Keep internal Inertia navigations inside the active language prefix,
@@ -29,7 +31,7 @@ router.on('before', (event) => {
     if (!prefix) return;
 
     const seg = url.pathname.split('/')[1];
-    if (NON_LOCALIZED.has(seg)) return;
+    if (NON_LOCALIZED.has(seg) || languagePrefixes.has(seg)) return;
 
     url.pathname = `/${prefix}${url.pathname === '/' ? '' : url.pathname}`;
 });
@@ -47,9 +49,14 @@ createInertiaApp({
         return page;
     },
     setup({ el, App, props, plugin }) {
+        const locale = props.initialPage?.props?.locale;
+        if (locale?.languages) {
+            languagePrefixes = new Set(locale.languages.map((l) => l.prefix).filter(Boolean));
+        }
+
         const shared = props.initialPage?.props?.i18n;
         if (shared) applyMessages(shared.language, shared.messages);
-        i18n.global.locale.value = resolveUiLocale(props.initialPage?.props?.locale);
+        i18n.global.locale.value = resolveUiLocale(locale);
 
         createApp({ render: () => h(App, props) })
             .use(plugin)
