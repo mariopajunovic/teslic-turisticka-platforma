@@ -86,7 +86,7 @@ $public = function () {
     Route::get('/o-projektu', [PageController::class, 'about'])->name('o-projektu');
 
     Route::get('/{slug}', [PageController::class, 'show'])
-        ->where('slug', '(?!admin$|build$|storage$|en$|de$)[a-z0-9\-]+')
+        ->where('slug', '(?!admin$|build$|storage$|en$|de$|administracija$)[a-z0-9\-]+')
         ->name('pages.show');
 };
 

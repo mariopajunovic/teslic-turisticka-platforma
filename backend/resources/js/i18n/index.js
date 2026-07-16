@@ -1,12 +1,5 @@
 import { createI18n } from 'vue-i18n'
-import { messages } from './messages'
 import { deepCyrillic } from './cyr'
-
-// Serbian Cyrillic UI is derived from the Latin messages by transliteration.
-const allMessages = {
-  ...messages,
-  'sr-Cyrl': deepCyrillic(messages.sr),
-}
 
 // Maps the shared locale prop (language + script) to a vue-i18n locale key.
 export function resolveUiLocale(locale) {
@@ -21,5 +14,15 @@ export const i18n = createI18n({
   globalInjection: true,
   locale: 'sr',
   fallbackLocale: 'sr',
-  messages: allMessages,
+  messages: {},
 })
+
+// Applies DB-delivered messages for the active language.
+// Serbian Cyrillic is derived from the Latin messages by transliteration.
+export function applyMessages(language, messages) {
+  if (!language || !messages) return
+  i18n.global.setLocaleMessage(language, messages)
+  if (language === 'sr') {
+    i18n.global.setLocaleMessage('sr-Cyrl', deepCyrillic(messages))
+  }
+}

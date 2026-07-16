@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@source '../js/administracija/**/*.vue';
+@source '../js/administracija/**/*.js';
+
+@import '@fontsource-variable/inter';
+
+@theme {
+  --color-sidebar: #1d2327;
+  --color-sidebar-alt: #2c3338;
+  --color-sidebar-text: #c3c4c7;
+  --color-sidebar-strong: #ffffff;
+  --color-sidebar-group: #8c8f94;
+
+  --color-canvas: #f0f0f1;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f7f7;
+  --color-line: #dcdcde;
+  --color-line-strong: #c3c4c7;
+
+  --color-ink: #1d2327;
+  --color-ink-2: #50575e;
+  --color-ink-3: #787c82;
+
+  --color-brand: #0e8275;
+  --color-brand-dark: #0a645a;
+  --color-brand-tint: #e1f4f1;
+
+  --color-warn: #b26a00;
+  --color-warn-bg: #fcf3e3;
+  --color-ok: #0a7d54;
+  --color-ok-bg: #e6f4ec;
+  --color-bad: #d63638;
+  --color-bad-bg: #fcebeb;
+  --color-info: #2271b1;
+  --color-info-bg: #e5f0f7;
+
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 8px;
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.06);
+  --shadow-pop: 0 10px 30px rgb(15 23 42 / 0.10);
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}

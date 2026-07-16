@@ -28,12 +28,18 @@ class AppServiceProvider extends ServiceProvider
 
         Event::listen(Login::class, function (Login $event) {
             $event->user->forceFill(['last_login_at' => now()])->saveQuietly();
-            activity('auth')->causedBy($event->user)->log('Prijava');
+            activity('auth')
+                ->causedBy($event->user)
+                ->withProperties(['ip' => request()->ip(), 'user_agent' => request()->userAgent()])
+                ->log('Prijava');
         });
 
         Event::listen(Logout::class, function (Logout $event) {
             if ($event->user) {
-                activity('auth')->causedBy($event->user)->log('Odjava');
+                activity('auth')
+                    ->causedBy($event->user)
+                    ->withProperties(['ip' => request()->ip(), 'user_agent' => request()->userAgent()])
+                    ->log('Odjava');
             }
         });
     }

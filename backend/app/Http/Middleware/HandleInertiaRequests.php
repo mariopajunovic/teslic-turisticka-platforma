@@ -67,6 +67,10 @@ class HandleInertiaRequests extends Middleware
                 'languages' => $locale->languageOptions(),
                 'alternates' => $alternates,
             ],
+            'i18n' => fn () => [
+                'language' => $locale->language(),
+                'messages' => app(\App\Support\Translations::class)->messages($locale->language()),
+            ],
             'auth' => [
                 'user' => $user ? [
                     'name' => $user->name,

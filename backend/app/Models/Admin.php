@@ -28,6 +28,7 @@ class Admin extends Authenticatable implements FilamentUser, HasAppAuthenticatio
         'email',
         'password',
         'is_super',
+        'aktivan',
     ];
 
     protected $hidden = [
@@ -43,7 +44,13 @@ class Admin extends Authenticatable implements FilamentUser, HasAppAuthenticatio
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'is_super' => 'boolean',
+            'aktivan' => 'boolean',
         ];
+    }
+
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new \App\Notifications\AdminLozinkaLink($token, false));
     }
 
     public function getAppAuthenticationHolderName(): string

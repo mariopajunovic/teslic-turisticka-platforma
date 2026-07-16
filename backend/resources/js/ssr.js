@@ -4,6 +4,7 @@ import { renderToString } from '@vue/server-renderer';
 import { createSSRApp, h } from 'vue';
 import { createPinia } from 'pinia';
 import PublicLayout from '@/Layouts/PublicLayout.vue';
+import { i18n, resolveUiLocale, applyMessages } from '@/i18n';
 
 const appName = process.env.VITE_APP_NAME || 'TO Teslić';
 
@@ -11,7 +12,7 @@ createServer((page) =>
     createInertiaApp({
         page,
         render: renderToString,
-        title: (title) => (title ? `${title} — ${appName}` : appName),
+        title: (title) => (title ? `${title} - ${appName}` : appName),
         resolve: (name) => {
             const pages = import.meta.glob('./Pages/**/*.vue', { eager: true });
             const resolved = pages[`./Pages/${name}.vue`];
@@ -21,7 +22,11 @@ createServer((page) =>
             return resolved;
         },
         setup({ App, props, plugin }) {
-            return createSSRApp({ render: () => h(App, props) }).use(plugin).use(createPinia());
+            const shared = props.initialPage?.props?.i18n;
+            if (shared) applyMessages(shared.language, shared.messages);
+            i18n.global.locale.value = resolveUiLocale(props.initialPage?.props?.locale);
+
+            return createSSRApp({ render: () => h(App, props) }).use(plugin).use(createPinia()).use(i18n);
         },
     }),
 );
