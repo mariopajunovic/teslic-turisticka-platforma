@@ -8,6 +8,8 @@ import {
     ShieldCheck,
     KeyRound,
     ScrollText,
+    Languages,
+    Globe,
     PanelLeft,
     X,
 } from 'lucide-vue-next';
@@ -33,6 +35,13 @@ const groups = [
             { icon: ShieldCheck, label: 'Administratori', href: '/administracija/administratori' },
             { icon: KeyRound, label: 'Uloge', href: '/administracija/uloge' },
             { icon: ScrollText, label: 'Logovi aktivnosti', href: '/administracija/logovi' },
+        ],
+    },
+    {
+        label: 'Postavke',
+        items: [
+            { icon: Languages, label: 'Prevodi', href: '/administracija/prevodi' },
+            { icon: Globe, label: 'Jezici', href: '/administracija/jezici' },
         ],
     },
 ];

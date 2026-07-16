@@ -11,8 +11,20 @@ return [
         'ensure_pages_exist' => true,
         'page_paths' => [
             resource_path('js/Pages'),
+            resource_path('js/administracija/Pages'),
         ],
         'page_extensions' => [
+            'vue',
+        ],
+    ],
+
+    'pages' => [
+        'ensure_pages_exist' => true,
+        'paths' => [
+            resource_path('js/Pages'),
+            resource_path('js/administracija/Pages'),
+        ],
+        'extensions' => [
             'vue',
         ],
     ],

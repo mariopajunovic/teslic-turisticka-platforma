@@ -21,7 +21,7 @@ class Translations
 
     protected function build(string $lang): array
     {
-        $fallback = (string) config('locales.default', 'sr');
+        $fallback = 'sr';
         $out = [];
 
         Translation::query()

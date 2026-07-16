@@ -6,8 +6,10 @@ use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
 use App\Http\Controllers\Administracija\LogoviController;
 use App\Http\Controllers\Administracija\LozinkaController;
+use App\Http\Controllers\Administracija\LanguagesController;
 use App\Http\Controllers\Administracija\Obavezni2faController;
 use App\Http\Controllers\Administracija\ProfilController;
+use App\Http\Controllers\Administracija\TranslationsController;
 use App\Http\Controllers\Administracija\UlogeController;
 use App\Http\Middleware\EnsureTwoFactor;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +59,16 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::put('/uloge/dozvole', [UlogeController::class, 'update'])->name('uloge.dozvole');
         Route::get('/uloge/{uloga}/korisnici', [UlogeController::class, 'korisnici'])->name('uloge.korisnici');
         Route::delete('/uloge/{uloga}', [UlogeController::class, 'destroy'])->name('uloge.destroy');
+    });
+
+    Route::middleware('admin.access:sistemske postavke')->group(function () {
+        Route::get('/prevodi', [TranslationsController::class, 'index'])->name('translations');
+        Route::put('/prevodi/{translation}', [TranslationsController::class, 'update'])->name('translations.update');
+
+        Route::get('/jezici', [LanguagesController::class, 'index'])->name('languages');
+        Route::post('/jezici', [LanguagesController::class, 'store'])->name('languages.store');
+        Route::put('/jezici/{locale}', [LanguagesController::class, 'update'])->name('languages.update');
+        Route::delete('/jezici/{locale}', [LanguagesController::class, 'destroy'])->name('languages.destroy');
     });
 
     Route::get('/logovi', [LogoviController::class, 'index'])
