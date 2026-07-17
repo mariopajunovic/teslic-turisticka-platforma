@@ -8,6 +8,7 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\MediaLibrary\HasMedia;
@@ -19,9 +20,14 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, HasLocalizedContent, HasRoles, InteractsWithMedia, Notifiable;
+    use HasFactory, HasLocalizedContent, HasRoles, InteractsWithMedia, Notifiable, SoftDeletes;
 
     public array $translatable = ['bio'];
+
+    public function sendPasswordResetNotification($token): void
+    {
+        $this->notify(new \App\Notifications\KorisnikLozinkaLink($token));
+    }
 
     public function registerMediaCollections(): void
     {

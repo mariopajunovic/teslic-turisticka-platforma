@@ -1,8 +1,9 @@
 <script setup>
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ref, computed } from 'vue';
-import { Check, Ban, LockOpen, Pencil, Eye, Mail, Trash2, ListFilter, Users } from 'lucide-vue-next';
+import { Check, Ban, LockOpen, Pencil, Eye, Mail, Trash2, ListFilter, Users, Plus, BadgeCheck, ShieldAlert, RotateCcw } from 'lucide-vue-next';
 import Card from '../components/Card.vue';
+import Btn from '../components/Btn.vue';
 import Badge from '../components/Badge.vue';
 import Avatar from '../components/Avatar.vue';
 import Tabs from '../components/Tabs.vue';
@@ -38,6 +39,7 @@ const tabs = [
     { key: 'aktivan', label: 'Aktivni' },
     { key: 'na_odobrenju', label: 'Na odobrenju' },
     { key: 'blokiran', label: 'Blokirani' },
+    { key: 'obrisani', label: 'Obrisani' },
 ];
 
 const aktivniTab = ref(props.filteri?.status ?? '');
@@ -48,6 +50,7 @@ const cardNaslov = computed(() => {
         aktivan: 'Aktivni korisnici',
         na_odobrenju: 'Na odobrenju',
         blokiran: 'Blokirani',
+        obrisani: 'Obrisani korisnici',
     }[aktivniTab.value] ?? 'Svi korisnici';
 });
 
@@ -86,6 +89,11 @@ const promijeniTab = (key) => {
 
 const filtrirajUlogu = (uloga) => primijeni({ uloga: uloga || undefined });
 
+const noviKorisnik = () => {
+    editKorisnik.value = null;
+    showForm.value = true;
+};
+
 const uredi = (k) => {
     editKorisnik.value = k;
     showForm.value = true;
@@ -107,8 +115,8 @@ const statusAkcija = async (k) => {
 
 const resetLozinke = async (k) => {
     const ok = await confirm({
-        title: 'Poslati reset lozinke?',
-        message: `Link za postavljanje nove lozinke biće poslan na ${k.email}.`,
+        title: 'Poslati link za lozinku?',
+        message: `Link za postavljanje lozinke biće poslan na ${k.email}.`,
         confirmLabel: 'Pošalji link',
     });
     if (!ok) return;
@@ -119,11 +127,32 @@ const obrisi = async (k) => {
     const ok = await confirm({
         danger: true,
         title: `Obrisati ${k.ime}?`,
-        message: 'Nalog se trajno briše. Ova radnja se ne može poništiti.',
+        message: 'Nalog se premješta u „Obrisani" i može se vratiti. Neće se moći prijaviti.',
         confirmLabel: 'Obriši nalog',
     });
     if (!ok) return;
     router.delete(`/administracija/korisnici/${k.id}`, { preserveScroll: true });
+};
+
+const vrati = async (k) => {
+    const ok = await confirm({
+        title: `Vratiti ${k.ime}?`,
+        message: 'Nalog će ponovo biti aktivan i vidljiv u listi.',
+        confirmLabel: 'Vrati nalog',
+    });
+    if (!ok) return;
+    router.post(`/administracija/korisnici/${k.id}/vrati`, {}, { preserveScroll: true });
+};
+
+const trajnoObrisi = async (k) => {
+    const ok = await confirm({
+        danger: true,
+        title: `Trajno obrisati ${k.ime}?`,
+        message: 'Nalog se briše ZAUVIJEK, bez mogućnosti povratka.',
+        confirmLabel: 'Obriši trajno',
+    });
+    if (!ok) return;
+    router.delete(`/administracija/korisnici/${k.id}/trajno`, { preserveScroll: true });
 };
 
 const akcijaMeta = (a) => {
@@ -139,9 +168,12 @@ const akcijaMeta = (a) => {
     <Head title="Korisnici" />
 
     <div class="space-y-[18px]">
-        <header>
-            <h1 class="text-[22px] font-bold text-ink">Korisnici</h1>
-            <p class="mt-1 text-sm text-ink-2">Biznis i autor nalozi - odobravanje registracija, uloge i status pristupa.</p>
+        <header class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+                <h1 class="text-[22px] font-bold text-ink">Korisnici</h1>
+                <p class="mt-1 text-sm text-ink-2">Biznis i autor nalozi - odobravanje registracija, uloge i status pristupa.</p>
+            </div>
+            <Btn variant="primary" :icon="Plus" @click="noviKorisnik">Novi korisnik</Btn>
         </header>
 
         <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -165,13 +197,25 @@ const akcijaMeta = (a) => {
             <DataTable v-if="korisnici.data.length" :columns="columns">
                 <TableRow v-for="k in korisnici.data" :key="k.id">
                     <TableCell label="Korisnik">
-                        <Link :href="`/administracija/korisnici/${k.id}`" class="flex items-center gap-3 group">
-                            <Avatar :initials="k.initials" :src="k.avatar" size="sm" />
+                        <component
+                            :is="k.obrisan ? 'div' : Link"
+                            :href="k.obrisan ? undefined : `/administracija/korisnici/${k.id}`"
+                            class="flex items-center gap-3 group"
+                        >
+                            <Avatar :initials="k.initials" :src="k.avatar" size="sm" :class="k.obrisan ? 'opacity-60' : ''" />
                             <span class="min-w-0 text-left">
                                 <span class="block truncate text-[13px] font-semibold text-ink group-hover:text-brand">{{ k.ime }}</span>
-                                <span class="block truncate text-xs text-ink-3">{{ k.email }}</span>
+                                <span class="flex items-center gap-1 text-xs text-ink-3">
+                                    <span class="truncate">{{ k.email }}</span>
+                                    <span v-if="k.emailVerifikovan" title="Email verifikovan" class="shrink-0 text-ok">
+                                        <BadgeCheck :size="13" />
+                                    </span>
+                                    <span v-else title="Email nije verifikovan" class="shrink-0 text-warn">
+                                        <ShieldAlert :size="13" />
+                                    </span>
+                                </span>
                             </span>
-                        </Link>
+                        </component>
                     </TableCell>
                     <TableCell label="Uloga">
                         <Badge :label="k.uloga" :color="k.ulogaBoja" :dot="false" />
@@ -180,10 +224,14 @@ const akcijaMeta = (a) => {
                         <Badge :label="k.statusLabel" :color="k.statusBoja" />
                     </TableCell>
                     <TableCell label="Zadnja prijava">
-                        <span class="text-[13px] text-ink-3">{{ k.zadnjaPrijava || '-' }}</span>
+                        <span class="text-[13px] text-ink-3">{{ k.obrisan ? `Obrisan ${k.obrisanKad}` : (k.zadnjaPrijava || '-') }}</span>
                     </TableCell>
                     <TableCell label="Akcije" align="right">
-                        <span class="flex items-center justify-end gap-1.5">
+                        <span v-if="k.obrisan" class="flex items-center justify-end gap-1.5">
+                            <IconBtn :icon="RotateCcw" color="brand" tooltip="Vrati nalog" size="sm" @click="vrati(k)" />
+                            <IconBtn :icon="Trash2" color="bad" tooltip="Obriši trajno" size="sm" @click="trajnoObrisi(k)" />
+                        </span>
+                        <span v-else class="flex items-center justify-end gap-1.5">
                             <IconBtn :icon="Pencil" tooltip="Uredi" size="sm" @click="uredi(k)" />
                             <IconBtn
                                 v-if="akcijaMeta(k.akcija)"
@@ -206,7 +254,7 @@ const akcijaMeta = (a) => {
                                         class="flex w-full items-center gap-2.5 px-3.5 py-2 text-left text-[13px] text-ink-2 hover:bg-surface-alt hover:text-ink"
                                         @click="close(); resetLozinke(k)"
                                     >
-                                        <Mail :size="16" /> Pošalji reset lozinke
+                                        <Mail :size="16" /> Pošalji link za lozinku
                                     </button>
                                     <div class="my-1.5 border-t border-line"></div>
                                     <button

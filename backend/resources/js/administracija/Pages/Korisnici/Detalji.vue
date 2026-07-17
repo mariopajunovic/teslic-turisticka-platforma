@@ -9,6 +9,7 @@ import Btn from '../../components/Btn.vue';
 import RowMenu from '../../components/RowMenu.vue';
 import UserForm from '../../components/UserForm.vue';
 import MiniPager from '../../components/MiniPager.vue';
+import ImageUpload from '../../components/ImageUpload.vue';
 import { useConfirm } from '../../composables/useConfirm';
 
 const props = defineProps({
@@ -60,8 +61,8 @@ const logStyle = (boja) => {
 
 const resetLozinke = async () => {
     const ok = await confirm({
-        title: 'Poslati reset lozinke?',
-        message: `Link za postavljanje nove lozinke biće poslan na ${props.korisnik.email}.`,
+        title: 'Poslati link za lozinku?',
+        message: `Link za postavljanje lozinke biće poslan na ${props.korisnik.email}.`,
         confirmLabel: 'Pošalji link',
     });
     if (!ok) return;
@@ -106,7 +107,7 @@ const obrisi = async () => {
                                 class="flex w-full items-center gap-2.5 px-3.5 py-2 text-left text-[13px] text-ink-2 hover:bg-surface-alt hover:text-ink"
                                 @click="close(); resetLozinke()"
                             >
-                                <Mail :size="16" /> Pošalji reset lozinke
+                                <Mail :size="16" /> Pošalji link za lozinku
                             </button>
                             <div class="my-1.5 border-t border-line"></div>
                             <button
@@ -150,8 +151,19 @@ const obrisi = async () => {
 
         <div class="flex flex-col gap-[18px] lg:flex-row lg:items-start">
             <Card title="Podaci naloga" class="w-full lg:w-[340px] lg:shrink-0">
+                <ImageUpload
+                    :src="korisnik.avatar"
+                    :upload-url="`/administracija/korisnici/${korisnik.id}/avatar`"
+                    :delete-url="`/administracija/korisnici/${korisnik.id}/avatar`"
+                    label="Avatar"
+                    hint="Prilagodite isječak i zoom na kvadrat."
+                    :aspect="1"
+                    shape="circle"
+                    class="mb-3 border-b border-line pb-4"
+                />
                 <dl class="divide-y divide-line">
                     <div v-for="row in [
+                        { l: 'Email', v: korisnik.email },
                         { l: 'Telefon', v: korisnik.telefon },
                         { l: 'Bio', v: korisnik.bio },
                         { l: 'Registrovan', v: korisnik.registrovan },
@@ -159,7 +171,7 @@ const obrisi = async () => {
                         { l: 'ID naloga', v: `#${korisnik.id}` },
                     ]" :key="row.l" class="flex items-start justify-between gap-4 py-2.5 first:pt-0 last:pb-0">
                         <dt class="text-[13px] text-ink-2">{{ row.l }}</dt>
-                        <dd class="text-right text-[13px] font-semibold text-ink">{{ row.v || '-' }}</dd>
+                        <dd class="min-w-0 break-words text-right text-[13px] font-semibold text-ink">{{ row.v || '-' }}</dd>
                     </div>
                 </dl>
             </Card>

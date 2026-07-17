@@ -10,11 +10,13 @@ use App\Models\Business;
 use App\Models\News;
 use App\Models\Story;
 use App\Models\User;
+use App\Notifications\KorisnikLozinkaLink;
 use App\Support\ActivityPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -32,9 +34,12 @@ class KorisniciController extends Controller
         $uloga = $request->query('uloga');
         $q = $request->query('q');
 
+        $obrisani = $status === 'obrisani';
+
         $korisnici = User::query()
             ->with('media')
-            ->when($status, fn ($query) => $query->where('status', $status))
+            ->when($obrisani, fn ($query) => $query->onlyTrashed())
+            ->when(! $obrisani && $status, fn ($query) => $query->where('status', $status))
             ->when($uloga, fn ($query) => $query->where('role', $uloga))
             ->when($q, function ($query) use ($q) {
                 $query->where(function ($sub) use ($q) {
@@ -55,6 +60,38 @@ class KorisniciController extends Controller
                 'q' => $q,
             ],
         ]);
+    }
+
+    public function store(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'ime' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+            'uloga' => ['required', Rule::enum(UserRole::class)],
+            'status' => ['required', Rule::in(self::STATUSI)],
+            'telefon' => ['nullable', 'string', 'max:50'],
+            'bio' => ['nullable', 'array'],
+            'bio.*' => ['nullable', 'string'],
+            'posalji_email' => ['nullable', 'boolean'],
+        ]);
+
+        $korisnik = new User();
+        $korisnik->name = $data['ime'];
+        $korisnik->email = $data['email'];
+        $korisnik->password = Hash::make(Str::random(40));
+        $korisnik->role = $data['uloga'];
+        $korisnik->status = $data['status'];
+        $korisnik->telefon = $data['telefon'] ?? null;
+        $korisnik->setTranslations('bio', array_filter($data['bio'] ?? [], fn ($v) => trim((string) $v) !== ''));
+        $korisnik->save();
+
+        if ($request->boolean('posalji_email', true)) {
+            $this->posaljiLozinkuLink($korisnik);
+
+            return back()->with('status', 'Korisnik je kreiran. Poslan je email s linkom za postavljanje lozinke.');
+        }
+
+        return back()->with('status', 'Korisnik je kreiran. Email za postavljanje lozinke možete poslati kasnije iz menija.');
     }
 
     public function show(Request $request, User $korisnik): Response
@@ -92,6 +129,10 @@ class KorisniciController extends Controller
             'bio.*' => ['nullable', 'string'],
         ]);
 
+        if ($korisnik->email !== $data['email']) {
+            $korisnik->email_verified_at = null;
+        }
+
         $korisnik->name = $data['ime'];
         $korisnik->email = $data['email'];
         $korisnik->role = $data['uloga'];
@@ -105,9 +146,21 @@ class KorisniciController extends Controller
 
     public function resetLozinke(User $korisnik): RedirectResponse
     {
-        Password::broker('users')->sendResetLink(['email' => $korisnik->email]);
+        $noviNalog = $this->posaljiLozinkuLink($korisnik);
 
-        return back()->with('status', 'Link za reset lozinke je poslan na '.$korisnik->email.'.');
+        return back()->with('status', $noviNalog
+            ? 'Poslan je email s linkom za postavljanje lozinke na '.$korisnik->email.'.'
+            : 'Link za reset lozinke je poslan na '.$korisnik->email.'.');
+    }
+
+    protected function posaljiLozinkuLink(User $korisnik): bool
+    {
+        $noviNalog = $korisnik->last_login_at === null;
+
+        $token = Password::broker('users')->getRepository()->create($korisnik);
+        $korisnik->notify(new KorisnikLozinkaLink($token, noviNalog: $noviNalog));
+
+        return $noviNalog;
     }
 
     public function destroy(User $korisnik): RedirectResponse
@@ -116,7 +169,40 @@ class KorisniciController extends Controller
 
         $korisnik->delete();
 
-        return redirect('/administracija/korisnici')->with('status', 'Korisnik „'.$ime.'" je obrisan.');
+        return redirect('/administracija/korisnici')->with('status', 'Korisnik „'.$ime.'" je obrisan. Možete ga vratiti iz kartice „Obrisani".');
+    }
+
+    public function avatar(Request $request, User $korisnik): RedirectResponse
+    {
+        $request->validate(['image' => ['required', 'image', 'max:5120']]);
+
+        $korisnik->clearMediaCollection('avatar');
+        $korisnik->addMediaFromRequest('image')->toMediaCollection('avatar');
+
+        return back()->with('status', 'Avatar je sačuvan.');
+    }
+
+    public function obrisiAvatar(User $korisnik): RedirectResponse
+    {
+        $korisnik->clearMediaCollection('avatar');
+
+        return back()->with('status', 'Avatar je uklonjen.');
+    }
+
+    public function vrati(User $korisnik): RedirectResponse
+    {
+        $korisnik->restore();
+
+        return back()->with('status', 'Korisnik „'.$korisnik->name.'" je vraćen.');
+    }
+
+    public function trajnoObrisi(User $korisnik): RedirectResponse
+    {
+        $ime = $korisnik->name;
+
+        $korisnik->forceDelete();
+
+        return back()->with('status', 'Korisnik „'.$ime.'" je trajno obrisan.');
     }
 
     public function odobri(User $korisnik): RedirectResponse
@@ -270,9 +356,12 @@ class KorisniciController extends Controller
             'status' => $user->status,
             'statusLabel' => $this->statusLabel($user->status),
             'statusBoja' => $this->statusBoja($user->status),
+            'emailVerifikovan' => (bool) $user->email_verified_at,
             'telefon' => $user->telefon,
             'bioTranslations' => $user->getTranslations('bio'),
             'zadnjaPrijava' => $user->last_login_at ? Carbon::parse($user->last_login_at)->diffForHumans() : 'Nikad',
+            'obrisan' => $user->trashed(),
+            'obrisanKad' => $user->deleted_at?->format('d.m.Y.'),
             'akcija' => match ($user->status) {
                 'na_odobrenju' => 'odobri',
                 'blokiran' => 'odblokiraj',

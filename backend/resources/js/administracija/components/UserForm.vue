@@ -5,12 +5,15 @@ import { X } from 'lucide-vue-next';
 import FormField from './FormField.vue';
 import SelectField from './SelectField.vue';
 import TranslatableField from './TranslatableField.vue';
+import ToggleField from './ToggleField.vue';
 
 const props = defineProps({
     korisnik: { type: Object, default: null },
 });
 
 const emit = defineEmits(['close']);
+
+const jeEdit = computed(() => !!props.korisnik);
 
 const uloge = [
     { value: 'autor', label: 'Autor' },
@@ -27,9 +30,10 @@ const form = useForm({
     ime: props.korisnik?.ime ?? '',
     email: props.korisnik?.email ?? '',
     uloga: props.korisnik?.ulogaKljuc ?? 'autor',
-    status: props.korisnik?.status ?? 'na_odobrenju',
+    status: props.korisnik?.status ?? 'aktivan',
     telefon: props.korisnik?.telefon ?? '',
     bio: props.korisnik?.bioTranslations ?? {},
+    posalji_email: true,
 });
 
 const bioErrors = computed(() => {
@@ -41,17 +45,19 @@ const bioErrors = computed(() => {
 });
 
 const submit = () => {
-    form.put(`/administracija/korisnici/${props.korisnik.id}`, {
-        preserveScroll: true,
-        onSuccess: () => emit('close'),
-    });
+    const opts = { preserveScroll: true, onSuccess: () => emit('close') };
+    if (jeEdit.value) {
+        form.put(`/administracija/korisnici/${props.korisnik.id}`, opts);
+    } else {
+        form.post('/administracija/korisnici', opts);
+    }
 };
 </script>
 
 <template>
     <div class="overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-pop)]">
         <div class="flex items-center justify-between border-b border-line px-[18px] py-[15px]">
-            <h3 class="text-[15px] font-bold text-ink">Uredi korisnika</h3>
+            <h3 class="text-[15px] font-bold text-ink">{{ jeEdit ? 'Uredi korisnika' : 'Novi korisnik' }}</h3>
             <button type="button" class="text-ink-3 hover:text-ink" aria-label="Zatvori" @click="emit('close')">
                 <X :size="18" />
             </button>
@@ -104,6 +110,14 @@ const submit = () => {
                     hint="Prevod po jeziku - prazno pada na srpski."
                     :errors="bioErrors"
                 />
+
+                <div v-if="!jeEdit" class="rounded-md border border-line px-3.5 py-3">
+                    <ToggleField
+                        v-model="form.posalji_email"
+                        label="Pošalji email za postavljanje lozinke"
+                        hint="Ako isključite, korisnik se kreira bez poziva. Link možete poslati kasnije iz menija („Pošalji link za lozinku“)."
+                    />
+                </div>
             </div>
 
             <div class="flex items-center justify-end gap-2.5 border-t border-line bg-surface-alt px-5 py-4">
@@ -119,7 +133,7 @@ const submit = () => {
                     :disabled="form.processing"
                     class="rounded-md bg-brand px-4 py-2 text-[13px] font-semibold text-white hover:bg-brand-dark disabled:opacity-50"
                 >
-                    Sačuvaj izmjene
+                    {{ jeEdit ? 'Sačuvaj izmjene' : 'Kreiraj korisnika' }}
                 </button>
             </div>
         </form>

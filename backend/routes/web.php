@@ -120,6 +120,14 @@ Route::get('/admin/jezik/{locale}', function (string $locale) {
     return redirect()->back();
 })->middleware('auth:admin')->name('admin.content-locale');
 
+Route::get('/reset-lozinke/{token}', function (string $token) {
+    return Inertia::render('ResetPassword', [
+        'token' => $token,
+        'email' => (string) request('email'),
+        'seo' => \App\Support\Seo::make('Nova lozinka', 'Postavite novu lozinku za svoj nalog.', url()->current()),
+    ]);
+})->middleware('guest')->name('password.reset');
+
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
 Route::get('/robots.txt', [\App\Http\Controllers\SitemapController::class, 'robots']);
 
