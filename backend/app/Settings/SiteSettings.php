@@ -6,13 +6,19 @@ use Spatie\LaravelSettings\Settings;
 
 class SiteSettings extends Settings
 {
-    public string $brand_naziv;
+    public array $brand_naziv;
 
-    public string $brand_logo_tekst;
+    public array $brand_logo_tekst;
 
-    public string $footer_opis;
+    public string $brand_logo;
 
-    public string $copyright;
+    public int $logo_visina;
+
+    public array $seo_opis;
+
+    public array $footer_opis;
+
+    public array $copyright;
 
     public string $kontakt_adresa;
 
@@ -23,6 +29,8 @@ class SiteSettings extends Settings
     public array $social;
 
     public array $partneri;
+
+    public array $partneri_tekst;
 
     public bool $google_indeksiranje;
 

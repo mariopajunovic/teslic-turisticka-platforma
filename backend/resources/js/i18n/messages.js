@@ -22,7 +22,7 @@ export const messages = {
       map: 'Mapa',
       video: 'Video',
     },
-    footer: { explore: 'Istraži', contact: 'Kontakt', partners: 'Partneri projekta' },
+    footer: { quickLinks: 'Brzi linkovi', explore: 'Istraži', contact: 'Kontakt', partners: 'Partneri projekta' },
     common: {
       home: 'Početna',
       loadMore: 'Učitaj još',
@@ -480,7 +480,7 @@ export const messages = {
       map: 'Map',
       video: 'Video',
     },
-    footer: { explore: 'Explore', contact: 'Contact', partners: 'Project partners' },
+    footer: { quickLinks: 'Quick links', explore: 'Explore', contact: 'Contact', partners: 'Project partners' },
     common: {
       home: 'Home',
       loadMore: 'Load more',
@@ -938,7 +938,7 @@ export const messages = {
       map: 'Karte',
       video: 'Video',
     },
-    footer: { explore: 'Entdecken', contact: 'Kontakt', partners: 'Projektpartner' },
+    footer: { quickLinks: 'Schnelllinks', explore: 'Entdecken', contact: 'Kontakt', partners: 'Projektpartner' },
     common: {
       home: 'Startseite',
       loadMore: 'Mehr laden',

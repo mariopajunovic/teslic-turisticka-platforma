@@ -37,7 +37,7 @@ router.on('before', (event) => {
 });
 
 createInertiaApp({
-    title: (title) => (title ? `${title} - ${appName}` : appName),
+    title: (title) => title || appName,
     resolve: async (name) => {
         const page = await resolvePageComponent(
             `./Pages/${name}.vue`,

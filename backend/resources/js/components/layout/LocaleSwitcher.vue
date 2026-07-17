@@ -3,6 +3,10 @@ import { ref, computed } from 'vue'
 import { usePage } from '@inertiajs/vue3'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
+defineProps({
+  dark: { type: Boolean, default: false },
+})
+
 const page = usePage()
 const open = ref(false)
 
@@ -18,7 +22,8 @@ const script = computed(() => locale.value.script ?? 'lat')
   <div v-if="languages.length" class="relative">
     <button
       type="button"
-      class="inline-flex h-10 items-center gap-1 rounded-sm px-2.5 text-[13px] font-bold text-heading hover:bg-surface-alt"
+      class="inline-flex h-10 items-center gap-1 rounded-sm px-2.5 text-[13px] font-bold"
+      :class="dark ? 'text-primary-tint hover:text-white' : 'text-heading hover:bg-surface-alt'"
       :aria-expanded="open"
       :aria-label="$t('a11y.language')"
       @click="open = !open"

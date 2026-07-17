@@ -21,6 +21,22 @@ class SiteData
         return is_array($value) ? Cyrillic::deep($value) : Cyrillic::convert($value);
     }
 
+    protected static function trs(mixed $value): mixed
+    {
+        if (is_array($value)) {
+            $lang = app(ActiveLocale::class)->language();
+            $resolved = $value[$lang] ?? '';
+
+            if ($resolved === '' && $lang !== 'sr') {
+                $resolved = $value['sr'] ?? '';
+            }
+
+            $value = $resolved;
+        }
+
+        return self::tr($value);
+    }
+
     public static function shared(): array
     {
         $visible = fn ($q) => $q->where('visible', true);
@@ -48,12 +64,20 @@ class SiteData
                 'email' => $settings->kontakt_email,
             ],
             'postavke' => [
-                'brandNaziv' => self::tr($settings->brand_naziv),
-                'brandLogoTekst' => self::tr($settings->brand_logo_tekst),
-                'footerOpis' => self::tr($settings->footer_opis),
-                'copyright' => self::tr($settings->copyright),
+                'brandNaziv' => self::trs($settings->brand_naziv),
+                'brandLogoTekst' => self::trs($settings->brand_logo_tekst),
+                'brandLogo' => $settings->brand_logo ? \Illuminate\Support\Facades\Storage::disk('public')->url($settings->brand_logo) : null,
+                'logoVisina' => $settings->logo_visina,
+                'seoOpis' => self::trs($settings->seo_opis),
+                'footerOpis' => self::trs($settings->footer_opis),
+                'copyright' => self::trs($settings->copyright),
                 'social' => $settings->social,
-                'partneri' => $settings->partneri,
+                'partneriTekst' => self::trs($settings->partneri_tekst),
+                'partneri' => \App\Models\Partner::orderBy('sort_order')->orderBy('id')->get()->map(fn ($p) => [
+                    'naziv' => $p->naziv,
+                    'href' => $p->href,
+                    'logo' => $p->logoUrl(),
+                ])->all(),
                 'indeksiranje' => $settings->google_indeksiranje,
             ],
             'texts' => self::tr($straniceSettings->toArray()),

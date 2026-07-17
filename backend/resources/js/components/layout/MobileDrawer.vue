@@ -6,7 +6,7 @@ import { useSite } from '@/composables/useSite'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
-const { mainNav, secondaryNav } = useSite()
+const { mainNav, secondaryNav, postavke } = useSite()
 const { t } = useI18n()
 
 const open = defineModel({ type: Boolean, default: false })
@@ -41,8 +41,9 @@ watch(open, (v) => {
         >
           <!-- Vrh -->
           <div class="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
-            <Link href="/" class="text-xl font-extrabold text-primary" @click="close">
-              teslić
+            <Link href="/" class="flex items-center" :aria-label="postavke.brandLogoTekst" @click="close">
+              <img v-if="postavke.brandLogo" :src="postavke.brandLogo" :alt="postavke.brandLogoTekst" class="max-h-9 w-auto object-contain" />
+              <span v-else class="text-xl font-extrabold text-primary">{{ postavke.brandLogoTekst }}</span>
             </Link>
             <button
               type="button"
@@ -52,23 +53,6 @@ watch(open, (v) => {
             >
               <BaseIcon name="x" :size="22" />
             </button>
-          </div>
-
-          <!-- Pretraga -->
-          <div class="shrink-0 px-4 pt-4">
-            <form class="relative" @submit.prevent="submitSearch">
-              <BaseIcon
-                name="search"
-                :size="18"
-                class="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
-              />
-              <input
-                v-model="searchTerm"
-                type="search"
-                :placeholder="t('search.placeholderMobile')"
-                class="h-11 w-full rounded-sm bg-surface-alt pl-10 pr-4 text-sm outline-none focus:ring-2 focus:ring-primary"
-              />
-            </form>
           </div>
 
           <!-- Navigacija -->

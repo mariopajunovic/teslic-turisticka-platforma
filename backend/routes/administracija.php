@@ -8,7 +8,9 @@ use App\Http\Controllers\Administracija\LogoviController;
 use App\Http\Controllers\Administracija\LozinkaController;
 use App\Http\Controllers\Administracija\LanguagesController;
 use App\Http\Controllers\Administracija\Obavezni2faController;
+use App\Http\Controllers\Administracija\PartnersController;
 use App\Http\Controllers\Administracija\ProfilController;
+use App\Http\Controllers\Administracija\SettingsController;
 use App\Http\Controllers\Administracija\TranslationsController;
 use App\Http\Controllers\Administracija\UlogeController;
 use App\Http\Middleware\EnsureTwoFactor;
@@ -73,6 +75,18 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
     Route::middleware('admin.access:sistemske postavke')->group(function () {
         Route::get('/prevodi', [TranslationsController::class, 'index'])->name('translations');
         Route::put('/prevodi/{translation}', [TranslationsController::class, 'update'])->name('translations.update');
+
+        Route::get('/postavke', [SettingsController::class, 'index'])->name('settings');
+        Route::put('/postavke', [SettingsController::class, 'update'])->name('settings.update');
+        Route::post('/postavke/logo', [SettingsController::class, 'logo'])->name('settings.logo');
+        Route::delete('/postavke/logo', [SettingsController::class, 'obrisiLogo'])->name('settings.logo.obrisi');
+
+        Route::post('/postavke/partneri', [PartnersController::class, 'store'])->name('settings.partneri.store');
+        Route::post('/postavke/partneri/redoslijed', [PartnersController::class, 'redoslijed'])->name('settings.partneri.redoslijed');
+        Route::put('/postavke/partneri/{partner}', [PartnersController::class, 'update'])->name('settings.partneri.update');
+        Route::delete('/postavke/partneri/{partner}', [PartnersController::class, 'destroy'])->name('settings.partneri.destroy');
+        Route::post('/postavke/partneri/{partner}/logo', [PartnersController::class, 'logo'])->name('settings.partneri.logo');
+        Route::delete('/postavke/partneri/{partner}/logo', [PartnersController::class, 'obrisiLogo'])->name('settings.partneri.logo.obrisi');
 
         Route::get('/jezici', [LanguagesController::class, 'index'])->name('languages');
         Route::post('/jezici', [LanguagesController::class, 'store'])->name('languages.store');

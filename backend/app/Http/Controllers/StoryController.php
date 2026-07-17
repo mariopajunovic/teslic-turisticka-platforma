@@ -142,7 +142,7 @@ class StoryController extends Controller
             'q' => $q,
             'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_title ?: $cat->label.' - Teslić',
                 $cat->meta_description ?: 'Čitajte priče u kategoriji '.$cat->label.' s područja Teslića.',
                 url('/price/kategorija/'.$kategorija),
             ),

@@ -54,7 +54,7 @@ class BusinessController extends Controller
             'q' => $q,
             'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                'Domaće je najbolje — lokalni proizvodi i usluge',
+                'Domaće je najbolje - lokalni proizvodi i usluge',
                 'Otkrijte zanate, domaću hranu i piće te pouzdane usluge iz Teslića i okoline.',
                 url('/domace-je-najbolje'),
             ),
@@ -146,7 +146,7 @@ class BusinessController extends Controller
             'q' => $q,
             'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_title ?: $cat->label.' - Teslić',
                 $cat->meta_description ?: 'Pregledajte lokalne proizvode i usluge u kategoriji '.$cat->label.' iz Teslića i okoline.',
                 url('/domace-je-najbolje/kategorija/'.$kategorija),
             ),

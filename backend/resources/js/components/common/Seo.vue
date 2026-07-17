@@ -10,11 +10,13 @@ const page = usePage()
 
 const data = computed(() => {
   const s = props.seo || {}
-  const appName = page.props.site?.postavke?.brandNaziv || 'TO Teslić'
+  const postavke = page.props.site?.postavke || {}
+  const brandNaziv = postavke.brandNaziv || 'TO Teslić'
   return {
-    title: s.title || appName,
+    title: s.title ? `${s.title} - ${brandNaziv}` : brandNaziv,
     description:
       s.description ||
+      postavke.seoOpis ||
       'Digitalna platforma za promociju turizma, domaćih proizvoda i usluga opštine Teslić.',
     canonical: s.canonical || '',
     image: s.image || '',

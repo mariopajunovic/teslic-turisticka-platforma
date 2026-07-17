@@ -16,12 +16,11 @@ const { t } = useI18n()
       <div class="grid gap-8 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <!-- Brend -->
         <div class="max-w-sm">
-          <Link href="/" class="text-2xl font-extrabold tracking-tight text-primary">
-            {{ postavke.brandLogoTekst }}
+          <Link href="/" class="inline-block text-2xl font-extrabold tracking-tight text-primary">
+            <img v-if="postavke.brandLogo" :src="postavke.brandLogo" :alt="postavke.brandLogoTekst" :style="{ height: (postavke.logoVisina || 40) + 'px' }" class="w-auto" />
+            <span v-else>{{ postavke.brandLogoTekst }}</span>
           </Link>
-          <p class="mt-3 text-sm leading-relaxed text-text-muted">
-            {{ postavke.footerOpis }}
-          </p>
+          <p class="mt-3 text-sm leading-relaxed text-text-muted [&_a]:text-primary [&_a]:underline" v-html="postavke.footerOpis"></p>
           <div class="mt-4 flex gap-2">
             <a
               v-for="s in postavke.social || []"
@@ -38,9 +37,7 @@ const { t } = useI18n()
         <!-- Linkovi (2 kolone na mobilnom u istom redu) -->
         <div class="grid grid-cols-2 gap-8 md:contents">
           <div>
-            <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">
-              Brzi linkovi
-            </h3>
+            <h3 class="text-[13px] font-bold uppercase tracking-wider text-text-muted">{{ t('footer.quickLinks') }}</h3>
             <ul class="mt-3 space-y-3">
               <li v-for="l in footerLinks.brzi" :key="l.to">
                 <Link :href="l.to" class="text-sm text-text transition-colors hover:text-primary">
@@ -85,17 +82,24 @@ const { t } = useI18n()
     </AppContainer>
 
     <!-- Partneri -->
-    <div class="bg-surface-alt">
+    <div v-if="(postavke.partneri || []).length || postavke.partneriTekst" class="bg-surface-alt">
       <AppContainer class="py-7">
         <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted">{{ t('footer.partners') }}</h3>
-        <div class="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:flex lg:flex-wrap">
-          <div
-            v-for="p in postavke.partneri || []"
-            :key="p"
-            class="flex h-12 items-center justify-center rounded-sm border border-border bg-surface text-xs text-text-muted lg:w-36"
+        <p v-if="postavke.partneriTekst" class="mt-2 text-xs leading-relaxed text-text-muted [&_a]:text-primary [&_a]:underline" v-html="postavke.partneriTekst"></p>
+        <div v-if="(postavke.partneri || []).length" class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <component
+            :is="p.href ? 'a' : 'div'"
+            v-for="(p, i) in postavke.partneri || []"
+            :key="i"
+            :href="p.href || undefined"
+            :target="p.href ? '_blank' : undefined"
+            :rel="p.href ? 'noopener' : undefined"
+            :title="p.naziv"
+            class="flex h-24 items-center justify-center rounded-md border border-border bg-surface p-4 text-sm text-text-muted transition-colors hover:border-primary"
           >
-            {{ p }}
-          </div>
+            <img v-if="p.logo" :src="p.logo" :alt="p.naziv" class="max-h-16 w-auto object-contain" />
+            <span v-else class="truncate text-center">{{ p.naziv }}</span>
+          </component>
         </div>
       </AppContainer>
     </div>
@@ -105,7 +109,7 @@ const { t } = useI18n()
       <AppContainer
         class="flex flex-col gap-2 py-4 text-[13px] text-primary-tint sm:flex-row sm:items-center sm:justify-between"
       >
-        <p>{{ postavke.copyright }}</p>
+        <p class="[&_a]:underline [&_a]:hover:text-white" v-html="postavke.copyright"></p>
         <nav class="flex flex-wrap gap-x-4 gap-y-1">
           <Link
             v-for="l in footerLinks.pravno"

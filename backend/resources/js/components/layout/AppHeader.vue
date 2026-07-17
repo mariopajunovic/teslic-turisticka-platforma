@@ -96,31 +96,7 @@ function logout() {
               <BaseIcon :name="s.name" :size="15" />
             </a>
           </div>
-          <div class="hidden items-center gap-3 lg:flex">
-            <template v-if="authUser">
-              <Link :href="nalogLink" class="font-semibold text-white hover:text-primary-tint">
-                {{ authUser.name }}
-              </Link>
-              <button
-                type="button"
-                class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
-                @click="logout"
-              >
-                {{ t('action.logout') }}
-              </button>
-            </template>
-            <template v-else>
-              <Link href="/prijava" class="font-semibold text-white hover:text-primary-tint">
-                {{ t('action.login') }}
-              </Link>
-              <Link
-                href="/pridruzi-se"
-                class="inline-flex items-center rounded-sm bg-secondary px-3 py-1 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
-              >
-                {{ t('action.join') }}
-              </Link>
-            </template>
-          </div>
+          <LocaleSwitcher dark />
         </div>
       </AppContainer>
     </div>
@@ -128,15 +104,17 @@ function logout() {
     <!-- Glavna traka -->
     <div class="border-b border-border bg-surface">
       <AppContainer
-        class="flex items-center gap-6 transition-[height] duration-200"
+        :style="{ '--logo-h': (postavke.brandLogo ? (postavke.logoVisina || 40) : 0) + 'px' }"
+        class="site-header-row flex items-center gap-6 transition-[height] duration-200"
         :class="scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-[72px]'"
       >
         <Link
           href="/"
-          class="shrink-0 text-xl font-extrabold tracking-tight text-primary lg:text-2xl"
-          :aria-label="`Početna — ${postavke.brandLogoTekst}`"
+          class="flex h-full shrink-0 items-center text-xl font-extrabold tracking-tight text-primary lg:text-2xl py-1"
+          :aria-label="`Početna - ${postavke.brandLogoTekst}`"
         >
-          {{ postavke.brandLogoTekst }}
+          <img v-if="postavke.brandLogo" :src="postavke.brandLogo" :alt="postavke.brandLogoTekst" :style="{ height: (postavke.logoVisina || 40) + 'px' }" class="max-h-full w-auto object-contain" />
+          <span v-else>{{ postavke.brandLogoTekst }}</span>
         </Link>
 
         <!-- Desktop navigacija (rasterećena, 6 sadržajnih stavki) -->
@@ -154,7 +132,31 @@ function logout() {
         </nav>
 
         <div class="ml-auto flex items-center gap-2">
-          <LocaleSwitcher />
+          <div class="hidden items-center gap-3 lg:flex">
+            <template v-if="authUser">
+              <Link :href="nalogLink" class="text-[15px] font-semibold text-heading hover:text-primary">
+                {{ authUser.name }}
+              </Link>
+              <button
+                type="button"
+                class="inline-flex items-center rounded-sm bg-secondary px-3.5 py-1.5 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+                @click="logout"
+              >
+                {{ t('action.logout') }}
+              </button>
+            </template>
+            <template v-else>
+              <Link href="/prijava" class="text-[15px] font-semibold text-heading hover:text-primary">
+                {{ t('action.login') }}
+              </Link>
+              <Link
+                href="/pridruzi-se"
+                class="inline-flex items-center rounded-sm bg-secondary px-3.5 py-1.5 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
+              >
+                {{ t('action.join') }}
+              </Link>
+            </template>
+          </div>
 
           <button
             type="button"
@@ -216,5 +218,10 @@ function logout() {
 .search-leave-to {
   opacity: 0;
   transform: translateY(-8px);
+}
+@media (min-width: 1024px) {
+  .site-header-row {
+    min-height: calc(var(--logo-h, 0px) + 28px);
+  }
 }
 </style>

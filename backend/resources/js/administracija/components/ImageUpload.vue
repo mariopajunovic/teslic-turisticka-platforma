@@ -9,9 +9,10 @@ const props = defineProps({
     deleteUrl: { type: String, default: null },
     label: { type: String, default: null },
     hint: { type: String, default: null },
-    aspect: { type: Number, default: 1 },
+    aspect: { type: [Number, String], default: 1 },
     shape: { type: String, default: 'circle' },
     outputWidth: { type: Number, default: 512 },
+    outputType: { type: String, default: 'image/jpeg' },
     field: { type: String, default: 'image' },
 });
 
@@ -25,8 +26,11 @@ const natural = ref({ w: 0, h: 0 });
 const zoom = ref(1);
 const pos = ref({ x: 0, y: 0 });
 
-const viewH = computed(() => Math.round(VIEW_W / props.aspect));
-const outH = computed(() => Math.round(props.outputWidth / props.aspect));
+const effAspect = computed(() => (props.aspect === 'auto' && natural.value.w)
+    ? natural.value.w / natural.value.h
+    : (Number(props.aspect) || 1));
+const viewH = computed(() => Math.round(VIEW_W / effAspect.value));
+const outH = computed(() => Math.round(props.outputWidth / effAspect.value));
 const baseScale = computed(() => (natural.value.w ? Math.max(VIEW_W / natural.value.w, viewH.value / natural.value.h) : 1));
 const scale = computed(() => baseScale.value * zoom.value);
 const dispW = computed(() => natural.value.w * scale.value);
@@ -101,25 +105,29 @@ const save = () => {
         canvas.height = outH.value;
         const ctx = canvas.getContext('2d');
         const k = props.outputWidth / VIEW_W;
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        const isPng = props.outputType === 'image/png';
+        if (!isPng) {
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
         ctx.drawImage(img, pos.value.x * k, pos.value.y * k, dispW.value * k, dispH.value * k);
         canvas.toBlob((blob) => {
-            const file = new File([blob], 'slika.jpg', { type: 'image/jpeg' });
+            const file = new File([blob], isPng ? 'slika.png' : 'slika.jpg', { type: props.outputType });
             uploading.value = true;
             router.post(props.uploadUrl, { [props.field]: file }, {
                 forceFormData: true,
                 preserveScroll: true,
+                preserveState: true,
                 onSuccess: () => { cropping.value = false; },
                 onFinish: () => { uploading.value = false; },
             });
-        }, 'image/jpeg', 0.9);
+        }, props.outputType, 0.92);
     };
     img.src = imageSrc.value;
 };
 
 const remove = () => {
-    if (props.deleteUrl) router.delete(props.deleteUrl, { preserveScroll: true });
+    if (props.deleteUrl) router.delete(props.deleteUrl, { preserveScroll: true, preserveState: true });
 };
 </script>
 
@@ -129,11 +137,17 @@ const remove = () => {
 
         <div class="flex items-center gap-4">
             <div
-                :class="[rounded, shape === 'circle' ? 'h-20 w-20' : 'h-20']"
-                :style="shape === 'rect' ? { width: `${Math.round(80 * aspect)}px` } : null"
-                class="flex shrink-0 items-center justify-center overflow-hidden border border-line bg-surface-alt"
+                v-if="shape === 'circle'"
+                class="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-full border border-line bg-surface-alt"
             >
                 <img v-if="src" :src="src" alt="" class="h-full w-full object-cover" />
+                <ImagePlus v-else :size="22" class="text-ink-3" />
+            </div>
+            <div
+                v-else
+                class="flex h-16 min-w-[96px] max-w-[240px] shrink-0 items-center justify-center overflow-hidden rounded-lg border border-line bg-surface-alt px-2"
+            >
+                <img v-if="src" :src="src" alt="" class="max-h-full w-auto object-contain" />
                 <ImagePlus v-else :size="22" class="text-ink-3" />
             </div>
 

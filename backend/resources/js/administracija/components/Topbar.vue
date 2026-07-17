@@ -78,14 +78,6 @@ const odjava = () => {
 
             <button
                 type="button"
-                class="hidden h-9 items-center gap-1 rounded-md border border-line bg-surface-alt px-2.5 text-xs font-bold text-ink-2 hover:text-ink sm:inline-flex"
-            >
-                SR
-                <ChevronDown :size="14" class="text-ink-3" />
-            </button>
-
-            <button
-                type="button"
                 class="hidden h-9 w-9 items-center justify-center rounded-md border border-line bg-surface-alt text-ink-2 hover:text-ink sm:inline-flex"
                 aria-label="Obavještenja"
             >

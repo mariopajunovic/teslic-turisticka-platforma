@@ -11,6 +11,7 @@ import BaseIcon from '@/components/base/BaseIcon.vue'
 import BusinessCard from '@/components/cards/BusinessCard.vue'
 import EventCard from '@/components/cards/EventCard.vue'
 import StoryCard from '@/components/cards/StoryCard.vue'
+import { useSite } from '@/composables/useSite'
 
 defineProps({
   related: {
@@ -20,6 +21,7 @@ defineProps({
 })
 
 const { t } = useI18n()
+const { postavke } = useSite()
 
 const ciljevi = computed(() => [
   { icon: 'compass', title: t('about.g1t'), text: t('about.g1x') },
@@ -36,13 +38,6 @@ const publika = computed(() => [
   { icon: 'pen', title: t('about.a3t'), text: t('about.a3x'), cta: t('about.a3c'), to: '/price', accent: true },
 ])
 
-const partneri = computed(() => [
-  t('about.p1'),
-  t('about.p2'),
-  t('about.p3'),
-  t('about.p4'),
-  t('about.p5'),
-])
 </script>
 
 <template>
@@ -125,20 +120,24 @@ const partneri = computed(() => [
     </section>
 
     <!-- Partneri -->
-    <section class="bg-surface-alt py-12 md:py-14">
+    <section v-if="(postavke.partneri || []).length || postavke.partneriTekst" class="bg-surface-alt py-12 md:py-14">
       <AppContainer>
         <h2 class="font-heading text-2xl font-bold text-heading">{{ $t('about.partnersTitle') }}</h2>
-        <p class="mt-3 max-w-3xl text-text-muted">
-          {{ $t('about.partnersText') }}
-        </p>
-        <div class="mt-6 flex flex-wrap gap-4">
-          <div
-            v-for="p in partneri"
-            :key="p"
-            class="flex h-16 min-w-[180px] flex-1 items-center justify-center rounded-sm border border-border bg-surface px-6 text-center text-sm font-bold text-text-muted"
+        <p class="mt-3 max-w-3xl text-text-muted [&_a]:text-primary [&_a]:underline" v-html="postavke.partneriTekst || $t('about.partnersText')"></p>
+        <div v-if="(postavke.partneri || []).length" class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+          <component
+            :is="p.href ? 'a' : 'div'"
+            v-for="(p, i) in postavke.partneri"
+            :key="i"
+            :href="p.href || undefined"
+            :target="p.href ? '_blank' : undefined"
+            :rel="p.href ? 'noopener' : undefined"
+            :title="p.naziv"
+            class="flex h-24 items-center justify-center rounded-md border border-border bg-surface p-4 text-sm text-text-muted transition-colors hover:border-primary"
           >
-            {{ p }}
-          </div>
+            <img v-if="p.logo" :src="p.logo" :alt="p.naziv" class="max-h-16 w-auto object-contain" />
+            <span v-else class="truncate text-center font-semibold">{{ p.naziv }}</span>
+          </component>
         </div>
       </AppContainer>
     </section>

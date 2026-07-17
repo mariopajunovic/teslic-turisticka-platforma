@@ -10,6 +10,7 @@ import {
     ScrollText,
     Languages,
     Globe,
+    Settings,
     PanelLeft,
     X,
 } from 'lucide-vue-next';
@@ -40,6 +41,7 @@ const groups = [
     {
         label: 'Postavke',
         items: [
+            { icon: Settings, label: 'Postavke sajta', href: '/administracija/postavke' },
             { icon: Languages, label: 'Prevodi', href: '/administracija/prevodi' },
             { icon: Globe, label: 'Jezici', href: '/administracija/jezici' },
         ],

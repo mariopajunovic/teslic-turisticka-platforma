@@ -143,7 +143,7 @@ class LocationController extends Controller
             'q' => $q,
             'povezani' => $this->povezani(),
             'seo' => Seo::make(
-                $cat->meta_title ?: $cat->label.' — Teslić',
+                $cat->meta_title ?: $cat->label.' - Teslić',
                 $cat->meta_description ?: 'Pregledajte turističke lokalitete u kategoriji '.$cat->label.' na području Teslića.',
                 url('/turizam/kategorija/'.$kategorija),
             ),

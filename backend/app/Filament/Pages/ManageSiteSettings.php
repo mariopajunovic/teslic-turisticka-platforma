@@ -62,7 +62,7 @@ class ManageSiteSettings extends SettingsPage
                         ->label('Partneri'),
                 ]),
             Section::make('SEO i pristup')
-                ->description('Kontrola indeksiranja i režima održavanja — korisno za dev server.')
+                ->description('Kontrola indeksiranja i režima održavanja - korisno za dev server.')
                 ->schema([
                     Toggle::make('google_indeksiranje')
                         ->label('Dozvoli Google indeksiranje')
