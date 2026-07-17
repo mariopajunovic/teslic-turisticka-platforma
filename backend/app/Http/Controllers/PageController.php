@@ -13,6 +13,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Page;
 use App\Models\Story;
+use App\Settings\SiteSettings;
 use App\Support\MapPoints;
 use App\Support\Seo;
 use Inertia\Inertia;
@@ -33,9 +34,13 @@ class PageController extends Controller
 
     public function show(string $slug): Response
     {
-        $page = Page::published()->where('slug', $slug)->firstOrFail();
+        $query = Page::where('slug', $slug);
 
-        return $this->renderPage($page);
+        if (! $this->previewing()) {
+            $query->published();
+        }
+
+        return $this->renderPage($query->firstOrFail());
     }
 
     public function about(): Response
@@ -58,9 +63,35 @@ class PageController extends Controller
         ]);
     }
 
+    protected function previewing(): bool
+    {
+        return request()->boolean('preview') && auth('admin')->check();
+    }
+
+    protected function pageContent(Page $page): array
+    {
+        if ($this->previewing()) {
+            $draft = session('page_draft_'.$page->id);
+
+            if (is_array($draft)) {
+                return $draft;
+            }
+        }
+
+        return $page->content ?? [];
+    }
+
     protected function renderPage(Page $page): Response
     {
-        $blocks = collect($page->content ?? [])->map(function (array $block) {
+        $active = app(\App\Support\ActiveLocale::class);
+
+        $resolved = \App\Support\BlockContent::resolve($this->pageContent($page), $active->language());
+
+        if ($active->isCyrillic()) {
+            $resolved = \App\Support\Cyrillic::deep($resolved);
+        }
+
+        $blocks = collect($resolved)->map(function (array $block) {
             $type = $block['type'] ?? null;
 
             if ($type === 'card_grid') {
@@ -90,10 +121,10 @@ class PageController extends Controller
             ],
             'blocks' => $blocks,
             'seo' => Seo::make(
-                $page->meta_title ?: $page->title,
+                $this->metaTitle($page),
                 $page->meta_description,
                 $canonical,
-                null,
+                $this->shareImage($page, $blocks),
                 'website',
                 [
                     Seo::breadcrumbs(
@@ -107,6 +138,59 @@ class PageController extends Controller
                 ],
             ),
         ]);
+    }
+
+    protected function metaTitle(Page $page): string
+    {
+        $siteName = $this->siteName();
+        $base = ($page->meta_title !== null && $page->meta_title !== '') ? (string) $page->meta_title : (string) $page->title;
+
+        if ($siteName === '') {
+            return $base;
+        }
+
+        $suffix = ' - '.$siteName;
+
+        return str_ends_with($base, $suffix) ? $base : $base.$suffix;
+    }
+
+    protected function siteName(): string
+    {
+        try {
+            $brand = app(SiteSettings::class)->brand_naziv;
+        } catch (\Throwable $e) {
+            return '';
+        }
+
+        if (! is_array($brand)) {
+            return (string) $brand;
+        }
+
+        $lang = app(\App\Support\ActiveLocale::class)->language();
+
+        return $brand[$lang] ?? $brand['sr'] ?? '';
+    }
+
+    protected function shareImage(Page $page, array $blocks): ?string
+    {
+        $image = $page->og_image ?: $this->coverImage($blocks);
+
+        if (! $image) {
+            return null;
+        }
+
+        return str_starts_with($image, 'http') ? $image : url($image);
+    }
+
+    protected function coverImage(array $blocks): ?string
+    {
+        foreach ($blocks as $block) {
+            if (($block['type'] ?? null) === 'hero' && ! empty($block['data']['image'])) {
+                return $block['data']['image'];
+            }
+        }
+
+        return null;
     }
 
     protected function cards(array $data): array

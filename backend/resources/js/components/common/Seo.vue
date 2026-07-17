@@ -56,6 +56,7 @@ const jsonLdString = computed(() => (props.seo?.jsonLd ? JSON.stringify(props.se
     <meta property="og:type" :content="data.type" head-key="og:type" />
     <meta v-if="data.canonical" property="og:url" :content="data.canonical" head-key="og:url" />
     <meta v-if="data.image" property="og:image" :content="data.image" head-key="og:image" />
+    <meta v-if="data.image" name="twitter:image" :content="data.image" head-key="twitter:image" />
     <meta property="og:locale" :content="ogLocale" head-key="og:locale" />
     <meta name="twitter:card" :content="data.image ? 'summary_large_image' : 'summary'" head-key="twitter:card" />
     <link

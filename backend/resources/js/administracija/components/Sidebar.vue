@@ -11,6 +11,7 @@ import {
     Languages,
     Globe,
     Settings,
+    FileText,
     PanelLeft,
     X,
 } from 'lucide-vue-next';
@@ -28,6 +29,12 @@ const groups = [
     {
         label: null,
         items: [{ icon: LayoutDashboard, label: 'Nadzorna ploča', href: '/administracija' }],
+    },
+    {
+        label: 'Sadržaj',
+        items: [
+            { icon: FileText, label: 'Stranice', href: '/administracija/stranice' },
+        ],
     },
     {
         label: 'Sistem',

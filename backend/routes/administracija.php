@@ -5,9 +5,11 @@ use App\Http\Controllers\Administracija\AuthController;
 use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
 use App\Http\Controllers\Administracija\LogoviController;
+use App\Http\Controllers\Administracija\MediaController;
 use App\Http\Controllers\Administracija\LozinkaController;
 use App\Http\Controllers\Administracija\LanguagesController;
 use App\Http\Controllers\Administracija\Obavezni2faController;
+use App\Http\Controllers\Administracija\PagesController;
 use App\Http\Controllers\Administracija\PartnersController;
 use App\Http\Controllers\Administracija\ProfilController;
 use App\Http\Controllers\Administracija\SettingsController;
@@ -70,6 +72,17 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::put('/uloge/dozvole', [UlogeController::class, 'update'])->name('uloge.dozvole');
         Route::get('/uloge/{uloga}/korisnici', [UlogeController::class, 'korisnici'])->name('uloge.korisnici');
         Route::delete('/uloge/{uloga}', [UlogeController::class, 'destroy'])->name('uloge.destroy');
+    });
+
+    Route::middleware('admin.access:upravljanje stranicama')->group(function () {
+        Route::get('/stranice', [PagesController::class, 'index'])->name('pages');
+        Route::post('/stranice', [PagesController::class, 'store'])->name('pages.store');
+        Route::get('/stranice/{page}/uredi', [PagesController::class, 'show'])->name('pages.builder');
+        Route::put('/stranice/{page}/sadrzaj', [PagesController::class, 'updateContent'])->name('pages.content');
+        Route::post('/stranice/{page}/pregled-draft', [PagesController::class, 'draft'])->name('pages.draft');
+        Route::put('/stranice/{page}', [PagesController::class, 'update'])->name('pages.update');
+        Route::delete('/stranice/{page}', [PagesController::class, 'destroy'])->name('pages.destroy');
+        Route::post('/mediji', [MediaController::class, 'store'])->name('media.store');
     });
 
     Route::middleware('admin.access:sistemske postavke')->group(function () {

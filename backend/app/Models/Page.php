@@ -20,14 +20,16 @@ class Page extends Model
         'is_system',
         'meta_title',
         'meta_description',
+        'og_image',
         'sort',
     ];
 
-    public array $translatable = ['title', 'content', 'meta_title', 'meta_description'];
+    public array $translatable = ['title', 'meta_title', 'meta_description'];
 
     protected function casts(): array
     {
         return [
+            'content' => 'array',
             'published' => 'boolean',
             'is_system' => 'boolean',
         ];

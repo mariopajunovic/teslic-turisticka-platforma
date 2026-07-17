@@ -1,0 +1,139 @@
+<script setup>
+import { computed, ref, watch, onBeforeUnmount } from 'vue';
+import { usePage } from '@inertiajs/vue3';
+import { useEditor, EditorContent } from '@tiptap/vue-3';
+import StarterKit from '@tiptap/starter-kit';
+import Link from '@tiptap/extension-link';
+import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link2, Quote, Undo2, Redo2 } from 'lucide-vue-next';
+
+const props = defineProps({
+    modelValue: { type: Object, default: () => ({}) },
+    label: { type: String, default: null },
+    required: { type: Boolean, default: false },
+    lang: { type: String, default: null },
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+const page = usePage();
+
+const locales = computed(() => {
+    const list = page.props?.locales;
+    return Array.isArray(list) && list.length ? list : [{ code: 'sr', name: 'Srpski' }];
+});
+
+const internalActive = ref(locales.value[0]?.code ?? 'sr');
+const active = computed(() => props.lang ?? internalActive.value);
+const controlled = computed(() => props.lang !== null);
+
+const filled = (code) => String(props.modelValue?.[code] ?? '').replace(/<[^>]*>/g, '').trim().length > 0;
+
+let syncing = false;
+
+const editor = useEditor({
+    content: props.modelValue?.[active.value] ?? '',
+    extensions: [
+        StarterKit.configure({ heading: { levels: [2, 3] } }),
+        Link.configure({ openOnClick: false, autolink: true }),
+    ],
+    editorProps: {
+        attributes: {
+            class: 'prose prose-sm max-w-none min-h-[160px] px-3.5 py-3 focus:outline-none',
+        },
+    },
+    onUpdate: ({ editor }) => {
+        if (syncing) return;
+        const html = editor.isEmpty ? '' : editor.getHTML();
+        emit('update:modelValue', { ...props.modelValue, [active.value]: html });
+    },
+});
+
+const swapTo = (code) => {
+    if (!editor.value) return;
+    syncing = true;
+    editor.value.commands.setContent(props.modelValue?.[code] ?? '', false);
+    syncing = false;
+};
+
+watch(active, (code) => swapTo(code));
+
+watch(() => props.modelValue?.[active.value], (val) => {
+    if (!editor.value || syncing) return;
+    const current = editor.value.isEmpty ? '' : editor.value.getHTML();
+    if ((val ?? '') !== current) swapTo(active.value);
+});
+
+onBeforeUnmount(() => editor.value?.destroy());
+
+const setLink = () => {
+    if (!editor.value) return;
+    const prev = editor.value.getAttributes('link').href ?? '';
+    const url = window.prompt('Unesi URL linka:', prev);
+    if (url === null) return;
+    if (url === '') {
+        editor.value.chain().focus().extendMarkRange('link').unsetLink().run();
+        return;
+    }
+    editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+};
+
+const is = (name, attrs) => editor.value?.isActive(name, attrs) ?? false;
+
+const tools = computed(() => [
+    { icon: Bold, title: 'Podebljano', run: () => editor.value?.chain().focus().toggleBold().run(), active: is('bold') },
+    { icon: Italic, title: 'Kurziv', run: () => editor.value?.chain().focus().toggleItalic().run(), active: is('italic') },
+    { icon: Heading2, title: 'Naslov 2', run: () => editor.value?.chain().focus().toggleHeading({ level: 2 }).run(), active: is('heading', { level: 2 }) },
+    { icon: Heading3, title: 'Naslov 3', run: () => editor.value?.chain().focus().toggleHeading({ level: 3 }).run(), active: is('heading', { level: 3 }) },
+    { icon: List, title: 'Lista', run: () => editor.value?.chain().focus().toggleBulletList().run(), active: is('bulletList') },
+    { icon: ListOrdered, title: 'Numerisana lista', run: () => editor.value?.chain().focus().toggleOrderedList().run(), active: is('orderedList') },
+    { icon: Quote, title: 'Citat', run: () => editor.value?.chain().focus().toggleBlockquote().run(), active: is('blockquote') },
+    { icon: Link2, title: 'Link', run: setLink, active: is('link') },
+]);
+</script>
+
+<template>
+    <div>
+        <div v-if="label || !controlled" class="mb-1.5 flex items-center justify-between gap-2">
+            <label v-if="label" class="block text-sm font-medium text-ink">
+                {{ label }}<span v-if="required" class="text-bad"> *</span>
+            </label>
+            <div v-if="!controlled" class="flex items-center gap-1">
+                <button
+                    v-for="loc in locales"
+                    :key="loc.code"
+                    type="button"
+                    :class="loc.code === active ? 'bg-brand text-white' : 'text-ink-3 hover:bg-surface-alt hover:text-ink'"
+                    class="inline-flex items-center gap-1 rounded px-1.5 py-0.5 text-[11px] font-bold uppercase"
+                    @click="internalActive = loc.code"
+                >
+                    {{ loc.code }}
+                    <span :class="filled(loc.code) ? 'bg-ok' : (loc.code === active ? 'bg-white/40' : 'bg-line-strong')" class="h-1.5 w-1.5 rounded-full"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="overflow-hidden rounded-md border border-line bg-surface focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/20">
+            <div class="flex flex-wrap items-center gap-0.5 border-b border-line bg-surface-alt px-1.5 py-1">
+                <button
+                    v-for="(t, i) in tools"
+                    :key="i"
+                    type="button"
+                    :title="t.title"
+                    :class="t.active ? 'bg-brand text-white' : 'text-ink-2 hover:bg-surface hover:text-ink'"
+                    class="inline-flex h-7 w-7 items-center justify-center rounded"
+                    @click="t.run"
+                >
+                    <component :is="t.icon" :size="15" />
+                </button>
+                <div class="mx-1 h-4 w-px bg-line"></div>
+                <button type="button" title="Poništi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @click="editor?.chain().focus().undo().run()">
+                    <Undo2 :size="15" />
+                </button>
+                <button type="button" title="Ponovi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @click="editor?.chain().focus().redo().run()">
+                    <Redo2 :size="15" />
+                </button>
+            </div>
+            <EditorContent :editor="editor" />
+        </div>
+    </div>
+</template>
