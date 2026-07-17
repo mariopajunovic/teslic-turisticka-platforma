@@ -3,6 +3,7 @@ import { computed } from 'vue';
 
 const props = defineProps({
     initials: { type: String, default: '' },
+    src: { type: String, default: null },
     size: { type: String, default: 'md' },
     variant: { type: String, default: 'tint' },
 });
@@ -24,7 +25,15 @@ const variantClass = computed(() => {
 </script>
 
 <template>
+    <img
+        v-if="src"
+        :src="src"
+        alt=""
+        :class="sizeClass"
+        class="inline-block shrink-0 rounded-full object-cover"
+    />
     <span
+        v-else
         :class="[sizeClass, variantClass]"
         class="inline-flex shrink-0 items-center justify-center rounded-full font-bold uppercase tracking-wide select-none"
     >

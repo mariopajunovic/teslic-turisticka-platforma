@@ -40,9 +40,13 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
 
     Route::middleware('admin.access:upravljanje korisnicima')->group(function () {
         Route::get('/korisnici', [KorisniciController::class, 'index'])->name('korisnici');
+        Route::get('/korisnici/{korisnik}', [KorisniciController::class, 'show'])->name('korisnici.show');
+        Route::put('/korisnici/{korisnik}', [KorisniciController::class, 'update'])->name('korisnici.update');
         Route::post('/korisnici/{korisnik}/odobri', [KorisniciController::class, 'odobri'])->name('korisnici.odobri');
         Route::post('/korisnici/{korisnik}/blokiraj', [KorisniciController::class, 'blokiraj'])->name('korisnici.blokiraj');
         Route::post('/korisnici/{korisnik}/odblokiraj', [KorisniciController::class, 'odblokiraj'])->name('korisnici.odblokiraj');
+        Route::post('/korisnici/{korisnik}/reset-lozinke', [KorisniciController::class, 'resetLozinke'])->name('korisnici.reset-lozinke');
+        Route::delete('/korisnici/{korisnik}', [KorisniciController::class, 'destroy'])->name('korisnici.destroy');
     });
 
     Route::middleware('admin.access:administratori')->group(function () {

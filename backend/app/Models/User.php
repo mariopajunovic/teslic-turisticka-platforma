@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\UserRole;
+use App\Models\Concerns\HasLocalizedContent;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -18,7 +19,9 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements HasMedia
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, HasRoles, InteractsWithMedia, Notifiable;
+    use HasFactory, HasLocalizedContent, HasRoles, InteractsWithMedia, Notifiable;
+
+    public array $translatable = ['bio'];
 
     public function registerMediaCollections(): void
     {

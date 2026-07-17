@@ -45,6 +45,10 @@ class HandleAdminInertiaRequests extends Middleware
             'badges' => [
                 'odobravanje' => fn () => $this->odobravanjeCount(),
             ],
+            'locales' => fn () => collect(config('locales.languages'))
+                ->map(fn ($l, $code) => ['code' => $code, 'name' => $l['label']])
+                ->values()
+                ->all(),
         ];
     }
 
