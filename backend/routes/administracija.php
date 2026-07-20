@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Administracija\AdministratoriController;
 use App\Http\Controllers\Administracija\AuthController;
+use App\Http\Controllers\Administracija\BusinessesController;
+use App\Http\Controllers\Administracija\CategoriesController;
 use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
 use App\Http\Controllers\Administracija\LogoviController;
@@ -83,6 +85,31 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::put('/stranice/{page}', [PagesController::class, 'update'])->name('pages.update');
         Route::delete('/stranice/{page}', [PagesController::class, 'destroy'])->name('pages.destroy');
         Route::post('/mediji', [MediaController::class, 'store'])->name('media.store');
+    });
+
+    Route::middleware('admin.access:upravljanje sadržajem')->group(function () {
+        Route::get('/biznisi', [BusinessesController::class, 'index'])->name('biznisi');
+        Route::get('/biznisi/novi', [BusinessesController::class, 'create'])->name('biznisi.create');
+        Route::post('/biznisi', [BusinessesController::class, 'store'])->name('biznisi.store');
+        Route::get('/biznisi/{business}/uredi', [BusinessesController::class, 'edit'])->name('biznisi.edit');
+        Route::put('/biznisi/{business}', [BusinessesController::class, 'update'])->name('biznisi.update');
+        Route::delete('/biznisi/{business}', [BusinessesController::class, 'destroy'])->name('biznisi.destroy');
+        Route::post('/biznisi/{business}/odobri', [BusinessesController::class, 'approve'])->name('biznisi.approve');
+        Route::post('/biznisi/{business}/odbij', [BusinessesController::class, 'reject'])->name('biznisi.reject');
+        Route::post('/biznisi/{business}/naslovna', [BusinessesController::class, 'uploadNaslovna'])->name('biznisi.naslovna');
+        Route::delete('/biznisi/{business}/naslovna', [BusinessesController::class, 'destroyNaslovna'])->name('biznisi.naslovna.destroy');
+        Route::post('/biznisi/{business}/galerija', [BusinessesController::class, 'uploadGalerija'])->name('biznisi.galerija');
+        Route::post('/biznisi/galerija/{media}/zamijeni', [BusinessesController::class, 'replaceGalerija'])->name('biznisi.galerija.zamijeni');
+        Route::post('/biznisi/{business}/galerija/redoslijed', [BusinessesController::class, 'reorderGalerija'])->name('biznisi.galerija.redoslijed');
+        Route::delete('/biznisi/galerija/{media}', [BusinessesController::class, 'destroyGalerija'])->name('biznisi.galerija.destroy');
+
+        Route::get('/kategorije', [CategoriesController::class, 'index'])->name('kategorije');
+        Route::get('/kategorije/nova', [CategoriesController::class, 'create'])->name('kategorije.create');
+        Route::post('/kategorije', [CategoriesController::class, 'store'])->name('kategorije.store');
+        Route::post('/kategorije/redoslijed', [CategoriesController::class, 'reorder'])->name('kategorije.redoslijed');
+        Route::get('/kategorije/{category}/uredi', [CategoriesController::class, 'edit'])->name('kategorije.edit');
+        Route::put('/kategorije/{category}', [CategoriesController::class, 'update'])->name('kategorije.update');
+        Route::delete('/kategorije/{category}', [CategoriesController::class, 'destroy'])->name('kategorije.destroy');
     });
 
     Route::middleware('admin.access:sistemske postavke')->group(function () {

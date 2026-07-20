@@ -10,7 +10,7 @@ class BusinessResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'slug' => $this->slug,
+            'slug' => $this->slugFor(),
             'naslov' => $this->naslov,
             'opis' => $this->opis,
             'opisDug' => $this->opis_dug,

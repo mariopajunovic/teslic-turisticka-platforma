@@ -12,6 +12,8 @@ import {
     Globe,
     Settings,
     FileText,
+    Store,
+    Tag,
     PanelLeft,
     X,
 } from 'lucide-vue-next';
@@ -34,6 +36,13 @@ const groups = [
         label: 'Sadržaj',
         items: [
             { icon: FileText, label: 'Stranice', href: '/administracija/stranice' },
+            { icon: Store, label: 'Biznisi', href: '/administracija/biznisi' },
+        ],
+    },
+    {
+        label: 'Taksonomija',
+        items: [
+            { icon: Tag, label: 'Kategorije', href: '/administracija/kategorije' },
         ],
     },
     {

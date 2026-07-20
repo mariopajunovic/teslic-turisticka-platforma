@@ -49,11 +49,6 @@ class HandleInertiaRequests extends Middleware
         $query = $request->getQueryString();
         $suffix = $query ? '?'.$query : '';
 
-        $alternates = [];
-        foreach (array_keys((array) config('locales.languages')) as $lang) {
-            $alternates[$lang] = url($locale->path($basePath, $lang)).$suffix;
-        }
-
         return [
             ...parent::share($request),
             'site' => SiteData::shared(),
@@ -65,7 +60,7 @@ class HandleInertiaRequests extends Middleware
                 'htmlLang' => $locale->htmlLang(),
                 'basePath' => $basePath,
                 'languages' => $locale->languageOptions(),
-                'alternates' => $alternates,
+                'alternates' => fn () => $this->alternates($request, $locale, $basePath, $suffix),
             ],
             'i18n' => fn () => [
                 'language' => $locale->language(),
@@ -82,5 +77,26 @@ class HandleInertiaRequests extends Middleware
                 'status' => fn () => $request->session()->get('status'),
             ],
         ];
+    }
+
+    protected function alternates(Request $request, ActiveLocale $locale, string $basePath, string $suffix): array
+    {
+        $slugovi = (array) $request->attributes->get('localizedSlugs');
+        $segmenti = explode('/', trim($basePath, '/'));
+
+        $alternates = [];
+        foreach (array_keys((array) config('locales.languages')) as $lang) {
+            $path = $basePath;
+
+            if ($slugovi && $segmenti) {
+                $ciljni = $segmenti;
+                $ciljni[count($ciljni) - 1] = $slugovi[$lang] ?? $slugovi['sr'] ?? end($ciljni);
+                $path = '/'.implode('/', $ciljni);
+            }
+
+            $alternates[$lang] = url($locale->path($path, $lang)).$suffix;
+        }
+
+        return $alternates;
     }
 }

@@ -212,7 +212,7 @@ class PageController extends Controller
             ->limit($limit);
 
         if ($kategorija) {
-            $query->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
         }
 
         return $resource::collection($query->get())->resolve();

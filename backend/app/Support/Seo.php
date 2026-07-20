@@ -47,7 +47,7 @@ class Seo
             '@type' => 'LocalBusiness',
             'name' => $business->naslov,
             'description' => $business->opis ?: $business->opis_dug,
-            'url' => url('/domace-je-najbolje/'.$business->slug),
+            'url' => url('/domace-je-najbolje/'.$business->slugFor()),
             'telephone' => $kontakt['telefon'] ?? null,
             'email' => $kontakt['email'] ?? null,
             'address' => ($kontakt['adresa'] ?? $business->lokacija) ? [

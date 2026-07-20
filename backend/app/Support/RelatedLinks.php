@@ -53,7 +53,7 @@ class RelatedLinks
             $items[] = [
                 'naslov' => $related->naslov,
                 'tip' => $label,
-                'to' => $prefix.$related->slug,
+                'to' => $prefix.(method_exists($related, 'slugFor') ? $related->slugFor() : $related->slug),
                 'slika' => $related->getFirstMediaUrl('naslovna'),
             ];
         }

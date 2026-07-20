@@ -36,7 +36,7 @@ class AdController extends Controller
         }
 
         if ($kategorija) {
-            $query->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
         }
 
         if ($q) {

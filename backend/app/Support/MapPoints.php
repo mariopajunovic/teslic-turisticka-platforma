@@ -25,16 +25,20 @@ class MapPoints
             ->whereNotNull('lat')
             ->whereNotNull('lng')
             ->get()
-            ->map(fn ($r) => [
-                'slug' => $r->slug,
-                'naslov' => $r->naslov,
-                'kategorija' => $r->category?->key ?? $fallbackKey,
-                'lokacija' => $r->lokacija,
-                'slika' => $r->getFirstMediaUrl('naslovna'),
-                'lat' => (float) $r->lat,
-                'lng' => (float) $r->lng,
-                'to' => $prefix.$r->slug,
-            ])
+            ->map(function ($r) use ($prefix, $fallbackKey) {
+                $slug = method_exists($r, 'slugFor') ? $r->slugFor() : $r->slug;
+
+                return [
+                    'slug' => $slug,
+                    'naslov' => $r->naslov,
+                    'kategorija' => $r->category?->key ?? $fallbackKey,
+                    'lokacija' => $r->lokacija,
+                    'slika' => $r->getFirstMediaUrl('naslovna'),
+                    'lat' => (float) $r->lat,
+                    'lng' => (float) $r->lng,
+                    'to' => $prefix.$slug,
+                ];
+            })
             ->all();
     }
 }

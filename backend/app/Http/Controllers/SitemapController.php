@@ -34,7 +34,7 @@ class SitemapController extends Controller
         }
 
         Business::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {
-            $urls[] = ['loc' => url('/domace-je-najbolje/'.$item->slug), 'lastmod' => $item->updated_at->toIso8601String()];
+            $urls[] = ['loc' => url('/domace-je-najbolje/'.$item->slugFor('sr')), 'lastmod' => $item->updated_at->toIso8601String()];
         });
 
         Location::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {

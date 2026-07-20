@@ -29,7 +29,7 @@ class BusinessController extends Controller
             ->latest('published_at');
 
         if ($kategorija) {
-            $query->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
         }
 
         if ($q) {
@@ -74,12 +74,14 @@ class BusinessController extends Controller
         ];
     }
 
-    public function show(string $slug): Response
+    public function show(Request $request, string $slug): Response
     {
         $biznis = Business::objavljeno()
             ->with(['category', 'media'])
-            ->where('slug', $slug)
+            ->whereSlug($slug)
             ->firstOrFail();
+
+        $request->attributes->set('localizedSlugs', (array) $biznis->slug);
 
         $slicni = Business::objavljeno()
             ->with(['category', 'media'])
@@ -96,7 +98,7 @@ class BusinessController extends Controller
             'seo' => Seo::make(
                 $biznis->naslov,
                 $biznis->opis ?: $biznis->opis_dug,
-                url('/domace-je-najbolje/'.$biznis->slug),
+                url('/domace-je-najbolje/'.$biznis->slugFor()),
                 $biznis->getFirstMediaUrl('naslovna'),
                 'article',
                 [
@@ -104,7 +106,7 @@ class BusinessController extends Controller
                     Seo::breadcrumbs([
                         ['name' => 'Početna', 'url' => '/'],
                         ['name' => 'Domaće je najbolje', 'url' => '/domace-je-najbolje'],
-                        ['name' => $biznis->naslov, 'url' => '/domace-je-najbolje/'.$biznis->slug],
+                        ['name' => $biznis->naslov, 'url' => '/domace-je-najbolje/'.$biznis->slugFor()],
                     ]),
                 ],
             ),
@@ -113,13 +115,13 @@ class BusinessController extends Controller
 
     public function kategorija(Request $request, string $kategorija): Response
     {
-        $cat = Category::where('key', $kategorija)->firstOrFail();
+        $cat = Category::byKeyOrSlug($kategorija)->firstOrFail();
         $q = $request->query('q');
 
         $query = Business::objavljeno()
             ->with(['category', 'media'])
             ->latest('published_at')
-            ->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            ->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
 
         if ($q) {
             $query->where(function ($builder) use ($q) {

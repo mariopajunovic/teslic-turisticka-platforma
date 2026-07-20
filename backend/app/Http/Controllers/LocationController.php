@@ -28,7 +28,7 @@ class LocationController extends Controller
             ->latest('published_at');
 
         if ($kategorija) {
-            $query->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
         }
 
         if ($q) {
@@ -110,13 +110,13 @@ class LocationController extends Controller
 
     public function kategorija(Request $request, string $kategorija): Response
     {
-        $cat = Category::where('key', $kategorija)->firstOrFail();
+        $cat = Category::byKeyOrSlug($kategorija)->firstOrFail();
         $q = $request->query('q');
 
         $query = Location::objavljeno()
             ->with(['category', 'media'])
             ->latest('published_at')
-            ->whereHas('category', fn ($c) => $c->where('key', $kategorija));
+            ->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
 
         if ($q) {
             $query->where(function ($builder) use ($q) {
