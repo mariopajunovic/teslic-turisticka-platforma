@@ -22,15 +22,15 @@ class PublicSiteTest extends TestCase
         return [
             'home' => ['/'],
             'biznisi' => ['/domace-je-najbolje'],
-            'biznis detalj' => ['/domace-je-najbolje/stari-zanati-borje'],
+            'biznis detalj' => ['/biznis/stari-zanati-borje'],
             'turizam' => ['/turizam'],
-            'lokalitet detalj' => ['/turizam/planina-borja'],
+            'lokalitet detalj' => ['/lokalitet/planina-borja'],
             'dogadjaji' => ['/dogadjaji'],
-            'dogadjaj detalj' => ['/dogadjaji/ljeto-na-borju'],
+            'dogadjaj detalj' => ['/dogadjaj/ljeto-na-borju'],
             'oglasi' => ['/oglasi'],
-            'oglas detalj' => ['/oglasi/konobar-kardial'],
+            'oglas detalj' => ['/oglas/konobar-kardial'],
             'price' => ['/price'],
-            'prica detalj' => ['/price/ljudi-duh-teslica'],
+            'prica detalj' => ['/prica/ljudi-duh-teslica'],
             'mapa' => ['/mapa'],
             'cms o-projektu' => ['/o-projektu'],
             'cms pravna' => ['/politika-privatnosti'],
@@ -47,6 +47,6 @@ class PublicSiteTest extends TestCase
 
     public function test_unknown_business_returns_404(): void
     {
-        $this->get('/domace-je-najbolje/nepostojeci-slug')->assertNotFound();
+        $this->get('/biznis/nepostojeci-slug')->assertNotFound();
     }
 }

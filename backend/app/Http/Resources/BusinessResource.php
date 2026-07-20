@@ -11,6 +11,7 @@ class BusinessResource extends JsonResource
     {
         return [
             'slug' => $this->slugFor(),
+            'url' => \App\Support\ResourceUrls::detail($this->resource),
             'naslov' => $this->naslov,
             'opis' => $this->opis,
             'opisDug' => $this->opis_dug,

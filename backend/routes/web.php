@@ -15,33 +15,45 @@ use App\Http\Controllers\StoryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+$detailSegments = collect((array) config('resources.types'))
+    ->flatMap(fn ($cfg) => array_values((array) ($cfg['segment'] ?? [])))
+    ->filter()
+    ->unique()
+    ->all();
+
 $reservedSegments = array_merge(
     ['admin', 'build', 'storage', 'administracija'],
     (array) config('locales.prefixed'),
+    $detailSegments,
 );
 $slugPattern = '(?!(?:'.implode('|', $reservedSegments).')$)[a-z0-9\-]+';
+$parentPattern = '(?!(?:'.implode('|', $reservedSegments).')(?:/|$))[a-z0-9\-]+';
 
-$public = function () use ($slugPattern) {
+$public = function (string $lang) use ($slugPattern, $parentPattern) {
     Route::get('/', [PageController::class, 'home'])->name('home');
+
+    foreach ((array) config('resources.types') as $tip => $cfg) {
+        $segment = $cfg['segment'][$lang] ?? $cfg['segment']['sr'] ?? $tip;
+
+        Route::get('/'.$segment.'/{slug}', [$cfg['controller'], 'show'])->name($tip.'.show');
+    }
+
+    Route::post('/'.(config('resources.types.business.segment')[$lang] ?? 'biznis').'/{slug}/upit', [\App\Http\Controllers\BusinessInquiryController::class, 'send'])
+        ->middleware('throttle:5,1')
+        ->name('biznisi.upit');
 
     Route::get('/domace-je-najbolje', [BusinessController::class, 'index'])->name('biznisi.index');
     Route::get('/domace-je-najbolje/kategorija/{kategorija}', [BusinessController::class, 'kategorija'])->name('biznisi.kategorija');
-    Route::get('/domace-je-najbolje/{slug}', [BusinessController::class, 'show'])->name('biznisi.show');
-    Route::post('/domace-je-najbolje/{slug}/upit', [\App\Http\Controllers\BusinessInquiryController::class, 'send'])->middleware('throttle:5,1')->name('biznisi.upit');
 
     Route::get('/turizam', [LocationController::class, 'index'])->name('lokaliteti.index');
     Route::get('/turizam/kategorija/{kategorija}', [LocationController::class, 'kategorija'])->name('lokaliteti.kategorija');
-    Route::get('/turizam/{slug}', [LocationController::class, 'show'])->name('lokaliteti.show');
 
     Route::get('/dogadjaji', [EventController::class, 'index'])->name('dogadjaji.index');
-    Route::get('/dogadjaji/{slug}', [EventController::class, 'show'])->name('dogadjaji.show');
 
     Route::get('/oglasi', [AdController::class, 'index'])->name('oglasi.index');
-    Route::get('/oglasi/{slug}', [AdController::class, 'show'])->name('oglasi.show');
 
     Route::get('/price', [StoryController::class, 'index'])->name('price.index');
     Route::get('/price/kategorija/{kategorija}', [StoryController::class, 'kategorija'])->name('price.kategorija');
-    Route::get('/price/{slug}', [StoryController::class, 'show'])->name('price.show');
 
     Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');
 
@@ -94,14 +106,19 @@ $public = function () use ($slugPattern) {
     Route::get('/{slug}', [PageController::class, 'show'])
         ->where('slug', $slugPattern)
         ->name('pages.show');
+
+    Route::get('/{parent}/{slug}', [PageController::class, 'child'])
+        ->where('parent', $parentPattern)
+        ->where('slug', $slugPattern)
+        ->name('pages.child');
 };
 
 // Serbian (default language, no URL prefix).
-Route::group([], $public);
+Route::group([], fn () => $public('sr'));
 
 // Prefixed languages (/en, /de).
 foreach ((array) config('locales.prefixed') as $prefix) {
-    Route::prefix($prefix)->name($prefix.'.')->group($public);
+    Route::prefix($prefix)->name($prefix.'.')->group(fn () => $public($prefix));
 }
 
 // Script toggle (Latin / Cyrillic) for Serbian — cookie based, same URL.

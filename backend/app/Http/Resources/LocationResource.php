@@ -11,6 +11,7 @@ class LocationResource extends JsonResource
     {
         return [
             'slug' => $this->slug,
+            'url' => \App\Support\ResourceUrls::detail($this->resource),
             'naslov' => $this->naslov,
             'opis' => $this->opis,
             'opisDug' => $this->opis_dug,

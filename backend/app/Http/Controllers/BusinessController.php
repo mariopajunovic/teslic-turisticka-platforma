@@ -16,6 +16,7 @@ use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Support\ResourceUrls;
 
 class BusinessController extends Controller
 {
@@ -82,6 +83,9 @@ class BusinessController extends Controller
             ->firstOrFail();
 
         $request->attributes->set('localizedSlugs', (array) $biznis->slug);
+        $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))
+            ->mapWithKeys(fn ($lang) => [$lang => ResourceUrls::detail($biznis, $lang)])
+            ->all());
 
         $slicni = Business::objavljeno()
             ->with(['category', 'media'])
@@ -98,7 +102,7 @@ class BusinessController extends Controller
             'seo' => Seo::make(
                 $biznis->naslov,
                 $biznis->opis ?: $biznis->opis_dug,
-                url('/domace-je-najbolje/'.$biznis->slugFor()),
+                url(ResourceUrls::detail($biznis)),
                 $biznis->getFirstMediaUrl('naslovna'),
                 'article',
                 [
@@ -106,7 +110,7 @@ class BusinessController extends Controller
                     Seo::breadcrumbs([
                         ['name' => 'Početna', 'url' => '/'],
                         ['name' => 'Domaće je najbolje', 'url' => '/domace-je-najbolje'],
-                        ['name' => $biznis->naslov, 'url' => '/domace-je-najbolje/'.$biznis->slugFor()],
+                        ['name' => $biznis->naslov, 'url' => ResourceUrls::detail($biznis)],
                     ]),
                 ],
             ),

@@ -13,6 +13,7 @@ class EventResource extends JsonResource
 
         return [
             'slug' => $this->slug,
+            'url' => \App\Support\ResourceUrls::detail($this->resource),
             'naslov' => $this->naslov,
             'dan' => $this->datum?->format('d'),
             'mjesec' => $this->datum ? $mjeseci[(int) $this->datum->format('n')] : null,

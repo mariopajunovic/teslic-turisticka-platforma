@@ -32,11 +32,11 @@ class PagesController extends Controller
             'stranica' => [
                 'id' => $page->id,
                 'title' => $page->getTranslations('title'),
-                'slug' => $page->slug,
-                'url' => $page->slug === 'pocetna' ? '/' : '/'.$page->slug,
+                'slug' => $page->slugFor('sr'),
+                'url' => $page->pathFor('sr'),
                 'published' => (bool) $page->published,
                 'isSystem' => (bool) $page->is_system,
-                'slugLocked' => $page->slug === 'pocetna',
+                'slugLocked' => $page->isHome(),
                 'metaTitle' => $page->getTranslations('meta_title'),
                 'metaDescription' => $page->getTranslations('meta_description'),
                 'ogImage' => $page->og_image,
@@ -89,13 +89,13 @@ class PagesController extends Controller
             'title' => ['required', 'array'],
             'title.sr' => ['required', 'string', 'max:255'],
             'title.*' => ['nullable', 'string', 'max:255'],
-            'slug' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/', Rule::unique('pages', 'slug')],
+            'slug' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'published' => ['boolean'],
         ]);
 
         $page = new Page();
         $page->setTranslations('title', $this->mapa($data['title']));
-        $page->slug = ($data['slug'] ?? null) ?: Str::slug($data['title']['sr']);
+        $page->slug = ['sr' => ($data['slug'] ?? null) ?: Str::slug($data['title']['sr'])];
         $page->published = (bool) ($data['published'] ?? false);
         $page->is_system = false;
         $page->content = [];
@@ -113,7 +113,7 @@ class PagesController extends Controller
             'title' => ['required', 'array'],
             'title.sr' => ['required', 'string', 'max:255'],
             'title.*' => ['nullable', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/', Rule::unique('pages', 'slug')->ignore($page->id)],
+            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'published' => ['boolean'],
             'meta_title' => ['array'],
             'meta_title.*' => ['nullable', 'string', 'max:255'],
@@ -124,8 +124,8 @@ class PagesController extends Controller
 
         $page->setTranslations('title', $this->mapa($data['title']));
 
-        if ($page->slug !== 'pocetna') {
-            $page->slug = $data['slug'];
+        if (! $page->isHome()) {
+            $page->slug = array_merge((array) $page->slug, ['sr' => $data['slug']]);
         }
 
         $page->published = (bool) ($data['published'] ?? false);
@@ -160,11 +160,11 @@ class PagesController extends Controller
             'id' => $page->id,
             'title' => $page->getTranslations('title')['sr'] ?? '(bez naslova)',
             'titleTranslations' => $page->getTranslations('title'),
-            'slug' => $page->slug,
-            'url' => $page->slug === 'pocetna' ? '/' : '/'.$page->slug,
+            'slug' => $page->slugFor('sr'),
+            'url' => $page->pathFor('sr'),
             'published' => (bool) $page->published,
             'isSystem' => (bool) $page->is_system,
-            'slugLocked' => $page->slug === 'pocetna',
+            'slugLocked' => $page->isHome(),
             'blokova' => is_array($content) ? count($content) : 0,
             'izmijenjeno' => $page->updated_at?->diffForHumans(),
             'metaTitleTranslations' => $page->getTranslations('meta_title'),

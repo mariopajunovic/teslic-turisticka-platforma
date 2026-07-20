@@ -14,6 +14,7 @@ use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Support\ResourceUrls;
 
 class EventController extends Controller
 {
@@ -73,12 +74,16 @@ class EventController extends Controller
         ];
     }
 
-    public function show(string $slug): Response
+    public function show(Request $request, string $slug): Response
     {
         $dogadjaj = Event::objavljeno()
             ->with(['category', 'media'])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))
+            ->mapWithKeys(fn ($lang) => [$lang => ResourceUrls::detail($dogadjaj, $lang)])
+            ->all());
 
         $slicni = Event::objavljeno()
             ->with(['category', 'media'])
@@ -94,7 +99,7 @@ class EventController extends Controller
             'seo' => Seo::make(
                 $dogadjaj->naslov,
                 $dogadjaj->opis ?: $dogadjaj->opis_dug,
-                url('/dogadjaji/'.$dogadjaj->slug),
+                url(ResourceUrls::detail($dogadjaj)),
                 $dogadjaj->getFirstMediaUrl('naslovna'),
                 'article',
                 [
@@ -102,7 +107,7 @@ class EventController extends Controller
                     Seo::breadcrumbs([
                         ['name' => 'Početna', 'url' => '/'],
                         ['name' => 'Događaji', 'url' => '/dogadjaji'],
-                        ['name' => $dogadjaj->naslov, 'url' => '/dogadjaji/'.$dogadjaj->slug],
+                        ['name' => $dogadjaj->naslov, 'url' => ResourceUrls::detail($dogadjaj)],
                     ]),
                 ],
             ),

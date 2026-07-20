@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Support\ResourceUrls;
 
 class Seo
 {
@@ -47,7 +48,7 @@ class Seo
             '@type' => 'LocalBusiness',
             'name' => $business->naslov,
             'description' => $business->opis ?: $business->opis_dug,
-            'url' => url('/domace-je-najbolje/'.$business->slugFor()),
+            'url' => url(ResourceUrls::detail($business)),
             'telephone' => $kontakt['telefon'] ?? null,
             'email' => $kontakt['email'] ?? null,
             'address' => ($kontakt['adresa'] ?? $business->lokacija) ? [
@@ -68,7 +69,7 @@ class Seo
             'name' => $event->naslov,
             'description' => $event->opis_dug,
             'startDate' => $event->datum?->toIso8601String(),
-            'url' => url('/dogadjaji/'.$event->slug),
+            'url' => url(ResourceUrls::detail($event)),
             'location' => $event->lokacija ? [
                 '@type' => 'Place',
                 'name' => $event->lokacija,
@@ -87,7 +88,7 @@ class Seo
             'description' => $story->izvod,
             'author' => $story->autor ? ['@type' => 'Person', 'name' => $story->autor] : null,
             'datePublished' => $story->datum?->toIso8601String(),
-            'url' => url('/price/'.$story->slug),
+            'url' => url(ResourceUrls::detail($story)),
             'image' => $story->getFirstMediaUrl('naslovna') ?: null,
         ], fn ($v) => $v !== null && $v !== '');
     }

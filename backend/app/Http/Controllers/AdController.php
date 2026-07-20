@@ -14,6 +14,7 @@ use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Support\ResourceUrls;
 
 class AdController extends Controller
 {
@@ -82,12 +83,16 @@ class AdController extends Controller
         ];
     }
 
-    public function show(string $slug): Response
+    public function show(Request $request, string $slug): Response
     {
         $oglas = Ad::objavljeno()
             ->with(['category'])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))
+            ->mapWithKeys(fn ($lang) => [$lang => ResourceUrls::detail($oglas, $lang)])
+            ->all());
 
         $slicni = Ad::objavljeno()
             ->with(['category'])
@@ -104,14 +109,14 @@ class AdController extends Controller
             'seo' => Seo::make(
                 $oglas->naslov,
                 $oglas->opis_dug ?: null,
-                url('/oglasi/'.$oglas->slug),
+                url(ResourceUrls::detail($oglas)),
                 $oglas->getFirstMediaUrl('naslovna'),
                 'article',
                 [
                     Seo::breadcrumbs([
                         ['name' => 'Početna', 'url' => '/'],
                         ['name' => 'Oglasi', 'url' => '/oglasi'],
-                        ['name' => $oglas->naslov, 'url' => '/oglasi/'.$oglas->slug],
+                        ['name' => $oglas->naslov, 'url' => ResourceUrls::detail($oglas)],
                     ]),
                 ],
             ),

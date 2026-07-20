@@ -146,15 +146,17 @@ class PageSeeder extends Seeder
 
     protected function page(string $slug, string $title, bool $isSystem, string $metaTitle, array $content): void
     {
-        Page::updateOrCreate(
-            ['slug' => $slug],
-            [
-                'title' => $title,
-                'published' => true,
-                'is_system' => $isSystem,
-                'meta_title' => $metaTitle,
-                'content' => $content,
-            ],
-        );
+        $page = Page::where('slug->sr', $slug)->first() ?? new Page();
+
+        $page->fill([
+            'title' => $title,
+            'published' => true,
+            'is_system' => $isSystem,
+            'meta_title' => $metaTitle,
+            'content' => $content,
+        ]);
+
+        $page->slug = ['sr' => $slug];
+        $page->save();
     }
 }

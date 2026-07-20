@@ -10,15 +10,16 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Story;
 use Illuminate\Database\Eloquent\Model;
+use App\Support\ResourceUrls;
 
 class RelatedLinks
 {
     protected const ROUTES = [
-        Business::class => ['/domace-je-najbolje/', 'Biznis'],
-        Location::class => ['/turizam/', 'Lokalitet'],
-        Event::class => ['/dogadjaji/', 'Događaj'],
-        Ad::class => ['/oglasi/', 'Oglas'],
-        Story::class => ['/price/', 'Priča'],
+        Business::class => 'Biznis',
+        Location::class => 'Lokalitet',
+        Event::class => 'Događaj',
+        Ad::class => 'Oglas',
+        Story::class => 'Priča',
     ];
 
     public static function for(Model $model): array
@@ -48,12 +49,12 @@ class RelatedLinks
                 continue;
             }
 
-            [$prefix, $label] = self::ROUTES[$otherType];
+            $label = self::ROUTES[$otherType];
 
             $items[] = [
                 'naslov' => $related->naslov,
                 'tip' => $label,
-                'to' => $prefix.(method_exists($related, 'slugFor') ? $related->slugFor() : $related->slug),
+                'to' => ResourceUrls::detail($related),
                 'slika' => $related->getFirstMediaUrl('naslovna'),
             ];
         }

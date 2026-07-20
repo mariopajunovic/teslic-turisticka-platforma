@@ -9,6 +9,7 @@ use App\Models\Page;
 use App\Models\Story;
 use App\Settings\SiteSettings;
 use Illuminate\Http\Response;
+use App\Support\ResourceUrls;
 
 class SitemapController extends Controller
 {
@@ -34,19 +35,19 @@ class SitemapController extends Controller
         }
 
         Business::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {
-            $urls[] = ['loc' => url('/domace-je-najbolje/'.$item->slugFor('sr')), 'lastmod' => $item->updated_at->toIso8601String()];
+            $urls[] = ['loc' => url(ResourceUrls::detail($item, 'sr')), 'lastmod' => $item->updated_at->toIso8601String()];
         });
 
         Location::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {
-            $urls[] = ['loc' => url('/turizam/'.$item->slug), 'lastmod' => $item->updated_at->toIso8601String()];
+            $urls[] = ['loc' => url(ResourceUrls::detail($item, 'sr')), 'lastmod' => $item->updated_at->toIso8601String()];
         });
 
         Event::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {
-            $urls[] = ['loc' => url('/dogadjaji/'.$item->slug), 'lastmod' => $item->updated_at->toIso8601String()];
+            $urls[] = ['loc' => url(ResourceUrls::detail($item, 'sr')), 'lastmod' => $item->updated_at->toIso8601String()];
         });
 
         Story::objavljeno()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {
-            $urls[] = ['loc' => url('/price/'.$item->slug), 'lastmod' => $item->updated_at->toIso8601String()];
+            $urls[] = ['loc' => url(ResourceUrls::detail($item, 'sr')), 'lastmod' => $item->updated_at->toIso8601String()];
         });
 
         Page::published()->select(['slug', 'updated_at'])->each(function ($item) use (&$urls) {

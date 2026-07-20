@@ -173,8 +173,8 @@ class BiznisiAdminTest extends TestCase
             'status' => 'objavljeno',
         ]);
 
-        $this->get('/domace-je-najbolje/pcelarstvo')->assertOk();
-        $this->get('/en/domace-je-najbolje/beekeeping')->assertOk();
+        $this->get('/biznis/pcelarstvo')->assertOk();
+        $this->get('/en/business/beekeeping')->assertOk();
     }
 
     public function test_language_switcher_uses_localized_slug(): void
@@ -189,11 +189,11 @@ class BiznisiAdminTest extends TestCase
             'status' => 'objavljeno',
         ]);
 
-        $this->get('/domace-je-najbolje/pcelarstvo')
+        $this->get('/biznis/pcelarstvo')
             ->assertOk()
             ->assertInertia(fn (AssertableInertia $p) => $p
-                ->where('locale.alternates.en', url('/en/domace-je-najbolje/beekeeping'))
-                ->where('locale.alternates.sr', url('/domace-je-najbolje/pcelarstvo')));
+                ->where('locale.alternates.en', url('/en/business/beekeeping'))
+                ->where('locale.alternates.sr', url('/biznis/pcelarstvo')));
     }
 
     public function test_approve_changes_status(): void

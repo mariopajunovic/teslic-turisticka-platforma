@@ -81,11 +81,18 @@ class HandleInertiaRequests extends Middleware
 
     protected function alternates(Request $request, ActiveLocale $locale, string $basePath, string $suffix): array
     {
+        $putanje = (array) $request->attributes->get('localizedPaths');
         $slugovi = (array) $request->attributes->get('localizedSlugs');
         $segmenti = explode('/', trim($basePath, '/'));
 
         $alternates = [];
         foreach (array_keys((array) config('locales.languages')) as $lang) {
+            if (! empty($putanje[$lang])) {
+                $alternates[$lang] = url($putanje[$lang]).$suffix;
+
+                continue;
+            }
+
             $path = $basePath;
 
             if ($slugovi && $segmenti) {

@@ -23,7 +23,7 @@ class PageController extends Controller
 {
     public function home(): Response
     {
-        $page = Page::published()->where('slug', 'pocetna')->first();
+        $page = Page::published()->where('slug->sr', 'pocetna')->first();
 
         if (! $page) {
             return Inertia::render('Home');
@@ -34,7 +34,20 @@ class PageController extends Controller
 
     public function show(string $slug): Response
     {
-        $query = Page::where('slug', $slug);
+        $query = Page::whereSlug($slug)->whereNull('parent_id');
+
+        if (! $this->previewing()) {
+            $query->published();
+        }
+
+        return $this->renderPage($query->firstOrFail());
+    }
+
+    public function child(string $parent, string $slug): Response
+    {
+        $roditelj = Page::whereSlug($parent)->whereNull('parent_id')->firstOrFail();
+
+        $query = Page::whereSlug($slug)->where('parent_id', $roditelj->id);
 
         if (! $this->previewing()) {
             $query->published();
@@ -109,13 +122,13 @@ class PageController extends Controller
             return $block;
         })->all();
 
-        $isHome = $page->slug === 'pocetna';
-        $canonical = $isHome ? url('/') : url('/'.$page->slug);
+        $isHome = $page->isHome();
+        $canonical = url($page->pathFor());
 
         return Inertia::render('PageRenderer', [
             'page' => [
                 'title' => $page->title,
-                'slug' => $page->slug,
+                'slug' => $page->slugFor(),
                 'meta_title' => $page->meta_title,
                 'meta_description' => $page->meta_description,
             ],
@@ -132,7 +145,7 @@ class PageController extends Controller
                             ? [['name' => 'Početna', 'url' => '/']]
                             : [
                                 ['name' => 'Početna', 'url' => '/'],
-                                ['name' => $page->title, 'url' => '/'.$page->slug],
+                                ['name' => $page->title, 'url' => $page->pathFor()],
                             ]
                     ),
                 ],

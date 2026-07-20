@@ -11,6 +11,7 @@ class StoryResource extends JsonResource
     {
         return [
             'slug' => $this->slug,
+            'url' => \App\Support\ResourceUrls::detail($this->resource),
             'naslov' => $this->naslov,
             'kategorija' => $this->category ? [
                 'key' => $this->category->key,

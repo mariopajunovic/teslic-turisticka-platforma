@@ -16,6 +16,7 @@ use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Inertia\Response;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Support\ResourceUrls;
 
 class BusinessesController extends Controller
 {
@@ -291,7 +292,7 @@ class BusinessesController extends Controller
             'opis_dug' => $business->getTranslations('opis_dug'),
             'lokacija' => $business->getTranslations('lokacija'),
             'slug' => (array) $business->slug,
-            'url' => '/domace-je-najbolje/'.$business->slugFor('sr'),
+            'url' => ResourceUrls::detail($business, 'sr'),
             'category_id' => $business->category_id,
             'kontakt' => $this->kontakt($business->kontakt ?? []),
             'lat' => $business->lat,
@@ -325,7 +326,7 @@ class BusinessesController extends Controller
             'autor' => $business->user?->name,
             'status' => $business->status->value,
             'datum' => ($business->published_at ?? $business->created_at)?->translatedFormat('d.m.Y.'),
-            'url' => '/domace-je-najbolje/'.$business->slugFor('sr'),
+            'url' => ResourceUrls::detail($business, 'sr'),
         ];
     }
 

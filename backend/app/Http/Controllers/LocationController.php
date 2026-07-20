@@ -15,6 +15,7 @@ use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Support\ResourceUrls;
 
 class LocationController extends Controller
 {
@@ -73,12 +74,16 @@ class LocationController extends Controller
         ];
     }
 
-    public function show(string $slug): Response
+    public function show(Request $request, string $slug): Response
     {
         $lokalitet = Location::objavljeno()
             ->with(['category', 'media'])
             ->where('slug', $slug)
             ->firstOrFail();
+
+        $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))
+            ->mapWithKeys(fn ($lang) => [$lang => ResourceUrls::detail($lokalitet, $lang)])
+            ->all());
 
         $slicni = Location::objavljeno()
             ->with(['category', 'media'])
@@ -94,14 +99,14 @@ class LocationController extends Controller
             'seo' => Seo::make(
                 $lokalitet->naslov,
                 $lokalitet->opis ?: $lokalitet->opis_dug,
-                url('/turizam/'.$lokalitet->slug),
+                url(ResourceUrls::detail($lokalitet)),
                 $lokalitet->getFirstMediaUrl('naslovna'),
                 'article',
                 [
                     Seo::breadcrumbs([
                         ['name' => 'Početna', 'url' => '/'],
                         ['name' => 'Turizam', 'url' => '/turizam'],
-                        ['name' => $lokalitet->naslov, 'url' => '/turizam/'.$lokalitet->slug],
+                        ['name' => $lokalitet->naslov, 'url' => ResourceUrls::detail($lokalitet)],
                     ]),
                 ],
             ),
