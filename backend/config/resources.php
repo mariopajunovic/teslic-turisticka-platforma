@@ -4,16 +4,22 @@ use App\Http\Resources\AdResource;
 use App\Http\Resources\BusinessResource;
 use App\Http\Resources\EventResource;
 use App\Http\Resources\LocationResource;
+use App\Http\Resources\NewsResource;
 use App\Http\Resources\StoryResource;
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProcurementController;
 use App\Http\Controllers\StoryController;
+use App\Http\Resources\ProcurementResource;
 use App\Models\Ad;
 use App\Models\Business;
 use App\Models\Event;
 use App\Models\Location;
+use App\Models\News;
+use App\Models\Procurement;
 use App\Models\Story;
 
 return [
@@ -62,6 +68,24 @@ return [
             'category_type' => 'price',
             'search' => ['naslov', 'izvod'],
             'segment' => ['sr' => 'prica', 'en' => 'story', 'de' => 'geschichte'],
+        ],
+        'news' => [
+            'label' => 'Vijesti',
+            'model' => News::class,
+            'controller' => NewsController::class,
+            'resource' => NewsResource::class,
+            'category_type' => null,
+            'search' => ['naslov', 'izvod'],
+            'segment' => ['sr' => 'vijest', 'en' => 'news', 'de' => 'nachricht'],
+        ],
+        'procurement' => [
+            'label' => 'Javne nabavke',
+            'model' => Procurement::class,
+            'controller' => ProcurementController::class,
+            'resource' => ProcurementResource::class,
+            'category_type' => null,
+            'search' => ['naslov', 'opis'],
+            'segment' => ['sr' => 'javna-nabavka', 'en' => 'procurement', 'de' => 'ausschreibung'],
         ],
     ],
 ];

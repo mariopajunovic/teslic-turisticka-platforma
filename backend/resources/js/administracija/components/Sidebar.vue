@@ -17,6 +17,8 @@ import {
     CalendarDays,
     Megaphone,
     BookOpen,
+    Newspaper,
+    FileStack,
     Tag,
     Menu as MenuIcon,
     PanelLeft,
@@ -46,6 +48,8 @@ const groups = [
             { icon: CalendarDays, label: 'Događaji', href: '/administracija/dogadjaji' },
             { icon: Megaphone, label: 'Oglasi', href: '/administracija/oglasi' },
             { icon: BookOpen, label: 'Priče', href: '/administracija/price' },
+            { icon: Newspaper, label: 'Vijesti', href: '/administracija/vijesti' },
+            { icon: FileStack, label: 'Javne nabavke', href: '/administracija/nabavke' },
         ],
     },
     {

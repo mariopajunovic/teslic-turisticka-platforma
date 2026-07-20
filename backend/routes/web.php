@@ -6,6 +6,8 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\ProcurementController;
 use App\Http\Controllers\Nalog\AutorStoryController;
 use App\Http\Controllers\Nalog\BiznisAdController;
 use App\Http\Controllers\Nalog\BiznisObjaveController;
@@ -22,7 +24,7 @@ $detailSegments = collect((array) config('resources.types'))
     ->all();
 
 $reservedSegments = array_merge(
-    ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog'],
+    ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog', 'vijesti', 'javne-nabavke'],
     (array) config('locales.prefixed'),
     $detailSegments,
 );
@@ -43,6 +45,9 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         ->name('biznisi.upit');
 
     Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');
+
+    Route::get('/vijesti', [NewsController::class, 'index'])->name('vijesti');
+    Route::get('/javne-nabavke', [ProcurementController::class, 'index'])->name('javne-nabavke');
 
     Route::get('/kontakt', fn () => Inertia::render('Contact', ['seo' => \App\Support\Seo::make('Kontakt', 'Stupite u kontakt s nama — tu smo za sva pitanja i prijedloge.', url()->current())]))->name('kontakt');
     Route::post('/kontakt', [\App\Http\Controllers\ContactController::class, 'send'])

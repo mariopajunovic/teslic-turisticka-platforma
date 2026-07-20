@@ -7,6 +7,8 @@ use App\Http\Controllers\Administracija\LocationsController;
 use App\Http\Controllers\Administracija\EventsController;
 use App\Http\Controllers\Administracija\AdsController;
 use App\Http\Controllers\Administracija\StoriesController;
+use App\Http\Controllers\Administracija\NewsController;
+use App\Http\Controllers\Administracija\ProcurementsController;
 use App\Http\Controllers\Administracija\CategoriesController;
 use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
@@ -117,6 +119,8 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
             'dogadjaji' => EventsController::class,
             'oglasi' => AdsController::class,
             'price' => StoriesController::class,
+            'vijesti' => NewsController::class,
+            'nabavke' => ProcurementsController::class,
         ] as $baza => $ctrl) {
             Route::get("/{$baza}", [$ctrl, 'index'])->name($baza);
             Route::get("/{$baza}/novi", [$ctrl, 'create'])->name("{$baza}.create");
@@ -133,6 +137,9 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
             Route::post("/{$baza}/{id}/galerija", [$ctrl, 'uploadGalerija'])->whereNumber('id')->name("{$baza}.galerija");
             Route::post("/{$baza}/{id}/galerija/redoslijed", [$ctrl, 'reorderGalerija'])->whereNumber('id')->name("{$baza}.galerija.redoslijed");
         }
+
+        Route::post('/nabavke/{id}/dokument', [ProcurementsController::class, 'uploadDokument'])->whereNumber('id')->name('nabavke.dokument');
+        Route::delete('/nabavke/dokument/{media}', [ProcurementsController::class, 'destroyDokument'])->name('nabavke.dokument.destroy');
 
         Route::get('/kategorije', [CategoriesController::class, 'index'])->name('kategorije');
         Route::get('/kategorije/nova', [CategoriesController::class, 'create'])->name('kategorije.create');

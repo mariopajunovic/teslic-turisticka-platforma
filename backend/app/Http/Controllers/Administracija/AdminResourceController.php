@@ -46,6 +46,11 @@ abstract class AdminResourceController extends Controller
         return true;
     }
 
+    protected function hasCategory(): bool
+    {
+        return true;
+    }
+
     abstract protected function rules(?Model $model): array;
 
     abstract protected function assign(Model $model, array $data): void;
@@ -65,10 +70,12 @@ abstract class AdminResourceController extends Controller
 
         $model = $this->model();
 
+        $relacije = array_filter(['user', $this->hasCategory() ? 'category' : null, $this->hasMedia() ? 'media' : null]);
+
         $stavke = $model::query()
-            ->with(['category', 'user', 'media'])
+            ->with($relacije)
             ->when($status, fn ($q) => $q->where('status', $status))
-            ->when($kategorija, fn ($q) => $q->where('category_id', $kategorija))
+            ->when($this->hasCategory() && $kategorija, fn ($q) => $q->where('category_id', $kategorija))
             ->latest('id')
             ->paginate(15)
             ->withQueryString()
@@ -107,7 +114,7 @@ abstract class AdminResourceController extends Controller
     public function edit(int $id): Response
     {
         $stavka = $this->find($id);
-        $stavka->load(['category', 'user', 'tags', 'media']);
+        $stavka->load(array_filter(['user', 'tags', $this->hasCategory() ? 'category' : null, $this->hasMedia() ? 'media' : null]));
 
         return Inertia::render($this->view().'/Forma', [
             $this->propKey() => $this->detalji($stavka),
@@ -257,11 +264,14 @@ abstract class AdminResourceController extends Controller
             'naslov.*' => ['nullable', 'string', 'max:255'],
             'slug' => ['array'],
             'slug.*' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
-            'category_id' => ['nullable', 'exists:categories,id'],
             'status' => ['required', 'string'],
             'tags' => ['array'],
             'tags.*' => ['string', 'max:100'],
         ];
+
+        if ($this->hasCategory()) {
+            $common['category_id'] = ['nullable', 'exists:categories,id'];
+        }
 
         return $request->validate(array_merge($common, $this->rules($model)));
     }
@@ -270,7 +280,10 @@ abstract class AdminResourceController extends Controller
     {
         $stavka->setTranslations('naslov', $this->mapa($data['naslov']));
         $stavka->slug = $this->mapa($data['slug'] ?? []);
-        $stavka->category_id = $data['category_id'] ?? null;
+
+        if ($this->hasCategory()) {
+            $stavka->category_id = $data['category_id'] ?? null;
+        }
 
         $this->assign($stavka, $data);
 
@@ -319,7 +332,7 @@ abstract class AdminResourceController extends Controller
 
     protected function row(Model $stavka): array
     {
-        $category = $stavka->category;
+        $category = $this->hasCategory() ? $stavka->category : null;
 
         return [
             'id' => $stavka->id,
@@ -338,6 +351,10 @@ abstract class AdminResourceController extends Controller
 
     protected function kategorije(): array
     {
+        if (! $this->hasCategory()) {
+            return [];
+        }
+
         return Category::where('type', $this->categoryType())
             ->orderBy('sort')
             ->orderBy('label')

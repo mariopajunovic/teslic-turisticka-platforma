@@ -13,20 +13,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class News extends Model implements HasMedia
+class Procurement extends Model implements HasMedia
 {
     use HasLocalizedContent, HasTranslatableSlug, InteractsWithMedia, TracksStatus, HasTags;
 
-    protected $table = 'news';
+    protected $table = 'procurements';
 
-    public array $translatable = ['naslov', 'izvod', 'sadrzaj'];
+    public array $translatable = ['naslov', 'opis'];
 
     protected $fillable = [
         'user_id',
         'naslov',
         'slug',
-        'izvod',
-        'sadrzaj',
+        'opis',
+        'godina',
         'datum',
         'status',
         'rejection_reason',
@@ -36,6 +36,7 @@ class News extends Model implements HasMedia
     protected function casts(): array
     {
         return [
+            'godina' => 'integer',
             'datum' => 'date',
             'status' => ContentStatus::class,
             'published_at' => 'datetime',
@@ -50,8 +51,7 @@ class News extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('naslovna')->singleFile();
-        $this->addMediaCollection('galerija');
+        $this->addMediaCollection('dokumenti');
     }
 
     public function scopeObjavljeno(Builder $query): Builder

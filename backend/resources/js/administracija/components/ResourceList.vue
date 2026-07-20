@@ -22,6 +22,7 @@ const props = defineProps({
     jednina: { type: String, required: true },
     baza: { type: String, required: true },
     ikona: { type: [Object, Function], default: null },
+    hasCategory: { type: Boolean, default: true },
 });
 
 const { confirm } = useConfirm();
@@ -109,7 +110,7 @@ const obrisi = async (s) => {
                 <div class="min-w-[820px]">
                     <div class="flex items-center gap-3.5 border-b border-line bg-surface-alt px-[18px] py-2.5">
                         <div class="flex-1 text-[11px] font-bold uppercase tracking-wide text-ink-3">Naslov</div>
-                        <div class="w-[180px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Kategorija</div>
+                        <div v-if="hasCategory" class="w-[180px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Kategorija</div>
                         <div class="w-[150px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Autor</div>
                         <div class="w-[130px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Status</div>
                         <div class="w-[110px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Datum</div>
@@ -126,7 +127,7 @@ const obrisi = async (s) => {
                             <span class="block truncate text-[13px] font-semibold text-ink">{{ s.naslov }}</span>
                             <span v-if="s.opis" class="block truncate text-xs text-ink-3">{{ s.opis }}</span>
                         </div>
-                        <div class="w-[180px] shrink-0">
+                        <div v-if="hasCategory" class="w-[180px] shrink-0">
                             <span
                                 v-if="s.kategorija"
                                 :style="pill(s.kategorija)"

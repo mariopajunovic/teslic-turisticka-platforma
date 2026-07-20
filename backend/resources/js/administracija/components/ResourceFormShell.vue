@@ -21,6 +21,7 @@ const props = defineProps({
     naslovPlaceholder: { type: String, default: 'Naslov' },
     segmenti: { type: Object, default: () => ({}) },
     hasMedia: { type: Boolean, default: true },
+    hasCategory: { type: Boolean, default: true },
     feature: { type: Object, default: null },
 });
 
@@ -256,7 +257,7 @@ const onFotoDrop = (target) => {
                     @trash="obrisi"
                 />
 
-                <Card title="Kategorija">
+                <Card v-if="hasCategory" title="Kategorija">
                     <div v-if="kategorije.length" class="space-y-0.5">
                         <button
                             v-for="k in kategorije"
