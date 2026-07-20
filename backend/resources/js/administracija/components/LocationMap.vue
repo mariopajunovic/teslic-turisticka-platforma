@@ -14,6 +14,7 @@ const mapEl = ref(null);
 let L = null;
 let map = null;
 let marker = null;
+let ro = null;
 
 const num = (v) => {
     const n = parseFloat(v);
@@ -53,7 +54,13 @@ onMounted(async () => {
     const lng = num(props.lng);
     const start = (lat != null && lng != null) ? [lat, lng] : props.center;
 
-    map = L.map(mapEl.value, { center: start, zoom: props.zoom, scrollWheelZoom: false });
+    map = L.map(mapEl.value, {
+        center: start,
+        zoom: props.zoom,
+        scrollWheelZoom: true,
+        dragging: true,
+        tap: true,
+    });
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap',
         maxZoom: 19,
@@ -65,7 +72,13 @@ onMounted(async () => {
 
     map.on('click', (e) => emitLatLng(e.latlng.lat, e.latlng.lng));
 
-    setTimeout(() => map && map.invalidateSize(), 120);
+    map.invalidateSize();
+    setTimeout(() => map && map.invalidateSize(), 200);
+
+    if (typeof ResizeObserver !== 'undefined') {
+        ro = new ResizeObserver(() => map && map.invalidateSize());
+        ro.observe(mapEl.value);
+    }
 });
 
 watch(() => [props.lat, props.lng], ([la, ln]) => {
@@ -78,6 +91,10 @@ watch(() => [props.lat, props.lng], ([la, ln]) => {
 });
 
 onBeforeUnmount(() => {
+    if (ro) {
+        ro.disconnect();
+        ro = null;
+    }
     if (map) {
         map.remove();
         map = null;

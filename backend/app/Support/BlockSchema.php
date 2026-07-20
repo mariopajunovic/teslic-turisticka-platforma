@@ -34,7 +34,7 @@ class BlockSchema
                 ['name' => 'limit', 'label' => 'Broj kartica', 'type' => 'number'],
                 ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
                 ['name' => 'linkText', 'label' => 'Tekst linka', 'type' => 'text', 'tr' => true],
-                ['name' => 'to', 'label' => 'Link', 'type' => 'url'],
+                ['name' => 'cilj', 'label' => 'Link „Vidi sve"', 'type' => 'target'],
                 ['name' => 'ukljuciZavrsene', 'label' => 'Prikaži i završene događaje', 'type' => 'toggle'],
                 ['name' => 'ukljuciIstekle', 'label' => 'Prikaži i istekle oglase', 'type' => 'toggle'],
             ]],
@@ -55,7 +55,7 @@ class BlockSchema
                 ['name' => 'text', 'label' => 'Tekst', 'type' => 'textarea', 'tr' => true],
                 ['name' => 'buttons', 'label' => 'Dugmad', 'type' => 'repeater', 'fields' => [
                     ['name' => 'label', 'label' => 'Tekst', 'type' => 'text', 'tr' => true, 'required' => true],
-                    ['name' => 'url', 'label' => 'Link', 'type' => 'url', 'required' => true],
+                    ['name' => 'cilj', 'label' => 'Link', 'type' => 'target'],
                     ['name' => 'variant', 'label' => 'Stil', 'type' => 'select', 'options' => ['sekundarna' => 'Sekundarna', 'primary' => 'Primarna']],
                 ]],
             ]],
@@ -83,7 +83,7 @@ class BlockSchema
             'map' => ['label' => 'Mapa', 'icon' => 'map', 'opis' => 'Interaktivna mapa', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov', 'type' => 'text', 'tr' => true],
                 ['name' => 'linkText', 'label' => 'Tekst linka', 'type' => 'text', 'tr' => true],
-                ['name' => 'to', 'label' => 'Link', 'type' => 'url'],
+                ['name' => 'cilj', 'label' => 'Link', 'type' => 'target'],
                 ['name' => 'height', 'label' => 'Visina', 'type' => 'text'],
             ]],
             'stepper' => ['label' => 'Koraci', 'icon' => 'list-ordered', 'opis' => 'Korak po korak', 'fields' => [

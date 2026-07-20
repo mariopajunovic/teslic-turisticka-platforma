@@ -31,6 +31,12 @@ class PagesController extends Controller
 
         return Inertia::render('Stranice/Lista', [
             'stranice' => $stranice,
+            'tipovi' => $this->tipoviOpcije(),
+            'kategorije' => $this->kategorijeOpcije(),
+            'roditelji' => Page::whereNull('parent_id')->orderBy('sort')->orderBy('id')->get()
+                ->map(fn (Page $p) => ['value' => $p->id, 'label' => $p->getTranslations('title')['sr'] ?? $p->slugFor('sr')])
+                ->all(),
+            'katTipovi' => collect((array) config('resources.types'))->map(fn ($c) => $c['category_type'] ?? null)->all(),
         ]);
     }
 
@@ -51,8 +57,12 @@ class PagesController extends Controller
                 'resourceType' => $page->resource_type,
                 'categoryId' => $page->category_id,
                 'parentId' => $page->parent_id,
-                'blocks' => is_array($page->content) ? $page->content : [],
+                'blocks' => \App\Support\GlobalBlocks::resolve(is_array($page->content) ? $page->content : [], true),
             ],
+            'globalBlokovi' => \App\Models\GlobalBlock::orderBy('name')->get()
+                ->map(fn ($g) => ['id' => $g->id, 'name' => $g->name, 'type' => $g->type, 'data' => (array) ($g->data ?? [])])
+                ->all(),
+            'globalUpotreba' => $this->globalUpotreba(),
             'tipovi' => $this->tipoviOpcije(),
             'kategorije' => $this->kategorijeOpcije(),
             'roditelji' => $this->roditeljiOpcije($page),
@@ -70,12 +80,104 @@ class PagesController extends Controller
 
     public function updateContent(Request $request, Page $page): RedirectResponse
     {
-        $page->content = $this->cleanBlocks($request);
+        $blocks = $this->cleanBlocks($request);
+
+        $this->propagirajGlobalne($blocks);
+
+        $page->content = $blocks;
         $page->save();
 
         $request->session()->forget('page_draft_'.$page->id);
 
         return back(303)->with('status', 'Sadržaj stranice je sačuvan.');
+    }
+
+    public function storeGlobalBlok(Request $request, Page $page): RedirectResponse
+    {
+        $data = $request->validate([
+            'blocks' => ['present', 'array'],
+            'index' => ['required', 'integer', 'min:0'],
+            'name' => ['required', 'string', 'max:255'],
+        ]);
+
+        $blocks = $this->cleanBlocks($request);
+        $blok = $blocks[$data['index']] ?? abort(404);
+
+        $globalni = \App\Models\GlobalBlock::create([
+            'name' => trim($data['name']),
+            'type' => $blok['type'],
+            'data' => $blok['data'],
+        ]);
+
+        $blocks[$data['index']]['global_id'] = $globalni->id;
+
+        $page->content = $blocks;
+        $page->save();
+
+        return back(303)->with('status', 'Blok je postavljen kao globalni: „'.$globalni->name.'".');
+    }
+
+    public function destroyGlobalBlok(\App\Models\GlobalBlock $globalBlok): RedirectResponse
+    {
+        foreach (Page::all() as $stranica) {
+            $content = (array) $stranica->content;
+            $izmijenjeno = false;
+
+            foreach ($content as $i => $blok) {
+                if (($blok['global_id'] ?? null) == $globalBlok->id) {
+                    unset($content[$i]['global_id']);
+                    $izmijenjeno = true;
+                }
+            }
+
+            if ($izmijenjeno) {
+                $stranica->content = array_values($content);
+                $stranica->save();
+            }
+        }
+
+        $globalBlok->delete();
+
+        return back(303)->with('status', 'Globalni blok je obrisan (instance su odvezane).');
+    }
+
+    protected function globalUpotreba(): array
+    {
+        $mapa = [];
+
+        foreach (Page::all() as $stranica) {
+            foreach ((array) $stranica->content as $blok) {
+                $gid = $blok['global_id'] ?? null;
+
+                if (! $gid) {
+                    continue;
+                }
+
+                $mapa[$gid] ??= [];
+
+                if (! collect($mapa[$gid])->contains('id', $stranica->id)) {
+                    $mapa[$gid][] = [
+                        'id' => $stranica->id,
+                        'naslov' => $stranica->getTranslations('title')['sr'] ?? $stranica->slugFor('sr'),
+                        'url' => $stranica->pathFor('sr'),
+                    ];
+                }
+            }
+        }
+
+        return $mapa;
+    }
+
+    protected function propagirajGlobalne(array $blocks): void
+    {
+        foreach ($blocks as $blok) {
+            if (! empty($blok['global_id'])) {
+                \App\Models\GlobalBlock::where('id', $blok['global_id'])->update([
+                    'type' => $blok['type'],
+                    'data' => $blok['data'],
+                ]);
+            }
+        }
     }
 
     public function draft(Request $request, Page $page): \Illuminate\Http\Response
@@ -95,7 +197,15 @@ class PagesController extends Controller
 
         return collect($data['blocks'])
             ->filter(fn ($b) => is_array($b) && in_array($b['type'] ?? null, $tipovi, true))
-            ->map(fn ($b) => ['type' => $b['type'], 'data' => is_array($b['data'] ?? null) ? $b['data'] : []])
+            ->map(function ($b) {
+                $red = ['type' => $b['type'], 'data' => is_array($b['data'] ?? null) ? $b['data'] : []];
+
+                if (! empty($b['global_id'])) {
+                    $red['global_id'] = (int) $b['global_id'];
+                }
+
+                return $red;
+            })
             ->values()
             ->all();
     }
@@ -108,6 +218,9 @@ class PagesController extends Controller
             'title.*' => ['nullable', 'string', 'max:255'],
             'slug' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'published' => ['boolean'],
+            'resource_type' => ['nullable', Rule::in(array_keys((array) config('resources.types')))],
+            'category_id' => ['nullable', 'exists:categories,id'],
+            'parent_id' => ['nullable', 'exists:pages,id'],
         ]);
 
         $page = new Page();
@@ -115,6 +228,9 @@ class PagesController extends Controller
         $page->slug = ['sr' => ($data['slug'] ?? null) ?: Str::slug($data['title']['sr'])];
         $page->published = (bool) ($data['published'] ?? false);
         $page->is_system = false;
+        $page->resource_type = ($data['resource_type'] ?? null) ?: null;
+        $page->category_id = ($data['category_id'] ?? null) ?: null;
+        $page->parent_id = ($data['parent_id'] ?? null) ?: null;
         $page->content = [];
         $page->setTranslations('meta_title', []);
         $page->setTranslations('meta_description', []);
@@ -130,7 +246,7 @@ class PagesController extends Controller
             'title' => ['required', 'array'],
             'title.sr' => ['required', 'string', 'max:255'],
             'title.*' => ['nullable', 'string', 'max:255'],
-            'slug' => ['array'],
+            'slug' => ['nullable'],
             'slug.*' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'published' => ['boolean'],
             'meta_title' => ['array'],
@@ -146,7 +262,13 @@ class PagesController extends Controller
         $page->setTranslations('title', $this->mapa($data['title']));
 
         if (! $page->isHome()) {
-            $page->slug = $this->mapa($data['slug'] ?? []);
+            $slug = $data['slug'] ?? null;
+
+            if (is_array($slug)) {
+                $page->slug = $this->mapa($slug);
+            } elseif (is_string($slug) && $slug !== '') {
+                $page->slug = array_merge((array) $page->slug, ['sr' => $slug]);
+            }
         }
 
         $page->published = (bool) ($data['published'] ?? false);
@@ -201,6 +323,7 @@ class PagesController extends Controller
             'dubina' => $dubina,
             'parentId' => $page->parent_id,
             'resourceType' => $page->resource_type,
+            'categoryId' => $page->category_id,
             'tipLabel' => $this->tipLabel($page),
             'blokova' => is_array($content) ? count($content) : 0,
             'izmijenjeno' => $page->updated_at?->diffForHumans(),

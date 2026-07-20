@@ -3,11 +3,16 @@ import { computed } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import { X } from 'lucide-vue-next';
 import FormField from './FormField.vue';
+import SelectField from './SelectField.vue';
 import ToggleField from './ToggleField.vue';
 import TranslatableField from './TranslatableField.vue';
 
 const props = defineProps({
     stranica: { type: Object, default: null },
+    tipovi: { type: Array, default: () => [] },
+    kategorije: { type: Array, default: () => [] },
+    roditelji: { type: Array, default: () => [] },
+    katTipovi: { type: Object, default: () => ({}) },
 });
 
 const emit = defineEmits(['close']);
@@ -18,9 +23,24 @@ const form = useForm({
     title: { ...(props.stranica?.titleTranslations || {}) },
     slug: props.stranica?.slug ?? '',
     published: props.stranica ? !!props.stranica.published : true,
+    resource_type: props.stranica?.resourceType ?? '',
+    category_id: props.stranica?.categoryId ?? '',
+    parent_id: props.stranica?.parentId ?? '',
     meta_title: { ...(props.stranica?.metaTitleTranslations || {}) },
     meta_description: { ...(props.stranica?.metaDescriptionTranslations || {}) },
 });
+
+const tipoviOpcije = computed(() => [{ value: '', label: 'Obična stranica' }, ...props.tipovi]);
+const kategorijeOpcije = computed(() => {
+    const catType = form.resource_type ? props.katTipovi[form.resource_type] : null;
+    const sve = props.kategorije;
+    const filtrirane = catType ? sve.filter((k) => k.type === catType) : sve;
+    return [{ value: '', label: 'Sve kategorije' }, ...filtrirane];
+});
+const roditeljiOpcije = computed(() => [
+    { value: '', label: '(bez roditelja)' },
+    ...props.roditelji.filter((r) => r.value !== props.stranica?.id),
+]);
 
 const trErr = (field) => {
     const out = {};
@@ -69,6 +89,32 @@ const submit = () => {
                 />
 
                 <ToggleField v-model="form.published" label="Objavljeno" hint="Nacrt nije vidljiv posjetiocima." />
+
+                <div class="border-t border-line pt-4">
+                    <p class="text-sm font-bold text-ink">Šta stranica prikazuje</p>
+                    <p class="mb-3 text-xs text-ink-3">Obična stranica ili lista sadržaja (biznisi, turizam, priče…).</p>
+                    <div class="space-y-4">
+                        <SelectField
+                            v-model="form.resource_type"
+                            label="Tip sadržaja"
+                            :options="tipoviOpcije"
+                            @update:model-value="form.category_id = ''"
+                        />
+                        <SelectField
+                            v-if="form.resource_type"
+                            v-model="form.category_id"
+                            label="Kategorija"
+                            :options="kategorijeOpcije"
+                            hint="Prazno znači sve kategorije."
+                        />
+                        <SelectField
+                            v-model="form.parent_id"
+                            label="Roditelj"
+                            :options="roditeljiOpcije"
+                            :error="form.errors.parent_id"
+                        />
+                    </div>
+                </div>
 
                 <div class="border-t border-line pt-4">
                     <p class="text-sm font-bold text-ink">SEO</p>

@@ -37,7 +37,7 @@ class TranslationsController extends Controller
         foreach ($groupRows as $r) {
             $vals = (array) $r->values;
             foreach ($codes as $c) {
-                if (trim((string) ($vals[$c] ?? '')) === '') {
+                if ($this->tekst($vals[$c] ?? '') === '') {
                     $missingByLang[$c]++;
                     if ($c === $target) {
                         $missingTargetIds[] = $r->id;
@@ -58,14 +58,16 @@ class TranslationsController extends Controller
 
         $rows = collect($page->items())->map(function (Translation $t) use ($target) {
             $values = (array) $t->values;
+            $niz = is_array($values[$target] ?? null) || is_array($values['sr'] ?? null);
 
             return [
                 'id' => $t->id,
                 'group' => $t->group,
                 'key' => $t->key,
-                'source' => (string) ($values['sr'] ?? ''),
-                'value' => (string) ($values[$target] ?? ''),
-                'missing' => trim((string) ($values[$target] ?? '')) === '',
+                'source' => $this->tekst($values['sr'] ?? ''),
+                'value' => $this->tekst($values[$target] ?? ''),
+                'missing' => $this->tekst($values[$target] ?? '') === '',
+                'zakljucano' => $niz,
             ];
         })->all();
 
@@ -96,6 +98,9 @@ class TranslationsController extends Controller
         $incoming = array_map(fn ($v) => (string) $v, array_intersect_key($data['values'], array_flip($codes)));
 
         $old = (array) $translation->values;
+
+        $incoming = array_filter($incoming, fn ($v, $c) => ! is_array($old[$c] ?? null), ARRAY_FILTER_USE_BOTH);
+
         $new = array_merge($old, $incoming);
 
         $changed = array_keys(array_filter($incoming, fn ($v, $c) => (string) ($old[$c] ?? '') !== $v, ARRAY_FILTER_USE_BOTH));
@@ -119,5 +124,14 @@ class TranslationsController extends Controller
         }
 
         return back(303);
+    }
+
+    protected function tekst(mixed $v): string
+    {
+        if (is_array($v)) {
+            return trim(implode(', ', array_map(fn ($x) => (string) $x, $v)));
+        }
+
+        return trim((string) $v);
     }
 }

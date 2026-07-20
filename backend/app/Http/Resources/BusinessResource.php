@@ -16,6 +16,7 @@ class BusinessResource extends JsonResource
             'opis' => $this->opis,
             'opisDug' => $this->opis_dug,
             'lokacija' => $this->lokacija,
+            'radnoVrijeme' => $this->radno_vrijeme,
             'preporuceno' => (bool) $this->preporuceno,
             'kategorija' => $this->category ? [
                 'key' => $this->category->key,
@@ -27,6 +28,11 @@ class BusinessResource extends JsonResource
                 ->map(fn ($m) => ['src' => $m->getUrl(), 'alt' => $m->name])
                 ->values(),
             'kontakt' => $this->kontakt ?? (object) [],
+            'drustvene' => array_filter((array) $this->drustvene),
+            'usluge' => (array) $this->usluge,
+            'cijenaRaspon' => $this->cijena_raspon,
+            'godinaOsnivanja' => $this->godina_osnivanja,
+            'nacinPlacanja' => array_keys(array_filter((array) $this->nacin_placanja)),
             'lat' => $this->lat,
             'lng' => $this->lng,
         ];

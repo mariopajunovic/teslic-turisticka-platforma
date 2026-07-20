@@ -77,13 +77,20 @@ const isActive = (href) => {
         :class="collapsed ? 'lg:w-[64px]' : 'lg:w-[230px]'"
     >
         <div
-            class="flex h-[46px] items-center"
-            :class="collapsed ? 'justify-center' : 'px-4'"
+            class="flex h-[56px] items-center border-b border-sidebar-alt/60"
+            :class="collapsed ? 'justify-center px-2' : 'justify-between px-4'"
         >
+            <a
+                v-if="!collapsed"
+                href="/administracija"
+                class="min-w-0 truncate text-[15px] font-bold text-sidebar-strong"
+            >
+                Administracija
+            </a>
             <button
                 type="button"
-                class="inline-flex h-8 w-8 items-center justify-center rounded-md text-sidebar-group hover:bg-sidebar-alt hover:text-sidebar-strong"
-                aria-label="Skupi meni"
+                class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-sidebar-group hover:bg-sidebar-alt hover:text-sidebar-strong"
+                :aria-label="collapsed ? 'Proširi meni' : 'Skupi meni'"
                 @click="emit('toggle-collapse')"
             >
                 <PanelLeft :size="19" />
@@ -116,8 +123,8 @@ const isActive = (href) => {
     <div v-if="open" class="lg:hidden">
         <div class="fixed inset-0 z-40 bg-black/50" @click="emit('close')"></div>
         <aside class="fixed inset-y-0 left-0 z-50 flex w-64 max-w-[85%] flex-col bg-sidebar shadow-[var(--shadow-pop)]">
-            <div class="flex h-[46px] items-center justify-between px-4">
-                <span class="text-[13px] font-semibold uppercase tracking-wide text-sidebar-group">Administracija</span>
+            <div class="flex h-[52px] items-center justify-between border-b border-sidebar-alt/60 px-4">
+                <a href="/administracija" class="text-[15px] font-bold text-sidebar-strong">Administracija</a>
                 <button
                     type="button"
                     class="inline-flex h-8 w-8 items-center justify-center rounded-md text-sidebar-text hover:bg-sidebar-alt hover:text-sidebar-strong"

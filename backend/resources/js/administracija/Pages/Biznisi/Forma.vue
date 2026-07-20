@@ -21,6 +21,7 @@ const props = defineProps({
     biznis: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    segmenti: { type: Object, default: () => ({ sr: 'biznis' }) },
 });
 
 const { confirm } = useConfirm();
@@ -35,18 +36,46 @@ const langName = computed(() => locales.value.find((l) => l.code === activeLang.
 
 const isNew = computed(() => !props.biznis?.id);
 
+const DANI = ['Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak', 'Subota', 'Nedjelja'];
+
+function pocetnoRadnoVrijeme() {
+    const postojece = Array.isArray(props.biznis?.radno_vrijeme) ? props.biznis.radno_vrijeme : [];
+    return DANI.map((_, i) => ({
+        zatvoreno: postojece[i]?.zatvoreno ?? (i >= 6),
+        od: postojece[i]?.od ?? (i < 6 ? '08:00' : ''),
+        do: postojece[i]?.do ?? (i < 6 ? '16:00' : ''),
+    }));
+}
+
 const form = useForm({
     naslov: { ...(props.biznis?.naslov ?? {}) },
     slug: { ...(props.biznis?.slug ?? {}) },
     opis: { ...(props.biznis?.opis ?? {}) },
     opis_dug: { ...(props.biznis?.opis_dug ?? {}) },
     lokacija: { ...(props.biznis?.lokacija ?? {}) },
+    radno_vrijeme: pocetnoRadnoVrijeme(),
     category_id: props.biznis?.category_id ?? '',
     kontakt: {
         telefon: props.biznis?.kontakt?.telefon ?? '',
         email: props.biznis?.kontakt?.email ?? '',
         adresa: props.biznis?.kontakt?.adresa ?? '',
         web: props.biznis?.kontakt?.web ?? '',
+        viber: props.biznis?.kontakt?.viber ?? '',
+        whatsapp: props.biznis?.kontakt?.whatsapp ?? '',
+    },
+    drustvene: {
+        facebook: props.biznis?.drustvene?.facebook ?? '',
+        instagram: props.biznis?.drustvene?.instagram ?? '',
+        youtube: props.biznis?.drustvene?.youtube ?? '',
+        tiktok: props.biznis?.drustvene?.tiktok ?? '',
+    },
+    usluge: [...(props.biznis?.usluge ?? [])],
+    cijena_raspon: props.biznis?.cijena_raspon ?? '',
+    godina_osnivanja: props.biznis?.godina_osnivanja ?? '',
+    nacin_placanja: {
+        gotovina: props.biznis?.nacin_placanja?.gotovina ?? false,
+        kartica: props.biznis?.nacin_placanja?.kartica ?? false,
+        virman: props.biznis?.nacin_placanja?.virman ?? false,
     },
     lat: props.biznis?.lat ?? '',
     lng: props.biznis?.lng ?? '',
@@ -54,6 +83,9 @@ const form = useForm({
     status: props.biznis?.status ?? 'nacrt',
     tags: [...(props.biznis?.tags ?? [])],
 });
+
+const dodajUslugu = () => { form.usluge.push(''); };
+const ukloniUslugu = (i) => { form.usluge.splice(i, 1); };
 
 const trGet = (map) => map?.[activeLang.value] ?? '';
 const trSet = (key, val) => { form[key] = { ...(form[key] || {}), [activeLang.value]: val }; };
@@ -70,7 +102,8 @@ const slugPreview = computed(() => slugify(trGet(form.naslov)));
 const effSlug = computed(() => slugForLang.value || slugPreview.value || 'novi-biznis');
 const defaultLang = computed(() => locales.value[0]?.code ?? 'sr');
 const langPrefix = computed(() => (activeLang.value === defaultLang.value ? '' : `/${activeLang.value}`));
-const permalink = computed(() => `${langPrefix.value}/domace-je-najbolje/${effSlug.value}`);
+const segment = computed(() => props.segmenti?.[activeLang.value] || props.segmenti?.sr || 'biznis');
+const permalink = computed(() => `${langPrefix.value}/${segment.value}/${effSlug.value}`);
 const editSlug = ref(false);
 
 const naslovDisplay = computed(() => trGet(form.naslov) || '(bez naslova)');
@@ -212,13 +245,13 @@ const onFotoDrop = (target) => {
                 </Card>
 
                 <div class="flex flex-wrap items-center gap-2 px-1 text-[13px]">
-                    <span class="text-ink-3">Trajna veza ({{ activeLang.toUpperCase() }}):</span>
+                    <span class="text-ink-3">Trajna veza:</span>
                     <template v-if="!editSlug">
-                        <a :href="permalink" target="_blank" class="font-semibold text-brand hover:underline">portal.teslic.ba{{ permalink }}</a>
+                        <a :href="permalink" target="_blank" class="font-semibold text-brand hover:underline">{{ permalink }}</a>
                         <button type="button" class="rounded border border-line bg-surface-alt px-2 py-0.5 text-[11px] font-semibold text-ink-2 hover:bg-surface hover:text-ink" @click="editSlug = true">Uredi</button>
                     </template>
                     <template v-else>
-                        <span class="text-ink-3">{{ langPrefix }}/domace-je-najbolje/</span>
+                        <span class="text-ink-3">{{ langPrefix }}/{{ segment }}/</span>
                         <input :value="slugForLang" type="text" :placeholder="slugPreview" class="h-7 w-48 rounded-md border border-line bg-surface px-2 text-[13px] text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20" @input="setSlug($event.target.value)" />
                         <button type="button" class="rounded-md bg-brand px-2.5 py-1 text-[11px] font-semibold text-white hover:bg-brand-dark" @click="editSlug = false">Gotovo</button>
                     </template>
@@ -246,14 +279,49 @@ const onFotoDrop = (target) => {
 
                 <Card title="Kontakt">
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        <FormField v-model="form.kontakt.telefon" label="Telefon" placeholder="+387 ..." />
+                        <FormField v-model="form.kontakt.telefon" label="Telefon" placeholder="+387 65 123 456" hint="Slobodan format - sredi se automatski za poziv." />
                         <FormField v-model="form.kontakt.email" label="Email" type="email" placeholder="kontakt@primjer.ba" />
                         <FormField v-model="form.kontakt.adresa" label="Adresa" placeholder="Ulica i broj" />
                         <FormField v-model="form.kontakt.web" label="Web" placeholder="https://" />
+                        <FormField v-model="form.kontakt.viber" label="Viber" placeholder="+387 65 123 456" />
+                        <FormField v-model="form.kontakt.whatsapp" label="WhatsApp" placeholder="+387 65 123 456" />
+                    </div>
+                    <div class="mt-5">
+                        <p class="mb-2 text-[13px] font-semibold text-ink">Radno vrijeme</p>
+                        <div class="divide-y divide-line rounded-md border border-line">
+                            <div
+                                v-for="(dan, i) in form.radno_vrijeme"
+                                :key="i"
+                                class="flex flex-wrap items-center gap-3 px-3 py-2.5"
+                            >
+                                <span class="w-24 shrink-0 text-[13px] font-medium text-ink">{{ DANI[i] }}</span>
+                                <label class="flex shrink-0 cursor-pointer items-center gap-1.5 text-[13px] text-ink-2">
+                                    <input type="checkbox" :checked="!dan.zatvoreno" class="h-4 w-4 rounded border-line text-brand focus:ring-brand/30" @change="dan.zatvoreno = !$event.target.checked" />
+                                    Otvoreno
+                                </label>
+                                <template v-if="!dan.zatvoreno">
+                                    <div class="flex items-center gap-1.5">
+                                        <input v-model="dan.od" type="time" class="h-8 rounded-md border border-line bg-surface px-2 text-[13px] text-ink focus:border-brand focus:outline-none" />
+                                        <span class="text-ink-3">-</span>
+                                        <input v-model="dan.do" type="time" class="h-8 rounded-md border border-line bg-surface px-2 text-[13px] text-ink focus:border-brand focus:outline-none" />
+                                    </div>
+                                </template>
+                                <span v-else class="text-[13px] font-medium text-ink-3">Zatvoreno</span>
+                            </div>
+                        </div>
                     </div>
                 </Card>
 
                 <Card title="Lokacija na mapi">
+                    <div class="mb-4">
+                        <FormField
+                            :model-value="trGet(form.lokacija)"
+                            label="Naziv lokacije"
+                            placeholder="npr. Komušina, Teslić"
+                            hint="Prikazuje se ispod imena biznisa. Prevodi se po jeziku."
+                            @update:model-value="trSet('lokacija', $event)"
+                        />
+                    </div>
                     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
                         <FormField v-model="form.lat" label="Geografska širina (lat)" placeholder="44.6000" :error="form.errors.lat" />
                         <FormField v-model="form.lng" label="Geografska dužina (lng)" placeholder="17.8600" :error="form.errors.lng" />
@@ -267,6 +335,61 @@ const onFotoDrop = (target) => {
                         @update:lat="form.lat = $event"
                         @update:lng="form.lng = $event"
                     />
+                </Card>
+
+                <Card title="Detalji">
+                    <div class="space-y-5">
+                        <div>
+                            <div class="mb-2 flex items-center justify-between">
+                                <p class="text-[13px] font-semibold text-ink">Usluge</p>
+                                <button type="button" class="inline-flex items-center gap-1 text-[12px] font-semibold text-brand hover:text-brand-dark" @click="dodajUslugu">
+                                    <Plus :size="14" /> Dodaj
+                                </button>
+                            </div>
+                            <div v-if="form.usluge.length" class="space-y-2">
+                                <div v-for="(u, i) in form.usluge" :key="i" class="flex items-center gap-2">
+                                    <input v-model="form.usluge[i]" type="text" placeholder="npr. Dostava na kućnu adresu" class="h-9 w-full rounded-md border border-line bg-surface px-3 text-[13px] text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20" />
+                                    <button type="button" class="shrink-0 text-ink-3 hover:text-bad" @click="ukloniUslugu(i)"><X :size="16" /></button>
+                                </div>
+                            </div>
+                            <p v-else class="text-xs text-ink-3">Nema dodanih usluga.</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <SelectField
+                                :model-value="form.cijena_raspon"
+                                label="Raspon cijena"
+                                :options="[{ value: '', label: '-' }, { value: '€', label: '€ (povoljno)' }, { value: '€€', label: '€€ (srednje)' }, { value: '€€€', label: '€€€ (skuplje)' }]"
+                                @update:model-value="form.cijena_raspon = $event"
+                            />
+                            <FormField v-model="form.godina_osnivanja" label="Godina osnivanja" type="number" placeholder="npr. 2015" />
+                        </div>
+
+                        <div>
+                            <p class="mb-2 text-[13px] font-semibold text-ink">Načini plaćanja</p>
+                            <div class="flex flex-wrap gap-4">
+                                <label class="flex cursor-pointer items-center gap-1.5 text-[13px] text-ink-2">
+                                    <input v-model="form.nacin_placanja.gotovina" type="checkbox" class="h-4 w-4 rounded border-line text-brand focus:ring-brand/30" /> Gotovina
+                                </label>
+                                <label class="flex cursor-pointer items-center gap-1.5 text-[13px] text-ink-2">
+                                    <input v-model="form.nacin_placanja.kartica" type="checkbox" class="h-4 w-4 rounded border-line text-brand focus:ring-brand/30" /> Kartica
+                                </label>
+                                <label class="flex cursor-pointer items-center gap-1.5 text-[13px] text-ink-2">
+                                    <input v-model="form.nacin_placanja.virman" type="checkbox" class="h-4 w-4 rounded border-line text-brand focus:ring-brand/30" /> Virman
+                                </label>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="mb-2 text-[13px] font-semibold text-ink">Društvene mreže</p>
+                            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                                <FormField v-model="form.drustvene.facebook" label="Facebook" placeholder="https://facebook.com/…" />
+                                <FormField v-model="form.drustvene.instagram" label="Instagram" placeholder="https://instagram.com/…" />
+                                <FormField v-model="form.drustvene.youtube" label="YouTube" placeholder="https://youtube.com/@…" />
+                                <FormField v-model="form.drustvene.tiktok" label="TikTok" placeholder="https://tiktok.com/@…" />
+                            </div>
+                        </div>
+                    </div>
                 </Card>
 
                 <Card title="Galerija">

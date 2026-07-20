@@ -64,6 +64,7 @@ class BusinessesController extends Controller
             'biznis' => null,
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'segmenti' => (array) config('resources.types.business.segment'),
         ]);
     }
 
@@ -75,6 +76,7 @@ class BusinessesController extends Controller
             'biznis' => $this->detalji($business),
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'segmenti' => (array) config('resources.types.business.segment'),
         ]);
     }
 
@@ -223,12 +225,29 @@ class BusinessesController extends Controller
             'opis_dug.*' => ['nullable', 'string'],
             'lokacija' => ['array'],
             'lokacija.*' => ['nullable', 'string', 'max:255'],
+            'radno_vrijeme' => ['array'],
+            'radno_vrijeme.*.zatvoreno' => ['boolean'],
+            'radno_vrijeme.*.od' => ['nullable', 'string', 'max:10'],
+            'radno_vrijeme.*.do' => ['nullable', 'string', 'max:10'],
             'category_id' => ['nullable', 'exists:categories,id'],
             'kontakt' => ['array'],
             'kontakt.telefon' => ['nullable', 'string', 'max:100'],
             'kontakt.email' => ['nullable', 'string', 'max:255'],
             'kontakt.adresa' => ['nullable', 'string', 'max:255'],
             'kontakt.web' => ['nullable', 'string', 'max:255'],
+            'kontakt.viber' => ['nullable', 'string', 'max:40'],
+            'kontakt.whatsapp' => ['nullable', 'string', 'max:40'],
+            'drustvene' => ['array'],
+            'drustvene.facebook' => ['nullable', 'string', 'max:255'],
+            'drustvene.instagram' => ['nullable', 'string', 'max:255'],
+            'drustvene.youtube' => ['nullable', 'string', 'max:255'],
+            'drustvene.tiktok' => ['nullable', 'string', 'max:255'],
+            'usluge' => ['array'],
+            'usluge.*' => ['nullable', 'string', 'max:120'],
+            'cijena_raspon' => ['nullable', 'string', 'max:8'],
+            'godina_osnivanja' => ['nullable', 'integer', 'min:1800', 'max:2100'],
+            'nacin_placanja' => ['array'],
+            'nacin_placanja.*' => ['boolean'],
             'lat' => ['nullable', 'numeric', 'between:-90,90'],
             'lng' => ['nullable', 'numeric', 'between:-180,180'],
             'preporuceno' => ['boolean'],
@@ -245,9 +264,19 @@ class BusinessesController extends Controller
         $business->setTranslations('opis', $this->mapa($data['opis'] ?? []));
         $business->setTranslations('opis_dug', $this->mapa($data['opis_dug'] ?? []));
         $business->setTranslations('lokacija', $this->mapa($data['lokacija'] ?? []));
+        $business->radno_vrijeme = $this->radnoVrijeme($data['radno_vrijeme'] ?? []);
 
         $business->category_id = $data['category_id'] ?? null;
         $business->kontakt = $this->kontakt($data['kontakt'] ?? []);
+        $business->drustvene = $this->drustvene($data['drustvene'] ?? []);
+        $business->usluge = collect($data['usluge'] ?? [])->map(fn ($u) => trim((string) $u))->filter()->values()->all();
+        $business->cijena_raspon = in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null;
+        $business->godina_osnivanja = $data['godina_osnivanja'] ?? null;
+        $business->nacin_placanja = array_filter([
+            'gotovina' => (bool) ($data['nacin_placanja']['gotovina'] ?? false),
+            'kartica' => (bool) ($data['nacin_placanja']['kartica'] ?? false),
+            'virman' => (bool) ($data['nacin_placanja']['virman'] ?? false),
+        ]);
         $business->lat = $data['lat'] ?? null;
         $business->lng = $data['lng'] ?? null;
         $business->preporuceno = (bool) ($data['preporuceno'] ?? false);
@@ -291,10 +320,16 @@ class BusinessesController extends Controller
             'opis' => $business->getTranslations('opis'),
             'opis_dug' => $business->getTranslations('opis_dug'),
             'lokacija' => $business->getTranslations('lokacija'),
+            'radno_vrijeme' => (array) $business->radno_vrijeme,
             'slug' => (array) $business->slug,
             'url' => ResourceUrls::detail($business, 'sr'),
             'category_id' => $business->category_id,
             'kontakt' => $this->kontakt($business->kontakt ?? []),
+            'drustvene' => $this->drustvene((array) $business->drustvene),
+            'usluge' => (array) $business->usluge,
+            'cijena_raspon' => $business->cijena_raspon,
+            'godina_osnivanja' => $business->godina_osnivanja,
+            'nacin_placanja' => (array) $business->nacin_placanja,
             'lat' => $business->lat,
             'lng' => $business->lng,
             'preporuceno' => (bool) $business->preporuceno,
@@ -333,11 +368,43 @@ class BusinessesController extends Controller
     protected function kontakt(array $kontakt): array
     {
         return [
-            'telefon' => $kontakt['telefon'] ?? '',
-            'email' => $kontakt['email'] ?? '',
-            'adresa' => $kontakt['adresa'] ?? '',
-            'web' => $kontakt['web'] ?? '',
+            'telefon' => $this->telefon($kontakt['telefon'] ?? ''),
+            'email' => trim((string) ($kontakt['email'] ?? '')),
+            'adresa' => trim((string) ($kontakt['adresa'] ?? '')),
+            'web' => trim((string) ($kontakt['web'] ?? '')),
+            'viber' => $this->telefon($kontakt['viber'] ?? ''),
+            'whatsapp' => $this->telefon($kontakt['whatsapp'] ?? ''),
         ];
+    }
+
+    protected function telefon(string $broj): string
+    {
+        $broj = trim($broj);
+
+        if ($broj === '') {
+            return '';
+        }
+
+        $plus = str_starts_with($broj, '+');
+        $cifre = preg_replace('/\D+/', '', $broj);
+
+        if ($cifre === '') {
+            return '';
+        }
+
+        if (! $plus && str_starts_with($cifre, '0')) {
+            $cifre = '387'.substr($cifre, 1);
+            $plus = true;
+        }
+
+        return ($plus ? '+' : '').$cifre;
+    }
+
+    protected function drustvene(array $d): array
+    {
+        return collect(['facebook', 'instagram', 'youtube', 'tiktok'])
+            ->mapWithKeys(fn ($k) => [$k => trim((string) ($d[$k] ?? ''))])
+            ->all();
     }
 
     protected function kategorije(): array
@@ -359,6 +426,15 @@ class BusinessesController extends Controller
         return collect(ContentStatus::cases())
             ->map(fn (ContentStatus $s) => ['value' => $s->value, 'label' => $s->getLabel()])
             ->all();
+    }
+
+    protected function radnoVrijeme(array $dani): array
+    {
+        return collect($dani)->take(7)->map(fn ($d) => [
+            'zatvoreno' => (bool) ($d['zatvoreno'] ?? false),
+            'od' => trim((string) ($d['od'] ?? '')),
+            'do' => trim((string) ($d['do'] ?? '')),
+        ])->values()->all();
     }
 
     protected function mapa(array $vrijednosti): array

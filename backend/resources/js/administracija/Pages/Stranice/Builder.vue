@@ -6,6 +6,7 @@ import {
     Monitor, Smartphone, RefreshCw, ExternalLink, Loader2,
     PanelTop, Heading, Type, LayoutGrid, Megaphone, Grid2x2, Images, Play, Map as MapIcon,
     ListOrdered, PanelsTopLeft, MessagesSquare, ChartColumn, Handshake, Star, User, MoveVertical, List,
+    Link2, Link2Off,
 } from 'lucide-vue-next';
 import Card from '../../components/Card.vue';
 import Btn from '../../components/Btn.vue';
@@ -25,6 +26,8 @@ const props = defineProps({
     katTipovi: { type: Object, default: () => ({}) },
     ciljevi: { type: Object, default: () => ({ stranice: [], kategorije: [] }) },
     paleta: { type: Array, default: () => [] },
+    globalBlokovi: { type: Array, default: () => [] },
+    globalUpotreba: { type: Object, default: () => ({}) },
     stranica: { type: Object, required: true },
     schema: { type: Object, required: true },
     katalog: { type: Array, default: () => [] },
@@ -121,6 +124,29 @@ const filteredKatalog = computed(() => {
     return props.katalog.filter((k) => `${k.label} ${k.opis}`.toLowerCase().includes(q));
 });
 
+const filteredGlobalni = computed(() => {
+    const q = pickerQuery.value.trim().toLowerCase();
+    if (!q) return props.globalBlokovi;
+    return props.globalBlokovi.filter((g) => `${g.name} ${label(g.type)}`.toLowerCase().includes(q));
+});
+
+const upotrebaZa = (gid) => props.globalUpotreba?.[gid] || [];
+const upotrebaTekst = (gid) => upotrebaZa(gid).map((p) => p.naslov).join(', ');
+
+const obrisiGlobalni = async (g) => {
+    const koristi = upotrebaZa(g.id).length;
+    const ok = await confirm({
+        danger: true,
+        title: `Obrisati globalni blok „${g.name}"?`,
+        message: koristi
+            ? `Blok je postavljen na ${koristi} ${koristi === 1 ? 'stranici' : 'stranica'}. Te instance se odvezuju i ostaju kao samostalne kopije.`
+            : 'Globalni blok se trajno briše.',
+        confirmLabel: 'Obriši globalni blok',
+    });
+    if (!ok) return;
+    router.delete(`/administracija/globalni-blokovi/${g.id}`, { preserveScroll: true });
+};
+
 const addBlock = (type) => {
     const def = props.defaults[type];
     if (!def) return;
@@ -134,8 +160,55 @@ const addBlock = (type) => {
 };
 
 const duplicateBlock = (i) => {
-    blocks.value.splice(i + 1, 0, clone(blocks.value[i]));
+    const kopija = clone(blocks.value[i]);
+    delete kopija.global_id;
+    delete kopija.globalNaziv;
+    blocks.value.splice(i + 1, 0, kopija);
     selected.value = i + 1;
+};
+
+const dodajGlobalni = (g) => {
+    const block = { type: g.type, data: clone(g.data) || {}, global_id: g.id, globalNaziv: g.name };
+    const at = selected.value != null ? selected.value + 1 : blocks.value.length;
+    blocks.value.splice(at, 0, block);
+    selected.value = at;
+    tab.value = 'blok';
+    showPicker.value = false;
+    pickerQuery.value = '';
+};
+
+const globalNazivModal = ref(false);
+const globalNaziv = ref('');
+const globalIndex = ref(null);
+
+const otvoriPostaviGlobalni = (i) => {
+    globalIndex.value = i;
+    globalNaziv.value = summary(blocks.value[i]) || label(blocks.value[i].type);
+    globalNazivModal.value = true;
+};
+
+const potvrdiGlobalni = () => {
+    const i = globalIndex.value;
+    const naziv = globalNaziv.value.trim();
+    if (i == null || !naziv) return;
+
+    globalNazivModal.value = false;
+
+    router.post(`/administracija/stranice/${props.stranica.id}/globalni-blok`,
+        { blocks: blocks.value, index: i, name: naziv },
+        { preserveScroll: true },
+    );
+};
+
+const odveziGlobalni = async (i) => {
+    const ok = await confirm({
+        title: 'Odvezati od globalnog bloka?',
+        message: 'Blok postaje samostalna kopija na ovoj stranici. Buduće izmjene globalnog bloka ga više neće mijenjati.',
+        confirmLabel: 'Odveži',
+    });
+    if (!ok) return;
+    delete blocks.value[i].global_id;
+    delete blocks.value[i].globalNaziv;
 };
 
 const removeBlock = async (i) => {
@@ -438,8 +511,9 @@ onBeforeUnmount(() => {
                             v-for="(block, i) in blocks"
                             :key="i"
                             :class="[
-                                selected === i ? 'bg-brand-tint' : 'hover:bg-surface-alt',
+                                selected === i ? 'bg-brand-tint' : (block.global_id ? 'bg-brand-tint/40 hover:bg-brand-tint/60' : 'hover:bg-surface-alt'),
                                 blockOverIdx === i && blockDragIdx !== null ? 'border-t-2 border-t-brand' : '',
+                                block.global_id ? 'border-l-[3px] border-l-brand' : '',
                             ]"
                             class="flex cursor-pointer items-center gap-2.5 border-b border-line px-3.5 py-2.5 last:border-b-0"
                             @click="selected = i; tab = 'blok'"
@@ -456,12 +530,15 @@ onBeforeUnmount(() => {
                             >
                                 <GripVertical :size="16" />
                             </span>
-                            <span :class="selected === i ? 'bg-brand text-white' : 'bg-surface-alt text-ink-2'" class="inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[7px]">
+                            <span :class="selected === i ? 'bg-brand text-white' : (block.global_id ? 'bg-brand/15 text-brand' : 'bg-surface-alt text-ink-2')" class="inline-flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-[7px]">
                                 <component :is="icon(block.type)" :size="17" />
                             </span>
                             <span class="min-w-0 flex-1">
-                                <span :class="selected === i ? 'text-brand' : 'text-ink'" class="block truncate text-[13px] font-semibold">{{ label(block.type) }}</span>
-                                <span class="block truncate text-[11px] text-ink-3">{{ summary(block) }}</span>
+                                <span class="flex items-center gap-1.5">
+                                    <span :class="selected === i ? 'text-brand' : 'text-ink'" class="truncate text-[13px] font-semibold">{{ block.global_id ? block.globalNaziv : label(block.type) }}</span>
+                                    <Link2 v-if="block.global_id" :size="12" class="shrink-0 text-brand" />
+                                </span>
+                                <span class="block truncate text-[11px] text-ink-3">{{ block.global_id ? ('Globalni · ' + label(block.type)) : summary(block) }}</span>
                             </span>
                             <div @click.stop>
                                 <RowMenu>
@@ -512,6 +589,15 @@ onBeforeUnmount(() => {
                                 </div>
                             </div>
                             <div class="flex items-center gap-1.5">
+                                <button
+                                    v-if="!current.global_id"
+                                    type="button"
+                                    title="Postavi kao globalni blok"
+                                    class="inline-flex h-8 w-8 items-center justify-center rounded-md text-ink-2 hover:bg-surface-alt hover:text-ink"
+                                    @click="otvoriPostaviGlobalni(selected)"
+                                >
+                                    <Link2 :size="16" />
+                                </button>
                                 <button type="button" title="Dupliraj" class="inline-flex h-8 w-8 items-center justify-center rounded-md text-ink-2 hover:bg-surface-alt hover:text-ink" @click="duplicateBlock(selected)">
                                     <Copy :size="16" />
                                 </button>
@@ -519,6 +605,23 @@ onBeforeUnmount(() => {
                                     <Trash2 :size="16" />
                                 </button>
                             </div>
+                        </div>
+
+                        <div v-if="current.global_id" class="border-b border-line bg-brand-tint px-[18px] py-2.5">
+                            <div class="flex items-center justify-between gap-2">
+                                <div class="flex min-w-0 items-center gap-2">
+                                    <Link2 :size="15" class="shrink-0 text-brand" />
+                                    <p class="min-w-0 truncate text-xs font-semibold text-brand">
+                                        Globalni blok „{{ current.globalNaziv }}" - izmjena mijenja sve njegove instance.
+                                    </p>
+                                </div>
+                                <button type="button" class="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-ink-2 hover:text-ink" @click="odveziGlobalni(selected)">
+                                    <Link2Off :size="14" /> Odveži
+                                </button>
+                            </div>
+                            <p v-if="upotrebaZa(current.global_id).length" class="mt-1 pl-[23px] text-[11px] text-ink-2">
+                                Postavljen na: <span class="font-semibold">{{ upotrebaTekst(current.global_id) }}</span>
+                            </p>
                         </div>
 
                         <div class="flex items-center gap-2 bg-info-bg px-[18px] py-2.5">
@@ -719,21 +822,52 @@ onBeforeUnmount(() => {
                             <input v-model="pickerQuery" type="text" placeholder="Pretraži blokove…" class="h-9 w-full bg-transparent text-[13px] text-ink placeholder:text-ink-3 focus:outline-none" />
                         </div>
                     </div>
-                    <div class="grid max-h-[60vh] grid-cols-2 gap-2.5 overflow-y-auto p-4 sm:grid-cols-3 lg:grid-cols-4">
-                        <button
-                            v-for="item in filteredKatalog"
-                            :key="item.type"
-                            type="button"
-                            class="flex flex-col items-start gap-2 rounded-lg border border-line bg-surface p-3.5 text-left hover:border-brand hover:bg-brand-tint"
-                            @click="addBlock(item.type)"
-                        >
-                            <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-surface-alt text-ink-2">
-                                <component :is="icon(item.type)" :size="17" />
-                            </span>
-                            <span class="text-[13px] font-semibold text-ink">{{ item.label }}</span>
-                            <span class="text-[11px] leading-tight text-ink-3">{{ item.opis }}</span>
-                        </button>
-                        <div v-if="!filteredKatalog.length" class="col-span-full py-10 text-center text-[13px] text-ink-3">Nema rezultata za „{{ pickerQuery }}".</div>
+                    <div class="max-h-[60vh] overflow-y-auto p-4">
+                        <template v-if="filteredGlobalni.length">
+                            <p class="mb-2 flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-3">
+                                <Link2 :size="13" /> Globalni blokovi
+                            </p>
+                            <div class="mb-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+                                <div
+                                    v-for="g in filteredGlobalni"
+                                    :key="g.id"
+                                    class="group relative flex flex-col items-start gap-2 rounded-lg border border-brand/40 bg-brand-tint/40 p-3.5 text-left hover:border-brand hover:bg-brand-tint"
+                                >
+                                    <button
+                                        type="button"
+                                        title="Obriši globalni blok"
+                                        class="absolute right-1.5 top-1.5 inline-flex h-6 w-6 items-center justify-center rounded-md text-ink-3 opacity-0 transition-opacity hover:bg-bad-bg hover:text-bad group-hover:opacity-100"
+                                        @click.stop="obrisiGlobalni(g)"
+                                    >
+                                        <Trash2 :size="14" />
+                                    </button>
+                                    <button type="button" class="flex w-full flex-col items-start gap-2 text-left" @click="dodajGlobalni(g)">
+                                        <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-surface text-brand">
+                                            <component :is="icon(g.type)" :size="17" />
+                                        </span>
+                                        <span class="w-full truncate pr-6 text-[13px] font-semibold text-ink">{{ g.name }}</span>
+                                        <span class="text-[11px] leading-tight text-ink-3">{{ label(g.type) }} · {{ (globalUpotreba[g.id] || []).length }} {{ (globalUpotreba[g.id] || []).length === 1 ? 'stranica' : 'stranica' }}</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="mb-2 text-[11px] font-bold uppercase tracking-wide text-ink-3">Novi blok</p>
+                        </template>
+                        <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-4">
+                            <button
+                                v-for="item in filteredKatalog"
+                                :key="item.type"
+                                type="button"
+                                class="flex flex-col items-start gap-2 rounded-lg border border-line bg-surface p-3.5 text-left hover:border-brand hover:bg-brand-tint"
+                                @click="addBlock(item.type)"
+                            >
+                                <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-surface-alt text-ink-2">
+                                    <component :is="icon(item.type)" :size="17" />
+                                </span>
+                                <span class="text-[13px] font-semibold text-ink">{{ item.label }}</span>
+                                <span class="text-[11px] leading-tight text-ink-3">{{ item.opis }}</span>
+                            </button>
+                            <div v-if="!filteredKatalog.length && !filteredGlobalni.length" class="col-span-full py-10 text-center text-[13px] text-ink-3">Nema rezultata za „{{ pickerQuery }}".</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -785,5 +919,35 @@ onBeforeUnmount(() => {
                 </div>
             </div>
         </Transition>
+    </Teleport>
+
+    <Teleport to="body">
+        <div v-if="globalNazivModal" class="fixed inset-0 z-[70] flex items-start justify-center overflow-y-auto p-4 sm:p-8">
+            <div class="absolute inset-0 bg-[#0f172a]/40" @click="globalNazivModal = false"></div>
+            <div class="relative my-auto w-full max-w-[440px] rounded-[var(--radius-card)] border border-line bg-surface shadow-[var(--shadow-pop)]">
+                <div class="flex items-center justify-between border-b border-line px-5 py-4">
+                    <h3 class="text-[15px] font-bold text-ink">Postavi kao globalni blok</h3>
+                    <button type="button" class="text-ink-3 hover:text-ink" @click="globalNazivModal = false"><X :size="18" /></button>
+                </div>
+                <form @submit.prevent="potvrdiGlobalni">
+                    <div class="space-y-3 p-5">
+                        <p class="text-[13px] text-ink-2">Blok postaje globalni - možeš ga dodati na druge stranice, a izmjena na jednom mjestu mijenja ga svuda.</p>
+                        <div>
+                            <label class="mb-1.5 block text-sm font-medium text-ink">Naziv globalnog bloka</label>
+                            <input
+                                v-model="globalNaziv"
+                                type="text"
+                                placeholder="npr. Kontakt CTA, Footer pozivnica…"
+                                class="h-10 w-full rounded-md border border-line bg-surface px-3 text-sm text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+                            />
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2.5 border-t border-line bg-surface-alt px-5 py-4">
+                        <Btn variant="secondary" @click="globalNazivModal = false">Odustani</Btn>
+                        <Btn variant="primary" type="submit" :icon="Link2" :disabled="!globalNaziv.trim()">Postavi globalno</Btn>
+                    </div>
+                </form>
+            </div>
+        </div>
     </Teleport>
 </template>

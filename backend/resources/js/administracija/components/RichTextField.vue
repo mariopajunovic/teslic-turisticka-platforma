@@ -4,7 +4,8 @@ import { usePage } from '@inertiajs/vue3';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
-import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link2, Quote, Undo2, Redo2 } from 'lucide-vue-next';
+import Image from '@tiptap/extension-image';
+import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link2, Quote, ImagePlus, Undo2, Redo2, Loader2 } from 'lucide-vue-next';
 
 const props = defineProps({
     modelValue: { type: Object, default: () => ({}) },
@@ -35,10 +36,11 @@ const editor = useEditor({
     extensions: [
         StarterKit.configure({ heading: { levels: [2, 3] } }),
         Link.configure({ openOnClick: false, autolink: true }),
+        Image.configure({ inline: false, HTMLAttributes: { class: 'rtf-img' } }),
     ],
     editorProps: {
         attributes: {
-            class: 'prose prose-sm max-w-none min-h-[160px] px-3.5 py-3 focus:outline-none',
+            class: 'rtf max-w-none min-h-[180px] px-3.5 py-3 focus:outline-none',
         },
     },
     onUpdate: ({ editor }) => {
@@ -75,6 +77,40 @@ const setLink = () => {
         return;
     }
     editor.value.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+};
+
+const csrf = () => {
+    const m = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]+)/);
+    return m ? decodeURIComponent(m[1]) : '';
+};
+
+const slikaInput = ref(null);
+const uploadingSlika = ref(false);
+
+const pickSlika = () => slikaInput.value?.click();
+
+const onSlika = async (e) => {
+    const f = e.target.files?.[0];
+    e.target.value = '';
+    if (!f || !editor.value) return;
+
+    uploadingSlika.value = true;
+    try {
+        const body = new FormData();
+        body.append('file', f);
+        const res = await fetch('/administracija/mediji', {
+            method: 'POST',
+            headers: { 'X-XSRF-TOKEN': csrf(), Accept: 'application/json' },
+            body,
+        });
+        if (!res.ok) throw new Error('upload');
+        const data = await res.json();
+        editor.value.chain().focus().setImage({ src: data.url }).run();
+    } catch {
+        window.alert('Otpremanje slike nije uspjelo.');
+    } finally {
+        uploadingSlika.value = false;
+    }
 };
 
 const is = (name, attrs) => editor.value?.isActive(name, attrs) ?? false;
@@ -121,19 +157,26 @@ const tools = computed(() => [
                     :title="t.title"
                     :class="t.active ? 'bg-brand text-white' : 'text-ink-2 hover:bg-surface hover:text-ink'"
                     class="inline-flex h-7 w-7 items-center justify-center rounded"
+                    @mousedown.prevent
                     @click="t.run"
                 >
                     <component :is="t.icon" :size="15" />
                 </button>
                 <div class="mx-1 h-4 w-px bg-line"></div>
-                <button type="button" title="Poništi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @click="editor?.chain().focus().undo().run()">
+                <button type="button" title="Ubaci sliku" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink disabled:opacity-50" :disabled="uploadingSlika" @mousedown.prevent @click="pickSlika">
+                    <Loader2 v-if="uploadingSlika" :size="15" class="animate-spin" />
+                    <ImagePlus v-else :size="15" />
+                </button>
+                <div class="mx-1 h-4 w-px bg-line"></div>
+                <button type="button" title="Poništi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @mousedown.prevent @click="editor?.chain().focus().undo().run()">
                     <Undo2 :size="15" />
                 </button>
-                <button type="button" title="Ponovi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @click="editor?.chain().focus().redo().run()">
+                <button type="button" title="Ponovi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @mousedown.prevent @click="editor?.chain().focus().redo().run()">
                     <Redo2 :size="15" />
                 </button>
             </div>
             <EditorContent :editor="editor" />
+            <input ref="slikaInput" type="file" accept="image/*" class="hidden" @change="onSlika" />
         </div>
     </div>
 </template>

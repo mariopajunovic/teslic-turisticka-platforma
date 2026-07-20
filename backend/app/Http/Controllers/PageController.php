@@ -99,7 +99,8 @@ class PageController extends Controller
     {
         $active = app(\App\Support\ActiveLocale::class);
 
-        $resolved = \App\Support\BlockContent::resolve($this->pageContent($page), $active->language());
+        $sadrzaj = \App\Support\GlobalBlocks::resolve($this->pageContent($page));
+        $resolved = \App\Support\BlockContent::resolve($sadrzaj, $active->language());
 
         if ($active->isCyrillic()) {
             $resolved = \App\Support\Cyrillic::deep($resolved);
@@ -110,6 +111,7 @@ class PageController extends Controller
 
             if ($type === 'card_grid') {
                 $block['data']['items'] = $this->cards($block['data'] ?? []);
+                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: ($block['data']['to'] ?? null);
             }
 
             if ($type === 'resource_list') {
@@ -130,6 +132,17 @@ class PageController extends Controller
 
             if ($type === 'map') {
                 $block['data']['items'] = MapPoints::all();
+                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: ($block['data']['to'] ?? null);
+            }
+
+            if ($type === 'cta') {
+                $block['data']['buttons'] = collect($block['data']['buttons'] ?? [])
+                    ->map(function (array $dugme) {
+                        $dugme['url'] = ResourceUrls::forTarget($dugme['cilj'] ?? null) ?: ($dugme['url'] ?? null);
+
+                        return $dugme;
+                    })
+                    ->all();
             }
 
             if ($type === 'featured_story') {

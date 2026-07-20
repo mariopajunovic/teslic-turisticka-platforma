@@ -13,6 +13,10 @@ import { useConfirm } from '../../composables/useConfirm';
 
 const props = defineProps({
     stranice: { type: Array, default: () => [] },
+    tipovi: { type: Array, default: () => [] },
+    kategorije: { type: Array, default: () => [] },
+    roditelji: { type: Array, default: () => [] },
+    katTipovi: { type: Object, default: () => ({}) },
 });
 
 const { confirm } = useConfirm();
@@ -155,7 +159,14 @@ const tipStyle = (s) => {
             <div v-if="showForm" class="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto p-4 sm:p-8">
                 <div class="absolute inset-0 bg-[#0f172a]/40" @click="showForm = false"></div>
                 <div class="relative my-auto w-full max-w-[520px]">
-                    <StranicaForm :stranica="editStranica" @close="showForm = false" />
+                    <StranicaForm
+                        :stranica="editStranica"
+                        :tipovi="tipovi"
+                        :kategorije="kategorije"
+                        :roditelji="roditelji"
+                        :kat-tipovi="katTipovi"
+                        @close="showForm = false"
+                    />
                 </div>
             </div>
         </Transition>

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue';
 import { Link, router, usePage } from '@inertiajs/vue3';
-import { Menu, PanelLeft, Search, ChevronDown, Bell, LogOut, User } from 'lucide-vue-next';
+import { Menu, Search, ChevronDown, Bell, LogOut, User } from 'lucide-vue-next';
 import Avatar from './Avatar.vue';
 
 defineProps({
@@ -51,14 +51,6 @@ const odjava = () => {
                 @click="emit('toggle')"
             >
                 <Menu :size="18" />
-            </button>
-            <button
-                type="button"
-                class="hidden h-9 w-9 shrink-0 items-center justify-center rounded-md border border-line bg-surface-alt text-ink-2 hover:text-ink lg:inline-flex"
-                aria-label="Skupi meni"
-                @click="emit('toggle-collapse')"
-            >
-                <PanelLeft :size="18" />
             </button>
 
             <h1 class="min-w-0 truncate text-[19px] font-bold text-ink">

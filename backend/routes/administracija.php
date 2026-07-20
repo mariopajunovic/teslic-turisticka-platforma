@@ -83,6 +83,8 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::get('/stranice/{page}/uredi', [PagesController::class, 'show'])->name('pages.builder');
         Route::put('/stranice/{page}/sadrzaj', [PagesController::class, 'updateContent'])->name('pages.content');
         Route::post('/stranice/{page}/pregled-draft', [PagesController::class, 'draft'])->name('pages.draft');
+        Route::post('/stranice/{page}/globalni-blok', [PagesController::class, 'storeGlobalBlok'])->name('pages.global-blok');
+        Route::delete('/globalni-blokovi/{globalBlok}', [PagesController::class, 'destroyGlobalBlok'])->name('pages.global-blok.destroy');
         Route::put('/stranice/{page}', [PagesController::class, 'update'])->name('pages.update');
         Route::delete('/stranice/{page}', [PagesController::class, 'destroy'])->name('pages.destroy');
         Route::post('/mediji', [MediaController::class, 'store'])->name('media.store');

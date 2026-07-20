@@ -1,7 +1,7 @@
 <script setup>
 import { Head, router } from '@inertiajs/vue3';
 import { ref, reactive, watch, computed } from 'vue';
-import { Search, ListFilter, TriangleAlert, Check, Languages } from 'lucide-vue-next';
+import { Search, ListFilter, TriangleAlert, Check, Languages, Lock } from 'lucide-vue-next';
 import Card from '../components/Card.vue';
 import Pagination from '../components/Pagination.vue';
 import EmptyState from '../components/EmptyState.vue';
@@ -174,7 +174,16 @@ const saveRow = (id) => {
                         </div>
                         <div v-if="showSource" class="flex-1 truncate text-[13px] text-ink-3" :title="t.source">{{ t.source || '-' }}</div>
                         <div class="flex-1">
+                            <div
+                                v-if="t.zakljucano"
+                                class="flex h-9 w-full items-center gap-2 rounded-md border border-line bg-surface-alt px-2.5 text-[13px] text-ink-3"
+                                title="Lista (dani/mjeseci) - uređuje se u kodu, ne ovdje"
+                            >
+                                <Lock :size="13" class="shrink-0" />
+                                <span class="truncate">{{ t.value }}</span>
+                            </div>
                             <input
+                                v-else
                                 v-model="draft[t.id]"
                                 type="text"
                                 :class="isEmpty(t.id)

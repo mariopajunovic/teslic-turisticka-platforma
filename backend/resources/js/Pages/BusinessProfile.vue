@@ -1,7 +1,8 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
+import Lightbox from '@/components/common/Lightbox.vue'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -27,17 +28,39 @@ const props = defineProps({
   slicni: { type: Array, default: () => [] },
 })
 
-const { t } = useI18n()
+const { t, tm, rt } = useI18n()
+
+const dani = computed(() => tm('cal.daysFull').map(rt))
+const radnoDani = computed(() => (Array.isArray(biznis.value?.radnoVrijeme) ? biznis.value.radnoVrijeme : []))
+const usluge = computed(() => (Array.isArray(biznis.value?.usluge) ? biznis.value.usluge : []))
+const SOCIAL_ICON = { facebook: 'facebook', instagram: 'instagram', youtube: 'youtube', tiktok: 'share' }
+const socijalne = computed(() => {
+  const d = biznis.value?.drustvene || {}
+  return ['facebook', 'instagram', 'youtube', 'tiktok']
+    .filter((k) => d[k])
+    .map((k) => ({ mreza: k, url: d[k], icon: SOCIAL_ICON[k] }))
+})
+const PLACANJE_LABEL = { gotovina: 'Gotovina', kartica: 'Kartica', virman: 'Virman' }
 
 const biznis = computed(() => props.biznis)
 const slicni = computed(() => props.slicni)
 
-const galerija = computed(() => {
-  const g = (biznis.value?.galerija || []).map((m) => m.src).filter(Boolean)
+const sveSlike = computed(() => {
+  const g = (biznis.value?.galerija || [])
+    .map((m) => ({ src: m.src, alt: m.alt || biznis.value?.naslov }))
+    .filter((x) => x.src)
   const naslovna = biznis.value?.slika
-  const slike = [naslovna, ...g].filter(Boolean)
-  return slike.slice(0, 3)
+  return [...(naslovna ? [{ src: naslovna, alt: biznis.value?.naslov }] : []), ...g]
 })
+const preview = computed(() => sveSlike.value.slice(0, 3))
+const preostalo = computed(() => Math.max(0, sveSlike.value.length - 3))
+
+const lbOpen = ref(false)
+const lbIndex = ref(0)
+const otvoriGaleriju = (i) => {
+  lbIndex.value = i
+  lbOpen.value = true
+}
 
 const infoItems = computed(() => {
   if (!biznis.value) return []
@@ -53,8 +76,10 @@ const infoItems = computed(() => {
     })
   if (k.email)
     items.push({ icon: 'mail', label: t('detail.email'), value: k.email, href: `mailto:${k.email}` })
-  if (k.radnoVrijeme)
-    items.push({ icon: 'clock', label: t('detail.hours'), value: k.radnoVrijeme })
+  if (k.viber)
+    items.push({ icon: 'phone', label: 'Viber', value: k.viber, href: `viber://chat?number=${encodeURIComponent(k.viber)}` })
+  if (k.whatsapp)
+    items.push({ icon: 'phone', label: 'WhatsApp', value: k.whatsapp, href: `https://wa.me/${k.whatsapp.replace(/[^0-9]/g, '')}` })
   if (k.web)
     items.push({
       icon: 'globe',
@@ -99,69 +124,138 @@ function posaljiUpit() {
 
       <!-- Galerija: glavna + bočne -->
       <div class="mt-5 grid gap-3 md:h-[440px] md:grid-cols-3">
-        <div
-          class="relative overflow-hidden rounded-lg bg-primary-tint md:col-span-2 md:h-full"
+        <button
+          v-if="preview[0]"
+          type="button"
+          class="group relative overflow-hidden rounded-lg bg-primary-tint md:col-span-2 md:h-full"
+          @click="otvoriGaleriju(0)"
         >
-          <img
-            v-if="galerija[0]"
-            :src="galerija[0]"
-            :alt="biznis.naslov"
-            class="size-full object-cover"
-          />
-          <span v-else class="flex h-64 items-center justify-center text-primary md:h-full">
-            <BaseIcon name="image" :size="48" />
-          </span>
+          <img :src="preview[0].src" :alt="biznis.naslov" class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+        </button>
+        <div v-else class="flex h-64 items-center justify-center rounded-lg bg-primary-tint text-primary md:col-span-2 md:h-full">
+          <BaseIcon name="image" :size="48" />
         </div>
+
         <div class="grid grid-cols-2 gap-3 md:grid-cols-1">
-          <div
-            v-for="n in 2"
-            :key="n"
-            class="relative overflow-hidden rounded-lg bg-primary-tint md:h-[214px]"
-          >
-            <img
-              v-if="galerija[n]"
-              :src="galerija[n]"
-              :alt="biznis.naslov"
-              class="size-full object-cover"
-            />
-            <span v-else class="flex h-32 items-center justify-center text-primary md:h-full">
+          <template v-for="n in 2" :key="n">
+            <button
+              v-if="preview[n]"
+              type="button"
+              class="group relative overflow-hidden rounded-lg bg-primary-tint md:h-[214px]"
+              @click="otvoriGaleriju(n)"
+            >
+              <img :src="preview[n].src" :alt="biznis.naslov" class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+              <span
+                v-if="n === 2 && preostalo > 0"
+                class="absolute inset-0 flex items-center justify-center bg-heading/60 text-white transition-colors group-hover:bg-heading/70"
+              >
+                <span class="font-heading text-2xl font-bold">+{{ preostalo }}</span>
+              </span>
+            </button>
+            <div v-else class="flex h-32 items-center justify-center rounded-lg bg-primary-tint text-primary md:h-[214px]">
               <BaseIcon name="image" :size="32" />
-            </span>
-          </div>
+            </div>
+          </template>
         </div>
       </div>
 
+      <Lightbox v-model="lbOpen" :items="sveSlike" :start-index="lbIndex" />
+
       <!-- Naslovni blok -->
-      <div class="mt-7 flex flex-wrap items-start justify-between gap-4">
-        <div>
+      <header class="mt-8 border-b border-border pb-7">
+        <div class="flex flex-wrap items-center gap-2">
           <BaseChip
             v-if="biznis.kategorija"
             variant="kategorija"
             :label="biznis.kategorija.label"
             :icon="biznis.kategorija.icon"
           />
-          <h1 class="mt-3 font-heading text-3xl font-extrabold text-heading md:text-4xl">
-            {{ biznis.naslov }}
-          </h1>
-          <div class="mt-2 flex items-center gap-1.5 text-text-muted">
-            <BaseIcon name="map-pin" :size="16" />
-            <span>{{ biznis.lokacija }}</span>
-          </div>
+          <BaseBadge v-if="biznis.preporuceno" variant="preporuceno" />
         </div>
-        <BaseBadge v-if="biznis.preporuceno" variant="preporuceno" />
-      </div>
+
+        <h1 class="mt-3.5 font-heading text-3xl font-extrabold leading-tight text-heading md:text-[2.5rem]">
+          {{ biznis.naslov }}
+        </h1>
+
+        <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[15px] text-text-muted">
+          <span v-if="biznis.lokacija" class="flex items-center gap-1.5">
+            <BaseIcon name="map-pin" :size="17" class="text-primary" />
+            {{ biznis.lokacija }}
+          </span>
+          <span v-if="biznis.cijenaRaspon" class="font-semibold text-heading">{{ biznis.cijenaRaspon }}</span>
+          <span v-if="biznis.godinaOsnivanja" class="flex items-center gap-1.5">
+            <BaseIcon name="star" :size="15" class="text-primary" />
+            {{ $t('detail.since') }} {{ biznis.godinaOsnivanja }}
+          </span>
+        </div>
+
+        <p v-if="biznis.opis" class="mt-4 max-w-3xl text-lg leading-relaxed text-text">
+          {{ biznis.opis }}
+        </p>
+      </header>
 
       <!-- Dvokolonski sadržaj -->
       <div class="mt-8 grid gap-10 lg:grid-cols-3">
         <div class="lg:col-span-2">
-          <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('biz.about') }}</h2>
-          <p class="whitespace-pre-line leading-relaxed text-text">
-            {{ biznis.opisDug || biznis.opis }}
-          </p>
+          <template v-if="biznis.opisDug">
+            <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('biz.about') }}</h2>
+            <div class="rtf" v-html="biznis.opisDug" />
+          </template>
+
+          <section v-if="usluge.length" class="mt-8">
+            <h2 class="mb-3 font-heading text-xl font-bold text-heading">{{ $t('detail.services') }}</h2>
+            <ul class="grid gap-2 sm:grid-cols-2">
+              <li v-for="(u, i) in usluge" :key="i" class="flex items-center gap-2 text-[15px] text-text">
+                <BaseIcon name="circle-check" :size="18" class="shrink-0 text-primary" />
+                {{ u }}
+              </li>
+            </ul>
+          </section>
+
+          <section v-if="radnoDani.length" class="mt-8">
+            <h2 class="mb-3 flex items-center gap-2 font-heading text-xl font-bold text-heading">
+              <BaseIcon name="clock" :size="20" class="text-primary" />
+              {{ $t('detail.hours') }}
+            </h2>
+            <ul class="divide-y divide-border rounded-md border border-border">
+              <li
+                v-for="(d, i) in radnoDani"
+                :key="i"
+                class="flex items-center justify-between px-4 py-2.5 text-[15px]"
+              >
+                <span class="font-medium text-heading">{{ dani[i] }}</span>
+                <span v-if="d.zatvoreno" class="text-text-muted">{{ $t('detail.closed') }}</span>
+                <span v-else class="tabular-nums text-text">{{ d.od }} - {{ d.do }}</span>
+              </li>
+            </ul>
+          </section>
         </div>
 
         <div class="space-y-4">
           <InfoPanel :title="$t('biz.contactInfo')" :items="infoItems" />
+
+          <div v-if="socijalne.length" class="flex flex-wrap gap-2">
+            <a
+              v-for="s in socijalne"
+              :key="s.mreza"
+              :href="s.url"
+              target="_blank"
+              rel="noopener"
+              :aria-label="s.mreza"
+              class="flex size-10 items-center justify-center rounded-full border border-border bg-surface text-text-muted transition-colors hover:border-primary hover:bg-primary-tint hover:text-primary"
+            >
+              <BaseIcon :name="s.icon" :size="18" />
+            </a>
+          </div>
+
+          <div v-if="(biznis.nacinPlacanja || []).length" class="rounded-md border border-border bg-surface-alt p-4">
+            <p class="mb-2 text-xs font-bold uppercase tracking-wide text-text-muted">{{ $t('detail.payment') }}</p>
+            <div class="flex flex-wrap gap-2">
+              <span v-for="p in biznis.nacinPlacanja" :key="p" class="rounded-full bg-surface px-3 py-1 text-[13px] font-medium text-text">
+                {{ PLACANJE_LABEL[p] || p }}
+              </span>
+            </div>
+          </div>
           <a
             href="#upit"
             class="flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-5 py-3 font-heading text-sm font-bold text-white transition-colors hover:bg-primary-dark"
