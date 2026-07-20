@@ -40,7 +40,7 @@ class PagesController extends Controller
             'stranica' => [
                 'id' => $page->id,
                 'title' => $page->getTranslations('title'),
-                'slug' => $page->slugFor('sr'),
+                'slug' => (array) $page->slug,
                 'url' => $page->pathFor('sr'),
                 'published' => (bool) $page->published,
                 'isSystem' => (bool) $page->is_system,
@@ -57,6 +57,8 @@ class PagesController extends Controller
             'kategorije' => $this->kategorijeOpcije(),
             'roditelji' => $this->roditeljiOpcije($page),
             'katTipovi' => collect((array) config('resources.types'))->map(fn ($c) => $c['category_type'] ?? null)->all(),
+            'ciljevi' => $this->ciljevi(),
+            'paleta' => (array) config('brand.paleta'),
             'siteName' => rescue(fn () => app(SiteSettings::class)->brand_naziv, [], false),
             'schema' => BlockSchema::all(),
             'katalog' => BlockSchema::catalog(),
@@ -128,7 +130,8 @@ class PagesController extends Controller
             'title' => ['required', 'array'],
             'title.sr' => ['required', 'string', 'max:255'],
             'title.*' => ['nullable', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
+            'slug' => ['array'],
+            'slug.*' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'published' => ['boolean'],
             'meta_title' => ['array'],
             'meta_title.*' => ['nullable', 'string', 'max:255'],
@@ -143,7 +146,7 @@ class PagesController extends Controller
         $page->setTranslations('title', $this->mapa($data['title']));
 
         if (! $page->isHome()) {
-            $page->slug = array_merge((array) $page->slug, ['sr' => $data['slug']]);
+            $page->slug = $this->mapa($data['slug'] ?? []);
         }
 
         $page->published = (bool) ($data['published'] ?? false);
@@ -203,6 +206,26 @@ class PagesController extends Controller
             'izmijenjeno' => $page->updated_at?->diffForHumans(),
             'metaTitleTranslations' => $page->getTranslations('meta_title'),
             'metaDescriptionTranslations' => $page->getTranslations('meta_description'),
+        ];
+    }
+
+    protected function ciljevi(): array
+    {
+        $stranice = [];
+
+        foreach (Page::whereNull('parent_id')->orderBy('sort')->orderBy('id')->get() as $roditelj) {
+            $stranice[] = ['value' => $roditelj->id, 'label' => $roditelj->getTranslations('title')['sr'] ?? $roditelj->slugFor('sr')];
+
+            foreach ($roditelj->children as $dijete) {
+                $stranice[] = ['value' => $dijete->id, 'label' => '- '.($dijete->getTranslations('title')['sr'] ?? $dijete->slugFor('sr'))];
+            }
+        }
+
+        return [
+            'stranice' => $stranice,
+            'kategorije' => \App\Models\Category::orderBy('type')->orderBy('sort')->get()
+                ->map(fn ($c) => ['value' => $c->id, 'label' => $c->getTranslations('label')['sr'] ?? $c->key])
+                ->all(),
         ];
     }
 

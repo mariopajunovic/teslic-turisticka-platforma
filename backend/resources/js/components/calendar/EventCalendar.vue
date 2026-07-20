@@ -174,6 +174,9 @@ function odaberi(celija) {
               : celija.uMjesecu
                 ? 'text-text hover:bg-surface-alt'
                 : 'text-text-muted/50 hover:bg-surface-alt',
+          celija.brojDogadjaja > 0 && selected !== celija.iso && celija.iso !== danasIso
+            ? (celija.iso < danasIso ? 'bg-surface-alt font-medium text-text-muted' : 'bg-accent-tint font-semibold text-heading')
+            : '',
         ]"
         @click="odaberi(celija)"
       >
@@ -182,14 +185,14 @@ function odaberi(celija) {
         <!-- Tačke za događaje -->
         <span
           v-if="celija.brojDogadjaja > 0"
-          class="absolute bottom-1.5 flex items-center gap-0.5"
+          class="absolute bottom-1 flex items-center gap-1"
           aria-hidden="true"
         >
           <span
             v-for="n in Math.min(celija.brojDogadjaja, 3)"
             :key="n"
-            class="h-1 w-1 rounded-pill"
-            :class="selected === celija.iso ? 'bg-white' : 'bg-primary'"
+            class="size-1.5 rounded-pill"
+            :class="selected === celija.iso ? 'bg-white' : (celija.iso < danasIso ? 'bg-text-muted/50' : 'bg-accent')"
           />
         </span>
       </button>

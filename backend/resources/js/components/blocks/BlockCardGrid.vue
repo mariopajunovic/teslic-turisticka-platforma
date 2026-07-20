@@ -34,7 +34,7 @@ const items = computed(() => props.data.items || [])
       :link-text="data.linkText || ''"
       :to="data.to || null"
     />
-    <CardGrid v-if="items.length" :cols="data.cols || 4">
+    <CardGrid v-if="items.length" :cols="Number(data.cols) || 4">
       <component :is="card" v-for="item in items" :key="item.slug" :item="item" />
     </CardGrid>
     <EmptyState v-else :title="$t('misc.blockEmpty')" :text="$t('misc.blockEmptyText')" />

@@ -18,6 +18,7 @@ class EventResource extends JsonResource
             'dan' => $this->datum?->format('d'),
             'mjesec' => $this->datum ? $mjeseci[(int) $this->datum->format('n')] : null,
             'datum' => $this->datum?->format('d.m.Y.'),
+            'datumIso' => $this->datum?->format('Y-m-d'),
             'vrijeme' => $this->vrijeme,
             'lokacija' => $this->lokacija,
             'organizator' => $this->organizator,

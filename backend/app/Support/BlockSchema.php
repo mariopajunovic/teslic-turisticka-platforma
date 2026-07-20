@@ -35,6 +35,8 @@ class BlockSchema
                 ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
                 ['name' => 'linkText', 'label' => 'Tekst linka', 'type' => 'text', 'tr' => true],
                 ['name' => 'to', 'label' => 'Link', 'type' => 'url'],
+                ['name' => 'ukljuciZavrsene', 'label' => 'Prikaži i završene događaje', 'type' => 'toggle'],
+                ['name' => 'ukljuciIstekle', 'label' => 'Prikaži i istekle oglase', 'type' => 'toggle'],
             ]],
             'resource_list' => ['label' => 'Lista sadržaja', 'icon' => 'list', 'opis' => 'Puna lista s paginacijom', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
@@ -44,6 +46,9 @@ class BlockSchema
                 ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
                 ['name' => 'filteri', 'label' => 'Prikaži filter kategorija', 'type' => 'toggle'],
                 ['name' => 'pretraga', 'label' => 'Prikaži pretragu', 'type' => 'toggle'],
+                ['name' => 'ukljuciZavrsene', 'label' => 'Prikaži i završene događaje', 'type' => 'toggle'],
+                ['name' => 'ukljuciIstekle', 'label' => 'Prikaži i istekle oglase', 'type' => 'toggle'],
+                ['name' => 'kalendar', 'label' => 'Omogući prikaz kalendara (događaji)', 'type' => 'toggle'],
             ]],
             'cta' => ['label' => 'Poziv na akciju', 'icon' => 'megaphone', 'opis' => 'CTA sa dugmadima', 'fields' => [
                 ['name' => 'title', 'label' => 'Naslov', 'type' => 'text', 'tr' => true, 'required' => true],
@@ -57,8 +62,9 @@ class BlockSchema
             'category_nav' => ['label' => 'Navigacija kategorija', 'icon' => 'grid-2x2', 'opis' => 'Prečice po kategorijama', 'fields' => [
                 ['name' => 'items', 'label' => 'Stavke', 'type' => 'repeater', 'fields' => [
                     ['name' => 'label', 'label' => 'Naziv', 'type' => 'text', 'tr' => true, 'required' => true],
-                    ['name' => 'icon', 'label' => 'Ikona', 'type' => 'text'],
-                    ['name' => 'to', 'label' => 'Link', 'type' => 'url', 'required' => true],
+                    ['name' => 'icon', 'label' => 'Ikona', 'type' => 'icon'],
+                    ['name' => 'boja', 'label' => 'Boja', 'type' => 'color'],
+                    ['name' => 'cilj', 'label' => 'Link', 'type' => 'target'],
                 ]],
             ]],
             'gallery' => ['label' => 'Galerija', 'icon' => 'images', 'opis' => 'Foto galerija', 'fields' => [

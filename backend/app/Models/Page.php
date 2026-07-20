@@ -123,7 +123,13 @@ class Page extends Model
     {
         $lang = app(ActiveLocale::class)->language();
 
-        return $query->where(fn ($q) => $q->where("slug->{$lang}", $slug)->orWhere('slug->sr', $slug));
+        if ($lang === 'sr') {
+            return $query->where('slug->sr', $slug);
+        }
+
+        return $query->where(fn ($q) => $q
+            ->where("slug->{$lang}", $slug)
+            ->orWhere(fn ($rez) => $rez->where('slug->sr', $slug)->whereNull("slug->{$lang}")));
     }
 
     public function scopePublished(Builder $query): Builder

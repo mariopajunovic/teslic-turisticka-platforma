@@ -4,14 +4,18 @@ import { Plus, Trash2, GripVertical } from 'lucide-vue-next';
 import FormField from './FormField.vue';
 import TextareaField from './TextareaField.vue';
 import SelectField from './SelectField.vue';
+import BaseIcon from '@/components/base/BaseIcon.vue';
 import ToggleField from './ToggleField.vue';
 import RichTextField from './RichTextField.vue';
 import BlockImageField from './BlockImageField.vue';
+import { icons } from '@/constants/icons';
 
 const props = defineProps({
     field: { type: Object, required: true },
     modelValue: { default: null },
     lang: { type: String, default: 'sr' },
+    ciljevi: { type: Object, default: () => ({ stranice: [], kategorije: [] }) },
+    paleta: { type: Array, default: () => [] },
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -20,6 +24,19 @@ const set = (val) => emit('update:modelValue', val);
 
 const trValue = computed(() => (props.modelValue && typeof props.modelValue === 'object' ? props.modelValue[props.lang] ?? '' : ''));
 const setTr = (val) => set({ ...(props.modelValue && typeof props.modelValue === 'object' ? props.modelValue : {}), [props.lang]: val });
+
+const ikoneOtvoren = ref(false);
+const ikoneLista = Object.keys(icons);
+
+const cilj = computed(() => (props.modelValue && typeof props.modelValue === 'object' && !Array.isArray(props.modelValue))
+    ? props.modelValue
+    : { type: 'page', id: '', url: '' });
+
+const postaviCilj = (patch) => set({ ...cilj.value, ...patch });
+
+const ciljOpcije = computed(() => (cilj.value.type === 'category'
+    ? (props.ciljevi.kategorije || [])
+    : (props.ciljevi.stranice || [])));
 
 const selectOptions = computed(() =>
     Object.entries(props.field.options ?? {}).map(([value, label]) => ({ value, label })),
@@ -92,6 +109,73 @@ const itemTitle = (item, i) => {
         :required="field.required"
         @update:model-value="setTr"
     />
+
+    <div v-else-if="field.type === 'icon'">
+        <label class="mb-1.5 block text-sm font-medium text-ink">{{ field.label }}</label>
+        <button
+            type="button"
+            class="flex h-10 w-full items-center gap-2 rounded-[var(--radius-card)] border border-line bg-surface px-3 text-sm text-ink hover:bg-surface-alt"
+            @click="ikoneOtvoren = !ikoneOtvoren"
+        >
+            <BaseIcon v-if="modelValue" :name="modelValue" :size="17" />
+            <span>{{ modelValue || 'Izaberi ikonu' }}</span>
+        </button>
+        <div v-if="ikoneOtvoren" class="mt-2 grid max-h-52 grid-cols-8 gap-1 overflow-y-auto rounded-[var(--radius-card)] border border-line bg-surface p-2">
+            <button
+                v-for="ime in ikoneLista"
+                :key="ime"
+                type="button"
+                :title="ime"
+                class="flex h-8 items-center justify-center rounded hover:bg-surface-alt"
+                :class="modelValue === ime ? 'bg-brand/10 text-brand' : 'text-ink-2'"
+                @click="set(ime); ikoneOtvoren = false"
+            >
+                <BaseIcon :name="ime" :size="17" />
+            </button>
+        </div>
+    </div>
+
+    <div v-else-if="field.type === 'color'">
+        <label class="mb-1.5 block text-sm font-medium text-ink">{{ field.label }}</label>
+        <div class="flex flex-wrap items-center gap-2">
+            <button
+                v-for="b in paleta"
+                :key="b.value"
+                type="button"
+                :title="b.label"
+                class="h-7 w-7 rounded-full transition-transform hover:scale-110"
+                :style="{ backgroundColor: b.value, outline: modelValue === b.value ? '2px solid #1D2327' : 'none', outlineOffset: '2px' }"
+                @click="set(b.value)"
+            />
+            <button type="button" class="text-xs font-semibold text-ink-3 hover:text-ink" @click="set('')">Poništi</button>
+        </div>
+    </div>
+
+    <div v-else-if="field.type === 'target'" class="space-y-2">
+        <label class="block text-sm font-medium text-ink">{{ field.label }}</label>
+        <SelectField
+            :model-value="cilj.type"
+            :options="[
+                { value: 'page', label: 'Stranica' },
+                { value: 'category', label: 'Kategorija' },
+                { value: 'external', label: 'Vanjski link' },
+            ]"
+            @update:model-value="postaviCilj({ type: $event, id: '' })"
+        />
+        <SelectField
+            v-if="cilj.type !== 'external'"
+            :model-value="cilj.id ?? ''"
+            :options="ciljOpcije"
+            placeholder="Izaberi…"
+            @update:model-value="postaviCilj({ id: $event })"
+        />
+        <FormField
+            v-else
+            :model-value="cilj.url ?? ''"
+            placeholder="https://…"
+            @update:model-value="postaviCilj({ url: $event })"
+        />
+    </div>
 
     <RichTextField
         v-else-if="field.type === 'richtext'"
@@ -167,6 +251,8 @@ const itemTitle = (item, i) => {
                         :field="sub"
                         :model-value="item[sub.name]"
                         :lang="lang"
+                        :ciljevi="ciljevi"
+                        :paleta="paleta"
                         @update:model-value="setItemField(i, sub.name, $event)"
                     />
                 </div>

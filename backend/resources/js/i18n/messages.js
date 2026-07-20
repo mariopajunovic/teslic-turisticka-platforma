@@ -24,6 +24,7 @@ export const messages = {
     },
     footer: { quickLinks: 'Brzi linkovi', explore: 'Istraži', contact: 'Kontakt', partners: 'Partneri projekta' },
     common: {
+      search: 'Pretraži…',
       home: 'Početna',
       loadMore: 'Učitaj još',
       allCategories: 'Sve kategorije',
@@ -482,6 +483,7 @@ export const messages = {
     },
     footer: { quickLinks: 'Quick links', explore: 'Explore', contact: 'Contact', partners: 'Project partners' },
     common: {
+      search: 'Search…',
       home: 'Home',
       loadMore: 'Load more',
       allCategories: 'All categories',
@@ -940,6 +942,7 @@ export const messages = {
     },
     footer: { quickLinks: 'Schnelllinks', explore: 'Entdecken', contact: 'Kontakt', partners: 'Projektpartner' },
     common: {
+      search: 'Suchen…',
       home: 'Startseite',
       loadMore: 'Mehr laden',
       allCategories: 'Alle Kategorien',

@@ -114,10 +114,13 @@ class Category extends Model
     {
         $lang = app(ActiveLocale::class)->language();
 
-        return $query->where(fn ($q) => $q
-            ->where('key', $vrijednost)
-            ->orWhere("slug->{$lang}", $vrijednost)
-            ->orWhere('slug->sr', $vrijednost));
+        return $query->where(function ($q) use ($lang, $vrijednost) {
+            $q->where('key', $vrijednost)->orWhere("slug->{$lang}", $vrijednost);
+
+            if ($lang !== 'sr') {
+                $q->orWhere(fn ($rez) => $rez->where('slug->sr', $vrijednost)->whereNull("slug->{$lang}"));
+            }
+        });
     }
 
     public function businesses(): HasMany

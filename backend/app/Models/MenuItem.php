@@ -52,11 +52,11 @@ class MenuItem extends Model
 
     public function razrijeseniUrl(?string $lang = null): ?string
     {
-        return match ($this->target_type) {
-            self::CILJ_STRANICA => $this->stranicaUrl($lang),
-            self::CILJ_KATEGORIJA => $this->kategorijaUrl($lang),
-            default => $this->url ?: null,
-        };
+        return ResourceUrls::forTarget([
+            'type' => $this->target_type,
+            'id' => $this->target_id,
+            'url' => $this->url,
+        ], $lang);
     }
 
     public function mrtav(): bool
@@ -64,23 +64,5 @@ class MenuItem extends Model
         return $this->razrijeseniUrl() === null;
     }
 
-    protected function stranicaUrl(?string $lang): ?string
-    {
-        $stranica = Page::find($this->target_id);
 
-        if (! $stranica || ! $stranica->published) {
-            return null;
-        }
-
-        $locale = app(ActiveLocale::class);
-
-        return $locale->path($stranica->pathFor($lang), $lang ?? $locale->language());
-    }
-
-    protected function kategorijaUrl(?string $lang): ?string
-    {
-        $kategorija = Category::find($this->target_id);
-
-        return $kategorija ? ResourceUrls::category($kategorija, $lang) : null;
-    }
 }

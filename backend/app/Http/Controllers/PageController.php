@@ -116,6 +116,18 @@ class PageController extends Controller
                 $block['data'] = $this->resourceList($block['data'] ?? [], $page);
             }
 
+            if ($type === 'category_nav') {
+                $block['data']['items'] = collect($block['data']['items'] ?? [])
+                    ->map(function (array $stavka) {
+                        $stavka['to'] = ResourceUrls::forTarget($stavka['cilj'] ?? null) ?: ($stavka['to'] ?? null);
+
+                        return $stavka;
+                    })
+                    ->filter(fn (array $stavka) => ! empty($stavka['to']))
+                    ->values()
+                    ->all();
+            }
+
             if ($type === 'map') {
                 $block['data']['items'] = MapPoints::all();
             }
@@ -126,6 +138,10 @@ class PageController extends Controller
 
             return $block;
         })->all();
+
+        request()->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))
+            ->mapWithKeys(fn ($lang) => [$lang => $active->path($page->pathFor($lang), $lang)])
+            ->all());
 
         $isHome = $page->isHome();
         $canonical = url($page->pathFor());
@@ -226,7 +242,10 @@ class PageController extends Controller
         $q = $prikaziPretragu ? trim((string) request()->query('q', '')) : '';
         $filterKat = $prikaziFiltere ? trim((string) request()->query('kategorija', '')) : '';
 
-        $query = $model::objavljeno()->with(['category', 'media'])->latest('published_at');
+        $imaPeriod = in_array($tip, ['event', 'ad'], true) && $prikaziFiltere;
+        $period = $imaPeriod ? (string) request()->query('period', '') : '';
+
+        $query = $model::objavljeno()->with(['category', 'media']);
 
         if ($page->category_id) {
             $query->where('category_id', $page->category_id);
@@ -239,13 +258,10 @@ class PageController extends Controller
         }
 
         if ($q !== '') {
-            $polja = (array) ($cfg['search'] ?? ['naslov']);
-            $query->where(function ($builder) use ($polja, $q) {
-                foreach ($polja as $polje) {
-                    $builder->orWhere($polje, 'like', '%'.$q.'%');
-                }
-            });
+            $this->pretrazi($query, (array) ($cfg['search'] ?? ['naslov']), $q);
         }
+
+        $this->poredaj($query, $tip, array_merge($data, ['period' => $period]));
 
         $paginator = $query->paginate($perPage)->withQueryString();
 
@@ -263,6 +279,51 @@ class PageController extends Controller
             'kategorije' => $prikaziFiltere ? $this->kategorijeZaTip($tip) : [],
             'aktivnaKategorija' => $filterKat,
             'q' => $q,
+            'periodi' => $imaPeriod ? $this->periodi($tip) : [],
+            'aktivniPeriod' => $period,
+            'kalendarStavke' => $this->kalendarStavke($tip, $data, $page, $model, $resource),
+        ];
+    }
+
+    protected function kalendarStavke(string $tip, array $data, Page $page, string $model, string $resource): array
+    {
+        if ($tip !== 'event' || ! ($data['kalendar'] ?? false)) {
+            return [];
+        }
+
+        $query = $model::objavljeno()->with(['category', 'media']);
+
+        if ($page->category_id) {
+            $query->where('category_id', $page->category_id);
+        } elseif (! empty($data['kategorija'])) {
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($data['kategorija']));
+        }
+
+        return $resource::collection($query->orderBy('datum')->get())->resolve();
+    }
+
+    protected function prevod(string $kljuc): string
+    {
+        $lang = app(\App\Support\ActiveLocale::class)->language();
+        $poruke = app(\App\Support\Translations::class)->messages($lang);
+
+        return (string) (data_get($poruke, $kljuc) ?: $kljuc);
+    }
+
+    protected function periodi(string $tip): array
+    {
+        if ($tip === 'event') {
+            return [
+                ['value' => '', 'label' => $this->prevod('events.upcoming')],
+                ['value' => 'protekli', 'label' => $this->prevod('events.past')],
+                ['value' => 'svi', 'label' => $this->prevod('events.allPeriods')],
+            ];
+        }
+
+        return [
+            ['value' => '', 'label' => $this->prevod('ads.active')],
+            ['value' => 'istekli', 'label' => $this->prevod('ads.expired')],
+            ['value' => 'svi', 'label' => $this->prevod('ads.allPeriods')],
         ];
     }
 
@@ -292,16 +353,95 @@ class PageController extends Controller
             default => [Business::class, BusinessResource::class],
         };
 
-        $query = $model::objavljeno()
-            ->with(['category', 'media'])
-            ->latest('published_at')
-            ->limit($limit);
+        $tip = $data['resource'] ?? 'business';
+
+        $query = $model::objavljeno()->with(['category', 'media']);
 
         if ($kategorija) {
             $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
         }
 
-        return $resource::collection($query->get())->resolve();
+        $this->poredaj($query, $tip, $data);
+
+        return $resource::collection($query->limit($limit)->get())->resolve();
+    }
+
+    protected function pretrazi($query, array $polja, string $q): void
+    {
+        $jezici = array_unique([app(\App\Support\ActiveLocale::class)->language(), 'sr']);
+        $pojam = '%'.$q.'%';
+
+        $query->where(function ($builder) use ($polja, $jezici, $pojam) {
+            foreach ($polja as $polje) {
+                if (! preg_match('/^[a-z_]+$/', $polje)) {
+                    continue;
+                }
+
+                foreach ($jezici as $lang) {
+                    $builder->orWhereRaw(
+                        "CONVERT(JSON_UNQUOTE(JSON_EXTRACT(`{$polje}`, ?)) USING utf8mb4) COLLATE utf8mb4_0900_ai_ci LIKE ?",
+                        ['$."'.$lang.'"', $pojam],
+                    );
+                }
+            }
+        });
+    }
+
+    protected function poredaj($query, string $tip, array $data): void
+    {
+        if ($tip === 'event') {
+            $period = $data['period'] ?? '';
+            $sviDozvoljeni = $period === 'svi' || ($period === '' && ($data['ukljuciZavrsene'] ?? false));
+
+            if ($period === 'protekli') {
+                $query->where(fn ($q) => $q->where('zavrseno', true)->orWhereDate('datum', '<', now()->toDateString()));
+                $query->orderByDesc('datum')->orderByDesc('id');
+
+                return;
+            }
+
+            if (! $sviDozvoljeni) {
+                $query->where('zavrseno', false)->whereDate('datum', '>=', now()->toDateString());
+            }
+
+            $query->orderBy('datum')->orderBy('vrijeme')->orderBy('id');
+
+            return;
+        }
+
+        if ($tip === 'ad') {
+            $period = $data['period'] ?? '';
+            $sviDozvoljeni = $period === 'svi' || ($period === '' && ($data['ukljuciIstekle'] ?? false));
+
+            if ($period === 'istekli') {
+                $query->whereNotNull('rok')->whereDate('rok', '<', now()->toDateString());
+                $query->orderByDesc('rok')->orderByDesc('id');
+
+                return;
+            }
+
+            if (! $sviDozvoljeni) {
+                $query->where(fn ($q) => $q->whereNull('rok')->orWhereDate('rok', '>=', now()->toDateString()));
+            }
+
+            $query->orderByRaw('rok IS NULL')->orderBy('rok')->orderByDesc('id');
+
+            return;
+        }
+
+        if (in_array($tip, ['business', 'location'], true)) {
+            $query->orderByDesc('preporuceno')->orderByDesc('published_at')->orderByDesc('id');
+
+            return;
+        }
+
+        if ($tip === 'story') {
+            $query->orderByDesc('published_at')->orderByDesc('datum')->orderByDesc('id');
+
+            return;
+        }
+
+        $query->orderByDesc('published_at')->orderByDesc('id');
     }
 
     protected function featuredStory(array $data): ?array

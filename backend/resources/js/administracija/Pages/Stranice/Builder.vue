@@ -23,6 +23,8 @@ const props = defineProps({
     kategorije: { type: Array, default: () => [] },
     roditelji: { type: Array, default: () => [] },
     katTipovi: { type: Object, default: () => ({}) },
+    ciljevi: { type: Object, default: () => ({ stranice: [], kategorije: [] }) },
+    paleta: { type: Array, default: () => [] },
     stranica: { type: Object, required: true },
     schema: { type: Object, required: true },
     katalog: { type: Array, default: () => [] },
@@ -191,7 +193,7 @@ const saveContent = () => {
 
 const postavke = ref({
     title: { ...props.stranica.title },
-    slug: props.stranica.slug,
+    slug: { ...(props.stranica.slug || {}) },
     published: props.stranica.published,
     meta_title: { ...props.stranica.metaTitle },
     meta_description: { ...props.stranica.metaDescription },
@@ -215,6 +217,12 @@ const coverFallback = computed(() => {
     const hero = blocks.value.find((b) => b.type === 'hero' && b.data?.image);
     return hero?.data?.image || '';
 });
+const slugPrijedlog = computed(() => String(trGet(postavke.value.title) || '')
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, ''));
+
 const postavkeErr = ref({});
 const savingPostavke = ref(false);
 
@@ -525,6 +533,8 @@ onBeforeUnmount(() => {
                                 :field="field"
                                 :model-value="current.data[field.name]"
                                 :lang="activeLang"
+                                :ciljevi="ciljevi"
+                                :paleta="paleta"
                                 @update:model-value="setField(field.name, $event)"
                             />
 
@@ -561,12 +571,13 @@ onBeforeUnmount(() => {
                         <FormField :model-value="trGet(postavke.title)" label="Naslov stranice" required :error="postavkeErr[`title.${activeLang}`]" @update:model-value="trSet('title', $event)" />
 
                         <FormField
-                            :model-value="postavke.slug"
-                            label="URL adresa (slug)"
+                            :model-value="postavke.slug[activeLang] || ''"
+                            :label="`URL adresa (slug) - ${langName}`"
                             :disabled="stranica.slugLocked"
-                            :hint="stranica.slugLocked ? 'Naslovna stranica koristi /. Ne mijenja se.' : 'Mala slova i crtice. Ostale stranice: /slug.'"
-                            :error="postavkeErr.slug"
-                            @update:model-value="postavke.slug = $event"
+                            :placeholder="slugPrijedlog"
+                            :hint="stranica.slugLocked ? 'Naslovna stranica koristi /. Ne mijenja se.' : 'Slug je po jeziku. Prazno = generiše se iz naslova tog jezika.'"
+                            :error="postavkeErr[`slug.${activeLang}`]"
+                            @update:model-value="postavke.slug = { ...postavke.slug, [activeLang]: $event }"
                         />
 
                         <div>

@@ -110,6 +110,34 @@ class ResourceUrls
         return $kolekcija ? $kolekcija.'?kategorija='.$category->slugFor($lang) : null;
     }
 
+    public static function forTarget(?array $cilj, ?string $lang = null): ?string
+    {
+        $tip = $cilj['type'] ?? null;
+        $id = $cilj['id'] ?? null;
+
+        if ($tip === 'page') {
+            $stranica = Page::find($id);
+
+            if (! $stranica || ! $stranica->published) {
+                return null;
+            }
+
+            $lang ??= self::jezik();
+
+            return app(ActiveLocale::class)->path($stranica->pathFor($lang), $lang);
+        }
+
+        if ($tip === 'category') {
+            $kategorija = Category::find($id);
+
+            return $kategorija ? self::category($kategorija, $lang) : null;
+        }
+
+        $url = $cilj['url'] ?? null;
+
+        return $url !== '' ? $url : null;
+    }
+
     protected static function jezik(): string
     {
         return app(ActiveLocale::class)->language();
