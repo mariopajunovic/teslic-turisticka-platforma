@@ -243,7 +243,8 @@ class BusinessesController extends Controller
             'drustvene.youtube' => ['nullable', 'string', 'max:255'],
             'drustvene.tiktok' => ['nullable', 'string', 'max:255'],
             'usluge' => ['array'],
-            'usluge.*' => ['nullable', 'string', 'max:120'],
+            'usluge.*' => ['array'],
+            'usluge.*.*' => ['nullable', 'string', 'max:120'],
             'cijena_raspon' => ['nullable', 'string', 'max:8'],
             'godina_osnivanja' => ['nullable', 'integer', 'min:1800', 'max:2100'],
             'nacin_placanja' => ['array'],
@@ -269,7 +270,10 @@ class BusinessesController extends Controller
         $business->category_id = $data['category_id'] ?? null;
         $business->kontakt = $this->kontakt($data['kontakt'] ?? []);
         $business->drustvene = $this->drustvene($data['drustvene'] ?? []);
-        $business->usluge = collect($data['usluge'] ?? [])->map(fn ($u) => trim((string) $u))->filter()->values()->all();
+        $business->setTranslations('usluge', collect($data['usluge'] ?? [])
+            ->only((array) config('locales.content'))
+            ->map(fn ($arr) => collect((array) $arr)->map(fn ($u) => trim((string) $u))->filter()->values()->all())
+            ->all());
         $business->cijena_raspon = in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null;
         $business->godina_osnivanja = $data['godina_osnivanja'] ?? null;
         $business->nacin_placanja = array_filter([
@@ -326,7 +330,7 @@ class BusinessesController extends Controller
             'category_id' => $business->category_id,
             'kontakt' => $this->kontakt($business->kontakt ?? []),
             'drustvene' => $this->drustvene((array) $business->drustvene),
-            'usluge' => (array) $business->usluge,
+            'usluge' => $business->getTranslations('usluge'),
             'cijena_raspon' => $business->cijena_raspon,
             'godina_osnivanja' => $business->godina_osnivanja,
             'nacin_placanja' => (array) $business->nacin_placanja,

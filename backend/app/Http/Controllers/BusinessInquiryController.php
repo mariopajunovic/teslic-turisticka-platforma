@@ -12,14 +12,18 @@ class BusinessInquiryController extends Controller
 {
     public function send(Request $request, string $slug): RedirectResponse
     {
+        $biznis = Business::objavljeno()->whereSlug($slug)->firstOrFail();
+
+        if (filled($request->input('nadimak'))) {
+            return back()->with('status', 'Upit je poslan biznisu.');
+        }
+
         $request->validate([
             'ime' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'poruka' => ['required', 'string', 'max:5000'],
-            'captcha' => ['nullable', new Captcha()],
+            'captcha' => ['required', new Captcha()],
         ]);
-
-        $biznis = Business::objavljeno()->where('slug', $slug)->firstOrFail();
 
         if ($biznis->user_id && $biznis->user) {
             $biznis->user->notify(new BusinessInquiry($biznis, $request->only('ime', 'email', 'poruka')));

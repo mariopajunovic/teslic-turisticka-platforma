@@ -69,7 +69,7 @@ const form = useForm({
         youtube: props.biznis?.drustvene?.youtube ?? '',
         tiktok: props.biznis?.drustvene?.tiktok ?? '',
     },
-    usluge: [...(props.biznis?.usluge ?? [])],
+    usluge: { ...(props.biznis?.usluge ?? {}) },
     cijena_raspon: props.biznis?.cijena_raspon ?? '',
     godina_osnivanja: props.biznis?.godina_osnivanja ?? '',
     nacin_placanja: {
@@ -84,8 +84,12 @@ const form = useForm({
     tags: [...(props.biznis?.tags ?? [])],
 });
 
-const dodajUslugu = () => { form.usluge.push(''); };
-const ukloniUslugu = (i) => { form.usluge.splice(i, 1); };
+const osigurajUsluge = (lang) => {
+    if (!Array.isArray(form.usluge[lang])) form.usluge = { ...form.usluge, [lang]: [] };
+};
+watch(activeLang, (l) => osigurajUsluge(l), { immediate: true });
+const dodajUslugu = () => { osigurajUsluge(activeLang.value); form.usluge[activeLang.value].push(''); };
+const ukloniUslugu = (i) => { form.usluge[activeLang.value].splice(i, 1); };
 
 const trGet = (map) => map?.[activeLang.value] ?? '';
 const trSet = (key, val) => { form[key] = { ...(form[key] || {}), [activeLang.value]: val }; };
@@ -341,18 +345,18 @@ const onFotoDrop = (target) => {
                     <div class="space-y-5">
                         <div>
                             <div class="mb-2 flex items-center justify-between">
-                                <p class="text-[13px] font-semibold text-ink">Usluge</p>
+                                <p class="text-[13px] font-semibold text-ink">Usluge <span class="font-normal text-ink-3">· {{ activeLang.toUpperCase() }}</span></p>
                                 <button type="button" class="inline-flex items-center gap-1 text-[12px] font-semibold text-brand hover:text-brand-dark" @click="dodajUslugu">
                                     <Plus :size="14" /> Dodaj
                                 </button>
                             </div>
-                            <div v-if="form.usluge.length" class="space-y-2">
-                                <div v-for="(u, i) in form.usluge" :key="i" class="flex items-center gap-2">
-                                    <input v-model="form.usluge[i]" type="text" placeholder="npr. Dostava na kućnu adresu" class="h-9 w-full rounded-md border border-line bg-surface px-3 text-[13px] text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20" />
+                            <div v-if="(form.usluge[activeLang] || []).length" class="space-y-2">
+                                <div v-for="(u, i) in form.usluge[activeLang]" :key="i" class="flex items-center gap-2">
+                                    <input v-model="form.usluge[activeLang][i]" type="text" placeholder="npr. Dostava na kućnu adresu" class="h-9 w-full rounded-md border border-line bg-surface px-3 text-[13px] text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20" />
                                     <button type="button" class="shrink-0 text-ink-3 hover:text-bad" @click="ukloniUslugu(i)"><X :size="16" /></button>
                                 </div>
                             </div>
-                            <p v-else class="text-xs text-ink-3">Nema dodanih usluga.</p>
+                            <p v-else class="text-xs text-ink-3">Nema dodanih usluga za ovaj jezik.</p>
                         </div>
 
                         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">

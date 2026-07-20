@@ -20,6 +20,7 @@ import EmptyState from '@/components/common/EmptyState.vue'
 import BusinessCard from '@/components/cards/BusinessCard.vue'
 import FormField from '@/components/forms/FormField.vue'
 import FormTextarea from '@/components/forms/FormTextarea.vue'
+import FormCaptcha from '@/components/forms/FormCaptcha.vue'
 
 const props = defineProps({
   slug: { type: String, default: '' },
@@ -91,12 +92,13 @@ const infoItems = computed(() => {
 })
 
 const page = usePage()
-const upitForm = useForm({ ime: '', email: '', poruka: '' })
+const upitOpen = ref(false)
+const upitForm = useForm({ ime: '', email: '', poruka: '', captcha: false, nadimak: '' })
 
 function posaljiUpit() {
   upitForm.post(`${biznis.value?.url}/upit`, {
     preserveScroll: true,
-    onSuccess: () => upitForm.reset(),
+    onSuccess: () => { upitForm.reset(); upitOpen.value = false },
   })
 }
 </script>
@@ -213,10 +215,7 @@ function posaljiUpit() {
           </section>
 
           <section v-if="radnoDani.length" class="mt-8">
-            <h2 class="mb-3 flex items-center gap-2 font-heading text-xl font-bold text-heading">
-              <BaseIcon name="clock" :size="20" class="text-primary" />
-              {{ $t('detail.hours') }}
-            </h2>
+            <h2 class="mb-3 font-heading text-xl font-bold text-heading">{{ $t('detail.hours') }}</h2>
             <ul class="divide-y divide-border rounded-md border border-border">
               <li
                 v-for="(d, i) in radnoDani"
@@ -231,7 +230,7 @@ function posaljiUpit() {
           </section>
         </div>
 
-        <div class="space-y-4">
+        <div class="space-y-4 lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pr-1">
           <InfoPanel :title="$t('biz.contactInfo')" :items="infoItems" />
 
           <div v-if="socijalne.length" class="flex flex-wrap gap-2">
@@ -256,66 +255,67 @@ function posaljiUpit() {
               </span>
             </div>
           </div>
-          <a
-            href="#upit"
+          <button
+            type="button"
             class="flex w-full items-center justify-center gap-2 rounded-sm bg-primary px-5 py-3 font-heading text-sm font-bold text-white transition-colors hover:bg-primary-dark"
+            @click="upitOpen = true"
           >
             <BaseIcon name="send" :size="16" />
             {{ $t('biz.sendInquiry') }}
-          </a>
+          </button>
           <MiniMap :label="biznis.lokacija" />
         </div>
       </div>
 
-      <!-- Pošalji upit -->
-      <div
-        id="upit"
-        class="mt-12 rounded-lg border border-border bg-surface p-6 shadow-[var(--shadow-sm)] md:p-8"
-      >
-        <h2 class="font-heading text-xl font-bold text-heading">{{ $t('biz.sendInquiryTitle') }}</h2>
-        <form class="mt-5 space-y-4" @submit.prevent="posaljiUpit">
-          <BaseAlert
-            v-if="page.props.flash?.status"
-            variant="uspjeh"
-            :title="$t('biz.inquirySent')"
-            :text="page.props.flash.status"
-          />
-          <BaseAlert
-            v-if="upitForm.hasErrors"
-            variant="greska"
-            :title="$t('biz.checkFields')"
-            :text="$t('biz.fixErrors')"
-          />
-          <div class="grid gap-4 sm:grid-cols-2">
-            <FormField
-              v-model="upitForm.ime"
-              :label="$t('contact.name')"
-              :placeholder="$t('contact.namePlaceholder')"
-              required
-              :error="upitForm.errors.ime"
-            />
-            <FormField
-              v-model="upitForm.email"
-              :label="$t('contact.email')"
-              type="email"
-              :placeholder="$t('contact.emailPlaceholder')"
-              required
-              :error="upitForm.errors.email"
-            />
+      <BaseAlert
+        v-if="page.props.flash?.status"
+        variant="uspjeh"
+        class="mt-6"
+        :title="$t('biz.inquirySent')"
+        :text="page.props.flash.status"
+      />
+
+      <!-- Modal: Pošalji upit -->
+      <Teleport to="body">
+        <div v-if="upitOpen" class="fixed inset-0 z-[80] flex items-start justify-center overflow-y-auto p-4 sm:p-8">
+          <div class="absolute inset-0 bg-overlay" @click="upitOpen = false"></div>
+          <div class="relative my-auto w-full max-w-[520px] rounded-lg border border-border bg-surface shadow-[var(--shadow-lg)]">
+            <div class="flex items-center justify-between border-b border-border px-6 py-4">
+              <h2 class="font-heading text-lg font-bold text-heading">{{ $t('biz.sendInquiryTitle') }}</h2>
+              <button type="button" class="text-text-muted hover:text-heading" :aria-label="$t('common.close') || 'Zatvori'" @click="upitOpen = false">
+                <BaseIcon name="x" :size="20" />
+              </button>
+            </div>
+            <form class="space-y-4 p-6" @submit.prevent="posaljiUpit">
+              <p class="text-sm text-text-muted">{{ biznis.naslov }}</p>
+              <BaseAlert
+                v-if="upitForm.hasErrors"
+                variant="greska"
+                :title="$t('biz.checkFields')"
+                :text="$t('biz.fixErrors')"
+              />
+              <div class="grid gap-4 sm:grid-cols-2">
+                <FormField v-model="upitForm.ime" :label="$t('contact.name')" :placeholder="$t('contact.namePlaceholder')" required :error="upitForm.errors.ime" />
+                <FormField v-model="upitForm.email" :label="$t('contact.email')" type="email" :placeholder="$t('contact.emailPlaceholder')" required :error="upitForm.errors.email" />
+              </div>
+              <FormTextarea v-model="upitForm.poruka" :label="$t('contact.message')" :maxlength="5000" :placeholder="$t('contact.messagePlaceholder')" required :error="upitForm.errors.poruka" />
+
+              <!-- honeypot (skriveno; boti popune, ljudi ne) -->
+              <input v-model="upitForm.nadimak" type="text" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+              <FormCaptcha v-model="upitForm.captcha" />
+              <p v-if="upitForm.errors.captcha" class="text-sm text-error">{{ upitForm.errors.captcha }}</p>
+
+              <div class="flex justify-end gap-2.5 pt-1">
+                <BaseButton type="button" variant="secondary" @click="upitOpen = false">Odustani</BaseButton>
+                <BaseButton type="submit" variant="primary" icon="send" :loading="upitForm.processing">
+                  {{ $t('biz.sendInquiry') }}
+                </BaseButton>
+              </div>
+            </form>
           </div>
-          <FormTextarea
-            v-model="upitForm.poruka"
-            :label="$t('contact.message')"
-            :maxlength="5000"
-            :placeholder="$t('contact.messagePlaceholder')"
-            required
-            :error="upitForm.errors.poruka"
-          />
-          <BaseButton type="submit" variant="primary" icon="send" :loading="upitForm.processing">
-            {{ $t('biz.sendInquiry') }}
-          </BaseButton>
-        </form>
-      </div>
+        </div>
+      </Teleport>
 
       <!-- Povezani sadržaj -->
       <RelatedContent

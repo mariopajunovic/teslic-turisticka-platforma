@@ -18,7 +18,7 @@ class Business extends Model implements HasMedia
 {
     use HasLocalizedContent, InteractsWithMedia, TracksStatus, HasTags;
 
-    public array $translatable = ['naslov', 'opis', 'opis_dug', 'lokacija'];
+    public array $translatable = ['naslov', 'opis', 'opis_dug', 'lokacija', 'usluge'];
 
     protected $fillable = [
         'user_id',
@@ -50,7 +50,6 @@ class Business extends Model implements HasMedia
             'kontakt' => 'array',
             'radno_vrijeme' => 'array',
             'drustvene' => 'array',
-            'usluge' => 'array',
             'nacin_placanja' => 'array',
             'godina_osnivanja' => 'integer',
             'preporuceno' => 'boolean',
