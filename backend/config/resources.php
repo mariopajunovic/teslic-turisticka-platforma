@@ -24,6 +24,7 @@ return [
             'controller' => BusinessController::class,
             'resource' => BusinessResource::class,
             'category_type' => 'domace',
+            'search' => ['naslov', 'opis', 'lokacija'],
             'segment' => ['sr' => 'biznis', 'en' => 'business', 'de' => 'unternehmen'],
         ],
         'location' => [
@@ -32,6 +33,7 @@ return [
             'controller' => LocationController::class,
             'resource' => LocationResource::class,
             'category_type' => 'turizam',
+            'search' => ['naslov', 'opis', 'lokacija'],
             'segment' => ['sr' => 'lokalitet', 'en' => 'location', 'de' => 'ort'],
         ],
         'event' => [
@@ -40,6 +42,7 @@ return [
             'controller' => EventController::class,
             'resource' => EventResource::class,
             'category_type' => 'dogadjaj',
+            'search' => ['naslov', 'opis', 'lokacija'],
             'segment' => ['sr' => 'dogadjaj', 'en' => 'event', 'de' => 'veranstaltung'],
         ],
         'ad' => [
@@ -48,6 +51,7 @@ return [
             'controller' => AdController::class,
             'resource' => AdResource::class,
             'category_type' => 'oglasi',
+            'search' => ['naslov', 'izdavac', 'lokacija'],
             'segment' => ['sr' => 'oglas', 'en' => 'ad', 'de' => 'anzeige'],
         ],
         'story' => [
@@ -56,6 +60,7 @@ return [
             'controller' => StoryController::class,
             'resource' => StoryResource::class,
             'category_type' => 'price',
+            'search' => ['naslov', 'izvod'],
             'segment' => ['sr' => 'prica', 'en' => 'story', 'de' => 'geschichte'],
         ],
     ],

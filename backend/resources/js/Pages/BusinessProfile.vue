@@ -69,7 +69,7 @@ const page = usePage()
 const upitForm = useForm({ ime: '', email: '', poruka: '' })
 
 function posaljiUpit() {
-  upitForm.post(`/domace-je-najbolje/${props.slug || biznis.value?.slug}/upit`, {
+  upitForm.post(`${biznis.value?.url}/upit`, {
     preserveScroll: true,
     onSuccess: () => upitForm.reset(),
   })

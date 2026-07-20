@@ -153,7 +153,7 @@ const galerija = [
     <AppContainer class="space-y-6">
       <SectionHeader :title="$t('home.secAttractions')" :link-text="$t('home.viewAll')" to="/turizam" />
       <CardGrid>
-        <BusinessCard v-for="a in atrakcije" :key="a.slug" :item="a" :to="`/turizam/${a.slug}`" />
+        <BusinessCard v-for="a in atrakcije" :key="a.slug" :item="a" :to="a.url" />
       </CardGrid>
     </AppContainer>
   </section>

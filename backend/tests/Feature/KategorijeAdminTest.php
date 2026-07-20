@@ -160,7 +160,7 @@ class KategorijeAdminTest extends TestCase
         $this->assertSame('zauzet-2', $b->fresh()->slugFor('en'));
     }
 
-    public function test_public_resolves_category_by_slug(): void
+    public function test_category_child_page_resolves_and_filters(): void
     {
         $admin = $this->admin();
         $c = $this->kategorija(['label' => 'Hrana', 'type' => 'domace']);
@@ -171,8 +171,28 @@ class KategorijeAdminTest extends TestCase
             'type' => 'domace',
         ]);
 
-        $this->get('/domace-je-najbolje/kategorija/hrana-pice')->assertOk();
-        $this->get('/domace-je-najbolje/kategorija/'.$c->fresh()->key)->assertOk();
+        $kolekcija = new \App\Models\Page();
+        $kolekcija->setTranslations('title', ['sr' => 'Domaće je najbolje']);
+        $kolekcija->slug = ['sr' => 'domace-je-najbolje'];
+        $kolekcija->published = true;
+        $kolekcija->resource_type = 'business';
+        $kolekcija->content = [['type' => 'resource_list', 'data' => ['perPage' => 12]]];
+        $kolekcija->save();
+
+        $dijete = new \App\Models\Page();
+        $dijete->setTranslations('title', ['sr' => 'Hrana']);
+        $dijete->slug = ['sr' => 'hrana-pice'];
+        $dijete->parent_id = $kolekcija->id;
+        $dijete->published = true;
+        $dijete->resource_type = 'business';
+        $dijete->category_id = $c->id;
+        $dijete->content = [['type' => 'resource_list', 'data' => ['perPage' => 12]]];
+        $dijete->save();
+
+        $this->get('/domace-je-najbolje')->assertOk();
+        $this->get('/domace-je-najbolje/hrana-pice')->assertOk();
+
+        $this->assertSame('/domace-je-najbolje/hrana-pice', \App\Support\ResourceUrls::category($c->fresh()));
     }
 
     public function test_reorder_saves_sort(): void

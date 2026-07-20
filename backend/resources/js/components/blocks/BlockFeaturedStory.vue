@@ -18,7 +18,7 @@ const prica = computed(() => props.data.item || null)
     <SectionHeader v-if="data.naslov" :title="data.naslov" />
     <Link
       v-if="prica"
-      :href="`/price/${prica.slug}`"
+      :href="prica.url"
       class="group grid overflow-hidden rounded-2xl border border-border bg-surface md:grid-cols-2"
     >
       <div class="relative min-h-[240px] bg-primary-darker">

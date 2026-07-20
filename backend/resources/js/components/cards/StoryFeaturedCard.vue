@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <Link
-    :href="`/price/${item.slug}`"
+    :href="item.url"
     class="group grid overflow-hidden rounded-md border border-border bg-surface shadow-[var(--shadow-md)] transition-shadow hover:shadow-[var(--shadow-lg)] sm:grid-cols-[280px_1fr]"
   >
     <div class="relative aspect-[16/10] overflow-hidden bg-primary-tint sm:aspect-auto sm:min-h-56">

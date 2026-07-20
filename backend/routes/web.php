@@ -22,7 +22,7 @@ $detailSegments = collect((array) config('resources.types'))
     ->all();
 
 $reservedSegments = array_merge(
-    ['admin', 'build', 'storage', 'administracija'],
+    ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog'],
     (array) config('locales.prefixed'),
     $detailSegments,
 );
@@ -41,19 +41,6 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
     Route::post('/'.(config('resources.types.business.segment')[$lang] ?? 'biznis').'/{slug}/upit', [\App\Http\Controllers\BusinessInquiryController::class, 'send'])
         ->middleware('throttle:5,1')
         ->name('biznisi.upit');
-
-    Route::get('/domace-je-najbolje', [BusinessController::class, 'index'])->name('biznisi.index');
-    Route::get('/domace-je-najbolje/kategorija/{kategorija}', [BusinessController::class, 'kategorija'])->name('biznisi.kategorija');
-
-    Route::get('/turizam', [LocationController::class, 'index'])->name('lokaliteti.index');
-    Route::get('/turizam/kategorija/{kategorija}', [LocationController::class, 'kategorija'])->name('lokaliteti.kategorija');
-
-    Route::get('/dogadjaji', [EventController::class, 'index'])->name('dogadjaji.index');
-
-    Route::get('/oglasi', [AdController::class, 'index'])->name('oglasi.index');
-
-    Route::get('/price', [StoryController::class, 'index'])->name('price.index');
-    Route::get('/price/kategorija/{kategorija}', [StoryController::class, 'kategorija'])->name('price.kategorija');
 
     Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');
 

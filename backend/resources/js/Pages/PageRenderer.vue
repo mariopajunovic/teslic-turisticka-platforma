@@ -5,6 +5,7 @@ import BlockSectionHeader from '@/components/blocks/BlockSectionHeader.vue'
 import BlockRichText from '@/components/blocks/BlockRichText.vue'
 import BlockCTA from '@/components/blocks/BlockCTA.vue'
 import BlockCardGrid from '@/components/blocks/BlockCardGrid.vue'
+import BlockResourceList from '@/components/blocks/BlockResourceList.vue'
 import BlockCategoryNav from '@/components/blocks/BlockCategoryNav.vue'
 import BlockGallery from '@/components/blocks/BlockGallery.vue'
 import BlockVideo from '@/components/blocks/BlockVideo.vue'
@@ -29,6 +30,7 @@ const registry = {
   rich_text: BlockRichText,
   cta: BlockCTA,
   card_grid: BlockCardGrid,
+  resource_list: BlockResourceList,
   category_nav: BlockCategoryNav,
   gallery: BlockGallery,
   video: BlockVideo,

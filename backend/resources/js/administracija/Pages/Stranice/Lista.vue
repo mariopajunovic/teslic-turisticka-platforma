@@ -1,7 +1,7 @@
 <script setup>
 import { Head, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { Plus, Pencil, Eye, Trash2, FileText } from 'lucide-vue-next';
+import { Plus, Pencil, Eye, Trash2, FileText, CornerDownRight } from 'lucide-vue-next';
 import Card from '../../components/Card.vue';
 import Badge from '../../components/Badge.vue';
 import Btn from '../../components/Btn.vue';
@@ -43,6 +43,20 @@ const obrisi = async (s) => {
     if (!ok) return;
     router.delete(`/administracija/stranice/${s.id}`, { preserveScroll: true });
 };
+
+const TIP_BOJE = {
+    Biznisi: '#2271B1',
+    Lokaliteti: '#0A7D54',
+    'Događaji': '#B26A00',
+    'Priče': '#D63638',
+    Oglasi: '#7A3EA1',
+    Kategorija: '#0E8275',
+};
+
+const tipStyle = (s) => {
+    const boja = TIP_BOJE[s.tipLabel] || '#787C82';
+    return { color: boja, backgroundColor: `${boja}1a` };
+};
 </script>
 
 <template>
@@ -62,6 +76,7 @@ const obrisi = async (s) => {
                 <div class="min-w-[720px]">
                     <div class="flex items-center gap-3.5 border-b border-line bg-surface-alt px-[18px] py-2.5">
                         <div class="flex-1 text-[11px] font-bold uppercase tracking-wide text-ink-3">Stranica</div>
+                        <div class="w-[150px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Tip</div>
                         <div class="w-[140px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Status</div>
                         <div class="w-[110px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Blokova</div>
                         <div class="w-[150px] shrink-0 text-[11px] font-bold uppercase tracking-wide text-ink-3">Izmijenjeno</div>
@@ -69,12 +84,16 @@ const obrisi = async (s) => {
                     </div>
 
                     <div v-for="s in stranice" :key="s.id" class="flex items-center gap-3.5 border-b border-line px-[18px] py-3 last:border-b-0">
-                        <div class="min-w-0 flex-1">
+                        <div class="min-w-0 flex-1" :style="s.dubina ? { paddingLeft: '26px' } : {}">
                             <div class="flex items-center gap-2">
+                                <CornerDownRight v-if="s.dubina" :size="14" class="shrink-0 text-ink-3" />
                                 <span class="truncate text-[13px] font-semibold text-ink">{{ s.title }}</span>
                                 <span v-if="s.isSystem" class="shrink-0 rounded bg-surface-alt px-1.5 py-px text-[11px] font-semibold text-ink-3">Sistemska</span>
                             </div>
                             <span class="text-xs text-ink-3">{{ s.url }}</span>
+                        </div>
+                        <div class="w-[150px] shrink-0">
+                            <span :style="tipStyle(s)" class="inline-flex items-center rounded px-2.5 py-[3px] text-xs font-semibold">{{ s.tipLabel }}</span>
                         </div>
                         <div class="w-[140px] shrink-0">
                             <Badge :label="s.published ? 'Objavljeno' : 'Nacrt'" :color="s.published ? 'ok' : 'gray'" />

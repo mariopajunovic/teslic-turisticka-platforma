@@ -92,16 +92,25 @@ class SiteData
         }
 
         return $menu->rootItems->map(function (MenuItem $item) {
-            $node = ['label' => $item->label, 'to' => $item->url];
+            $to = $item->razrijeseniUrl();
 
-            if ($item->children->isNotEmpty()) {
-                $node['children'] = $item->children
-                    ->map(fn (MenuItem $c) => ['label' => $c->label, 'to' => $c->url])
-                    ->all();
+            if ($to === null) {
+                return null;
+            }
+
+            $node = ['label' => $item->label, 'to' => $to];
+
+            $djeca = $item->children
+                ->map(fn (MenuItem $c) => ($url = $c->razrijeseniUrl()) ? ['label' => $c->label, 'to' => $url] : null)
+                ->filter()
+                ->values();
+
+            if ($djeca->isNotEmpty()) {
+                $node['children'] = $djeca->all();
             }
 
             return $node;
-        })->all();
+        })->filter()->values()->all();
     }
 
     protected static function flat(?Menu $menu): array
@@ -111,7 +120,9 @@ class SiteData
         }
 
         return $menu->rootItems
-            ->map(fn (MenuItem $item) => ['label' => $item->label, 'to' => $item->url])
+            ->map(fn (MenuItem $item) => ($url = $item->razrijeseniUrl()) ? ['label' => $item->label, 'to' => $url] : null)
+            ->filter()
+            ->values()
             ->all();
     }
 }

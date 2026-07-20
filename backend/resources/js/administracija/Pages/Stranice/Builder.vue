@@ -5,19 +5,24 @@ import {
     ArrowLeft, Plus, Save, Eye, Globe, Copy, Trash2, GripVertical, Languages, Layers, X, Search,
     Monitor, Smartphone, RefreshCw, ExternalLink, Loader2,
     PanelTop, Heading, Type, LayoutGrid, Megaphone, Grid2x2, Images, Play, Map as MapIcon,
-    ListOrdered, PanelsTopLeft, MessagesSquare, ChartColumn, Handshake, Star, User, MoveVertical,
+    ListOrdered, PanelsTopLeft, MessagesSquare, ChartColumn, Handshake, Star, User, MoveVertical, List,
 } from 'lucide-vue-next';
 import Card from '../../components/Card.vue';
 import Btn from '../../components/Btn.vue';
 import Badge from '../../components/Badge.vue';
 import BlockField from '../../components/BlockField.vue';
 import FormField from '../../components/FormField.vue';
+import SelectField from '../../components/SelectField.vue';
 import TextareaField from '../../components/TextareaField.vue';
 import BlockImageField from '../../components/BlockImageField.vue';
 import RowMenu from '../../components/RowMenu.vue';
 import { useConfirm } from '../../composables/useConfirm';
 
 const props = defineProps({
+    tipovi: { type: Array, default: () => [] },
+    kategorije: { type: Array, default: () => [] },
+    roditelji: { type: Array, default: () => [] },
+    katTipovi: { type: Object, default: () => ({}) },
     stranica: { type: Object, required: true },
     schema: { type: Object, required: true },
     katalog: { type: Array, default: () => [] },
@@ -39,7 +44,7 @@ const activeLang = ref(locales.value[0]?.code ?? 'sr');
 const langName = computed(() => locales.value.find((l) => l.code === activeLang.value)?.name ?? activeLang.value);
 
 const TYPE_ICON = {
-    hero: PanelTop, section_header: Heading, rich_text: Type, card_grid: LayoutGrid,
+    hero: PanelTop, section_header: Heading, rich_text: Type, card_grid: LayoutGrid, resource_list: List,
     cta: Megaphone, category_nav: Grid2x2, gallery: Images, video: Play, map: MapIcon,
     stepper: ListOrdered, info_panel: PanelsTopLeft, faq: MessagesSquare, stats: ChartColumn,
     partners: Handshake, featured_story: Star, author: User, spacer: MoveVertical,
@@ -56,7 +61,7 @@ const pickerQuery = ref('');
 const savingContent = ref(false);
 
 let baseline = JSON.stringify(blocks.value);
-const dirty = computed(() => JSON.stringify(blocks.value) !== baseline);
+const blokoviDirty = computed(() => JSON.stringify(blocks.value) !== baseline);
 
 const SETTINGS_FIELDS = [
     { name: 'background', label: 'Pozadina', type: 'select', options: { '': 'Podrazumijevano', transparent: 'Prozirna', surface: 'Površina', 'surface-alt': 'Površina (alt)', 'primary-tint': 'Brend (svijetlo)', primary: 'Brend' } },
@@ -79,6 +84,11 @@ const summary = (block) => {
         case 'card_grid':
             parts.push(RESOURCE_LABEL[d.resource] || 'Kartice');
             if (d.limit) parts.push(`${d.limit} kartica`);
+            break;
+        case 'resource_list':
+            parts.push(RESOURCE_LABEL[d.resource] || 'Kao na stranici');
+            if (d.filteri) parts.push('filteri');
+            if (d.pretraga) parts.push('pretraga');
             break;
         case 'gallery': parts.push(`${(d.items || []).length} slika`); break;
         case 'faq': parts.push(`${(d.items || []).length} pitanja`); break;
@@ -162,6 +172,14 @@ const onBlockDrop = (target) => {
 };
 
 const saveContent = () => {
+    if (postavkeDirty.value) {
+        savePostavke();
+    }
+
+    if (! blokoviDirty.value) {
+        return;
+    }
+
     savingContent.value = true;
     router.put(`/administracija/stranice/${props.stranica.id}/sadrzaj`, { blocks: blocks.value }, {
         preserveScroll: true,
@@ -178,7 +196,20 @@ const postavke = ref({
     meta_title: { ...props.stranica.metaTitle },
     meta_description: { ...props.stranica.metaDescription },
     og_image: props.stranica.ogImage || '',
+    resource_type: props.stranica.resourceType || '',
+    category_id: props.stranica.categoryId || '',
+    parent_id: props.stranica.parentId || '',
 });
+
+const tipoviOpcije = computed(() => [{ value: '', label: 'Obična stranica' }, ...(props.tipovi || [])]);
+const kategorijeOpcije = computed(() => {
+    const tip = postavke.value.resource_type;
+    const catType = tip ? (props.katTipovi || {})[tip] : null;
+    const sve = props.kategorije || [];
+    const filtrirane = catType ? sve.filter((k) => k.type === catType) : sve;
+    return [{ value: '', label: 'Sve kategorije' }, ...filtrirane];
+});
+const roditeljiOpcije = computed(() => [{ value: '', label: '(bez roditelja)' }, ...(props.roditelji || [])]);
 
 const coverFallback = computed(() => {
     const hero = blocks.value.find((b) => b.type === 'hero' && b.data?.image);
@@ -186,6 +217,10 @@ const coverFallback = computed(() => {
 });
 const postavkeErr = ref({});
 const savingPostavke = ref(false);
+
+let postavkeBaseline = JSON.stringify(postavke.value);
+const postavkeDirty = computed(() => JSON.stringify(postavke.value) !== postavkeBaseline);
+const dirty = computed(() => blokoviDirty.value || postavkeDirty.value);
 
 const trGet = (map) => map?.[activeLang.value] ?? '';
 const trSet = (key, val) => { postavke.value[key] = { ...(postavke.value[key] || {}), [activeLang.value]: val }; };
@@ -196,7 +231,7 @@ const savePostavke = () => {
         preserveScroll: true,
         preserveState: true,
         onError: (e) => { postavkeErr.value = e; },
-        onSuccess: () => { postavkeErr.value = {}; },
+        onSuccess: () => { postavkeErr.value = {}; postavkeBaseline = JSON.stringify(postavke.value); },
         onFinish: () => { savingPostavke.value = false; },
     });
 };
@@ -378,7 +413,7 @@ onBeforeUnmount(() => {
                 <button type="button" class="inline-flex h-9 items-center gap-2 rounded-md border border-line bg-surface px-4 text-sm font-semibold text-ink-2 hover:bg-surface-alt" @click="openPreview">
                     <Eye :size="16" /> Pregled
                 </button>
-                <Btn variant="primary" :icon="Save" :disabled="savingContent || !dirty" @click="saveContent">Sačuvaj</Btn>
+                <Btn variant="primary" :icon="Save" :disabled="savingContent || savingPostavke || !dirty" @click="saveContent">Sačuvaj</Btn>
             </div>
         </header>
 
@@ -543,6 +578,34 @@ onBeforeUnmount(() => {
                         </div>
 
                         <div class="border-t border-line pt-4">
+                            <p class="text-sm font-bold text-ink">Šta stranica prikazuje</p>
+                            <p class="mb-3 text-xs text-ink-3">Stranica može biti obična ili lista sadržaja. Slug slobodno mijenjaš - veze se ne lome.</p>
+                            <div class="space-y-4">
+                                <SelectField
+                                    :model-value="postavke.resource_type"
+                                    label="Tip sadržaja"
+                                    :options="tipoviOpcije"
+                                    @update:model-value="postavke.resource_type = $event; postavke.category_id = ''"
+                                />
+                                <SelectField
+                                    v-if="postavke.resource_type"
+                                    :model-value="postavke.category_id"
+                                    label="Kategorija"
+                                    :options="kategorijeOpcije"
+                                    hint="Prazno znači sve kategorije."
+                                    @update:model-value="postavke.category_id = $event"
+                                />
+                                <SelectField
+                                    :model-value="postavke.parent_id"
+                                    label="Roditelj"
+                                    :options="roditeljiOpcije"
+                                    :error="postavkeErr.parent_id"
+                                    @update:model-value="postavke.parent_id = $event"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="border-t border-line pt-4">
                             <p class="text-sm font-bold text-ink">SEO</p>
                             <p class="mb-3 text-xs text-ink-3">Kako se stranica prikazuje u pretraživačima i pri dijeljenju.</p>
                             <div class="space-y-4">
@@ -612,7 +675,7 @@ onBeforeUnmount(() => {
                         </div>
 
                         <div class="flex justify-end border-t border-line pt-4">
-                            <Btn variant="primary" :icon="Save" :disabled="savingPostavke" @click="savePostavke">Sačuvaj postavke</Btn>
+                            <Btn variant="primary" :icon="Save" :disabled="savingPostavke || !postavkeDirty" @click="savePostavke">Sačuvaj postavke</Btn>
                         </div>
                     </div>
                 </template>

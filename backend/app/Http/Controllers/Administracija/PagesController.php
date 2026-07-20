@@ -17,9 +17,17 @@ class PagesController extends Controller
 {
     public function index(): Response
     {
-        $stranice = Page::orderBy('sort')->orderBy('id')->get()
-            ->map(fn (Page $p) => $this->row($p))
-            ->all();
+        $sve = Page::with('category')->orderBy('sort')->orderBy('id')->get();
+
+        $stranice = [];
+
+        foreach ($sve->whereNull('parent_id') as $roditelj) {
+            $stranice[] = $this->row($roditelj, 0);
+
+            foreach ($sve->where('parent_id', $roditelj->id) as $dijete) {
+                $stranice[] = $this->row($dijete, 1);
+            }
+        }
 
         return Inertia::render('Stranice/Lista', [
             'stranice' => $stranice,
@@ -40,8 +48,15 @@ class PagesController extends Controller
                 'metaTitle' => $page->getTranslations('meta_title'),
                 'metaDescription' => $page->getTranslations('meta_description'),
                 'ogImage' => $page->og_image,
+                'resourceType' => $page->resource_type,
+                'categoryId' => $page->category_id,
+                'parentId' => $page->parent_id,
                 'blocks' => is_array($page->content) ? $page->content : [],
             ],
+            'tipovi' => $this->tipoviOpcije(),
+            'kategorije' => $this->kategorijeOpcije(),
+            'roditelji' => $this->roditeljiOpcije($page),
+            'katTipovi' => collect((array) config('resources.types'))->map(fn ($c) => $c['category_type'] ?? null)->all(),
             'siteName' => rescue(fn () => app(SiteSettings::class)->brand_naziv, [], false),
             'schema' => BlockSchema::all(),
             'katalog' => BlockSchema::catalog(),
@@ -120,6 +135,9 @@ class PagesController extends Controller
             'meta_description' => ['array'],
             'meta_description.*' => ['nullable', 'string', 'max:500'],
             'og_image' => ['nullable', 'string', 'max:2048'],
+            'resource_type' => ['nullable', Rule::in(array_keys((array) config('resources.types')))],
+            'category_id' => ['nullable', 'exists:categories,id'],
+            'parent_id' => ['nullable', 'exists:pages,id', Rule::notIn([$page->id])],
         ]);
 
         $page->setTranslations('title', $this->mapa($data['title']));
@@ -134,6 +152,18 @@ class PagesController extends Controller
 
         if ($request->exists('og_image')) {
             $page->og_image = ($data['og_image'] ?? null) ?: null;
+        }
+
+        if ($request->exists('resource_type')) {
+            $page->resource_type = ($data['resource_type'] ?? null) ?: null;
+        }
+
+        if ($request->exists('category_id')) {
+            $page->category_id = ($data['category_id'] ?? null) ?: null;
+        }
+
+        if ($request->exists('parent_id')) {
+            $page->parent_id = ($data['parent_id'] ?? null) ?: null;
         }
 
         $page->save();
@@ -152,7 +182,7 @@ class PagesController extends Controller
         return back(303)->with('status', 'Stranica je obrisana.');
     }
 
-    protected function row(Page $page): array
+    protected function row(Page $page, int $dubina = 0): array
     {
         $content = $page->content ?? [];
 
@@ -165,11 +195,57 @@ class PagesController extends Controller
             'published' => (bool) $page->published,
             'isSystem' => (bool) $page->is_system,
             'slugLocked' => $page->isHome(),
+            'dubina' => $dubina,
+            'parentId' => $page->parent_id,
+            'resourceType' => $page->resource_type,
+            'tipLabel' => $this->tipLabel($page),
             'blokova' => is_array($content) ? count($content) : 0,
             'izmijenjeno' => $page->updated_at?->diffForHumans(),
             'metaTitleTranslations' => $page->getTranslations('meta_title'),
             'metaDescriptionTranslations' => $page->getTranslations('meta_description'),
         ];
+    }
+
+    protected function tipLabel(Page $page): string
+    {
+        if ($page->category_id) {
+            return 'Kategorija';
+        }
+
+        if ($page->resource_type) {
+            return (string) (config('resources.types.'.$page->resource_type.'.label') ?? $page->resource_type);
+        }
+
+        return 'Stranica';
+    }
+
+    protected function tipoviOpcije(): array
+    {
+        return collect((array) config('resources.types'))
+            ->map(fn ($cfg, $key) => ['value' => $key, 'label' => $cfg['label'] ?? $key])
+            ->values()
+            ->all();
+    }
+
+    protected function kategorijeOpcije(): array
+    {
+        return \App\Models\Category::orderBy('type')->orderBy('sort')->get()
+            ->map(fn ($c) => [
+                'value' => $c->id,
+                'label' => ($c->getTranslations('label')['sr'] ?? $c->key),
+                'type' => $c->type,
+            ])
+            ->all();
+    }
+
+    protected function roditeljiOpcije(Page $page): array
+    {
+        return Page::whereNull('parent_id')
+            ->where('id', '!=', $page->id)
+            ->orderBy('sort')->orderBy('id')
+            ->get()
+            ->map(fn (Page $p) => ['value' => $p->id, 'label' => $p->getTranslations('title')['sr'] ?? $p->slugFor('sr')])
+            ->all();
     }
 
     protected function mapa(array $vrijednosti): array

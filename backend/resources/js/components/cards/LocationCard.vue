@@ -8,5 +8,5 @@ defineProps({
 </script>
 
 <template>
-  <BusinessCard :item="item" :to="`/turizam/${item.slug}`" />
+  <BusinessCard :item="item" :to="item.url" />
 </template>

@@ -18,6 +18,7 @@ use App\Support\MapPoints;
 use App\Support\Seo;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Support\ResourceUrls;
 
 class PageController extends Controller
 {
@@ -104,11 +105,15 @@ class PageController extends Controller
             $resolved = \App\Support\Cyrillic::deep($resolved);
         }
 
-        $blocks = collect($resolved)->map(function (array $block) {
+        $blocks = collect($resolved)->map(function (array $block) use ($page) {
             $type = $block['type'] ?? null;
 
             if ($type === 'card_grid') {
                 $block['data']['items'] = $this->cards($block['data'] ?? []);
+            }
+
+            if ($type === 'resource_list') {
+                $block['data'] = $this->resourceList($block['data'] ?? [], $page);
             }
 
             if ($type === 'map') {
@@ -204,6 +209,74 @@ class PageController extends Controller
         }
 
         return null;
+    }
+
+    protected function resourceList(array $data, Page $page): array
+    {
+        $tip = ($data['resource'] ?? null) ?: ($page->resource_type ?: 'business');
+        $cfg = ResourceUrls::config($tip) ?? ResourceUrls::config('business');
+
+        $model = $cfg['model'];
+        $resource = $cfg['resource'];
+
+        $prikaziFiltere = (bool) ($data['filteri'] ?? false);
+        $prikaziPretragu = (bool) ($data['pretraga'] ?? false);
+        $perPage = max(1, (int) ($data['perPage'] ?? 12));
+
+        $q = $prikaziPretragu ? trim((string) request()->query('q', '')) : '';
+        $filterKat = $prikaziFiltere ? trim((string) request()->query('kategorija', '')) : '';
+
+        $query = $model::objavljeno()->with(['category', 'media'])->latest('published_at');
+
+        if ($page->category_id) {
+            $query->where('category_id', $page->category_id);
+        } elseif (! empty($data['kategorija'])) {
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($data['kategorija']));
+        }
+
+        if ($filterKat !== '') {
+            $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($filterKat));
+        }
+
+        if ($q !== '') {
+            $polja = (array) ($cfg['search'] ?? ['naslov']);
+            $query->where(function ($builder) use ($polja, $q) {
+                foreach ($polja as $polje) {
+                    $builder->orWhere($polje, 'like', '%'.$q.'%');
+                }
+            });
+        }
+
+        $paginator = $query->paginate($perPage)->withQueryString();
+
+        return [
+            ...$data,
+            'resource' => $tip,
+            'filteri' => $prikaziFiltere,
+            'pretraga' => $prikaziPretragu,
+            'items' => $resource::collection($paginator->items())->resolve(),
+            'meta' => [
+                'current_page' => $paginator->currentPage(),
+                'last_page' => $paginator->lastPage(),
+                'total' => $paginator->total(),
+            ],
+            'kategorije' => $prikaziFiltere ? $this->kategorijeZaTip($tip) : [],
+            'aktivnaKategorija' => $filterKat,
+            'q' => $q,
+        ];
+    }
+
+    protected function kategorijeZaTip(string $tip): array
+    {
+        $cfg = ResourceUrls::config($tip);
+
+        return \App\Models\Category::query()
+            ->where('type', $cfg['category_type'] ?? null)
+            ->where('visible', true)
+            ->orderBy('sort')
+            ->get()
+            ->map(fn ($c) => ['value' => $c->slugFor(), 'label' => $c->label])
+            ->all();
     }
 
     protected function cards(array $data): array

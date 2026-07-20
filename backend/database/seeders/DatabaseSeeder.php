@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
             RolePermissionSeeder::class,
             AdminSeeder::class,
             UserSeeder::class,
-            MenuSeeder::class,
             PageSeeder::class,
             CategorySeeder::class,
             TagSeeder::class,
@@ -28,6 +27,8 @@ class DatabaseSeeder extends Seeder
             StorySeeder::class,
             NewsSeeder::class,
             ContentLinkSeeder::class,
+            CollectionPagesSeeder::class,
+            MenuSeeder::class,
         ]);
     }
 }

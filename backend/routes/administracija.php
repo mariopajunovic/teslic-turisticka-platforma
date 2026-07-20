@@ -7,6 +7,7 @@ use App\Http\Controllers\Administracija\CategoriesController;
 use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
 use App\Http\Controllers\Administracija\LogoviController;
+use App\Http\Controllers\Administracija\NavigacijaController;
 use App\Http\Controllers\Administracija\MediaController;
 use App\Http\Controllers\Administracija\LozinkaController;
 use App\Http\Controllers\Administracija\LanguagesController;
@@ -110,6 +111,13 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::get('/kategorije/{category}/uredi', [CategoriesController::class, 'edit'])->name('kategorije.edit');
         Route::put('/kategorije/{category}', [CategoriesController::class, 'update'])->name('kategorije.update');
         Route::delete('/kategorije/{category}', [CategoriesController::class, 'destroy'])->name('kategorije.destroy');
+
+        Route::get('/navigacija', [NavigacijaController::class, 'index'])->name('navigacija');
+        Route::post('/navigacija/{menu}/stavke', [NavigacijaController::class, 'store'])->name('navigacija.store');
+        Route::post('/navigacija/{menu}/redoslijed', [NavigacijaController::class, 'reorder'])->name('navigacija.redoslijed');
+        Route::put('/navigacija/stavke/{stavka}', [NavigacijaController::class, 'update'])->name('navigacija.update');
+        Route::post('/navigacija/stavke/{stavka}/vidljivost', [NavigacijaController::class, 'toggle'])->name('navigacija.toggle');
+        Route::delete('/navigacija/stavke/{stavka}', [NavigacijaController::class, 'destroy'])->name('navigacija.destroy');
     });
 
     Route::middleware('admin.access:sistemske postavke')->group(function () {

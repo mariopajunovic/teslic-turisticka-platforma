@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Menu;
 use App\Models\MenuItem;
+use App\Models\Page;
 use Illuminate\Database\Seeder;
 
 class MenuSeeder extends Seeder
@@ -37,25 +39,66 @@ class MenuSeeder extends Seeder
             ['Kontakt', '/kontakt'],
         ]);
 
-        $this->menu('footer_brzi', 'Footer — Brzi linkovi', [
+        $this->menu('footer_brzi', 'Footer - Brzi linkovi', [
             ['Početna', '/'],
             ['O projektu', '/o-projektu'],
             ['Događaji', '/dogadjaji'],
             ['Pridruži se', '/pridruzi-se'],
         ]);
 
-        $this->menu('footer_istrazi', 'Footer — Istraži', [
+        $this->menu('footer_istrazi', 'Footer - Istraži', [
             ['Domaće je najbolje', '/domace-je-najbolje'],
             ['Turizam', '/turizam'],
             ['Mapa ponude', '/mapa'],
             ['Priče', '/price'],
         ]);
 
-        $this->menu('footer_pravno', 'Footer — Pravno', [
+        $this->menu('footer_pravno', 'Footer - Pravno', [
             ['Politika privatnosti', '/politika-privatnosti'],
             ['Politika kolačića', '/politika-kolacica'],
             ['Uslovi korištenja', '/uslovi-koristenja'],
         ]);
+    }
+
+    protected function cilj(string $url): array
+    {
+        if (str_starts_with($url, 'http')) {
+            return [MenuItem::CILJ_VANJSKI, null, $url];
+        }
+
+        $segmenti = array_values(array_filter(explode('/', trim($url, '/'))));
+
+        if (! $segmenti) {
+            $home = Page::where('slug->sr', 'pocetna')->first();
+
+            return $home ? [MenuItem::CILJ_STRANICA, $home->id, null] : [MenuItem::CILJ_VANJSKI, null, $url];
+        }
+
+        if (count($segmenti) === 3 && $segmenti[1] === 'kategorija') {
+            $kategorija = Category::where('key', $segmenti[2])->first();
+
+            if ($kategorija) {
+                return [MenuItem::CILJ_KATEGORIJA, $kategorija->id, null];
+            }
+        }
+
+        $roditelj = Page::where('slug->sr', $segmenti[0])->whereNull('parent_id')->first();
+
+        if ($roditelj && count($segmenti) === 1) {
+            return [MenuItem::CILJ_STRANICA, $roditelj->id, null];
+        }
+
+        if ($roditelj && count($segmenti) === 2) {
+            $dijete = Page::where('parent_id', $roditelj->id)->where('slug->sr', $segmenti[1])->first();
+
+            if ($dijete) {
+                return $dijete->category_id
+                    ? [MenuItem::CILJ_KATEGORIJA, $dijete->category_id, null]
+                    : [MenuItem::CILJ_STRANICA, $dijete->id, null];
+            }
+        }
+
+        return [MenuItem::CILJ_VANJSKI, null, $url];
     }
 
     protected function menu(string $key, string $name, array $items): void
@@ -68,19 +111,29 @@ class MenuSeeder extends Seeder
             [$label, $url] = $item;
             $children = $item[2] ?? [];
 
-            $parent = $menu->items()->create([
-                'label' => $label,
-                'url' => $url,
+            [$tip, $id, $vanjski] = $this->cilj($url);
+
+            $parent = $menu->items()->make([
+                'target_type' => $tip,
+                'target_id' => $id,
+                'url' => $vanjski,
                 'sort' => $i,
             ]);
+            $parent->setTranslations('label', ['sr' => $label]);
+            $parent->save();
 
             foreach ($children as $j => $child) {
-                $menu->items()->create([
+                [$ctip, $cid, $cvanjski] = $this->cilj($child[1]);
+
+                $dijete = $menu->items()->make([
                     'parent_id' => $parent->id,
-                    'label' => $child[0],
-                    'url' => $child[1],
+                    'target_type' => $ctip,
+                    'target_id' => $cid,
+                    'url' => $cvanjski,
                     'sort' => $j,
                 ]);
+                $dijete->setTranslations('label', ['sr' => $child[0]]);
+                $dijete->save();
             }
         }
     }

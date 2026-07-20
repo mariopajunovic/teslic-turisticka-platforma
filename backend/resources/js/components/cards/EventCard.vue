@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <Link
-    :href="`/dogadjaji/${item.slug}`"
+    :href="item.url"
     class="group flex flex-col overflow-hidden rounded-md border border-border bg-surface shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]"
     :class="item.zavrseno ? 'opacity-70' : ''"
   >

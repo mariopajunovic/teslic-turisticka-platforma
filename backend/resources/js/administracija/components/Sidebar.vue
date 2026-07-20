@@ -14,6 +14,7 @@ import {
     FileText,
     Store,
     Tag,
+    Menu as MenuIcon,
     PanelLeft,
     X,
 } from 'lucide-vue-next';
@@ -40,12 +41,6 @@ const groups = [
         ],
     },
     {
-        label: 'Taksonomija',
-        items: [
-            { icon: Tag, label: 'Kategorije', href: '/administracija/kategorije' },
-        ],
-    },
-    {
         label: 'Sistem',
         items: [
             { icon: Users, label: 'Korisnici', href: '/administracija/korisnici' },
@@ -57,6 +52,8 @@ const groups = [
     {
         label: 'Postavke',
         items: [
+            { icon: MenuIcon, label: 'Navigacija', href: '/administracija/navigacija' },
+            { icon: Tag, label: 'Kategorije', href: '/administracija/kategorije' },
             { icon: Settings, label: 'Postavke sajta', href: '/administracija/postavke' },
             { icon: Languages, label: 'Prevodi', href: '/administracija/prevodi' },
             { icon: Globe, label: 'Jezici', href: '/administracija/jezici' },

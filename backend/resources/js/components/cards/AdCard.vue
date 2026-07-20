@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <Link
-    :href="`/oglasi/${item.slug}`"
+    :href="item.url"
     class="group flex flex-col gap-2.5 rounded-md border border-border bg-surface p-4 shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]"
     :class="item.isteklo ? 'opacity-70' : ''"
   >

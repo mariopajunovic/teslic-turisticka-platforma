@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <Link
-    :href="to || `/domace-je-najbolje/${item.slug}`"
+    :href="to || item.url"
     class="group flex flex-col overflow-hidden rounded-md border border-border bg-surface shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]"
   >
     <CardImage :src="item.slika" :alt="item.naslov">

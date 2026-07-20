@@ -36,6 +36,15 @@ class BlockSchema
                 ['name' => 'linkText', 'label' => 'Tekst linka', 'type' => 'text', 'tr' => true],
                 ['name' => 'to', 'label' => 'Link', 'type' => 'url'],
             ]],
+            'resource_list' => ['label' => 'Lista sadržaja', 'icon' => 'list', 'opis' => 'Puna lista s paginacijom', 'fields' => [
+                ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
+                ['name' => 'resource', 'label' => 'Izvor', 'type' => 'select', 'options' => ['' => 'Kao na stranici', 'business' => 'Biznisi', 'location' => 'Lokaliteti', 'event' => 'Događaji', 'ad' => 'Oglasi', 'story' => 'Priče']],
+                ['name' => 'kategorija', 'label' => 'Kategorija (slug, opciono)', 'type' => 'text'],
+                ['name' => 'perPage', 'label' => 'Po strani', 'type' => 'number'],
+                ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
+                ['name' => 'filteri', 'label' => 'Prikaži filter kategorija', 'type' => 'toggle'],
+                ['name' => 'pretraga', 'label' => 'Prikaži pretragu', 'type' => 'toggle'],
+            ]],
             'cta' => ['label' => 'Poziv na akciju', 'icon' => 'megaphone', 'opis' => 'CTA sa dugmadima', 'fields' => [
                 ['name' => 'title', 'label' => 'Naslov', 'type' => 'text', 'tr' => true, 'required' => true],
                 ['name' => 'text', 'label' => 'Tekst', 'type' => 'textarea', 'tr' => true],
