@@ -77,7 +77,7 @@ class StoryController extends Controller
     {
         $prica = Story::objavljeno()
             ->with(['category', 'media'])
-            ->where('slug', $slug)
+            ->whereSlug($slug)
             ->firstOrFail();
 
         $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))

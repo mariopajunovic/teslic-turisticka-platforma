@@ -3,6 +3,10 @@
 use App\Http\Controllers\Administracija\AdministratoriController;
 use App\Http\Controllers\Administracija\AuthController;
 use App\Http\Controllers\Administracija\BusinessesController;
+use App\Http\Controllers\Administracija\LocationsController;
+use App\Http\Controllers\Administracija\EventsController;
+use App\Http\Controllers\Administracija\AdsController;
+use App\Http\Controllers\Administracija\StoriesController;
 use App\Http\Controllers\Administracija\CategoriesController;
 use App\Http\Controllers\Administracija\DashboardController;
 use App\Http\Controllers\Administracija\KorisniciController;
@@ -107,6 +111,28 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::post('/biznisi/galerija/{media}/zamijeni', [BusinessesController::class, 'replaceGalerija'])->name('biznisi.galerija.zamijeni');
         Route::post('/biznisi/{business}/galerija/redoslijed', [BusinessesController::class, 'reorderGalerija'])->name('biznisi.galerija.redoslijed');
         Route::delete('/biznisi/galerija/{media}', [BusinessesController::class, 'destroyGalerija'])->name('biznisi.galerija.destroy');
+
+        foreach ([
+            'turizam' => LocationsController::class,
+            'dogadjaji' => EventsController::class,
+            'oglasi' => AdsController::class,
+            'price' => StoriesController::class,
+        ] as $baza => $ctrl) {
+            Route::get("/{$baza}", [$ctrl, 'index'])->name($baza);
+            Route::get("/{$baza}/novi", [$ctrl, 'create'])->name("{$baza}.create");
+            Route::post("/{$baza}", [$ctrl, 'store'])->name("{$baza}.store");
+            Route::post("/{$baza}/galerija/{media}/zamijeni", [$ctrl, 'replaceGalerija'])->name("{$baza}.galerija.zamijeni");
+            Route::delete("/{$baza}/galerija/{media}", [$ctrl, 'destroyGalerija'])->name("{$baza}.galerija.destroy");
+            Route::get("/{$baza}/{id}/uredi", [$ctrl, 'edit'])->whereNumber('id')->name("{$baza}.edit");
+            Route::put("/{$baza}/{id}", [$ctrl, 'update'])->whereNumber('id')->name("{$baza}.update");
+            Route::delete("/{$baza}/{id}", [$ctrl, 'destroy'])->whereNumber('id')->name("{$baza}.destroy");
+            Route::post("/{$baza}/{id}/odobri", [$ctrl, 'approve'])->whereNumber('id')->name("{$baza}.approve");
+            Route::post("/{$baza}/{id}/odbij", [$ctrl, 'reject'])->whereNumber('id')->name("{$baza}.reject");
+            Route::post("/{$baza}/{id}/naslovna", [$ctrl, 'uploadNaslovna'])->whereNumber('id')->name("{$baza}.naslovna");
+            Route::delete("/{$baza}/{id}/naslovna", [$ctrl, 'destroyNaslovna'])->whereNumber('id')->name("{$baza}.naslovna.destroy");
+            Route::post("/{$baza}/{id}/galerija", [$ctrl, 'uploadGalerija'])->whereNumber('id')->name("{$baza}.galerija");
+            Route::post("/{$baza}/{id}/galerija/redoslijed", [$ctrl, 'reorderGalerija'])->whereNumber('id')->name("{$baza}.galerija.redoslijed");
+        }
 
         Route::get('/kategorije', [CategoriesController::class, 'index'])->name('kategorije');
         Route::get('/kategorije/nova', [CategoriesController::class, 'create'])->name('kategorije.create');

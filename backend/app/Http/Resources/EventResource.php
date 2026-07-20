@@ -15,6 +15,11 @@ class EventResource extends JsonResource
             'slug' => $this->slug,
             'url' => \App\Support\ResourceUrls::detail($this->resource),
             'naslov' => $this->naslov,
+            'kategorija' => $this->category ? [
+                'key' => $this->category->key,
+                'label' => $this->category->label,
+                'icon' => $this->category->icon,
+            ] : null,
             'dan' => $this->datum?->format('d'),
             'mjesec' => $this->datum ? $mjeseci[(int) $this->datum->format('n')] : null,
             'datum' => $this->datum?->format('d.m.Y.'),

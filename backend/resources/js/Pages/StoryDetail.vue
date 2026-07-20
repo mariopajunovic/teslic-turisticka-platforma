@@ -86,9 +86,7 @@ const autor = computed(() => ({
         >
           {{ prica.izvod }}
         </p>
-        <div class="space-y-4 whitespace-pre-line text-lg leading-relaxed text-text">
-          {{ prica.sadrzaj }}
-        </div>
+        <div class="rtf" v-html="prica.sadrzaj" />
       </article>
 
       <section v-if="prica.galerija?.length" class="mx-auto mt-10 max-w-2xl">

@@ -13,6 +13,10 @@ import {
     Settings,
     FileText,
     Store,
+    Trees,
+    CalendarDays,
+    Megaphone,
+    BookOpen,
     Tag,
     Menu as MenuIcon,
     PanelLeft,
@@ -38,6 +42,10 @@ const groups = [
         items: [
             { icon: FileText, label: 'Stranice', href: '/administracija/stranice' },
             { icon: Store, label: 'Biznisi', href: '/administracija/biznisi' },
+            { icon: Trees, label: 'Turizam', href: '/administracija/turizam' },
+            { icon: CalendarDays, label: 'Događaji', href: '/administracija/dogadjaji' },
+            { icon: Megaphone, label: 'Oglasi', href: '/administracija/oglasi' },
+            { icon: BookOpen, label: 'Priče', href: '/administracija/price' },
         ],
     },
     {

@@ -4,13 +4,11 @@ import { useI18n } from 'vue-i18n'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
+import DetailHero from '@/components/common/DetailHero.vue'
 import InfoPanel from '@/components/common/InfoPanel.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
 import LinkCard from '@/components/cards/LinkCard.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
-import BaseChip from '@/components/base/BaseChip.vue'
-import BaseBadge from '@/components/base/BaseBadge.vue'
-import BaseAlert from '@/components/base/BaseAlert.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import AdCard from '@/components/cards/AdCard.vue'
 
@@ -24,18 +22,22 @@ const props = defineProps({
 const { t } = useI18n()
 
 const oglas = computed(() => props.oglas)
-const loading = false
-const error = null
 const slicni = computed(() => props.slicni)
+
+const heroMeta = computed(() => {
+  if (!oglas.value) return []
+  const o = oglas.value
+  const m = []
+  if (o.izdavac) m.push({ icon: 'building-2', text: o.izdavac })
+  if (o.lokacija) m.push({ icon: 'map-pin', text: o.lokacija })
+  if (o.rok) m.push({ icon: 'calendar', text: `${t('detail.deadline')}: ${o.rok}` })
+  return m
+})
 
 const infoItems = computed(() => {
   if (!oglas.value) return []
-  const o = oglas.value
-  const k = o.kontakt || {}
+  const k = oglas.value.kontakt || {}
   const items = []
-  if (o.izdavac) items.push({ icon: 'building-2', label: t('detail.publisher'), value: o.izdavac })
-  if (o.lokacija) items.push({ icon: 'map-pin', label: t('detail.location'), value: o.lokacija })
-  if (o.rok) items.push({ icon: 'calendar', label: t('detail.deadline'), value: o.rok })
   if (k.osoba) items.push({ icon: 'user', label: t('adDetail.contactPerson'), value: k.osoba })
   if (k.telefon)
     items.push({
@@ -52,28 +54,8 @@ const infoItems = computed(() => {
 
 <template>
   <AppContainer as="main" class="py-8">
-    <BaseAlert
-      v-if="error"
-      variant="greska"
-      :title="$t('detail.loadErrorTitle')"
-      :text="$t('detail.loadErrorText')"
-    />
-
-    <template v-else-if="loading">
-      <div class="h-5 w-64 animate-pulse rounded bg-neutral-tint" />
-      <div class="mt-6 h-8 w-2/3 animate-pulse rounded bg-neutral-tint" />
-      <div class="mt-6 grid gap-8 lg:grid-cols-3">
-        <div class="space-y-3 lg:col-span-2">
-          <div class="h-4 w-full animate-pulse rounded bg-neutral-tint" />
-          <div class="h-4 w-full animate-pulse rounded bg-neutral-tint" />
-          <div class="h-4 w-2/3 animate-pulse rounded bg-neutral-tint" />
-        </div>
-        <div class="h-64 animate-pulse rounded-md bg-neutral-tint" />
-      </div>
-    </template>
-
     <EmptyState
-      v-else-if="!oglas"
+      v-if="!oglas"
       :title="$t('adDetail.notFoundTitle')"
       :text="$t('adDetail.notFoundText')"
     >
@@ -91,31 +73,27 @@ const infoItems = computed(() => {
         ]"
       />
 
-      <div :class="oglas.isteklo ? 'opacity-70' : ''">
-        <header class="mt-6">
-          <div class="flex flex-wrap items-center gap-3">
-            <BaseChip
-              v-if="oglas.vrsta"
-              variant="kategorija"
-              :label="oglas.vrsta.label"
-              :icon="oglas.vrsta.icon"
-            />
-            <BaseBadge v-if="oglas.isteklo" variant="isteklo" />
-          </div>
-          <h1 class="mt-3 font-heading text-3xl font-bold text-heading md:text-4xl">
-            {{ oglas.naslov }}
-          </h1>
-        </header>
+      <DetailHero
+        :kategorija="oglas.vrsta"
+        :naslov="oglas.naslov"
+        :meta="heroMeta"
+      >
+        <template #badges>
+          <span v-if="oglas.isteklo" class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[13px] font-semibold text-white ring-1 ring-inset ring-white/15">
+            <span class="size-2 rounded-full bg-red-400"></span>
+            {{ $t('badge.isteklo') }}
+          </span>
+        </template>
+      </DetailHero>
 
-        <div class="mt-8 grid gap-8 lg:grid-cols-3">
-          <div class="lg:col-span-2">
-            <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('adDetail.description') }}</h2>
-            <p class="whitespace-pre-line leading-relaxed text-text">{{ oglas.opisDug }}</p>
-          </div>
+      <div class="mt-8 grid gap-10 lg:grid-cols-3">
+        <div class="lg:col-span-2">
+          <h2 class="mb-3 font-heading text-2xl font-bold text-heading">{{ $t('adDetail.description') }}</h2>
+          <div class="rtf" v-html="oglas.opisDug" />
+        </div>
 
-          <div>
-            <InfoPanel :title="$t('adDetail.details')" :items="infoItems" />
-          </div>
+        <div class="space-y-4 lg:sticky lg:top-6 lg:self-start">
+          <InfoPanel v-if="infoItems.length" :title="$t('adDetail.details')" :items="infoItems" />
         </div>
       </div>
 

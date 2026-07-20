@@ -87,7 +87,7 @@ class AdController extends Controller
     {
         $oglas = Ad::objavljeno()
             ->with(['category'])
-            ->where('slug', $slug)
+            ->whereSlug($slug)
             ->firstOrFail();
 
         $request->attributes->set('localizedPaths', collect(array_keys((array) config('locales.languages')))

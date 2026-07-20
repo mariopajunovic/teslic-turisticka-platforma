@@ -5,18 +5,17 @@ namespace App\Models;
 use App\Enums\ContentStatus;
 use App\Models\Concerns\HasLocalizedContent;
 use App\Models\Concerns\HasTags;
+use App\Models\Concerns\HasTranslatableSlug;
 use App\Models\Concerns\TracksStatus;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
 
 class Ad extends Model implements HasMedia
 {
-    use HasLocalizedContent, HasSlug, InteractsWithMedia, TracksStatus, HasTags;
+    use HasLocalizedContent, HasTranslatableSlug, InteractsWithMedia, TracksStatus, HasTags;
 
     public array $translatable = ['naslov', 'izdavac', 'lokacija', 'opis_dug'];
 
@@ -42,16 +41,10 @@ class Ad extends Model implements HasMedia
             'rok' => 'date',
             'status' => ContentStatus::class,
             'published_at' => 'datetime',
+            'slug' => 'array',
         ];
     }
 
-    public function getSlugOptions(): SlugOptions
-    {
-        return SlugOptions::create()
-            ->generateSlugsFrom('naslov')
-            ->saveSlugsTo('slug')
-            ->doNotGenerateSlugsOnUpdate();
-    }
 
     public function category(): BelongsTo
     {
