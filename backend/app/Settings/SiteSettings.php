@@ -42,6 +42,10 @@ class SiteSettings extends Settings
 
     public string $odrzavanje_poruka;
 
+    public string $captcha_site_key;
+
+    public string $captcha_secret;
+
     public static function group(): string
     {
         return 'site';

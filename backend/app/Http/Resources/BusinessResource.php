@@ -23,6 +23,7 @@ class BusinessResource extends JsonResource
                 'label' => $this->category->label,
                 'icon' => $this->category->icon,
             ] : null,
+            'logo' => $this->getFirstMediaUrl('logo') ?: null,
             'slika' => $this->getFirstMediaUrl('naslovna'),
             'galerija' => $this->getMedia('galerija')
                 ->map(fn ($m) => ['src' => $m->getUrl(), 'alt' => $m->name])
@@ -32,6 +33,7 @@ class BusinessResource extends JsonResource
             'usluge' => (array) $this->usluge,
             'cijenaRaspon' => $this->cijena_raspon,
             'godinaOsnivanja' => $this->godina_osnivanja,
+            'jib' => $this->jib,
             'nacinPlacanja' => array_keys(array_filter((array) $this->nacin_placanja)),
             'lat' => $this->lat,
             'lng' => $this->lng,

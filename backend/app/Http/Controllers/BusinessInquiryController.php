@@ -18,11 +18,13 @@ class BusinessInquiryController extends Controller
             return back()->with('status', 'Upit je poslan biznisu.');
         }
 
+        $captchaOn = filled(app(\App\Settings\SiteSettings::class)->captcha_site_key);
+
         $request->validate([
             'ime' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'poruka' => ['required', 'string', 'max:5000'],
-            'captcha' => ['required', new Captcha()],
+            'captcha' => $captchaOn ? ['required', new Captcha()] : ['nullable'],
         ]);
 
         if ($biznis->user_id && $biznis->user) {

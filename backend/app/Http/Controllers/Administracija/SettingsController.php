@@ -36,6 +36,8 @@ class SettingsController extends Controller
                 'odrzavanje_lozinka' => $s->odrzavanje_lozinka,
                 'odrzavanje_minuta' => $s->odrzavanje_minuta,
                 'odrzavanje_poruka' => $s->odrzavanje_poruka,
+                'captcha_site_key' => $s->captcha_site_key,
+                'captcha_secret_set' => filled($s->captcha_secret),
             ],
             'partneri' => Partner::orderBy('sort_order')->orderBy('id')->get()->map(fn (Partner $p) => [
                 'id' => $p->id,
@@ -76,6 +78,8 @@ class SettingsController extends Controller
             'odrzavanje_lozinka' => ['nullable', 'string', 'max:255'],
             'odrzavanje_minuta' => ['required', 'integer', 'min:1', 'max:10080'],
             'odrzavanje_poruka' => ['nullable', 'string', 'max:1000'],
+            'captcha_site_key' => ['nullable', 'string', 'max:255'],
+            'captcha_secret' => ['nullable', 'string', 'max:255'],
         ]);
 
         $s = app(SiteSettings::class);
@@ -102,6 +106,14 @@ class SettingsController extends Controller
         $s->odrzavanje_lozinka = $data['odrzavanje_lozinka'] ?? '';
         $s->odrzavanje_minuta = (int) $data['odrzavanje_minuta'];
         $s->odrzavanje_poruka = $data['odrzavanje_poruka'] ?? '';
+        $s->captcha_site_key = trim($data['captcha_site_key'] ?? '');
+
+        if (filled($data['captcha_secret'] ?? null)) {
+            $s->captcha_secret = trim($data['captcha_secret']);
+        } elseif (blank($s->captcha_site_key)) {
+            $s->captcha_secret = '';
+        }
+
         $s->save();
 
         return back()->with('status', 'Postavke su sačuvane.');

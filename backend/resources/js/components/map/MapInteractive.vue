@@ -20,6 +20,7 @@ const props = defineProps({
   maskOpacity: { type: Number, default: 0.12 },
   lockToBoundary: { type: Boolean, default: true },
   selectedNaselje: { type: String, default: '' },
+  focusSlug: { type: String, default: '' },
 })
 
 const emit = defineEmits(['select', 'naselja'])
@@ -106,6 +107,14 @@ function popupHtml(item) {
       <span>${kategorija}</span>
     </div>
   `
+}
+
+function fokusiraj(slug) {
+  if (!map || !slug) return
+  const item = props.items.find((t) => t.slug === slug)
+  if (!item || item.lat == null || item.lng == null) return
+  map.setView([item.lat, item.lng], 16, { animate: true })
+  emit('select', item)
 }
 
 function drawMarkers() {
@@ -233,7 +242,11 @@ onMounted(async () => {
   drawMarkers()
 
   // Mapa zna biti u skrivenom/animiranom kontejneru pri mountu.
-  nextTick(() => map && map.invalidateSize())
+  nextTick(() => {
+    if (!map) return
+    map.invalidateSize()
+    if (props.focusSlug) fokusiraj(props.focusSlug)
+  })
 })
 
 onUnmounted(() => {
@@ -247,6 +260,7 @@ onUnmounted(() => {
 watch(() => props.items, drawMarkers, { deep: true })
 watch(() => props.activeCategories, drawMarkers, { deep: true })
 watch(() => props.selectedNaselje, (name) => applyNaselje(name))
+watch(() => props.focusSlug, (slug) => fokusiraj(slug))
 </script>
 
 <template>

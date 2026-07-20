@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -33,6 +33,7 @@ const dostupneKljucevi = computed(() => [
 
 const aktivne = ref([])
 const upit = ref('')
+const fokusSlug = ref('')
 const odabrana = ref(null)
 const naseljaList = ref([])
 const odabranoNaselje = ref('')
@@ -52,6 +53,14 @@ const filtrirano = computed(() => {
 function odaberi(item) {
   odabrana.value = item
 }
+
+onMounted(() => {
+  const params = new URLSearchParams(window.location.search)
+  const q = params.get('q')
+  if (q) upit.value = q
+  const tacka = params.get('tacka')
+  if (tacka) fokusSlug.value = tacka
+})
 </script>
 
 <template>
@@ -83,6 +92,7 @@ function odaberi(item) {
             :items="filtrirano"
             :active-categories="aktivne"
             :selected-naselje="odabranoNaselje"
+            :focus-slug="fokusSlug"
             height="640px"
             @select="odaberi"
             @naselja="naseljaList = $event"

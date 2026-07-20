@@ -79,6 +79,7 @@ class SiteData
                     'logo' => $p->logoUrl(),
                 ])->all(),
                 'indeksiranje' => $settings->google_indeksiranje,
+                'captchaSiteKey' => $settings->captcha_site_key,
             ],
             'texts' => self::tr($straniceSettings->toArray()),
             'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon, 'color' => $c->color])->all(),

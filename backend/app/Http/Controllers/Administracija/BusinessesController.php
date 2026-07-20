@@ -142,6 +142,23 @@ class BusinessesController extends Controller
         return back(303)->with('status', 'Naslovna slika je uklonjena.');
     }
 
+    public function uploadLogo(Request $request, Business $business): RedirectResponse
+    {
+        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+
+        $business->clearMediaCollection('logo');
+        $business->addMediaFromRequest('image')->toMediaCollection('logo');
+
+        return back(303)->with('status', 'Logo je sačuvan.');
+    }
+
+    public function destroyLogo(Business $business): RedirectResponse
+    {
+        $business->clearMediaCollection('logo');
+
+        return back(303)->with('status', 'Logo je uklonjen.');
+    }
+
     public const GALERIJA_MAX = 18;
 
     public function uploadGalerija(Request $request, Business $business): RedirectResponse
@@ -247,6 +264,7 @@ class BusinessesController extends Controller
             'usluge.*.*' => ['nullable', 'string', 'max:120'],
             'cijena_raspon' => ['nullable', 'string', 'max:8'],
             'godina_osnivanja' => ['nullable', 'integer', 'min:1800', 'max:2100'],
+            'jib' => ['nullable', 'digits:13', Rule::unique('businesses', 'jib')->ignore($business?->id)],
             'nacin_placanja' => ['array'],
             'nacin_placanja.*' => ['boolean'],
             'lat' => ['nullable', 'numeric', 'between:-90,90'],
@@ -276,6 +294,7 @@ class BusinessesController extends Controller
             ->all());
         $business->cijena_raspon = in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null;
         $business->godina_osnivanja = $data['godina_osnivanja'] ?? null;
+        $business->jib = $data['jib'] ?? null;
         $business->nacin_placanja = array_filter([
             'gotovina' => (bool) ($data['nacin_placanja']['gotovina'] ?? false),
             'kartica' => (bool) ($data['nacin_placanja']['kartica'] ?? false),
@@ -333,6 +352,7 @@ class BusinessesController extends Controller
             'usluge' => $business->getTranslations('usluge'),
             'cijena_raspon' => $business->cijena_raspon,
             'godina_osnivanja' => $business->godina_osnivanja,
+            'jib' => $business->jib,
             'nacin_placanja' => (array) $business->nacin_placanja,
             'lat' => $business->lat,
             'lng' => $business->lng,
@@ -341,6 +361,7 @@ class BusinessesController extends Controller
             'rejection_reason' => $business->rejection_reason,
             'publishedAt' => $business->published_at?->translatedFormat('d.m.Y.'),
             'tags' => $business->tags->map(fn (Tag $t) => $t->getTranslations('name')['sr'] ?? $t->name)->values()->all(),
+            'logo' => $business->getFirstMediaUrl('logo') ?: null,
             'naslovna' => $business->getFirstMediaUrl('naslovna') ?: null,
             'galerija' => $business->getMedia('galerija')->map(fn (Media $m) => [
                 'id' => $m->id,

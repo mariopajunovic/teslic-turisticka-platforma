@@ -35,6 +35,7 @@ class Business extends Model implements HasMedia
         'usluge',
         'cijena_raspon',
         'godina_osnivanja',
+        'jib',
         'nacin_placanja',
         'lat',
         'lng',
@@ -136,6 +137,7 @@ class Business extends Model implements HasMedia
 
     public function registerMediaCollections(): void
     {
+        $this->addMediaCollection('logo')->singleFile();
         $this->addMediaCollection('naslovna')->singleFile();
         $this->addMediaCollection('galerija');
     }

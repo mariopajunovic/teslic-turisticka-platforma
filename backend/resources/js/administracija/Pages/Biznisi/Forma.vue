@@ -72,6 +72,7 @@ const form = useForm({
     usluge: { ...(props.biznis?.usluge ?? {}) },
     cijena_raspon: props.biznis?.cijena_raspon ?? '',
     godina_osnivanja: props.biznis?.godina_osnivanja ?? '',
+    jib: props.biznis?.jib ?? '',
     nacin_placanja: {
         gotovina: props.biznis?.nacin_placanja?.gotovina ?? false,
         kartica: props.biznis?.nacin_placanja?.kartica ?? false,
@@ -367,6 +368,7 @@ const onFotoDrop = (target) => {
                                 @update:model-value="form.cijena_raspon = $event"
                             />
                             <FormField v-model="form.godina_osnivanja" label="Godina osnivanja" type="number" placeholder="npr. 2015" />
+                            <FormField v-model="form.jib" label="JIB" placeholder="13 cifara" hint="Jedinstveni identifikacioni broj (13 cifara)." :error="form.errors.jib" />
                         </div>
 
                         <div>
@@ -486,6 +488,22 @@ const onFotoDrop = (target) => {
                         />
                         <button type="button" class="text-ink-3 hover:text-ink" title="Dodaj" @click="addTag"><Plus :size="16" /></button>
                     </div>
+                </Card>
+
+                <Card title="Logo">
+                    <CoverUpload
+                        v-if="!isNew"
+                        :src="biznis.logo"
+                        :upload-url="`/administracija/biznisi/${biznis.id}/logo`"
+                        :delete-url="`/administracija/biznisi/${biznis.id}/logo`"
+                        field="image"
+                        :aspect="1"
+                        :output-width="512"
+                        hint="PNG, JPG · kvadratni, preporučeno 512×512"
+                    />
+                    <p v-else class="flex items-center gap-2 text-sm text-ink-3">
+                        <Images :size="16" /> Dostupno nakon prvog čuvanja.
+                    </p>
                 </Card>
 
                 <Card title="Naslovna slika">

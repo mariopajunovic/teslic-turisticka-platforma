@@ -94,11 +94,22 @@ class BusinessController extends Controller
             ->limit(3)
             ->get();
 
+        $kolekcija = \App\Models\Page::query()
+            ->where('resource_type', 'business')
+            ->whereNull('category_id')
+            ->orderBy('id')
+            ->first();
+
         return Inertia::render('BusinessProfile', [
             'slug' => $slug,
             'biznis' => new BusinessResource($biznis),
             'slicni' => BusinessResource::collection($slicni),
             'povezani' => RelatedLinks::for($biznis),
+            'otvoreno' => $this->otvorenoSad((array) $biznis->radno_vrijeme),
+            'nazad' => [
+                'url' => ResourceUrls::collection('business') ?: '/',
+                'label' => $kolekcija?->naslov,
+            ],
             'seo' => Seo::make(
                 $biznis->naslov,
                 $biznis->opis ?: $biznis->opis_dug,
@@ -115,6 +126,26 @@ class BusinessController extends Controller
                 ],
             ),
         ]);
+    }
+
+    protected function otvorenoSad(array $dani): ?bool
+    {
+        if (empty($dani)) {
+            return null;
+        }
+
+        $now = \Illuminate\Support\Carbon::now('Europe/Sarajevo');
+        $dan = $dani[$now->dayOfWeekIso - 1] ?? null;
+
+        if (! $dan || ! empty($dan['zatvoreno']) || empty($dan['od']) || empty($dan['do'])) {
+            return false;
+        }
+
+        $sad = (int) $now->format('Hi');
+        $od = (int) str_replace(':', '', $dan['od']);
+        $do = (int) str_replace(':', '', $dan['do']);
+
+        return $do <= $od ? ($sad >= $od || $sad < $do) : ($sad >= $od && $sad < $do);
     }
 
     public function kategorija(Request $request, string $kategorija): Response

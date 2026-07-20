@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Settings\SiteSettings;
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Support\Facades\Http;
@@ -10,7 +11,7 @@ class Captcha implements ValidationRule
 {
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $secret = config('services.turnstile.secret');
+        $secret = app(SiteSettings::class)->captcha_secret ?: config('services.turnstile.secret');
 
         if (! $secret) {
             return;

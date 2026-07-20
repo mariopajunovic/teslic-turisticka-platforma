@@ -27,6 +27,8 @@ const props = defineProps({
   povezani: { type: Array, default: () => [] },
   biznis: { type: Object, default: null },
   slicni: { type: Array, default: () => [] },
+  nazad: { type: Object, default: () => ({ url: '/', label: '' }) },
+  otvoreno: { type: Boolean, default: null },
 })
 
 const { t, tm, rt } = useI18n()
@@ -110,7 +112,7 @@ function posaljiUpit() {
       :title="$t('biz.notFoundTitle')"
       :text="$t('biz.notFoundText')"
     >
-      <BaseButton variant="secondary" icon="arrow-left" to="/domace-je-najbolje">
+      <BaseButton variant="secondary" icon="arrow-left" :to="nazad.url || '/'">
         {{ $t('biz.backToOffer') }}
       </BaseButton>
     </EmptyState>
@@ -119,7 +121,7 @@ function posaljiUpit() {
       <Breadcrumb
         :items="[
           { label: $t('common.home'), to: '/' },
-          { label: $t('local.breadcrumb'), to: '/domace-je-najbolje' },
+          { label: nazad.label || $t('local.breadcrumb'), to: nazad.url || '/' },
           { label: biznis.naslov },
         ]"
       />
@@ -129,71 +131,94 @@ function posaljiUpit() {
         <button
           v-if="preview[0]"
           type="button"
-          class="group relative overflow-hidden rounded-lg bg-primary-tint md:col-span-2 md:h-full"
+          class="group relative aspect-[16/10] overflow-hidden rounded-lg bg-primary-tint md:aspect-auto md:h-full"
+          :class="preview.length > 1 ? 'md:col-span-2' : 'md:col-span-3'"
           @click="otvoriGaleriju(0)"
         >
           <img :src="preview[0].src" :alt="biznis.naslov" class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
         </button>
-        <div v-else class="flex h-64 items-center justify-center rounded-lg bg-primary-tint text-primary md:col-span-2 md:h-full">
+        <div v-else class="flex aspect-[16/10] items-center justify-center rounded-lg bg-primary-tint text-primary md:col-span-3 md:aspect-auto md:h-full">
           <BaseIcon name="image" :size="48" />
         </div>
 
-        <div class="grid grid-cols-2 gap-3 md:grid-cols-1">
-          <template v-for="n in 2" :key="n">
-            <button
-              v-if="preview[n]"
-              type="button"
-              class="group relative overflow-hidden rounded-lg bg-primary-tint md:h-[214px]"
-              @click="otvoriGaleriju(n)"
+        <div v-if="preview.length > 1" class="grid grid-cols-2 gap-3 md:grid-cols-1">
+          <button
+            v-for="n in (preview.length - 1)"
+            :key="n"
+            type="button"
+            class="group relative aspect-square overflow-hidden rounded-lg bg-primary-tint md:aspect-auto md:h-[214px]"
+            @click="otvoriGaleriju(n)"
+          >
+            <img :src="preview[n].src" :alt="biznis.naslov" class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+            <span
+              v-if="n === 2 && preostalo > 0"
+              class="absolute inset-0 flex items-center justify-center bg-heading/60 text-white transition-colors group-hover:bg-heading/70"
             >
-              <img :src="preview[n].src" :alt="biznis.naslov" class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
-              <span
-                v-if="n === 2 && preostalo > 0"
-                class="absolute inset-0 flex items-center justify-center bg-heading/60 text-white transition-colors group-hover:bg-heading/70"
-              >
-                <span class="font-heading text-2xl font-bold">+{{ preostalo }}</span>
-              </span>
-            </button>
-            <div v-else class="flex h-32 items-center justify-center rounded-lg bg-primary-tint text-primary md:h-[214px]">
-              <BaseIcon name="image" :size="32" />
-            </div>
-          </template>
+              <span class="font-heading text-2xl font-bold">+{{ preostalo }}</span>
+            </span>
+          </button>
         </div>
       </div>
 
       <Lightbox v-model="lbOpen" :items="sveSlike" :start-index="lbIndex" />
 
       <!-- Naslovni blok -->
-      <header class="mt-8 border-b border-border pb-7">
-        <div class="flex flex-wrap items-center gap-2">
-          <BaseChip
-            v-if="biznis.kategorija"
-            variant="kategorija"
-            :label="biznis.kategorija.label"
-            :icon="biznis.kategorija.icon"
-          />
-          <BaseBadge v-if="biznis.preporuceno" variant="preporuceno" />
+      <header class="mt-8 overflow-hidden rounded-2xl bg-primary-darker text-primary-tint">
+        <div class="relative flex flex-col gap-6 p-6 md:flex-row md:items-start md:justify-between md:gap-9 md:p-9">
+          <div class="pointer-events-none absolute -right-20 -top-24 hidden size-72 rounded-full bg-primary/40 blur-3xl md:block"></div>
+          <div class="pointer-events-none absolute -bottom-24 right-24 hidden size-56 rounded-full bg-secondary/20 blur-3xl md:block"></div>
+
+          <div class="relative flex min-w-0 flex-1 items-start gap-4 md:gap-5">
+            <div v-if="biznis.logo" class="shrink-0">
+              <div class="flex size-16 items-center justify-center overflow-hidden rounded-2xl bg-white p-2 shadow-[var(--shadow-lg)] ring-1 ring-black/5 sm:size-20 md:size-28 md:p-2.5">
+                <img :src="biznis.logo" :alt="biznis.naslov" class="max-h-full max-w-full object-contain" />
+              </div>
+            </div>
+
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2">
+                <span v-if="biznis.kategorija" class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[13px] font-semibold text-white ring-1 ring-inset ring-white/15">
+                  <BaseIcon v-if="biznis.kategorija.icon" :name="biznis.kategorija.icon" :size="14" />
+                  {{ biznis.kategorija.label }}
+                </span>
+                <span v-if="biznis.preporuceno" class="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-[13px] font-bold text-primary-darker">
+                  <BaseIcon name="star" :size="13" />
+                  {{ $t('badge.preporuceno') }}
+                </span>
+                <span v-if="otvoreno !== null" class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[13px] font-semibold text-white ring-1 ring-inset ring-white/15">
+                  <span class="size-2 rounded-full" :class="otvoreno ? 'bg-green-400' : 'bg-red-400'"></span>
+                  {{ otvoreno ? $t('detail.open') : $t('detail.closed') }}
+                </span>
+              </div>
+
+              <h1 class="mt-3 font-heading text-2xl font-extrabold leading-tight text-white sm:text-3xl md:text-[2.6rem]">
+                {{ biznis.naslov }}
+              </h1>
+
+              <p v-if="biznis.opis" class="mt-3 max-w-2xl text-[15px] leading-relaxed text-primary-tint/80">
+                {{ biznis.opis }}
+              </p>
+            </div>
+          </div>
+
+          <div
+            v-if="biznis.lokacija || biznis.godinaOsnivanja || biznis.jib"
+            class="relative flex shrink-0 flex-col gap-2 text-[15px] md:gap-2.5 md:items-end md:text-right"
+          >
+            <span v-if="biznis.lokacija" class="flex items-center gap-1.5 text-primary-tint/90">
+              <BaseIcon name="map-pin" :size="17" class="text-secondary" />
+              {{ biznis.lokacija }}
+            </span>
+            <span v-if="biznis.godinaOsnivanja" class="flex items-center gap-1.5 text-primary-tint/90">
+              <BaseIcon name="calendar" :size="15" class="text-secondary" />
+              {{ $t('detail.since') }} {{ biznis.godinaOsnivanja }}
+            </span>
+            <span v-if="biznis.jib" class="flex items-center gap-1.5 text-primary-tint/90">
+              <BaseIcon name="file-text" :size="15" class="text-secondary" />
+              {{ $t('detail.jib') }} {{ biznis.jib }}
+            </span>
+          </div>
         </div>
-
-        <h1 class="mt-3.5 font-heading text-3xl font-extrabold leading-tight text-heading md:text-[2.5rem]">
-          {{ biznis.naslov }}
-        </h1>
-
-        <div class="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-[15px] text-text-muted">
-          <span v-if="biznis.lokacija" class="flex items-center gap-1.5">
-            <BaseIcon name="map-pin" :size="17" class="text-primary" />
-            {{ biznis.lokacija }}
-          </span>
-          <span v-if="biznis.cijenaRaspon" class="font-semibold text-heading">{{ biznis.cijenaRaspon }}</span>
-          <span v-if="biznis.godinaOsnivanja" class="flex items-center gap-1.5">
-            <BaseIcon name="star" :size="15" class="text-primary" />
-            {{ $t('detail.since') }} {{ biznis.godinaOsnivanja }}
-          </span>
-        </div>
-
-        <p v-if="biznis.opis" class="mt-4 max-w-3xl text-lg leading-relaxed text-text">
-          {{ biznis.opis }}
-        </p>
       </header>
 
       <!-- Dvokolonski sadržaj -->
@@ -230,7 +255,7 @@ function posaljiUpit() {
           </section>
         </div>
 
-        <div class="space-y-4 lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pr-1">
+        <div class="space-y-4 lg:sticky lg:top-6 lg:self-start lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:pr-1 lg:[scrollbar-width:thin]">
           <InfoPanel :title="$t('biz.contactInfo')" :items="infoItems" />
 
           <div v-if="socijalne.length" class="flex flex-wrap gap-2">
@@ -263,7 +288,7 @@ function posaljiUpit() {
             <BaseIcon name="send" :size="16" />
             {{ $t('biz.sendInquiry') }}
           </button>
-          <MiniMap :label="biznis.lokacija" />
+          <MiniMap :label="biznis.lokacija" :lat="biznis.lat" :lng="biznis.lng" :to="`/mapa?tacka=${encodeURIComponent(biznis.slug)}`" />
         </div>
       </div>
 

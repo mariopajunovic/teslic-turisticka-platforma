@@ -22,6 +22,7 @@ const tabs = [
     { key: 'drustvene', label: 'Društvene mreže' },
     { key: 'footer', label: 'Footer' },
     { key: 'seo', label: 'SEO i pristup' },
+    { key: 'integracije', label: 'Integracije' },
 ];
 const tab = ref('opste');
 
@@ -43,6 +44,8 @@ const form = useForm({
     odrzavanje_lozinka: props.postavke.odrzavanje_lozinka ?? '',
     odrzavanje_minuta: props.postavke.odrzavanje_minuta ?? 120,
     odrzavanje_poruka: props.postavke.odrzavanje_poruka ?? '',
+    captcha_site_key: props.postavke.captcha_site_key ?? '',
+    captcha_secret: '',
 });
 
 const addSocial = () => form.social.push({ _id: ++uid, name: '', label: '', href: '' });
@@ -283,6 +286,26 @@ const trErr = (field) => {
                     <FormField v-model.number="form.odrzavanje_minuta" type="number" label="Trajanje otključavanja (min)" :error="err('odrzavanje_minuta')" />
                 </div>
                 <TextareaField v-model="form.odrzavanje_poruka" label="Poruka na stranici održavanja" :rows="2" :error="err('odrzavanje_poruka')" />
+            </div>
+        </Card>
+
+        <Card v-show="tab === 'integracije'" title="Captcha (Cloudflare Turnstile)">
+            <div class="space-y-4">
+                <p class="text-[13px] text-ink-3">
+                    Zaštita javnih formi (npr. upit biznisu) od botova. Ključeve dobijaš na
+                    <a href="https://dash.cloudflare.com/?to=/:account/turnstile" target="_blank" rel="noopener" class="font-semibold text-brand hover:text-brand-dark">Cloudflare Turnstile</a>.
+                    Ako su prazni, captcha se ne prikazuje niti se traži.
+                </p>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    <FormField v-model="form.captcha_site_key" label="Site key" placeholder="0x4AAAAAAA..." hint="Javni ključ - prikazuje se u widgetu." :error="err('captcha_site_key')" />
+                    <FormField
+                        v-model="form.captcha_secret"
+                        label="Secret key"
+                        :placeholder="props.postavke.captcha_secret_set ? '•••••••• (sačuvan)' : 'Tajni ključ'"
+                        hint="Tajni ključ - za provjeru na serveru. Ostavi prazno da zadržiš postojeći."
+                        :error="err('captcha_secret')"
+                    />
+                </div>
             </div>
         </Card>
     </div>
