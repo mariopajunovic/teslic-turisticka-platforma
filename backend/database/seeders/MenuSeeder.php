@@ -16,21 +16,49 @@ class MenuSeeder extends Seeder
             ['Domaće je najbolje', '/domace-je-najbolje', [
                 ['Zanatski proizvodi', '/domace-je-najbolje/kategorija/zanat'],
                 ['Domaća hrana i piće', '/domace-je-najbolje/kategorija/hrana'],
+                ['Poljoprivreda i domaći proizvodi', '/domace-je-najbolje/kategorija/poljoprivreda'],
                 ['Usluge i servisi', '/domace-je-najbolje/kategorija/usluge'],
+                ['Restorani', '/domace-je-najbolje/kategorija/restorani'],
+                ['Kafići i barovi', '/domace-je-najbolje/kategorija/kafici-barovi'],
+                ['Smještajni kapaciteti', '/domace-je-najbolje/kategorija/smjestajni-kapaciteti'],
+                ['Seoska domaćinstva', '/domace-je-najbolje/kategorija/seoska-domacinstva'],
+                ['Zdravstvo', '/domace-je-najbolje/kategorija/zdravstvo'],
+                ['Ljepota i njega', '/domace-je-najbolje/kategorija/ljepota-njega'],
+                ['Zabava i rekreacija', '/domace-je-najbolje/kategorija/zabava-rekreacija'],
+                ['Trgovina', '/domace-je-najbolje/kategorija/trgovina'],
+                ['Prevoz', '/domace-je-najbolje/kategorija/prevoz'],
+                ['Udruženja i klubovi', '/domace-je-najbolje/kategorija/udruzenja-klubovi'],
             ]],
             ['Turizam', '/turizam', [
+                ['ZTC Banja Vrućica', '/turizam/ztc-banja-vrucica'],
+                ['Hotel Hajdučke vode', '/turizam/hotel-hajducke-vode'],
+                ['Speleologija', '/turizam/kategorija/speleologija'],
+                ['Planinarenje', '/turizam/kategorija/planinarenje'],
+                ['Vjerski turizam', '/turizam/kategorija/vjerski-turizam'],
+                ['Zdravstveni turizam', '/turizam/kategorija/zdravstveni-turizam'],
+                ['Izletišta', '/turizam/kategorija/izletista'],
+                ['Smještajni kapaciteti', '/domace-je-najbolje/kategorija/smjestajni-kapaciteti'],
+                ['Restorani', '/domace-je-najbolje/kategorija/restorani'],
                 ['Prirodne atrakcije', '/turizam/kategorija/priroda'],
                 ['Kulturne manifestacije', '/turizam/kategorija/kultura'],
                 ['Planine, šume i sela', '/turizam/kategorija/planine'],
                 ['Gdje odsjesti', '/turizam/kategorija/smjestaj'],
+                ['Korisne informacije', '/korisne-informacije'],
             ]],
-            ['Događaji', '/dogadjaji'],
+            ['Manifestacije i događaji', '/dogadjaji', [
+                ['Manifestacije', '/dogadjaji/kategorija/manifestacije'],
+                ['Događaji', '/dogadjaji/kategorija/dogadjaj'],
+            ]],
             ['Oglasi', '/oglasi'],
             ['Mapa', '/mapa'],
             ['Priče', '/price', [
                 ['Domaćini pričaju', '/price/kategorija/domacini'],
                 ['Ljudi i biznisi', '/price/kategorija/ljudi'],
                 ['Naša svakodnevica', '/price/kategorija/svakodnevica'],
+            ]],
+            ['Ostalo', '/vijesti', [
+                ['Vijesti', '/vijesti'],
+                ['Javne nabavke', '/javne-nabavke'],
             ]],
         ]);
 
@@ -119,7 +147,7 @@ class MenuSeeder extends Seeder
                 'url' => $vanjski,
                 'sort' => $i,
             ]);
-            $parent->setTranslations('label', ['sr' => $label]);
+            $parent->setTranslations('label', Prevodi::tr($label));
             $parent->save();
 
             foreach ($children as $j => $child) {
@@ -132,7 +160,7 @@ class MenuSeeder extends Seeder
                     'url' => $cvanjski,
                     'sort' => $j,
                 ]);
-                $dijete->setTranslations('label', ['sr' => $child[0]]);
+                $dijete->setTranslations('label', Prevodi::tr($child[0]));
                 $dijete->save();
             }
         }

@@ -14,7 +14,7 @@ trait HasLocalizedContent
 
     public function getLocale(): string
     {
-        return $this->translationLocale ?: 'sr';
+        return $this->translationLocale ?: app(ActiveLocale::class)->language();
     }
 
     public function getTranslation(string $key, string $locale, bool $useFallbackLocale = true): mixed
