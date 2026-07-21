@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
-import DetailGallery from '@/components/common/DetailGallery.vue'
-import DetailHero from '@/components/common/DetailHero.vue'
+import Hero from '@/components/common/Hero.vue'
+import Gallery from '@/components/common/Gallery.vue'
 import RelatedContent from '@/components/common/RelatedContent.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
@@ -18,7 +18,6 @@ const props = defineProps({
 
 const vijest = computed(() => props.vijest)
 const slicne = computed(() => props.slicne)
-const heroMeta = computed(() => (vijest.value?.datum ? [{ icon: 'calendar', text: vijest.value.datum }] : []))
 </script>
 
 <template>
@@ -36,13 +35,26 @@ const heroMeta = computed(() => (vijest.value?.datum ? [{ icon: 'calendar', text
         ]"
       />
 
-      <DetailGallery class="mt-5" :slika="vijest.slika" :galerija="vijest.galerija" :naslov="vijest.naslov" />
+      <Hero
+        variant="slika-pozadina"
+        :contained="false"
+        :kicker="vijest.datum"
+        :title="vijest.naslov"
+        :image="vijest.slika"
+        class="mt-6"
+      />
 
-      <DetailHero :naslov="vijest.naslov" :opis="vijest.izvod" :meta="heroMeta" />
-
-      <div class="mt-8 max-w-3xl">
+      <article class="mx-auto mt-10 max-w-2xl">
+        <p v-if="vijest.izvod" class="mb-6 font-heading text-xl font-medium leading-relaxed text-heading">
+          {{ vijest.izvod }}
+        </p>
         <div class="rtf" v-html="vijest.sadrzaj" />
-      </div>
+      </article>
+
+      <section v-if="vijest.galerija?.length" class="mx-auto mt-10 max-w-2xl">
+        <h2 class="mb-4 font-heading text-2xl font-bold text-heading">{{ $t('detail.gallery') }}</h2>
+        <Gallery :items="vijest.galerija" />
+      </section>
 
       <RelatedContent v-if="slicne.length" :title="$t('news.related')">
         <NewsCard v-for="v in slicne" :key="v.slug" :item="v" />

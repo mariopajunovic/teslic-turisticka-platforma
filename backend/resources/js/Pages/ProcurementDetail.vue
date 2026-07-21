@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
-import DetailHero from '@/components/common/DetailHero.vue'
+import Hero from '@/components/common/Hero.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
@@ -14,13 +14,10 @@ const props = defineProps({
 })
 
 const nabavka = computed(() => props.nabavka)
-const heroMeta = computed(() => {
+const podnaslov = computed(() => {
   const n = nabavka.value
-  if (!n) return []
-  const m = []
-  if (n.godina) m.push({ icon: 'calendar', text: String(n.godina) })
-  if (n.datum) m.push({ icon: 'calendar', text: n.datum })
-  return m
+  if (!n) return ''
+  return [n.godina ? `Godina ${n.godina}` : '', n.datum].filter(Boolean).join(' · ')
 })
 </script>
 
@@ -39,9 +36,16 @@ const heroMeta = computed(() => {
         ]"
       />
 
-      <DetailHero :naslov="nabavka.naslov" :meta="heroMeta" />
+      <Hero
+        variant="slika-pozadina"
+        :contained="false"
+        :kicker="nazad.label || $t('proc.title')"
+        :title="nabavka.naslov"
+        :subtitle="podnaslov"
+        class="mt-6"
+      />
 
-      <div class="mt-8 grid gap-10 lg:grid-cols-3">
+      <div class="mt-10 grid gap-10 lg:grid-cols-3">
         <div class="lg:col-span-2">
           <div v-if="nabavka.opis" class="rtf" v-html="nabavka.opis" />
         </div>

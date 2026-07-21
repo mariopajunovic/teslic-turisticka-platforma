@@ -69,15 +69,15 @@ const autor = computed(() => ({
         ]"
       />
 
-      <div class="mt-6 overflow-hidden rounded-lg">
-        <Hero
-          variant="slika-pozadina"
-          :kicker="prica.kategorija?.label"
-          :title="prica.naslov"
-          :subtitle="`${prica.autor} · ${prica.datum}`"
-          :image="prica.slika"
-        />
-      </div>
+      <Hero
+        variant="slika-pozadina"
+        :contained="false"
+        :kicker="prica.kategorija?.label"
+        :title="prica.naslov"
+        :subtitle="`${prica.autor} · ${prica.datum}`"
+        :image="prica.slika"
+        class="mt-6"
+      />
 
       <article class="mx-auto mt-10 max-w-2xl">
         <p

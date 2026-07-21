@@ -1,8 +1,9 @@
 <script setup>
+import { computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
-defineProps({
+const props = defineProps({
   variant: {
     type: String,
     default: 'slika-pozadina',
@@ -13,13 +14,16 @@ defineProps({
   image: { type: String, default: '' },
   kicker: { type: String, default: '' },
   kickerClass: { type: String, default: '' },
+  contained: { type: Boolean, default: true },
 })
+
+const wrap = computed(() => (props.contained ? AppContainer : 'div'))
 </script>
 
 <template>
   <!-- Varijanta: slika-panel (kontejnirano, kao Početna — ne full-bleed) -->
-  <section v-if="variant === 'slika-pozadina'" class="bg-surface pt-8 md:pt-12">
-    <AppContainer>
+  <section v-if="variant === 'slika-pozadina'" class="bg-surface pt-2">
+    <component :is="wrap">
       <div
         class="relative min-h-[420px] overflow-hidden rounded-2xl"
         :class="!image ? 'bg-gradient-to-br from-primary to-primary-dark' : 'bg-primary-darker'"
@@ -44,12 +48,12 @@ defineProps({
           <div v-if="$slots.default" class="mt-8 flex flex-wrap gap-3"><slot /></div>
         </div>
       </div>
-    </AppContainer>
+    </component>
   </section>
 
   <!-- Varijanta: split (tekst lijevo, slika desno) -->
   <section v-else class="bg-surface-alt">
-    <AppContainer>
+    <component :is="wrap">
       <div class="grid items-center gap-8 py-12 md:grid-cols-2 md:gap-12 md:py-16">
         <div>
           <p
@@ -80,6 +84,6 @@ defineProps({
           </span>
         </div>
       </div>
-    </AppContainer>
+    </component>
   </section>
 </template>
