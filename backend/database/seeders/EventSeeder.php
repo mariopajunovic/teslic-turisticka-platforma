@@ -26,7 +26,7 @@ class EventSeeder extends Seeder
 
         foreach ($items as $i => $item) {
             $model = Event::updateOrCreate(
-                ['slug' => $item['slug']],
+                ['slug' => ['sr' => $item['slug']]],
                 [
                     'user_id' => null,
                     'category_id' => $category?->id,

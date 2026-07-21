@@ -11,7 +11,7 @@ trait HasTranslatableSlug
     public static function bootHasTranslatableSlug(): void
     {
         static::saving(function ($model): void {
-            $slugs = (array) $model->slug;
+            $slugs = array_filter((array) $model->slug, 'is_string', ARRAY_FILTER_USE_KEY);
             $naslovi = json_decode($model->attributes['naslov'] ?? '{}', true) ?: [];
 
             $jezici = array_unique(array_merge(array_keys($naslovi), array_keys($slugs)));

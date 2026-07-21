@@ -46,7 +46,7 @@ class AdSeeder extends Seeder
             }
 
             $model = Ad::updateOrCreate(
-                ['slug' => $item['slug']],
+                ['slug' => ['sr' => $item['slug']]],
                 [
                     'user_id' => null,
                     'category_id' => $category?->id,

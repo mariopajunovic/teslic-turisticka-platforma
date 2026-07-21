@@ -41,7 +41,7 @@ class StorySeeder extends Seeder
             $datum = $this->parseDate($item['datum'] ?? null);
 
             $model = Story::updateOrCreate(
-                ['slug' => $item['slug']],
+                ['slug' => ['sr' => $item['slug']]],
                 [
                     'user_id' => $owner?->id,
                     'category_id' => $category?->id,

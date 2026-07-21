@@ -49,6 +49,22 @@ class CollectionPagesSeeder extends Seeder
             'podnaslov' => 'Autentične priče domaćina, zanatlija i autora koji svojim radom i životom oblikuju kraj.',
             'slika' => 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1600&q=80',
         ],
+        'news' => [
+            'slug' => ['sr' => 'vijesti', 'en' => 'news', 'de' => 'nachrichten'],
+            'title' => ['sr' => 'Vijesti', 'en' => 'News', 'de' => 'Nachrichten'],
+            'kicker' => 'Vijesti',
+            'hero' => 'Novosti iz Teslića',
+            'podnaslov' => 'Servisna obavještenja, izvještaji i aktuelnosti Turističke organizacije grada Teslića.',
+            'slika' => 'https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1600&q=80',
+        ],
+        'procurement' => [
+            'slug' => ['sr' => 'javne-nabavke', 'en' => 'procurement', 'de' => 'ausschreibungen'],
+            'title' => ['sr' => 'Javne nabavke', 'en' => 'Public procurement', 'de' => 'Ausschreibungen'],
+            'kicker' => 'Javne nabavke',
+            'hero' => 'Javne nabavke',
+            'podnaslov' => 'Objave javnih nabavki po godinama, sa pratećom dokumentacijom.',
+            'slika' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=80',
+        ],
     ];
 
     public function run(): void
@@ -56,7 +72,10 @@ class CollectionPagesSeeder extends Seeder
         $sort = (int) Page::max('sort');
 
         foreach (self::KOLEKCIJE as $tip => $def) {
-            $stranica = Page::where('slug->sr', $def['slug'])->first() ?? new Page();
+            $slug = is_array($def['slug']) ? $def['slug'] : ['sr' => $def['slug']];
+            $title = is_array($def['title']) ? $def['title'] : ['sr' => $def['title']];
+
+            $stranica = Page::where('slug->sr', $slug['sr'])->first() ?? new Page();
 
             $stranica->fill([
                 'published' => true,
@@ -66,11 +85,11 @@ class CollectionPagesSeeder extends Seeder
                 'parent_id' => null,
             ]);
 
-            $stranica->setTranslations('title', ['sr' => $def['title']]);
+            $stranica->setTranslations('title', $title);
             $stranica->setTranslations('meta_title', ['sr' => $def['hero']]);
             $stranica->setTranslations('meta_description', ['sr' => $def['podnaslov']]);
 
-            $stranica->slug = ['sr' => $def['slug']];
+            $stranica->slug = $slug;
             $stranica->sort = $stranica->sort ?: ++$sort;
             $stranica->content = [
                 ['type' => 'hero', 'data' => [

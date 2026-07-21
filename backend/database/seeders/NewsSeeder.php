@@ -11,7 +11,7 @@ class NewsSeeder extends Seeder
     public function run(): void
     {
         News::updateOrCreate(
-            ['slug' => 'turisticka-sezona-u-teslicu-rekordna-posjeta'],
+            ['slug' => ['sr' => 'turisticka-sezona-u-teslicu-rekordna-posjeta']],
             [
                 'user_id' => null,
                 'naslov' => 'Turistička sezona u Tesliću: rekordna posjeta',
@@ -24,7 +24,7 @@ class NewsSeeder extends Seeder
         );
 
         News::updateOrCreate(
-            ['slug' => 'novi-pješacki-put-na-borju-otvoren-za-posjetioce'],
+            ['slug' => ['sr' => 'novi-pješacki-put-na-borju-otvoren-za-posjetioce']],
             [
                 'user_id' => null,
                 'naslov' => 'Novi pješački put na Borju otvoren za posjetioce',

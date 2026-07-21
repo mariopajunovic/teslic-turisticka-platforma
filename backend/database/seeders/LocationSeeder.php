@@ -37,7 +37,7 @@ class LocationSeeder extends Seeder
             $category = $key ? Category::where('key', $key)->first() : null;
 
             $model = Location::updateOrCreate(
-                ['slug' => $item['slug']],
+                ['slug' => ['sr' => $item['slug']]],
                 [
                     'user_id' => null,
                     'category_id' => $category?->id,
