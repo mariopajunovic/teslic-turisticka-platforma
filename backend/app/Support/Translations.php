@@ -19,6 +19,14 @@ class Translations
         return Cache::rememberForever($this->cacheKey($lang), fn () => $this->build($lang));
     }
 
+    public function get(string $key, ?string $lang = null): string
+    {
+        $lang ??= app(ActiveLocale::class)->language();
+        $value = Arr::get($this->messages($lang), $key);
+
+        return is_string($value) ? $value : $key;
+    }
+
     protected function build(string $lang): array
     {
         $fallback = 'sr';

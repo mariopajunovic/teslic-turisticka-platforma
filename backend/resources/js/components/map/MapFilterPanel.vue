@@ -104,7 +104,7 @@ const swatchText = (cat) => (isLightColor(colorOf(cat)) ? 'text-heading' : 'text
     </ul>
 
     <p class="text-xs text-text-muted">
-      Klik na kategoriju filtrira mapu. Bez odabira — prikazane su sve.
+      {{ $t('mapui.filterHint') }}
     </p>
   </div>
 </template>

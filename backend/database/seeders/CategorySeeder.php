@@ -69,11 +69,7 @@ class CategorySeeder extends Seeder
             ]);
             $kategorija->setTranslations('label', $label);
             $kategorija->setTranslations('opis', $this->opis($label));
-            $kategorija->setTranslations('meta_title', [
-                'sr' => $label['sr'].' - Teslić',
-                'en' => $label['en'].' - Teslić',
-                'de' => $label['de'].' - Teslić',
-            ]);
+            $kategorija->setTranslations('meta_title', $label);
             $kategorija->setTranslations('meta_description', [
                 'sr' => 'Sadržaj kategorije '.$label['sr'].' na platformi Turističke organizacije Teslić.',
                 'en' => 'Content of the '.$label['en'].' category on the platform of the Tourism Organization of Teslić.',

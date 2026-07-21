@@ -23249,6 +23249,133 @@
                 },
                 {
                   "type": "frame",
+                  "id": "a80NK",
+                  "name": "PrikazWrap",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "pl87d",
+                      "name": "Div",
+                      "width": "fill_container",
+                      "height": 1,
+                      "fill": "$border"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Pk8Ui",
+                      "name": "PrikazH",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 2,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ricLB",
+                          "name": "t",
+                          "fill": "$text-primary",
+                          "content": "Šta stranica prikazuje",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 14,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "XEHKo",
+                          "name": "s",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Stranica može biti obična ili lista sadržaja. Slug slobodno mijenjaš - veze se ne lome.",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "S7bJ6",
+                      "type": "ref",
+                      "ref": "XHbUa",
+                      "name": "TipSadrzaja",
+                      "width": "fill_container",
+                      "descendants": {
+                        "PYjDA": {
+                          "content": "Tip sadržaja"
+                        },
+                        "f8aOt": {
+                          "content": "Biznisi"
+                        }
+                      }
+                    },
+                    {
+                      "id": "uN2Nk",
+                      "type": "ref",
+                      "ref": "XHbUa",
+                      "name": "Kategorija",
+                      "width": "fill_container",
+                      "descendants": {
+                        "PYjDA": {
+                          "content": "Kategorija"
+                        },
+                        "f8aOt": {
+                          "content": "Sve kategorije"
+                        }
+                      }
+                    },
+                    {
+                      "id": "U7Oox",
+                      "type": "ref",
+                      "ref": "XHbUa",
+                      "name": "Roditelj",
+                      "width": "fill_container",
+                      "descendants": {
+                        "PYjDA": {
+                          "content": "Roditelj"
+                        },
+                        "f8aOt": {
+                          "content": "(bez roditelja)"
+                        }
+                      }
+                    },
+                    {
+                      "type": "frame",
+                      "id": "gieVl",
+                      "name": "Hint",
+                      "width": "fill_container",
+                      "gap": 6,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "mrU36",
+                          "name": "i",
+                          "width": 14,
+                          "height": 14,
+                          "icon": "info",
+                          "library": "lucide",
+                          "fill": "$text-muted"
+                        },
+                        {
+                          "type": "text",
+                          "id": "JHOye",
+                          "name": "t",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Kad je izabrana kategorija, stranica lista samo nju. Prazno znači sve.",
+                          "fontFamily": "$font-body",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
                   "id": "Hjv1c",
                   "name": "Div",
                   "width": "fill_container",
@@ -23539,7 +23666,7 @@
                               "id": "pHVyx",
                               "name": "c",
                               "fill": "$text-secondary",
-                              "content": "6",
+                              "content": "9",
                               "fontFamily": "$font-body",
                               "fontSize": 12,
                               "fontWeight": "600"
@@ -23578,6 +23705,25 @@
                               "name": "t",
                               "fill": "$text-muted",
                               "content": "STRANICA",
+                              "fontFamily": "$font-body",
+                              "fontSize": 11,
+                              "fontWeight": "700",
+                              "letterSpacing": 0.4
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "UUAeS",
+                          "name": "h",
+                          "width": 150,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jAwSI",
+                              "name": "t",
+                              "fill": "$text-muted",
+                              "content": "TIP",
                               "fontFamily": "$font-body",
                               "fontSize": 11,
                               "fontWeight": "700",
@@ -23627,7 +23773,7 @@
                           "type": "frame",
                           "id": "Ng8Jb",
                           "name": "h",
-                          "width": 160,
+                          "width": 150,
                           "children": [
                             {
                               "type": "text",
@@ -23672,1121 +23818,427 @@
                       "layout": "vertical",
                       "children": [
                         {
-                          "type": "frame",
-                          "id": "plDcO",
+                          "id": "N805tq",
+                          "type": "ref",
+                          "ref": "s8dGa",
                           "name": "pg Početna",
                           "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "YQRpd",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "EY5u7",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "pQHGJ",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "Početna",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "SLwDY",
-                                      "name": "sys",
-                                      "fill": "$surface-alt",
-                                      "cornerRadius": 4,
-                                      "padding": [
-                                        2,
-                                        7
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "H6GTHN",
-                                          "name": "t",
-                                          "fill": "$text-muted",
-                                          "content": "Sistemska",
-                                          "fontFamily": "$font-body",
-                                          "fontSize": 11,
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "jGgkG",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
                             },
-                            {
-                              "type": "frame",
-                              "id": "I73KN",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "uDUr0",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$success-bg",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$success"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Objavljeno",
-                                      "fill": "$success"
-                                    }
-                                  }
-                                }
-                              ]
+                            "g1mkZ": {
+                              "enabled": false
                             },
-                            {
-                              "type": "frame",
-                              "id": "nP6N4",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "zK91B",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "13 blokova",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "m1lOkB": {
+                              "content": "Početna"
                             },
-                            {
-                              "type": "frame",
-                              "id": "NHVsc",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Xs9dM",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "prije 2 sata",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "MxDeZ": {
+                              "enabled": true
                             },
-                            {
-                              "type": "frame",
-                              "id": "JOq4Y",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "F8384u",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "myZul",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "wq2ag",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
+                            "cu9Ni": {
+                              "content": "/"
+                            },
+                            "uCru8": {
+                              "fill": "$surface-alt"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Stranica",
+                              "fill": "$text-secondary"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "13 blokova"
+                            },
+                            "k6RER": {
+                              "content": "prije 2 sata"
                             }
-                          ]
+                          }
                         },
                         {
-                          "type": "frame",
-                          "id": "rb9Oz",
+                          "id": "eI8jv",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Domaće je najbolje",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
+                            },
+                            "g1mkZ": {
+                              "enabled": false
+                            },
+                            "m1lOkB": {
+                              "content": "Domaće je najbolje"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/domace-je-najbolje"
+                            },
+                            "uCru8": {
+                              "fill": "$info-bg"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Biznisi",
+                              "fill": "$info"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "3 bloka"
+                            },
+                            "k6RER": {
+                              "content": "juče"
+                            }
+                          }
+                        },
+                        {
+                          "id": "waIgE",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Zanatski proizvodi",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 26
+                            },
+                            "g1mkZ": {
+                              "enabled": true
+                            },
+                            "m1lOkB": {
+                              "content": "Zanatski proizvodi"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/domace-je-najbolje/zanatski-proizvodi"
+                            },
+                            "uCru8": {
+                              "fill": "$primary-tint"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Kategorija",
+                              "fill": "$primary"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "1 blok"
+                            },
+                            "k6RER": {
+                              "content": "juče"
+                            }
+                          }
+                        },
+                        {
+                          "id": "gKXjm",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Hrana i piće",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 26
+                            },
+                            "g1mkZ": {
+                              "enabled": true
+                            },
+                            "m1lOkB": {
+                              "content": "Hrana i piće"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/domace-je-najbolje/hrana-i-pice"
+                            },
+                            "uCru8": {
+                              "fill": "$primary-tint"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Kategorija",
+                              "fill": "$primary"
+                            },
+                            "s4L4E": {
+                              "fill": "$surface-alt"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$text-secondary"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Nacrt",
+                              "fill": "$text-secondary"
+                            },
+                            "nRODy": {
+                              "content": "1 blok"
+                            },
+                            "k6RER": {
+                              "content": "danas"
+                            }
+                          }
+                        },
+                        {
+                          "id": "gg8Bh",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Turizam",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
+                            },
+                            "g1mkZ": {
+                              "enabled": false
+                            },
+                            "m1lOkB": {
+                              "content": "Turizam"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/turizam"
+                            },
+                            "uCru8": {
+                              "fill": "$success-bg"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Lokaliteti",
+                              "fill": "$success"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "3 bloka"
+                            },
+                            "k6RER": {
+                              "content": "prije 3 dana"
+                            }
+                          }
+                        },
+                        {
+                          "id": "XxU75",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Planine i priroda",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 26
+                            },
+                            "g1mkZ": {
+                              "enabled": true
+                            },
+                            "m1lOkB": {
+                              "content": "Planine i priroda"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/turizam/planine-i-priroda"
+                            },
+                            "uCru8": {
+                              "fill": "$primary-tint"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Kategorija",
+                              "fill": "$primary"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "1 blok"
+                            },
+                            "k6RER": {
+                              "content": "prije 3 dana"
+                            }
+                          }
+                        },
+                        {
+                          "id": "UpNOs",
+                          "type": "ref",
+                          "ref": "s8dGa",
+                          "name": "pg Priče",
+                          "width": "fill_container",
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
+                            },
+                            "g1mkZ": {
+                              "enabled": false
+                            },
+                            "m1lOkB": {
+                              "content": "Priče"
+                            },
+                            "MxDeZ": {
+                              "enabled": false
+                            },
+                            "cu9Ni": {
+                              "content": "/price"
+                            },
+                            "uCru8": {
+                              "fill": "$danger-bg"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Priče",
+                              "fill": "$danger"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "2 bloka"
+                            },
+                            "k6RER": {
+                              "content": "prije 5 dana"
+                            }
+                          }
+                        },
+                        {
+                          "id": "JBsBH",
+                          "type": "ref",
+                          "ref": "s8dGa",
                           "name": "pg O projektu",
                           "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "w48yd4",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "nfjtA",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "b76Q7H",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "O projektu",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "QG6EM",
-                                      "name": "sys",
-                                      "fill": "$surface-alt",
-                                      "cornerRadius": 4,
-                                      "padding": [
-                                        2,
-                                        7
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "Qv99i",
-                                          "name": "t",
-                                          "fill": "$text-muted",
-                                          "content": "Sistemska",
-                                          "fontFamily": "$font-body",
-                                          "fontSize": 11,
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "rhsQd",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/o-projektu",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
                             },
-                            {
-                              "type": "frame",
-                              "id": "PPlAB",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "GVcGd",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$success-bg",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$success"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Objavljeno",
-                                      "fill": "$success"
-                                    }
-                                  }
-                                }
-                              ]
+                            "g1mkZ": {
+                              "enabled": false
                             },
-                            {
-                              "type": "frame",
-                              "id": "qcOR7",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "Z2FsV",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "4 bloka",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "m1lOkB": {
+                              "content": "O projektu"
                             },
-                            {
-                              "type": "frame",
-                              "id": "Ktx5D",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "kZ5T7",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "juče",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "MxDeZ": {
+                              "enabled": false
                             },
-                            {
-                              "type": "frame",
-                              "id": "fnTfy",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "A2cXvs",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "eAVBM",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "C3GEk",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
+                            "cu9Ni": {
+                              "content": "/o-projektu"
+                            },
+                            "uCru8": {
+                              "fill": "$surface-alt"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Stranica",
+                              "fill": "$text-secondary"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "4 bloka"
+                            },
+                            "k6RER": {
+                              "content": "juče"
                             }
-                          ]
+                          }
                         },
                         {
-                          "type": "frame",
-                          "id": "N4sGZ",
-                          "name": "pg Pridruži se",
-                          "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "Pgig7",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "p0PudG",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "UMK7F",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "Pridruži se",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "tNHGG",
-                                      "name": "sys",
-                                      "fill": "$surface-alt",
-                                      "cornerRadius": 4,
-                                      "padding": [
-                                        2,
-                                        7
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "g581FL",
-                                          "name": "t",
-                                          "fill": "$text-muted",
-                                          "content": "Sistemska",
-                                          "fontFamily": "$font-body",
-                                          "fontSize": 11,
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "Svtej",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/pridruzi-se",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "HyhsL",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "C4skao",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$success-bg",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$success"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Objavljeno",
-                                      "fill": "$success"
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "SdT1E",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "r7XFh",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "7 blokova",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "n8akZ",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "OXghT",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "prije 3 dana",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "ebDJW",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "JQwhr",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "t1uDWY",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "dJd8e",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "ZhgO0",
+                          "id": "a14I1K",
+                          "type": "ref",
+                          "ref": "s8dGa",
                           "name": "pg Politika privatnosti",
                           "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "zaa1t",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "IryZd",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "ZDZs8",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "Politika privatnosti",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "DS3DM",
-                                      "name": "sys",
-                                      "fill": "$surface-alt",
-                                      "cornerRadius": 4,
-                                      "padding": [
-                                        2,
-                                        7
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "i5ONMG",
-                                          "name": "t",
-                                          "fill": "$text-muted",
-                                          "content": "Sistemska",
-                                          "fontFamily": "$font-body",
-                                          "fontSize": 11,
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "w8OJxC",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/politika-privatnosti",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                          "descendants": {
+                            "bG9hr": {
+                              "width": 1
                             },
-                            {
-                              "type": "frame",
-                              "id": "jIO6N",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "dmgcD",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$success-bg",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$success"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Objavljeno",
-                                      "fill": "$success"
-                                    }
-                                  }
-                                }
-                              ]
+                            "g1mkZ": {
+                              "enabled": false
                             },
-                            {
-                              "type": "frame",
-                              "id": "W1hr2V",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "f8GzM",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "2 bloka",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "m1lOkB": {
+                              "content": "Politika privatnosti"
                             },
-                            {
-                              "type": "frame",
-                              "id": "fidCn",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "n21om",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "12.06.2026.",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
+                            "MxDeZ": {
+                              "enabled": true
                             },
-                            {
-                              "type": "frame",
-                              "id": "OPuKQ",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "AONhQ",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "kwpzU",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "g0UD4",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
+                            "cu9Ni": {
+                              "content": "/politika-privatnosti"
+                            },
+                            "uCru8": {
+                              "fill": "$surface-alt"
+                            },
+                            "uCru8/q7n7rP": {
+                              "content": "Stranica",
+                              "fill": "$text-secondary"
+                            },
+                            "s4L4E": {
+                              "fill": "$success-bg"
+                            },
+                            "s4L4E/Db549": {
+                              "fill": "$success"
+                            },
+                            "s4L4E/q7n7rP": {
+                              "content": "Objavljeno",
+                              "fill": "$success"
+                            },
+                            "nRODy": {
+                              "content": "2 bloka"
+                            },
+                            "k6RER": {
+                              "content": "12.06.2026."
                             }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "kJT4Z",
-                          "name": "pg Politika kolačića",
-                          "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "IDKqm",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "bO5pW",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "u3oxb",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "Politika kolačića",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    },
-                                    {
-                                      "type": "frame",
-                                      "id": "so0LC",
-                                      "name": "sys",
-                                      "fill": "$surface-alt",
-                                      "cornerRadius": 4,
-                                      "padding": [
-                                        2,
-                                        7
-                                      ],
-                                      "children": [
-                                        {
-                                          "type": "text",
-                                          "id": "Cs45h",
-                                          "name": "t",
-                                          "fill": "$text-muted",
-                                          "content": "Sistemska",
-                                          "fontFamily": "$font-body",
-                                          "fontSize": 11,
-                                          "fontWeight": "600"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "W5HsM",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/politika-kolacica",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "pCaKP",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "srV9W",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$success-bg",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$success"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Objavljeno",
-                                      "fill": "$success"
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "rgGJE",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "r2xIw",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "2 bloka",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "F0Xh6k",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "rxQyA",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "12.06.2026.",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "enkr1",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "J0r5q",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "l4kud",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "NJmkX",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "frame",
-                          "id": "QT7lu",
-                          "name": "pg Uslovi korištenja",
-                          "width": "fill_container",
-                          "stroke": "$border",
-                          "strokeWidth": {
-                            "bottom": 1
-                          },
-                          "strokeAlignment": "inner",
-                          "gap": 14,
-                          "padding": [
-                            12,
-                            18
-                          ],
-                          "alignItems": "center",
-                          "children": [
-                            {
-                              "type": "frame",
-                              "id": "TlVMN",
-                              "name": "c1",
-                              "width": "fill_container",
-                              "layout": "vertical",
-                              "gap": 2,
-                              "children": [
-                                {
-                                  "type": "frame",
-                                  "id": "oemnC",
-                                  "name": "tr",
-                                  "gap": 8,
-                                  "alignItems": "center",
-                                  "children": [
-                                    {
-                                      "type": "text",
-                                      "id": "U3RzT",
-                                      "name": "t",
-                                      "fill": "$text-primary",
-                                      "content": "Uslovi korištenja",
-                                      "fontFamily": "$font-body",
-                                      "fontSize": 13,
-                                      "fontWeight": "600"
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "text",
-                                  "id": "Z404n",
-                                  "name": "u",
-                                  "fill": "$text-muted",
-                                  "content": "/uslovi-koristenja",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 12,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "B1qa9",
-                              "name": "c2",
-                              "width": 140,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "pVSJx",
-                                  "type": "ref",
-                                  "ref": "DyFEL",
-                                  "name": "st",
-                                  "fill": "$surface-alt",
-                                  "descendants": {
-                                    "Db549": {
-                                      "fill": "$text-muted"
-                                    },
-                                    "q7n7rP": {
-                                      "content": "Nacrt",
-                                      "fill": "$text-secondary"
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "U40wPN",
-                              "name": "c3",
-                              "width": 110,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "MzP5b",
-                                  "name": "t",
-                                  "fill": "$text-secondary",
-                                  "content": "2 bloka",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "Sk6iR",
-                              "name": "c4",
-                              "width": 160,
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "id": "eTMnt",
-                                  "name": "t",
-                                  "fill": "$text-muted",
-                                  "content": "10.06.2026.",
-                                  "fontFamily": "$font-body",
-                                  "fontSize": 13,
-                                  "fontWeight": "normal"
-                                }
-                              ]
-                            },
-                            {
-                              "type": "frame",
-                              "id": "w6o3Ai",
-                              "name": "c5",
-                              "width": 120,
-                              "gap": 6,
-                              "justifyContent": "end",
-                              "alignItems": "center",
-                              "children": [
-                                {
-                                  "id": "N4OJOo",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "edit",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "pencil"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "iDnEP",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "eye",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "eye",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                },
-                                {
-                                  "id": "XnLDI",
-                                  "type": "ref",
-                                  "ref": "jpYt8",
-                                  "name": "more",
-                                  "descendants": {
-                                    "ijIC3": {
-                                      "icon": "ellipsis-vertical",
-                                      "fill": "$text-muted"
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -35261,6 +34713,1235 @@
                               ]
                             }
                           }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "s8dGa",
+      "x": 5785,
+      "y": -610,
+      "name": "component/PageRow",
+      "reusable": true,
+      "width": 1160,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "gap": 14,
+      "padding": [
+        12,
+        18
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "bG9hr",
+          "name": "Indent",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "nAoqH",
+          "name": "c1",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "children": [
+            {
+              "type": "frame",
+              "id": "AbIGL",
+              "name": "tr",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "g1mkZ",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Conn",
+                  "enabled": false,
+                  "width": 14,
+                  "height": 14,
+                  "icon": "corner-down-right",
+                  "library": "lucide",
+                  "fill": "$text-muted"
+                },
+                {
+                  "type": "text",
+                  "id": "m1lOkB",
+                  "name": "Title",
+                  "fill": "$text-primary",
+                  "content": "Naslov stranice",
+                  "fontFamily": "$font-body",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "MxDeZ",
+                  "x": 0,
+                  "y": 0,
+                  "name": "Sys",
+                  "enabled": false,
+                  "fill": "$surface-alt",
+                  "cornerRadius": 4,
+                  "padding": [
+                    2,
+                    7
+                  ],
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "RSRQy",
+                      "name": "t",
+                      "fill": "$text-muted",
+                      "content": "Sistemska",
+                      "fontFamily": "$font-body",
+                      "fontSize": 11,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "cu9Ni",
+              "name": "Url",
+              "fill": "$text-muted",
+              "content": "/putanja",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "u7Qdn",
+          "name": "c2",
+          "width": 150,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "uCru8",
+              "type": "ref",
+              "ref": "DyFEL",
+              "name": "Tip",
+              "fill": "$info-bg",
+              "descendants": {
+                "Db549": {
+                  "enabled": false
+                },
+                "q7n7rP": {
+                  "content": "Stranica",
+                  "fill": "$info"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "VwKbm",
+          "name": "c3",
+          "width": 140,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "s4L4E",
+              "type": "ref",
+              "ref": "DyFEL",
+              "name": "Status",
+              "fill": "$success-bg",
+              "descendants": {
+                "Db549": {
+                  "fill": "$success"
+                },
+                "q7n7rP": {
+                  "content": "Objavljeno",
+                  "fill": "$success"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "j0ZsNZ",
+          "name": "c4",
+          "width": 110,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "nRODy",
+              "name": "Blokova",
+              "fill": "$text-secondary",
+              "content": "3 bloka",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "QtdZO",
+          "name": "c5",
+          "width": 150,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "k6RER",
+              "name": "Izmijenjeno",
+              "fill": "$text-muted",
+              "content": "juče",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "b1vk9p",
+          "name": "c6",
+          "width": 120,
+          "gap": 6,
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "vYbkI",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "edit",
+              "descendants": {
+                "ijIC3": {
+                  "icon": "pencil"
+                }
+              }
+            },
+            {
+              "id": "gRTRL",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "eye",
+              "descendants": {
+                "ijIC3": {
+                  "icon": "eye",
+                  "fill": "$text-muted"
+                }
+              }
+            },
+            {
+              "id": "jwFhU",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "more",
+              "descendants": {
+                "ijIC3": {
+                  "icon": "ellipsis-vertical",
+                  "fill": "$text-muted"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "ySTy5",
+      "x": 5785,
+      "y": -770,
+      "name": "component/MenuItemRow",
+      "reusable": true,
+      "width": 820,
+      "fill": "$surface",
+      "stroke": "$border",
+      "strokeWidth": {
+        "bottom": 1
+      },
+      "strokeAlignment": "inner",
+      "gap": 12,
+      "padding": [
+        10,
+        14
+      ],
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "frame",
+          "id": "alwqb",
+          "name": "Indent",
+          "width": 1,
+          "height": 1
+        },
+        {
+          "type": "icon",
+          "id": "TuM5m",
+          "name": "Grip",
+          "width": 15,
+          "height": 15,
+          "icon": "grip-vertical",
+          "library": "lucide",
+          "fill": "$border-strong"
+        },
+        {
+          "type": "frame",
+          "id": "C9OKZ",
+          "name": "c1",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 2,
+          "children": [
+            {
+              "type": "text",
+              "id": "S6Vph",
+              "name": "Label",
+              "fill": "$text-primary",
+              "content": "Domaće je najbolje",
+              "fontFamily": "$font-body",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "u3xjgq",
+              "name": "Url",
+              "fill": "$text-muted",
+              "content": "/domace-je-najbolje",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "J4vXQg",
+          "name": "c2",
+          "width": 150,
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "ylMmZ",
+              "type": "ref",
+              "ref": "DyFEL",
+              "name": "Cilj",
+              "fill": "$info-bg",
+              "descendants": {
+                "Db549": {
+                  "enabled": false
+                },
+                "q7n7rP": {
+                  "content": "Stranica",
+                  "fill": "$info"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Y2yy9",
+          "name": "c3",
+          "width": 130,
+          "height": "fit_content(0)",
+          "gap": 6,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "icon",
+              "id": "ph0J9",
+              "x": 0,
+              "y": 0,
+              "name": "WarnIcon",
+              "enabled": false,
+              "width": 14,
+              "height": 14,
+              "icon": "triangle-alert",
+              "library": "lucide",
+              "fill": "$danger"
+            },
+            {
+              "type": "text",
+              "id": "WuEjW",
+              "x": 0,
+              "y": 0,
+              "name": "WarnText",
+              "enabled": false,
+              "fill": "$danger",
+              "content": "Mrtav link",
+              "fontFamily": "$font-body",
+              "fontSize": 12,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "mEuJl",
+          "name": "c4",
+          "width": 70,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "D0OV8y",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "Vidljivost",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "eye",
+                  "fill": "$text-secondary"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "CoWvs",
+          "name": "c5",
+          "width": 80,
+          "gap": 6,
+          "justifyContent": "end",
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "o7yOxb",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "edit",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "pencil"
+                }
+              }
+            },
+            {
+              "id": "KNTvY",
+              "type": "ref",
+              "ref": "jpYt8",
+              "name": "del",
+              "width": 30,
+              "height": 30,
+              "descendants": {
+                "ijIC3": {
+                  "icon": "trash-2",
+                  "fill": "$danger"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "AJ5Jr",
+      "x": 24650,
+      "y": 6206,
+      "name": "Screen: Navigacija",
+      "clip": true,
+      "width": 1440,
+      "height": 1024,
+      "fill": "$content-bg",
+      "children": [
+        {
+          "id": "ASayd",
+          "type": "ref",
+          "ref": "Sur9Q",
+          "name": "Sidebar",
+          "height": "fill_container",
+          "descendants": {
+            "EjDmV/TQYWB": {
+              "enabled": true
+            },
+            "EjDmV/kQck0": {
+              "fill": "$sidebar-bg-alt"
+            },
+            "EjDmV/gGTuz": {
+              "fill": "$primary"
+            },
+            "EjDmV/UPe2R": {
+              "fill": "$sidebar-text-strong",
+              "fontWeight": "600"
+            }
+          }
+        },
+        {
+          "type": "frame",
+          "id": "Gp6Hq",
+          "name": "Content",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "children": [
+            {
+              "id": "daKT4",
+              "type": "ref",
+              "ref": "CGD2o",
+              "name": "Topbar",
+              "width": "fill_container",
+              "descendants": {
+                "IBEYN": {
+                  "content": "Navigacija"
+                }
+              }
+            },
+            {
+              "type": "frame",
+              "id": "pkyiS",
+              "name": "Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 18,
+              "padding": 28,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "JJJzB",
+                  "name": "Heading",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NPeZ5",
+                      "name": "HL",
+                      "layout": "vertical",
+                      "gap": 3,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "d7UHGu",
+                          "name": "H1",
+                          "fill": "$text-primary",
+                          "content": "Navigacija",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 22,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "wOj06",
+                          "name": "Sub",
+                          "fill": "$text-secondary",
+                          "content": "Meniji se vežu na stranice iz strukture - kad promijeniš slug, link se sam ažurira.",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "ZJDPm",
+                      "type": "ref",
+                      "ref": "BuoTN",
+                      "name": "Sacuvaj",
+                      "descendants": {
+                        "bTTku": {
+                          "icon": "save"
+                        },
+                        "p7exa": {
+                          "content": "Sačuvaj"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H8w5Qx",
+                  "name": "Cols",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "gap": 18,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "lbiJf",
+                      "name": "MenuList",
+                      "clip": true,
+                      "width": 300,
+                      "fill": "$surface",
+                      "cornerRadius": 8,
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "iFQtR",
+                          "name": "H",
+                          "width": "fill_container",
+                          "stroke": "$border",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "strokeAlignment": "inner",
+                          "padding": [
+                            14,
+                            16
+                          ],
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "rZRi5",
+                              "name": "t",
+                              "fill": "$text-primary",
+                              "content": "Meniji",
+                              "fontFamily": "$font-heading",
+                              "fontSize": 15,
+                              "fontWeight": "700"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "YV3yp",
+                          "name": "Rows",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Uvhfb",
+                              "name": "m Glavna navigacija",
+                              "width": "fill_container",
+                              "fill": "$primary-tint",
+                              "stroke": "$border",
+                              "strokeWidth": {
+                                "bottom": 1
+                              },
+                              "strokeAlignment": "inner",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "padding": [
+                                11,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "m3wcP9",
+                                  "name": "t",
+                                  "fill": "$primary",
+                                  "content": "Glavna navigacija",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 13,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "uPpnM",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "6 stavki",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "a4aAyH",
+                              "name": "m Sekundarna (util traka)",
+                              "width": "fill_container",
+                              "fill": "#00000000",
+                              "stroke": "$border",
+                              "strokeWidth": {
+                                "bottom": 1
+                              },
+                              "strokeAlignment": "inner",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "padding": [
+                                11,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "JRO86",
+                                  "name": "t",
+                                  "fill": "$text-primary",
+                                  "content": "Sekundarna (util traka)",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "w4QcRp",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "2 stavke",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "I4xGqq",
+                              "name": "m Footer - Brzi linkovi",
+                              "width": "fill_container",
+                              "fill": "#00000000",
+                              "stroke": "$border",
+                              "strokeWidth": {
+                                "bottom": 1
+                              },
+                              "strokeAlignment": "inner",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "padding": [
+                                11,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "kv0Ue",
+                                  "name": "t",
+                                  "fill": "$text-primary",
+                                  "content": "Footer - Brzi linkovi",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fQzo9",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "4 stavke",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "wEIgo",
+                              "name": "m Footer - Istraži",
+                              "width": "fill_container",
+                              "fill": "#00000000",
+                              "stroke": "$border",
+                              "strokeWidth": {
+                                "bottom": 1
+                              },
+                              "strokeAlignment": "inner",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "padding": [
+                                11,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "I2D0qb",
+                                  "name": "t",
+                                  "fill": "$text-primary",
+                                  "content": "Footer - Istraži",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Z1DTO",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "4 stavke",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "xDdG0",
+                              "name": "m Footer - Pravno",
+                              "width": "fill_container",
+                              "fill": "#00000000",
+                              "stroke": "$border",
+                              "strokeWidth": {
+                                "bottom": 1
+                              },
+                              "strokeAlignment": "inner",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "padding": [
+                                11,
+                                16
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "K9CLk",
+                                  "name": "t",
+                                  "fill": "$text-primary",
+                                  "content": "Footer - Pravno",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 13,
+                                  "fontWeight": "600"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "CQIBq",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "3 stavke",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "rf30s",
+                      "name": "Items",
+                      "clip": true,
+                      "width": "fill_container",
+                      "fill": "$surface",
+                      "cornerRadius": 8,
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "rj9xZ",
+                          "name": "H",
+                          "width": "fill_container",
+                          "stroke": "$border",
+                          "strokeWidth": {
+                            "bottom": 1
+                          },
+                          "strokeAlignment": "inner",
+                          "padding": [
+                            12,
+                            16
+                          ],
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "NOYmg",
+                              "name": "L",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "kDDNT",
+                                  "name": "t",
+                                  "fill": "$text-primary",
+                                  "content": "Glavna navigacija",
+                                  "fontFamily": "$font-heading",
+                                  "fontSize": 15,
+                                  "fontWeight": "700"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "SmI2U",
+                                  "name": "s",
+                                  "fill": "$text-muted",
+                                  "content": "Prevuci za redoslijed, uvuci za podmeni",
+                                  "fontFamily": "$font-body",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "id": "L5CgW",
+                              "type": "ref",
+                              "ref": "BuoTN",
+                              "name": "Dodaj",
+                              "descendants": {
+                                "bTTku": {
+                                  "icon": "plus"
+                                },
+                                "p7exa": {
+                                  "content": "Dodaj stavku"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "EpRqF",
+                          "name": "Rows",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "children": [
+                            {
+                              "id": "TckMo",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Domaće je najbolje",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Domaće je najbolje"
+                                },
+                                "u3xjgq": {
+                                  "content": "/domace-je-najbolje",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$info-bg"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Stranica",
+                                  "fill": "$info"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "SPhEY",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Zanatski proizvodi",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 26
+                                },
+                                "S6Vph": {
+                                  "content": "Zanatski proizvodi"
+                                },
+                                "u3xjgq": {
+                                  "content": "/domace-je-najbolje/zanatski-proizvodi",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$primary-tint"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Kategorija",
+                                  "fill": "$primary"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "aKo39",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Domaća hrana i piće",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 26
+                                },
+                                "S6Vph": {
+                                  "content": "Domaća hrana i piće"
+                                },
+                                "u3xjgq": {
+                                  "content": "/domace-je-najbolje/domaca-hrana-i-pice",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$primary-tint"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Kategorija",
+                                  "fill": "$primary"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "kLNyj",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Turizam",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Turizam"
+                                },
+                                "u3xjgq": {
+                                  "content": "/turizam",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$info-bg"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Stranica",
+                                  "fill": "$info"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "DKmpv",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Prirodne atrakcije",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 26
+                                },
+                                "S6Vph": {
+                                  "content": "Prirodne atrakcije"
+                                },
+                                "u3xjgq": {
+                                  "content": "/turizam/prirodne-atrakcije",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$primary-tint"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Kategorija",
+                                  "fill": "$primary"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "jctkM",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Događaji",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Događaji"
+                                },
+                                "u3xjgq": {
+                                  "content": "/dogadjaji",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$info-bg"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Stranica",
+                                  "fill": "$info"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "vvdFL",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Mapa",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Mapa"
+                                },
+                                "u3xjgq": {
+                                  "content": "/mapa",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$info-bg"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Stranica",
+                                  "fill": "$info"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "oCNlh",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Stari link kategorije",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Stari link kategorije"
+                                },
+                                "u3xjgq": {
+                                  "content": "/price/kategorija/domacini",
+                                  "fill": "$danger"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$surface-alt"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Vanjski link",
+                                  "fill": "$text-secondary"
+                                },
+                                "ph0J9": {
+                                  "enabled": true
+                                },
+                                "WuEjW": {
+                                  "enabled": true
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye",
+                                  "fill": "$text-secondary"
+                                }
+                              }
+                            },
+                            {
+                              "id": "v8J4wh",
+                              "type": "ref",
+                              "ref": "ySTy5",
+                              "name": "mi Facebook",
+                              "width": "fill_container",
+                              "descendants": {
+                                "alwqb": {
+                                  "width": 1
+                                },
+                                "S6Vph": {
+                                  "content": "Facebook"
+                                },
+                                "u3xjgq": {
+                                  "content": "https://facebook.com/teslic",
+                                  "fill": "$text-muted"
+                                },
+                                "ylMmZ": {
+                                  "fill": "$surface-alt"
+                                },
+                                "ylMmZ/q7n7rP": {
+                                  "content": "Vanjski link",
+                                  "fill": "$text-secondary"
+                                },
+                                "ph0J9": {
+                                  "enabled": false
+                                },
+                                "WuEjW": {
+                                  "enabled": false
+                                },
+                                "D0OV8y/ijIC3": {
+                                  "icon": "eye-off",
+                                  "fill": "$text-muted"
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }

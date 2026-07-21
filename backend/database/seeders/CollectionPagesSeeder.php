@@ -5,12 +5,13 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\Page;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CollectionPagesSeeder extends Seeder
 {
     protected const KOLEKCIJE = [
         'business' => [
-            'slug' => 'domace-je-najbolje',
+            'slug' => ['sr' => 'domace-je-najbolje', 'en' => 'local-products', 'de' => 'lokale-produkte'],
             'title' => 'Domaće je najbolje',
             'kicker' => ['sr' => 'Domaće je najbolje', 'en' => 'Local is best', 'de' => 'Lokal ist am besten'],
             'hero' => ['sr' => 'Domaća ponuda Teslića', 'en' => 'Local offerings of Teslić', 'de' => 'Heimisches Angebot von Teslić'],
@@ -22,7 +23,7 @@ class CollectionPagesSeeder extends Seeder
             'slika' => 'https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1600&q=80',
         ],
         'location' => [
-            'slug' => 'turizam',
+            'slug' => ['sr' => 'turizam', 'en' => 'tourism', 'de' => 'tourismus'],
             'title' => 'Turizam',
             'kicker' => ['sr' => 'Turizam u Tesliću', 'en' => 'Tourism in Teslić', 'de' => 'Tourismus in Teslić'],
             'hero' => ['sr' => 'Priroda i baština Teslića', 'en' => 'Nature and heritage of Teslić', 'de' => 'Natur und Erbe von Teslić'],
@@ -34,7 +35,7 @@ class CollectionPagesSeeder extends Seeder
             'slika' => 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80',
         ],
         'event' => [
-            'slug' => 'dogadjaji',
+            'slug' => ['sr' => 'dogadjaji', 'en' => 'events', 'de' => 'veranstaltungen'],
             'title' => 'Manifestacije i događaji',
             'kicker' => ['sr' => 'Manifestacije i događaji', 'en' => 'Festivals and events', 'de' => 'Festivals und Veranstaltungen'],
             'hero' => ['sr' => 'Šta se dešava u Tesliću', 'en' => "What's happening in Teslić", 'de' => 'Was in Teslić los ist'],
@@ -46,7 +47,7 @@ class CollectionPagesSeeder extends Seeder
             'slika' => 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1600&q=80',
         ],
         'ad' => [
-            'slug' => 'oglasi',
+            'slug' => ['sr' => 'oglasi', 'en' => 'classifieds', 'de' => 'kleinanzeigen'],
             'title' => 'Oglasi',
             'kicker' => ['sr' => 'Poslovne prilike', 'en' => 'Business opportunities', 'de' => 'Geschäftsmöglichkeiten'],
             'hero' => ['sr' => 'Oglasi i prilike u Tesliću', 'en' => 'Ads and opportunities in Teslić', 'de' => 'Anzeigen und Chancen in Teslić'],
@@ -58,7 +59,7 @@ class CollectionPagesSeeder extends Seeder
             'slika' => 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80',
         ],
         'story' => [
-            'slug' => 'price',
+            'slug' => ['sr' => 'price', 'en' => 'stories', 'de' => 'geschichten'],
             'title' => 'Priče',
             'kicker' => ['sr' => 'Priče iz Teslića', 'en' => 'Stories from Teslić', 'de' => 'Geschichten aus Teslić'],
             'hero' => ['sr' => 'Ljudi, mjesta i običaji Teslića', 'en' => 'People, places and customs of Teslić', 'de' => 'Menschen, Orte und Bräuche von Teslić'],
@@ -189,10 +190,10 @@ class CollectionPagesSeeder extends Seeder
             ]);
 
             $stranica->setTranslations('title', Prevodi::tr($def['title']));
-            $stranica->setTranslations('meta_title', Prevodi::tr($def['hero'].' - Teslić'));
+            $stranica->setTranslations('meta_title', Prevodi::tr($def['hero']));
             $stranica->setTranslations('meta_description', $def['podnaslov']);
 
-            $stranica->slug = ['sr' => $def['slug']];
+            $stranica->slug = ['sr' => $def['slug'], 'en' => $def['slug'], 'de' => $def['slug']];
             $stranica->sort = $i;
             $stranica->content = [
                 ['type' => 'hero', 'data' => [
@@ -241,14 +242,14 @@ class CollectionPagesSeeder extends Seeder
             ]);
 
             $dijete->setTranslations('title', $label);
-            $dijete->setTranslations('meta_title', [
-                'sr' => $label['sr'].' - Teslić',
-                'en' => $label['en'].' - Teslić',
-                'de' => $label['de'].' - Teslić',
-            ]);
+            $dijete->setTranslations('meta_title', $label);
             $dijete->setTranslations('meta_description', $opis);
 
-            $dijete->slug = ['sr' => $slug];
+            $dijete->slug = [
+                'sr' => $slug,
+                'en' => Str::slug($label['en']) ?: $slug,
+                'de' => Str::slug($label['de']) ?: $slug,
+            ];
             $dijete->sort = $i;
             $dijete->content = [
                 ['type' => 'hero', 'data' => [

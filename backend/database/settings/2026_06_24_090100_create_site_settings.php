@@ -6,10 +6,14 @@ return new class extends SettingsMigration
 {
     public function up(): void
     {
-        $this->migrator->add('site.brand_naziv', ['sr' => 'TO Teslić']);
+        $this->migrator->add('site.brand_naziv', [
+            'sr' => 'Turistička organizacija opštine Teslić',
+            'en' => 'Tourism Organization of the Municipality of Teslić',
+            'de' => 'Tourismusorganisation der Gemeinde Teslić',
+        ]);
         $this->migrator->add('site.brand_logo_tekst', ['sr' => 'teslić']);
-        $this->migrator->add('site.brand_logo', '');
-        $this->migrator->add('site.logo_visina', 40);
+        $this->migrator->add('site.brand_logo', '/logo.svg');
+        $this->migrator->add('site.logo_visina', 55);
         $this->migrator->add('site.seo_opis', ['sr' => 'Digitalna platforma za promociju turizma, domaćih proizvoda i usluga opštine Teslić.']);
         $this->migrator->add('site.footer_opis', ['sr' => 'Zvanična platforma za promociju turističke ponude, lokalnih proizvoda i usluga opštine Teslić.']);
         $this->migrator->add('site.copyright', ['sr' => '© 2026 TO Teslić. Sva prava zadržana.']);

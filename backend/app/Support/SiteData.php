@@ -66,7 +66,11 @@ class SiteData
             'postavke' => [
                 'brandNaziv' => self::trs($settings->brand_naziv),
                 'brandLogoTekst' => self::trs($settings->brand_logo_tekst),
-                'brandLogo' => $settings->brand_logo ? \Illuminate\Support\Facades\Storage::disk('public')->url($settings->brand_logo) : null,
+                'brandLogo' => $settings->brand_logo
+                    ? (preg_match('#^(https?://|/)#', $settings->brand_logo)
+                        ? $settings->brand_logo
+                        : \Illuminate\Support\Facades\Storage::disk('public')->url($settings->brand_logo))
+                    : null,
                 'logoVisina' => $settings->logo_visina,
                 'seoOpis' => self::trs($settings->seo_opis),
                 'footerOpis' => self::trs($settings->footer_opis),
@@ -81,7 +85,7 @@ class SiteData
                 'indeksiranje' => $settings->google_indeksiranje,
                 'captchaSiteKey' => $settings->captcha_site_key,
             ],
-            'texts' => self::tr($straniceSettings->toArray()),
+            'texts' => collect($straniceSettings->toArray())->map(fn ($v) => self::trs($v))->all(),
             'kategorije' => Category::orderBy('sort')->get()->map(fn ($c) => ['key' => $c->key, 'label' => $c->label, 'icon' => $c->icon, 'color' => $c->color])->all(),
         ];
     }

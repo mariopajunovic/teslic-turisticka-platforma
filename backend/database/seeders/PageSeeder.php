@@ -9,7 +9,7 @@ class PageSeeder extends Seeder
 {
     public function run(): void
     {
-        $this->page('pocetna', 'Početna', true, 'TO Teslić - turistička ponuda, proizvodi i priče', [
+        $this->page('pocetna', 'Početna', true, 'Turistička ponuda, proizvodi i priče', [
             ['type' => 'hero', 'data' => [
                 'variant' => 'slika-pozadina',
                 'kicker' => ['sr' => 'Turistička organizacija Teslić', 'en' => 'Tourism Organization of Teslić', 'de' => 'Tourismusorganisation Teslić'],
@@ -69,7 +69,7 @@ class PageSeeder extends Seeder
             ]],
         ]);
 
-        $this->page('pridruzi-se', 'Pridruži se', true, 'Pridruži se — TO Teslić', [
+        $this->page('pridruzi-se', 'Pridruži se', true, 'Pridruži se', [
             ['type' => 'hero', 'data' => [
                 'variant' => 'slika-pozadina',
                 'kicker' => 'Postani dio platforme',
@@ -132,24 +132,24 @@ class PageSeeder extends Seeder
             ]],
         ]);
 
-        $this->page('o-projektu', 'O projektu', false, 'O projektu — TO Teslić', [
+        $this->page('o-projektu', 'O projektu', false, 'O projektu', [
             ['type' => 'hero', 'data' => ['variant' => 'split', 'kicker' => 'Platforma TO Teslić', 'title' => 'O projektu', 'subtitle' => 'Centralno digitalno mjesto za promociju turističke ponude, lokalnih proizvoda i autentičnih priča Teslića.', 'image' => '']],
             ['type' => 'rich_text', 'data' => ['sadrzaj' => '<p>Platforma okuplja domaću ponudu, turističke sadržaje i priče zajednice na jednom mjestu. Registrovani biznisi, domaćini i autori učestvuju kroz administrativno kontrolisan proces objavljivanja, čime se osigurava kvalitet i vjerodostojnost sadržaja.</p>']],
             ['type' => 'card_grid', 'data' => ['naslov' => 'Izdvojeni biznisi', 'resource' => 'business', 'limit' => 4, 'cols' => 4, 'linkText' => 'Vidi sve', 'to' => '/domace-je-najbolje']],
             ['type' => 'cta', 'data' => ['title' => 'Pridruži se zajednici', 'text' => 'Registruj svoj biznis ili postani autor i podijeli priču svog kraja.', 'buttons' => [['label' => 'Registruj biznis', 'url' => '/pridruzi-se', 'variant' => 'sekundarna']]]],
         ]);
 
-        $this->page('mapa', 'Mapa', true, 'Mapa ponude - TO Teslić', [
+        $this->page('mapa', 'Mapa', true, 'Mapa ponude', [
             ['type' => 'hero', 'data' => ['variant' => 'split', 'kicker' => 'Interaktivna mapa', 'title' => 'Istraži Teslić na mapi', 'subtitle' => 'Turistički lokaliteti, domaći proizvođači, smještaj i događaji - sve na jednom mjestu, filtrirano po vrsti i naselju.', 'image' => '']],
             ['type' => 'map_explorer', 'data' => ['naslov' => 'Ponuda na mapi']],
-        ]);
+        ], ['sr' => 'mapa', 'en' => 'map', 'de' => 'karte']);
 
-        $this->page('kontakt', 'Kontakt', true, 'Kontakt - TO Teslić', [
+        $this->page('kontakt', 'Kontakt', true, 'Kontakt', [
             ['type' => 'hero', 'data' => ['variant' => 'split', 'kicker' => 'Turistička organizacija grada Teslića', 'title' => 'Kontakt', 'subtitle' => 'Imate pitanje, prijedlog ili želite saradnju? Pošaljite nam poruku ili nas kontaktirajte direktno.', 'image' => '']],
             ['type' => 'contact_form', 'data' => ['naslov' => 'Pošaljite nam poruku', 'prikaziMapu' => true]],
         ]);
 
-        $this->page('korisne-informacije', 'Korisne informacije', false, 'Korisne informacije - TO Teslić', [
+        $this->page('korisne-informacije', 'Korisne informacije', false, 'Korisne informacije', [
             ['type' => 'hero', 'data' => ['variant' => 'split', 'kicker' => 'Za posjetioce', 'title' => 'Korisne informacije', 'subtitle' => 'Praktične informacije za posjetioce Teslića - kontakti, prevoz, radno vrijeme i važni brojevi.', 'image' => '']],
             ['type' => 'rich_text', 'data' => ['sadrzaj' => '<h3>Turistička organizacija grada Teslića</h3><p>Adresa: Svetog Save 15, 74270 Teslić<br>Telefon: 053/430-058<br>E-mail: turistorg.teslic@gmail.com</p><h3>Prevoz</h3><p>Teslić je povezan autobuskim linijama sa većim gradovima u regiji. Autobuska stanica nalazi se u centru grada.</p><h3>Važni brojevi</h3><p>Policija: 122<br>Hitna pomoć: 124<br>Vatrogasci: 123</p>']],
         ]);
@@ -161,25 +161,25 @@ class PageSeeder extends Seeder
 
     protected function legal(string $slug, string $title, string $tekst): void
     {
-        $this->page($slug, $title, false, $title.' — TO Teslić', [
+        $this->page($slug, $title, false, $title, [
             ['type' => 'hero', 'data' => ['variant' => 'split', 'title' => $title, 'subtitle' => '', 'image' => '']],
             ['type' => 'rich_text', 'data' => ['sadrzaj' => '<p>'.$tekst.'</p>']],
         ]);
     }
 
-    protected function page(string $slug, string $title, bool $isSystem, string $metaTitle, array $content): void
+    protected function page(string $slug, string $title, bool $isSystem, string $metaTitle, array $content, ?array $slugMap = null): void
     {
         $page = Page::where('slug->sr', $slug)->first() ?? new Page();
 
         $page->fill([
             'published' => true,
             'is_system' => $isSystem,
-            'meta_title' => $metaTitle,
             'content' => $content,
         ]);
 
         $page->setTranslations('title', Prevodi::tr($title));
-        $page->slug = ['sr' => $slug];
+        $page->setTranslations('meta_title', Prevodi::tr($metaTitle));
+        $page->slug = $slugMap ?? ['sr' => $slug];
         $page->save();
     }
 }

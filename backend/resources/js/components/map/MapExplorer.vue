@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import EmptyState from '@/components/common/EmptyState.vue'
@@ -8,6 +8,7 @@ import BaseIcon from '@/components/base/BaseIcon.vue'
 import MapInteractive from '@/components/map/MapInteractive.vue'
 import MapFilterPanel from '@/components/map/MapFilterPanel.vue'
 import MapPopup from '@/components/map/MapPopup.vue'
+import Pagination from '@/components/common/Pagination.vue'
 import { categoryColor } from '@/components/map/markerIcon'
 import { useCategories } from '@/composables/useCategories'
 
@@ -40,6 +41,17 @@ const filtrirano = computed(() => {
     )
   }
   return lista
+})
+
+const poStrani = 15
+const stranica = ref(1)
+const ukupnoStranica = computed(() => Math.max(1, Math.ceil(filtrirano.value.length / poStrani)))
+const prikazane = computed(() =>
+  filtrirano.value.slice((stranica.value - 1) * poStrani, stranica.value * poStrani),
+)
+
+watch(filtrirano, () => {
+  stranica.value = 1
 })
 
 function odaberi(item) {
@@ -77,7 +89,7 @@ onMounted(() => {
             @select="odaberi"
             @naselja="naseljaList = $event"
           />
-          <div v-if="odabrana" class="absolute right-4 top-4 z-[1000]">
+          <div v-if="odabrana" class="absolute right-4 top-4 z-30">
             <MapPopup :item="odabrana" @close="odabrana = null" />
           </div>
         </div>
@@ -100,7 +112,7 @@ onMounted(() => {
 
       <div v-else class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <Link
-          v-for="t in filtrirano"
+          v-for="t in prikazane"
           :key="t.slug"
           :href="t.to"
           class="group flex flex-col overflow-hidden rounded-md border border-border bg-surface shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)]"
@@ -113,14 +125,9 @@ onMounted(() => {
               loading="lazy"
               class="size-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
-            <span
-              v-else
-              class="flex size-full items-center justify-center"
-              :class="t.kategorija === 'dogadjaj' ? 'text-heading' : 'text-white'"
-              :style="{ backgroundColor: categoryColor(t.kategorija) }"
-            >
-              <BaseIcon v-if="catOf(t)" :name="catOf(t).icon" :size="34" />
-            </span>
+            <div v-else class="flex size-full items-center justify-center bg-primary-tint text-primary-tint-2">
+              <BaseIcon name="image" :size="36" />
+            </div>
           </div>
           <div class="flex flex-1 flex-col gap-2 p-4">
             <div>
@@ -133,6 +140,10 @@ onMounted(() => {
             </div>
           </div>
         </Link>
+      </div>
+
+      <div v-if="ukupnoStranica > 1" class="mt-8 flex justify-center">
+        <Pagination v-model="stranica" :total="ukupnoStranica" />
       </div>
     </AppContainer>
   </div>

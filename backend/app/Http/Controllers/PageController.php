@@ -124,7 +124,7 @@ class PageController extends Controller
 
             if ($type === 'card_grid') {
                 $block['data']['items'] = $this->cards($block['data'] ?? []);
-                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: ($block['data']['to'] ?? null);
+                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: $this->lokalizujPutanju($block['data']['to'] ?? null);
             }
 
             if ($type === 'resource_list') {
@@ -134,7 +134,7 @@ class PageController extends Controller
             if ($type === 'category_nav') {
                 $block['data']['items'] = collect($block['data']['items'] ?? [])
                     ->map(function (array $stavka) {
-                        $stavka['to'] = ResourceUrls::forTarget($stavka['cilj'] ?? null) ?: ($stavka['to'] ?? null);
+                        $stavka['to'] = ResourceUrls::forTarget($stavka['cilj'] ?? null) ?: $this->lokalizujPutanju($stavka['to'] ?? null);
 
                         return $stavka;
                     })
@@ -145,7 +145,7 @@ class PageController extends Controller
 
             if ($type === 'map') {
                 $block['data']['items'] = MapPoints::all();
-                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: ($block['data']['to'] ?? null);
+                $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: $this->lokalizujPutanju($block['data']['to'] ?? null);
             }
 
             if ($type === 'map_explorer') {
@@ -159,7 +159,7 @@ class PageController extends Controller
             if ($type === 'cta') {
                 $block['data']['buttons'] = collect($block['data']['buttons'] ?? [])
                     ->map(function (array $dugme) {
-                        $dugme['url'] = ResourceUrls::forTarget($dugme['cilj'] ?? null) ?: ($dugme['url'] ?? null);
+                        $dugme['url'] = ResourceUrls::forTarget($dugme['cilj'] ?? null) ?: $this->lokalizujPutanju($dugme['url'] ?? null);
 
                         return $dugme;
                     })
@@ -210,16 +210,40 @@ class PageController extends Controller
 
     protected function metaTitle(Page $page): string
     {
-        $siteName = $this->siteName();
-        $base = ($page->meta_title !== null && $page->meta_title !== '') ? (string) $page->meta_title : (string) $page->title;
+        return ($page->meta_title !== null && $page->meta_title !== '') ? (string) $page->meta_title : (string) $page->title;
+    }
 
-        if ($siteName === '') {
-            return $base;
+    protected function lokalizujPutanju(?string $path): ?string
+    {
+        if (! $path || ! str_starts_with($path, '/') || str_starts_with($path, '//') || str_contains($path, '://')) {
+            return $path;
         }
 
-        $suffix = ' - '.$siteName;
+        $lang = app(\App\Support\ActiveLocale::class)->language();
 
-        return str_ends_with($base, $suffix) ? $base : $base.$suffix;
+        if ($lang === 'sr') {
+            return $path;
+        }
+
+        $segmenti = array_values(array_filter(explode('/', $path), fn ($s) => $s !== ''));
+        $izlaz = [];
+        $roditeljId = null;
+
+        foreach ($segmenti as $seg) {
+            $stranica = Page::query()
+                ->where('slug->sr', $seg)
+                ->when($roditeljId, fn ($q) => $q->where('parent_id', $roditeljId), fn ($q) => $q->whereNull('parent_id'))
+                ->first();
+
+            if (! $stranica) {
+                return $path;
+            }
+
+            $izlaz[] = $stranica->slugFor($lang);
+            $roditeljId = $stranica->id;
+        }
+
+        return '/'.implode('/', $izlaz);
     }
 
     protected function siteName(): string

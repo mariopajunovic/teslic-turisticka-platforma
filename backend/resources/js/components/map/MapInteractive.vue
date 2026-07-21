@@ -129,7 +129,10 @@ function drawMarkers() {
       title: item.naslov,
     })
     marker.bindPopup(popupHtml(item))
-    marker.on('click', () => emit('select', item))
+    marker.on('click', () => {
+      if (map) map.setView([item.lat, item.lng], map.getZoom(), { animate: true })
+      emit('select', item)
+    })
     clusterGroup.addLayer(marker)
   })
 }
@@ -145,10 +148,11 @@ onMounted(async () => {
     center: props.center,
     zoom: props.zoom,
     scrollWheelZoom: true,
+    attributionControl: false,
   })
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap',
+    attribution: '',
     maxZoom: 19,
   }).addTo(map)
 

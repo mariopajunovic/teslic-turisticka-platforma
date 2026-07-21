@@ -49,11 +49,12 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         ->middleware('throttle:5,1')
         ->name('kontakt.send');
     Route::get('/pridruzi-se', fn () => app(PageController::class)->show('pridruzi-se'))->name('pridruzi-se');
-    Route::get('/pridruzi-se/biznis', fn () => Inertia::render('RegisterBusiness', ['seo' => \App\Support\Seo::make('Registruj biznis', 'Registrujte vaš lokalni biznis i budite vidljivi na teslićkom portalu.', url()->current())]))->name('pridruzi-se.biznis');
-    Route::get('/pridruzi-se/autor', fn () => Inertia::render('RegisterAuthor', ['seo' => \App\Support\Seo::make('Uključi se kao autor', 'Pridružite se kao autor i dijelite priče s Teslića s cijelim svijetom.', url()->current())]))->name('pridruzi-se.autor');
-    Route::get('/prijava', fn () => Inertia::render('Login', ['seo' => \App\Support\Seo::make('Prijava', 'Prijavite se na svoj nalog na teslićkom portalu.', url()->current())]))->name('prijava');
-    Route::get('/registracija', fn () => Inertia::render('RegisterChoice', ['seo' => \App\Support\Seo::make('Registracija', 'Kreirajte nalog i priključite se teslićkoj online zajednici.', url()->current())]))->name('registracija');
-    Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make('Zaboravljena lozinka', 'Resetujte svoju lozinku i povratite pristup nalogu.', url()->current())]))->name('zaboravljena-lozinka');
+    $tr = fn (string $k) => app(\App\Support\Translations::class)->get($k, $lang);
+    Route::get('/pridruzi-se/biznis', fn () => Inertia::render('RegisterBusiness', ['seo' => \App\Support\Seo::make($tr('seo.registerBusiness'), $tr('seo.registerBusinessDesc'), url()->current())]))->name('pridruzi-se.biznis');
+    Route::get('/pridruzi-se/autor', fn () => Inertia::render('RegisterAuthor', ['seo' => \App\Support\Seo::make($tr('seo.registerAuthor'), $tr('seo.registerAuthorDesc'), url()->current())]))->name('pridruzi-se.autor');
+    Route::get('/prijava', fn () => Inertia::render('Login', ['seo' => \App\Support\Seo::make($tr('seo.login'), $tr('seo.loginDesc'), url()->current())]))->name('prijava');
+    Route::get('/registracija', fn () => Inertia::render('RegisterChoice', ['seo' => \App\Support\Seo::make($tr('seo.register'), $tr('seo.registerDesc'), url()->current())]))->name('registracija');
+    Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make($tr('seo.forgotPassword'), $tr('seo.forgotPasswordDesc'), url()->current())]))->name('zaboravljena-lozinka');
 
     Route::middleware('auth')->prefix('nalog')->group(function () {
         Route::middleware('role:autor')->group(function () {
@@ -127,7 +128,7 @@ Route::get('/reset-lozinke/{token}', function (string $token) {
     return Inertia::render('ResetPassword', [
         'token' => $token,
         'email' => (string) request('email'),
-        'seo' => \App\Support\Seo::make('Nova lozinka', 'Postavite novu lozinku za svoj nalog.', url()->current()),
+        'seo' => \App\Support\Seo::make(app(\App\Support\Translations::class)->get('seo.resetPassword'), app(\App\Support\Translations::class)->get('seo.resetPasswordDesc'), url()->current()),
     ]);
 })->middleware('guest')->name('password.reset');
 

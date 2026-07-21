@@ -1,8 +1,9 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import SectionHeader from '@/components/common/SectionHeader.vue'
 import MapInteractive from '@/components/map/MapInteractive.vue'
+import MapPopup from '@/components/map/MapPopup.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import { useCategories } from '@/composables/useCategories'
 import { categoryColor, isLightColor } from '@/components/map/markerIcon'
@@ -22,6 +23,21 @@ const legenda = computed(() => {
 })
 
 const colorOf = (c) => c.color || categoryColor(c.key)
+
+const odabrana = ref(null)
+
+const aktivne = ref([])
+const isActive = (key) => aktivne.value.includes(key)
+const toggle = (key) => {
+  const i = aktivne.value.indexOf(key)
+  if (i === -1) aktivne.value.push(key)
+  else aktivne.value.splice(i, 1)
+}
+const filtriraneTacke = computed(() => {
+  const items = props.data.items || []
+  if (!aktivne.value.length) return items
+  return items.filter((t) => aktivne.value.includes(t.kategorija))
+})
 </script>
 
 <template>
@@ -33,27 +49,40 @@ const colorOf = (c) => c.color || categoryColor(c.key)
     />
 
     <div class="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-sm)]">
-      <MapInteractive :items="data.items || []" :height="data.height || '440px'" />
+      <div class="relative">
+        <MapInteractive :items="filtriraneTacke" :height="data.height || '440px'" @select="odabrana = $event" />
+        <div v-if="odabrana" class="absolute right-4 top-4 z-30">
+          <MapPopup :item="odabrana" @close="odabrana = null" />
+        </div>
+      </div>
 
-      <!-- Legenda ispod mape (iz stvarnih kategorija na mapi) -->
-      <div
-        v-if="legenda.length"
-        class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 border-t border-border bg-surface px-4 py-4"
-      >
-        <span
-          v-for="c in legenda"
-          :key="c.key"
-          class="flex items-center gap-2 text-sm font-medium text-text"
-        >
-          <span
-            class="flex size-5 shrink-0 items-center justify-center rounded-full"
-            :class="isLightColor(colorOf(c)) ? 'text-heading' : 'text-white'"
-            :style="{ backgroundColor: colorOf(c) }"
+      <!-- Legenda = filter (klik na kategoriju filtrira mapu), max 5 u red -->
+      <div v-if="legenda.length" class="border-t border-border bg-surface p-4">
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
+          <button
+            v-for="c in legenda"
+            :key="c.key"
+            type="button"
+            class="flex items-center gap-2 rounded-sm border px-2.5 py-2 text-left text-sm transition-colors"
+            :class="
+              isActive(c.key)
+                ? 'border-primary bg-primary-tint text-heading'
+                : 'border-border text-text hover:bg-surface-alt'
+            "
+            :aria-pressed="isActive(c.key)"
+            @click="toggle(c.key)"
           >
-            <BaseIcon :name="c.icon" :size="12" />
-          </span>
-          {{ c.label }}
-        </span>
+            <span
+              class="inline-flex size-6 shrink-0 items-center justify-center rounded-full"
+              :class="isLightColor(colorOf(c)) ? 'text-heading' : 'text-white'"
+              :style="{ backgroundColor: colorOf(c) }"
+            >
+              <BaseIcon :name="c.icon" :size="14" />
+            </span>
+            <span class="flex-1 truncate">{{ c.label }}</span>
+            <BaseIcon v-if="isActive(c.key)" name="check" :size="16" class="shrink-0 text-primary" />
+          </button>
+        </div>
       </div>
     </div>
   </AppContainer>

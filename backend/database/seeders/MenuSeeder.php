@@ -45,7 +45,7 @@ class MenuSeeder extends Seeder
                 ['Gdje odsjesti', '/turizam/kategorija/smjestaj'],
                 ['Korisne informacije', '/korisne-informacije'],
             ]],
-            ['Manifestacije i događaji', '/dogadjaji', [
+            ['Događaji', '/dogadjaji', [
                 ['Manifestacije', '/dogadjaji/kategorija/manifestacije'],
                 ['Događaji', '/dogadjaji/kategorija/dogadjaj'],
             ]],

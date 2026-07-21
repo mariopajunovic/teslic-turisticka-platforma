@@ -6,31 +6,31 @@ use Spatie\LaravelSettings\Settings;
 
 class StraniceSettings extends Settings
 {
-    public string $kontakt_naslov;
+    public array $kontakt_naslov;
 
-    public string $kontakt_uvod;
+    public array $kontakt_uvod;
 
-    public string $pridruzi_naslov;
+    public array $pridruzi_naslov;
 
-    public string $pridruzi_uvod;
+    public array $pridruzi_uvod;
 
-    public string $reg_biznis_naslov;
+    public array $reg_biznis_naslov;
 
-    public string $reg_biznis_uvod;
+    public array $reg_biznis_uvod;
 
-    public string $reg_autor_naslov;
+    public array $reg_autor_naslov;
 
-    public string $reg_autor_uvod;
+    public array $reg_autor_uvod;
 
-    public string $prijava_naslov;
+    public array $prijava_naslov;
 
-    public string $registracija_naslov;
+    public array $registracija_naslov;
 
-    public string $registracija_uvod;
+    public array $registracija_uvod;
 
-    public string $zaboravljena_naslov;
+    public array $zaboravljena_naslov;
 
-    public string $zaboravljena_uvod;
+    public array $zaboravljena_uvod;
 
     public static function group(): string
     {

@@ -63,6 +63,7 @@ class Prevodi
             'Politika kolačića' => ['en' => 'Cookie policy', 'de' => 'Cookie-Richtlinie'],
             'Uslovi korištenja' => ['en' => 'Terms of use', 'de' => 'Nutzungsbedingungen'],
             'Ostalo' => ['en' => 'Other', 'de' => 'Sonstiges'],
+            'Turistička ponuda, proizvodi i priče' => ['en' => 'Tourist offerings, products and stories', 'de' => 'Touristisches Angebot, Produkte und Geschichten'],
         ];
     }
 
