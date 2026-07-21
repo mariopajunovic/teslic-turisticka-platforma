@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('featured')->default(false);
             $table->string('status')->default('nacrt')->index();
             $table->text('rejection_reason')->nullable();
+            $table->json('pending')->nullable();
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

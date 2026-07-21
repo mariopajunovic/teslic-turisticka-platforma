@@ -7,8 +7,8 @@ export const biznisNav = [
 ]
 
 export const autorNav = [
+  { label: 'acc.navOverview', icon: 'target', to: '/nalog/autor/pregled' },
   { label: 'acc.navStories', icon: 'file-text', to: '/nalog/autor/price' },
-  { label: 'acc.navNewStory', icon: 'pencil', to: '/nalog/autor/nova-prica' },
   { label: 'acc.navAuthorProfile', icon: 'user', to: '/nalog/autor/profil' },
   { label: 'acc.navSettings', icon: 'settings', to: '/nalog/autor/postavke' },
 ]

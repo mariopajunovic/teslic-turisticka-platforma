@@ -30,6 +30,27 @@ class AutorStoryController extends Controller
         return Inertia::render('account/AutorPrice', ['price' => $price]);
     }
 
+    public function pregled(): Response
+    {
+        $price = Story::where('user_id', auth()->id())->get();
+
+        return Inertia::render('account/AutorPregled', [
+            'korisnik' => auth()->user()->name,
+            'stats' => [
+                'ukupno' => $price->count(),
+                'objavljeno' => $price->where('status', ContentStatus::Objavljeno)->count(),
+                'naCekanju' => $price->where('status', ContentStatus::Poslano)->count(),
+                'nacrt' => $price->where('status', ContentStatus::Nacrt)->count(),
+                'odbijeno' => $price->where('status', ContentStatus::Odbijeno)->count(),
+            ],
+            'odbijeni' => $price->where('status', ContentStatus::Odbijeno)->map(fn (Story $s) => [
+                'naslov' => $s->naslov,
+                'razlog' => $s->rejection_reason,
+                'editUrl' => "/nalog/autor/price/{$s->id}/uredi",
+            ])->values()->all(),
+        ]);
+    }
+
     public function create(): Response
     {
         return Inertia::render('account/AutorNovaPrica', [
@@ -42,14 +63,19 @@ class AutorStoryController extends Controller
     {
         $this->authorizeOwner($story);
 
+        $data = $story->pending ?? [
+            'naslov' => $story->naslov,
+            'category_id' => $story->category_id,
+            'izvod' => $story->izvod,
+            'sadrzaj' => $story->sadrzaj,
+        ];
+
         return Inertia::render('account/AutorNovaPrica', [
-            'story' => [
+            'story' => array_merge($data, [
                 'id' => $story->id,
-                'naslov' => $story->naslov,
-                'category_id' => $story->category_id,
-                'izvod' => $story->izvod,
-                'sadrzaj' => $story->sadrzaj,
-            ],
+                'objavljeno' => $story->status === ContentStatus::Objavljeno,
+                'imaPending' => $story->pending !== null,
+            ]),
             'kategorije' => $this->categories(),
         ]);
     }
@@ -74,13 +100,16 @@ class AutorStoryController extends Controller
     {
         $data = $request->validated();
 
-        $story->fill([
-            'naslov' => $data['naslov'],
-            'category_id' => $data['category_id'] ?? null,
-            'izvod' => $data['izvod'] ?? null,
-            'sadrzaj' => $data['sadrzaj'] ?? null,
-            'status' => $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt,
-        ]);
+        // Izmjena već objavljene priče -> ide na moderaciju; živa verzija ostaje aktivna.
+        if ($story->exists && $story->status === ContentStatus::Objavljeno) {
+            $story->pending = $this->pendingPayload($data);
+            $story->save();
+
+            return;
+        }
+
+        $story->popuniIz($data);
+        $story->status = $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt;
 
         if (! $story->datum) {
             $story->datum = now();
@@ -89,8 +118,17 @@ class AutorStoryController extends Controller
         $story->save();
     }
 
+    protected function pendingPayload(array $data): array
+    {
+        return collect($data)->only(['naslov', 'category_id', 'izvod', 'sadrzaj'])->all();
+    }
+
     protected function message(Story $story): string
     {
+        if ($story->pending !== null) {
+            return 'Izmjene su poslane na odobrenje. Trenutna priča ostaje objavljena.';
+        }
+
         return $story->status === ContentStatus::Poslano
             ? 'Priča je poslana na odobrenje.'
             : 'Priča je sačuvana kao nacrt.';

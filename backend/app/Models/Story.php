@@ -32,6 +32,7 @@ class Story extends Model implements HasMedia
         'featured',
         'status',
         'rejection_reason',
+        'pending',
         'published_at',
     ];
 
@@ -43,6 +44,7 @@ class Story extends Model implements HasMedia
             'status' => ContentStatus::class,
             'published_at' => 'datetime',
             'slug' => 'array',
+            'pending' => 'array',
         ];
     }
 
@@ -61,6 +63,51 @@ class Story extends Model implements HasMedia
     {
         $this->addMediaCollection('naslovna')->singleFile();
         $this->addMediaCollection('galerija');
+        $this->addMediaCollection('naslovna_pending')->singleFile();
+        $this->addMediaCollection('galerija_pending');
+    }
+
+    /** Primijeni ulazne podatke (format autorske forme) na živa polja. */
+    public function popuniIz(array $data): void
+    {
+        $this->fill([
+            'naslov' => $data['naslov'] ?? '',
+            'category_id' => $data['category_id'] ?? null,
+            'izvod' => $data['izvod'] ?? null,
+            'sadrzaj' => $data['sadrzaj'] ?? null,
+        ]);
+    }
+
+    /** Odobri izmjene na čekanju: prelij u živa polja, promoviši staging medije, obriši pending. */
+    public function primijeniPending(): void
+    {
+        if (! $this->pending) {
+            return;
+        }
+
+        $this->popuniIz($this->pending);
+        $this->pending = null;
+        $this->save();
+
+        if ($this->getMedia('naslovna_pending')->isNotEmpty()) {
+            $this->clearMediaCollection('naslovna');
+            foreach ($this->getMedia('naslovna_pending') as $m) {
+                $m->move($this, 'naslovna');
+            }
+        }
+
+        foreach ($this->getMedia('galerija_pending') as $m) {
+            $m->move($this, 'galerija');
+        }
+    }
+
+    /** Odbaci izmjene na čekanju: obriši pending podatke i staging medije (živa verzija netaknuta). */
+    public function odbaciPending(): void
+    {
+        $this->pending = null;
+        $this->save();
+        $this->clearMediaCollection('naslovna_pending');
+        $this->clearMediaCollection('galerija_pending');
     }
 
     public function scopeObjavljeno(Builder $query): Builder

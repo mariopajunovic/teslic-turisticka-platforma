@@ -1,5 +1,5 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
+import { useForm, router } from '@inertiajs/vue3';
 import ResourceFormShell from '../../components/ResourceFormShell.vue';
 import Card from '../../components/Card.vue';
 import FormField from '../../components/FormField.vue';
@@ -11,7 +11,15 @@ const props = defineProps({
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'prica' }) },
+    pending: { type: Object, default: null },
 });
+
+function odobriIzmjene() {
+    router.post(`/administracija/price/${props.prica.id}/odobri-izmjene`, {}, { preserveScroll: true });
+}
+function odbijIzmjene() {
+    router.post(`/administracija/price/${props.prica.id}/odbij-izmjene`, {}, { preserveScroll: true });
+}
 
 const form = useForm({
     naslov: { ...(props.prica?.naslov ?? {}) },
@@ -41,6 +49,28 @@ const form = useForm({
         :feature="{ key: 'featured', label: 'Izdvojena priča', hint: 'Prikazuje se izdvojeno na naslovnoj.' }"
     >
         <template #fields="{ activeLang, trGet, trSet }">
+            <div v-if="pending" class="rounded-xl border border-[#d63638]/40 bg-[#fcebeb] p-4 md:p-5">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <h2 class="text-[15px] font-bold text-ink">Izmjene na čekanju</h2>
+                    <div class="flex gap-2">
+                        <button type="button" class="rounded-lg bg-brand px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90" @click="odobriIzmjene">Odobri izmjene</button>
+                        <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="odbijIzmjene">Odbij izmjene</button>
+                    </div>
+                </div>
+                <p class="mt-1 text-[12px] text-ink-2">Autor je poslao izmjene. Živa priča ostaje objavljena dok ne odobriš.</p>
+
+                <div v-if="pending.diff.length" class="mt-3 space-y-2">
+                    <div v-for="r in pending.diff" :key="r.polje" class="rounded-lg border border-line bg-surface p-2.5">
+                        <p class="text-[12px] font-bold text-ink">{{ r.polje }}</p>
+                        <div class="mt-1 grid gap-1 text-[13px] sm:grid-cols-2">
+                            <div class="text-ink-3 line-through">{{ r.staro || '—' }}</div>
+                            <div class="font-medium text-ink">{{ r.novo || '—' }}</div>
+                        </div>
+                    </div>
+                </div>
+                <p v-else class="mt-3 text-[13px] text-ink-2">Nema promjena u tekstualnim poljima.</p>
+            </div>
+
             <Card title="Sadržaj">
                 <div class="space-y-4">
                     <TextareaField :model-value="trGet(form.izvod)" label="Izvod (uvod)" :rows="3" hint="Kratak sažetak prikazan na kartici i vrhu priče." :error="form.errors[`izvod.${activeLang}`]" @update:model-value="trSet('izvod', $event)" />

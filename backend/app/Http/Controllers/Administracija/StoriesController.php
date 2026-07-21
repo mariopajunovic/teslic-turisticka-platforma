@@ -45,6 +45,11 @@ class StoriesController extends AdminResourceController
 
     protected const POLJA = ['izvod', 'sadrzaj', 'autor', 'autor_bio'];
 
+    protected function pendingPolja(): array
+    {
+        return ['naslov' => 'Naslov', 'izvod' => 'Izvod', 'sadrzaj' => 'Sadržaj'];
+    }
+
     protected function rules(?Model $model): array
     {
         return [

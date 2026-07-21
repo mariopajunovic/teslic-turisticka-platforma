@@ -121,7 +121,56 @@ abstract class AdminResourceController extends Controller
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
             'segmenti' => (array) config('resources.types.'.$this->tip().'.segment'),
+            'pending' => $this->pendingPregled($stavka),
         ]);
+    }
+
+    protected function pendingPolja(): array
+    {
+        return ['naslov' => 'Naslov'];
+    }
+
+    protected function pendingPregled(Model $stavka): ?array
+    {
+        if (empty($stavka->pending)) {
+            return null;
+        }
+
+        $p = $stavka->pending;
+        $diff = [];
+
+        foreach ($this->pendingPolja() as $key => $label) {
+            $staro = trim(strip_tags((string) $stavka->{$key}));
+            $novo = trim(strip_tags((string) ($p[$key] ?? '')));
+
+            if ($staro !== $novo) {
+                $diff[] = ['polje' => $label, 'staro' => $staro, 'novo' => $novo];
+            }
+        }
+
+        return ['diff' => $diff];
+    }
+
+    public function approveChanges(int $id): RedirectResponse
+    {
+        $stavka = $this->find($id);
+
+        if (method_exists($stavka, 'primijeniPending')) {
+            $stavka->primijeniPending();
+        }
+
+        return back(303)->with('status', 'Izmjene su odobrene i objavljene.');
+    }
+
+    public function rejectChanges(int $id): RedirectResponse
+    {
+        $stavka = $this->find($id);
+
+        if (method_exists($stavka, 'odbaciPending')) {
+            $stavka->odbaciPending();
+        }
+
+        return back(303)->with('status', 'Izmjene su odbijene.');
     }
 
     public function store(Request $request): RedirectResponse

@@ -29,7 +29,8 @@ class PagesAdminTest extends TestCase
     {
         $page = new Page();
         $page->setTranslations('title', ['sr' => $attr['title'] ?? 'Test stranica']);
-        $page->slug = $attr['slug'] ?? 'test-'.uniqid();
+        $slug = $attr['slug'] ?? 'test-'.uniqid();
+        $page->slug = is_array($slug) ? $slug : ['sr' => $slug];
         $page->published = $attr['published'] ?? true;
         $page->is_system = $attr['is_system'] ?? false;
         $page->content = $attr['content'] ?? [];
@@ -63,7 +64,7 @@ class PagesAdminTest extends TestCase
             ])
             ->assertRedirect();
 
-        $page = Page::where('slug', 'nova-strana')->first();
+        $page = Page::where('slug->sr', 'nova-strana')->first();
         $this->assertNotNull($page);
         $this->assertEquals(['sr' => 'Nova strana', 'en' => 'New page'], $page->getTranslations('title'));
         $this->assertTrue($page->published);
@@ -78,7 +79,7 @@ class PagesAdminTest extends TestCase
             ])
             ->assertRedirect();
 
-        $this->assertDatabaseHas('pages', ['slug' => 'neka-nova-stranica']);
+        $this->assertTrue(Page::where('slug->sr', 'neka-nova-stranica')->exists());
     }
 
     public function test_update_saves_title_slug_and_seo(): void
@@ -97,7 +98,7 @@ class PagesAdminTest extends TestCase
 
         $fresh = $page->fresh();
         $this->assertSame('Izmijenjen naslov', $fresh->getTranslations('title')['sr']);
-        $this->assertSame('novi-slug', $fresh->slug);
+        $this->assertSame('novi-slug', $fresh->slugFor('sr'));
         $this->assertFalse($fresh->published);
         $this->assertEquals(['sr' => 'Meta', 'en' => 'Meta EN'], $fresh->getTranslations('meta_title'));
     }
@@ -114,7 +115,7 @@ class PagesAdminTest extends TestCase
                 'published' => true,
             ])
             ->assertRedirect();
-        $this->assertSame('pocetna', $page->fresh()->slug);
+        $this->assertSame('pocetna', $page->fresh()->slugFor('sr'));
 
         $this->actingAs($admin, 'admin')
             ->delete("/administracija/stranice/{$page->id}")
@@ -134,7 +135,7 @@ class PagesAdminTest extends TestCase
             ])
             ->assertRedirect();
 
-        $this->assertSame('join-us', $page->fresh()->slug);
+        $this->assertSame('join-us', $page->fresh()->slugFor('sr'));
     }
 
     public function test_default_meta_title_appends_site_name(): void
@@ -147,7 +148,7 @@ class PagesAdminTest extends TestCase
 
         $this->get('/meta-default')
             ->assertOk()
-            ->assertInertia(fn (AssertableInertia $p) => $p->where('seo.title', 'Kontakt - TO Teslić'));
+            ->assertInertia(fn (AssertableInertia $p) => $p->where('seo.title', 'Kontakt'));
     }
 
     public function test_custom_meta_title_gets_site_name_appended(): void
@@ -162,7 +163,7 @@ class PagesAdminTest extends TestCase
 
         $this->get('/meta-custom')
             ->assertOk()
-            ->assertInertia(fn (AssertableInertia $p) => $p->where('seo.title', 'Pocetna - TO Teslić'));
+            ->assertInertia(fn (AssertableInertia $p) => $p->where('seo.title', 'Pocetna'));
     }
 
     public function test_meta_title_not_doubled_when_site_name_present(): void
@@ -247,7 +248,7 @@ class PagesAdminTest extends TestCase
             ->assertOk()
             ->assertInertia(fn (AssertableInertia $p) => $p
                 ->component('Stranice/Builder')
-                ->where('stranica.slug', 'builder-test')
+                ->where('stranica.slug.sr', 'builder-test')
                 ->has('stranica.blocks', 1)
                 ->where('stranica.blocks.0.data.title.sr', 'Naslov')
                 ->has('schema.hero')

@@ -60,6 +60,7 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         Route::post('medij', [\App\Http\Controllers\Nalog\MedijController::class, 'store'])->name('nalog.medij');
 
         Route::middleware('role:autor')->group(function () {
+            Route::get('autor/pregled', [AutorStoryController::class, 'pregled'])->name('nalog.autor.pregled');
             Route::get('autor/price', [AutorStoryController::class, 'index'])->name('nalog.autor.price');
             Route::get('autor/nova-prica', [AutorStoryController::class, 'create'])->name('nalog.autor.nova-prica');
             Route::post('autor/price', [AutorStoryController::class, 'store']);

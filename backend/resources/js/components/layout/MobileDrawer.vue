@@ -12,7 +12,7 @@ const { t } = useI18n()
 const page = usePage()
 const authUser = computed(() => page.props.auth?.user)
 const nalogLink = computed(() =>
-  authUser.value?.role === 'autor' ? '/nalog/autor/price' : '/nalog/biznis/pregled',
+  authUser.value?.role === 'autor' ? '/nalog/autor/pregled' : '/nalog/biznis/pregled',
 )
 function logout() {
   close()

@@ -134,6 +134,8 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
             Route::delete("/{$baza}/{id}", [$ctrl, 'destroy'])->whereNumber('id')->name("{$baza}.destroy");
             Route::post("/{$baza}/{id}/odobri", [$ctrl, 'approve'])->whereNumber('id')->name("{$baza}.approve");
             Route::post("/{$baza}/{id}/odbij", [$ctrl, 'reject'])->whereNumber('id')->name("{$baza}.reject");
+            Route::post("/{$baza}/{id}/odobri-izmjene", [$ctrl, 'approveChanges'])->whereNumber('id')->name("{$baza}.approveChanges");
+            Route::post("/{$baza}/{id}/odbij-izmjene", [$ctrl, 'rejectChanges'])->whereNumber('id')->name("{$baza}.rejectChanges");
             Route::post("/{$baza}/{id}/naslovna", [$ctrl, 'uploadNaslovna'])->whereNumber('id')->name("{$baza}.naslovna");
             Route::delete("/{$baza}/{id}/naslovna", [$ctrl, 'destroyNaslovna'])->whereNumber('id')->name("{$baza}.naslovna.destroy");
             Route::post("/{$baza}/{id}/galerija", [$ctrl, 'uploadGalerija'])->whereNumber('id')->name("{$baza}.galerija");
