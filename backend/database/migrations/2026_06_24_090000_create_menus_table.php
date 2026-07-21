@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('name');
+            $table->json('name')->nullable();
             $table->timestamps();
         });
 
@@ -19,10 +19,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('menu_id')->constrained()->cascadeOnDelete();
             $table->foreignId('parent_id')->nullable()->constrained('menu_items')->cascadeOnDelete();
-            $table->string('label');
-            $table->string('url')->default('#');
+            $table->json('label')->nullable();
+            $table->string('target_type')->nullable();
+            $table->unsignedBigInteger('target_id')->nullable();
+            $table->string('url')->nullable();
             $table->unsignedInteger('sort')->default(0);
             $table->boolean('visible')->default(true);
+            $table->index(['target_type', 'target_id']);
             $table->timestamps();
         });
     }

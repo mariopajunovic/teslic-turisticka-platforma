@@ -22,7 +22,7 @@ class TranslationSeeder extends Seeder
         foreach ($rows as $r) {
             Translation::updateOrCreate(
                 ['key' => $r['key']],
-                ['group' => $r['group'], 'values' => $r['values']]
+                ['group' => $r['group'] ?? explode('.', $r['key'])[0], 'values' => $r['values']]
             );
         }
 

@@ -12,12 +12,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('naslov');
-            $table->string('slug')->unique();
-            $table->text('opis')->nullable();
-            $table->longText('opis_dug')->nullable();
-            $table->string('lokacija')->nullable();
-            $table->string('organizator')->nullable();
+            $table->json('naslov')->nullable();
+            $table->json('slug')->nullable();
+            $table->json('opis')->nullable();
+            $table->json('opis_dug')->nullable();
+            $table->json('lokacija')->nullable();
+            $table->json('organizator')->nullable();
             $table->date('datum')->nullable();
             $table->string('vrijeme')->nullable();
             $table->boolean('zavrseno')->default(false);

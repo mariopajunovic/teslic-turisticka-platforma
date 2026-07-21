@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->id();
-            $table->string('naziv');
+            $table->json('naziv')->nullable();
             $table->decimal('lat', 10, 7)->nullable();
             $table->decimal('lng', 10, 7)->nullable();
             $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();

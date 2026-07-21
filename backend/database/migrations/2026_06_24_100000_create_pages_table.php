@@ -10,13 +10,17 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
+            $table->foreignId('parent_id')->nullable()->constrained('pages')->nullOnDelete();
+            $table->json('title')->nullable();
+            $table->json('slug')->nullable();
             $table->json('content')->nullable();
             $table->boolean('published')->default(true);
             $table->boolean('is_system')->default(false);
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->string('resource_type')->nullable();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+            $table->json('meta_title')->nullable();
+            $table->json('meta_description')->nullable();
+            $table->string('og_image')->nullable();
             $table->unsignedInteger('sort')->default(0);
             $table->timestamps();
         });

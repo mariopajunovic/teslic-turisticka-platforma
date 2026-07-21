@@ -11,10 +11,10 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('naslov');
-            $table->string('slug')->unique();
-            $table->text('izvod')->nullable();
-            $table->longText('sadrzaj')->nullable();
+            $table->json('naslov')->nullable();
+            $table->json('slug')->nullable();
+            $table->json('izvod')->nullable();
+            $table->json('sadrzaj')->nullable();
             $table->date('datum')->nullable();
             $table->string('status')->default('nacrt')->index();
             $table->text('rejection_reason')->nullable();
