@@ -44,6 +44,7 @@ const form = useForm({
     odrzavanje_poruka: props.postavke.odrzavanje_poruka ?? '',
     captcha_site_key: props.postavke.captcha_site_key ?? '',
     captcha_secret: '',
+    google_analytics: props.postavke.google_analytics ?? '',
 });
 
 const addSocial = () => form.social.push({ _id: ++uid, name: '', label: '', href: '' });
@@ -299,6 +300,19 @@ const trErr = (field) => {
                         hint="Tajni ključ - za provjeru na serveru. Ostavi prazno da zadržiš postojeći."
                         :error="err('captcha_secret')"
                     />
+                </div>
+            </div>
+        </Card>
+
+        <Card v-show="tab === 'integracije'" title="Google Analytics">
+            <div class="space-y-4">
+                <p class="text-[13px] text-ink-3">
+                    Mjerenje posjeta (GA4). ID nađeš u
+                    <a href="https://analytics.google.com/" target="_blank" rel="noopener" class="font-semibold text-brand hover:text-brand-dark">Google Analytics</a>
+                    (Admin → Data streams). Ako je prazno, analitika se ne učitava.
+                </p>
+                <div class="sm:max-w-xs">
+                    <FormField v-model="form.google_analytics" label="Measurement ID" placeholder="G-XXXXXXXXXX" hint="Format: G- pa slova/brojevi." :error="err('google_analytics')" />
                 </div>
             </div>
         </Card>

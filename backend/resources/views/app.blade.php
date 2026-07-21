@@ -13,6 +13,16 @@
     <meta property="og:site_name" content="{{ config('app.name', 'TO Teslić') }}">
     <meta property="og:locale" content="sr_RS">
     <title inertia>{{ config('app.name', 'TO Teslić') }}</title>
+    @php($ga = trim((string) app(\App\Settings\SiteSettings::class)->google_analytics))
+    @if ($ga !== '')
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($ga) }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', @js($ga));
+        </script>
+    @endif
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @inertiaHead
 </head>

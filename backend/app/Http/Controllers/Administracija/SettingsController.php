@@ -36,6 +36,7 @@ class SettingsController extends Controller
                 'odrzavanje_poruka' => $s->odrzavanje_poruka,
                 'captcha_site_key' => $s->captcha_site_key,
                 'captcha_secret_set' => filled($s->captcha_secret),
+                'google_analytics' => $s->google_analytics,
             ],
             'partneri' => Partner::orderBy('sort_order')->orderBy('id')->get()->map(fn (Partner $p) => [
                 'id' => $p->id,
@@ -76,6 +77,7 @@ class SettingsController extends Controller
             'odrzavanje_poruka' => ['nullable', 'string', 'max:1000'],
             'captcha_site_key' => ['nullable', 'string', 'max:255'],
             'captcha_secret' => ['nullable', 'string', 'max:255'],
+            'google_analytics' => ['nullable', 'string', 'max:40', 'regex:/^[A-Za-z0-9\-]+$/'],
         ]);
 
         $s = app(SiteSettings::class);
@@ -107,6 +109,8 @@ class SettingsController extends Controller
         } elseif (blank($s->captcha_site_key)) {
             $s->captcha_secret = '';
         }
+
+        $s->google_analytics = trim($data['google_analytics'] ?? '');
 
         $s->save();
 

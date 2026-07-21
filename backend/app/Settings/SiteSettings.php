@@ -42,6 +42,8 @@ class SiteSettings extends Settings
 
     public string $captcha_secret;
 
+    public string $google_analytics;
+
     public static function group(): string
     {
         return 'site';
