@@ -82,6 +82,19 @@ class PageController extends Controller
         return request()->boolean('preview') && auth('admin')->check();
     }
 
+    protected function povezaniSadrzaj(): array
+    {
+        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+
+        return [
+            'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
+            'lokalitet' => $lokalitet ? (new LocationResource($lokalitet))->resolve() : null,
+            'dogadjaj' => $dogadjaj ? (new EventResource($dogadjaj))->resolve() : null,
+        ];
+    }
+
     protected function pageContent(Page $page): array
     {
         if ($this->previewing()) {
@@ -133,6 +146,14 @@ class PageController extends Controller
             if ($type === 'map') {
                 $block['data']['items'] = MapPoints::all();
                 $block['data']['to'] = ResourceUrls::forTarget($block['data']['cilj'] ?? null) ?: ($block['data']['to'] ?? null);
+            }
+
+            if ($type === 'map_explorer') {
+                $block['data']['items'] = MapPoints::all();
+            }
+
+            if ($type === 'related_content') {
+                $block['data']['povezani'] = $this->povezaniSadrzaj();
             }
 
             if ($type === 'cta') {
@@ -248,7 +269,23 @@ class PageController extends Controller
         $model = $cfg['model'];
         $resource = $cfg['resource'];
 
-        $prikaziFiltere = (bool) ($data['filteri'] ?? false);
+        $imaKategoriju = ! empty($cfg['category_type']);
+
+        if ($tip === 'procurement') {
+            $godine = $model::objavljeno()
+                ->with('media')
+                ->orderByDesc('godina')
+                ->orderByDesc('datum')
+                ->orderByDesc('id')
+                ->get()
+                ->groupBy(fn ($p) => $p->godina ?: 0)
+                ->map(fn ($items, $g) => ['godina' => (int) $g, 'stavke' => $resource::collection($items)->resolve()])
+                ->values();
+
+            return [...$data, 'resource' => $tip, 'godine' => $godine, 'filteri' => false, 'pretraga' => false];
+        }
+
+        $prikaziFiltere = $imaKategoriju && (bool) ($data['filteri'] ?? false);
         $prikaziPretragu = (bool) ($data['pretraga'] ?? false);
         $perPage = max(1, (int) ($data['perPage'] ?? 12));
 
@@ -258,15 +295,15 @@ class PageController extends Controller
         $imaPeriod = in_array($tip, ['event', 'ad'], true) && $prikaziFiltere;
         $period = $imaPeriod ? (string) request()->query('period', '') : '';
 
-        $query = $model::objavljeno()->with(['category', 'media']);
+        $query = $model::objavljeno()->with($imaKategoriju ? ['category', 'media'] : ['media']);
 
-        if ($page->category_id) {
+        if ($imaKategoriju && $page->category_id) {
             $query->where('category_id', $page->category_id);
-        } elseif (! empty($data['kategorija'])) {
+        } elseif ($imaKategoriju && ! empty($data['kategorija'])) {
             $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($data['kategorija']));
         }
 
-        if ($filterKat !== '') {
+        if ($imaKategoriju && $filterKat !== '') {
             $query->whereHas('category', fn ($c) => $c->byKeyOrSlug($filterKat));
         }
 
@@ -450,6 +487,12 @@ class PageController extends Controller
 
         if ($tip === 'story') {
             $query->orderByDesc('published_at')->orderByDesc('datum')->orderByDesc('id');
+
+            return;
+        }
+
+        if ($tip === 'news') {
+            $query->orderByDesc('datum')->orderByDesc('published_at')->orderByDesc('id');
 
             return;
         }

@@ -95,16 +95,16 @@ class SiteData
         return $menu->rootItems->map(function (MenuItem $item) {
             $to = $item->razrijeseniUrl();
 
-            if ($to === null) {
-                return null;
-            }
-
-            $node = ['label' => $item->label, 'to' => $to];
-
             $djeca = $item->children
                 ->map(fn (MenuItem $c) => ($url = $c->razrijeseniUrl()) ? ['label' => $c->label, 'to' => $url] : null)
                 ->filter()
                 ->values();
+
+            if ($to === null && $djeca->isEmpty()) {
+                return null;
+            }
+
+            $node = ['label' => $item->label, 'to' => $to];
 
             if ($djeca->isNotEmpty()) {
                 $node['children'] = $djeca->all();

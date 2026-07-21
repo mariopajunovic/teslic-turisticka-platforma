@@ -119,7 +119,7 @@ function logout() {
 
         <!-- Desktop navigacija (rasterećena, 6 sadržajnih stavki) -->
         <nav class="ml-6 hidden items-center gap-x-6 lg:flex">
-          <template v-for="item in mainNav" :key="item.to">
+          <template v-for="item in mainNav" :key="item.label">
             <NavDropdown v-if="item.children" :item="item" />
             <Link
               v-else

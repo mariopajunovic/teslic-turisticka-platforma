@@ -25,6 +25,7 @@ function onFocusout(e) {
 <template>
   <div class="relative" @mouseenter="show" @mouseleave="hide" @focusout="onFocusout">
     <Link
+      v-if="item.to"
       :href="item.to"
       class="inline-flex items-center gap-1 text-sm font-medium text-text transition-colors hover:text-primary"
       :aria-expanded="open"
@@ -33,6 +34,17 @@ function onFocusout(e) {
       {{ item.label }}
       <BaseIcon name="chevron-down" :size="14" class="text-text-muted" />
     </Link>
+    <button
+      v-else
+      type="button"
+      class="inline-flex items-center gap-1 text-sm font-medium text-text transition-colors hover:text-primary"
+      :aria-expanded="open"
+      @focus="show"
+      @click="open = !open"
+    >
+      {{ item.label }}
+      <BaseIcon name="chevron-down" :size="14" class="text-text-muted" />
+    </button>
     <Transition name="dropdown">
       <div
         v-if="open"

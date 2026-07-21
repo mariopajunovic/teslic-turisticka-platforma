@@ -29,7 +29,7 @@ class BlockSchema
             ]],
             'card_grid' => ['label' => 'Mreža kartica', 'icon' => 'layout-grid', 'opis' => 'Biznisi, priče, događaji…', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
-                ['name' => 'resource', 'label' => 'Izvor', 'type' => 'select', 'required' => true, 'options' => ['business' => 'Biznisi', 'location' => 'Lokaliteti', 'event' => 'Događaji', 'ad' => 'Oglasi', 'story' => 'Priče']],
+                ['name' => 'resource', 'label' => 'Izvor', 'type' => 'select', 'required' => true, 'options' => ['business' => 'Biznisi', 'location' => 'Lokaliteti', 'event' => 'Događaji', 'ad' => 'Oglasi', 'story' => 'Priče', 'news' => 'Vijesti']],
                 ['name' => 'kategorija', 'label' => 'Kategorija (ključ, opciono)', 'type' => 'text'],
                 ['name' => 'limit', 'label' => 'Broj kartica', 'type' => 'number'],
                 ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
@@ -40,7 +40,7 @@ class BlockSchema
             ]],
             'resource_list' => ['label' => 'Lista sadržaja', 'icon' => 'list', 'opis' => 'Puna lista s paginacijom', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
-                ['name' => 'resource', 'label' => 'Izvor', 'type' => 'select', 'options' => ['' => 'Kao na stranici', 'business' => 'Biznisi', 'location' => 'Lokaliteti', 'event' => 'Događaji', 'ad' => 'Oglasi', 'story' => 'Priče']],
+                ['name' => 'resource', 'label' => 'Izvor', 'type' => 'select', 'options' => ['' => 'Kao na stranici', 'business' => 'Biznisi', 'location' => 'Lokaliteti', 'event' => 'Događaji', 'ad' => 'Oglasi', 'story' => 'Priče', 'news' => 'Vijesti', 'procurement' => 'Javne nabavke']],
                 ['name' => 'kategorija', 'label' => 'Kategorija (slug, opciono)', 'type' => 'text'],
                 ['name' => 'perPage', 'label' => 'Po strani', 'type' => 'number'],
                 ['name' => 'cols', 'label' => 'Kolona', 'type' => 'select', 'options' => ['3' => '3', '4' => '4']],
@@ -85,6 +85,17 @@ class BlockSchema
                 ['name' => 'linkText', 'label' => 'Tekst linka', 'type' => 'text', 'tr' => true],
                 ['name' => 'cilj', 'label' => 'Link', 'type' => 'target'],
                 ['name' => 'height', 'label' => 'Visina', 'type' => 'text'],
+            ]],
+            'map_explorer' => ['label' => 'Mapa - puna (filteri + ponuda)', 'icon' => 'map', 'opis' => 'Napredna mapa: filteri, naselja, lista ponude', 'fields' => [
+                ['name' => 'naslov', 'label' => 'Naslov liste', 'type' => 'text', 'tr' => true],
+            ]],
+            'contact_form' => ['label' => 'Kontakt forma', 'icon' => 'mail', 'opis' => 'Forma za poruke + kontakt info', 'fields' => [
+                ['name' => 'naslov', 'label' => 'Naslov', 'type' => 'text', 'tr' => true],
+                ['name' => 'prikaziMapu', 'label' => 'Prikaži mini mapu', 'type' => 'toggle'],
+            ]],
+            'related_content' => ['label' => 'Povezani sadržaj', 'icon' => 'sparkles', 'opis' => 'Najnovije: biznis, lokalitet, događaj', 'fields' => [
+                ['name' => 'kicker', 'label' => 'Nadnaslov', 'type' => 'text', 'tr' => true],
+                ['name' => 'naslov', 'label' => 'Naslov', 'type' => 'text', 'tr' => true],
             ]],
             'stepper' => ['label' => 'Koraci', 'icon' => 'list-ordered', 'opis' => 'Korak po korak', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],

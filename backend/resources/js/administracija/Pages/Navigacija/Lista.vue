@@ -29,8 +29,8 @@ watch(() => props.aktivan?.stavke, (v) => { stavke.value = [...(v ?? [])]; });
 
 const izaberiMeni = (key) => router.get('/administracija/navigacija', { meni: key }, { preserveState: true, preserveScroll: true, replace: true });
 
-const TIP_LABELA = { page: 'Stranica', category: 'Kategorija', external: 'Vanjski link' };
-const TIP_BOJE = { page: '#2271B1', category: '#0E8275', external: '#787C82' };
+const TIP_LABELA = { page: 'Stranica', category: 'Kategorija', external: 'Vanjski link', group: 'Grupa (dropdown)' };
+const TIP_BOJE = { page: '#2271B1', category: '#0E8275', external: '#787C82', group: '#8250DF' };
 const tipStyle = (t) => {
     const boja = TIP_BOJE[t] || '#787C82';
     return { color: boja, backgroundColor: `${boja}1a` };
@@ -193,7 +193,8 @@ const brojMrtvih = computed(() => stavke.value.filter((s) => s.mrtav).length);
 
                         <div class="min-w-0 flex-1" :style="s.dubina ? { paddingLeft: '26px' } : {}">
                             <span class="block truncate text-[13px] font-semibold text-ink">{{ s.label }}</span>
-                            <span class="block truncate text-xs" :class="s.mrtav ? 'text-bad' : 'text-ink-3'">{{ s.url || 'nije razriješeno' }}</span>
+                            <span v-if="s.grupa" class="block truncate text-xs text-ink-3">Dropdown grupa (otvara podstavke)</span>
+                            <span v-else class="block truncate text-xs" :class="s.mrtav ? 'text-bad' : 'text-ink-3'">{{ s.url || 'nije razriješeno' }}</span>
                         </div>
 
                         <div class="w-[130px] shrink-0">
@@ -263,12 +264,13 @@ const brojMrtvih = computed(() => stavke.value.filter((s) => s.mrtav).length);
                                     { value: 'page', label: 'Stranica' },
                                     { value: 'category', label: 'Kategorija' },
                                     { value: 'external', label: 'Vanjski link' },
+                                    { value: 'group', label: 'Grupa (dropdown, bez linka)' },
                                 ]"
                                 @update:model-value="forma.target_type = $event; forma.target_id = ''"
                             />
 
                             <SelectField
-                                v-if="forma.target_type !== 'external'"
+                                v-if="forma.target_type === 'page' || forma.target_type === 'category'"
                                 :model-value="forma.target_id"
                                 :label="forma.target_type === 'page' ? 'Stranica' : 'Kategorija'"
                                 :options="ciljOpcije"
@@ -278,13 +280,17 @@ const brojMrtvih = computed(() => stavke.value.filter((s) => s.mrtav).length);
                             />
 
                             <FormField
-                                v-else
+                                v-else-if="forma.target_type === 'external'"
                                 :model-value="forma.url"
-                                label="URL"
-                                placeholder="https://…"
+                                label="URL ili putanja"
+                                placeholder="/vijesti ili https://…"
                                 :error="forma.errors.url"
                                 @update:model-value="forma.url = $event"
                             />
+
+                            <p v-else class="rounded-md bg-info-bg px-3 py-2 text-xs text-info">
+                                Grupa nema svoj link - služi samo kao naslov dropdowna koji otvara podstavke.
+                            </p>
 
                             <SelectField
                                 :model-value="forma.parent_id"

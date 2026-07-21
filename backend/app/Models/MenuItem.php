@@ -19,6 +19,8 @@ class MenuItem extends Model
 
     public const CILJ_VANJSKI = 'external';
 
+    public const CILJ_GRUPA = 'group';
+
     protected $fillable = ['menu_id', 'parent_id', 'label', 'target_type', 'target_id', 'url', 'sort', 'visible'];
 
     public array $translatable = ['label'];

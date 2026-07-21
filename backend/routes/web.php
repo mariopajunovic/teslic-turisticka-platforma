@@ -24,7 +24,7 @@ $detailSegments = collect((array) config('resources.types'))
     ->all();
 
 $reservedSegments = array_merge(
-    ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog', 'vijesti', 'javne-nabavke'],
+    ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog'],
     (array) config('locales.prefixed'),
     $detailSegments,
 );
@@ -44,12 +44,6 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         ->middleware('throttle:5,1')
         ->name('biznisi.upit');
 
-    Route::get('/mapa', [MapController::class, 'index'])->name('mapa.index');
-
-    Route::get('/vijesti', [NewsController::class, 'index'])->name('vijesti');
-    Route::get('/javne-nabavke', [ProcurementController::class, 'index'])->name('javne-nabavke');
-
-    Route::get('/kontakt', fn () => Inertia::render('Contact', ['seo' => \App\Support\Seo::make('Kontakt', 'Stupite u kontakt s nama — tu smo za sva pitanja i prijedloge.', url()->current())]))->name('kontakt');
     Route::post('/kontakt', [\App\Http\Controllers\ContactController::class, 'send'])
         ->middleware('throttle:5,1')
         ->name('kontakt.send');
@@ -93,7 +87,6 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         });
     });
 
-    Route::get('/o-projektu', [PageController::class, 'about'])->name('o-projektu');
 
     Route::get('/{slug}', [PageController::class, 'show'])
         ->where('slug', $slugPattern)

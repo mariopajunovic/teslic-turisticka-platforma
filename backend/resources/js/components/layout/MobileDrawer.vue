@@ -57,7 +57,7 @@ watch(open, (v) => {
 
           <!-- Navigacija -->
           <nav class="flex-1 overflow-y-auto p-2 pt-3">
-            <template v-for="item in mainNav" :key="item.to">
+            <template v-for="item in mainNav" :key="item.label">
               <div v-if="item.children">
                 <button
                   type="button"

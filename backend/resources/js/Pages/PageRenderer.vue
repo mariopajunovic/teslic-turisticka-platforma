@@ -18,6 +18,9 @@ import BlockStats from '@/components/blocks/BlockStats.vue'
 import BlockPartners from '@/components/blocks/BlockPartners.vue'
 import BlockFeaturedStory from '@/components/blocks/BlockFeaturedStory.vue'
 import BlockAuthor from '@/components/blocks/BlockAuthor.vue'
+import BlockMapExplorer from '@/components/blocks/BlockMapExplorer.vue'
+import BlockContactForm from '@/components/blocks/BlockContactForm.vue'
+import BlockRelatedContent from '@/components/blocks/BlockRelatedContent.vue'
 
 const props = defineProps({
   page: { type: Object, default: () => ({}) },
@@ -43,6 +46,9 @@ const registry = {
   partners: BlockPartners,
   featured_story: BlockFeaturedStory,
   author: BlockAuthor,
+  map_explorer: BlockMapExplorer,
+  contact_form: BlockContactForm,
+  related_content: BlockRelatedContent,
 }
 
 const isVisible = (block) => !(block.data?.settings?.hidden)
