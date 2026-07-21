@@ -93,6 +93,8 @@ function ukloniMedij(id) {
 
       <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
       <BaseAlert v-if="form.errors.naslov" variant="greska" :title="$t('acc.checkDataShort')" :text="$t('acc.nameRequired')" />
+      <BaseAlert v-if="objava?.imaPending" variant="info" :title="$t('acc.pendingChangesTitle')" :text="$t('acc.pendingChangesText')" />
+      <BaseAlert v-else-if="objava?.objavljeno" variant="info" :title="$t('acc.editLiveTitle')" :text="$t('acc.editLiveText')" />
 
       <!-- Informacije -->
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
@@ -206,12 +208,23 @@ function ukloniMedij(id) {
       </div>
 
       <div class="flex flex-wrap justify-end gap-3">
-        <BaseButton variant="secondary" icon="save" :disabled="form.processing" @click="submit('nacrt')">
-          {{ $t('acc.saveDraft') }}
+        <BaseButton
+          v-if="objava?.objavljeno"
+          variant="primary"
+          icon="send"
+          :disabled="form.processing"
+          @click="submit('posalji')"
+        >
+          {{ $t('acc.submitChanges') }}
         </BaseButton>
-        <BaseButton variant="primary" icon="send" :disabled="form.processing" @click="submit('posalji')">
-          {{ $t('acc.submitApproval') }}
-        </BaseButton>
+        <template v-else>
+          <BaseButton variant="secondary" icon="save" :disabled="form.processing" @click="submit('nacrt')">
+            {{ $t('acc.saveDraft') }}
+          </BaseButton>
+          <BaseButton variant="primary" icon="send" :disabled="form.processing" @click="submit('posalji')">
+            {{ $t('acc.submitApproval') }}
+          </BaseButton>
+        </template>
       </div>
     </div>
   </AccountLayout>

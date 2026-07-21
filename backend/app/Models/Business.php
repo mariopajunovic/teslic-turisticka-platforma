@@ -41,6 +41,7 @@ class Business extends Model implements HasMedia
         'lng',
         'status',
         'rejection_reason',
+        'pending',
         'published_at',
     ];
 
@@ -48,6 +49,7 @@ class Business extends Model implements HasMedia
     {
         return [
             'slug' => 'array',
+            'pending' => 'array',
             'kontakt' => 'array',
             'radno_vrijeme' => 'array',
             'drustvene' => 'array',
@@ -140,6 +142,77 @@ class Business extends Model implements HasMedia
         $this->addMediaCollection('logo')->singleFile();
         $this->addMediaCollection('naslovna')->singleFile();
         $this->addMediaCollection('galerija');
+        $this->addMediaCollection('naslovna_pending')->singleFile();
+        $this->addMediaCollection('galerija_pending');
+    }
+
+    /** Primijeni ulazne podatke (format vlasničke forme) na živa polja. */
+    public function popuniIz(array $data): void
+    {
+        $this->fill([
+            'naslov' => $data['naslov'] ?? '',
+            'category_id' => $data['category_id'] ?? null,
+            'opis' => $data['opis'] ?? null,
+            'opis_dug' => $data['opis_dug'] ?? null,
+            'lokacija' => $data['lokacija'] ?? null,
+            'kontakt' => $data['kontakt'] ?? null,
+            'drustvene' => collect(['facebook', 'instagram', 'youtube', 'tiktok'])
+                ->mapWithKeys(fn ($k) => [$k => trim((string) ($data['drustvene'][$k] ?? ''))])
+                ->all(),
+            'nacin_placanja' => array_filter([
+                'gotovina' => (bool) ($data['nacin_placanja']['gotovina'] ?? false),
+                'kartica' => (bool) ($data['nacin_placanja']['kartica'] ?? false),
+                'virman' => (bool) ($data['nacin_placanja']['virman'] ?? false),
+            ]),
+            'cijena_raspon' => in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null,
+            'godina_osnivanja' => $data['godina_osnivanja'] ?? null,
+            'jib' => $data['jib'] ?? null,
+            'radno_vrijeme' => collect($data['radno_vrijeme'] ?? [])->take(7)->map(fn ($d) => [
+                'zatvoreno' => (bool) ($d['zatvoreno'] ?? false),
+                'od' => trim((string) ($d['od'] ?? '')),
+                'do' => trim((string) ($d['do'] ?? '')),
+            ])->values()->all(),
+            'lat' => $data['lat'] ?? null,
+            'lng' => $data['lng'] ?? null,
+        ]);
+
+        $this->setTranslations('usluge', ['sr' => collect(preg_split('/\r\n|\r|\n/', (string) ($data['usluge'] ?? '')))
+            ->map(fn ($u) => trim($u))
+            ->filter()
+            ->values()
+            ->all()]);
+    }
+
+    /** Odobri izmjene na čekanju: prelij u živa polja, promoviši staging medije, obriši pending. */
+    public function primijeniPending(): void
+    {
+        if (! $this->pending) {
+            return;
+        }
+
+        $this->popuniIz($this->pending);
+        $this->pending = null;
+        $this->save();
+
+        if ($this->getMedia('naslovna_pending')->isNotEmpty()) {
+            $this->clearMediaCollection('naslovna');
+            foreach ($this->getMedia('naslovna_pending') as $m) {
+                $m->move($this, 'naslovna');
+            }
+        }
+
+        foreach ($this->getMedia('galerija_pending') as $m) {
+            $m->move($this, 'galerija');
+        }
+    }
+
+    /** Odbaci izmjene na čekanju: obriši pending podatke i staging medije (živa verzija netaknuta). */
+    public function odbaciPending(): void
+    {
+        $this->pending = null;
+        $this->save();
+        $this->clearMediaCollection('naslovna_pending');
+        $this->clearMediaCollection('galerija_pending');
     }
 
     public function scopeObjavljeno(Builder $query): Builder

@@ -43,7 +43,7 @@ class StorySeeder extends Seeder
             $model = Story::updateOrCreate(
                 ['slug' => ['sr' => $item['slug']]],
                 [
-                    'user_id' => $owner?->id,
+                    'user_id' => $i < 3 ? $owner?->id : null,
                     'category_id' => $category?->id,
                     'naslov' => $item['naslov'],
                     'izvod' => $item['izvod'] ?? null,

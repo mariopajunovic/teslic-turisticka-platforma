@@ -22,7 +22,15 @@ const props = defineProps({
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'biznis' }) },
+    pending: { type: Object, default: null },
 });
+
+function odobriIzmjene() {
+    router.post(`/administracija/biznisi/${props.biznis.id}/odobri-izmjene`, {}, { preserveScroll: true });
+}
+function odbijIzmjene() {
+    router.post(`/administracija/biznisi/${props.biznis.id}/odbij-izmjene`, {}, { preserveScroll: true });
+}
 
 const { confirm } = useConfirm();
 const page = usePage();
@@ -196,6 +204,36 @@ const onFotoDrop = (target) => {
     <Head :title="isNew ? 'Novi biznis' : `Uredi: ${naslovDisplay}`" />
 
     <div class="space-y-4">
+        <div v-if="pending" class="rounded-xl border border-[#d63638]/40 bg-[#fcebeb] p-4 md:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <h2 class="text-[15px] font-bold text-ink">Izmjene na čekanju</h2>
+                <div class="flex gap-2">
+                    <button type="button" class="rounded-lg bg-brand px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90" @click="odobriIzmjene">Odobri izmjene</button>
+                    <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="odbijIzmjene">Odbij izmjene</button>
+                </div>
+            </div>
+            <p class="mt-1 text-[12px] text-ink-2">Vlasnik je poslao izmjene. Živa objava ostaje aktivna dok ne odobriš.</p>
+
+            <div v-if="pending.diff.length" class="mt-3 space-y-2">
+                <div v-for="r in pending.diff" :key="r.polje" class="rounded-lg border border-line bg-surface p-2.5">
+                    <p class="text-[12px] font-bold text-ink">{{ r.polje }}</p>
+                    <div class="mt-1 grid gap-1 text-[13px] sm:grid-cols-2">
+                        <div class="text-ink-3 line-through">{{ r.staro || '—' }}</div>
+                        <div class="font-medium text-ink">{{ r.novo || '—' }}</div>
+                    </div>
+                </div>
+            </div>
+            <p v-else class="mt-3 text-[13px] text-ink-2">Nema promjena u tekstualnim poljima (moguće samo kontakt / radno vrijeme / slike).</p>
+
+            <div v-if="pending.naslovnaNova || pending.galerijaNova.length" class="mt-3">
+                <p class="text-[12px] font-bold text-ink">Nove slike na čekanju</p>
+                <div class="mt-1.5 flex flex-wrap gap-2">
+                    <img v-if="pending.naslovnaNova" :src="pending.naslovnaNova" class="h-16 w-24 rounded-lg object-cover" alt="" />
+                    <img v-for="(g, i) in pending.galerijaNova" :key="i" :src="g" class="h-16 w-24 rounded-lg object-cover" alt="" />
+                </div>
+            </div>
+        </div>
+
         <header class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <div class="flex min-w-0 items-center gap-2.5">
                 <h1 class="truncate text-[22px] font-bold text-ink">{{ isNew ? 'Novi biznis' : 'Uredi biznis' }}</h1>

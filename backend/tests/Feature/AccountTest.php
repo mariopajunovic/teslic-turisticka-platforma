@@ -70,7 +70,7 @@ class AccountTest extends TestCase
             'name' => 'Pčelarstvo Đukić',
             'telefon' => '065/111-222',
             'bio' => 'Domaći med.',
-        ])->assertRedirect('/nalog/biznis/profil');
+        ])->assertRedirect('/nalog/biznis/postavke');
 
         $this->assertSame('Domaći med.', $biznis->fresh()->bio);
     }
@@ -122,7 +122,8 @@ class AccountTest extends TestCase
 
         $this->actingAs($biznis)->get('/nalog/biznis/objave')->assertOk();
         $this->actingAs($biznis)->get('/nalog/biznis/objave/nova')->assertOk();
-        $this->actingAs($biznis)->get('/nalog/biznis/profil')->assertOk();
+        $this->actingAs($biznis)->get('/nalog/biznis/postavke')->assertOk();
+        $this->actingAs($biznis)->get('/nalog/biznis/pregled')->assertOk();
     }
 
     public function test_obavijest_se_salje_pri_objavi(): void
@@ -150,7 +151,7 @@ class AccountTest extends TestCase
             'published_at' => now(),
         ]);
 
-        $this->post("/domace-je-najbolje/{$business->slug}/upit", [
+        $this->post("/biznis/{$business->slugFor('sr')}/upit", [
             'ime' => 'Marko',
             'email' => 'marko@primjer.ba',
             'poruka' => 'Zanima me ponuda.',

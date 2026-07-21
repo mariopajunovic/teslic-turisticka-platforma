@@ -105,6 +105,8 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::delete('/biznisi/{business}', [BusinessesController::class, 'destroy'])->name('biznisi.destroy');
         Route::post('/biznisi/{business}/odobri', [BusinessesController::class, 'approve'])->name('biznisi.approve');
         Route::post('/biznisi/{business}/odbij', [BusinessesController::class, 'reject'])->name('biznisi.reject');
+        Route::post('/biznisi/{business}/odobri-izmjene', [BusinessesController::class, 'approveChanges'])->name('biznisi.approveChanges');
+        Route::post('/biznisi/{business}/odbij-izmjene', [BusinessesController::class, 'rejectChanges'])->name('biznisi.rejectChanges');
         Route::post('/biznisi/{business}/logo', [BusinessesController::class, 'uploadLogo'])->name('biznisi.logo');
         Route::delete('/biznisi/{business}/logo', [BusinessesController::class, 'destroyLogo'])->name('biznisi.logo.destroy');
         Route::post('/biznisi/{business}/naslovna', [BusinessesController::class, 'uploadNaslovna'])->name('biznisi.naslovna');

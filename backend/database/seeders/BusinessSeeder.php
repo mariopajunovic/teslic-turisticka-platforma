@@ -31,7 +31,7 @@ class BusinessSeeder extends Seeder
 
             $model = Business::where('slug->sr', $item['slug'])->first() ?? new Business();
             $model->fill([
-                'user_id' => $owner?->id,
+                'user_id' => $i === 0 ? $owner?->id : null,
                 'category_id' => $category?->id,
                 'naslov' => $item['naslov'],
                 'opis' => $item['opis'] ?? null,

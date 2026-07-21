@@ -77,6 +77,7 @@ class BusinessesController extends Controller
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
             'segmenti' => (array) config('resources.types.business.segment'),
+            'pending' => $this->pendingPregled($business),
         ]);
     }
 
@@ -123,6 +124,53 @@ class BusinessesController extends Controller
         $workflow->reject($business, $data['rejection_reason']);
 
         return back(303)->with('status', 'Biznis je odbijen.');
+    }
+
+    public function approveChanges(Business $business): RedirectResponse
+    {
+        $business->primijeniPending();
+
+        return back(303)->with('status', 'Izmjene su odobrene i objavljene.');
+    }
+
+    public function rejectChanges(Request $request, Business $business): RedirectResponse
+    {
+        $request->validate(['rejection_reason' => ['nullable', 'string', 'max:1000']]);
+
+        $business->odbaciPending();
+
+        return back(303)->with('status', 'Izmjene su odbijene.');
+    }
+
+    protected function pendingPregled(Business $business): ?array
+    {
+        if (! $business->pending) {
+            return null;
+        }
+
+        $p = $business->pending;
+        $polja = [
+            'Naziv' => [(string) $business->naslov, (string) ($p['naslov'] ?? '')],
+            'Kratki opis' => [(string) $business->opis, (string) ($p['opis'] ?? '')],
+            'Detaljan opis' => [strip_tags((string) $business->opis_dug), strip_tags((string) ($p['opis_dug'] ?? ''))],
+            'Lokacija' => [(string) $business->lokacija, (string) ($p['lokacija'] ?? '')],
+            'JIB' => [(string) $business->jib, (string) ($p['jib'] ?? '')],
+            'Godina osnivanja' => [(string) $business->godina_osnivanja, (string) ($p['godina_osnivanja'] ?? '')],
+            'Raspon cijena' => [(string) $business->cijena_raspon, (string) ($p['cijena_raspon'] ?? '')],
+            'Usluge' => [implode(', ', $business->getTranslations('usluge')['sr'] ?? []), (string) ($p['usluge'] ?? '')],
+        ];
+
+        $diff = collect($polja)
+            ->map(fn ($v, $k) => ['polje' => $k, 'staro' => $v[0], 'novo' => $v[1]])
+            ->filter(fn ($r) => $r['staro'] !== $r['novo'])
+            ->values()
+            ->all();
+
+        return [
+            'diff' => $diff,
+            'naslovnaNova' => $business->getFirstMediaUrl('naslovna_pending') ?: null,
+            'galerijaNova' => $business->getMedia('galerija_pending')->map(fn ($m) => $m->getUrl())->values()->all(),
+        ];
     }
 
     public function uploadNaslovna(Request $request, Business $business): RedirectResponse

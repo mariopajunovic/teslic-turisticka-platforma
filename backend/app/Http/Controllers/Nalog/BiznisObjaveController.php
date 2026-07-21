@@ -65,31 +65,42 @@ class BiznisObjaveController extends Controller
     {
         $this->authorizeOwner($business);
 
+        $imaPending = $business->pending !== null;
+
+        $data = $business->pending ?? [
+            'naslov' => $business->naslov,
+            'category_id' => $business->category_id,
+            'opis' => $business->opis,
+            'opis_dug' => $business->opis_dug,
+            'lokacija' => $business->lokacija,
+            'kontakt' => $business->kontakt ?? [],
+            'drustvene' => $business->drustvene ?? [],
+            'usluge' => implode("\n", $business->getTranslations('usluge')['sr'] ?? []),
+            'nacin_placanja' => $business->nacin_placanja ?? [],
+            'cijena_raspon' => $business->cijena_raspon,
+            'godina_osnivanja' => $business->godina_osnivanja,
+            'jib' => $business->jib,
+            'radno_vrijeme' => $business->radno_vrijeme ?: [],
+            'lat' => $business->lat,
+            'lng' => $business->lng,
+        ];
+
+        $galerija = $imaPending && $business->getMedia('galerija_pending')->isNotEmpty()
+            ? $business->getMedia('galerija_pending')
+            : $business->getMedia('galerija');
+
         return Inertia::render('account/BiznisObjavaForm', [
-            'objava' => [
+            'objava' => array_merge($data, [
                 'id' => $business->id,
-                'naslov' => $business->naslov,
-                'category_id' => $business->category_id,
-                'opis' => $business->opis,
-                'opis_dug' => $business->opis_dug,
-                'lokacija' => $business->lokacija,
-                'kontakt' => $business->kontakt ?? [],
-                'drustvene' => $business->drustvene ?? [],
-                'usluge' => implode("\n", $business->getTranslations('usluge')['sr'] ?? []),
-                'nacin_placanja' => $business->nacin_placanja ?? [],
-                'cijena_raspon' => $business->cijena_raspon,
-                'godina_osnivanja' => $business->godina_osnivanja,
-                'jib' => $business->jib,
-                'radno_vrijeme' => $business->radno_vrijeme ?: [],
-                'lat' => $business->lat,
-                'lng' => $business->lng,
                 'status' => $business->status->badge(),
-                'naslovna' => $business->getFirstMediaUrl('naslovna') ?: null,
-                'galerija' => $business->getMedia('galerija')->map(fn (Media $m) => [
+                'objavljeno' => $business->status === ContentStatus::Objavljeno,
+                'imaPending' => $imaPending,
+                'naslovna' => ($imaPending ? $business->getFirstMediaUrl('naslovna_pending') : '') ?: ($business->getFirstMediaUrl('naslovna') ?: null),
+                'galerija' => $galerija->map(fn (Media $m) => [
                     'id' => $m->id,
                     'src' => $m->getUrl(),
                 ])->all(),
-            ],
+            ]),
             'kategorije' => $this->categories(),
         ]);
     }
@@ -129,28 +140,17 @@ class BiznisObjaveController extends Controller
     {
         $data = $request->validated();
 
-        $business->fill([
-            'naslov' => $data['naslov'],
-            'category_id' => $data['category_id'] ?? null,
-            'opis' => $data['opis'] ?? null,
-            'opis_dug' => $data['opis_dug'] ?? null,
-            'lokacija' => $data['lokacija'] ?? null,
-            'kontakt' => $data['kontakt'] ?? null,
-            'drustvene' => $this->drustvene($data['drustvene'] ?? []),
-            'nacin_placanja' => array_filter([
-                'gotovina' => (bool) ($data['nacin_placanja']['gotovina'] ?? false),
-                'kartica' => (bool) ($data['nacin_placanja']['kartica'] ?? false),
-                'virman' => (bool) ($data['nacin_placanja']['virman'] ?? false),
-            ]),
-            'cijena_raspon' => in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null,
-            'godina_osnivanja' => $data['godina_osnivanja'] ?? null,
-            'jib' => $data['jib'] ?? null,
-            'radno_vrijeme' => $this->radnoVrijeme($data['radno_vrijeme'] ?? []),
-            'lat' => $data['lat'] ?? null,
-            'lng' => $data['lng'] ?? null,
-            'status' => $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt,
-        ]);
-        $business->setTranslations('usluge', ['sr' => $this->uslugeNiz($data['usluge'] ?? '')]);
+        // Izmjena već objavljenog listinga -> ide na moderaciju; živa verzija ostaje aktivna.
+        if ($business->exists && $business->status === ContentStatus::Objavljeno) {
+            $business->pending = $this->pendingPayload($data);
+            $business->save();
+            $this->stageMedia($business, $request);
+
+            return;
+        }
+
+        $business->popuniIz($data);
+        $business->status = $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt;
         $business->save();
 
         if ($request->hasFile('naslovna')) {
@@ -162,33 +162,33 @@ class BiznisObjaveController extends Controller
         }
     }
 
-    protected function drustvene(array $d): array
+    protected function pendingPayload(array $data): array
     {
-        return collect(['facebook', 'instagram', 'youtube', 'tiktok'])
-            ->mapWithKeys(fn ($k) => [$k => trim((string) ($d[$k] ?? ''))])
-            ->all();
+        return collect($data)->only([
+            'naslov', 'category_id', 'opis', 'opis_dug', 'lokacija', 'kontakt',
+            'drustvene', 'usluge', 'nacin_placanja', 'cijena_raspon',
+            'godina_osnivanja', 'jib', 'radno_vrijeme', 'lat', 'lng',
+        ])->all();
     }
 
-    protected function radnoVrijeme(array $dani): array
+    protected function stageMedia(Business $business, BusinessObjavaRequest $request): void
     {
-        return collect($dani)->take(7)->map(fn ($d) => [
-            'zatvoreno' => (bool) ($d['zatvoreno'] ?? false),
-            'od' => trim((string) ($d['od'] ?? '')),
-            'do' => trim((string) ($d['do'] ?? '')),
-        ])->values()->all();
+        if ($request->hasFile('naslovna')) {
+            $business->addMediaFromRequest('naslovna')->toMediaCollection('naslovna_pending');
+        }
+
+        foreach ($request->file('galerija', []) as $file) {
+            $business->addMedia($file)->toMediaCollection('galerija_pending');
+        }
     }
 
-    protected function uslugeNiz(string $tekst): array
-    {
-        return collect(preg_split('/\r\n|\r|\n/', $tekst))
-            ->map(fn ($u) => trim($u))
-            ->filter()
-            ->values()
-            ->all();
-    }
 
     protected function message(Business $business): string
     {
+        if ($business->pending !== null) {
+            return 'Izmjene su poslane na odobrenje. Trenutna objava ostaje aktivna.';
+        }
+
         return $business->status === ContentStatus::Poslano
             ? 'Objava je poslana na odobrenje.'
             : 'Objava je sačuvana kao nacrt.';

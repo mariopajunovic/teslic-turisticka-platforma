@@ -119,7 +119,7 @@ class BiznisiAdminTest extends TestCase
         $this->assertSame('Izmijenjen naslov', $fresh->getTranslations('naslov')['sr']);
         $this->assertSame(ContentStatus::Objavljeno, $fresh->status);
         $this->assertNotNull($fresh->published_at);
-        $this->assertSame('051', $fresh->kontakt['telefon']);
+        $this->assertSame('+38751', $fresh->kontakt['telefon']);
     }
 
     public function test_update_saves_translatable_slug(): void
