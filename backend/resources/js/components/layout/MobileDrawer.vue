@@ -1,6 +1,6 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { Link, router as inertiaRouter } from '@inertiajs/vue3'
+import { ref, watch, computed } from 'vue'
+import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
 import BaseIcon from '@/components/base/BaseIcon.vue'
@@ -8,6 +8,16 @@ import BaseButton from '@/components/base/BaseButton.vue'
 
 const { mainNav, secondaryNav, postavke } = useSite()
 const { t } = useI18n()
+
+const page = usePage()
+const authUser = computed(() => page.props.auth?.user)
+const nalogLink = computed(() =>
+  authUser.value?.role === 'autor' ? '/nalog/autor/price' : '/nalog/biznis/profil',
+)
+function logout() {
+  close()
+  inertiaRouter.post('/logout')
+}
 
 const open = defineModel({ type: Boolean, default: false })
 const expanded = ref(null)
@@ -113,10 +123,18 @@ watch(open, (v) => {
 
           <!-- Akcije -->
           <div class="shrink-0 space-y-2 border-t border-border p-4">
-            <BaseButton to="/prijava" variant="secondary" block @click="close">{{ t('action.login') }}</BaseButton>
-            <BaseButton to="/pridruzi-se" variant="primary" block @click="close">
-              Pridruži se
-            </BaseButton>
+            <template v-if="authUser">
+              <BaseButton :to="nalogLink" variant="secondary" block icon="user" @click="close">
+                {{ t('misc.myAccount') }}
+              </BaseButton>
+              <BaseButton variant="primary" block icon="log-out" @click="logout">
+                {{ t('action.logout') }}
+              </BaseButton>
+            </template>
+            <template v-else>
+              <BaseButton to="/prijava" variant="secondary" block @click="close">{{ t('action.login') }}</BaseButton>
+              <BaseButton to="/pridruzi-se" variant="primary" block @click="close">{{ t('action.join') }}</BaseButton>
+            </template>
           </div>
         </aside>
       </div>

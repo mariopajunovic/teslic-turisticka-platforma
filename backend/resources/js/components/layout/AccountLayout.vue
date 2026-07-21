@@ -1,66 +1,43 @@
 <script setup>
-// Ljuska naloga (1:1 13_Moj-profil): Topbar + (Sidebar | mobilni tabovi) + sadržaj.
-// Ne koristi javni Header/Footer.
-import { computed } from 'vue'
-import { Link, router, usePage } from '@inertiajs/vue3'
+// Ljuska naloga: glavni javni Header/Footer + account sidebar/tabovi u sredini.
+import { usePage, Link } from '@inertiajs/vue3'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import CookieBanner from '@/components/layout/CookieBanner.vue'
+import Seo from '@/components/common/Seo.vue'
 import AccountSidebar from '@/components/account/AccountSidebar.vue'
-import BaseButton from '@/components/base/BaseButton.vue'
 
 const page = usePage()
 
-const props = defineProps({
+defineProps({
   items: { type: Array, required: true },
   heading: { type: String, default: 'MOJ NALOG' },
   initials: { type: String, default: '' },
 })
-
-const userInitials = computed(() => {
-  if (props.initials) return props.initials
-  const name = page.props.auth?.user?.name || ''
-  return name
-    .split(' ')
-    .map((p) => p[0])
-    .slice(0, 2)
-    .join('')
-    .toUpperCase()
-})
-
-function logout() {
-  router.post('/logout')
-}
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col bg-surface-alt">
-    <!-- Topbar -->
-    <header class="flex items-center gap-4 border-b border-border bg-surface px-4 py-3.5 md:px-8">
-      <Link href="/" class="text-2xl font-extrabold tracking-tight text-primary">teslić</Link>
-      <span class="hidden text-[15px] font-medium text-text-muted sm:inline">{{ $t('misc.myAccount') }}</span>
-      <div class="ml-auto flex items-center gap-3">
-        <span
-          class="flex size-9 items-center justify-center rounded-full bg-primary-tint text-[13px] font-bold text-primary"
-        >
-          {{ userInitials }}
-        </span>
-        <BaseButton variant="ghost" size="sm" icon="log-out" @click="logout">{{ $t('action.logout') }}</BaseButton>
-      </div>
-    </header>
+  <div class="flex min-h-screen flex-col bg-surface">
+    <Seo :seo="page.props.seo || {}" />
+    <AppHeader />
 
-    <!-- Mobilni tabovi (pilule) -->
-    <nav class="flex gap-2 overflow-x-auto border-b border-border bg-surface px-4 py-3 lg:hidden">
-      <Link
-        v-for="it in items"
-        :key="it.to"
-        :href="it.to"
-        class="shrink-0 rounded-pill px-3.5 py-2 text-[13px] font-medium transition-colors"
-        :class="page.url === it.to ? 'bg-primary text-white' : 'bg-surface-alt text-text-muted'"
-      >
-        {{ it.label }}
-      </Link>
+    <!-- Mobilni account tabovi -->
+    <nav class="border-b border-border bg-surface lg:hidden">
+      <div class="mx-auto flex w-full max-w-[var(--container-content)] gap-2 overflow-x-auto px-4 py-3">
+        <Link
+          v-for="it in items"
+          :key="it.to"
+          :href="it.to"
+          class="shrink-0 rounded-pill px-3.5 py-2 text-[13px] font-medium transition-colors"
+          :class="page.url === it.to ? 'bg-primary text-white' : 'bg-surface-alt text-text-muted'"
+        >
+          {{ it.label }}
+        </Link>
+      </div>
     </nav>
 
-    <!-- Body -->
-    <div class="flex flex-1 gap-8 px-4 py-6 md:px-8 md:py-8">
+    <!-- Body: sidebar + sadržaj, centrirano na širinu glavnog sajta -->
+    <div class="mx-auto flex w-full max-w-[var(--container-content)] flex-1 gap-8 px-4 py-6 md:px-6 md:py-8">
       <div class="hidden lg:block">
         <AccountSidebar :items="items" :heading="heading" />
       </div>
@@ -68,5 +45,8 @@ function logout() {
         <slot />
       </main>
     </div>
+
+    <AppFooter />
+    <CookieBanner />
   </div>
 </template>
