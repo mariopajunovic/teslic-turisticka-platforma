@@ -32,6 +32,27 @@ class BiznisObjaveController extends Controller
         return Inertia::render('account/BiznisObjave', ['objave' => $objave]);
     }
 
+    public function pregled(): Response
+    {
+        $objave = Business::where('user_id', auth()->id())->get();
+
+        return Inertia::render('account/BiznisPregled', [
+            'korisnik' => auth()->user()->name,
+            'stats' => [
+                'ukupno' => $objave->count(),
+                'objavljeno' => $objave->where('status', ContentStatus::Objavljeno)->count(),
+                'naCekanju' => $objave->where('status', ContentStatus::Poslano)->count(),
+                'nacrt' => $objave->where('status', ContentStatus::Nacrt)->count(),
+                'odbijeno' => $objave->where('status', ContentStatus::Odbijeno)->count(),
+            ],
+            'odbijeni' => $objave->where('status', ContentStatus::Odbijeno)->map(fn (Business $b) => [
+                'naslov' => $b->naslov,
+                'razlog' => $b->rejection_reason,
+                'editUrl' => "/nalog/biznis/objave/{$b->id}/uredi",
+            ])->values()->all(),
+        ]);
+    }
+
     public function create(): Response
     {
         return Inertia::render('account/BiznisObjavaForm', [
@@ -53,6 +74,13 @@ class BiznisObjaveController extends Controller
                 'opis_dug' => $business->opis_dug,
                 'lokacija' => $business->lokacija,
                 'kontakt' => $business->kontakt ?? [],
+                'drustvene' => $business->drustvene ?? [],
+                'usluge' => implode("\n", $business->getTranslations('usluge')['sr'] ?? []),
+                'nacin_placanja' => $business->nacin_placanja ?? [],
+                'cijena_raspon' => $business->cijena_raspon,
+                'godina_osnivanja' => $business->godina_osnivanja,
+                'jib' => $business->jib,
+                'radno_vrijeme' => $business->radno_vrijeme ?: [],
                 'lat' => $business->lat,
                 'lng' => $business->lng,
                 'status' => $business->status->badge(),
@@ -108,10 +136,21 @@ class BiznisObjaveController extends Controller
             'opis_dug' => $data['opis_dug'] ?? null,
             'lokacija' => $data['lokacija'] ?? null,
             'kontakt' => $data['kontakt'] ?? null,
+            'drustvene' => $this->drustvene($data['drustvene'] ?? []),
+            'nacin_placanja' => array_filter([
+                'gotovina' => (bool) ($data['nacin_placanja']['gotovina'] ?? false),
+                'kartica' => (bool) ($data['nacin_placanja']['kartica'] ?? false),
+                'virman' => (bool) ($data['nacin_placanja']['virman'] ?? false),
+            ]),
+            'cijena_raspon' => in_array($data['cijena_raspon'] ?? '', ['€', '€€', '€€€'], true) ? $data['cijena_raspon'] : null,
+            'godina_osnivanja' => $data['godina_osnivanja'] ?? null,
+            'jib' => $data['jib'] ?? null,
+            'radno_vrijeme' => $this->radnoVrijeme($data['radno_vrijeme'] ?? []),
             'lat' => $data['lat'] ?? null,
             'lng' => $data['lng'] ?? null,
             'status' => $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt,
         ]);
+        $business->setTranslations('usluge', ['sr' => $this->uslugeNiz($data['usluge'] ?? '')]);
         $business->save();
 
         if ($request->hasFile('naslovna')) {
@@ -121,6 +160,31 @@ class BiznisObjaveController extends Controller
         foreach ($request->file('galerija', []) as $file) {
             $business->addMedia($file)->toMediaCollection('galerija');
         }
+    }
+
+    protected function drustvene(array $d): array
+    {
+        return collect(['facebook', 'instagram', 'youtube', 'tiktok'])
+            ->mapWithKeys(fn ($k) => [$k => trim((string) ($d[$k] ?? ''))])
+            ->all();
+    }
+
+    protected function radnoVrijeme(array $dani): array
+    {
+        return collect($dani)->take(7)->map(fn ($d) => [
+            'zatvoreno' => (bool) ($d['zatvoreno'] ?? false),
+            'od' => trim((string) ($d['od'] ?? '')),
+            'do' => trim((string) ($d['do'] ?? '')),
+        ])->values()->all();
+    }
+
+    protected function uslugeNiz(string $tekst): array
+    {
+        return collect(preg_split('/\r\n|\r|\n/', $tekst))
+            ->map(fn ($u) => trim($u))
+            ->filter()
+            ->values()
+            ->all();
     }
 
     protected function message(Business $business): string

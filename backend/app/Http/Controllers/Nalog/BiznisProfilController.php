@@ -14,7 +14,7 @@ class BiznisProfilController extends Controller
     {
         $user = auth()->user();
 
-        return Inertia::render('account/BiznisProfil', [
+        return Inertia::render('account/BiznisPostavke', [
             'profil' => [
                 'name' => $user->name,
                 'email' => $user->email,
@@ -40,6 +40,6 @@ class BiznisProfilController extends Controller
             $user->addMediaFromRequest('avatar')->toMediaCollection('avatar');
         }
 
-        return redirect('/nalog/biznis/profil')->with('status', 'Profil naloga je sačuvan.');
+        return redirect('/nalog/biznis/postavke')->with('status', 'Profil naloga je sačuvan.');
     }
 }

@@ -27,7 +27,7 @@ const page = usePage()
       "
     >
       <BaseIcon :name="it.icon" :size="18" :class="page.url === it.to ? 'text-primary' : 'text-text-muted'" />
-      {{ it.label }}
+      {{ $t(it.label) }}
     </Link>
   </nav>
 </template>

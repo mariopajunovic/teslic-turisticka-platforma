@@ -57,6 +57,8 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
     Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make($tr('seo.forgotPassword'), $tr('seo.forgotPasswordDesc'), url()->current())]))->name('zaboravljena-lozinka');
 
     Route::middleware('auth')->prefix('nalog')->group(function () {
+        Route::post('medij', [\App\Http\Controllers\Nalog\MedijController::class, 'store'])->name('nalog.medij');
+
         Route::middleware('role:autor')->group(function () {
             Route::get('autor/price', [AutorStoryController::class, 'index'])->name('nalog.autor.price');
             Route::get('autor/nova-prica', [AutorStoryController::class, 'create'])->name('nalog.autor.nova-prica');
@@ -69,7 +71,9 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
         });
 
         Route::middleware('role:biznis')->group(function () {
-            Route::get('biznis/profil', [BiznisProfilController::class, 'edit'])->name('nalog.biznis.profil');
+            Route::get('biznis/pregled', [BiznisObjaveController::class, 'pregled'])->name('nalog.biznis.pregled');
+
+            Route::get('biznis/profil', fn () => redirect('/nalog/biznis/postavke'));
             Route::post('biznis/profil', [BiznisProfilController::class, 'update']);
 
             Route::get('biznis/objave', [BiznisObjaveController::class, 'index'])->name('nalog.biznis.objave');
@@ -85,7 +89,7 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
             Route::get('biznis/oglasi/{ad}/uredi', [BiznisAdController::class, 'edit'])->name('nalog.biznis.oglasi.uredi');
             Route::put('biznis/oglasi/{ad}', [BiznisAdController::class, 'update']);
 
-            Route::get('biznis/postavke', fn () => Inertia::render('account/BiznisPostavke'))->name('nalog.biznis.postavke');
+            Route::get('biznis/postavke', [BiznisProfilController::class, 'edit'])->name('nalog.biznis.postavke');
         });
     });
 

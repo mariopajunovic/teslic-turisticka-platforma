@@ -1,15 +1,14 @@
-// Navigacija naloga (sidebar / mobilni tabovi) — Biznis i Autor.
+// Navigacija naloga (sidebar / mobilni tabovi) - Biznis i Autor. Label = i18n ključ.
 export const biznisNav = [
-  { label: 'Moj profil', icon: 'user', to: '/nalog/biznis/profil' },
-  { label: 'Moje objave', icon: 'file-text', to: '/nalog/biznis/objave' },
-  { label: 'Nova objava', icon: 'plus', to: '/nalog/biznis/objave/nova' },
-  { label: 'Oglasi', icon: 'megaphone', to: '/nalog/biznis/oglasi' },
-  { label: 'Postavke', icon: 'settings', to: '/nalog/biznis/postavke' },
+  { label: 'acc.navOverview', icon: 'target', to: '/nalog/biznis/pregled' },
+  { label: 'acc.navPosts', icon: 'file-text', to: '/nalog/biznis/objave' },
+  { label: 'acc.navAds', icon: 'megaphone', to: '/nalog/biznis/oglasi' },
+  { label: 'acc.navSettings', icon: 'settings', to: '/nalog/biznis/postavke' },
 ]
 
 export const autorNav = [
-  { label: 'Moje priče', icon: 'file-text', to: '/nalog/autor/price' },
-  { label: 'Nova priča', icon: 'pencil', to: '/nalog/autor/nova-prica' },
-  { label: 'Autorski profil', icon: 'user', to: '/nalog/autor/profil' },
-  { label: 'Postavke', icon: 'settings', to: '/nalog/autor/postavke' },
+  { label: 'acc.navStories', icon: 'file-text', to: '/nalog/autor/price' },
+  { label: 'acc.navNewStory', icon: 'pencil', to: '/nalog/autor/nova-prica' },
+  { label: 'acc.navAuthorProfile', icon: 'user', to: '/nalog/autor/profil' },
+  { label: 'acc.navSettings', icon: 'settings', to: '/nalog/autor/postavke' },
 ]

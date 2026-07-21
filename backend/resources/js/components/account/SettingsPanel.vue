@@ -5,6 +5,10 @@ import FormField from '@/components/forms/FormField.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 
+defineProps({
+  heading: { type: Boolean, default: true },
+})
+
 const page = usePage()
 const status = computed(() => page.props.flash?.status)
 const user = computed(() => page.props.auth?.user || {})
@@ -34,7 +38,7 @@ function promijeniLozinku() {
 
 <template>
   <div class="space-y-6">
-    <div>
+    <div v-if="heading">
       <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.settings') }}</h1>
       <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.settingsDesc') }}</p>
     </div>

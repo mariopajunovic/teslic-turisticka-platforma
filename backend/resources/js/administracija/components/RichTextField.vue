@@ -12,6 +12,8 @@ const props = defineProps({
     label: { type: String, default: null },
     required: { type: Boolean, default: false },
     lang: { type: String, default: null },
+    allowImage: { type: Boolean, default: true },
+    uploadUrl: { type: String, default: '/administracija/mediji' },
 });
 
 const emit = defineEmits(['update:modelValue']);
@@ -98,7 +100,7 @@ const onSlika = async (e) => {
     try {
         const body = new FormData();
         body.append('file', f);
-        const res = await fetch('/administracija/mediji', {
+        const res = await fetch(props.uploadUrl, {
             method: 'POST',
             headers: { 'X-XSRF-TOKEN': csrf(), Accept: 'application/json' },
             body,
@@ -162,11 +164,13 @@ const tools = computed(() => [
                 >
                     <component :is="t.icon" :size="15" />
                 </button>
-                <div class="mx-1 h-4 w-px bg-line"></div>
-                <button type="button" title="Ubaci sliku" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink disabled:opacity-50" :disabled="uploadingSlika" @mousedown.prevent @click="pickSlika">
-                    <Loader2 v-if="uploadingSlika" :size="15" class="animate-spin" />
-                    <ImagePlus v-else :size="15" />
-                </button>
+                <template v-if="allowImage">
+                    <div class="mx-1 h-4 w-px bg-line"></div>
+                    <button type="button" title="Ubaci sliku" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink disabled:opacity-50" :disabled="uploadingSlika" @mousedown.prevent @click="pickSlika">
+                        <Loader2 v-if="uploadingSlika" :size="15" class="animate-spin" />
+                        <ImagePlus v-else :size="15" />
+                    </button>
+                </template>
                 <div class="mx-1 h-4 w-px bg-line"></div>
                 <button type="button" title="Poništi" class="inline-flex h-7 w-7 items-center justify-center rounded text-ink-2 hover:bg-surface hover:text-ink" @mousedown.prevent @click="editor?.chain().focus().undo().run()">
                     <Undo2 :size="15" />

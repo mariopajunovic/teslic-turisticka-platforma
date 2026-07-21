@@ -31,7 +31,7 @@ defineProps({
           class="shrink-0 rounded-pill px-3.5 py-2 text-[13px] font-medium transition-colors"
           :class="page.url === it.to ? 'bg-primary text-white' : 'bg-surface-alt text-text-muted'"
         >
-          {{ it.label }}
+          {{ $t(it.label) }}
         </Link>
       </div>
     </nav>

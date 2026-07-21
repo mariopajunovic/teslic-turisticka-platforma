@@ -29,6 +29,15 @@
   --color-surface-alt: #f3f5f8;
   --color-overlay: rgb(18 21 28 / 0.6);
 
+  /* Aliasi za RichTextField (dijeljen sa adminom) na account stranicama */
+  --color-ink: #1d2327;
+  --color-ink-2: #50575e;
+  --color-ink-3: #787c82;
+  --color-line: #dcdcde;
+  --color-line-strong: #c3c4c7;
+  --color-bad: #d63638;
+  --color-bad-bg: #fcebeb;
+
   --color-success: #1e7d3c;
   --color-warning: #8c5810;
   --color-error: #c62828;
