@@ -1,7 +1,7 @@
 # Administracija (Inertia + Vue) — Contract
 
 Separate Inertia app for the admin panel. **Do not touch** the public app
-(`resources/js/app.js`, `resources/js/Pages/**`) or Filament (`app/Filament/**`, `/admin`).
+(`resources/js/app.js`, `resources/js/Pages/**`).
 This admin lives at **`/administracija`**, `admin` guard, own root view (`administracija`),
 own Vite entry (`resources/js/administracija/app.js`), own CSS (`resources/css/administracija.css`).
 

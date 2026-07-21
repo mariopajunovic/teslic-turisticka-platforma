@@ -2,10 +2,7 @@
 
 namespace App\Enums;
 
-use Filament\Support\Contracts\HasColor;
-use Filament\Support\Contracts\HasLabel;
-
-enum ContentStatus: string implements HasLabel, HasColor
+enum ContentStatus: string
 {
     case Nacrt = 'nacrt';
     case Poslano = 'poslano';

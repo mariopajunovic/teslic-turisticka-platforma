@@ -2,23 +2,16 @@
 
 namespace App\Models;
 
-use Filament\Auth\MultiFactor\App\Concerns\InteractsWithAppAuthentication;
-use Filament\Auth\MultiFactor\App\Concerns\InteractsWithAppAuthenticationRecovery;
-use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthentication;
-use Filament\Auth\MultiFactor\App\Contracts\HasAppAuthenticationRecovery;
-use Filament\Models\Contracts\FilamentUser;
-use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use SensitiveParameter;
 use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends Authenticatable implements FilamentUser, HasAppAuthentication, HasAppAuthenticationRecovery
+class Admin extends Authenticatable
 {
     use HasFactory;
     use HasRoles;
-    use InteractsWithAppAuthentication;
-    use InteractsWithAppAuthenticationRecovery;
     use Notifiable;
 
     protected string $guard_name = 'admin';
@@ -45,6 +38,8 @@ class Admin extends Authenticatable implements FilamentUser, HasAppAuthenticatio
             'password' => 'hashed',
             'is_super' => 'boolean',
             'aktivan' => 'boolean',
+            'app_authentication_secret' => 'encrypted',
+            'app_authentication_recovery_codes' => 'encrypted:array',
         ];
     }
 
@@ -58,8 +53,25 @@ class Admin extends Authenticatable implements FilamentUser, HasAppAuthenticatio
         return $this->email;
     }
 
-    public function canAccessPanel(Panel $panel): bool
+    public function getAppAuthenticationSecret(): ?string
     {
-        return $this->is_super || $this->hasAnyRole(['administrator', 'urednik']);
+        return $this->app_authentication_secret;
+    }
+
+    public function saveAppAuthenticationSecret(#[SensitiveParameter] ?string $secret): void
+    {
+        $this->app_authentication_secret = $secret;
+        $this->save();
+    }
+
+    public function getAppAuthenticationRecoveryCodes(): ?array
+    {
+        return $this->app_authentication_recovery_codes;
+    }
+
+    public function saveAppAuthenticationRecoveryCodes(#[SensitiveParameter] ?array $codes): void
+    {
+        $this->app_authentication_recovery_codes = $codes;
+        $this->save();
     }
 }

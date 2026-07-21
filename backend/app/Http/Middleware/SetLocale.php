@@ -13,10 +13,6 @@ class SetLocale
     {
         $active = app(ActiveLocale::class);
 
-        if ($this->isAdmin($request)) {
-            return $next($request);
-        }
-
         $segment = $request->segment(1);
         $prefixed = (array) config('locales.prefixed');
         $language = in_array($segment, $prefixed, true) ? $segment : (string) config('locales.default');
@@ -30,10 +26,5 @@ class SetLocale
         app()->setLocale($active->appLocale());
 
         return $next($request);
-    }
-
-    protected function isAdmin(Request $request): bool
-    {
-        return $request->is('admin', 'admin/*', 'livewire/*', 'filament/*');
     }
 }

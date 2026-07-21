@@ -120,15 +120,6 @@ Route::get('/pismo/{script}', function (string $script) {
     return redirect()->back()->withCookie(cookie('pismo', $script, 60 * 24 * 365));
 })->where('script', 'lat|cir')->name('pismo.switch');
 
-// Admin content edit-locale switch (Filament topbar).
-Route::get('/admin/jezik/{locale}', function (string $locale) {
-    if (in_array($locale, (array) config('locales.content'), true)) {
-        session()->put('filament_locale', $locale);
-    }
-
-    return redirect()->back();
-})->middleware('auth:admin')->name('admin.content-locale');
-
 Route::get('/reset-lozinke/{token}', function (string $token) {
     return Inertia::render('ResetPassword', [
         'token' => $token,
