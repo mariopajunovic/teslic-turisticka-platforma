@@ -36,10 +36,6 @@ class SiteSettings extends Settings
 
     public bool $odrzavanje;
 
-    public string $odrzavanje_lozinka;
-
-    public int $odrzavanje_minuta;
-
     public string $odrzavanje_poruka;
 
     public string $captcha_site_key;

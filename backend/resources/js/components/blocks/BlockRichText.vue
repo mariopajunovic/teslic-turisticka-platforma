@@ -9,7 +9,7 @@ defineProps({
 <template>
   <AppContainer class="mt-8">
     <div
-      class="rtf max-w-3xl"
+      class="rtf"
       v-html="data.sadrzaj || ''"
     />
   </AppContainer>

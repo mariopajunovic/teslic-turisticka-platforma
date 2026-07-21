@@ -41,8 +41,6 @@ const form = useForm({
     social: (props.postavke.social ?? []).map((s) => ({ _id: ++uid, name: s.name ?? '', label: s.label ?? '', href: s.href ?? '' })),
     google_indeksiranje: !!props.postavke.google_indeksiranje,
     odrzavanje: !!props.postavke.odrzavanje,
-    odrzavanje_lozinka: props.postavke.odrzavanje_lozinka ?? '',
-    odrzavanje_minuta: props.postavke.odrzavanje_minuta ?? 120,
     odrzavanje_poruka: props.postavke.odrzavanje_poruka ?? '',
     captcha_site_key: props.postavke.captcha_site_key ?? '',
     captcha_secret: '',
@@ -279,11 +277,7 @@ const trErr = (field) => {
                     <ToggleField v-model="form.google_indeksiranje" label="Dozvoli Google indeksiranje" hint="Isključi na dev serveru (noindex + robots.txt)." />
                 </div>
                 <div class="border-t border-line pt-4">
-                    <ToggleField v-model="form.odrzavanje" label="Režim održavanja" hint="Posjetioci vide stranicu održavanja s poljem za lozinku." />
-                </div>
-                <div class="grid gap-4 sm:grid-cols-2">
-                    <FormField v-model="form.odrzavanje_lozinka" label="Lozinka za pristup" hint="Posjetilac je unosi da otključa frontend." :error="err('odrzavanje_lozinka')" />
-                    <FormField v-model.number="form.odrzavanje_minuta" type="number" label="Trajanje otključavanja (min)" :error="err('odrzavanje_minuta')" />
+                    <ToggleField v-model="form.odrzavanje" label="Režim održavanja" hint="Kad je uključen, posjetioci vide stranicu održavanja i ne mogu pristupiti sajtu." />
                 </div>
                 <TextareaField v-model="form.odrzavanje_poruka" label="Poruka na stranici održavanja" :rows="2" :error="err('odrzavanje_poruka')" />
             </div>

@@ -37,6 +37,16 @@ class ProcurementController extends Controller
         ]);
     }
 
+    protected function nazad(): array
+    {
+        $kolekcija = \App\Models\Page::query()->where('resource_type', 'procurement')->orderBy('id')->first();
+
+        return [
+            'url' => \App\Support\ResourceUrls::collection('procurement') ?: '/javne-nabavke',
+            'label' => $kolekcija?->title ?: 'Javne nabavke',
+        ];
+    }
+
     public function show(Request $request, string $slug): Response
     {
         $nabavka = Procurement::objavljeno()
@@ -52,7 +62,7 @@ class ProcurementController extends Controller
         return Inertia::render('ProcurementDetail', [
             'slug' => $slug,
             'nabavka' => new ProcurementResource($nabavka),
-            'nazad' => ['url' => '/javne-nabavke', 'label' => 'Javne nabavke'],
+            'nazad' => $this->nazad(),
             'seo' => Seo::make(
                 $nabavka->naslov,
                 $nabavka->opis,

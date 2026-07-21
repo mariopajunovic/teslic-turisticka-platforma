@@ -30,6 +30,16 @@ class NewsController extends Controller
         ]);
     }
 
+    protected function nazad(): array
+    {
+        $kolekcija = \App\Models\Page::query()->where('resource_type', 'news')->orderBy('id')->first();
+
+        return [
+            'url' => \App\Support\ResourceUrls::collection('news') ?: '/vijesti',
+            'label' => $kolekcija?->title ?: 'Vijesti',
+        ];
+    }
+
     public function show(Request $request, string $slug): Response
     {
         $vijest = News::objavljeno()
@@ -53,7 +63,7 @@ class NewsController extends Controller
             'slug' => $slug,
             'vijest' => new NewsResource($vijest),
             'slicne' => NewsResource::collection($slicne),
-            'nazad' => ['url' => '/vijesti', 'label' => 'Vijesti'],
+            'nazad' => $this->nazad(),
             'seo' => Seo::make(
                 $vijest->naslov,
                 $vijest->izvod ?: $vijest->sadrzaj,

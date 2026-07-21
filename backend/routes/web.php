@@ -4,7 +4,6 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\BusinessController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationController;
-use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\MapController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProcurementController;
@@ -23,12 +22,14 @@ $detailSegments = collect((array) config('resources.types'))
     ->unique()
     ->all();
 
-$reservedSegments = array_merge(
+$baseReserved = array_merge(
     ['admin', 'build', 'storage', 'administracija', 'pismo', 'reset-lozinke', 'odrzavanje', 'robots', 'sitemap', 'nalog'],
     (array) config('locales.prefixed'),
-    $detailSegments,
 );
-$slugPattern = '(?!(?:'.implode('|', $reservedSegments).')$)[a-z0-9\-]+';
+$reservedSegments = array_merge($baseReserved, $detailSegments);
+// Jednosegmentna stranica smije koristiti detail-segment kao slug (npr. /news lista) -
+// detail rute su dvosegmentne i registruju se prije catch-all-a, pa nema kolizije.
+$slugPattern = '(?!(?:'.implode('|', $baseReserved).')$)[a-z0-9\-]+';
 $parentPattern = '(?!(?:'.implode('|', $reservedSegments).')(?:/|$))[a-z0-9\-]+';
 
 $public = function (string $lang) use ($slugPattern, $parentPattern) {
@@ -133,4 +134,3 @@ Route::get('/reset-lozinke/{token}', function (string $token) {
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
 Route::get('/robots.txt', [\App\Http\Controllers\SitemapController::class, 'robots']);
 
-Route::post('/odrzavanje/otkljucaj', [MaintenanceController::class, 'unlock'])->name('odrzavanje.otkljucaj');

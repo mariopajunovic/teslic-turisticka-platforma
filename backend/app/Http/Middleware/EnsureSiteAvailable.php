@@ -17,20 +17,21 @@ class EnsureSiteAvailable
             return $next($request);
         }
 
-        if ($request->is('admin', 'admin/*', 'odrzavanje/*', 'build/*', 'storage/*', 'up', 'robots.txt', 'sitemap.xml')) {
+        if ($request->is('admin', 'admin/*', 'administracija', 'administracija/*', 'build/*', 'storage/*', 'up', 'robots.txt', 'sitemap.xml')) {
             return $next($request);
         }
 
-        $until = (int) $request->cookie('site_unlock', 0);
-        if ($until > now()->timestamp) {
-            return $next($request);
-        }
+        $brandTekst = is_array($settings->brand_logo_tekst)
+            ? ($settings->brand_logo_tekst['sr'] ?? 'Teslić')
+            : $settings->brand_logo_tekst;
 
         return response()->view('maintenance', [
             'poruka' => $settings->odrzavanje_poruka,
-            'brand' => $settings->brand_logo_tekst,
-            'minuta' => (int) $settings->odrzavanje_minuta,
-            'greska' => session('maintenance_error'),
+            'brand' => $brandTekst,
+            'logo' => $settings->brand_logo
+                ? \Illuminate\Support\Facades\Storage::disk('public')->url($settings->brand_logo)
+                : asset('logo.svg'),
+            'email' => $settings->kontakt_email,
         ], 503);
     }
 }
