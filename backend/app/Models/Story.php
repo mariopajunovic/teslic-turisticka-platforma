@@ -63,8 +63,8 @@ class Story extends Model implements HasMedia
     {
         $this->addMediaCollection('naslovna')->singleFile();
         $this->addMediaCollection('galerija');
-        $this->addMediaCollection('naslovna_pending')->singleFile();
-        $this->addMediaCollection('galerija_pending');
+        $this->addMediaCollection('naslovna_pending')->useDisk('local')->singleFile();
+        $this->addMediaCollection('galerija_pending')->useDisk('local');
     }
 
     /** Primijeni ulazne podatke (format autorske forme) na živa polja. */
@@ -92,12 +92,12 @@ class Story extends Model implements HasMedia
         if ($this->getMedia('naslovna_pending')->isNotEmpty()) {
             $this->clearMediaCollection('naslovna');
             foreach ($this->getMedia('naslovna_pending') as $m) {
-                $m->move($this, 'naslovna');
+                $m->move($this, 'naslovna', 'public');
             }
         }
 
         foreach ($this->getMedia('galerija_pending') as $m) {
-            $m->move($this, 'galerija');
+            $m->move($this, 'galerija', 'public');
         }
     }
 

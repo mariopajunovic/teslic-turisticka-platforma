@@ -168,8 +168,8 @@ class BusinessesController extends Controller
 
         return [
             'diff' => $diff,
-            'naslovnaNova' => $business->getFirstMediaUrl('naslovna_pending') ?: null,
-            'galerijaNova' => $business->getMedia('galerija_pending')->map(fn ($m) => $m->getUrl())->values()->all(),
+            'naslovnaNova' => ($m = $business->getFirstMedia('naslovna_pending')) ? \App\Http\Controllers\SecureMediaController::url($m) : null,
+            'galerijaNova' => $business->getMedia('galerija_pending')->map(fn ($m) => \App\Http\Controllers\SecureMediaController::url($m))->values()->all(),
         ];
     }
 

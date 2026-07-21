@@ -85,7 +85,8 @@ class BiznisObjaveController extends Controller
             'lng' => $business->lng,
         ];
 
-        $galerija = $imaPending && $business->getMedia('galerija_pending')->isNotEmpty()
+        $galerijaPending = $imaPending && $business->getMedia('galerija_pending')->isNotEmpty();
+        $galerija = $galerijaPending
             ? $business->getMedia('galerija_pending')
             : $business->getMedia('galerija');
 
@@ -95,10 +96,12 @@ class BiznisObjaveController extends Controller
                 'status' => $business->status->badge(),
                 'objavljeno' => $business->status === ContentStatus::Objavljeno,
                 'imaPending' => $imaPending,
-                'naslovna' => ($imaPending ? $business->getFirstMediaUrl('naslovna_pending') : '') ?: ($business->getFirstMediaUrl('naslovna') ?: null),
+                'naslovna' => $imaPending && ($mp = $business->getFirstMedia('naslovna_pending'))
+                    ? \App\Http\Controllers\SecureMediaController::url($mp)
+                    : ($business->getFirstMediaUrl('naslovna') ?: null),
                 'galerija' => $galerija->map(fn (Media $m) => [
                     'id' => $m->id,
-                    'src' => $m->getUrl(),
+                    'src' => $galerijaPending ? \App\Http\Controllers\SecureMediaController::url($m) : $m->getUrl(),
                 ])->all(),
             ]),
             'kategorije' => $this->categories(),

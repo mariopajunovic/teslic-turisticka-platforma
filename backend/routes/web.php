@@ -57,7 +57,9 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
     Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make($tr('seo.forgotPassword'), $tr('seo.forgotPasswordDesc'), url()->current())]))->name('zaboravljena-lozinka');
 
     Route::middleware('auth')->prefix('nalog')->group(function () {
-        Route::post('medij', [\App\Http\Controllers\Nalog\MedijController::class, 'store'])->name('nalog.medij');
+        Route::post('medij', [\App\Http\Controllers\Nalog\MedijController::class, 'store'])
+            ->middleware('throttle:20,1')
+            ->name('nalog.medij');
 
         Route::middleware('role:autor')->group(function () {
             Route::get('autor/pregled', [AutorStoryController::class, 'pregled'])->name('nalog.autor.pregled');
@@ -127,6 +129,10 @@ Route::get('/reset-lozinke/{token}', function (string $token) {
         'seo' => \App\Support\Seo::make(app(\App\Support\Translations::class)->get('seo.resetPassword'), app(\App\Support\Translations::class)->get('seo.resetPasswordDesc'), url()->current()),
     ]);
 })->middleware('guest')->name('password.reset');
+
+Route::get('/mediji/{media}/pregled', [\App\Http\Controllers\SecureMediaController::class, 'show'])
+    ->middleware('signed')
+    ->name('mediji.pregled');
 
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index']);
 Route::get('/robots.txt', [\App\Http\Controllers\SitemapController::class, 'robots']);
