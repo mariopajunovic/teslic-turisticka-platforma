@@ -11,6 +11,7 @@ const props = defineProps({
     prica: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'prica' }) },
     pending: { type: Object, default: null },
 });
@@ -58,6 +59,7 @@ const form = useForm({
     featured: props.prica?.featured ?? false,
     category_id: props.prica?.category_id ?? '',
     status: props.prica?.status ?? 'nacrt',
+    user_id: props.prica?.user_id ?? null,
     tags: [...(props.prica?.tags ?? [])],
 });
 </script>
@@ -68,6 +70,7 @@ const form = useForm({
         :form="form"
         :kategorije="kategorije"
         :statusi="statusi"
+        :korisnici="korisnici"
         :segmenti="segmenti"
         naslov="priča"
         baza="price"

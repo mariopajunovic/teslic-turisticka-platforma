@@ -11,6 +11,7 @@ const props = defineProps({
     nabavka: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'javna-nabavka' }) },
 });
 
@@ -21,6 +22,7 @@ const form = useForm({
     godina: props.nabavka?.godina ?? '',
     datum: props.nabavka?.datum ?? '',
     status: props.nabavka?.status ?? 'nacrt',
+    user_id: props.nabavka?.user_id ?? null,
     tags: [...(props.nabavka?.tags ?? [])],
 });
 
@@ -49,6 +51,7 @@ const obrisiDokument = (d) => {
         :item="nabavka"
         :form="form"
         :statusi="statusi"
+        :korisnici="korisnici"
         :segmenti="segmenti"
         naslov="javnu nabavku"
         baza="nabavke"

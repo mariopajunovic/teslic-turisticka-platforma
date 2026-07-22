@@ -9,6 +9,7 @@ const props = defineProps({
     oglas: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'oglas' }) },
 });
 
@@ -26,6 +27,7 @@ const form = useForm({
     },
     category_id: props.oglas?.category_id ?? '',
     status: props.oglas?.status ?? 'nacrt',
+    user_id: props.oglas?.user_id ?? null,
     tags: [...(props.oglas?.tags ?? [])],
 });
 </script>
@@ -36,6 +38,7 @@ const form = useForm({
         :form="form"
         :kategorije="kategorije"
         :statusi="statusi"
+        :korisnici="korisnici"
         :segmenti="segmenti"
         naslov="oglas"
         baza="oglasi"

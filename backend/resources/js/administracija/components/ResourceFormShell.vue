@@ -16,6 +16,7 @@ const props = defineProps({
     form: { type: Object, required: true },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     naslov: { type: String, required: true },
     baza: { type: String, required: true },
     naslovPlaceholder: { type: String, default: 'Naslov' },
@@ -256,6 +257,17 @@ const onFotoDrop = (target) => {
                     @save="submit"
                     @trash="obrisi"
                 />
+
+                <Card title="Vlasnik">
+                    <p class="mb-2 text-[12px] text-ink-2">Korisnik za kojeg je vezan ovaj sadržaj (opciono).</p>
+                    <select
+                        v-model="form.user_id"
+                        class="w-full rounded-lg border border-line bg-surface px-3 py-2 text-[13px] text-ink focus:border-brand focus:outline-none"
+                    >
+                        <option :value="null">- Nije vezano -</option>
+                        <option v-for="k in korisnici" :key="k.value" :value="k.value">{{ k.label }}</option>
+                    </select>
+                </Card>
 
                 <Card v-if="hasCategory" title="Kategorija">
                     <div v-if="kategorije.length" class="space-y-0.5">

@@ -104,6 +104,7 @@ abstract class AdminResourceController extends Controller
             $this->propKey() => null,
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'korisnici' => $this->korisnici(),
             'segmenti' => (array) config('resources.types.'.$this->tip().'.segment'),
         ]);
     }
@@ -122,6 +123,7 @@ abstract class AdminResourceController extends Controller
             $this->propKey() => $this->detalji($stavka),
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'korisnici' => $this->korisnici(),
             'segmenti' => (array) config('resources.types.'.$this->tip().'.segment'),
             'pending' => $this->pendingPregled($stavka),
         ]);
@@ -343,6 +345,7 @@ abstract class AdminResourceController extends Controller
             'slug' => ['array'],
             'slug.*' => ['nullable', 'string', 'max:255', 'regex:/^[a-z0-9\-]+$/'],
             'status' => ['required', 'string'],
+            'user_id' => ['nullable', 'exists:users,id'],
             'tags' => ['array'],
             'tags.*' => ['string', 'max:100'],
         ];
@@ -361,6 +364,10 @@ abstract class AdminResourceController extends Controller
 
         if ($this->hasCategory()) {
             $stavka->category_id = $data['category_id'] ?? null;
+        }
+
+        if (array_key_exists('user_id', $data)) {
+            $stavka->user_id = $data['user_id'] ?: null;
         }
 
         $this->assign($stavka, $data);
@@ -397,6 +404,7 @@ abstract class AdminResourceController extends Controller
             'slug' => $stavka->slug,
             'url' => ResourceUrls::detail($stavka, 'sr'),
             'category_id' => $stavka->category_id,
+            'user_id' => $stavka->user_id,
             'status' => $stavka->status->value,
             'rejection_reason' => $stavka->rejection_reason,
             'publishedAt' => $stavka->published_at?->translatedFormat('d.m.Y.'),
@@ -428,6 +436,17 @@ abstract class AdminResourceController extends Controller
             'datum' => ($stavka->published_at ?? $stavka->created_at)?->translatedFormat('d.m.Y.'),
             'url' => ResourceUrls::detail($stavka, 'sr'),
         ];
+    }
+
+    protected function korisnici(): array
+    {
+        return \App\Models\User::orderBy('name')
+            ->get(['id', 'name', 'role'])
+            ->map(fn ($u) => [
+                'value' => $u->id,
+                'label' => $u->name.($u->role ? ' ('.$u->role->value.')' : ''),
+            ])
+            ->all();
     }
 
     protected function kategorije(): array

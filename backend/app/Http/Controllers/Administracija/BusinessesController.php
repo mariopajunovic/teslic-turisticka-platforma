@@ -66,6 +66,7 @@ class BusinessesController extends Controller
             'biznis' => null,
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'korisnici' => $this->korisnici(),
             'segmenti' => (array) config('resources.types.business.segment'),
         ]);
     }
@@ -78,6 +79,7 @@ class BusinessesController extends Controller
             'biznis' => $this->detalji($business),
             'kategorije' => $this->kategorije(),
             'statusi' => $this->statusi(),
+            'korisnici' => $this->korisnici(),
             'segmenti' => (array) config('resources.types.business.segment'),
             'pending' => $this->pendingPregled($business),
         ]);
@@ -304,6 +306,7 @@ class BusinessesController extends Controller
     {
         return $request->validate([
             'naslov' => ['required', 'array'],
+            'user_id' => ['nullable', 'exists:users,id'],
             'naslov.sr' => ['required', 'string', 'max:255'],
             'naslov.*' => ['nullable', 'string', 'max:255'],
             'slug' => ['array'],
@@ -358,6 +361,7 @@ class BusinessesController extends Controller
         $business->radno_vrijeme = $this->radnoVrijeme($data['radno_vrijeme'] ?? []);
 
         $business->category_id = $data['category_id'] ?? null;
+        if (array_key_exists('user_id', $data)) { $business->user_id = $data['user_id'] ?: null; }
         $business->kontakt = $this->kontakt($data['kontakt'] ?? []);
         $business->drustvene = $this->drustvene($data['drustvene'] ?? []);
         $business->setTranslations('usluge', collect($data['usluge'] ?? [])
@@ -419,6 +423,7 @@ class BusinessesController extends Controller
             'slug' => (array) $business->slug,
             'url' => ResourceUrls::detail($business, 'sr'),
             'category_id' => $business->category_id,
+            'user_id' => $business->user_id,
             'kontakt' => $this->kontakt($business->kontakt ?? []),
             'drustvene' => $this->drustvene((array) $business->drustvene),
             'usluge' => $business->getTranslations('usluge'),
@@ -517,6 +522,17 @@ class BusinessesController extends Controller
                 'value' => $c->id,
                 'label' => $c->getTranslations('label')['sr'] ?? $c->label,
                 'color' => $c->color,
+            ])
+            ->all();
+    }
+
+    protected function korisnici(): array
+    {
+        return \App\Models\User::orderBy('name')
+            ->get(['id', 'name', 'role'])
+            ->map(fn ($u) => [
+                'value' => $u->id,
+                'label' => $u->name.($u->role ? ' ('.$u->role->value.')' : ''),
             ])
             ->all();
     }

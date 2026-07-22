@@ -12,6 +12,7 @@ const props = defineProps({
     lokalitet: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'lokalitet' }) },
 });
 
@@ -31,6 +32,7 @@ const form = useForm({
     lng: props.lokalitet?.lng ?? '',
     preporuceno: props.lokalitet?.preporuceno ?? false,
     status: props.lokalitet?.status ?? 'nacrt',
+    user_id: props.lokalitet?.user_id ?? null,
     tags: [...(props.lokalitet?.tags ?? [])],
 });
 </script>
@@ -41,6 +43,7 @@ const form = useForm({
         :form="form"
         :kategorije="kategorije"
         :statusi="statusi"
+        :korisnici="korisnici"
         :segmenti="segmenti"
         naslov="lokalitet"
         baza="turizam"

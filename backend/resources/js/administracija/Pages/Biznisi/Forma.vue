@@ -21,6 +21,7 @@ const props = defineProps({
     biznis: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'biznis' }) },
     pending: { type: Object, default: null },
 });
@@ -115,6 +116,7 @@ const form = useForm({
     lng: props.biznis?.lng ?? '',
     preporuceno: props.biznis?.preporuceno ?? false,
     status: props.biznis?.status ?? 'nacrt',
+    user_id: props.biznis?.user_id ?? null,
     tags: [...(props.biznis?.tags ?? [])],
 });
 
@@ -535,6 +537,17 @@ const onFotoDrop = (target) => {
                     @save="submit"
                     @trash="obrisi"
                 />
+
+                <Card title="Vlasnik">
+                    <p class="mb-2 text-[12px] text-ink-2">Korisnik za kojeg je vezan ovaj biznis (opciono).</p>
+                    <select
+                        v-model="form.user_id"
+                        class="w-full rounded-lg border border-line bg-surface px-3 py-2 text-[13px] text-ink focus:border-brand focus:outline-none"
+                    >
+                        <option :value="null">- Nije vezano -</option>
+                        <option v-for="k in korisnici" :key="k.value" :value="k.value">{{ k.label }}</option>
+                    </select>
+                </Card>
 
                 <Card title="Kategorija">
                     <div v-if="kategorije.length" class="space-y-0.5">

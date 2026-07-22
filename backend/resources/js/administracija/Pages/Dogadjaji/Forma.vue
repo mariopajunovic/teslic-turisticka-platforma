@@ -12,6 +12,7 @@ const props = defineProps({
     dogadjaj: { type: Object, default: null },
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
+    korisnici: { type: Array, default: () => [] },
     segmenti: { type: Object, default: () => ({ sr: 'dogadjaj' }) },
 });
 
@@ -29,6 +30,7 @@ const form = useForm({
     lat: props.dogadjaj?.lat ?? '',
     lng: props.dogadjaj?.lng ?? '',
     status: props.dogadjaj?.status ?? 'nacrt',
+    user_id: props.dogadjaj?.user_id ?? null,
     tags: [...(props.dogadjaj?.tags ?? [])],
 });
 </script>
@@ -39,6 +41,7 @@ const form = useForm({
         :form="form"
         :kategorije="kategorije"
         :statusi="statusi"
+        :korisnici="korisnici"
         :segmenti="segmenti"
         naslov="događaj"
         baza="dogadjaji"
