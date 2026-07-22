@@ -50,6 +50,42 @@ class IzmjeneVracanjeTest extends TestCase
         ]);
     }
 
+    public function test_vrati_novi_unos_na_doradu(): void
+    {
+        \Illuminate\Support\Facades\Notification::fake();
+        $u = $this->biznis();
+        $b = Business::create([
+            'user_id' => $u->id,
+            'naslov' => ['sr' => 'Novi biznis'],
+            'status' => ContentStatus::Poslano,
+        ]);
+
+        $this->actingAs($this->admin(), 'admin')
+            ->post("/administracija/biznisi/{$b->id}/vrati", ['rejection_reason' => 'Dopuni fotografije'])
+            ->assertRedirect();
+
+        $b->refresh();
+        $this->assertSame(ContentStatus::Nacrt, $b->status);
+        $this->assertSame('Dopuni fotografije', $b->rejection_reason);
+        \Illuminate\Support\Facades\Notification::assertSentTo($u, \App\Notifications\ContentStatusChanged::class);
+    }
+
+    public function test_vrati_novi_unos_zahtijeva_razlog(): void
+    {
+        $u = $this->biznis();
+        $b = Business::create([
+            'user_id' => $u->id,
+            'naslov' => ['sr' => 'Novi'],
+            'status' => ContentStatus::Poslano,
+        ]);
+
+        $this->actingAs($this->admin(), 'admin')
+            ->post("/administracija/biznisi/{$b->id}/vrati", ['rejection_reason' => ''])
+            ->assertSessionHasErrors('rejection_reason');
+
+        $this->assertSame(ContentStatus::Poslano, $b->fresh()->status);
+    }
+
     public function test_vrati_na_doradu_zadrzi_pending_i_zapise_razlog(): void
     {
         Notification::fake();
@@ -89,6 +125,20 @@ class IzmjeneVracanjeTest extends TestCase
         $this->actingAs($this->admin(), 'admin')
             ->get('/administracija')
             ->assertInertia(fn ($p) => $p->where('stats.odobravanje', 0)->has('red', 0));
+    }
+
+    public function test_na_cekanju_tab_ukljucuje_izmjene_objavljenog(): void
+    {
+        $u = $this->biznis();
+        $this->saPending($u);
+
+        $this->actingAs($this->admin(), 'admin')
+            ->get('/administracija/biznisi?tab=na-cekanju')
+            ->assertOk()
+            ->assertInertia(fn ($p) => $p
+                ->where('brojaci.naCekanju', 1)
+                ->has('biznisi.data', 1)
+                ->where('biznisi.data.0.pendingStanje', 'na_cekanju'));
     }
 
     public function test_admin_lista_prikazuje_pending_stanje(): void

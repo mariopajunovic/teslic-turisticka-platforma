@@ -140,6 +140,7 @@ const obrisi = async (b) => {
                             <StatusBadge :status="b.status" />
                             <Badge v-if="b.pendingStanje === 'na_cekanju'" label="Izmjene na čekanju" color="warn" />
                             <Badge v-else-if="b.pendingStanje === 'vraceno'" label="Vraćeno na doradu" color="bad" />
+                            <Badge v-else-if="b.pendingStanje === 'novo'" label="Nova - za pregled" color="warn" />
                         </div>
                         <div class="w-[110px] shrink-0 text-[13px] text-ink-3">{{ b.datum }}</div>
                         <div class="flex w-[90px] shrink-0 items-center justify-end gap-1.5" @click.stop>

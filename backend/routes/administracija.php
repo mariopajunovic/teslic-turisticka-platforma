@@ -105,6 +105,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::put('/biznisi/{business}', [BusinessesController::class, 'update'])->name('biznisi.update');
         Route::delete('/biznisi/{business}', [BusinessesController::class, 'destroy'])->name('biznisi.destroy');
         Route::post('/biznisi/{business}/odobri', [BusinessesController::class, 'approve'])->name('biznisi.approve');
+        Route::post('/biznisi/{business}/vrati', [BusinessesController::class, 'vrati'])->name('biznisi.vrati');
         Route::post('/biznisi/{business}/odbij', [BusinessesController::class, 'reject'])->name('biznisi.reject');
         Route::post('/biznisi/{business}/odobri-izmjene', [BusinessesController::class, 'approveChanges'])->name('biznisi.approveChanges');
         Route::post('/biznisi/{business}/vrati-izmjene', [BusinessesController::class, 'returnChanges'])->name('biznisi.returnChanges');
@@ -135,6 +136,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
             Route::put("/{$baza}/{id}", [$ctrl, 'update'])->whereNumber('id')->name("{$baza}.update");
             Route::delete("/{$baza}/{id}", [$ctrl, 'destroy'])->whereNumber('id')->name("{$baza}.destroy");
             Route::post("/{$baza}/{id}/odobri", [$ctrl, 'approve'])->whereNumber('id')->name("{$baza}.approve");
+            Route::post("/{$baza}/{id}/vrati", [$ctrl, 'vrati'])->whereNumber('id')->name("{$baza}.vrati");
             Route::post("/{$baza}/{id}/odbij", [$ctrl, 'reject'])->whereNumber('id')->name("{$baza}.reject");
             Route::post("/{$baza}/{id}/odobri-izmjene", [$ctrl, 'approveChanges'])->whereNumber('id')->name("{$baza}.approveChanges");
             Route::post("/{$baza}/{id}/vrati-izmjene", [$ctrl, 'returnChanges'])->whereNumber('id')->name("{$baza}.returnChanges");

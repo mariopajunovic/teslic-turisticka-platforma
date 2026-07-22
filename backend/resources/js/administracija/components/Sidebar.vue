@@ -34,6 +34,9 @@ const emit = defineEmits(['close', 'toggle-collapse']);
 
 const page = usePage();
 
+const stavke = computed(() => page.props?.badges?.stavke ?? {});
+const brojZa = (href) => stavke.value[String(href || '').split('/').pop()] ?? null;
+
 const groups = [
     {
         label: null,
@@ -125,6 +128,7 @@ const isActive = (href) => {
                         :label="item.label"
                         :href="item.href"
                         :active="isActive(item.href)"
+                        :count="brojZa(item.href)"
                         :collapsed="collapsed"
                     />
                 </div>
@@ -162,6 +166,7 @@ const isActive = (href) => {
                             :label="item.label"
                             :href="item.href"
                             :active="isActive(item.href)"
+                            :count="brojZa(item.href)"
                         />
                     </div>
                 </template>

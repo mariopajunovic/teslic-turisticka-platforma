@@ -67,6 +67,7 @@ abstract class AdminResourceController extends Controller
         $tab = $request->query('tab', 'sve');
         $kategorija = $request->query('kategorija');
         $status = self::TABOVI[$tab] ?? null;
+        $naCekanju = $tab === 'na-cekanju';
 
         $model = $this->model();
 
@@ -74,7 +75,8 @@ abstract class AdminResourceController extends Controller
 
         $stavke = $model::query()
             ->with($relacije)
-            ->when($status, fn ($q) => $q->where('status', $status))
+            ->when($naCekanju, fn ($q) => $q->where(\App\Support\AdminObavijesti::naCekanjuFilter($model)))
+            ->when($status && ! $naCekanju, fn ($q) => $q->where('status', $status))
             ->when($this->hasCategory() && $kategorija, fn ($q) => $q->where('category_id', $kategorija))
             ->latest('id')
             ->paginate(15)
@@ -89,7 +91,7 @@ abstract class AdminResourceController extends Controller
             ],
             'brojaci' => [
                 'objavljeni' => $model::where('status', ContentStatus::Objavljeno)->count(),
-                'naCekanju' => $model::where('status', ContentStatus::Poslano)->count(),
+                'naCekanju' => $model::where(\App\Support\AdminObavijesti::naCekanjuFilter($model))->count(),
                 'nacrti' => $model::where('status', ContentStatus::Nacrt)->count(),
             ],
             'kategorije' => $this->kategorije(),
@@ -216,7 +218,9 @@ abstract class AdminResourceController extends Controller
 
     public function approve(int $id, ContentWorkflow $workflow): RedirectResponse
     {
-        $workflow->approve($this->find($id));
+        $stavka = $this->find($id);
+        $workflow->approve($stavka);
+        $stavka->user?->notify(new \App\Notifications\ContentStatusChanged($stavka));
 
         return back(303)->with('status', $this->nazivJednine().' je odobren i objavljen.');
     }
@@ -224,9 +228,21 @@ abstract class AdminResourceController extends Controller
     public function reject(Request $request, int $id, ContentWorkflow $workflow): RedirectResponse
     {
         $data = $request->validate(['rejection_reason' => ['required', 'string', 'max:1000']]);
-        $workflow->reject($this->find($id), $data['rejection_reason']);
+        $stavka = $this->find($id);
+        $workflow->reject($stavka, $data['rejection_reason']);
+        $stavka->user?->notify(new \App\Notifications\ContentStatusChanged($stavka));
 
         return back(303)->with('status', $this->nazivJednine().' je odbijen.');
+    }
+
+    public function vrati(Request $request, int $id, ContentWorkflow $workflow): RedirectResponse
+    {
+        $data = $request->validate(['rejection_reason' => ['required', 'string', 'max:1000']]);
+        $stavka = $this->find($id);
+        $workflow->returnForRevision($stavka, $data['rejection_reason']);
+        $stavka->user?->notify(new \App\Notifications\ContentStatusChanged($stavka));
+
+        return back(303)->with('status', $this->nazivJednine().' je vraćen na doradu.');
     }
 
     public function uploadNaslovna(Request $request, int $id): RedirectResponse
@@ -406,6 +422,9 @@ abstract class AdminResourceController extends Controller
             ] : null,
             'autor' => $stavka->user?->name,
             'status' => $stavka->status->value,
+            'pendingStanje' => ! empty($stavka->pending_reason) ? 'vraceno'
+                : (! empty($stavka->pending) ? 'na_cekanju'
+                : ($stavka->status === ContentStatus::Poslano ? 'novo' : null)),
             'datum' => ($stavka->published_at ?? $stavka->created_at)?->translatedFormat('d.m.Y.'),
             'url' => ResourceUrls::detail($stavka, 'sr'),
         ];

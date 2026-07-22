@@ -8,6 +8,7 @@ import IconBtn from './IconBtn.vue';
 import Tabs from './Tabs.vue';
 import SelectField from './SelectField.vue';
 import StatusBadge from './StatusBadge.vue';
+import Badge from './Badge.vue';
 import RowMenu from './RowMenu.vue';
 import Pagination from './Pagination.vue';
 import EmptyState from './EmptyState.vue';
@@ -139,8 +140,11 @@ const obrisi = async (s) => {
                             <span v-else class="text-xs text-ink-3">-</span>
                         </div>
                         <div class="w-[150px] shrink-0 truncate text-[13px] text-ink-2">{{ s.autor || '-' }}</div>
-                        <div class="w-[130px] shrink-0">
+                        <div class="flex w-[130px] shrink-0 flex-col items-start gap-1">
                             <StatusBadge :status="s.status" />
+                            <Badge v-if="s.pendingStanje === 'na_cekanju'" label="Izmjene na čekanju" color="warn" />
+                            <Badge v-else-if="s.pendingStanje === 'vraceno'" label="Vraćeno na doradu" color="bad" />
+                            <Badge v-else-if="s.pendingStanje === 'novo'" label="Nova - za pregled" color="warn" />
                         </div>
                         <div class="w-[110px] shrink-0 text-[13px] text-ink-3">{{ s.datum }}</div>
                         <div class="flex w-[90px] shrink-0 items-center justify-end gap-1.5" @click.stop>

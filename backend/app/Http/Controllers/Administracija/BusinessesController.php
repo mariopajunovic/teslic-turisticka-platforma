@@ -33,10 +33,12 @@ class BusinessesController extends Controller
         $kategorija = $request->query('kategorija');
 
         $status = self::TABOVI[$tab] ?? null;
+        $naCekanju = $tab === 'na-cekanju';
 
         $biznisi = Business::query()
             ->with(['category', 'user', 'media'])
-            ->when($status, fn ($query) => $query->where('status', $status))
+            ->when($naCekanju, fn ($query) => $query->where(\App\Support\AdminObavijesti::naCekanjuFilter(Business::class)))
+            ->when($status && ! $naCekanju, fn ($query) => $query->where('status', $status))
             ->when($kategorija, fn ($query) => $query->where('category_id', $kategorija))
             ->latest('id')
             ->paginate(15)
@@ -51,7 +53,7 @@ class BusinessesController extends Controller
             ],
             'brojaci' => [
                 'objavljeni' => Business::where('status', ContentStatus::Objavljeno)->count(),
-                'naCekanju' => Business::where('status', ContentStatus::Poslano)->count(),
+                'naCekanju' => Business::where(\App\Support\AdminObavijesti::naCekanjuFilter(Business::class))->count(),
                 'nacrti' => Business::where('status', ContentStatus::Nacrt)->count(),
             ],
             'kategorije' => $this->kategorije(),
@@ -111,6 +113,7 @@ class BusinessesController extends Controller
     public function approve(Business $business, ContentWorkflow $workflow): RedirectResponse
     {
         $workflow->approve($business);
+        $business->user?->notify(new \App\Notifications\ContentStatusChanged($business));
 
         return back(303)->with('status', 'Biznis je odobren i objavljen.');
     }
@@ -122,8 +125,19 @@ class BusinessesController extends Controller
         ]);
 
         $workflow->reject($business, $data['rejection_reason']);
+        $business->user?->notify(new \App\Notifications\ContentStatusChanged($business));
 
         return back(303)->with('status', 'Biznis je odbijen.');
+    }
+
+    public function vrati(Request $request, Business $business, ContentWorkflow $workflow): RedirectResponse
+    {
+        $data = $request->validate(['rejection_reason' => ['required', 'string', 'max:1000']]);
+
+        $workflow->returnForRevision($business, $data['rejection_reason']);
+        $business->user?->notify(new \App\Notifications\ContentStatusChanged($business));
+
+        return back(303)->with('status', 'Novi unos je vraćen vlasniku na doradu.');
     }
 
     public function approveChanges(Business $business): RedirectResponse
@@ -443,7 +457,9 @@ class BusinessesController extends Controller
             ] : null,
             'autor' => $business->user?->name,
             'status' => $business->status->value,
-            'pendingStanje' => $business->pending === null ? null : ($business->pending_reason ? 'vraceno' : 'na_cekanju'),
+            'pendingStanje' => $business->pending_reason ? 'vraceno'
+                : ($business->pending !== null ? 'na_cekanju'
+                : ($business->status === ContentStatus::Poslano ? 'novo' : null)),
             'datum' => ($business->published_at ?? $business->created_at)?->translatedFormat('d.m.Y.'),
             'url' => ResourceUrls::detail($business, 'sr'),
         ];

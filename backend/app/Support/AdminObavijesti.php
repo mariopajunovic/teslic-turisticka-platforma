@@ -24,7 +24,8 @@ class AdminObavijesti
         News::class => ['tip' => 'Vijest', 'tipBoja' => 'ok', 'baza' => 'vijesti'],
     ];
 
-    protected static function filter(string $model): \Closure
+    /** Uslov "na čekanju": status=Poslano ILI izmjena objavljenog koja čeka pregled (pending, bez razloga vraćanja). */
+    public static function naCekanjuFilter(string $model): \Closure
     {
         $poslano = ContentStatus::Poslano->value;
         $imaPending = Schema::hasColumn((new $model)->getTable(), 'pending');
@@ -40,7 +41,7 @@ class AdminObavijesti
         foreach (static::$tipovi as $model => $meta) {
             $imaPending = Schema::hasColumn((new $model)->getTable(), 'pending');
 
-            $items = $model::with('user')->where(static::filter($model))->latest('updated_at')->limit(5)->get();
+            $items = $model::with('user')->where(static::naCekanjuFilter($model))->latest('updated_at')->limit(5)->get();
 
             foreach ($items as $item) {
                 $izmjena = $imaPending && $item->pending !== null;
@@ -63,15 +64,21 @@ class AdminObavijesti
         return array_slice($red, 0, $limit);
     }
 
-    public static function brojOdobravanja(): int
+    /** Broj stavki na odobrenju po tipu (baza => broj), za badge-ove u navigaciji. */
+    public static function brojeviPoTipu(): array
     {
-        $count = 0;
+        $out = [];
 
-        foreach (array_keys(static::$tipovi) as $model) {
-            $count += $model::where(static::filter($model))->count();
+        foreach (static::$tipovi as $model => $meta) {
+            $out[$meta['baza']] = $model::where(static::naCekanjuFilter($model))->count();
         }
 
-        return $count;
+        return $out;
+    }
+
+    public static function brojOdobravanja(): int
+    {
+        return array_sum(static::brojeviPoTipu());
     }
 
     public static function brojRegistracija(): int

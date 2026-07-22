@@ -42,6 +42,21 @@ function odbijIzmjene() {
     router.post(`/administracija/biznisi/${props.biznis.id}/odbij-izmjene`, {}, { preserveScroll: true });
 }
 
+const akcijaNovog = ref(null);
+const razlogNovog = ref('');
+
+function odobriNovi() {
+    router.post(`/administracija/biznisi/${props.biznis.id}/odobri`, {}, { preserveScroll: true });
+}
+function posaljiAkcijuNovog() {
+    if (!razlogNovog.value.trim()) return;
+    const put = akcijaNovog.value === 'vrati' ? 'vrati' : 'odbij';
+    router.post(`/administracija/biznisi/${props.biznis.id}/${put}`, { rejection_reason: razlogNovog.value }, {
+        preserveScroll: true,
+        onSuccess: () => { akcijaNovog.value = null; razlogNovog.value = ''; },
+    });
+}
+
 const { confirm } = useConfirm();
 const page = usePage();
 
@@ -248,6 +263,24 @@ const onFotoDrop = (target) => {
                     <img v-if="pending.naslovnaNova" :src="pending.naslovnaNova" class="h-16 w-24 rounded-lg object-cover" alt="" />
                     <img v-for="(g, i) in pending.galerijaNova" :key="i" :src="g" class="h-16 w-24 rounded-lg object-cover" alt="" />
                 </div>
+            </div>
+        </div>
+
+        <div v-if="biznis && !pending && form.status === 'poslano'" class="rounded-xl border border-[#8C5810]/40 bg-[#fff8ee] p-4 md:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <h2 class="text-[15px] font-bold text-ink">Novi unos na čekanju</h2>
+                <div class="flex gap-2">
+                    <button type="button" class="rounded-lg bg-brand px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90" @click="odobriNovi">Odobri i objavi</button>
+                    <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="akcijaNovog = akcijaNovog === 'vrati' ? null : 'vrati'">Vrati na doradu</button>
+                    <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="akcijaNovog = akcijaNovog === 'odbij' ? null : 'odbij'">Odbij</button>
+                </div>
+            </div>
+            <p class="mt-1 text-[12px] text-ink-2">Novi unos čeka pregled. Odobri za objavu, ili ga vrati vlasniku na doradu / odbij uz razlog.</p>
+
+            <div v-if="akcijaNovog" class="mt-3 space-y-2 rounded-lg border border-line bg-surface p-3">
+                <label class="text-[12px] font-bold text-ink">{{ akcijaNovog === 'vrati' ? 'Šta vlasnik treba da ispravi?' : 'Razlog odbijanja' }}</label>
+                <textarea v-model="razlogNovog" rows="2" class="w-full rounded-lg border border-line bg-surface p-2 text-[13px] text-ink focus:border-brand focus:outline-none"></textarea>
+                <button type="button" :disabled="!razlogNovog.trim()" class="rounded-lg bg-[#8C5810] px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90 disabled:opacity-40" @click="posaljiAkcijuNovog">{{ akcijaNovog === 'vrati' ? 'Pošalji na doradu' : 'Odbij unos' }}</button>
             </div>
         </div>
 

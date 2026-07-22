@@ -36,14 +36,24 @@ class HandleAdminInertiaRequests extends Middleware
                 'error' => fn () => $request->session()->get('error'),
                 'recoveryCodes' => fn () => $request->session()->get('recoveryCodes'),
             ],
-            'badges' => [
-                'odobravanje' => fn () => AdminObavijesti::brojOdobravanja(),
-                'obavijesti' => fn () => AdminObavijesti::broj(),
-            ],
+            'badges' => fn () => $this->badges(),
             'locales' => fn () => collect(config('locales.languages'))
                 ->map(fn ($l, $code) => ['code' => $code, 'name' => $l['label']])
                 ->values()
                 ->all(),
+        ];
+    }
+
+    protected function badges(): array
+    {
+        $poTipu = AdminObavijesti::brojeviPoTipu();
+        $registracije = AdminObavijesti::brojRegistracija();
+        $odobravanje = array_sum($poTipu);
+
+        return [
+            'odobravanje' => $odobravanje,
+            'obavijesti' => $odobravanje + $registracije,
+            'stavke' => $poTipu + ['korisnici' => $registracije],
         ];
     }
 

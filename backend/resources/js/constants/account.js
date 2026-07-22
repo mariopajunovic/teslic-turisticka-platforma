@@ -3,6 +3,7 @@ export const biznisNav = [
   { label: 'acc.navOverview', icon: 'target', to: '/nalog/biznis/pregled' },
   { label: 'acc.navPosts', icon: 'file-text', to: '/nalog/biznis/objave' },
   { label: 'acc.navAds', icon: 'megaphone', to: '/nalog/biznis/oglasi' },
+  { label: 'acc.navEvents', icon: 'calendar', to: '/nalog/biznis/dogadjaji' },
   { label: 'acc.navSettings', icon: 'settings', to: '/nalog/biznis/postavke' },
 ]
 

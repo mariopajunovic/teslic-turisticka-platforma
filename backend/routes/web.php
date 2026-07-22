@@ -92,6 +92,12 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
             Route::get('biznis/oglasi/{ad}/uredi', [BiznisAdController::class, 'edit'])->name('nalog.biznis.oglasi.uredi');
             Route::put('biznis/oglasi/{ad}', [BiznisAdController::class, 'update']);
 
+            Route::get('biznis/dogadjaji', [\App\Http\Controllers\Nalog\BiznisDogadjajController::class, 'index'])->name('nalog.biznis.dogadjaji');
+            Route::get('biznis/dogadjaji/novi', [\App\Http\Controllers\Nalog\BiznisDogadjajController::class, 'create'])->name('nalog.biznis.dogadjaji.novi');
+            Route::post('biznis/dogadjaji', [\App\Http\Controllers\Nalog\BiznisDogadjajController::class, 'store']);
+            Route::get('biznis/dogadjaji/{event}/uredi', [\App\Http\Controllers\Nalog\BiznisDogadjajController::class, 'edit'])->name('nalog.biznis.dogadjaji.uredi');
+            Route::put('biznis/dogadjaji/{event}', [\App\Http\Controllers\Nalog\BiznisDogadjajController::class, 'update']);
+
             Route::get('biznis/postavke', [BiznisProfilController::class, 'edit'])->name('nalog.biznis.postavke');
         });
     });
