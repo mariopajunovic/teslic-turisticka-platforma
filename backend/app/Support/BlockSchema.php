@@ -99,8 +99,33 @@ class BlockSchema
             ]],
             'stepper' => ['label' => 'Koraci', 'icon' => 'list-ordered', 'opis' => 'Korak po korak', 'fields' => [
                 ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
+                ['name' => 'podnaslov', 'label' => 'Podnaslov', 'type' => 'textarea', 'tr' => true],
                 ['name' => 'steps', 'label' => 'Koraci', 'type' => 'repeater', 'fields' => [
+                    ['name' => 'icon', 'label' => 'Ikona', 'type' => 'text'],
                     ['name' => 'title', 'label' => 'Naslov koraka', 'type' => 'text', 'tr' => true, 'required' => true],
+                    ['name' => 'text', 'label' => 'Opis', 'type' => 'textarea', 'tr' => true],
+                ]],
+            ]],
+            'paths' => ['label' => 'Putanje', 'icon' => 'signpost', 'opis' => 'Kartice izbora (2 kolone)', 'fields' => [
+                ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
+                ['name' => 'podnaslov', 'label' => 'Podnaslov', 'type' => 'textarea', 'tr' => true],
+                ['name' => 'paths', 'label' => 'Kartice', 'type' => 'repeater', 'fields' => [
+                    ['name' => 'icon', 'label' => 'Ikona', 'type' => 'text'],
+                    ['name' => 'title', 'label' => 'Naslov', 'type' => 'text', 'tr' => true, 'required' => true],
+                    ['name' => 'text', 'label' => 'Opis', 'type' => 'textarea', 'tr' => true],
+                    ['name' => 'features', 'label' => 'Stavke', 'type' => 'repeater', 'fields' => [
+                        ['name' => 'text', 'label' => 'Tekst', 'type' => 'text', 'tr' => true, 'required' => true],
+                    ]],
+                    ['name' => 'buttonLabel', 'label' => 'Tekst dugmeta', 'type' => 'text', 'tr' => true],
+                    ['name' => 'buttonUrl', 'label' => 'Link dugmeta', 'type' => 'url'],
+                ]],
+            ]],
+            'features' => ['label' => 'Prednosti', 'icon' => 'grid-2x2-check', 'opis' => 'Mreža ikona (3 kolone)', 'fields' => [
+                ['name' => 'naslov', 'label' => 'Naslov sekcije', 'type' => 'text', 'tr' => true],
+                ['name' => 'podnaslov', 'label' => 'Podnaslov', 'type' => 'textarea', 'tr' => true],
+                ['name' => 'items', 'label' => 'Stavke', 'type' => 'repeater', 'fields' => [
+                    ['name' => 'icon', 'label' => 'Ikona', 'type' => 'text'],
+                    ['name' => 'title', 'label' => 'Naslov', 'type' => 'text', 'tr' => true, 'required' => true],
                     ['name' => 'text', 'label' => 'Opis', 'type' => 'textarea', 'tr' => true],
                 ]],
             ]],

@@ -16,6 +16,8 @@ import BlockInfoPanel from '@/components/blocks/BlockInfoPanel.vue'
 import BlockFaq from '@/components/blocks/BlockFaq.vue'
 import BlockStats from '@/components/blocks/BlockStats.vue'
 import BlockPartners from '@/components/blocks/BlockPartners.vue'
+import BlockPaths from '@/components/blocks/BlockPaths.vue'
+import BlockFeatures from '@/components/blocks/BlockFeatures.vue'
 import BlockFeaturedStory from '@/components/blocks/BlockFeaturedStory.vue'
 import BlockAuthor from '@/components/blocks/BlockAuthor.vue'
 import BlockMapExplorer from '@/components/blocks/BlockMapExplorer.vue'
@@ -44,6 +46,8 @@ const registry = {
   faq: BlockFaq,
   stats: BlockStats,
   partners: BlockPartners,
+  paths: BlockPaths,
+  features: BlockFeatures,
   featured_story: BlockFeaturedStory,
   author: BlockAuthor,
   map_explorer: BlockMapExplorer,

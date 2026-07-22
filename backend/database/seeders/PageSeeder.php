@@ -77,57 +77,67 @@ class PageSeeder extends Seeder
                 'subtitle' => 'Predstavi svoj biznis hiljadama posjetilaca ili podijeli priču o teslićkom kraju.',
                 'image' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1600&q=80',
             ]],
-            ['type' => 'cta', 'data' => [
+            ['type' => 'paths', 'data' => [
                 'settings' => ['background' => 'surface-alt', 'padding' => 'lg'],
-                'title' => 'Odaberi svoju putanju',
-                'text' => 'Registruj biznis i budi vidljiv u lokalnoj ponudi, ili se uključi kao autor i piši priče kraja.',
-                'buttons' => [
-                    ['label' => 'Registruj biznis', 'url' => '/pridruzi-se/biznis', 'variant' => 'sekundarna'],
-                    ['label' => 'Uključi se kao autor', 'url' => '/pridruzi-se/autor', 'variant' => 'primary'],
+                'naslov' => 'Odaberite svoju putanju',
+                'podnaslov' => 'Dva načina da se uključite - kao poslovni subjekt ili kao autor sadržaja. Prijava je besplatna i prolazi kratak pregled administratora.',
+                'paths' => [
+                    [
+                        'icon' => 'store',
+                        'title' => 'Registruj biznis',
+                        'text' => 'Predstavite svoj smještaj, restoran, OPG ili uslugu. Dodajte fotografije, radno vrijeme i kontakt - i pojavite se na mapi ponude Teslića.',
+                        'features' => [
+                            ['text' => 'Profil na javnoj mapi i u katalogu'],
+                            ['text' => 'Galerija fotografija i radno vrijeme'],
+                            ['text' => 'Vidljivost kod posjetilaca i gostiju'],
+                        ],
+                        'buttonLabel' => 'Registruj biznis',
+                        'buttonUrl' => '/pridruzi-se/biznis',
+                    ],
+                    [
+                        'icon' => 'pen-line',
+                        'title' => 'Uključi se kao autor',
+                        'text' => 'Volite pisati o kraju, događajima i ljudima? Postanite autor i objavljujte priče, vodiče i reportaže iz Teslića, Banje Vrućice i Borja.',
+                        'features' => [
+                            ['text' => 'Objava priča i vodiča pod vašim imenom'],
+                            ['text' => 'Uređivačka podrška i lektura'],
+                            ['text' => 'Promocija sadržaja na naslovnici'],
+                        ],
+                        'buttonLabel' => 'Postani autor',
+                        'buttonUrl' => '/pridruzi-se/autor',
+                    ],
                 ],
             ]],
-            ['type' => 'stats', 'data' => [
-                'naslov' => 'Zašto se pridružiti',
+            ['type' => 'features', 'data' => [
+                'settings' => ['background' => 'surface-alt', 'padding' => 'md'],
+                'naslov' => 'Šta dobijate',
+                'podnaslov' => 'Platforma je tu da vaš sadržaj dođe do pravih ljudi - domaćih posjetilaca i gostiju Banje Vrućice.',
                 'items' => [
-                    ['value' => '15.000+', 'label' => 'Posjetilaca mjesečno'],
-                    ['value' => 'Besplatno', 'label' => 'Osnovni profil'],
-                    ['value' => 'SEO', 'label' => 'Vidljivost na pretraživačima'],
-                    ['value' => 'Podrška', 'label' => 'Pomoć pri postavljanju'],
+                    ['icon' => 'eye', 'title' => 'Veća vidljivost', 'text' => 'Vaš profil je dostupan svima koji pretražuju ponudu Teslića i okoline.'],
+                    ['icon' => 'map-pin', 'title' => 'Pozicija na mapi', 'text' => 'Pojavljujete se na interaktivnoj mapi ponude, smještaja i događaja.'],
+                    ['icon' => 'badge-check', 'title' => 'Provjereni profil', 'text' => 'Svaka prijava prolazi pregled, pa korisnici imaju povjerenje u sadržaj.'],
+                    ['icon' => 'image', 'title' => 'Galerija i detalji', 'text' => 'Dodajte fotografije, radno vrijeme, cijene i kontakt na jednom mjestu.'],
+                    ['icon' => 'megaphone', 'title' => 'Promocija sadržaja', 'text' => 'Najbolji profili i priče izdvajaju se na naslovnici i u newsletteru.'],
+                    ['icon' => 'gift', 'title' => 'Besplatno učešće', 'text' => 'Registracija i objava su potpuno besplatni za lokalne subjekte i autore.'],
                 ],
             ]],
             ['type' => 'stepper', 'data' => [
-                'settings' => ['background' => 'surface-alt', 'padding' => 'lg'],
-                'naslov' => 'Kako funkcioniše',
+                'settings' => ['background' => 'surface', 'padding' => 'lg'],
+                'naslov' => 'Kako teče proces',
+                'podnaslov' => 'Od prijave do objave u tri jednostavna koraka. Pregled obično traje do dva radna dana.',
                 'steps' => [
-                    ['title' => 'Registruj nalog', 'text' => 'Odaberi biznis ili autor i popuni osnovne podatke.'],
-                    ['title' => 'Postavi sadržaj', 'text' => 'Dodaj opis, fotografije i kontakt informacije.'],
-                    ['title' => 'Pošalji na pregled', 'text' => 'Tim turističke organizacije pregleda i odobrava sadržaj.'],
-                    ['title' => 'Objavljeno', 'text' => 'Tvoj sadržaj je vidljiv svim posjetiocima platforme.'],
-                ],
-            ]],
-            ['type' => 'faq', 'data' => [
-                'naslov' => 'Česta pitanja',
-                'items' => [
-                    ['q' => 'Da li je registracija besplatna?', 'a' => 'Da, osnovni profil i objavljivanje sadržaja su besplatni za lokalne ponuđače i autore.'],
-                    ['q' => 'Ko odobrava sadržaj?', 'a' => 'Sav sadržaj prije objave pregleda tim Turističke organizacije Teslić radi osiguranja kvaliteta.'],
-                    ['q' => 'Mogu li uređivati objavu nakon objavljivanja?', 'a' => 'Da, izmjene su moguće kroz vaš nalog, a veće promjene ponovo prolaze kratak pregled.'],
-                ],
-            ]],
-            ['type' => 'partners', 'data' => [
-                'naslov' => 'Partneri i podrška',
-                'items' => [
-                    ['name' => 'Opština Teslić', 'logo' => '', 'url' => ''],
-                    ['name' => 'TO Republike Srpske', 'logo' => '', 'url' => ''],
-                    ['name' => 'Banja Vrućica', 'logo' => '', 'url' => ''],
-                    ['name' => 'Privredna komora', 'logo' => '', 'url' => ''],
+                    ['icon' => 'pencil', 'title' => 'Prijava', 'text' => 'Popunite formu sa osnovnim podacima i fotografijama vašeg subjekta ili priče.'],
+                    ['icon' => 'search', 'title' => 'Pregled', 'text' => 'Administrator provjerava podatke i kvalitet sadržaja prije objave.'],
+                    ['icon' => 'circle-check', 'title' => 'Odobrenje', 'text' => 'Vaš profil postaje javan i vidljiv svim posjetiocima platforme.'],
                 ],
             ]],
             ['type' => 'cta', 'data' => [
-                'settings' => ['background' => 'primary', 'padding' => 'lg'],
-                'title' => 'Spreman/na za početak?',
-                'text' => 'Kreiraj nalog za par minuta i predstavi svoj kraj.',
+                'settings' => ['background' => 'surface-alt', 'padding' => 'none'],
+                'title' => 'Imate biznis ili priču iz Teslića?',
+                'text' => 'Pridružite se platformi i predstavite svoju ponudu, proizvode ili priču posjetiocima Teslića.',
                 'buttons' => [
-                    ['label' => 'Kreiraj nalog', 'url' => '/registracija', 'variant' => 'sekundarna'],
+                    ['label' => 'Registruj biznis', 'url' => '/pridruzi-se/biznis', 'variant' => 'sekundarna'],
+                    ['label' => 'Postani autor', 'url' => '/pridruzi-se/autor', 'variant' => 'primary'],
                 ],
             ]],
         ]);

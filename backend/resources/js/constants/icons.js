@@ -94,6 +94,8 @@ import {
   PenTool,
   Clock3,
   Save,
+  BadgeCheck,
+  Gift,
 } from 'lucide-vue-next'
 
 export const icons = {
@@ -165,6 +167,9 @@ export const icons = {
   users: Users,
   store: Store,
   pen: PenLine,
+  'pen-line': PenLine,
+  'badge-check': BadgeCheck,
+  gift: Gift,
   heart: Heart,
   leaf: Leaf,
   camera: Camera,
