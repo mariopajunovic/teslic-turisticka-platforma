@@ -50,6 +50,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
     Route::delete('/profil/2fa', [ProfilController::class, 'onemoguci2fa'])->name('profil.2fa.onemoguci');
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/obavijesti', [\App\Http\Controllers\Administracija\ObavijestiController::class, 'index'])->name('obavijesti');
 
     Route::middleware('admin.access:upravljanje korisnicima')->group(function () {
         Route::get('/korisnici', [KorisniciController::class, 'index'])->name('korisnici');
@@ -106,6 +107,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::post('/biznisi/{business}/odobri', [BusinessesController::class, 'approve'])->name('biznisi.approve');
         Route::post('/biznisi/{business}/odbij', [BusinessesController::class, 'reject'])->name('biznisi.reject');
         Route::post('/biznisi/{business}/odobri-izmjene', [BusinessesController::class, 'approveChanges'])->name('biznisi.approveChanges');
+        Route::post('/biznisi/{business}/vrati-izmjene', [BusinessesController::class, 'returnChanges'])->name('biznisi.returnChanges');
         Route::post('/biznisi/{business}/odbij-izmjene', [BusinessesController::class, 'rejectChanges'])->name('biznisi.rejectChanges');
         Route::post('/biznisi/{business}/logo', [BusinessesController::class, 'uploadLogo'])->name('biznisi.logo');
         Route::delete('/biznisi/{business}/logo', [BusinessesController::class, 'destroyLogo'])->name('biznisi.logo.destroy');
@@ -135,6 +137,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
             Route::post("/{$baza}/{id}/odobri", [$ctrl, 'approve'])->whereNumber('id')->name("{$baza}.approve");
             Route::post("/{$baza}/{id}/odbij", [$ctrl, 'reject'])->whereNumber('id')->name("{$baza}.reject");
             Route::post("/{$baza}/{id}/odobri-izmjene", [$ctrl, 'approveChanges'])->whereNumber('id')->name("{$baza}.approveChanges");
+            Route::post("/{$baza}/{id}/vrati-izmjene", [$ctrl, 'returnChanges'])->whereNumber('id')->name("{$baza}.returnChanges");
             Route::post("/{$baza}/{id}/odbij-izmjene", [$ctrl, 'rejectChanges'])->whereNumber('id')->name("{$baza}.rejectChanges");
             Route::post("/{$baza}/{id}/naslovna", [$ctrl, 'uploadNaslovna'])->whereNumber('id')->name("{$baza}.naslovna");
             Route::delete("/{$baza}/{id}/naslovna", [$ctrl, 'destroyNaslovna'])->whereNumber('id')->name("{$baza}.naslovna.destroy");

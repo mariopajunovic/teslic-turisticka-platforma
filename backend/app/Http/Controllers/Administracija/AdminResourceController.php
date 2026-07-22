@@ -162,6 +162,19 @@ abstract class AdminResourceController extends Controller
         return back(303)->with('status', 'Izmjene su odobrene i objavljene.');
     }
 
+    public function returnChanges(Request $request, int $id): RedirectResponse
+    {
+        $data = $request->validate(['pending_reason' => ['required', 'string', 'max:1000']]);
+        $stavka = $this->find($id);
+
+        if (method_exists($stavka, 'vratiPending')) {
+            $stavka->vratiPending($data['pending_reason']);
+            $stavka->user?->notify(new \App\Notifications\IzmjeneVracene($stavka, $data['pending_reason']));
+        }
+
+        return back(303)->with('status', 'Izmjene su vraćene autoru na doradu.');
+    }
+
     public function rejectChanges(int $id): RedirectResponse
     {
         $stavka = $this->find($id);

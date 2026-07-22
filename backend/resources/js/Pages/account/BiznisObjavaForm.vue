@@ -93,7 +93,10 @@ function ukloniMedij(id) {
 
       <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
       <BaseAlert v-if="form.errors.naslov" variant="greska" :title="$t('acc.checkDataShort')" :text="$t('acc.nameRequired')" />
-      <BaseAlert v-if="objava?.imaPending" variant="info" :title="$t('acc.pendingChangesTitle')" :text="$t('acc.pendingChangesText')" />
+      <BaseAlert v-if="objava?.vraceno" variant="greska" title="Izmjene su vraćene na doradu">
+        <span class="font-semibold text-text">{{ objava.vraceno }}</span>
+      </BaseAlert>
+      <BaseAlert v-else-if="objava?.imaPending" variant="info" :title="$t('acc.pendingChangesTitle')" :text="$t('acc.pendingChangesText')" />
       <BaseAlert v-else-if="objava?.objavljeno" variant="info" :title="$t('acc.editLiveTitle')" :text="$t('acc.editLiveText')" />
 
       <!-- Informacije -->

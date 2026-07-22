@@ -8,6 +8,7 @@ import {
     CalendarDays,
     Check,
     Pencil,
+    Eye,
     Plus,
     Trash2,
     LogIn,
@@ -85,26 +86,22 @@ const iconWrap = (boja) => {
 
         <div class="grid grid-cols-1 gap-5 lg:grid-cols-[1fr_400px]">
             <Card title="Red odobravanja" :count="red.length" :padded="false">
-                <template #actions>
-                    <Link href="#" class="text-[13px] font-semibold text-brand hover:underline">Vidi sve →</Link>
-                </template>
-
                 <div v-if="red.length" class="divide-y divide-line">
                     <div
                         v-for="(item, i) in red"
                         :key="i"
                         class="flex items-center gap-3 px-[18px] py-3"
                     >
-                        <Badge :label="item.tip" :color="item.tipBoja" />
+                        <Badge :label="item.tip" :color="item.tipBoja" class="w-24 shrink-0 justify-center" />
                         <div class="min-w-0 flex-1">
                             <Link :href="item.url || '#'" class="block truncate text-[13px] font-semibold text-ink hover:text-brand">
                                 {{ item.naslov }}
                             </Link>
                             <p class="truncate text-xs text-ink-3">{{ item.meta }}</p>
                         </div>
+                        <span v-if="item.datum" class="hidden shrink-0 text-[11px] text-ink-3 sm:block">{{ item.datum }}</span>
                         <div class="flex shrink-0 items-center gap-1.5">
-                            <IconBtn :icon="Check" color="ok" tooltip="Odobri" />
-                            <IconBtn :icon="Pencil" tooltip="Uredi" />
+                            <IconBtn :icon="Eye" color="brand" tooltip="Pregledaj izmjene i odobri" :href="item.url" />
                         </div>
                     </div>
                 </div>

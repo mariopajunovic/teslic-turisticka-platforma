@@ -1,4 +1,5 @@
 <script setup>
+import { ref } from 'vue';
 import { useForm, router } from '@inertiajs/vue3';
 import ResourceFormShell from '../../components/ResourceFormShell.vue';
 import Card from '../../components/Card.vue';
@@ -14,8 +15,18 @@ const props = defineProps({
     pending: { type: Object, default: null },
 });
 
+const vracaSe = ref(false);
+const razlogVracanja = ref('');
+
 function odobriIzmjene() {
     router.post(`/administracija/price/${props.prica.id}/odobri-izmjene`, {}, { preserveScroll: true });
+}
+function vratiIzmjene() {
+    if (!razlogVracanja.value.trim()) return;
+    router.post(`/administracija/price/${props.prica.id}/vrati-izmjene`, { pending_reason: razlogVracanja.value }, {
+        preserveScroll: true,
+        onSuccess: () => { vracaSe.value = false; razlogVracanja.value = ''; },
+    });
 }
 function odbijIzmjene() {
     router.post(`/administracija/price/${props.prica.id}/odbij-izmjene`, {}, { preserveScroll: true });
@@ -54,17 +65,24 @@ const form = useForm({
                     <h2 class="text-[15px] font-bold text-ink">Izmjene na čekanju</h2>
                     <div class="flex gap-2">
                         <button type="button" class="rounded-lg bg-brand px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90" @click="odobriIzmjene">Odobri izmjene</button>
+                        <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="vracaSe = !vracaSe">Vrati na doradu</button>
                         <button type="button" class="rounded-lg border border-line bg-surface px-3 py-1.5 text-[13px] font-bold text-ink hover:bg-surface-alt" @click="odbijIzmjene">Odbij izmjene</button>
                     </div>
                 </div>
                 <p class="mt-1 text-[12px] text-ink-2">Autor je poslao izmjene. Živa priča ostaje objavljena dok ne odobriš.</p>
 
+                <div v-if="vracaSe" class="mt-3 space-y-2 rounded-lg border border-line bg-surface p-3">
+                    <label class="text-[12px] font-bold text-ink">Šta autor treba da ispravi?</label>
+                    <textarea v-model="razlogVracanja" rows="2" placeholder="Npr. Provjeri činjenice u drugom pasusu, dodaj izvor..." class="w-full rounded-lg border border-line bg-surface p-2 text-[13px] text-ink focus:border-brand focus:outline-none"></textarea>
+                    <button type="button" :disabled="!razlogVracanja.trim()" class="rounded-lg bg-[#8C5810] px-3 py-1.5 text-[13px] font-bold text-white hover:opacity-90 disabled:opacity-40" @click="vratiIzmjene">Pošalji autoru na doradu</button>
+                </div>
+
                 <div v-if="pending.diff.length" class="mt-3 space-y-2">
                     <div v-for="r in pending.diff" :key="r.polje" class="rounded-lg border border-line bg-surface p-2.5">
                         <p class="text-[12px] font-bold text-ink">{{ r.polje }}</p>
                         <div class="mt-1 grid gap-1 text-[13px] sm:grid-cols-2">
-                            <div class="text-ink-3 line-through">{{ r.staro || '—' }}</div>
-                            <div class="font-medium text-ink">{{ r.novo || '—' }}</div>
+                            <div class="text-ink-3 line-through">{{ r.staro || '-' }}</div>
+                            <div class="font-medium text-ink">{{ r.novo || '-' }}</div>
                         </div>
                     </div>
                 </div>

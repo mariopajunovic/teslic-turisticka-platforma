@@ -2,13 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Enums\ContentStatus;
-use App\Models\Ad;
-use App\Models\Business;
-use App\Models\Event;
-use App\Models\Location;
-use App\Models\News;
-use App\Models\Story;
+use App\Support\AdminObavijesti;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Inertia\Middleware;
@@ -43,25 +37,14 @@ class HandleAdminInertiaRequests extends Middleware
                 'recoveryCodes' => fn () => $request->session()->get('recoveryCodes'),
             ],
             'badges' => [
-                'odobravanje' => fn () => $this->odobravanjeCount(),
+                'odobravanje' => fn () => AdminObavijesti::brojOdobravanja(),
+                'obavijesti' => fn () => AdminObavijesti::broj(),
             ],
             'locales' => fn () => collect(config('locales.languages'))
                 ->map(fn ($l, $code) => ['code' => $code, 'name' => $l['label']])
                 ->values()
                 ->all(),
         ];
-    }
-
-    protected function odobravanjeCount(): int
-    {
-        $poslano = ContentStatus::Poslano->value;
-
-        return Business::where('status', $poslano)->count()
-            + Location::where('status', $poslano)->count()
-            + Event::where('status', $poslano)->count()
-            + Ad::where('status', $poslano)->count()
-            + Story::where('status', $poslano)->count()
-            + News::where('status', $poslano)->count();
     }
 
     protected function initials(?string $name): string

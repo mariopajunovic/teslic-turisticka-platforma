@@ -20,46 +20,20 @@ use Inertia\Response;
 class DashboardController extends Controller
 {
     protected array $tipovi = [
-        Business::class => ['tip' => 'Biznis', 'tipBoja' => 'brand'],
-        Location::class => ['tip' => 'Lokalitet', 'tipBoja' => 'ok'],
-        Event::class => ['tip' => 'Događaj', 'tipBoja' => 'info'],
-        Ad::class => ['tip' => 'Oglas', 'tipBoja' => 'warn'],
-        Story::class => ['tip' => 'Priča', 'tipBoja' => 'gray'],
-        News::class => ['tip' => 'Vijest', 'tipBoja' => 'ok'],
+        Business::class => ['tip' => 'Biznis', 'tipBoja' => 'brand', 'baza' => 'biznisi'],
+        Location::class => ['tip' => 'Lokalitet', 'tipBoja' => 'ok', 'baza' => 'turizam'],
+        Event::class => ['tip' => 'Događaj', 'tipBoja' => 'info', 'baza' => 'dogadjaji'],
+        Ad::class => ['tip' => 'Oglas', 'tipBoja' => 'warn', 'baza' => 'oglasi'],
+        Story::class => ['tip' => 'Priča', 'tipBoja' => 'gray', 'baza' => 'price'],
+        News::class => ['tip' => 'Vijest', 'tipBoja' => 'ok', 'baza' => 'vijesti'],
     ];
 
     public function index(): Response
     {
-        $poslano = ContentStatus::Poslano->value;
-
-        $odobravanje = 0;
-        $red = [];
-
-        foreach ($this->tipovi as $model => $meta) {
-            $items = $model::with('user')
-                ->where('status', $poslano)
-                ->latest('updated_at')
-                ->limit(5)
-                ->get();
-
-            $odobravanje += $model::where('status', $poslano)->count();
-
-            foreach ($items as $item) {
-                $red[] = [
-                    'tip' => $meta['tip'],
-                    'tipBoja' => $meta['tipBoja'],
-                    'naslov' => (string) ($item->naslov ?: 'Bez naslova'),
-                    'meta' => trim(($item->user?->name ? 'od '.$item->user->name.' · ' : '').$item->updated_at?->diffForHumans()),
-                    'url' => '#',
-                ];
-            }
-        }
-
-        usort($red, fn ($a, $b) => strcmp($b['meta'], $a['meta']));
-        $red = array_slice($red, 0, 8);
+        $red = \App\Support\AdminObavijesti::redOdobravanja(8);
 
         $stats = [
-            'odobravanje' => $odobravanje,
+            'odobravanje' => \App\Support\AdminObavijesti::brojOdobravanja(),
             'naloziNaOdobrenju' => User::where('status', 'na_odobrenju')->count(),
             'aktivniOglasi' => Ad::where('status', ContentStatus::Objavljeno->value)->count(),
             'dogadjaji' => Event::where('status', ContentStatus::Objavljeno->value)->count(),

@@ -26,6 +26,8 @@ class BiznisObjaveController extends Controller
                 'meta' => $b->status->getLabel().($b->category ? ' · '.$b->category->label : ''),
                 'status' => $b->status->badge(),
                 'reason' => $b->status === ContentStatus::Odbijeno ? $b->rejection_reason : null,
+                'pendingStanje' => $b->pending === null ? null : ($b->pending_reason ? 'vraceno' : 'na_cekanju'),
+                'pendingRazlog' => $b->pending_reason,
                 'editUrl' => "/nalog/biznis/objave/{$b->id}/uredi",
             ]);
 
@@ -96,6 +98,7 @@ class BiznisObjaveController extends Controller
                 'status' => $business->status->badge(),
                 'objavljeno' => $business->status === ContentStatus::Objavljeno,
                 'imaPending' => $imaPending,
+                'vraceno' => $business->pending_reason,
                 'naslovna' => $imaPending && ($mp = $business->getFirstMedia('naslovna_pending'))
                     ? \App\Http\Controllers\SecureMediaController::url($mp)
                     : ($business->getFirstMediaUrl('naslovna') ?: null),
@@ -146,8 +149,10 @@ class BiznisObjaveController extends Controller
         // Izmjena već objavljenog listinga -> ide na moderaciju; živa verzija ostaje aktivna.
         if ($business->exists && $business->status === ContentStatus::Objavljeno) {
             $business->pending = $this->pendingPayload($data);
+            $business->pending_reason = null;
             $business->save();
             $this->stageMedia($business, $request);
+            $this->obavijestiOrg($business, true);
 
             return;
         }
@@ -163,6 +168,20 @@ class BiznisObjaveController extends Controller
         foreach ($request->file('galerija', []) as $file) {
             $business->addMedia($file)->toMediaCollection('galerija');
         }
+
+        if ($business->status === ContentStatus::Poslano) {
+            $this->obavijestiOrg($business, false);
+        }
+    }
+
+    protected function obavijestiOrg(Business $business, bool $izmjena): void
+    {
+        \App\Support\OrgNotifier::send(new \App\Notifications\OrgSadrzajNaOdobrenju(
+            'Biznis',
+            (string) $business->naslov,
+            (string) (auth()->user()->name ?? ''),
+            $izmjena,
+        ));
     }
 
     protected function pendingPayload(array $data): array

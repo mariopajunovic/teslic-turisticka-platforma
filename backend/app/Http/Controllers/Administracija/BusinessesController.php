@@ -133,6 +133,16 @@ class BusinessesController extends Controller
         return back(303)->with('status', 'Izmjene su odobrene i objavljene.');
     }
 
+    public function returnChanges(Request $request, Business $business): RedirectResponse
+    {
+        $data = $request->validate(['pending_reason' => ['required', 'string', 'max:1000']]);
+
+        $business->vratiPending($data['pending_reason']);
+        $business->user?->notify(new \App\Notifications\IzmjeneVracene($business, $data['pending_reason']));
+
+        return back(303)->with('status', 'Izmjene su vraćene vlasniku na doradu.');
+    }
+
     public function rejectChanges(Request $request, Business $business): RedirectResponse
     {
         $request->validate(['rejection_reason' => ['nullable', 'string', 'max:1000']]);
@@ -433,6 +443,7 @@ class BusinessesController extends Controller
             ] : null,
             'autor' => $business->user?->name,
             'status' => $business->status->value,
+            'pendingStanje' => $business->pending === null ? null : ($business->pending_reason ? 'vraceno' : 'na_cekanju'),
             'datum' => ($business->published_at ?? $business->created_at)?->translatedFormat('d.m.Y.'),
             'url' => ResourceUrls::detail($business, 'sr'),
         ];

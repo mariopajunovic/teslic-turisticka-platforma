@@ -24,6 +24,8 @@ class AutorStoryController extends Controller
                 'meta' => $s->status->getLabel().' · '.($s->datum?->format('d.m.Y.') ?? ''),
                 'status' => $s->status->badge(),
                 'reason' => $s->status === ContentStatus::Odbijeno ? $s->rejection_reason : null,
+                'pendingStanje' => $s->pending === null ? null : ($s->pending_reason ? 'vraceno' : 'na_cekanju'),
+                'pendingRazlog' => $s->pending_reason,
                 'editUrl' => "/nalog/autor/price/{$s->id}/uredi",
             ]);
 
@@ -75,6 +77,7 @@ class AutorStoryController extends Controller
                 'id' => $story->id,
                 'objavljeno' => $story->status === ContentStatus::Objavljeno,
                 'imaPending' => $story->pending !== null,
+                'vraceno' => $story->pending_reason,
             ]),
             'kategorije' => $this->categories(),
         ]);
@@ -103,7 +106,9 @@ class AutorStoryController extends Controller
         // Izmjena već objavljene priče -> ide na moderaciju; živa verzija ostaje aktivna.
         if ($story->exists && $story->status === ContentStatus::Objavljeno) {
             $story->pending = $this->pendingPayload($data);
+            $story->pending_reason = null;
             $story->save();
+            $this->obavijestiOrg($story, true);
 
             return;
         }
@@ -116,6 +121,20 @@ class AutorStoryController extends Controller
         }
 
         $story->save();
+
+        if ($story->status === ContentStatus::Poslano) {
+            $this->obavijestiOrg($story, false);
+        }
+    }
+
+    protected function obavijestiOrg(Story $story, bool $izmjena): void
+    {
+        \App\Support\OrgNotifier::send(new \App\Notifications\OrgSadrzajNaOdobrenju(
+            'Priča',
+            (string) $story->naslov,
+            (string) (auth()->user()->name ?? ''),
+            $izmjena,
+        ));
     }
 
     protected function pendingPayload(array $data): array

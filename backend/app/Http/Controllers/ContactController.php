@@ -11,6 +11,12 @@ class ContactController extends Controller
     {
         activity('kontakt')->log('Kontakt poruka: '.$request->input('email'));
 
+        \App\Support\OrgNotifier::send(new \App\Notifications\OrgNovaPoruka(
+            $request->input('ime'),
+            $request->input('email'),
+            $request->input('poruka'),
+        ));
+
         return back()->with('status', 'Poruka je poslana. Hvala na javljanju!');
     }
 }

@@ -86,6 +86,15 @@ class BiznisAdController extends Controller
             'status' => $data['action'] === 'posalji' ? ContentStatus::Poslano : ContentStatus::Nacrt,
         ]);
         $ad->save();
+
+        if ($ad->status === ContentStatus::Poslano) {
+            \App\Support\OrgNotifier::send(new \App\Notifications\OrgSadrzajNaOdobrenju(
+                'Oglas',
+                (string) $ad->naslov,
+                (string) (auth()->user()->name ?? ''),
+                false,
+            ));
+        }
     }
 
     protected function done(Ad $ad): RedirectResponse

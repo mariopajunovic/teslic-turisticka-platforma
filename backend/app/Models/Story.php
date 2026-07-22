@@ -33,6 +33,7 @@ class Story extends Model implements HasMedia
         'status',
         'rejection_reason',
         'pending',
+        'pending_reason',
         'published_at',
     ];
 
@@ -87,6 +88,7 @@ class Story extends Model implements HasMedia
 
         $this->popuniIz($this->pending);
         $this->pending = null;
+        $this->pending_reason = null;
         $this->save();
 
         if ($this->getMedia('naslovna_pending')->isNotEmpty()) {
@@ -101,10 +103,22 @@ class Story extends Model implements HasMedia
         }
     }
 
+    /** Vrati izmjene autoru na doradu: zadrži pending, zapiši razlog (živa verzija netaknuta). */
+    public function vratiPending(string $reason): void
+    {
+        if (! $this->pending) {
+            return;
+        }
+
+        $this->pending_reason = $reason;
+        $this->save();
+    }
+
     /** Odbaci izmjene na čekanju: obriši pending podatke i staging medije (živa verzija netaknuta). */
     public function odbaciPending(): void
     {
         $this->pending = null;
+        $this->pending_reason = null;
         $this->save();
         $this->clearMediaCollection('naslovna_pending');
         $this->clearMediaCollection('galerija_pending');

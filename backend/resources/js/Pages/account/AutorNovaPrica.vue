@@ -51,7 +51,10 @@ function submit(action) {
         :text="$t('acc.titleRequired')"
       />
       <BaseAlert v-if="$page.props.flash?.status" variant="uspjeh" :title="$t('acc.saved')" :text="$page.props.flash.status" />
-      <BaseAlert v-if="story?.imaPending" variant="info" :title="$t('acc.pendingChangesTitle')" :text="$t('acc.pendingChangesText')" />
+      <BaseAlert v-if="story?.vraceno" variant="greska" title="Izmjene su vraćene na doradu">
+        <span class="font-semibold text-text">{{ story.vraceno }}</span>
+      </BaseAlert>
+      <BaseAlert v-else-if="story?.imaPending" variant="info" :title="$t('acc.pendingChangesTitle')" :text="$t('acc.pendingChangesText')" />
       <BaseAlert v-else-if="story?.objavljeno" variant="info" :title="$t('acc.editLiveTitle')" :text="$t('acc.editLiveText')" />
 
       <div class="space-y-6 rounded-md border border-border bg-surface p-6 md:p-7">
