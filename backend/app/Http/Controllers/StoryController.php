@@ -25,7 +25,7 @@ class StoryController extends Controller
         $q = $request->query('q');
 
         $query = Story::objavljeno()
-            ->with(['category', 'media'])
+            ->with(['category', 'media', 'user'])
             ->latest('published_at');
 
         if ($kategorija) {
@@ -62,9 +62,9 @@ class StoryController extends Controller
 
     protected function povezani(): array
     {
-        $biznis = Business::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
-        $lokalitet = Location::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
-        $dogadjaj = Event::objavljeno()->with(['category', 'media'])->latest('published_at')->first();
+        $biznis = Business::objavljeno()->with(['category', 'media', 'user'])->latest('published_at')->first();
+        $lokalitet = Location::objavljeno()->with(['category', 'media', 'user'])->latest('published_at')->first();
+        $dogadjaj = Event::objavljeno()->with(['category', 'media', 'user'])->latest('published_at')->first();
 
         return [
             'biznis' => $biznis ? (new BusinessResource($biznis))->resolve() : null,
@@ -76,7 +76,7 @@ class StoryController extends Controller
     public function show(Request $request, string $slug): Response
     {
         $prica = Story::objavljeno()
-            ->with(['category', 'media'])
+            ->with(['category', 'media', 'user'])
             ->whereSlug($slug)
             ->firstOrFail();
 
@@ -85,7 +85,7 @@ class StoryController extends Controller
             ->all());
 
         $slicne = Story::objavljeno()
-            ->with(['category', 'media'])
+            ->with(['category', 'media', 'user'])
             ->where('id', '!=', $prica->id)
             ->limit(3)
             ->get();
@@ -119,7 +119,7 @@ class StoryController extends Controller
         $q = $request->query('q');
 
         $query = Story::objavljeno()
-            ->with(['category', 'media'])
+            ->with(['category', 'media', 'user'])
             ->latest('published_at')
             ->whereHas('category', fn ($c) => $c->byKeyOrSlug($kategorija));
 

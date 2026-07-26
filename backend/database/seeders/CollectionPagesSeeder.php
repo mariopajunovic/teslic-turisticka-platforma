@@ -133,6 +133,7 @@ class CollectionPagesSeeder extends Seeder
                     'cols' => 4,
                     'filteri' => true,
                     'pretraga' => true,
+                    'kalendar' => $tip === 'event',
                 ]],
             ];
             $stranica->save();
@@ -264,6 +265,7 @@ class CollectionPagesSeeder extends Seeder
                     'cols' => 4,
                     'filteri' => false,
                     'pretraga' => false,
+                    'kalendar' => $tip === 'event',
                 ]],
             ];
             $dijete->save();

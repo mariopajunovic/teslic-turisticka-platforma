@@ -9,6 +9,7 @@ import StatusBadge from './StatusBadge.vue';
 import PublishBox from './PublishBox.vue';
 import ToggleField from './ToggleField.vue';
 import GalleryEditor from './GalleryEditor.vue';
+import ModeracijaAlert from './ModeracijaAlert.vue';
 import { useConfirm } from '../composables/useConfirm';
 
 const props = defineProps({
@@ -17,6 +18,8 @@ const props = defineProps({
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
     korisnici: { type: Array, default: () => [] },
+    pending: { type: Object, default: null },
+    subjekt: { type: String, default: 'vlasnik' },
     naslov: { type: String, required: true },
     baza: { type: String, required: true },
     naslovPlaceholder: { type: String, default: 'Naslov' },
@@ -206,6 +209,8 @@ const onFotoDrop = (target) => {
                         <span v-if="form.errors[`slug.${activeLang}`]" class="w-full text-xs text-bad">{{ form.errors[`slug.${activeLang}`] }}</span>
                     </div>
                 </Card>
+
+                <ModeracijaAlert :base="baza" :id="item?.id" :status="form.status" :pending="pending" :subjekt="subjekt" />
 
                 <slot name="fields" :active-lang="activeLang" :tr-get="trGet" :tr-set="trSet" :is-new="isNew" />
 

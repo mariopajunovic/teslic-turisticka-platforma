@@ -10,6 +10,7 @@ const props = defineProps({
     kategorije: { type: Array, default: () => [] },
     statusi: { type: Array, default: () => [] },
     korisnici: { type: Array, default: () => [] },
+    pending: { type: Object, default: null },
     segmenti: { type: Object, default: () => ({ sr: 'oglas' }) },
 });
 
@@ -39,6 +40,7 @@ const form = useForm({
         :kategorije="kategorije"
         :statusi="statusi"
         :korisnici="korisnici"
+        :pending="pending"
         :segmenti="segmenti"
         naslov="oglas"
         baza="oglasi"
