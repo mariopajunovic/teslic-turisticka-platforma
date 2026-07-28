@@ -1,1 +1,0 @@
-import{Un as e,ur as t}from"./icons-BCX8lkRe.js";import{t as n}from"./BusinessCard-C8WqOf8I.js";var r={__name:`LocationCard`,props:{item:{type:Object,required:!0}},setup(r){return(i,a)=>(t(),e(n,{item:r.item,to:r.item.url},null,8,[`item`,`to`]))}};export{r as t};

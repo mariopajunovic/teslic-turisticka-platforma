@@ -3,10 +3,12 @@ import { ref, watch, computed } from 'vue'
 import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
+import { useLocalePath } from '@/composables/useLocalePath'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 
 const { mainNav, secondaryNav, postavke } = useSite()
+const { localePath } = useLocalePath()
 const { t } = useI18n()
 
 const page = usePage()
@@ -32,7 +34,7 @@ function close() {
 function submitSearch() {
   const q = searchTerm.value.trim()
   close()
-  if (q) inertiaRouter.visit(`/mapa?q=${encodeURIComponent(q)}`)
+  if (q) inertiaRouter.visit(`${localePath('/mapa')}?q=${encodeURIComponent(q)}`)
 }
 
 // Zaključaj scroll tijela dok je drawer otvoren.
@@ -51,7 +53,7 @@ watch(open, (v) => {
         >
           <!-- Vrh -->
           <div class="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
-            <Link href="/" class="flex items-center" :aria-label="postavke.brandLogoTekst" @click="close">
+            <Link :href="localePath('/')" class="flex items-center" :aria-label="postavke.brandLogoTekst" @click="close">
               <img v-if="postavke.brandLogo" :src="postavke.brandLogo" :alt="postavke.brandLogoTekst" class="max-h-9 w-auto object-contain" />
               <span v-else class="text-xl font-extrabold text-primary">{{ postavke.brandLogoTekst }}</span>
             </Link>
@@ -124,7 +126,7 @@ watch(open, (v) => {
           <!-- Akcije -->
           <div class="shrink-0 space-y-2 border-t border-border p-4">
             <template v-if="authUser">
-              <BaseButton :to="nalogLink" variant="secondary" block icon="user" @click="close">
+              <BaseButton :to="localePath(nalogLink)" variant="secondary" block icon="user" @click="close">
                 {{ t('misc.myAccount') }}
               </BaseButton>
               <BaseButton variant="primary" block icon="log-out" @click="logout">
@@ -132,8 +134,8 @@ watch(open, (v) => {
               </BaseButton>
             </template>
             <template v-else>
-              <BaseButton to="/prijava" variant="secondary" block @click="close">{{ t('action.login') }}</BaseButton>
-              <BaseButton to="/pridruzi-se" variant="primary" block @click="close">{{ t('action.join') }}</BaseButton>
+              <BaseButton :to="localePath('/prijava')" variant="secondary" block @click="close">{{ t('action.login') }}</BaseButton>
+              <BaseButton :to="localePath('/pridruzi-se')" variant="primary" block @click="close">{{ t('action.join') }}</BaseButton>
             </template>
           </div>
         </aside>

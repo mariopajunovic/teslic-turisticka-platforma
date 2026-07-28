@@ -1,0 +1,1 @@
+import{Rr as e,Un as t,Zn as n,ur as r,wr as i}from"./icons-BCX8lkRe.js";import{r as a,t as o}from"./account-CgxdDoi9.js";import{t as s}from"./SettingsPanel-Dl8PXqay.js";var c={__name:`AutorPostavke`,setup(c){return(c,l)=>(r(),t(a,{items:e(o)},{default:i(()=>[n(s)]),_:1},8,[`items`]))}};export{c as default};

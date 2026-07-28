@@ -3,6 +3,7 @@ import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
+import { useLocalePath } from '@/composables/useLocalePath'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
@@ -41,10 +42,11 @@ watch(searchOpen, async (v) => {
 function submitSearch() {
   const q = searchTerm.value.trim()
   searchOpen.value = false
-  if (q) inertiaRouter.visit(`/mapa?q=${encodeURIComponent(q)}`)
+  if (q) inertiaRouter.visit(`${localePath('/mapa')}?q=${encodeURIComponent(q)}`)
 }
 
 const { mainNav, kontakt, postavke } = useSite()
+const { localePath } = useLocalePath()
 const { t } = useI18n()
 
 const page = usePage()
@@ -109,7 +111,7 @@ function logout() {
         :class="scrolled ? 'h-14 lg:h-16' : 'h-16 lg:h-[72px]'"
       >
         <Link
-          href="/"
+          :href="localePath('/')"
           class="flex h-full shrink-0 items-center text-xl font-extrabold tracking-tight text-primary lg:text-2xl py-1"
           :aria-label="`Početna - ${postavke.brandLogoTekst}`"
         >
@@ -134,7 +136,7 @@ function logout() {
         <div class="ml-auto flex items-center gap-2">
           <div class="hidden items-center gap-3 lg:flex">
             <template v-if="authUser">
-              <Link :href="nalogLink" class="text-[15px] font-semibold text-heading hover:text-primary">
+              <Link :href="localePath(nalogLink)" class="text-[15px] font-semibold text-heading hover:text-primary">
                 {{ authUser.name }}
               </Link>
               <button
@@ -146,11 +148,11 @@ function logout() {
               </button>
             </template>
             <template v-else>
-              <Link href="/prijava" class="text-[15px] font-semibold text-heading hover:text-primary">
+              <Link :href="localePath('/prijava')" class="text-[15px] font-semibold text-heading hover:text-primary">
                 {{ t('action.login') }}
               </Link>
               <Link
-                href="/pridruzi-se"
+                :href="localePath('/pridruzi-se')"
                 class="inline-flex items-center rounded-sm bg-secondary px-3.5 py-1.5 text-[13px] font-bold text-heading transition-colors hover:bg-secondary-dark"
               >
                 {{ t('action.join') }}
