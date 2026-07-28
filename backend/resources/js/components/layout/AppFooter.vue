@@ -4,6 +4,7 @@ const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
+import { telHref, phoneDisplay } from '@/utils/phone'
 import AppContainer from './AppContainer.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
@@ -70,7 +71,7 @@ const { t } = useI18n()
             </li>
             <li class="flex items-start gap-2">
               <BaseIcon name="phone" :size="16" class="mt-0.5 shrink-0 text-primary" />
-              <a :href="`tel:${kontakt.telefon}`" class="hover:text-primary">{{ kontakt.telefon }}</a>
+              <a :href="telHref(kontakt.telefon)" class="hover:text-primary">{{ phoneDisplay(kontakt.telefon) }}</a>
             </li>
             <li class="flex items-start gap-2">
               <BaseIcon name="mail" :size="16" class="mt-0.5 shrink-0 text-primary" />

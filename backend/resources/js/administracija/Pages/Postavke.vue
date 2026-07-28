@@ -144,7 +144,7 @@ const trErr = (field) => {
         <Card v-show="tab === 'kontakt'" title="Kontakt">
             <div class="grid gap-4 sm:grid-cols-3">
                 <FormField v-model="form.kontakt_adresa" label="Adresa" required :error="err('kontakt_adresa')" />
-                <FormField v-model="form.kontakt_telefon" label="Telefon" required :error="err('kontakt_telefon')" />
+                <FormField v-model="form.kontakt_telefon" label="Telefon" required hint="Unesi u međunarodnom formatu, npr. +38753430058 (da poziv radi). Na sajtu se prikazuje kao 053/430-058." :error="err('kontakt_telefon')" />
                 <FormField v-model="form.kontakt_email" type="email" label="E-mail" required :error="err('kontakt_email')" />
             </div>
         </Card>

@@ -4,6 +4,7 @@ import { Link, router as inertiaRouter, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
 import { useLocalePath } from '@/composables/useLocalePath'
+import { telHref, phoneDisplay } from '@/utils/phone'
 import AppContainer from './AppContainer.vue'
 import NavDropdown from './NavDropdown.vue'
 import MobileDrawer from './MobileDrawer.vue'
@@ -70,9 +71,9 @@ function logout() {
       <AppContainer class="flex h-10 items-center justify-between text-[13px]">
         <!-- Lijevo: kontakt + sekundarni linkovi -->
         <div class="flex items-center gap-5">
-          <a :href="`tel:${kontakt.telefon}`" class="flex items-center gap-1.5 hover:text-white">
+          <a :href="telHref(kontakt.telefon)" class="flex items-center gap-1.5 hover:text-white">
             <BaseIcon name="phone" :size="14" />
-            <span>{{ kontakt.telefon }}</span>
+            <span>{{ phoneDisplay(kontakt.telefon) }}</span>
           </a>
           <a
             :href="`mailto:${kontakt.email}`"

@@ -5,6 +5,7 @@ import { ref, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
 import { useTexts } from '@/composables/useTexts'
+import { telHref, phoneDisplay } from '@/utils/phone'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import MiniMap from '@/components/common/MiniMap.vue'
@@ -31,7 +32,7 @@ const { kontakt } = useSite()
 
 const kontaktInfo = computed(() => [
   { icon: 'map-pin', labelKey: 'contact.address', value: kontakt.value.adresa },
-  { icon: 'phone', labelKey: 'contact.phone', value: kontakt.value.telefon, href: `tel:${kontakt.value.telefon}` },
+  { icon: 'phone', labelKey: 'contact.phone', value: phoneDisplay(kontakt.value.telefon), href: telHref(kontakt.value.telefon) },
   { icon: 'mail', labelKey: 'contact.email', value: kontakt.value.email, href: `mailto:${kontakt.value.email}` },
   { icon: 'clock', labelKey: 'contact.hours', valueKey: 'contact.hoursValue' },
 ])
