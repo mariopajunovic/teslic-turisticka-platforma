@@ -1,38 +1,48 @@
-# Deployment na cPanel (Git)
+# Deploy na cPanel (push-to-deploy preko SSH)
 
-Laravel aplikacija je u **`backend/`**. Ostatak repo-a (`pencil/`, `specifikacija/`,
-geojson, logo...) se NE deployuje - `.cpanel.yml` dira samo `backend/`.
+Produkcija: **cPanel shared hosting**, domen **visitteslic.com**.
+Laravel aplikacija je u **`backend/`**. Metod je **push-to-deploy**: sa lokalnog
+računara `git push cpanel main` → `post-receive` hook na serveru sve odradi
+(checkout + composer install + migrate + optimize).
 
-Frontend (Vite) se gradi **lokalno** i commit-uje (shared hosting nema `npm`).
-cPanel povlači repo i pokreće `.cpanel.yml` (composer + artisan).
-
----
-
-## Arhitektura na serveru
-
-```
-/home/CPANELUSER/teslic/            <- ovdje cPanel klonira repo (Repository Path)
-  backend/                          <- Laravel root (__APPDIR__)
-    public/                         <- DOCUMENT ROOT domena pokazuje ovdje
-      build/                        <- commit-ovani Vite build
-    .env                            <- ručno postavljen na serveru (NIJE u gitu)
-    vendor/                         <- composer install na serveru (NIJE u gitu)
-    storage/                        <- perzistira (NIJE u gitu)
-  pencil/, specifikacija/ ...       <- ignorisano pri deployu
-```
-
-`.git` folder ostaje IZNAD `public/` pa nije web-dostupan. Nema kopiranja u
-`public_html` - domen direktno gleda `backend/public`.
+> Frontend (Vite) se gradi **lokalno** i commit-uje (`backend/public/build`) jer
+> shared hosting nema `npm`. Backend zavisnosti (`vendor/`) se grade **na serveru**
+> composer-om (ne commituju se).
 
 ---
 
-## A. Jednokratna priprema (lokalno)
+## 1. Arhitektura na serveru
 
-1. `public/build` je otključan u `backend/.gitignore` (već urađeno) da bi se
-   produkcijski build commit-ovao.
-2. Provjeri da `.env` NIJE u gitu (jeste ignorisan - dobro).
+```
+/home/visittes/
+  repos/teslic.git/           <- BARE repo (push meta ovamo); sadrzi post-receive hook
+  teslic/                     <- work-tree (checkout iz bare repo-a, sparse: samo backend/)
+    backend/                  <- Laravel root
+      public/                 <- Document Root domena treba da gleda OVDJE
+        build/                <- commit-ovani Vite build
+      .env                    <- rucno na serveru (NIJE u gitu)
+      vendor/                 <- composer install na serveru (NIJE u gitu)
+      storage/                <- perzistira (NIJE u gitu)
+  bin/composer                <- rucno instaliran composer (host ga nema)
+  public_html/                <- NE koristi se za app (domen preusmjeriti na backend/public)
+```
 
-## B. Svaki put PRIJE deploya (lokalno)
+Bitne serverske putanje:
+- SSH: alias `visitteslic` (user `visittes`, home `/home/visittes`)
+- PHP (CLI + web): **`/opt/cpanel/ea-php84/root/usr/bin/php`** (PHP 8.4) - OBAVEZNO 8.4
+- Composer: `/home/visittes/bin/composer` (poziva se sa `php -d allow_url_fopen=On`)
+
+### Zasto ba PHP 8.4
+`composer.lock` je rijeen na PHP 8.4, pa pinuje pakete koji trae `php >=8.4.1`
+(Symfony 8.1, Laravel 13.16). **PHP 8.3 puca** na composer platform-check, a web
+mora biti 8.4 jer je `vendor/` build-ovan za 8.4. Default CLI na serveru je 8.5 -
+ne oslanjati se na njega, hook eksplicitno koristi ea-php84.
+
+---
+
+## 2. Rutinski deploy (svaki put)
+
+Sa lokalnog racunara, iz root-a repo-a:
 
 ```bash
 cd backend
@@ -40,127 +50,163 @@ npm ci                 # ili npm install
 npm run build          # Vite -> backend/public/build
 cd ..
 git add -A
-git commit -m "deploy: build + izmjene"
-git push               # na origin (GitHub/GitLab) ili direktno na cPanel repo
+git commit -m "deploy: ..."
+git push origin main   # GitHub (source of truth / backup)
+git push cpanel main   # <- OVO pokrece deploy na server
 ```
 
-> Bez `npm run build` prije commita, server bi ostao sa starim asetima.
+Hook na serveru automatski: `checkout -f main` (samo `backend/`) → `composer install
+--no-dev --optimize-autoloader` → `storage:link` → (ako `.env` postoji) `migrate
+--force` + `optimize`. Izlaz hooka se vidi u `git push` outputu (linije `remote: >> ...`).
 
-## C. Jednokratna priprema (server / cPanel)
+> Bez `npm run build` prije commita, server ostaje sa starim asetima.
 
-1. **Git Version Control** (cPanel → Files → *Git™ Version Control*):
-   - *Create* → *Clone a Repository*.
-   - **Clone URL**: HTTPS ili SSH URL tvog repo-a (GitHub/GitLab). Za privatni
-     repo dodaj deploy key (SSH) ili token.
-   - **Repository Path**: npr. `/home/CPANELUSER/teslic`.
-2. **`.env`** na serveru: kopiraj `backend/.env.example` u
-   `/home/CPANELUSER/teslic/backend/.env` (File Manager ili SSH) i popuni
-   (vidi sekciju E). `php artisan key:generate` ako `APP_KEY` prazan.
-3. **Document Root**: cPanel → *Domains* → domen → *Manage* → Document Root =
-   `/home/CPANELUSER/teslic/backend/public`.
-4. **Dozvole**: `storage/` i `bootstrap/cache/` moraju biti upisive
-   (`chmod -R 775` preko SSH; vlasnik = cPanel user).
-5. **Prvi build na serveru** (ručno, jednom, preko SSH ili kroz Deploy iz sekcije D):
+---
+
+## 3. Podeavanje na NOVOM racunaru
+
+1. Kloniraj repo sa GitHuba:
    ```bash
-   cd /home/CPANELUSER/teslic/backend
-   /opt/cpanel/composer/bin/composer install --no-dev --optimize-autoloader
-   php artisan storage:link
-   php artisan migrate --force
+   git clone git@github.com:mariopajunovic/teslic-turisticka-platforma.git
    ```
+2. Obezbijedi SSH pristup serveru: dodaj svoj **javni** kljuc u cPanel → SSH Access
+   → Manage SSH Keys → Import → Authorize.
+3. Dodaj SSH alias u `~/.ssh/config` (da `visitteslic` radi):
+   ```
+   Host visitteslic
+       HostName visitteslic.com        # ili IP servera
+       User visittes
+       Port 22                          # ili custom port hostinga
+       IdentityFile ~/.ssh/tvoj_kljuc
+   ```
+   Test: `ssh visitteslic 'whoami'` → treba `visittes`.
+4. Dodaj `cpanel` remote:
+   ```bash
+   git remote add cpanel visitteslic:/home/visittes/repos/teslic.git
+   ```
+   (Bez SSH aliasa moe i puna forma:
+   `ssh://visittes@visitteslic.com:22/home/visittes/repos/teslic.git`.)
+5. Dalje kao "Rutinski deploy".
 
-## D. `.cpanel.yml` (u root-u repo-a) - popuni placeholdere
+---
 
-Otvori `.cpanel.yml` i zamijeni:
-- `__APPDIR__` → `/home/CPANELUSER/teslic/backend`
-- `__PHP__` → PHP CLI putanja (`which php` preko SSH; često `/usr/local/bin/php`
-  ili MultiPHP `/opt/cpanel/ea-php83/root/usr/bin/php`)
-- `__COMPOSER__` → obično `/opt/cpanel/composer/bin/composer` (`which composer`)
+## 4. Prva (jednokratna) priprema servera - vec uradjeno
 
-Deploy: cPanel → *Git Version Control* → repo → *Manage* → **Deploy HEAD Commit**.
-To pokrene taskove iz `.cpanel.yml` (composer install, migrate, cache).
+Zabiljeeno radi reproduciranja na drugom nalogu/hostingu:
 
-## E. Produkcijski `.env` (bitno)
+```bash
+# composer (host ga nema) - ea-php84 CLI ima allow_url_fopen=Off pa override
+P=/opt/cpanel/ea-php84/root/usr/bin/php
+mkdir -p ~/bin
+curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
+$P -d allow_url_fopen=On /tmp/composer-setup.php --install-dir=$HOME/bin --filename=composer
 
+# bare repo + sparse-checkout (samo backend/) + hook
+git init --bare -b main ~/repos/teslic.git
+git --git-dir=$HOME/repos/teslic.git config core.sparseCheckout true
+printf 'backend/\n' > ~/repos/teslic.git/info/sparse-checkout
+# hook: ~/repos/teslic.git/hooks/post-receive (vidi sekciju 6) + chmod +x
+```
+
+`.env` na serveru (`/home/visittes/teslic/backend/.env`, NIJE u gitu):
 ```
 APP_ENV=production
 APP_DEBUG=false
-APP_URL=https://tvoj-domen.ba
-INERTIA_SSR_ENABLED=false          # ostaje false (SSR bi tražio node servis)
-
+APP_URL=https://visitteslic.com
+ASSET_URL=https://visitteslic.com
+INERTIA_SSR_ENABLED=false
 DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_DATABASE=...       DB_USERNAME=...      DB_PASSWORD=...
-
-# PRAVI SMTP (Mailpit je samo za dev!):
-MAIL_MAILER=smtp
-MAIL_HOST=...   MAIL_PORT=587   MAIL_USERNAME=...   MAIL_PASSWORD=...
-MAIL_FROM_ADDRESS="no-reply@tvoj-domen.ba"
-
-SESSION_DRIVER=database            # ili file
-CACHE_STORE=database               # ili file
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=visittes_web
+DB_USERNAME=visittes_usr
+DB_PASSWORD="..."           # lozinke sa # @ } MORAJU biti pod dvostrukim navodnicima
+SESSION_DRIVER=database
+CACHE_STORE=database
 QUEUE_CONNECTION=database
 ```
+`APP_KEY` generisan sa `php artisan key:generate`. Poslije izmjene `.env`:
+`php artisan config:cache`.
 
-Nakon svake promjene `.env` na serveru: `php artisan config:cache`.
-
----
-
-## Automatski deploy na push
-
-`.cpanel.yml` se pokreće pri deployu. Za AUTOMATSKI deploy nakon `git push`
-imaš nekoliko opcija:
-
-- **Opcija 1 - push direktno na cPanel repo:** dodaj cPanel repo kao remote
-  (SSH: `ssh://CPANELUSER@domen/home/CPANELUSER/teslic`) i push-uj tamo; cPanel
-  pokrene deployment nakon prijema.
-- **Opcija 2 - webhook:** na GitHub/GitLab dodaj webhook koji zove cPanel
-  deploy endpoint (cPanel *Git VC* → *Manage* prikazuje deploy naredbu/URL).
-- **Opcija 3 - cron:** cPanel *Cron Jobs*, npr. svakih 5 min:
-  ```
-  cd /home/CPANELUSER/teslic && git pull origin main && \
-  cd backend && /usr/local/bin/php artisan migrate --force && \
-  /usr/local/bin/php artisan optimize
-  ```
-
-## Alternativa: bare repo + post-receive hook (kao u članku, fully-auto)
-
-Ako želiš potpuno automatski deploy na push (bez cPanel Git VC UI):
-
-1. Preko SSH napravi bare repo:
-   ```bash
-   mkdir -p ~/repos/teslic.git && cd ~/repos/teslic.git && git init --bare
-   ```
-2. `hooks/post-receive` (chmod +x):
-   ```bash
-   #!/bin/bash
-   APP=/home/CPANELUSER/teslic
-   PHP=/usr/local/bin/php
-   COMPOSER=/opt/cpanel/composer/bin/composer
-   git --work-tree="$APP" --git-dir="$HOME/repos/teslic.git" checkout -f main
-   cd "$APP/backend" || exit 1
-   $COMPOSER install --no-dev --optimize-autoloader --no-interaction
-   $PHP artisan migrate --force
-   $PHP artisan storage:link || true
-   $PHP artisan optimize
-   ```
-3. Lokalno dodaj remote i push-uj:
-   ```bash
-   git remote add cpanel ssh://CPANELUSER@domen/home/CPANELUSER/repos/teslic.git
-   git push cpanel main
-   ```
-   Svaki `git push cpanel main` automatski deployuje.
+### Podaci koji NISU u gitu (storage/)
+`storage/app/translations-import.json` se ne deployuje (gitignore) pa se prenosi rucno:
+```bash
+scp backend/storage/app/translations-import.json \
+    visitteslic:/home/visittes/teslic/backend/storage/app/
+ssh visitteslic 'cd ~/teslic/backend && \
+    /opt/cpanel/ea-php84/root/usr/bin/php artisan db:seed --class=TranslationSeeder --force'
+```
+Bez toga frontend prevodi fale (TranslationSeeder preskoci uvoz).
 
 ---
 
-## Napomene / česte greške
+## 5. Document Root - bridge u public_html (docroot je zakljucan)
 
-- **`public/build` mora biti commit-ovan** - shared hosting nema `npm`. Uvijek
+Ovaj hosting NE da mijenjati Document Root primarnog domena (ostaje `/public_html`).
+Zato se app servira preko **bridge-a u `public_html`** koji `post-receive` hook
+AUTOMATSKI odrzava pri svakom deployu (self-healing):
+- `public_html/index.php` → boot-uje Laravel iz `/home/visittes/teslic/backend`
+  (apsolutne putanje umjesto `__DIR__/..`).
+- `public_html/.htaccess` → cPanel handler blokovi + Laravel front-controller rewrite
+  + `DirectoryIndex index.php`.
+- `public_html/build`, `public_html/storage` i svi staticki fajlovi iz
+  `backend/public/*` → **symlinkovi** ka `backend/public/...` (owner-match, rade sa
+  SymLinksIfOwnerMatch).
+- Prazni `public_html/index.html` je uklonjen (`index.html.bak`) jer je zasjenjivao index.php.
+
+Posljedica: ne diras nista rucno oko docroota. Novi staticki fajlovi u `backend/public`
+se automatski re-symlinkuju na sljedecem `git push cpanel main`.
+
+**MultiPHP Manager** za `visitteslic.com` mora biti **PHP 8.4** (vec postavljeno).
+
+Provjera: `curl -sI https://visitteslic.com/` → Laravel odgovor (ili 503 "U pripremi"
+ako je rezim odrzavanja ukljucen, vidi dolje).
+
+### Rezim odrzavanja
+`SiteSettings.odrzavanje` (admin: Podesavanja → Odrzavanje) - kad je ON, javni dio
+vraca 503 stranicu "U pripremi". Izuzeti: `/administracija/*`, `/admin/*`, `/build`,
+`/storage`, plus **ulogovan admin** (guard `admin`) vidi normalan sajt. `optimize` u
+hooku kesira `laravel-settings` pa se stanje toggla primi na deployu.
+
+---
+
+## 6. `post-receive` hook (referenca)
+
+`/home/visittes/repos/teslic.git/hooks/post-receive` (chmod +x):
+```bash
+#!/bin/bash
+set -e
+APP=/home/visittes/teslic
+BACKEND=$APP/backend
+GITDIR=/home/visittes/repos/teslic.git
+PHP=/opt/cpanel/ea-php84/root/usr/bin/php
+COMPOSER="$PHP -d allow_url_fopen=On /home/visittes/bin/composer"
+git --work-tree="$APP" --git-dir="$GITDIR" checkout -f main
+cd "$BACKEND"
+export COMPOSER_MEMORY_LIMIT=-1
+$COMPOSER install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+$PHP artisan storage:link || true
+if [ -f "$BACKEND/.env" ]; then
+  $PHP artisan migrate --force || echo "!! migrate FAIL"
+  $PHP artisan optimize || echo "!! optimize FAIL"
+else
+  echo ">> nema .env - preskacem migrate/optimize"
+fi
+echo ">> DEPLOY GOTOV"
+```
+
+---
+
+## 7. Ceste greske / napomene
+
+- **200 ali placeholder stranica** → Document Root jos nije prebacen na `backend/public`.
+- **composer platform-check puca (php >=8.4.1)** → hook koristi ea-php84; provjeri
+  da web MultiPHP nije ostao na 8.3.
+- **`public/build` mora biti commit-ovan** - shared hosting nema npm; uvijek
   `npm run build` prije commita.
-- **SSR je isključen** (`INERTIA_SSR_ENABLED=false`) - dobro za shared hosting,
-  sve se renderuje na klijentu.
-- **Mailpit je samo dev.** Produkcija treba pravi SMTP u `.env`.
-- **APP_DEBUG=false** na produkciji (sigurnost).
-- Nakon deploya, ako se ne vide izmjene: `php artisan optimize:clear` pa ponovo
-  `config:cache route:cache view:cache`.
-- Ako composer nije dostupan na hostingu: commit-uj i `vendor/` (izbaci
-  `/vendor` iz `backend/.gitignore`) - ali repo postane veći.
+- **SSR iskljucen** (`INERTIA_SSR_ENABLED=false`).
+- **Mailpit je samo dev** - produkcija treba pravi SMTP u `.env`.
+- Re-seed pojedinacnih seedera: `php artisan db:seed --class=X --force` (idempotentni).
+  NE koristiti `migrate:fresh` na produkciji (brise sve, ukljucujuci admin izmjene stranica).
+- Deploy status uzivo: `ssh visitteslic 'cd ~/teslic/backend && \
+  /opt/cpanel/ea-php84/root/usr/bin/php artisan about'`.
