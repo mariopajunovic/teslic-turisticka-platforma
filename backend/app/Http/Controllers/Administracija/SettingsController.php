@@ -74,7 +74,7 @@ class SettingsController extends Controller
             'social.*.href' => ['nullable', 'url', 'max:255'],
             'google_indeksiranje' => ['boolean'],
             'odrzavanje' => ['boolean'],
-            'odrzavanje_poruka' => ['nullable', 'string', 'max:1000'],
+            'odrzavanje_poruka' => ['nullable', 'string', 'max:5000'],
             'captcha_site_key' => ['nullable', 'string', 'max:255'],
             'captcha_secret' => ['nullable', 'string', 'max:255'],
             'google_analytics' => ['nullable', 'string', 'max:40', 'regex:/^[A-Za-z0-9\-]+$/'],

@@ -278,9 +278,9 @@ const trErr = (field) => {
                     <ToggleField v-model="form.google_indeksiranje" label="Dozvoli Google indeksiranje" hint="Isključi na dev serveru (noindex + robots.txt)." />
                 </div>
                 <div class="border-t border-line pt-4">
-                    <ToggleField v-model="form.odrzavanje" label="Režim održavanja" hint="Kad je uključen, posjetioci vide stranicu održavanja i ne mogu pristupiti sajtu." />
+                    <ToggleField v-model="form.odrzavanje" label="Režim održavanja" hint="Kad je uključen, posjetioci vide stranicu održavanja. Ulogovani administrator i dalje vidi normalan sajt." />
                 </div>
-                <TextareaField v-model="form.odrzavanje_poruka" label="Poruka na stranici održavanja" :rows="2" :error="err('odrzavanje_poruka')" />
+                <TextareaField v-model="form.odrzavanje_poruka" label="Poruka na stranici održavanja" :rows="5" hint="Podržava HTML (linkovi, formatiranje, liste). Ostavi prazno za podrazumijevani tekst." :error="err('odrzavanje_poruka')" />
             </div>
         </Card>
 

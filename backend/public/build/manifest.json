@@ -424,8 +424,8 @@
       "_CardGrid-BVfoqaK3.js"
     ]
   },
-  "_ResourceFormShell-Dp1Mpc4Y.js": {
-    "file": "assets/ResourceFormShell-Dp1Mpc4Y.js",
+  "_ResourceFormShell-J9EpgSNl.js": {
+    "file": "assets/ResourceFormShell-J9EpgSNl.js",
     "name": "ResourceFormShell",
     "imports": [
       "_x-DZJQ0eMS.js",
@@ -438,11 +438,11 @@
       "resources/js/administracija/app.js",
       "_Card-Dzorwimq.js",
       "_ToggleField-BF0GrNTX.js",
-      "_StatusBadge-D_GisL-1.js"
+      "_StatusBadge-BlqTxt1R.js"
     ]
   },
-  "_ResourceList-1CJvhNi3.js": {
-    "file": "assets/ResourceList-1CJvhNi3.js",
+  "_ResourceList-CXg4Rf31.js": {
+    "file": "assets/ResourceList-CXg4Rf31.js",
     "name": "ResourceList",
     "imports": [
       "_x-DZJQ0eMS.js",
@@ -456,7 +456,7 @@
       "_Btn-B4WvTKha.js",
       "_SelectField-CINxNSnO.js",
       "_EmptyState-BfC73QoD.js",
-      "_StatusBadge-D_GisL-1.js",
+      "_StatusBadge-BlqTxt1R.js",
       "_Tabs-BohUxYDU.js",
       "_Pagination-D0EoQaSL.js"
     ]
@@ -526,8 +526,8 @@
       "_x-DZJQ0eMS.js"
     ]
   },
-  "_StatusBadge-D_GisL-1.js": {
-    "file": "assets/StatusBadge-D_GisL-1.js",
+  "_StatusBadge-BlqTxt1R.js": {
+    "file": "assets/StatusBadge-BlqTxt1R.js",
     "name": "StatusBadge",
     "imports": [
       "_x-DZJQ0eMS.js",
@@ -651,8 +651,8 @@
       "_x-DZJQ0eMS.js"
     ]
   },
-  "_categoryIcon-DIgFxFF4.js": {
-    "file": "assets/categoryIcon-DIgFxFF4.js",
+  "_categoryIcon-DLeYoCMp.js": {
+    "file": "assets/categoryIcon-DLeYoCMp.js",
     "name": "categoryIcon",
     "imports": [
       "_x-DZJQ0eMS.js",
@@ -909,7 +909,7 @@
     "src": "node_modules/leaflet/dist/leaflet.css"
   },
   "resources/css/administracija.css": {
-    "file": "assets/administracija-CyhGVQEu.css",
+    "file": "assets/administracija-a3Eo8ohW.css",
     "name": "administracija",
     "names": [
       "administracija.css"
@@ -927,7 +927,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DX9HDOpr.css",
+    "file": "assets/app-Dj-Kc2c_.css",
     "name": "app",
     "names": [
       "app.css"
@@ -1688,7 +1688,7 @@
     ]
   },
   "resources/js/administracija/Pages/Administratori.vue": {
-    "file": "assets/Administratori-UInngw90.js",
+    "file": "assets/Administratori-B7aWo6UY.js",
     "name": "Administratori",
     "src": "resources/js/administracija/Pages/Administratori.vue",
     "isDynamicEntry": true,
@@ -1710,7 +1710,7 @@
     ]
   },
   "resources/js/administracija/Pages/Biznisi/Forma.vue": {
-    "file": "assets/Forma-CxcZcKYd.js",
+    "file": "assets/Forma-Crkh4ILa.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Biznisi/Forma.vue",
     "isDynamicEntry": true,
@@ -1729,12 +1729,12 @@
       "_SelectField-CINxNSnO.js",
       "_TextareaField-T3TX-HmP.js",
       "_ToggleField-BF0GrNTX.js",
-      "_StatusBadge-D_GisL-1.js",
+      "_StatusBadge-BlqTxt1R.js",
       "_LocationMap-C1etQmhv.js"
     ]
   },
   "resources/js/administracija/Pages/Biznisi/Lista.vue": {
-    "file": "assets/Lista-M4OukqnT.js",
+    "file": "assets/Lista-frSrdoLX.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Biznisi/Lista.vue",
     "isDynamicEntry": true,
@@ -1750,13 +1750,13 @@
       "_Btn-B4WvTKha.js",
       "_SelectField-CINxNSnO.js",
       "_EmptyState-BfC73QoD.js",
-      "_StatusBadge-D_GisL-1.js",
+      "_StatusBadge-BlqTxt1R.js",
       "_Tabs-BohUxYDU.js",
       "_Pagination-D0EoQaSL.js"
     ]
   },
   "resources/js/administracija/Pages/Dashboard.vue": {
-    "file": "assets/Dashboard-CjpH8lS_.js",
+    "file": "assets/Dashboard-jMGFft0_.js",
     "name": "Dashboard",
     "src": "resources/js/administracija/Pages/Dashboard.vue",
     "isDynamicEntry": true,
@@ -1776,7 +1776,7 @@
     ]
   },
   "resources/js/administracija/Pages/Dogadjaji/Forma.vue": {
-    "file": "assets/Forma-COZeA7Dr.js",
+    "file": "assets/Forma-CBvdu-uG.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Dogadjaji/Forma.vue",
     "isDynamicEntry": true,
@@ -1788,22 +1788,22 @@
       "_FormField-BjkDYXiY.js",
       "_TextareaField-T3TX-HmP.js",
       "_LocationMap-C1etQmhv.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Dogadjaji/Lista.vue": {
-    "file": "assets/Lista-CDp56zy9.js",
+    "file": "assets/Lista-J0eRqvP8.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Dogadjaji/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
       "resources/js/administracija/app.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/Dvofaktorska.vue": {
-    "file": "assets/Dvofaktorska-BtEIQ6R2.js",
+    "file": "assets/Dvofaktorska-CsjOqXts.js",
     "name": "Dvofaktorska",
     "src": "resources/js/administracija/Pages/Dvofaktorska.vue",
     "isDynamicEntry": true,
@@ -1814,7 +1814,7 @@
     ]
   },
   "resources/js/administracija/Pages/Kategorije/Forma.vue": {
-    "file": "assets/Forma-TK4TXuoB.js",
+    "file": "assets/Forma-BEpG2uWC.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Kategorije/Forma.vue",
     "isDynamicEntry": true,
@@ -1825,7 +1825,7 @@
       "_grip-vertical-D9BJKh18.js",
       "_save-DZgVE_86.js",
       "_trash-2-M_l5ibJn.js",
-      "_categoryIcon-DIgFxFF4.js",
+      "_categoryIcon-DLeYoCMp.js",
       "resources/js/administracija/app.js",
       "_Card-Dzorwimq.js",
       "_Btn-B4WvTKha.js",
@@ -1836,7 +1836,7 @@
     ]
   },
   "resources/js/administracija/Pages/Kategorije/Lista.vue": {
-    "file": "assets/Lista-CtPbVYDy.js",
+    "file": "assets/Lista-d8EOSzAE.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Kategorije/Lista.vue",
     "isDynamicEntry": true,
@@ -1846,7 +1846,7 @@
       "_pencil-Bpi0FSrp.js",
       "_plus-1kfg2tuY.js",
       "_trash-2-M_l5ibJn.js",
-      "_categoryIcon-DIgFxFF4.js",
+      "_categoryIcon-DLeYoCMp.js",
       "resources/js/administracija/app.js",
       "_IconBtn-BMDvGr7h.js",
       "_Btn-B4WvTKha.js",
@@ -1856,7 +1856,7 @@
     ]
   },
   "resources/js/administracija/Pages/Korisnici.vue": {
-    "file": "assets/Korisnici-DxwejN3S.js",
+    "file": "assets/Korisnici-DL5bdF47.js",
     "name": "Korisnici",
     "src": "resources/js/administracija/Pages/Korisnici.vue",
     "isDynamicEntry": true,
@@ -1884,7 +1884,7 @@
     ]
   },
   "resources/js/administracija/Pages/Korisnici/Detalji.vue": {
-    "file": "assets/Detalji-Cr-jWDqQ.js",
+    "file": "assets/Detalji-TTQI4aCf.js",
     "name": "Detalji",
     "src": "resources/js/administracija/Pages/Korisnici/Detalji.vue",
     "isDynamicEntry": true,
@@ -1908,7 +1908,7 @@
     ]
   },
   "resources/js/administracija/Pages/Languages.vue": {
-    "file": "assets/Languages-C9-WTxQD.js",
+    "file": "assets/Languages-Zq3ldDNJ.js",
     "name": "Languages",
     "src": "resources/js/administracija/Pages/Languages.vue",
     "isDynamicEntry": true,
@@ -1928,7 +1928,7 @@
     ]
   },
   "resources/js/administracija/Pages/Logovi.vue": {
-    "file": "assets/Logovi-DWb9Na65.js",
+    "file": "assets/Logovi-BqpJbeSf.js",
     "name": "Logovi",
     "src": "resources/js/administracija/Pages/Logovi.vue",
     "isDynamicEntry": true,
@@ -1946,7 +1946,7 @@
     ]
   },
   "resources/js/administracija/Pages/Nabavke/Forma.vue": {
-    "file": "assets/Forma-Dd29ovRh.js",
+    "file": "assets/Forma-DfA2ENaY.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Nabavke/Forma.vue",
     "isDynamicEntry": true,
@@ -1956,21 +1956,21 @@
       "_plus-1kfg2tuY.js",
       "_Card-Dzorwimq.js",
       "_FormField-BjkDYXiY.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Nabavke/Lista.vue": {
-    "file": "assets/Lista-o1tlF4Mn.js",
+    "file": "assets/Lista-l8gIYg6M.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Nabavke/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/Navigacija/Lista.vue": {
-    "file": "assets/Lista-CnKJjTbG.js",
+    "file": "assets/Lista-DToxcfVX.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Navigacija/Lista.vue",
     "isDynamicEntry": true,
@@ -1991,7 +1991,7 @@
     ]
   },
   "resources/js/administracija/Pages/Oglasi/Forma.vue": {
-    "file": "assets/Forma-BvdXZMqu.js",
+    "file": "assets/Forma-bT_XH2rX.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Oglasi/Forma.vue",
     "isDynamicEntry": true,
@@ -2000,21 +2000,21 @@
       "_RichTextField-B5TZ3QDp.js",
       "_Card-Dzorwimq.js",
       "_FormField-BjkDYXiY.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Oglasi/Lista.vue": {
-    "file": "assets/Lista-yNVwmkbv.js",
+    "file": "assets/Lista-DC5xhahb.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Oglasi/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/PostaviDvofaktorsku.vue": {
-    "file": "assets/PostaviDvofaktorsku-BfqPejsY.js",
+    "file": "assets/PostaviDvofaktorsku-DkRIJAU1.js",
     "name": "PostaviDvofaktorsku",
     "src": "resources/js/administracija/Pages/PostaviDvofaktorsku.vue",
     "isDynamicEntry": true,
@@ -2037,7 +2037,7 @@
     ]
   },
   "resources/js/administracija/Pages/Postavke.vue": {
-    "file": "assets/Postavke-Xh6JqhHJ.js",
+    "file": "assets/Postavke-B8ANWdC2.js",
     "name": "Postavke",
     "src": "resources/js/administracija/Pages/Postavke.vue",
     "isDynamicEntry": true,
@@ -2059,7 +2059,7 @@
     ]
   },
   "resources/js/administracija/Pages/Price/Forma.vue": {
-    "file": "assets/Forma-Ce-Gz28y.js",
+    "file": "assets/Forma-DcgFG7lH.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Price/Forma.vue",
     "isDynamicEntry": true,
@@ -2069,21 +2069,21 @@
       "_Card-Dzorwimq.js",
       "_FormField-BjkDYXiY.js",
       "_TextareaField-T3TX-HmP.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Price/Lista.vue": {
-    "file": "assets/Lista-TJm8UweZ2.js",
+    "file": "assets/Lista-CK9eYZbd2.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Price/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/Prijava.vue": {
-    "file": "assets/Prijava-DfYNVMtf.js",
+    "file": "assets/Prijava-BtAd5zU2.js",
     "name": "Prijava",
     "src": "resources/js/administracija/Pages/Prijava.vue",
     "isDynamicEntry": true,
@@ -2096,7 +2096,7 @@
     ]
   },
   "resources/js/administracija/Pages/Profil.vue": {
-    "file": "assets/Profil-JEEiPAY3.js",
+    "file": "assets/Profil-DsByjelH.js",
     "name": "Profil",
     "src": "resources/js/administracija/Pages/Profil.vue",
     "isDynamicEntry": true,
@@ -2108,7 +2108,7 @@
     ]
   },
   "resources/js/administracija/Pages/RezervniKodovi.vue": {
-    "file": "assets/RezervniKodovi-CYcnlabJ.js",
+    "file": "assets/RezervniKodovi-CTFvYNjL.js",
     "name": "RezervniKodovi",
     "src": "resources/js/administracija/Pages/RezervniKodovi.vue",
     "isDynamicEntry": true,
@@ -2119,7 +2119,7 @@
     ]
   },
   "resources/js/administracija/Pages/Stranice/Builder.vue": {
-    "file": "assets/Builder-DQLdrJJx.js",
+    "file": "assets/Builder-CkelA6Ww.js",
     "name": "Builder",
     "src": "resources/js/administracija/Pages/Stranice/Builder.vue",
     "isDynamicEntry": true,
@@ -2150,7 +2150,7 @@
     ]
   },
   "resources/js/administracija/Pages/Stranice/Lista.vue": {
-    "file": "assets/Lista-BLOnrahV2.js",
+    "file": "assets/Lista-DHObVqzQ2.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Stranice/Lista.vue",
     "isDynamicEntry": true,
@@ -2173,7 +2173,7 @@
     ]
   },
   "resources/js/administracija/Pages/Translations.vue": {
-    "file": "assets/Translations-DhwTZRqZ.js",
+    "file": "assets/Translations-Cy40bmDR.js",
     "name": "Translations",
     "src": "resources/js/administracija/Pages/Translations.vue",
     "isDynamicEntry": true,
@@ -2188,7 +2188,7 @@
     ]
   },
   "resources/js/administracija/Pages/Turizam/Forma.vue": {
-    "file": "assets/Forma-NjiNw67z2.js",
+    "file": "assets/Forma-D3-Z2vGc2.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Turizam/Forma.vue",
     "isDynamicEntry": true,
@@ -2200,21 +2200,21 @@
       "_FormField-BjkDYXiY.js",
       "_TextareaField-T3TX-HmP.js",
       "_LocationMap-C1etQmhv.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Turizam/Lista.vue": {
-    "file": "assets/Lista-ijnseOrb2.js",
+    "file": "assets/Lista-D89TcAUj2.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Turizam/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/Uloge.vue": {
-    "file": "assets/Uloge-DWHX9b6l.js",
+    "file": "assets/Uloge-iEomcjur.js",
     "name": "Uloge",
     "src": "resources/js/administracija/Pages/Uloge.vue",
     "isDynamicEntry": true,
@@ -2231,7 +2231,7 @@
     ]
   },
   "resources/js/administracija/Pages/Vijesti/Forma.vue": {
-    "file": "assets/Forma-ChueSmwB.js",
+    "file": "assets/Forma-CBbkI3qg.js",
     "name": "Forma",
     "src": "resources/js/administracija/Pages/Vijesti/Forma.vue",
     "isDynamicEntry": true,
@@ -2241,18 +2241,18 @@
       "_Card-Dzorwimq.js",
       "_FormField-BjkDYXiY.js",
       "_TextareaField-T3TX-HmP.js",
-      "_ResourceFormShell-Dp1Mpc4Y.js"
+      "_ResourceFormShell-J9EpgSNl.js"
     ]
   },
   "resources/js/administracija/Pages/Vijesti/Lista.vue": {
-    "file": "assets/Lista-CC_LcTT7.js",
+    "file": "assets/Lista-EWoD7ftV.js",
     "name": "Lista",
     "src": "resources/js/administracija/Pages/Vijesti/Lista.vue",
     "isDynamicEntry": true,
     "imports": [
       "_x-DZJQ0eMS.js",
       "resources/js/administracija/app.js",
-      "_ResourceList-1CJvhNi3.js"
+      "_ResourceList-CXg4Rf31.js"
     ]
   },
   "resources/js/administracija/Pages/ZaboravljenaLozinka.vue": {
@@ -2268,7 +2268,7 @@
     ]
   },
   "resources/js/administracija/app.js": {
-    "file": "assets/app-BHBfot6P.js",
+    "file": "assets/app-B6xrM-6a.js",
     "name": "app",
     "src": "resources/js/administracija/app.js",
     "isEntry": true,
