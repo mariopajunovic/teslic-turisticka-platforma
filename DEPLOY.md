@@ -40,20 +40,33 @@ ne oslanjati se na njega, hook eksplicitno koristi ea-php84.
 
 ---
 
-## 2. Rutinski deploy (svaki put)
+## 2. Grane i rutinski deploy
 
-Sa lokalnog racunara, iz root-a repo-a:
+**Model grana:**
+- `staging` - razvojna grana, tu ide sav rad; testira se LOKALNO.
+- `main` - produkcija; ono sto je na `main` = ono sto je deployano na server.
 
+**Tok rada:**
 ```bash
-cd backend
-npm ci                 # ili npm install
-npm run build          # Vite -> backend/public/build
-cd ..
-git add -A
-git commit -m "deploy: ..."
-git push origin main   # GitHub (source of truth / backup)
-git push cpanel main   # <- OVO pokrece deploy na server
+# razvoj (na staging)
+git checkout staging
+# ... rad + izmjene ...
+git add -A && git commit -m "..."
+git push origin staging          # backup na GitHub
+# ... testiraj lokalno (sail/artisan serve) ...
+
+# kad je provjereno -> u produkciju
+git checkout main
+git merge staging
+cd backend && npm run build && cd ..   # Vite -> backend/public/build (ako ima frontend izmjena)
+git add backend/public/build && git commit -m "build" --allow-empty
+git push cpanel main             # <- OVO deployuje na server (hook)
+git push origin main             # backup
+git checkout staging             # nazad na razvoj
 ```
+
+> Hook uvijek radi `checkout -f main`, pa slucajan `git push cpanel staging` NE deployuje
+> staging (ostaje na main). U produkciju ide iskljucivo `main`.
 
 Hook na serveru automatski: `checkout -f main` (samo `backend/`) → `composer install
 --no-dev --optimize-autoloader` → `storage:link` → (ako `.env` postoji) `migrate
