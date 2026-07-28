@@ -1,0 +1,21 @@
+---
+# cPanel Git Version Control - deployment tasks.
+# Laravel se nalazi u backend/ pa se sve pokreće u tom podfolderu.
+#
+# PRIJE prvog deploya zamijeni tri placeholdera (find & replace):
+#   __APPDIR__    -> apsolutna putanja do backend/ na serveru
+#                    npr. /home/CPANELUSER/teslic/backend
+#   __PHP__       -> putanja do PHP CLI (npr. /usr/local/bin/php ili
+#                    /opt/cpanel/ea-php83/root/usr/bin/php) - `which php` preko SSH
+#   __COMPOSER__  -> putanja do composer-a (obično /opt/cpanel/composer/bin/composer)
+#
+# Napomena: svaki task je samostalan (`cd __APPDIR__ && ...`) jer se radna
+# putanja ne prenosi između taskova.
+deployment:
+  tasks:
+    - cd __APPDIR__ && __COMPOSER__ install --no-dev --optimize-autoloader --no-interaction
+    - cd __APPDIR__ && __PHP__ artisan migrate --force
+    - cd __APPDIR__ && __PHP__ artisan storage:link || true
+    - cd __APPDIR__ && __PHP__ artisan config:cache
+    - cd __APPDIR__ && __PHP__ artisan route:cache
+    - cd __APPDIR__ && __PHP__ artisan view:cache

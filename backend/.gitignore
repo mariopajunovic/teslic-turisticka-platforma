@@ -14,7 +14,8 @@
 /.zed
 /auth.json
 /node_modules
-/public/build
+# /public/build - NIJE ignorisan: produkcijski Vite build se commit-uje
+# i deployuje na cPanel (shared hosting nema npm). Gradi lokalno: `npm run build`.
 /public/fonts-manifest.dev.json
 /public/hot
 /public/storage

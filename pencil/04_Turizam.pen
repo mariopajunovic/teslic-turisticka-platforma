@@ -1,5 +1,5 @@
 {
-  "version": "2.13",
+  "version": "2.14",
   "children": [
     {
       "type": "frame",
@@ -8564,6 +8564,4345 @@
           ]
         }
       ]
+    },
+    {
+      "type": "frame",
+      "id": "fAQib",
+      "x": 4815,
+      "y": 5654,
+      "name": "ZTC Banja Vrućica – Desktop",
+      "clip": true,
+      "width": 1440,
+      "fill": "$surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "vD4f7",
+          "type": "ref",
+          "ref": "JKDc7",
+          "name": "Header",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "W9igA",
+          "name": "Breadcrumb traka",
+          "width": "fill_container",
+          "fill": "$surface",
+          "padding": [
+            20,
+            120
+          ],
+          "children": [
+            {
+              "id": "jwxAx",
+              "type": "ref",
+              "ref": "unsYt",
+              "name": "Breadcrumb",
+              "descendants": {
+                "rhgNj": {
+                  "content": "Turizam u Tesliću"
+                },
+                "i4hk0y": {
+                  "content": "Banja Vrućica",
+                  "fill": "$heading",
+                  "fontWeight": "600"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Xx7z5",
+          "name": "Hero",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            16,
+            120,
+            48,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "Jiys6",
+              "name": "Naslovni blok",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "id": "Dn8nM",
+                  "type": "ref",
+                  "ref": "tjdRM",
+                  "name": "Chip",
+                  "descendants": {
+                    "UBFM2": {
+                      "icon": "droplet"
+                    },
+                    "z0EoG": {
+                      "content": "Priroda · Wellness"
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "yIGi8",
+                  "name": "Naslov",
+                  "fill": "$heading",
+                  "content": "Banja Vrućica",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 40,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "BDH1v",
+                  "name": "Meta",
+                  "gap": 6,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "E76Y5",
+                      "name": "I",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "map-pin",
+                      "library": "lucide",
+                      "fill": "$text-muted"
+                    },
+                    {
+                      "type": "text",
+                      "id": "u3sXg",
+                      "name": "T",
+                      "fill": "$text-muted",
+                      "content": "7 km od Teslića",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "zQG60",
+              "name": "Galerija",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-lg",
+                  "id": "tq5AX",
+                  "name": "Glavna",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "stoicaas",
+                    "link": "https://unsplash.com/@stoicaas",
+                    "author": "Stoica Adrian"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1765965873779-62e4cedc524a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": "fill_container",
+                  "height": 440
+                },
+                {
+                  "type": "frame",
+                  "id": "cYuhf",
+                  "name": "Thumbovi",
+                  "width": 220,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-md",
+                      "id": "BFwlZ",
+                      "name": "T0",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "wcoglobal",
+                        "link": "https://unsplash.com/@wcoglobal",
+                        "author": "Wco Global"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1759214630580-7b2e97e2c29b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 136
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-md",
+                      "id": "KW72I",
+                      "name": "T1",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "dayso",
+                        "link": "https://unsplash.com/@dayso",
+                        "author": "DaYsO"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1601369435496-2f93548671e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 136
+                    },
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": "$radius-md",
+                      "id": "wt6rI",
+                      "name": "T2",
+                      "metadata": {
+                        "type": "unsplash",
+                        "username": "datingscout",
+                        "link": "https://unsplash.com/@datingscout",
+                        "author": "Datingscout"
+                      },
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1643188626920-f780792e7f84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      },
+                      "width": "fill_container",
+                      "height": 136
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "OJpyF",
+          "name": "Dvokolonski",
+          "width": "fill_container",
+          "gap": 32,
+          "padding": [
+            0,
+            120,
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "R1eRh",
+              "name": "Glavni stub",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "orNye",
+                  "name": "H2",
+                  "fill": "$heading",
+                  "content": "O lokaciji",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 26,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "Edypu",
+                  "name": "P1",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Banja Vrućica je jedan od najvećih i najpoznatijih banjsko-rekreativnih centara u Bosni i Hercegovini, smješten u zelenilu nadomak Teslića. Termalna voda, bazeni, parkovi i šetnice čine je idealnim mjestom za odmor, wellness i oporavak tokom cijele godine.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "vDigu",
+                  "name": "H3a",
+                  "fill": "$heading",
+                  "content": "Kako doći",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 20,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "n16fpo",
+                  "name": "P2",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Banja Vrućica je udaljena oko 7 km od centra Teslića, dostupna automobilom i lokalnim prevozom. Parking je obezbijeđen uz hotelske komplekse.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "U2MsT",
+                  "name": "H3b",
+                  "fill": "$heading",
+                  "content": "Savjeti za posjetu",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 20,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "kknI1",
+                  "name": "P3",
+                  "fill": "$text",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Za korištenje bazena ponesite peškir i papuče. Vikendom je gužva veća — preporučuje se raniji dolazak ili rezervacija termina.",
+                  "lineHeight": 1.7,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "VTSgs",
+              "name": "InfoPanel",
+              "width": 380,
+              "fill": "$surface",
+              "cornerRadius": "$radius-md",
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "strokeAlignment": "inner",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wGBiN",
+                  "name": "H4",
+                  "fill": "$heading",
+                  "content": "Informacije",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "nJdDm",
+                  "name": "Tip",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "gSX6Y",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "tag",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KBJMB",
+                      "name": "V",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 1,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "S4ukM",
+                          "name": "L",
+                          "fill": "$text-muted",
+                          "content": "TIP",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "roBNp",
+                          "name": "Val",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Priroda · Wellness",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z9SrGZ",
+                  "name": "Lokacija",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "jEenD",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "map-pin",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V7hgU",
+                      "name": "V",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 1,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "k8POpz",
+                          "name": "L",
+                          "fill": "$text-muted",
+                          "content": "LOKACIJA",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "eVyV1",
+                          "name": "Val",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Vrućica, 7 km od Teslića",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CdnFc",
+                  "name": "Sezona",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "loqaY",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "sun",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PGii7",
+                      "name": "V",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 1,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "fDf43",
+                          "name": "L",
+                          "fill": "$text-muted",
+                          "content": "SEZONA",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "GOdH6",
+                          "name": "Val",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Cijele godine",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "yQkYz",
+                  "name": "Radno vrijeme",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "X095Mf",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "calendar",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "x4hL9z",
+                      "name": "V",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 1,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "m7NH5s",
+                          "name": "L",
+                          "fill": "$text-muted",
+                          "content": "RADNO VRIJEME",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "Y57FeV",
+                          "name": "Val",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Bazeni 09–21h",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "GRUfJ",
+                  "name": "Ulaznice",
+                  "width": "fill_container",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "Q7bxwc",
+                      "name": "I",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "ticket",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "PLZ8L",
+                      "name": "V",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 1,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "JCAzQ",
+                          "name": "L",
+                          "fill": "$text-muted",
+                          "content": "ULAZNICE",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 12,
+                          "fontWeight": "600",
+                          "letterSpacing": 0.5
+                        },
+                        {
+                          "type": "text",
+                          "id": "aLt6A",
+                          "name": "Val",
+                          "fill": "$text",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Od 10 KM",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "fT7SK",
+                  "name": "MiniMapa",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 170,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "layout": "vertical",
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ZI0IO",
+                      "name": "Pin",
+                      "width": 44,
+                      "height": 44,
+                      "fill": "$surface",
+                      "cornerRadius": 999,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "PAqcE",
+                          "name": "I",
+                          "width": 22,
+                          "height": 22,
+                          "icon": "map-pin",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "Lu84e",
+                      "name": "T",
+                      "fill": "$primary",
+                      "content": "Prikaži na mapi",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "l2LWY",
+          "name": "Sekcija/Povezano",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            56,
+            120
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "W7fm0G",
+              "name": "H2",
+              "fill": "$heading",
+              "content": "Povezano",
+              "fontFamily": "$font-heading",
+              "fontSize": 28,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "fUqTM",
+              "name": "Grid",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "id": "fm4Fo",
+                  "type": "ref",
+                  "ref": "R0xED",
+                  "name": "Dogadjaj",
+                  "width": "fill_container",
+                  "descendants": {
+                    "k4YY6": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1779721009866-c58353ba1cee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0NjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "zaq5X": {
+                      "enabled": false
+                    },
+                    "Q0q06": {
+                      "content": "03"
+                    },
+                    "HOfyQ": {
+                      "content": "AVG"
+                    },
+                    "yB9V1": {
+                      "content": "Koncert u Banji Vrućici"
+                    },
+                    "e28qT": {
+                      "content": "20:00"
+                    },
+                    "z7PzU": {
+                      "content": "Banja Vrućica"
+                    }
+                  }
+                },
+                {
+                  "id": "AsKdX",
+                  "type": "ref",
+                  "ref": "rpIjS",
+                  "name": "Smjestaj",
+                  "width": "fill_container",
+                  "descendants": {
+                    "M17A7": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1731080647266-85cf1bc27162?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0NjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "BwzWs": {
+                      "enabled": false
+                    },
+                    "HSYky": {
+                      "enabled": false
+                    },
+                    "CX9zu": {
+                      "content": "Hotel Kardial"
+                    },
+                    "VBaqU": {
+                      "content": "Smještaj uz termalne bazene i wellness.",
+                      "fill": "$text-muted"
+                    },
+                    "odhRh": {
+                      "content": "Banja Vrućica"
+                    }
+                  }
+                },
+                {
+                  "id": "rn7ra",
+                  "type": "ref",
+                  "ref": "iqLKa",
+                  "name": "Prica",
+                  "width": "fill_container",
+                  "descendants": {
+                    "b41LG": {
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "https://images.unsplash.com/photo-1559185590-765cdc663325?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+                        "mode": "fill"
+                      }
+                    },
+                    "ABqHo": {
+                      "enabled": false
+                    },
+                    "zJouG/z0EoG": {
+                      "content": "Ljudi i biznisi"
+                    },
+                    "P54qzk": {
+                      "content": "Banja Vrućica kroz generacije"
+                    },
+                    "nMuOh": {
+                      "content": "Jelena S. · 02.06.2026."
+                    },
+                    "iiQIn": {
+                      "content": "Porodična tradicija banjskog turizma."
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hsrkV",
+          "name": "Sekcija/Galerija",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            56,
+            120,
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "VW1T6",
+              "name": "Zaglavlje",
+              "width": "fill_container",
+              "gap": 16,
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TfDVf",
+                  "name": "H2",
+                  "fill": "$heading",
+                  "content": "Galerija",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 28,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "frame",
+                  "id": "ZwtXW",
+                  "name": "L",
+                  "gap": 4,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uCNi5",
+                      "name": "T",
+                      "fill": "$primary",
+                      "content": "Vidi sve",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon",
+                      "id": "EYm47",
+                      "name": "I",
+                      "width": 16,
+                      "height": 16,
+                      "icon": "chevron-right",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "fKneO",
+              "name": "Mozaik",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-md",
+                  "id": "dWwfX",
+                  "name": "Slika 1",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "bgoodpic",
+                    "link": "https://unsplash.com/@bgoodpic",
+                    "author": "Barney Goodman"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1781458650999-78d7f722c187?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": "fill_container",
+                  "height": 220
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-md",
+                  "id": "M53qFC",
+                  "name": "Slika 2",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "katewells27",
+                    "link": "https://unsplash.com/@katewells27",
+                    "author": "Kate Wells"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1763475909510-0e038400d26c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Njd8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": "fill_container",
+                  "height": 220
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-md",
+                  "id": "HQuLV",
+                  "name": "Slika 3",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "bpj2608",
+                    "link": "https://unsplash.com/@bpj2608",
+                    "author": "Bradley Pritchard Jones"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1699523526355-993613435cad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": "fill_container",
+                  "height": 220
+                },
+                {
+                  "type": "rectangle",
+                  "cornerRadius": "$radius-md",
+                  "id": "z4ef3",
+                  "name": "Slika 4",
+                  "metadata": {
+                    "type": "unsplash",
+                    "username": "quirvan",
+                    "link": "https://unsplash.com/@quirvan",
+                    "author": "Alan Quirvan"
+                  },
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "https://images.unsplash.com/photo-1669255034440-7d293acdd207?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NDM0ODN8MHwxfHJhbmRvbXx8fHx8fHx8fDE3ODIxNzE0Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+                    "mode": "fill"
+                  },
+                  "width": "fill_container",
+                  "height": 220
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "tHFtd",
+          "type": "ref",
+          "ref": "gTB1e",
+          "name": "Footer",
+          "width": "fill_container"
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "SFXWV",
+      "x": 4815,
+      "y": 8567,
+      "name": "ZTC Banja Vrucica - Desktop",
+      "clip": true,
+      "width": 1440,
+      "fill": "$surface",
+      "layout": "vertical",
+      "children": [
+        {
+          "id": "GcCEW",
+          "type": "ref",
+          "ref": "JKDc7",
+          "width": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "CTKAz",
+          "name": "Breadcrumb traka",
+          "width": "fill_container",
+          "fill": "$surface",
+          "padding": [
+            20,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "ojmka",
+              "type": "ref",
+              "ref": "unsYt",
+              "descendants": {
+                "i4hk0y": {
+                  "content": "ZTC Banja Vrućica"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ljh7v",
+          "name": "Hero",
+          "clip": true,
+          "width": "fill_container",
+          "fill": "$primary-darker",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            88,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "zgTFp",
+              "name": "Eyebrow",
+              "fill": "#FFFFFF1A",
+              "cornerRadius": "$radius-pill",
+              "gap": 8,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "K3OM0Y",
+                  "width": 16,
+                  "height": 16,
+                  "icon": "waves",
+                  "library": "lucide",
+                  "fill": "$secondary"
+                },
+                {
+                  "type": "text",
+                  "id": "SjUTI",
+                  "fill": "#FFFFFF",
+                  "content": "Banjsko-rekreativni kompleks",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "rNLkl",
+              "fill": "#FFFFFF",
+              "content": "ZTC Banja Vrućica",
+              "fontFamily": "$font-heading",
+              "fontSize": 54,
+              "fontWeight": "800",
+              "letterSpacing": -1
+            },
+            {
+              "type": "text",
+              "id": "ho07y",
+              "fill": "$primary-tint",
+              "textGrowth": "fixed-width",
+              "width": 660,
+              "content": "Termalni izvori, medicinska rehabilitacija i wellness u srcu Teslića. Kompleks bazena, hotela i sadržaja za odmor i oporavak tokom cijele godine.",
+              "lineHeight": 1.6,
+              "fontFamily": "$font-sans",
+              "fontSize": 19,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "zk6KP",
+              "name": "Dugmad",
+              "gap": 12,
+              "padding": [
+                8,
+                0,
+                0,
+                0
+              ],
+              "children": [
+                {
+                  "id": "s0fDH",
+                  "type": "ref",
+                  "ref": "qUHeJ",
+                  "descendants": {
+                    "w3Egy": {
+                      "icon": "calendar-check"
+                    },
+                    "cvNEU": {
+                      "content": "Rezerviši boravak"
+                    }
+                  }
+                },
+                {
+                  "type": "frame",
+                  "id": "ReQbc",
+                  "name": "Dugme/Outline",
+                  "height": 44,
+                  "cornerRadius": "$radius-sm",
+                  "stroke": "#FFFFFF",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "gap": 8,
+                  "padding": [
+                    12,
+                    20
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "PhKOy",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "phone",
+                      "library": "lucide",
+                      "fill": "#FFFFFF"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bIyKg",
+                      "fill": "#FFFFFF",
+                      "content": "Kontakt",
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ilLDi",
+          "name": "Statistika",
+          "width": "fill_container",
+          "fill": "$surface",
+          "stroke": "$border",
+          "strokeWidth": {
+            "bottom": 1
+          },
+          "strokeAlignment": "inner",
+          "padding": [
+            36,
+            120
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "nZNhB",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "m3GfR",
+                  "fill": "$primary",
+                  "content": "4",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 38,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "dgmJU",
+                  "fill": "$text-muted",
+                  "content": "Termalna bazena",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "E2nhB",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "OqDlZ",
+                  "fill": "$primary",
+                  "content": "20+",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 38,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "aT0hi",
+                  "fill": "$text-muted",
+                  "content": "Wellness tretmana",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cLmKf",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "G4JnG",
+                  "fill": "$primary",
+                  "content": "3",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 38,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "l84ku",
+                  "fill": "$text-muted",
+                  "content": "Hotela u kompleksu",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "iuxOY",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wOBNg",
+                  "fill": "$primary",
+                  "content": "365",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 38,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "R7MR9",
+                  "fill": "$text-muted",
+                  "content": "Dana u godini",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Bovi9",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "st6zq",
+                  "fill": "$primary",
+                  "content": "12 ha",
+                  "fontFamily": "$font-heading",
+                  "fontSize": 38,
+                  "fontWeight": "800"
+                },
+                {
+                  "type": "text",
+                  "id": "J6M0D",
+                  "fill": "$text-muted",
+                  "content": "Park i šetnice",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "J1zxFk",
+          "name": "O kompleksu",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "mu3kU",
+              "width": 780,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "CSHVY",
+                  "fill": "$accent-dark",
+                  "content": "O KOMPLEKSU",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "JiXM9",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 780,
+                  "content": "Jedan od najvećih banjsko-rekreativnih centara u regiji",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GcUgK",
+              "width": "fill_container",
+              "gap": 48,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cbU5K",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 18,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kD7Vp",
+                      "fill": "$text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Banja Vrućica je banjsko-rekreativni kompleks smješten u podnožju planine Borja, poznat po ljekovitim termalnim izvorima i dugoj tradiciji medicinske rehabilitacije. [Placeholder opis - zamijeniti kroz administraciju.]",
+                      "lineHeight": 1.7,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "A7KNp",
+                      "fill": "$heading",
+                      "content": "Ljekovita svojstva termalne vode",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "UQbDP",
+                      "fill": "$text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Kompleks nudi programe fizikalne terapije, wellness i spa tretmane, kao i smještaj u nekoliko hotela u sklopu banje. [Placeholder tekst.]",
+                      "lineHeight": 1.7,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pGbzp",
+                      "fill": "$heading",
+                      "content": "Sadržaji za cijelu porodicu",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 20,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tRsti",
+                      "fill": "$text",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Uz medicinske i wellness programe, banja raspolaže bazenima, restoranima, šetnicama i sportskim terenima. [Placeholder tekst.]",
+                      "lineHeight": 1.7,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZJ3ax",
+                  "width": 360,
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NNKS6",
+                      "width": "fill_container",
+                      "fill": "$surface-alt",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "layout": "vertical",
+                      "gap": 16,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bjVYI",
+                          "fill": "$heading",
+                          "content": "Informacije",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 18,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "CBXws",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "v9b4w",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$primary-tint",
+                              "cornerRadius": "$radius-sm",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "Iu3r3",
+                                  "width": 18,
+                                  "height": 18,
+                                  "icon": "map-pin",
+                                  "library": "lucide",
+                                  "fill": "$primary"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "Am3GX",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "zyf0S",
+                                  "fill": "$text-muted",
+                                  "content": "Lokacija",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "L2obG",
+                                  "fill": "$heading",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Teslić, Republika Srpska",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "SkTIQ",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Acmx4",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$primary-tint",
+                              "cornerRadius": "$radius-sm",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "KPzgo",
+                                  "width": 18,
+                                  "height": 18,
+                                  "icon": "phone",
+                                  "library": "lucide",
+                                  "fill": "$primary"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "b1EWyn",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "o2fF0",
+                                  "fill": "$text-muted",
+                                  "content": "Kontakt",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Yioot",
+                                  "fill": "$heading",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "+387 XX XXX XXX",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "j8G29s",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "jUzZ3",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$primary-tint",
+                              "cornerRadius": "$radius-sm",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "YUzjx",
+                                  "width": 18,
+                                  "height": 18,
+                                  "icon": "globe",
+                                  "library": "lucide",
+                                  "fill": "$primary"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "i5smy",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "gTfA3",
+                                  "fill": "$text-muted",
+                                  "content": "Web",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "fTz9T",
+                                  "fill": "$heading",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "banja-vrucica.com",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "fIs3J",
+                          "width": "fill_container",
+                          "gap": 12,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "Q4DEis",
+                              "width": 36,
+                              "height": 36,
+                              "fill": "$primary-tint",
+                              "cornerRadius": "$radius-sm",
+                              "justifyContent": "center",
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon",
+                                  "id": "FbKnn",
+                                  "width": 18,
+                                  "height": 18,
+                                  "icon": "clock",
+                                  "library": "lucide",
+                                  "fill": "$primary"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "LfZkA",
+                              "width": "fill_container",
+                              "layout": "vertical",
+                              "gap": 2,
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "DfXVk",
+                                  "fill": "$text-muted",
+                                  "content": "Radno vrijeme",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 13,
+                                  "fontWeight": "500"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "MGMhG",
+                                  "fill": "$heading",
+                                  "textGrowth": "fixed-width",
+                                  "width": "fill_container",
+                                  "content": "Otvoreno 0-24h",
+                                  "fontFamily": "$font-sans",
+                                  "fontSize": 15,
+                                  "fontWeight": "600"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "g9FFc4",
+                      "name": "MiniMapa",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 180,
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-lg",
+                      "stroke": "$border",
+                      "strokeWidth": 1,
+                      "strokeAlignment": "inner",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "waVGl",
+                          "width": 32,
+                          "height": 32,
+                          "icon": "map",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "P2mALr",
+          "name": "Wellness i zdravlje",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "qBjmi",
+              "width": 820,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ktv29",
+                  "fill": "$accent-dark",
+                  "content": "WELLNESS I ZDRAVLJE",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "Pwbf3",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Programi za oporavak, zdravlje i opuštanje",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 34,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "z8Cmj",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Od medicinske rehabilitacije do spa rituala - ponuda prilagođena svakom gostu.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "GC0lV",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RSsTb",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "v13YL",
+                      "width": 52,
+                      "height": 52,
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-md",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "MT42q",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "stethoscope",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "n8Q55",
+                      "fill": "$heading",
+                      "content": "Medicinska rehabilitacija",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "f7D3gr",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Programi fizikalne terapije i oporavka pod stručnim nadzorom. [Placeholder.]",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "xqpRs",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jwzqY",
+                      "width": 52,
+                      "height": 52,
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-md",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "S9rrSz",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "waves",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "aQ5do",
+                      "fill": "$heading",
+                      "content": "Termalni bazeni",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "U2Vql",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Zatvoreni i otvoreni bazeni sa termalnom vodom. [Placeholder.]",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "QJDPE",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "X37a00",
+                      "width": 52,
+                      "height": 52,
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-md",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "bAmqN",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "sparkles",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "u56Uzs",
+                      "fill": "$heading",
+                      "content": "Spa i wellness",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "ZhJvm",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Masaže, saune i tretmani za potpuno opuštanje. [Placeholder.]",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "y67Nt",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 14,
+                  "padding": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "v9Uoeh",
+                      "width": 52,
+                      "height": 52,
+                      "fill": "$primary-tint",
+                      "cornerRadius": "$radius-md",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "MXleO",
+                          "width": 24,
+                          "height": 24,
+                          "icon": "dumbbell",
+                          "library": "lucide",
+                          "fill": "$primary"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "b9aIF",
+                      "fill": "$heading",
+                      "content": "Sport i rekreacija",
+                      "fontFamily": "$font-heading",
+                      "fontSize": 19,
+                      "fontWeight": "700"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mLjFo",
+                      "fill": "$text-muted",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "Tereni, teretana i šetnice u okruženju prirode. [Placeholder.]",
+                      "lineHeight": 1.6,
+                      "fontFamily": "$font-sans",
+                      "fontSize": 15,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "DGCmc",
+          "name": "Termalna voda",
+          "width": "fill_container",
+          "fill": "$primary-darker",
+          "gap": 56,
+          "padding": [
+            72,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "iTouz",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AIv6g",
+                  "fill": "$secondary",
+                  "content": "TERMALNA VODA",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "DpWGF",
+                  "fill": "#FFFFFF",
+                  "textGrowth": "fixed-width",
+                  "width": 520,
+                  "content": "Ljekoviti izvori poznati više od jednog vijeka",
+                  "lineHeight": 1.25,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "XH2DJ",
+                  "fill": "$primary-tint",
+                  "textGrowth": "fixed-width",
+                  "width": 520,
+                  "content": "Termalna voda Banje Vrućica koristi se u programima rehabilitacije i wellness tretmanima. [Placeholder opis blagodeti termalne vode - zamijeniti kroz administraciju.]",
+                  "lineHeight": 1.7,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "h7XIj",
+                  "gap": 28,
+                  "padding": [
+                    8,
+                    0,
+                    0,
+                    0
+                  ],
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "P5ZX6h",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "eCgP8",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "thermometer",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ffm4Z",
+                          "fill": "#FFFFFF",
+                          "content": "Prirodno topla",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "jHUYL",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "WZ3mE",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "droplets",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "X4MLiY",
+                          "fill": "#FFFFFF",
+                          "content": "Bogata mineralima",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Ro6jR",
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "YJaKb",
+                          "width": 20,
+                          "height": 20,
+                          "icon": "heart-pulse",
+                          "library": "lucide",
+                          "fill": "$secondary"
+                        },
+                        {
+                          "type": "text",
+                          "id": "CbVyN",
+                          "fill": "#FFFFFF",
+                          "content": "Ljekovita svojstva",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 15,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "R3SZr",
+              "clip": true,
+              "width": 520,
+              "height": 340,
+              "fill": "#FFFFFF1A",
+              "cornerRadius": "$radius-lg",
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon",
+                  "id": "y5Qoc",
+                  "width": 40,
+                  "height": 40,
+                  "icon": "image",
+                  "library": "lucide",
+                  "fill": "#FFFFFF66"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "C9IKE",
+          "name": "Hoteli u kompleksu",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "o7kddu",
+              "width": 820,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "vNZfC",
+                  "fill": "$accent-dark",
+                  "content": "HOTELI U KOMPLEKSU",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "UQYbK",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Smještaj u sklopu banje",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "g8bZk8",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Objekti banje sa sopstvenim sadržajima - povezuju se automatski sa svojim stranicama.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "NIJlc",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eBVDY",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Ej6hl",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 190,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "MIqQM",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "X9oDG",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "x1EKU6",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "g2xEe",
+                              "fill": "$primary-dark",
+                              "content": "Hotel",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "OmEel",
+                          "fill": "$heading",
+                          "content": "Hotel Hajdučke vode",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "yiuUt",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Planinski hotel u okruženju šume. [Placeholder - povezuje se na svoju stranicu.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zQ6l9",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "EUdhI",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 190,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "t5R9Ln",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "X6nM8",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "vPPcv",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "hcbxT",
+                              "fill": "$primary-dark",
+                              "content": "Hotel",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "Qw6yn",
+                          "fill": "$heading",
+                          "content": "Hotel Kardial",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "Yp4CV",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Centralni hotel kompleksa uz bazene i tretmane. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NZFqG",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "FXldb",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 190,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Q0TYZ",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "QGa1x",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kbeNv",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "R8IG5",
+                              "fill": "$primary-dark",
+                              "content": "Hotel",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "e5UKcZ",
+                          "fill": "$heading",
+                          "content": "Hotel Posavina",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "EvaFm",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Smještaj uz park i šetnice banje. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "xus2l",
+          "name": "Sadrzaji i lokacije",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "BKR3A",
+              "width": 820,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fS7mh",
+                  "fill": "$accent-dark",
+                  "content": "SADRŽAJI I LOKACIJE",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "WMCPu",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Restorani, šetnice i sadržaji banje",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "rlAzg",
+              "width": "fill_container",
+              "gap": 20,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "a9e2p",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "vBStP",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "Pk9hJ",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "VmbKq",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "kd8ok",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "oJLm6",
+                              "fill": "$primary-dark",
+                              "content": "Ugostiteljstvo",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "M0cnJ",
+                          "fill": "$heading",
+                          "content": "Restorani i kafei",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "bjGJL",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Ponuda domaće i internacionalne kuhinje. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Bl0LL",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "g8l2V",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "U1YBub",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "APPtD",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "pVKvK",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "FuIUV",
+                              "fill": "$primary-dark",
+                              "content": "Priroda",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "BupmX",
+                          "fill": "$heading",
+                          "content": "Park i šetnice",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "V5RstU",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Uređene staze za šetnju i rekreaciju. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Fm2Dt",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Rw9g7",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "GVA58",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "hjQ2C",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "suk0C",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "gLHFk",
+                              "fill": "$primary-dark",
+                              "content": "Sport",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "XGP7p",
+                          "fill": "$heading",
+                          "content": "Sportski tereni",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "r6CSV",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Tereni i sadržaji za aktivni odmor. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CATgL",
+                  "clip": true,
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-md",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E182814",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 3
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "ISdrL",
+                      "clip": true,
+                      "width": "fill_container",
+                      "height": 150,
+                      "fill": "$primary-tint",
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon",
+                          "id": "VVywx",
+                          "width": 26,
+                          "height": 26,
+                          "icon": "image",
+                          "library": "lucide",
+                          "fill": "$primary-tint-2"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SBkU4",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "k8ORq",
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-pill",
+                          "gap": 6,
+                          "padding": [
+                            4,
+                            10
+                          ],
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "IadPw",
+                              "fill": "$primary-dark",
+                              "content": "Bazeni",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 12,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "text",
+                          "id": "bmtYP",
+                          "fill": "$heading",
+                          "content": "Bazenski kompleks",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 17,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "text",
+                          "id": "oouRV",
+                          "fill": "$text-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Zatvoreni i otvoreni termalni bazeni. [Placeholder.]",
+                          "lineHeight": 1.5,
+                          "fontFamily": "$font-sans",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zfQyT",
+          "name": "Paketi i aranzmani",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "BxRbT",
+              "width": 820,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "T3ErU",
+                  "fill": "$accent-dark",
+                  "content": "PAKETI I ARANŽMANI",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "RqXos",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Odaberite paket boravka",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                },
+                {
+                  "type": "text",
+                  "id": "v55sLG",
+                  "fill": "$text-muted",
+                  "textGrowth": "fixed-width",
+                  "width": 820,
+                  "content": "Cijene su placeholder - upisuju se kroz administraciju.",
+                  "lineHeight": 1.6,
+                  "fontFamily": "$font-sans",
+                  "fontSize": 17,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PCI64",
+              "width": "fill_container",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "t64kBB",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Q7pRk",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "YGwj5",
+                          "fill": "$heading",
+                          "content": "Wellness vikend",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "G4ayn",
+                          "gap": 6,
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "jFkiJ",
+                              "fill": "$primary",
+                              "content": "00 KM",
+                              "fontFamily": "$font-heading",
+                              "fontSize": 32,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Le3BM",
+                              "fill": "$text-muted",
+                              "content": "/ 2 noći",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "S1jbt",
+                      "width": "fill_container",
+                      "height": 1,
+                      "fill": "$border"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "AcZK5",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "klpWW",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "agSIW",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "s6ClH",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Smještaj sa doručkom",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "CBQPE",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "f1N2X",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "b3lzF",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Ulaz u bazene",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oXgn2",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "filGp",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "p3qg49",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Jedan spa tretman",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "D2TVZw",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "meimx",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ervZo",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Parking",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "EUII6",
+                      "type": "ref",
+                      "ref": "Tvbj2",
+                      "width": "fill_container",
+                      "descendants": {
+                        "G7dL6T": {
+                          "icon": "arrow-right"
+                        },
+                        "iXsvx": {
+                          "content": "Rezerviši"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "aQZMI",
+                  "width": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$primary",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0E827540",
+                    "offset": {
+                      "x": 0,
+                      "y": 8
+                    },
+                    "blur": 24
+                  },
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "qvEEv",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GOW7l",
+                          "fill": "#FFFFFF",
+                          "content": "Zdravlje i oporavak",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Jd1gZ",
+                          "gap": 6,
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "GaAJI",
+                              "fill": "#FFFFFF",
+                              "content": "00 KM",
+                              "fontFamily": "$font-heading",
+                              "fontSize": 32,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "Qkari",
+                              "fill": "$primary-tint",
+                              "content": "/ 7 noći",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "yOQsV",
+                      "width": "fill_container",
+                      "height": 1,
+                      "fill": "#FFFFFF33"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "KTI68",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "R5KtQg",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "ZyOFw",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "TeBpv",
+                              "fill": "#FFFFFF",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Puni pansion",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "tH2Ha",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "UCUrE",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "R3dWTZ",
+                              "fill": "#FFFFFF",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Medicinski pregled",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "abNqO",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "ZWQ9s",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "S93RD",
+                              "fill": "#FFFFFF",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Programi terapije",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "LQIa7",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "pTNyb",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "w5366G",
+                              "fill": "#FFFFFF",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Neograničen bazen",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "a1MB8o",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "w2OYAw",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$secondary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "XAr5B",
+                              "fill": "#FFFFFF",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Wellness zona",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "D1s7B8",
+                      "width": "fill_container",
+                      "height": 46,
+                      "fill": "$accent",
+                      "cornerRadius": "$radius-sm",
+                      "gap": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Fmvu0",
+                          "fill": "$heading",
+                          "content": "Rezerviši",
+                          "fontFamily": "$font-sans",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "icon",
+                          "id": "milSL",
+                          "width": 18,
+                          "height": 18,
+                          "icon": "arrow-right",
+                          "library": "lucide",
+                          "fill": "$heading"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YLMNe",
+                  "width": "fill_container",
+                  "fill": "$surface",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "layout": "vertical",
+                  "gap": 20,
+                  "padding": 28,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "Paeiq",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 8,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "l5Nms",
+                          "fill": "$heading",
+                          "content": "Porodični odmor",
+                          "fontFamily": "$font-heading",
+                          "fontSize": 20,
+                          "fontWeight": "700"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "RHDwq",
+                          "gap": 6,
+                          "alignItems": "end",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "o6eub",
+                              "fill": "$primary",
+                              "content": "00 KM",
+                              "fontFamily": "$font-heading",
+                              "fontSize": 32,
+                              "fontWeight": "800"
+                            },
+                            {
+                              "type": "text",
+                              "id": "PzaL0",
+                              "fill": "$text-muted",
+                              "content": "/ 3 noći",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "q4J9ks",
+                      "width": "fill_container",
+                      "height": 1,
+                      "fill": "$border"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IJvOW",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "KdIi5",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "A9shvJ",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "N214Dn",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Porodična soba",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "OepKX",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "LhjWw",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "U6SlzG",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Polupansion",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "wba4F",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "Y6Nqj",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "yE1YI",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Sadržaji za djecu",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "n6kY6",
+                          "width": "fill_container",
+                          "gap": 10,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "s8ES2",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "check",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            },
+                            {
+                              "type": "text",
+                              "id": "eL69Y",
+                              "fill": "$text",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Ulaz u bazene",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "gPGmn",
+                      "type": "ref",
+                      "ref": "Tvbj2",
+                      "width": "fill_container",
+                      "descendants": {
+                        "G7dL6T": {
+                          "icon": "arrow-right"
+                        },
+                        "iXsvx": {
+                          "content": "Rezerviši"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "M4A89d",
+          "name": "Galerija",
+          "width": "fill_container",
+          "fill": "$surface-alt",
+          "layout": "vertical",
+          "gap": 28,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "wNNRq",
+              "width": 760,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "lxFOn",
+                  "fill": "$accent-dark",
+                  "content": "GALERIJA",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "PseRN",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 760,
+                  "content": "Kroz objektiv Banje Vrućica",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "D1Qtr",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "lT5Fx",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "nHa0i",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "IcmMn",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "IA1tD",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oRuRP",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "zdDK9",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "hPWwd",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 220,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "C7O48",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xMhuh",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "USzDL",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 200,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "YcyC4",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "cI8Zz",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 200,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "I2v0XF",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WzEgT",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 200,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "yTRmc",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Pt6Ik",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": 200,
+                  "fill": "$primary-tint",
+                  "cornerRadius": "$radius-md",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "O7qf3c",
+                      "width": 24,
+                      "height": 24,
+                      "icon": "image",
+                      "library": "lucide",
+                      "fill": "$primary-tint-2"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LPvsn",
+          "name": "Kontakt i lokacija",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "gap": 32,
+          "padding": [
+            64,
+            120
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "fWEtB",
+              "width": 760,
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "RsQzo",
+                  "fill": "$accent-dark",
+                  "content": "KONTAKT I LOKACIJA",
+                  "fontFamily": "$font-sans",
+                  "fontSize": 13,
+                  "fontWeight": "700",
+                  "letterSpacing": 1.5
+                },
+                {
+                  "type": "text",
+                  "id": "RfSec",
+                  "fill": "$heading",
+                  "textGrowth": "fixed-width",
+                  "width": 760,
+                  "content": "Posjetite nas ili nas kontaktirajte",
+                  "lineHeight": 1.2,
+                  "fontFamily": "$font-heading",
+                  "fontSize": 32,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wwdrj",
+              "width": "fill_container",
+              "gap": 48,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "gAQfv",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "d2OkmS",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "BRVhd",
+                          "width": 40,
+                          "height": 40,
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-sm",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "yGNsF",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "map-pin",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "qqVkk",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "UQ0Rh",
+                              "fill": "$text-muted",
+                              "content": "Adresa",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "WUEr8",
+                              "fill": "$heading",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Banja Vrućica, Teslić, Republika Srpska",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MwTXF",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "S3yJTl",
+                          "width": 40,
+                          "height": 40,
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-sm",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "RSoXn",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "phone",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HAnaH",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "X2LisJ",
+                              "fill": "$text-muted",
+                              "content": "Telefon",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "D9V60",
+                              "fill": "$heading",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "+387 XX XXX XXX",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "De9KC",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "Bg8Ur",
+                          "width": 40,
+                          "height": 40,
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-sm",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "J2aFK",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "mail",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "iJGi9",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "D46gT8",
+                              "fill": "$text-muted",
+                              "content": "Email",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "g75yLc",
+                              "fill": "$heading",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "info@banja-vrucica.com",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "sLeGL",
+                      "width": "fill_container",
+                      "gap": 12,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "CcH8e",
+                          "width": 40,
+                          "height": 40,
+                          "fill": "$primary-tint",
+                          "cornerRadius": "$radius-sm",
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "icon",
+                              "id": "IuxIG",
+                              "width": 18,
+                              "height": 18,
+                              "icon": "clock",
+                              "library": "lucide",
+                              "fill": "$primary"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "cw07F",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 2,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "s7aIB",
+                              "fill": "$text-muted",
+                              "content": "Recepcija",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 13,
+                              "fontWeight": "500"
+                            },
+                            {
+                              "type": "text",
+                              "id": "aUICL",
+                              "fill": "$heading",
+                              "textGrowth": "fixed-width",
+                              "width": "fill_container",
+                              "content": "Dostupna 0-24h",
+                              "fontFamily": "$font-sans",
+                              "fontSize": 15,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YPTAu",
+                      "gap": 12,
+                      "padding": [
+                        8,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "id": "jOx3f",
+                          "type": "ref",
+                          "ref": "FeIw8",
+                          "descendants": {
+                            "nDDpQ": {
+                              "icon": "phone"
+                            },
+                            "fFROY": {
+                              "content": "Pozovi"
+                            }
+                          }
+                        },
+                        {
+                          "id": "txlVc",
+                          "type": "ref",
+                          "ref": "Tvbj2",
+                          "descendants": {
+                            "G7dL6T": {
+                              "icon": "map-pin"
+                            },
+                            "iXsvx": {
+                              "content": "Prikaži rutu"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SeRgN",
+                  "clip": true,
+                  "width": 560,
+                  "height": 380,
+                  "fill": "$surface-alt",
+                  "cornerRadius": "$radius-lg",
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "strokeAlignment": "inner",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "KN7vv",
+                      "width": 40,
+                      "height": 40,
+                      "icon": "map",
+                      "library": "lucide",
+                      "fill": "$primary"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "TfRLG",
+          "name": "CTA wrap",
+          "width": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "padding": [
+            16,
+            120,
+            72,
+            120
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "id": "k3ZiPq",
+              "type": "ref",
+              "ref": "o2mBo",
+              "width": "fill_container",
+              "descendants": {
+                "V1duCm": {
+                  "content": "Isplanirajte svoj boravak u Banji Vrućica"
+                },
+                "n5iBO": {
+                  "content": "Kontaktirajte nas za rezervaciju, pakete i informacije o smještaju i tretmanima."
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "TczTD",
+          "type": "ref",
+          "ref": "gTB1e",
+          "width": "fill_container"
+        }
+      ]
     }
   ],
   "variables": {
@@ -8743,5 +13082,6 @@
       "type": "color",
       "value": "#8F5210"
     }
-  }
+  },
+  "fileToken": "7e67a7eb-8117-469b-8d57-631637a9bb34"
 }
