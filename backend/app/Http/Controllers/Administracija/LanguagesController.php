@@ -8,6 +8,7 @@ use App\Providers\LocaleConfigServiceProvider;
 use App\Support\Translations;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
@@ -105,6 +106,14 @@ class LanguagesController extends Controller
     {
         Cache::forget(LocaleConfigServiceProvider::CACHE_KEY);
         app(Translations::class)->forget();
+
+        try {
+            if (app()->routesAreCached()) {
+                Artisan::call('route:clear');
+            }
+        } catch (\Throwable $e) {
+            report($e);
+        }
     }
 
     protected function log(Request $request, string $event, array $attributes, array $old, string $opis): void
