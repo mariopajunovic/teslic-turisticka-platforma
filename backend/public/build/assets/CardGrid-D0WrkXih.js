@@ -1,0 +1,1 @@
+import{Gn as e,pr as t,ri as n,ur as r}from"./icons-BCX8lkRe.js";var i={__name:`CardGrid`,props:{cols:{type:Number,default:4}},setup(i){return(a,o)=>(r(),e(`div`,{class:n([`grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6`,i.cols===3?`lg:grid-cols-3`:`lg:grid-cols-4`])},[t(a.$slots,`default`)],2))}};export{i as t};

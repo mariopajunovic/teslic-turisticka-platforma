@@ -1,0 +1,1 @@
+import{o as e}from"./inertia-helpers-CN_2UPtC.js";function t(){let t=e();return(e,n=``)=>t.props.site?.texts?.[e]??n}export{t};

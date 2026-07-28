@@ -3,6 +3,15 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import AdminLayout from './components/AdminLayout.vue';
 
+window.addEventListener('vite:preloadError', () => {
+    const now = Date.now();
+    const last = Number(sessionStorage.getItem('preloadReload') || 0);
+    if (now - last > 10000) {
+        sessionStorage.setItem('preloadReload', String(now));
+        window.location.reload();
+    }
+});
+
 const NO_LAYOUT = ['Prijava', 'Dvofaktorska', 'PostaviLozinku', 'PostaviDvofaktorsku', 'ZaboravljenaLozinka', 'RezervniKodovi'];
 
 createInertiaApp({

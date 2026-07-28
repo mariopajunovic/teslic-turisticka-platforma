@@ -1,1 +1,0 @@
-import{H as e,J as t,at as n,ht as r,kt as i}from"./x-DZJQ0eMS.js";import{r as a,t as o}from"./account-Ed7PhDGR.js";import{t as s}from"./SettingsPanel-BgXPFV-E.js";var c={__name:`AutorPostavke`,setup(c){return(c,l)=>(n(),e(a,{items:i(o)},{default:r(()=>[t(s)]),_:1},8,[`items`]))}};export{c as default};

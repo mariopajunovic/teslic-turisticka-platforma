@@ -5,6 +5,15 @@ import { createPinia } from 'pinia';
 import PublicLayout from '@/Layouts/PublicLayout.vue';
 import { i18n, resolveUiLocale, applyMessages } from '@/i18n';
 
+window.addEventListener('vite:preloadError', () => {
+    const now = Date.now();
+    const last = Number(sessionStorage.getItem('preloadReload') || 0);
+    if (now - last > 10000) {
+        sessionStorage.setItem('preloadReload', String(now));
+        window.location.reload();
+    }
+});
+
 const appName = import.meta.env.VITE_APP_NAME || 'TO Teslić';
 
 // Non-localized first path segments (Fortify auth, toggles, assets, prefixes).

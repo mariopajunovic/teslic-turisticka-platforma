@@ -1,1 +1,0 @@
-import{At as e,W as t,at as n,st as r}from"./x-DZJQ0eMS.js";var i={__name:`CardGrid`,props:{cols:{type:Number,default:4}},setup(i){return(a,o)=>(n(),t(`div`,{class:e([`grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6`,i.cols===3?`lg:grid-cols-3`:`lg:grid-cols-4`])},[r(a.$slots,`default`)],2))}};export{i as t};

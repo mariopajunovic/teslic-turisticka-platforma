@@ -1,1 +1,0 @@
-import{w as e}from"./x-DZJQ0eMS.js";function t(){let t=e();return(e,n=``)=>t.props.site?.texts?.[e]??n}export{t};
