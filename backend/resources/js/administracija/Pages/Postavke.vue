@@ -275,6 +275,19 @@ const trErr = (field) => {
                     :errors="trErr('seo_opis')"
                 />
                 <div class="border-t border-line pt-4">
+                    <ImageUpload
+                        :src="postavke.og_default_image"
+                        upload-url="/administracija/postavke/og-slika"
+                        delete-url="/administracija/postavke/og-slika"
+                        label="Podrazumijevana slika za dijeljenje (og:image)"
+                        hint="Prikazuje se pri dijeljenju na društvenim mrežama (Facebook, Viber, WhatsApp...) kada sadržaj nema vlastitu sliku. Preporuka 1200×630 px."
+                        :aspect="1200 / 630"
+                        shape="rect"
+                        :output-width="1200"
+                        output-type="image/jpeg"
+                    />
+                </div>
+                <div class="border-t border-line pt-4">
                     <ToggleField v-model="form.google_indeksiranje" label="Dozvoli Google indeksiranje" hint="Isključi na dev serveru (noindex + robots.txt)." />
                 </div>
                 <div class="border-t border-line pt-4">

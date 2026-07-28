@@ -19,7 +19,7 @@ const data = computed(() => {
       postavke.seoOpis ||
       'Digitalna platforma za promociju turizma, domaćih proizvoda i usluga opštine Teslić.',
     canonical: s.canonical || '',
-    image: s.image || '',
+    image: s.image || postavke.ogDefaultImage || '',
     type: s.type || 'website',
   }
 })

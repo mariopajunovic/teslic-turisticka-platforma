@@ -72,6 +72,11 @@ class SiteData
                         : \Illuminate\Support\Facades\Storage::disk('public')->url($settings->brand_logo))
                     : null,
                 'logoVisina' => $settings->logo_visina,
+                'ogDefaultImage' => $settings->og_default_image
+                    ? (preg_match('#^(https?://|/)#', $settings->og_default_image)
+                        ? $settings->og_default_image
+                        : \Illuminate\Support\Facades\Storage::disk('public')->url($settings->og_default_image))
+                    : null,
                 'seoOpis' => self::trs($settings->seo_opis),
                 'footerOpis' => self::trs($settings->footer_opis),
                 'copyright' => self::trs($settings->copyright),

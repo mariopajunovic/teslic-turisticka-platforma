@@ -16,6 +16,8 @@ class SiteSettings extends Settings
 
     public array $seo_opis;
 
+    public string $og_default_image;
+
     public array $footer_opis;
 
     public array $copyright;

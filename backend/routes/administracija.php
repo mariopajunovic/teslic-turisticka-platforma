@@ -174,6 +174,8 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
         Route::put('/postavke', [SettingsController::class, 'update'])->name('settings.update');
         Route::post('/postavke/logo', [SettingsController::class, 'logo'])->name('settings.logo');
         Route::delete('/postavke/logo', [SettingsController::class, 'obrisiLogo'])->name('settings.logo.obrisi');
+        Route::post('/postavke/og-slika', [SettingsController::class, 'ogImage'])->name('settings.og.slika');
+        Route::delete('/postavke/og-slika', [SettingsController::class, 'obrisiOgImage'])->name('settings.og.slika.obrisi');
 
         Route::post('/postavke/partneri', [PartnersController::class, 'store'])->name('settings.partneri.store');
         Route::post('/postavke/partneri/redoslijed', [PartnersController::class, 'redoslijed'])->name('settings.partneri.redoslijed');

@@ -24,6 +24,7 @@ class SettingsController extends Controller
                 'brand_logo' => $s->brand_logo ? Storage::disk('public')->url($s->brand_logo) : null,
                 'logo_visina' => $s->logo_visina,
                 'seo_opis' => $s->seo_opis,
+                'og_default_image' => $s->og_default_image ? Storage::disk('public')->url($s->og_default_image) : null,
                 'kontakt_adresa' => $s->kontakt_adresa,
                 'kontakt_telefon' => $s->kontakt_telefon,
                 'kontakt_email' => $s->kontakt_email,
@@ -153,5 +154,35 @@ class SettingsController extends Controller
         $s->save();
 
         return back()->with('status', 'Logo je uklonjen.');
+    }
+
+    public function ogImage(Request $request): RedirectResponse
+    {
+        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+
+        $s = app(SiteSettings::class);
+
+        if ($s->og_default_image) {
+            Storage::disk('public')->delete($s->og_default_image);
+        }
+
+        $s->og_default_image = $request->file('image')->store('og', 'public');
+        $s->save();
+
+        return back()->with('status', 'Slika za dijeljenje je sačuvana.');
+    }
+
+    public function obrisiOgImage(): RedirectResponse
+    {
+        $s = app(SiteSettings::class);
+
+        if ($s->og_default_image) {
+            Storage::disk('public')->delete($s->og_default_image);
+        }
+
+        $s->og_default_image = '';
+        $s->save();
+
+        return back()->with('status', 'Slika za dijeljenje je uklonjena.');
     }
 }

@@ -12,6 +12,13 @@
     <link rel="manifest" href="/site.webmanifest">
     <meta property="og:site_name" content="{{ config('app.name', 'TO Teslić') }}">
     <meta property="og:locale" content="sr_RS">
+    @php($ogImage = app(\App\Settings\SiteSettings::class)->og_default_image)
+    @if ($ogImage)
+        @php($ogImageUrl = \Illuminate\Support\Str::startsWith($ogImage, ['http://', 'https://']) ? $ogImage : url(\Illuminate\Support\Facades\Storage::disk('public')->url($ogImage)))
+        <meta property="og:image" content="{{ $ogImageUrl }}">
+        <meta name="twitter:image" content="{{ $ogImageUrl }}">
+        <meta name="twitter:card" content="summary_large_image">
+    @endif
     <title inertia>{{ config('app.name', 'TO Teslić') }}</title>
     @php($ga = trim((string) app(\App\Settings\SiteSettings::class)->google_analytics))
     @if ($ga !== '')
