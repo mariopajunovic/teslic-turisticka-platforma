@@ -84,7 +84,7 @@ const submit = () => {
                     label="URL adresa (slug)"
                     :placeholder="jeEdit ? '' : 'auto iz naslova'"
                     :disabled="stranica?.slugLocked"
-                    :hint="stranica?.slugLocked ? 'Naslovna stranica - URL se ne mijenja.' : 'Mala slova, crtice. Ostale stranice: /slug.'"
+                    :hint="stranica?.slugLocked ? 'Sistemska stranica - URL je fiksan (vezan za rute) i ne mijenja se.' : 'Mala slova, crtice. Ostale stranice: /slug.'"
                     :error="form.errors.slug"
                 />
 

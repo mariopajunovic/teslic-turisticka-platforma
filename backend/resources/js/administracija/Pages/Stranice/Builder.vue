@@ -678,7 +678,7 @@ onBeforeUnmount(() => {
                             :label="`URL adresa (slug) - ${langName}`"
                             :disabled="stranica.slugLocked"
                             :placeholder="slugPrijedlog"
-                            :hint="stranica.slugLocked ? 'Naslovna stranica koristi /. Ne mijenja se.' : 'Slug je po jeziku. Prazno = generiše se iz naslova tog jezika.'"
+                            :hint="stranica.slugLocked ? 'Sistemska stranica - URL je fiksan (vezan za rute) i ne mijenja se.' : 'Slug je po jeziku. Prazno = generiše se iz naslova tog jezika.'"
                             :error="postavkeErr[`slug.${activeLang}`]"
                             @update:model-value="postavke.slug = { ...postavke.slug, [activeLang]: $event }"
                         />

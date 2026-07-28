@@ -50,7 +50,7 @@ class PagesController extends Controller
                 'url' => $page->pathFor('sr'),
                 'published' => (bool) $page->published,
                 'isSystem' => (bool) $page->is_system,
-                'slugLocked' => $page->isHome(),
+                'slugLocked' => (bool) $page->is_system,
                 'metaTitle' => $page->getTranslations('meta_title'),
                 'metaDescription' => $page->getTranslations('meta_description'),
                 'ogImage' => $page->og_image,
@@ -261,7 +261,7 @@ class PagesController extends Controller
 
         $page->setTranslations('title', $this->mapa($data['title']));
 
-        if (! $page->isHome()) {
+        if (! $page->is_system) {
             $slug = $data['slug'] ?? null;
 
             if (is_array($slug)) {
@@ -319,7 +319,7 @@ class PagesController extends Controller
             'url' => $page->pathFor('sr'),
             'published' => (bool) $page->published,
             'isSystem' => (bool) $page->is_system,
-            'slugLocked' => $page->isHome(),
+            'slugLocked' => (bool) $page->is_system,
             'dubina' => $dubina,
             'parentId' => $page->parent_id,
             'resourceType' => $page->resource_type,
