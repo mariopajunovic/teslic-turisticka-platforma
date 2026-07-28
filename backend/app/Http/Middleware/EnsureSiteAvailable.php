@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Settings\SiteSettings;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureSiteAvailable
@@ -14,6 +15,10 @@ class EnsureSiteAvailable
         $settings = app(SiteSettings::class);
 
         if (! $settings->odrzavanje) {
+            return $next($request);
+        }
+
+        if (Auth::guard('admin')->check()) {
             return $next($request);
         }
 
