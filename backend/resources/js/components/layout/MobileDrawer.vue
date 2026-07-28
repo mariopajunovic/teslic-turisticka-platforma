@@ -34,7 +34,7 @@ function close() {
 function submitSearch() {
   const q = searchTerm.value.trim()
   close()
-  if (q) inertiaRouter.visit(`${localePath('/mapa')}?q=${encodeURIComponent(q)}`)
+  if (q) inertiaRouter.visit(`${localePath('/pretraga')}?q=${encodeURIComponent(q)}`)
 }
 
 // Zaključaj scroll tijela dok je drawer otvoren.

@@ -43,7 +43,7 @@ watch(searchOpen, async (v) => {
 function submitSearch() {
   const q = searchTerm.value.trim()
   searchOpen.value = false
-  if (q) inertiaRouter.visit(`${localePath('/mapa')}?q=${encodeURIComponent(q)}`)
+  if (q) inertiaRouter.visit(`${localePath('/pretraga')}?q=${encodeURIComponent(q)}`)
 }
 
 const { mainNav, kontakt, postavke } = useSite()

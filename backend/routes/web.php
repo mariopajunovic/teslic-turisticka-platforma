@@ -55,6 +55,7 @@ $public = function (string $lang) use ($slugPattern, $parentPattern) {
     Route::get('/prijava', fn () => Inertia::render('Login', ['seo' => \App\Support\Seo::make($tr('seo.login'), $tr('seo.loginDesc'), url()->current())]))->name('prijava');
     Route::get('/registracija', fn () => Inertia::render('RegisterChoice', ['seo' => \App\Support\Seo::make($tr('seo.register'), $tr('seo.registerDesc'), url()->current())]))->name('registracija');
     Route::get('/zaboravljena-lozinka', fn () => Inertia::render('ForgotPassword', ['seo' => \App\Support\Seo::make($tr('seo.forgotPassword'), $tr('seo.forgotPasswordDesc'), url()->current())]))->name('zaboravljena-lozinka');
+    Route::get('/pretraga', [\App\Http\Controllers\SearchController::class, 'index'])->name('pretraga');
 
     Route::middleware('auth')->prefix('nalog')->group(function () {
         Route::post('medij', [\App\Http\Controllers\Nalog\MedijController::class, 'store'])
