@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -30,7 +32,7 @@ const podnaslov = computed(() => {
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
+          { label: $t('common.home'), to: localePath('/') },
           { label: nazad.label || $t('proc.title'), to: nazad.url || '/javne-nabavke' },
           { label: nabavka.naslov },
         ]"

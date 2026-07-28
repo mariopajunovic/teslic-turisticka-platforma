@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 
 import AppContainer from '@/components/layout/AppContainer.vue'
@@ -55,7 +57,7 @@ const autor = computed(() => ({
       :title="$t('storyDetail.notFoundTitle')"
       :text="$t('storyDetail.notFoundText')"
     >
-      <BaseButton variant="secondary" icon="arrow-left" to="/price">
+      <BaseButton variant="secondary" icon="arrow-left" :to="localePath('/price')">
         {{ $t('storyDetail.backToStories') }}
       </BaseButton>
     </EmptyState>
@@ -63,8 +65,8 @@ const autor = computed(() => ({
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
-          { label: $t('stories.breadcrumb'), to: '/price' },
+          { label: $t('common.home'), to: localePath('/') },
+          { label: $t('stories.breadcrumb'), to: localePath('/price') },
           { label: prica.naslov },
         ]"
       />
@@ -95,7 +97,7 @@ const autor = computed(() => ({
       </section>
 
       <div class="mx-auto mt-10 max-w-2xl">
-        <AuthorBlock :author="autor" to="/price" />
+        <AuthorBlock :author="autor" :to="localePath('/price')" />
       </div>
 
       <RelatedContent v-if="povezani.length" :title="$t('detail.related')">

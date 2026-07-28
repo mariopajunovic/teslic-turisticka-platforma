@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -59,7 +61,7 @@ const dodatUKalendar = ref(false)
       :title="$t('ev.notFoundTitle')"
       :text="$t('ev.notFoundText')"
     >
-      <BaseButton variant="secondary" icon="arrow-left" to="/dogadjaji">
+      <BaseButton variant="secondary" icon="arrow-left" :to="localePath('/dogadjaji')">
         {{ $t('ev.backToEvents') }}
       </BaseButton>
     </EmptyState>
@@ -67,8 +69,8 @@ const dodatUKalendar = ref(false)
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
-          { label: $t('events.breadcrumb'), to: '/dogadjaji' },
+          { label: $t('common.home'), to: localePath('/') },
+          { label: $t('events.breadcrumb'), to: localePath('/dogadjaji') },
           { label: dogadjaj.naslov },
         ]"
       />

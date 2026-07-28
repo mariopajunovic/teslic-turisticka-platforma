@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
 import { useSite } from '@/composables/useSite'
@@ -16,7 +18,7 @@ const { t } = useI18n()
       <div class="grid gap-8 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <!-- Brend -->
         <div class="max-w-sm">
-          <Link href="/" class="inline-block text-2xl font-extrabold tracking-tight text-primary">
+          <Link :href="localePath('/')" class="inline-block text-2xl font-extrabold tracking-tight text-primary">
             <img v-if="postavke.brandLogo" :src="postavke.brandLogo" :alt="postavke.brandLogoTekst" :style="{ height: (postavke.logoVisina || 40) + 'px' }" class="w-auto" />
             <span v-else>{{ postavke.brandLogoTekst }}</span>
           </Link>

@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link, useForm } from '@inertiajs/vue3'
 import { useTexts } from '@/composables/useTexts'
 import AppContainer from '@/components/layout/AppContainer.vue'
@@ -30,8 +32,8 @@ function submit() {
     <AppContainer class="py-12">
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
-          { label: $t('action.join'), to: '/pridruzi-se' },
+          { label: $t('common.home'), to: localePath('/') },
+          { label: $t('action.join'), to: localePath('/pridruzi-se') },
           { label: $t('auth.bizBc') },
         ]"
       />
@@ -79,7 +81,7 @@ function submit() {
 
         <p class="text-center text-sm text-text-muted">
           {{ $t('auth.haveAccount') }}
-          <Link href="/prijava" class="font-semibold text-primary hover:underline">{{ $t('action.login') }}</Link>
+          <Link :href="localePath('/prijava')" class="font-semibold text-primary hover:underline">{{ $t('action.login') }}</Link>
         </p>
       </div>
     </AppContainer>

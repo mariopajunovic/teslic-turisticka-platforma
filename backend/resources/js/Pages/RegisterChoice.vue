@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 // 1:1 prema 12_Prijava.pen → „Registracija – Preusmjeravanje" (izbor tipa naloga).
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -16,14 +18,14 @@ const opcije = computed(() => [
     naslov: tr('auth.bizTitle'),
     opis: tr('auth.bizDesc'),
     cta: tr('auth.bizTitle'),
-    to: '/pridruzi-se/biznis',
+    to: localePath('/pridruzi-se/biznis'),
   },
   {
     icon: 'pen-tool',
     naslov: tr('auth.authorTitle'),
     opis: tr('auth.authorDesc'),
     cta: tr('auth.authorTitle'),
-    to: '/pridruzi-se/autor',
+    to: localePath('/pridruzi-se/autor'),
   },
 ])
 </script>

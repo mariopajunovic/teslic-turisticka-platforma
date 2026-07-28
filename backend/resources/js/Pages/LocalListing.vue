@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -41,7 +43,7 @@ const HERO_DEFAULT =
 const heroNaslov = computed(() => props.kategorijaLabel || t('local.heroTitle'))
 
 const breadcrumb = computed(() => {
-  const items = [{ label: t('common.home'), to: '/' }, { label: t('local.breadcrumb'), to: props.kategorijaLabel ? '/domace-je-najbolje' : undefined }]
+  const items = [{ label: t('common.home'), to: localePath('/') }, { label: t('local.breadcrumb'), to: props.kategorijaLabel ? '/domace-je-najbolje' : undefined }]
   if (props.kategorijaLabel) items.push({ label: props.kategorijaLabel })
   return items
 })
@@ -203,7 +205,7 @@ function ukloni(key) {
           :kicker="$t('common.related')"
           :title="$t('local.relatedTitle')"
           class="!mt-0"
-          back-to="/"
+          :back-to="localePath('/')"
           :back-label="$t('local.backHome')"
         >
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
@@ -218,7 +220,7 @@ function ukloni(key) {
         :title="$t('local.ctaTitle')"
         :text="$t('local.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('local.ctaButton') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se/biznis')">{{ $t('local.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

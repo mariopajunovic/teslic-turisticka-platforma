@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import AccountLayout from '@/components/layout/AccountLayout.vue'
 import { biznisNav } from '@/constants/account'
@@ -19,7 +21,7 @@ defineProps({
           <h1 class="font-heading text-[28px] font-bold text-heading">{{ $t('acc.events') }}</h1>
           <p class="mt-1 text-[15px] text-text-muted">{{ $t('acc.eventsDesc') }}</p>
         </div>
-        <BaseButton to="/nalog/biznis/dogadjaji/novi" variant="primary" icon="plus">{{ $t('acc.newEvent') }}</BaseButton>
+        <BaseButton :to="localePath('/nalog/biznis/dogadjaji/novi')" variant="primary" icon="plus">{{ $t('acc.newEvent') }}</BaseButton>
       </div>
 
       <div v-if="dogadjaji.length" class="space-y-3">

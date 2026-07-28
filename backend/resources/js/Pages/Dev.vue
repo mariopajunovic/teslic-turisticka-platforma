@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import CardGrid from '@/components/layout/CardGrid.vue'
@@ -432,8 +434,8 @@ function onSelectDay({ events }) {
       <h2 class="text-xl font-bold text-heading">Breadcrumb</h2>
       <Breadcrumb
         :items="[
-          { label: 'Početna', to: '/' },
-          { label: 'Turizam u Tesliću', to: '/turizam' },
+          { label: 'Početna', to: localePath('/') },
+          { label: 'Turizam u Tesliću', to: localePath('/turizam') },
           { label: 'Planina Borja' },
         ]"
       />
@@ -515,7 +517,7 @@ function onSelectDay({ events }) {
 
     <section class="space-y-4">
       <h2 class="text-xl font-bold text-heading">AuthorBlock</h2>
-      <AuthorBlock :author="autor" to="/price" />
+      <AuthorBlock :author="autor" :to="localePath('/price')" />
     </section>
 
     <section class="space-y-4">

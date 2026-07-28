@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { useForm } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import FormField from '@/components/forms/FormField.vue'
@@ -60,7 +62,7 @@ const submit = () => {
         <BaseButton type="submit" variant="primary" block :disabled="form.processing">
           Postavi lozinku
         </BaseButton>
-        <BaseButton to="/prijava" variant="ghost" block icon="arrow-left">
+        <BaseButton :to="localePath('/prijava')" variant="ghost" block icon="arrow-left">
           Nazad na prijavu
         </BaseButton>
       </form>

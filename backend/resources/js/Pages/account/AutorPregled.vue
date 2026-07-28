@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import AccountLayout from '@/components/layout/AccountLayout.vue'
 import { autorNav } from '@/constants/account'
@@ -64,9 +66,9 @@ const kartice = [
       <div class="rounded-md border border-border bg-surface p-5 md:p-6">
         <h2 class="mb-4 font-heading text-lg font-bold text-heading">{{ $t('acc.quickActions') }}</h2>
         <div class="flex flex-wrap gap-3">
-          <BaseButton to="/nalog/autor/nova-prica" variant="primary" icon="plus">{{ $t('acc.newStory') }}</BaseButton>
-          <BaseButton to="/nalog/autor/price" variant="secondary" icon="file-text">{{ $t('acc.navStories') }}</BaseButton>
-          <BaseButton to="/nalog/autor/postavke" variant="secondary" icon="settings">{{ $t('acc.navSettings') }}</BaseButton>
+          <BaseButton :to="localePath('/nalog/autor/nova-prica')" variant="primary" icon="plus">{{ $t('acc.newStory') }}</BaseButton>
+          <BaseButton :to="localePath('/nalog/autor/price')" variant="secondary" icon="file-text">{{ $t('acc.navStories') }}</BaseButton>
+          <BaseButton :to="localePath('/nalog/autor/postavke')" variant="secondary" icon="settings">{{ $t('acc.navSettings') }}</BaseButton>
         </div>
       </div>
     </div>

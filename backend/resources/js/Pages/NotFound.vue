@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import AppContainer from '@/components/layout/AppContainer.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 </script>
@@ -11,7 +13,7 @@ import BaseButton from '@/components/base/BaseButton.vue'
       {{ $t('misc.notFoundText') }}
     </p>
     <div class="mt-8 flex justify-center">
-      <BaseButton to="/" variant="primary" icon="arrow-right" icon-position="right">
+      <BaseButton :to="localePath('/')" variant="primary" icon="arrow-right" icon-position="right">
         {{ $t('misc.backHome') }}
       </BaseButton>
     </div>

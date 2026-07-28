@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 // 1:1 prema 12_Prijava.pen → „ZaboravljenaLozinka – Desktop/Mobile/Uspjeh".
 import { ref } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
@@ -25,7 +27,7 @@ const poslano = ref(false)
           <BaseButton variant="primary" block @click="poslano = true">
             {{ $t('auth.sendReset') }}
           </BaseButton>
-          <BaseButton to="/prijava" variant="ghost" block icon="arrow-left">
+          <BaseButton :to="localePath('/prijava')" variant="ghost" block icon="arrow-left">
             {{ $t('auth.backToLogin') }}
           </BaseButton>
         </template>
@@ -40,7 +42,7 @@ const poslano = ref(false)
           <p class="text-[13px] leading-relaxed text-text-muted">
             {{ $t('auth.noEmailHelp') }}
           </p>
-          <BaseButton to="/prijava" variant="ghost" block icon="arrow-left">
+          <BaseButton :to="localePath('/prijava')" variant="ghost" block icon="arrow-left">
             {{ $t('auth.backToLogin') }}
           </BaseButton>
         </template>

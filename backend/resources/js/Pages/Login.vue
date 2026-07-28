@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import { Link, useForm, usePage } from '@inertiajs/vue3'
 import { useTexts } from '@/composables/useTexts'
@@ -65,7 +67,7 @@ function submit() {
 
           <div class="flex items-center justify-between">
             <FormCheckbox v-model="form.remember" :label="$t('auth.remember')" />
-            <Link href="/zaboravljena-lozinka" class="text-sm font-medium text-primary hover:underline">
+            <Link :href="localePath('/zaboravljena-lozinka')" class="text-sm font-medium text-primary hover:underline">
               {{ $t('auth.forgotQ') }}
             </Link>
           </div>
@@ -79,7 +81,7 @@ function submit() {
 
         <p class="text-center text-sm text-text-muted">
           {{ $t('auth.noAccount') }}
-          <Link href="/registracija" class="font-semibold text-primary hover:underline">
+          <Link :href="localePath('/registracija')" class="font-semibold text-primary hover:underline">
             {{ $t('action.join') }}
           </Link>
         </p>

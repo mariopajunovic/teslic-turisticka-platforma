@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
@@ -66,7 +68,7 @@ function posalji() {
 <template>
   <main class="pb-12 md:pb-16">
     <AppContainer class="pt-8">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('contact.breadcrumb') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('contact.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -143,7 +145,7 @@ function posalji() {
             </ul>
           </div>
 
-          <MiniMap label="Svetog Save 15, Teslić" to="/mapa" />
+          <MiniMap label="Svetog Save 15, Teslić" :to="localePath('/mapa')" />
         </div>
       </div>
     </AppContainer>

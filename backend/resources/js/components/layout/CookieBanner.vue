@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import { useConsentStore } from '@/stores/consent'
 import BaseButton from '@/components/base/BaseButton.vue'
@@ -22,7 +24,7 @@ const consent = useConsentStore()
         </p>
         <div class="flex shrink-0 items-center gap-2">
           <Link
-            href="/politika-kolacica"
+            :href="localePath('/politika-kolacica')"
             class="px-2 text-sm font-semibold text-primary hover:underline"
           >
             {{ $t('misc.learnMore') }}

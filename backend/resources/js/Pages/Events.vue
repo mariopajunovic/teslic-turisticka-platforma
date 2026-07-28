@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -116,7 +118,7 @@ function onSelectDay({ events }) {
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('events.breadcrumb') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('events.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -207,7 +209,7 @@ function onSelectDay({ events }) {
           :kicker="$t('common.related')"
           :title="$t('events.relatedTitle')"
           class="!mt-0"
-          back-to="/"
+          :back-to="localePath('/')"
           :back-label="$t('events.backHome')"
         >
           <LocationCard v-if="povezani.lokalitet" :item="povezani.lokalitet" />
@@ -222,7 +224,7 @@ function onSelectDay({ events }) {
         :title="$t('events.ctaTitle')"
         :text="$t('events.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se">{{ $t('events.ctaButton') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se')">{{ $t('events.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

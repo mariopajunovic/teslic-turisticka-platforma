@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, watch, computed } from 'vue'
 import { router, Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -43,7 +45,7 @@ const HERO_DEFAULT =
 const heroNaslov = computed(() => props.kategorijaLabel || t('tourism.heroTitle'))
 
 const breadcrumb = computed(() => {
-  const items = [{ label: t('common.home'), to: '/' }, { label: t('tourism.breadcrumb'), to: props.kategorijaLabel ? '/turizam' : undefined }]
+  const items = [{ label: t('common.home'), to: localePath('/') }, { label: t('tourism.breadcrumb'), to: props.kategorijaLabel ? '/turizam' : undefined }]
   if (props.kategorijaLabel) items.push({ label: props.kategorijaLabel })
   return items
 })
@@ -212,11 +214,11 @@ function ukloni(key) {
             <p class="mt-3 max-w-md leading-relaxed text-text-muted">
               {{ $t('tourism.mapText') }}
             </p>
-            <BaseButton variant="primary" icon="arrow-right" icon-position="right" to="/mapa" class="mt-5">
+            <BaseButton variant="primary" icon="arrow-right" icon-position="right" :to="localePath('/mapa')" class="mt-5">
               {{ $t('tourism.mapButton') }}
             </BaseButton>
           </div>
-          <MiniMap :label="$t('tourism.mapMiniLabel')" to="/mapa" />
+          <MiniMap :label="$t('tourism.mapMiniLabel')" :to="localePath('/mapa')" />
         </div>
       </AppContainer>
     </section>
@@ -229,7 +231,7 @@ function ukloni(key) {
       <RelatedContent
         :kicker="$t('common.related')"
         :title="$t('tourism.relatedTitle')"
-        back-to="/"
+        :back-to="localePath('/')"
         :back-label="$t('tourism.backHome')"
       >
         <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
@@ -243,7 +245,7 @@ function ukloni(key) {
         :title="$t('tourism.ctaTitle')"
         :text="$t('tourism.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('tourism.ctaButton') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se/biznis')">{{ $t('tourism.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

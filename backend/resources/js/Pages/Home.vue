@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -89,7 +91,7 @@ const galerija = [
           <div class="mt-6 flex flex-wrap gap-3">
             <BaseButton variant="sekundarna" icon="sparkles">{{ $t('home.exploreOffer') }}</BaseButton>
             <Link
-              href="/pridruzi-se"
+              :href="localePath('/pridruzi-se')"
               class="inline-flex h-11 items-center justify-center rounded-sm border-[1.5px] border-white px-5 font-semibold text-white transition-colors hover:bg-white/10"
             >
               {{ $t('action.join') }}
@@ -128,7 +130,7 @@ const galerija = [
       <SectionHeader
         :title="$t('home.secLocal')"
         :link-text="$t('home.viewAll')"
-        to="/domace-je-najbolje"
+        :to="localePath('/domace-je-najbolje')"
       />
       <CardGrid>
         <BusinessCard v-for="p in proizvodi" :key="p.slug" :item="p" />
@@ -141,7 +143,7 @@ const galerija = [
       <SectionHeader
         :title="$t('home.secRecommended')"
         :link-text="$t('home.viewAll')"
-        to="/domace-je-najbolje"
+        :to="localePath('/domace-je-najbolje')"
       />
       <CardGrid :cols="3">
         <BusinessCard v-for="p in preporuceno" :key="p.slug" :item="p" />
@@ -151,7 +153,7 @@ const galerija = [
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader :title="$t('home.secAttractions')" :link-text="$t('home.viewAll')" to="/turizam" />
+      <SectionHeader :title="$t('home.secAttractions')" :link-text="$t('home.viewAll')" :to="localePath('/turizam')" />
       <CardGrid>
         <BusinessCard v-for="a in atrakcije" :key="a.slug" :item="a" :to="a.url" />
       </CardGrid>
@@ -160,7 +162,7 @@ const galerija = [
 
   <section class="bg-surface-alt py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader :title="$t('home.secMap')" :link-text="$t('home.openMap')" to="/mapa" />
+      <SectionHeader :title="$t('home.secMap')" :link-text="$t('home.openMap')" :to="localePath('/mapa')" />
       <div
         class="flex h-[340px] flex-col items-center justify-center gap-4 rounded-2xl bg-primary-tint px-4 text-center"
       >
@@ -168,14 +170,14 @@ const galerija = [
           <BaseIcon name="map-pin" :size="30" />
         </span>
         <p class="text-xl font-semibold text-heading">{{ $t('home.mapCta') }}</p>
-        <BaseButton to="/mapa" variant="primary" icon="map">{{ $t('home.openMap') }}</BaseButton>
+        <BaseButton :to="localePath('/mapa')" variant="primary" icon="map">{{ $t('home.openMap') }}</BaseButton>
       </div>
     </AppContainer>
   </section>
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader :title="$t('home.secEvents')" :link-text="$t('home.calendar')" to="/dogadjaji" />
+      <SectionHeader :title="$t('home.secEvents')" :link-text="$t('home.calendar')" :to="localePath('/dogadjaji')" />
       <CardGrid>
         <EventCard v-for="d in dogadjaji" :key="d.slug" :item="d" />
       </CardGrid>
@@ -184,7 +186,7 @@ const galerija = [
 
   <section class="bg-surface-alt py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader :title="$t('home.secStories')" :link-text="$t('home.allStories')" to="/price" />
+      <SectionHeader :title="$t('home.secStories')" :link-text="$t('home.allStories')" :to="localePath('/price')" />
       <CardGrid :cols="3">
         <StoryCard v-for="s in price" :key="s.slug" :item="s" />
       </CardGrid>
@@ -193,7 +195,7 @@ const galerija = [
 
   <section class="bg-surface py-12 md:py-16">
     <AppContainer class="space-y-6">
-      <SectionHeader :title="$t('home.secGallery')" :link-text="$t('home.viewAll')" to="/price" />
+      <SectionHeader :title="$t('home.secGallery')" :link-text="$t('home.viewAll')" :to="localePath('/price')" />
       <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
         <img
           v-for="(g, i) in galerija"

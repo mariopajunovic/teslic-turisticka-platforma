@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -59,7 +61,7 @@ const infoItems = computed(() => {
       :title="$t('adDetail.notFoundTitle')"
       :text="$t('adDetail.notFoundText')"
     >
-      <BaseButton variant="secondary" icon="arrow-left" to="/oglasi">
+      <BaseButton variant="secondary" icon="arrow-left" :to="localePath('/oglasi')">
         {{ $t('adDetail.backToAds') }}
       </BaseButton>
     </EmptyState>
@@ -67,8 +69,8 @@ const infoItems = computed(() => {
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
-          { label: $t('adDetail.breadcrumb'), to: '/oglasi' },
+          { label: $t('common.home'), to: localePath('/') },
+          { label: $t('adDetail.breadcrumb'), to: localePath('/oglasi') },
           { label: oglas.naslov },
         ]"
       />

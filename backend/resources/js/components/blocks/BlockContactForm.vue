@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useSite } from '@/composables/useSite'
@@ -91,7 +93,7 @@ function posalji() {
           </ul>
         </div>
 
-        <MiniMap v-if="prikaziMapu" label="Svetog Save 15, Teslić" to="/mapa" />
+        <MiniMap v-if="prikaziMapu" label="Svetog Save 15, Teslić" :to="localePath('/mapa')" />
       </div>
     </div>
   </AppContainer>

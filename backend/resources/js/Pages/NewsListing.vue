@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { router } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -24,7 +26,7 @@ function goPage(page) {
     <Hero kicker="Aktuelno" :title="$t('news.title')" :subtitle="$t('news.subtitle')" :image="HERO" />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('news.title') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('news.title') }]" />
     </AppContainer>
 
     <AppContainer class="mt-8">

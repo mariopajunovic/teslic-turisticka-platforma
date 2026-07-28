@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed, ref } from 'vue'
 import { useForm, usePage } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -112,7 +114,7 @@ function posaljiUpit() {
     <template v-else>
       <Breadcrumb
         :items="[
-          { label: $t('common.home'), to: '/' },
+          { label: $t('common.home'), to: localePath('/') },
           { label: nazad.label || $t('local.breadcrumb'), to: nazad.url || '/' },
           { label: biznis.naslov },
         ]"
@@ -270,7 +272,7 @@ function posaljiUpit() {
         v-if="povezani.length"
         :kicker="$t('common.related')"
         :title="$t('biz.relatedTitle')"
-        back-to="/domace-je-najbolje"
+        :back-to="localePath('/domace-je-najbolje')"
         :back-label="$t('biz.backAll')"
       >
         <LinkCard v-for="p in povezani" :key="p.to" :item="p" />
@@ -285,7 +287,7 @@ function posaljiUpit() {
           :title="$t('local.ctaTitle')"
           :text="$t('local.ctaText')"
         >
-          <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('local.ctaButton') }}</BaseButton>
+          <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se/biznis')">{{ $t('local.ctaButton') }}</BaseButton>
         </CTASection>
       </div>
     </template>

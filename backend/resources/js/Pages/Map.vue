@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, computed, onMounted } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
@@ -74,7 +76,7 @@ onMounted(() => {
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('map.breadcrumb') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('map.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-8">
@@ -175,7 +177,7 @@ onMounted(() => {
           :kicker="$t('common.related')"
           :title="$t('map.relatedTitle')"
           class="!mt-0"
-          back-to="/"
+          :back-to="localePath('/')"
           :back-label="$t('map.backHome')"
         >
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
@@ -190,7 +192,7 @@ onMounted(() => {
         :title="$t('map.ctaTitle')"
         :text="$t('map.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se/biznis">{{ $t('map.ctaButton') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se/biznis')">{{ $t('map.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

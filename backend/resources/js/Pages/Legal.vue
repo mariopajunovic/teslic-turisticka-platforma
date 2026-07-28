@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
@@ -81,7 +83,7 @@ const dok = computed(() => dokumenti[props.doc] || dokumenti.privatnost)
 <template>
   <main class="pb-12 md:pb-16">
     <AppContainer class="pt-8">
-      <Breadcrumb :items="[{ label: 'Početna', to: '/' }, { label: dok.naslov }]" />
+      <Breadcrumb :items="[{ label: 'Početna', to: localePath('/') }, { label: dok.naslov }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">

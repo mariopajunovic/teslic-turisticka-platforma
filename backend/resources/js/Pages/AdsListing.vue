@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { ref, watch, computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import { useI18n } from 'vue-i18n'
@@ -114,7 +116,7 @@ function ukloni(key) {
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('ads.breadcrumb') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('ads.breadcrumb') }]" />
     </AppContainer>
 
     <AppContainer class="mt-6">
@@ -184,7 +186,7 @@ function ukloni(key) {
           :kicker="$t('common.related')"
           :title="$t('ads.relatedTitle')"
           class="!mt-0"
-          back-to="/"
+          :back-to="localePath('/')"
           :back-label="$t('ads.backHome')"
         >
           <BusinessCard v-if="povezani.biznis" :item="povezani.biznis" />
@@ -199,7 +201,7 @@ function ukloni(key) {
         :title="$t('ads.ctaTitle')"
         :text="$t('ads.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se">{{ $t('ads.ctaButton') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se')">{{ $t('ads.ctaButton') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>

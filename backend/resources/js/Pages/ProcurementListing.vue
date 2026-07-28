@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { Link } from '@inertiajs/vue3'
 import AppContainer from '@/components/layout/AppContainer.vue'
 import Hero from '@/components/common/Hero.vue'
@@ -20,7 +22,7 @@ const snippet = (html) => String(html || '').replace(/<[^>]*>/g, ' ').replace(/\
     <Hero kicker="Transparentnost" :title="$t('proc.title')" :subtitle="$t('proc.subtitle')" :image="HERO" />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('proc.title') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('proc.title') }]" />
     </AppContainer>
 
     <AppContainer class="mt-8">

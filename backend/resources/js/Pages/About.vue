@@ -1,4 +1,6 @@
 <script setup>
+import { useLocalePath } from '@/composables/useLocalePath'
+const { localePath } = useLocalePath()
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import AppContainer from '@/components/layout/AppContainer.vue'
@@ -33,9 +35,9 @@ const ciljevi = computed(() => [
 ])
 
 const publika = computed(() => [
-  { icon: 'users', title: t('about.a1t'), text: t('about.a1x'), cta: t('about.a1c'), to: '/turizam', accent: false },
-  { icon: 'store', title: t('about.a2t'), text: t('about.a2x'), cta: t('about.a2c'), to: '/domace-je-najbolje', accent: false },
-  { icon: 'pen', title: t('about.a3t'), text: t('about.a3x'), cta: t('about.a3c'), to: '/price', accent: true },
+  { icon: 'users', title: t('about.a1t'), text: t('about.a1x'), cta: t('about.a1c'), to: localePath('/turizam'), accent: false },
+  { icon: 'store', title: t('about.a2t'), text: t('about.a2x'), cta: t('about.a2c'), to: localePath('/domace-je-najbolje'), accent: false },
+  { icon: 'pen', title: t('about.a3t'), text: t('about.a3x'), cta: t('about.a3c'), to: localePath('/price'), accent: true },
 ])
 
 </script>
@@ -51,7 +53,7 @@ const publika = computed(() => [
     />
 
     <AppContainer class="pt-6">
-      <Breadcrumb :items="[{ label: $t('common.home'), to: '/' }, { label: $t('about.breadcrumb') }]" />
+      <Breadcrumb :items="[{ label: $t('common.home'), to: localePath('/') }, { label: $t('about.breadcrumb') }]" />
     </AppContainer>
 
     <!-- Misija -->
@@ -148,7 +150,7 @@ const publika = computed(() => [
         <RelatedContent
           :kicker="$t('common.related')"
           :title="$t('about.relatedTitle')"
-          back-to="/"
+          :back-to="localePath('/')"
           :back-label="$t('about.backHome')"
         >
           <BusinessCard v-if="related.biznis" :item="related.biznis" />
@@ -164,7 +166,7 @@ const publika = computed(() => [
         :title="$t('about.ctaTitle')"
         :text="$t('about.ctaText')"
       >
-        <BaseButton variant="sekundarna" to="/pridruzi-se">{{ $t('action.join') }}</BaseButton>
+        <BaseButton variant="sekundarna" :to="localePath('/pridruzi-se')">{{ $t('action.join') }}</BaseButton>
       </CTASection>
     </AppContainer>
   </main>
