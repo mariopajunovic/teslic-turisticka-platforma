@@ -51,6 +51,7 @@ Route::middleware(['auth:admin', EnsureTwoFactor::class])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/obavijesti', [\App\Http\Controllers\Administracija\ObavijestiController::class, 'index'])->name('obavijesti');
+    Route::get('/pretraga', \App\Http\Controllers\Administracija\GlobalSearchController::class)->name('pretraga');
 
     Route::middleware('admin.access:upravljanje korisnicima')->group(function () {
         Route::get('/korisnici', [KorisniciController::class, 'index'])->name('korisnici');
