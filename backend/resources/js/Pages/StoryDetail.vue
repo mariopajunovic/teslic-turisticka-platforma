@@ -31,6 +31,10 @@ const autor = computed(() => ({
   ime: prica.value?.autor,
   bio: prica.value?.autorBio,
 }))
+
+const heroPodnaslov = computed(() =>
+  [prica.value?.autor, prica.value?.datum].filter(Boolean).join(' · '),
+)
 </script>
 
 <template>
@@ -76,7 +80,7 @@ const autor = computed(() => ({
         :contained="false"
         :kicker="prica.kategorija?.label"
         :title="prica.naslov"
-        :subtitle="`${prica.autor} · ${prica.datum}`"
+        :subtitle="heroPodnaslov"
         :image="prica.slika"
         class="mt-6"
       />

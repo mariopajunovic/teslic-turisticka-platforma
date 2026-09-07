@@ -17,7 +17,7 @@ defineProps({
   >
     <CardImage :src="item.slika" :alt="item.naslov" />
     <div class="flex flex-col gap-2 p-4">
-      <div>
+      <div v-if="item.kategorija">
         <BaseChip variant="kategorija" :label="item.kategorija.label" :icon="item.kategorija.icon" />
       </div>
       <h3 class="line-clamp-2 text-lg font-semibold leading-snug text-heading">{{ item.naslov }}</h3>

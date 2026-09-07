@@ -27,7 +27,7 @@ defineProps({
       </div>
     </div>
     <div class="flex flex-col justify-center gap-3 p-6">
-      <div>
+      <div v-if="item.kategorija">
         <BaseChip variant="kategorija" :label="item.kategorija.label" :icon="item.kategorija.icon" />
       </div>
       <h3 class="text-2xl font-bold leading-tight text-heading">{{ item.naslov }}</h3>

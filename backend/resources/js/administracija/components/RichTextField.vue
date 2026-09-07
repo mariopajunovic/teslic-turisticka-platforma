@@ -29,12 +29,26 @@ const internalActive = ref(locales.value[0]?.code ?? 'sr');
 const active = computed(() => props.lang ?? internalActive.value);
 const controlled = computed(() => props.lang !== null);
 
-const filled = (code) => String(props.modelValue?.[code] ?? '').replace(/<[^>]*>/g, '').trim().length > 0;
+const mapa = computed(() => {
+    const v = props.modelValue;
+
+    if (typeof v === 'string') {
+        return v ? { sr: v } : {};
+    }
+
+    if (!v || typeof v !== 'object' || Array.isArray(v)) {
+        return {};
+    }
+
+    return Object.fromEntries(Object.entries(v).filter(([k]) => !/^\d+$/.test(k)));
+});
+
+const filled = (code) => String(mapa.value[code] ?? '').replace(/<[^>]*>/g, '').trim().length > 0;
 
 let syncing = false;
 
 const editor = useEditor({
-    content: props.modelValue?.[active.value] ?? '',
+    content: mapa.value[active.value] ?? '',
     extensions: [
         StarterKit.configure({ heading: { levels: [2, 3] } }),
         Link.configure({ openOnClick: false, autolink: true }),
@@ -48,20 +62,20 @@ const editor = useEditor({
     onUpdate: ({ editor }) => {
         if (syncing) return;
         const html = editor.isEmpty ? '' : editor.getHTML();
-        emit('update:modelValue', { ...props.modelValue, [active.value]: html });
+        emit('update:modelValue', { ...mapa.value, [active.value]: html });
     },
 });
 
 const swapTo = (code) => {
     if (!editor.value) return;
     syncing = true;
-    editor.value.commands.setContent(props.modelValue?.[code] ?? '', false);
+    editor.value.commands.setContent(mapa.value[code] ?? '', false);
     syncing = false;
 };
 
 watch(active, (code) => swapTo(code));
 
-watch(() => props.modelValue?.[active.value], (val) => {
+watch(() => mapa.value[active.value], (val) => {
     if (!editor.value || syncing) return;
     const current = editor.value.isEmpty ? '' : editor.value.getHTML();
     if ((val ?? '') !== current) swapTo(active.value);
