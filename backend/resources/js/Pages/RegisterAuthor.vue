@@ -7,6 +7,7 @@ import AppContainer from '@/components/layout/AppContainer.vue'
 import Breadcrumb from '@/components/common/Breadcrumb.vue'
 import FormField from '@/components/forms/FormField.vue'
 import FormCheckbox from '@/components/forms/FormCheckbox.vue'
+import FormCaptcha from '@/components/forms/FormCaptcha.vue'
 import BaseButton from '@/components/base/BaseButton.vue'
 import BaseAlert from '@/components/base/BaseAlert.vue'
 
@@ -20,6 +21,7 @@ const form = useForm({
   password: '',
   password_confirmation: '',
   saglasnost: false,
+  captcha: false,
 })
 
 function submit() {
@@ -73,6 +75,9 @@ function submit() {
             v-model="form.saglasnost"
             :label="$t('auth.terms')"
           />
+
+          <FormCaptcha v-model="form.captcha" />
+          <p v-if="form.errors.captcha" class="text-sm text-error">{{ form.errors.captcha }}</p>
 
           <BaseButton type="submit" variant="primary" block :disabled="form.processing || !form.saglasnost">
             {{ $t('auth.register') }}

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ContentStatus;
 use App\Models\Concerns\HasLocalizedContent;
+use App\Models\Concerns\SanitizesRichText;
 use App\Models\Concerns\HasTags;
 use App\Models\Concerns\HasTranslatableSlug;
 use App\Models\Concerns\TracksStatus;
@@ -15,9 +16,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Ad extends Model implements HasMedia
 {
+    use SanitizesRichText;
     use HasLocalizedContent, HasTranslatableSlug, InteractsWithMedia, TracksStatus, HasTags;
 
     public array $translatable = ['naslov', 'izdavac', 'lokacija', 'opis_dug'];
+
+    public array $richText = ['opis_dug'];
 
     protected $fillable = [
         'user_id',

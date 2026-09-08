@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ContentStatus;
 use App\Models\Concerns\HasLocalizedContent;
+use App\Models\Concerns\SanitizesRichText;
 use App\Models\Concerns\HasTags;
 use App\Models\Concerns\HasTranslatableSlug;
 use App\Models\Concerns\TracksStatus;
@@ -15,11 +16,14 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class News extends Model implements HasMedia
 {
+    use SanitizesRichText;
     use HasLocalizedContent, HasTranslatableSlug, InteractsWithMedia, TracksStatus, HasTags;
 
     protected $table = 'news';
 
     public array $translatable = ['naslov', 'izvod', 'sadrzaj'];
+
+    public array $richText = ['sadrzaj'];
 
     protected $fillable = [
         'user_id',

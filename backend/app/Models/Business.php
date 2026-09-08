@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\ContentStatus;
 use App\Models\Concerns\HasLocalizedContent;
+use App\Models\Concerns\SanitizesRichText;
 use App\Models\Concerns\HasTags;
 use App\Models\Concerns\TracksStatus;
 use App\Support\ActiveLocale;
@@ -16,9 +17,12 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Business extends Model implements HasMedia
 {
+    use SanitizesRichText;
     use HasLocalizedContent, InteractsWithMedia, TracksStatus, HasTags;
 
     public array $translatable = ['naslov', 'opis', 'opis_dug', 'lokacija', 'usluge'];
+
+    public array $richText = ['opis_dug'];
 
     protected $fillable = [
         'user_id',
