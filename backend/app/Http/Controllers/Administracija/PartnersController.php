@@ -49,7 +49,7 @@ class PartnersController extends Controller
 
     public function logo(Request $request, Partner $partner): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $partner->clearMediaCollection('logo');
         $partner->addMediaFromRequest('image')->toMediaCollection('logo');

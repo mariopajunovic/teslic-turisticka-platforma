@@ -12,7 +12,7 @@ class MediaController extends Controller
     public function store(Request $request): JsonResponse
     {
         $request->validate([
-            'file' => ['required', 'image', 'max:8192'],
+            'file' => ['required', 'image', 'max:10240'],
         ]);
 
         $path = $request->file('file')->store('stranice', 'public');

@@ -201,7 +201,7 @@ class BusinessesController extends Controller
 
     public function uploadNaslovna(Request $request, Business $business): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:8192']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $business->clearMediaCollection('naslovna');
         $business->addMediaFromRequest('image')->toMediaCollection('naslovna');
@@ -218,7 +218,7 @@ class BusinessesController extends Controller
 
     public function uploadLogo(Request $request, Business $business): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $business->clearMediaCollection('logo');
         $business->addMediaFromRequest('image')->toMediaCollection('logo');
@@ -239,7 +239,7 @@ class BusinessesController extends Controller
     {
         $request->validate([
             'galerija' => ['required', 'array'],
-            'galerija.*' => ['image', 'max:8192'],
+            'galerija.*' => ['image', 'max:10240'],
         ]);
 
         $postojece = $business->getMedia('galerija')->count();
@@ -260,7 +260,7 @@ class BusinessesController extends Controller
     {
         abort_unless($media->model_type === Business::class && $media->collection_name === 'galerija', 404);
 
-        $request->validate(['image' => ['required', 'image', 'max:8192']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $business = $media->model;
         $pozicija = $media->order_column;

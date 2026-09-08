@@ -128,7 +128,7 @@ class SettingsController extends Controller
 
     public function logo(Request $request): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $s = app(SiteSettings::class);
 
@@ -158,7 +158,7 @@ class SettingsController extends Controller
 
     public function ogImage(Request $request): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:4096']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $s = app(SiteSettings::class);
 

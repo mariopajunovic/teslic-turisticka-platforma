@@ -174,7 +174,7 @@ class KorisniciController extends Controller
 
     public function avatar(Request $request, User $korisnik): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:5120']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $korisnik->clearMediaCollection('avatar');
         $korisnik->addMediaFromRequest('image')->toMediaCollection('avatar');

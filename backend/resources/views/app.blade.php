@@ -27,7 +27,7 @@
         $metaRoboti = ($postavke['indeksiranje'] ?? true) === false ? 'noindex, nofollow' : 'index, follow';
     @endphp
     <meta property="og:site_name" content="{{ $brandNaziv }}">
-    <meta property="og:locale" content="sr_RS">
+    <meta property="og:locale" content="{{ $props['locale']['ogLocale'] ?? 'sr_RS' }}" data-inertia="og:locale">
     <meta name="robots" content="{{ $metaRoboti }}" data-inertia="robots">
     <meta name="description" content="{{ $metaOpis }}" data-inertia="description">
     <link rel="canonical" href="{{ $metaUrl }}" data-inertia="canonical">

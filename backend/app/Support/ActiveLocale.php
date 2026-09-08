@@ -57,6 +57,11 @@ class ActiveLocale
         return $this->isCyrillic() ? 'sr-Cyrl' : ($this->language === 'sr' ? 'sr-Latn' : $base);
     }
 
+    public function ogLocale(): string
+    {
+        return (string) (config('locales.og_locale')[$this->language] ?? 'sr_RS');
+    }
+
     // Prefixes an app-relative path with the active language prefix (/en, /de).
     public function path(string $path, ?string $language = null): string
     {

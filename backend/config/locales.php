@@ -16,6 +16,9 @@ return [
         'de' => ['label' => 'Deutsch', 'short' => 'DE', 'prefix' => 'de', 'html' => 'de'],
     ],
 
+    // og:locale trazi format jezik_TERITORIJA (sr_Latn nije validan za Facebook).
+    'og_locale' => ['sr' => 'sr_RS', 'en' => 'en_US', 'de' => 'de_DE'],
+
     // Script toggle applies only to the Serbian language (cookie based, same URL).
     'scripts' => ['lat', 'cir'],
 

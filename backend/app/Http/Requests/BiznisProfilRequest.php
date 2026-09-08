@@ -17,7 +17,7 @@ class BiznisProfilRequest extends FormRequest
             'name' => ['required', 'string', 'max:255'],
             'telefon' => ['nullable', 'string', 'max:50'],
             'bio' => ['nullable', 'string', 'max:1000'],
-            'avatar' => ['nullable', 'image', 'max:4096'],
+            'avatar' => ['nullable', 'image', 'max:10240'],
         ];
     }
 }

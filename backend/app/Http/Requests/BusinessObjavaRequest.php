@@ -40,9 +40,9 @@ class BusinessObjavaRequest extends FormRequest
             'lat' => ['nullable', 'numeric'],
             'lng' => ['nullable', 'numeric'],
             'action' => ['required', 'in:nacrt,posalji'],
-            'naslovna' => ['nullable', 'image', 'max:4096'],
+            'naslovna' => ['nullable', 'image', 'max:10240'],
             'galerija' => ['nullable', 'array'],
-            'galerija.*' => ['image', 'max:4096'],
+            'galerija.*' => ['image', 'max:10240'],
         ];
     }
 }

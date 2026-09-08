@@ -249,7 +249,7 @@ abstract class AdminResourceController extends Controller
 
     public function uploadNaslovna(Request $request, int $id): RedirectResponse
     {
-        $request->validate(['image' => ['required', 'image', 'max:8192']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $stavka = $this->find($id);
         $stavka->clearMediaCollection('naslovna');
@@ -271,7 +271,7 @@ abstract class AdminResourceController extends Controller
 
         $request->validate([
             'galerija' => ['required', 'array'],
-            'galerija.*' => ['image', 'max:8192'],
+            'galerija.*' => ['image', 'max:10240'],
         ]);
 
         $postojece = $stavka->getMedia('galerija')->count();
@@ -292,7 +292,7 @@ abstract class AdminResourceController extends Controller
     {
         abort_unless($media->model_type === $this->model() && $media->collection_name === 'galerija', 404);
 
-        $request->validate(['image' => ['required', 'image', 'max:8192']]);
+        $request->validate(['image' => ['required', 'image', 'max:10240']]);
 
         $stavka = $media->model;
         $pozicija = $media->order_column;

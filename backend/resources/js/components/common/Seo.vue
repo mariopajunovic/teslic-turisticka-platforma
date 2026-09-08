@@ -41,7 +41,7 @@ const alternates = computed(() =>
 
 const defaultAlternate = computed(() => locale.value.alternates?.sr || '')
 
-const ogLocale = computed(() => (locale.value.htmlLang || 'sr-Latn').replace('-', '_'))
+const ogLocale = computed(() => locale.value.ogLocale || 'sr_RS')
 
 const jsonLdString = computed(() => (props.seo?.jsonLd ? JSON.stringify(props.seo.jsonLd) : ''))
 </script>

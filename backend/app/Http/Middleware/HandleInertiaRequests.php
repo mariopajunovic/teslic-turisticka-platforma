@@ -58,6 +58,7 @@ class HandleInertiaRequests extends Middleware
                 'isCyrillic' => $locale->isCyrillic(),
                 'prefix' => $prefix,
                 'htmlLang' => $locale->htmlLang(),
+                'ogLocale' => $locale->ogLocale(),
                 'basePath' => $basePath,
                 'languages' => $locale->languageOptions(),
                 'alternates' => fn () => $this->alternates($request, $locale, $basePath, $suffix),

@@ -1,13 +1,16 @@
 <script setup>
+import { computed } from 'vue'
 import { Link } from '@inertiajs/vue3'
 import CardImage from './CardImage.vue'
 import BaseChip from '@/components/base/BaseChip.vue'
 import BaseIcon from '@/components/base/BaseIcon.vue'
 
 // item: { slug, naslov, kategorija:{label,icon}, autor, datum, izvod, slika }
-defineProps({
+const props = defineProps({
   item: { type: Object, required: true },
 })
+
+const potpis = computed(() => [props.item.autor, props.item.datum].filter(Boolean).join(' · '))
 </script>
 
 <template>
@@ -21,11 +24,11 @@ defineProps({
         <BaseChip variant="kategorija" :label="item.kategorija.label" :icon="item.kategorija.icon" />
       </div>
       <h3 class="line-clamp-2 text-lg font-semibold leading-snug text-heading">{{ item.naslov }}</h3>
-      <div class="flex items-center gap-2">
+      <div v-if="potpis" class="flex items-center gap-2">
         <span class="flex size-6 items-center justify-center rounded-full bg-primary-tint-2 text-primary">
           <BaseIcon name="user" :size="14" />
         </span>
-        <span class="text-[13px] text-text-muted">{{ item.autor }} · {{ item.datum }}</span>
+        <span class="text-[13px] text-text-muted">{{ potpis }}</span>
       </div>
       <p class="line-clamp-2 text-sm text-text-muted">{{ item.izvod }}</p>
     </div>
