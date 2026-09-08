@@ -10,16 +10,37 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="apple-mobile-web-app-title" content="TO Teslić">
     <link rel="manifest" href="/site.webmanifest">
-    <meta property="og:site_name" content="{{ config('app.name', 'TO Teslić') }}">
+    @php
+        $props = $page['props'] ?? [];
+        $seo = $props['seo'] ?? [];
+        $postavke = $props['site']['postavke'] ?? [];
+        $apsolutni = fn ($url) => $url
+            ? (\Illuminate\Support\Str::startsWith($url, ['http://', 'https://']) ? $url : url($url))
+            : null;
+        $brandNaziv = ($postavke['brandNaziv'] ?? null) ?: 'TO Teslić';
+        $metaNaslov = ($seo['title'] ?? null) ? $seo['title'].' - '.$brandNaziv : $brandNaziv;
+        $metaOpis = $seo['description']
+            ?? (($postavke['seoOpis'] ?? null) ?: 'Digitalna platforma za promociju turizma, domaćih proizvoda i usluga opštine Teslić.');
+        $metaUrl = $apsolutni($seo['canonical'] ?? url()->current());
+        $metaSlika = $apsolutni($seo['image'] ?? ($postavke['ogDefaultImage'] ?? null));
+        $metaTip = $seo['type'] ?? 'website';
+        $metaRoboti = ($postavke['indeksiranje'] ?? true) === false ? 'noindex, nofollow' : 'index, follow';
+    @endphp
+    <meta property="og:site_name" content="{{ $brandNaziv }}">
     <meta property="og:locale" content="sr_RS">
-    @php($ogImage = app(\App\Settings\SiteSettings::class)->og_default_image)
-    @if ($ogImage)
-        @php($ogImageUrl = \Illuminate\Support\Str::startsWith($ogImage, ['http://', 'https://']) ? $ogImage : url(\Illuminate\Support\Facades\Storage::disk('public')->url($ogImage)))
-        <meta property="og:image" content="{{ $ogImageUrl }}">
-        <meta name="twitter:image" content="{{ $ogImageUrl }}">
-        <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="{{ $metaRoboti }}" data-inertia="robots">
+    <meta name="description" content="{{ $metaOpis }}" data-inertia="description">
+    <link rel="canonical" href="{{ $metaUrl }}" data-inertia="canonical">
+    <meta property="og:title" content="{{ $metaNaslov }}" data-inertia="og:title">
+    <meta property="og:description" content="{{ $metaOpis }}" data-inertia="og:description">
+    <meta property="og:type" content="{{ $metaTip }}" data-inertia="og:type">
+    <meta property="og:url" content="{{ $metaUrl }}" data-inertia="og:url">
+    @if ($metaSlika)
+        <meta property="og:image" content="{{ $metaSlika }}" data-inertia="og:image">
+        <meta name="twitter:image" content="{{ $metaSlika }}" data-inertia="twitter:image">
     @endif
-    <title inertia>{{ config('app.name', 'TO Teslić') }}</title>
+    <meta name="twitter:card" content="{{ $metaSlika ? 'summary_large_image' : 'summary' }}" data-inertia="twitter:card">
+    <title inertia>{{ $metaNaslov }}</title>
     @php($ga = trim((string) app(\App\Settings\SiteSettings::class)->google_analytics))
     @if ($ga !== '')
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ urlencode($ga) }}"></script>
