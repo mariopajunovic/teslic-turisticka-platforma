@@ -33,7 +33,9 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'role' => ['required', Rule::in(['biznis', 'autor'])],
             'telefon' => ['nullable', 'string', 'max:50'],
-            'captcha' => ['nullable', new \App\Rules\Captcha()],
+            'captcha' => filled(app(\App\Settings\SiteSettings::class)->captcha_site_key)
+                ? ['required', new \App\Rules\Captcha()]
+                : ['nullable'],
             'password' => $this->passwordRules(),
         ])->validate();
 
