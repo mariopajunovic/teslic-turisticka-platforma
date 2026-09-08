@@ -102,9 +102,10 @@ class SitemapController extends Controller
             return response("User-agent: *\nDisallow: /\n", 200)->header('Content-Type', 'text/plain');
         }
 
-        $content = "User-agent: facebookexternalhit\nAllow: /\n\n"
-            ."User-agent: Twitterbot\nAllow: /\n\n"
-            ."User-agent: *\nAllow: /\nSitemap: ".url('/sitemap.xml')."\n";
+        $content = "User-agent: facebookexternalhit\nDisallow:\n\n"
+            ."User-agent: Twitterbot\nDisallow:\n\n"
+            ."User-agent: *\nDisallow:\n\n"
+            ."Sitemap: ".url('/sitemap.xml')."\n";
 
         return response($content, 200)->header('Content-Type', 'text/plain');
     }
