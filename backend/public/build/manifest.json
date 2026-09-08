@@ -708,7 +708,7 @@
     "src": "node_modules/leaflet/dist/leaflet.css"
   },
   "resources/css/administracija.css": {
-    "file": "assets/administracija-IOCyVIKv.css",
+    "file": "assets/administracija-CWQstI2P.css",
     "name": "administracija",
     "names": [
       "administracija.css"
@@ -726,7 +726,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-DWmAAtfv.css",
+    "file": "assets/app-D8Bg6Esr.css",
     "name": "app",
     "names": [
       "app.css"

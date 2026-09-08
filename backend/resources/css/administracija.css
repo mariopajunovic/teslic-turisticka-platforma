@@ -54,3 +54,8 @@
     -webkit-font-smoothing: antialiased;
   }
 }
+
+/* Karta (Leaflet) - vlastiti stacking kontekst da ne prekriva modale */
+.leaflet-container {
+  z-index: 0;
+}

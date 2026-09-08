@@ -101,6 +101,11 @@
   }
 }
 
+/* Karta (Leaflet) - vlastiti stacking kontekst da ne prekriva modale i header */
+.leaflet-container {
+  z-index: 0;
+}
+
 /* Formatiran sadržaj (RichText / detaljan opis) - usklađeno sa dizajnom sajta */
 .rtf {
   color: var(--color-text);
