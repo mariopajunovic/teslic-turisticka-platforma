@@ -45,7 +45,7 @@ function posalji() {
   }
   router.post(
     '/kontakt',
-    { ime: ime.value, email: email.value, tema: tema.value, poruka: poruka.value },
+    { ime: ime.value, email: email.value, tema: tema.value, poruka: poruka.value, captcha: captcha.value },
     {
       preserveScroll: true,
       onSuccess: () => {
