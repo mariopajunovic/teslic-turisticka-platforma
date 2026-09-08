@@ -42,8 +42,6 @@ const alternates = computed(() =>
 const defaultAlternate = computed(() => locale.value.alternates?.sr || '')
 
 const ogLocale = computed(() => locale.value.ogLocale || 'sr_RS')
-
-const jsonLdString = computed(() => (props.seo?.jsonLd ? JSON.stringify(props.seo.jsonLd) : ''))
 </script>
 
 <template>
@@ -68,6 +66,5 @@ const jsonLdString = computed(() => (props.seo?.jsonLd ? JSON.stringify(props.se
       :head-key="'alt-' + a.hreflang"
     />
     <link v-if="defaultAlternate" rel="alternate" hreflang="x-default" :href="defaultAlternate" head-key="alt-x-default" />
-    <component :is="'script'" v-if="jsonLdString" type="application/ld+json" v-html="jsonLdString" />
   </Head>
 </template>

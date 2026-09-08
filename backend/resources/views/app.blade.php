@@ -40,6 +40,15 @@
         <meta name="twitter:image" content="{{ $metaSlika }}" data-inertia="twitter:image">
     @endif
     <meta name="twitter:card" content="{{ $metaSlika ? 'summary_large_image' : 'summary' }}" data-inertia="twitter:card">
+    @foreach (($props['locale']['alternates'] ?? []) as $jezik => $adresa)
+        <link rel="alternate" hreflang="{{ $jezik }}" href="{{ $adresa }}" data-inertia="alt-{{ $jezik }}">
+    @endforeach
+    @if (($props['locale']['alternates']['sr'] ?? null))
+        <link rel="alternate" hreflang="x-default" href="{{ $props['locale']['alternates']['sr'] }}" data-inertia="alt-x-default">
+    @endif
+    @if (! empty($seo['jsonLd']))
+        <script type="application/ld+json">{!! json_encode($seo['jsonLd'], JSON_UNESCAPED_UNICODE | JSON_HEX_TAG) !!}</script>
+    @endif
     <title inertia>{{ $metaNaslov }}</title>
     @php($ga = trim((string) app(\App\Settings\SiteSettings::class)->google_analytics))
     @if ($ga !== '')

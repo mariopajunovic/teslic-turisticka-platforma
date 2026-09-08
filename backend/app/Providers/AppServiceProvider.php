@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Activitylog\Support\CauserResolver;
 
@@ -21,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         JsonResource::withoutWrapping();
+
+        if ($this->app->runningInConsole() === false && ($korijen = (string) config('app.url')) !== '') {
+            URL::forceRootUrl($korijen);
+        }
 
         Gate::before(fn ($user, string $ability) => ($user instanceof Admin && $user->is_super) ? true : null);
 

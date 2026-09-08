@@ -178,7 +178,7 @@ class PageController extends Controller
             ->all());
 
         $isHome = $page->isHome();
-        $canonical = url($page->pathFor());
+        $canonical = url($active->path($page->pathFor()));
 
         return Inertia::render('PageRenderer', [
             'page' => [
