@@ -4,6 +4,7 @@
 @source '../js/administracija/**/*.js';
 
 @import '@fontsource-variable/inter';
+@import './rtf.css';
 
 @theme {
   --color-sidebar: #1d2327;
@@ -58,4 +59,15 @@
 /* Karta (Leaflet) - vlastiti stacking kontekst da ne prekriva modale */
 .leaflet-container {
   z-index: 0;
+}
+
+/* Boje formatiranog sadržaja - tokeni admin panela */
+.rtf {
+  --rtf-text: var(--color-ink-2);
+  --rtf-heading: var(--color-ink);
+  --rtf-muted: var(--color-ink-3);
+  --rtf-link: var(--color-brand);
+  --rtf-link-hover: var(--color-brand-dark);
+  --rtf-border: var(--color-line);
+  --rtf-font-heading: var(--font-sans);
 }

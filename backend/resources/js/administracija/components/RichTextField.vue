@@ -3,7 +3,6 @@ import { computed, ref, watch, onBeforeUnmount } from 'vue';
 import { usePage } from '@inertiajs/vue3';
 import { useEditor, EditorContent } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
-import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
 import { Bold, Italic, Heading2, Heading3, List, ListOrdered, Link2, Quote, ImagePlus, Undo2, Redo2, Loader2 } from 'lucide-vue-next';
 
@@ -50,8 +49,10 @@ let syncing = false;
 const editor = useEditor({
     content: mapa.value[active.value] ?? '',
     extensions: [
-        StarterKit.configure({ heading: { levels: [2, 3] } }),
-        Link.configure({ openOnClick: false, autolink: true }),
+        StarterKit.configure({
+            heading: { levels: [2, 3] },
+            link: { openOnClick: false, autolink: true },
+        }),
         Image.configure({ inline: false, HTMLAttributes: { class: 'rtf-img' } }),
     ],
     editorProps: {
@@ -193,7 +194,9 @@ const tools = computed(() => [
                     <Redo2 :size="15" />
                 </button>
             </div>
-            <EditorContent :editor="editor" />
+            <div class="max-h-[60vh] overflow-y-auto">
+                <EditorContent :editor="editor" />
+            </div>
             <input ref="slikaInput" type="file" accept="image/*" class="hidden" @change="onSlika" />
         </div>
     </div>
