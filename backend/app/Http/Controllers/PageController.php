@@ -177,7 +177,6 @@ class PageController extends Controller
             ->mapWithKeys(fn ($lang) => [$lang => $active->path($page->pathFor($lang), $lang)])
             ->all());
 
-        $isHome = $page->isHome();
         $canonical = url($active->path($page->pathFor()));
 
         return Inertia::render('PageRenderer', [
@@ -195,14 +194,7 @@ class PageController extends Controller
                 $this->shareImage($page, $blocks),
                 'website',
                 [
-                    Seo::breadcrumbs(
-                        $isHome
-                            ? [['name' => 'Početna', 'url' => '/']]
-                            : [
-                                ['name' => 'Početna', 'url' => '/'],
-                                ['name' => $page->title, 'url' => $page->pathFor()],
-                            ]
-                    ),
+                    Seo::breadcrumbs(\App\Support\Breadcrumbs::stranica($page)),
                 ],
             ),
         ]);

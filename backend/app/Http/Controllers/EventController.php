@@ -10,6 +10,7 @@ use App\Models\Business;
 use App\Models\Event;
 use App\Models\Location;
 use App\Models\Story;
+use App\Support\Breadcrumbs;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -104,11 +105,7 @@ class EventController extends Controller
                 'article',
                 [
                     Seo::event($dogadjaj),
-                    Seo::breadcrumbs([
-                        ['name' => 'Početna', 'url' => '/'],
-                        ['name' => 'Događaji', 'url' => '/dogadjaji'],
-                        ['name' => $dogadjaj->naslov, 'url' => ResourceUrls::detail($dogadjaj)],
-                    ]),
+                    Seo::breadcrumbs(Breadcrumbs::detail('event', $dogadjaj->naslov, ResourceUrls::detail($dogadjaj))),
                 ],
             ),
         ]);

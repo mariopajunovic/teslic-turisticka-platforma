@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Location;
 use App\Models\Story;
+use App\Support\Breadcrumbs;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -103,11 +104,7 @@ class LocationController extends Controller
                 $lokalitet->getFirstMediaUrl('naslovna'),
                 'article',
                 [
-                    Seo::breadcrumbs([
-                        ['name' => 'Početna', 'url' => '/'],
-                        ['name' => 'Turizam', 'url' => '/turizam'],
-                        ['name' => $lokalitet->naslov, 'url' => ResourceUrls::detail($lokalitet)],
-                    ]),
+                    Seo::breadcrumbs(Breadcrumbs::detail('location', $lokalitet->naslov, ResourceUrls::detail($lokalitet))),
                 ],
             ),
         ]);

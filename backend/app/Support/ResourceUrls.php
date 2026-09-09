@@ -79,14 +79,18 @@ class ResourceUrls
     public static function collection(string $type, ?string $lang = null): ?string
     {
         $lang ??= self::jezik();
+        $page = self::collectionPage($type);
 
-        $page = Page::query()
+        return $page ? self::sPrefiksom($page->pathFor($lang), $lang) : null;
+    }
+
+    public static function collectionPage(string $type): ?Page
+    {
+        return Page::query()
             ->where('resource_type', $type)
             ->whereNull('category_id')
             ->orderBy('id')
             ->first();
-
-        return $page ? self::sPrefiksom($page->pathFor($lang), $lang) : null;
     }
 
     public static function category(Category $category, ?string $lang = null): ?string

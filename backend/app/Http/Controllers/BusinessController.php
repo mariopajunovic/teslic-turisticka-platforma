@@ -12,6 +12,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Story;
 use App\Support\RelatedLinks;
+use App\Support\Breadcrumbs;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -108,7 +109,7 @@ class BusinessController extends Controller
             'otvoreno' => $this->otvorenoSad((array) $biznis->radno_vrijeme),
             'nazad' => [
                 'url' => ResourceUrls::collection('business') ?: '/',
-                'label' => $kolekcija?->naslov,
+                'label' => $kolekcija?->title,
             ],
             'seo' => Seo::make(
                 $biznis->naslov,
@@ -118,11 +119,7 @@ class BusinessController extends Controller
                 'article',
                 [
                     Seo::localBusiness($biznis),
-                    Seo::breadcrumbs([
-                        ['name' => 'Početna', 'url' => '/'],
-                        ['name' => 'Domaće je najbolje', 'url' => '/domace-je-najbolje'],
-                        ['name' => $biznis->naslov, 'url' => ResourceUrls::detail($biznis)],
-                    ]),
+                    Seo::breadcrumbs(Breadcrumbs::detail('business', $biznis->naslov, ResourceUrls::detail($biznis))),
                 ],
             ),
         ]);

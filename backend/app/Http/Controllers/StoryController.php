@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Event;
 use App\Models\Location;
 use App\Models\Story;
+use App\Support\Breadcrumbs;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -103,11 +104,7 @@ class StoryController extends Controller
                 'article',
                 [
                     Seo::article($prica),
-                    Seo::breadcrumbs([
-                        ['name' => 'Početna', 'url' => '/'],
-                        ['name' => 'Priče', 'url' => '/price'],
-                        ['name' => $prica->naslov, 'url' => ResourceUrls::detail($prica)],
-                    ]),
+                    Seo::breadcrumbs(Breadcrumbs::detail('story', $prica->naslov, ResourceUrls::detail($prica))),
                 ],
             ),
         ]);

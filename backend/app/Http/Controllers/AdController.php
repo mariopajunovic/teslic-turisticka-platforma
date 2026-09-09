@@ -10,6 +10,7 @@ use App\Models\Ad;
 use App\Models\Business;
 use App\Models\Location;
 use App\Models\Story;
+use App\Support\Breadcrumbs;
 use App\Support\Seo;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -113,11 +114,7 @@ class AdController extends Controller
                 $oglas->getFirstMediaUrl('naslovna'),
                 'article',
                 [
-                    Seo::breadcrumbs([
-                        ['name' => 'Početna', 'url' => '/'],
-                        ['name' => 'Oglasi', 'url' => '/oglasi'],
-                        ['name' => $oglas->naslov, 'url' => ResourceUrls::detail($oglas)],
-                    ]),
+                    Seo::breadcrumbs(Breadcrumbs::detail('ad', $oglas->naslov, ResourceUrls::detail($oglas))),
                 ],
             ),
         ]);
